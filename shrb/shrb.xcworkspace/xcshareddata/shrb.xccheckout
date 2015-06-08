@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EC318DB5-BF3A-4891-BDA1-620504EB07FA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>shrb</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>70152724F2782850964300C765B97DC89A2DA604</key>
+		<string>https://github.com/ttt11710/shrb.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>shrb/shrb.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>70152724F2782850964300C765B97DC89A2DA604</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ttt11710/shrb.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>70152724F2782850964300C765B97DC89A2DA604</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>70152724F2782850964300C765B97DC89A2DA604</string>
+			<key>IDESourceControlWCCName</key>
+			<string>shrb</string>
+		</dict>
+	</array>
+</dict>
+</plist>
