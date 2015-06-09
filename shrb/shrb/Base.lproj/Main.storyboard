@@ -1236,8 +1236,7 @@
                                         <exclude reference="ZnO-A5-4ro"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="105" y="280" width="174" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="6Mg-8r-No7"/>
                                         <include reference="ZnO-A5-4ro"/>
@@ -1674,6 +1673,7 @@
                             <constraint firstAttribute="height" secondItem="NHa-Br-Fph" secondAttribute="height" multiplier="4:1" id="GaN-fA-yox"/>
                             <constraint firstItem="NHa-Br-Fph" firstAttribute="leading" secondItem="hv2-Ll-512" secondAttribute="leadingMargin" constant="32" id="RHf-ir-pTk"/>
                             <constraint firstItem="NHa-Br-Fph" firstAttribute="top" secondItem="YSH-ru-bJ6" secondAttribute="bottom" constant="16" id="RKS-F3-fsJ"/>
+                            <constraint firstItem="pl6-H6-6jL" firstAttribute="top" secondItem="NHa-Br-Fph" secondAttribute="bottom" constant="138" id="ScB-Dh-sqY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NHa-Br-Fph" secondAttribute="trailing" constant="32" id="UQj-0f-Ix2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pl6-H6-6jL" secondAttribute="trailing" constant="60" id="Uax-vY-Tdm"/>
                             <constraint firstAttribute="centerX" secondItem="YSH-ru-bJ6" secondAttribute="centerX" id="jEg-Vm-XN8"/>
@@ -1686,15 +1686,16 @@
                                 <exclude reference="pl6-H6-6jL"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="7tj-iW-gpm"/>
-                                <exclude reference="jEg-Vm-XN8"/>
-                                <exclude reference="4dd-yF-OmP"/>
-                                <exclude reference="Uax-vY-Tdm"/>
-                                <exclude reference="jh2-Dh-IMa"/>
                                 <exclude reference="GaN-fA-yox"/>
                                 <exclude reference="RHf-ir-pTk"/>
                                 <exclude reference="RKS-F3-fsJ"/>
                                 <exclude reference="UQj-0f-Ix2"/>
+                                <exclude reference="7tj-iW-gpm"/>
+                                <exclude reference="jEg-Vm-XN8"/>
+                                <exclude reference="ScB-Dh-sqY"/>
+                                <exclude reference="Uax-vY-Tdm"/>
+                                <exclude reference="jh2-Dh-IMa"/>
+                                <exclude reference="4dd-yF-OmP"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -1704,15 +1705,16 @@
                                 <include reference="pl6-H6-6jL"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="7tj-iW-gpm"/>
-                                <include reference="jEg-Vm-XN8"/>
-                                <include reference="4dd-yF-OmP"/>
-                                <include reference="Uax-vY-Tdm"/>
-                                <include reference="jh2-Dh-IMa"/>
                                 <exclude reference="GaN-fA-yox"/>
                                 <include reference="RHf-ir-pTk"/>
                                 <include reference="RKS-F3-fsJ"/>
                                 <include reference="UQj-0f-Ix2"/>
+                                <include reference="7tj-iW-gpm"/>
+                                <include reference="jEg-Vm-XN8"/>
+                                <include reference="ScB-Dh-sqY"/>
+                                <include reference="Uax-vY-Tdm"/>
+                                <include reference="jh2-Dh-IMa"/>
+                                <include reference="4dd-yF-OmP"/>
                             </mask>
                         </variation>
                     </view>
