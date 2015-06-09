@@ -1849,12 +1849,12 @@
                                                     <exclude reference="coO-u0-vLV"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="7Vo-hO-dLT"/>
-                                                    <exclude reference="Ktd-I1-nVb"/>
                                                     <exclude reference="Ef3-gb-PtZ"/>
                                                     <exclude reference="MTp-vd-lRt"/>
                                                     <exclude reference="fn7-CI-XQe"/>
                                                     <exclude reference="wV1-aZ-OLs"/>
+                                                    <exclude reference="7Vo-hO-dLT"/>
+                                                    <exclude reference="Ktd-I1-nVb"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -1864,12 +1864,12 @@
                                                     <include reference="coO-u0-vLV"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="7Vo-hO-dLT"/>
-                                                    <include reference="Ktd-I1-nVb"/>
                                                     <include reference="Ef3-gb-PtZ"/>
                                                     <include reference="MTp-vd-lRt"/>
                                                     <include reference="fn7-CI-XQe"/>
                                                     <include reference="wV1-aZ-OLs"/>
+                                                    <include reference="7Vo-hO-dLT"/>
+                                                    <include reference="Ktd-I1-nVb"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1989,6 +1989,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="某某" id="2PF-rv-fSy"/>
                     <connections>
+                        <outlet property="gotopayViewBtn" destination="mBc-65-9wt" id="qHS-d1-gi6"/>
                         <outlet property="tableView" destination="vt6-mZ-mfh" id="r4D-U9-vxU"/>
                     </connections>
                 </viewController>
