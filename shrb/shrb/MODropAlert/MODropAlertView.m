@@ -38,7 +38,7 @@ static NSString* kAlertCancelButtonHighlightColor = @"#b0120a";
 
 - (void)initDropAlert
 {
-    self.frame = [self mainScreenFrame];
+    self.frame = self.movieView.frame;
     self.opaque = YES;
     self.backgroundColor = [UIColor clearColor];
     
@@ -51,7 +51,7 @@ static NSString* kAlertCancelButtonHighlightColor = @"#b0120a";
 #pragma mark - View Layout Methods
 - (void)makeBackgroundBlur
 {
-    backgroundView = [[UIImageView alloc]initWithFrame:[self mainScreenFrame]];
+    backgroundView = [[UIImageView alloc]initWithFrame:self.movieView.frame];
     
     UIImage *image = [UIImage convertViewToImage];
     UIImage *blurSnapshotImage = nil;
@@ -70,7 +70,7 @@ static NSString* kAlertCancelButtonHighlightColor = @"#b0120a";
 - (void)makeAlertPopupView
 {
     CGRect frame = _movieView.frame;
-    CGRect screen = [self mainScreenFrame];
+    CGRect screen = self.movieView.frame;
     
     alertView = [[UIView alloc]initWithFrame:frame];
     
@@ -88,7 +88,7 @@ static NSString* kAlertCancelButtonHighlightColor = @"#b0120a";
 #pragma mark - View Animation Methods
 - (void)moveAlertPopupView
 {
-    CGRect screen = [self mainScreenFrame];
+    CGRect screen = self.movieView.frame;
     CATransform3D move = CATransform3DIdentity;
     CGFloat initAlertViewYPosition = (CGRectGetHeight(screen) + CGRectGetHeight(alertView.frame)) / 2;
     
@@ -160,7 +160,7 @@ static NSString* kAlertCancelButtonHighlightColor = @"#b0120a";
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          
-                         CGRect screen = [self mainScreenFrame];
+                         CGRect screen = self.movieView.frame;
                          CATransform3D move = CATransform3DIdentity;
                          CGFloat initAlertViewYPosition = CGRectGetHeight(screen);
                          
