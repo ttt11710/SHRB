@@ -83,7 +83,7 @@
     _textField.textAlignment = NSTextAlignmentCenter;
     _textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _textField.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:15];
-    _textField.text = @"1";
+    _textField.text = @"0";
     [self addSubview:_textField];
     
     [self commonSetup];
@@ -136,11 +136,11 @@
         _textField.text = @"1";
     }
     int newNum = [_textField.text intValue] -1;
-    if (newNum > 0) {
+    if (newNum >= 0) {
         _textField.text = [NSString stringWithFormat:@"%i", newNum];
         self.callBack(_textField.text);
     } else {
-        NSLog(@"num can not less than 1");
+        NSLog(@"num can not less than 0");
     }
 }
 
