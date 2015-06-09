@@ -68,11 +68,7 @@
         cell.expenseTextView.text = @"消费记录：\n\n订单号：434544454676756765\n型号：M\n价格：70元\n";
 
         return cell;
-    }
-//        //cell 选中方式
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    cell.accessoryType = UITableViewCellAccessoryNone;
-    
+    }    
     
 }
 

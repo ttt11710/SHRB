@@ -1,7 +1,7 @@
 //
 //  GiveCouponsViewController.m
 //  shrb
-//
+//  赠送电子券
 //  Created by PayBay on 15/6/8.
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //
@@ -19,6 +19,7 @@
     [self initView];
 }
 
+#pragma  mark - UI初始化
 - (void)initView
 {
     self.couponsImageView.image = [UIImage imageNamed:@"官方头像"];

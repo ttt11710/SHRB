@@ -1,7 +1,7 @@
 //
 //  CouponsDetailTableViewController.m
 //  shrb
-//
+//  电子券详情
 //  Created by PayBay on 15/6/8.
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //
@@ -48,6 +48,8 @@
     cell.userCouponsBtn.tag = indexPath.row;
     return cell;
 }
+
+#pragma  mark - 使用电子券
 - (IBAction)userCouponsBtnPressed:(UIButton *)sender {
     NSLog(@"sender.tag = %ld",(long)sender.tag);
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

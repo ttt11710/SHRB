@@ -1,7 +1,7 @@
 //
 //  CompleteVoucherViewController.m
 //  shrb
-//
+//  完成充值
 //  Created by PayBay on 15/5/21.
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //
@@ -31,6 +31,7 @@
     
 }
 
+#pragma  mark - 完成Btn
 - (IBAction)completeVoucherBtnPressed:(id)sender {
     
     //跳转到指定页面
