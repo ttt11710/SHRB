@@ -1686,16 +1686,16 @@
                                 <exclude reference="pl6-H6-6jL"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="7tj-iW-gpm"/>
+                                <exclude reference="jEg-Vm-XN8"/>
+                                <exclude reference="4dd-yF-OmP"/>
+                                <exclude reference="ScB-Dh-sqY"/>
+                                <exclude reference="Uax-vY-Tdm"/>
+                                <exclude reference="jh2-Dh-IMa"/>
                                 <exclude reference="GaN-fA-yox"/>
                                 <exclude reference="RHf-ir-pTk"/>
                                 <exclude reference="RKS-F3-fsJ"/>
                                 <exclude reference="UQj-0f-Ix2"/>
-                                <exclude reference="7tj-iW-gpm"/>
-                                <exclude reference="jEg-Vm-XN8"/>
-                                <exclude reference="ScB-Dh-sqY"/>
-                                <exclude reference="Uax-vY-Tdm"/>
-                                <exclude reference="jh2-Dh-IMa"/>
-                                <exclude reference="4dd-yF-OmP"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -1705,16 +1705,16 @@
                                 <include reference="pl6-H6-6jL"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="7tj-iW-gpm"/>
+                                <include reference="jEg-Vm-XN8"/>
+                                <include reference="4dd-yF-OmP"/>
+                                <include reference="ScB-Dh-sqY"/>
+                                <include reference="Uax-vY-Tdm"/>
+                                <include reference="jh2-Dh-IMa"/>
                                 <exclude reference="GaN-fA-yox"/>
                                 <include reference="RHf-ir-pTk"/>
                                 <include reference="RKS-F3-fsJ"/>
                                 <include reference="UQj-0f-Ix2"/>
-                                <include reference="7tj-iW-gpm"/>
-                                <include reference="jEg-Vm-XN8"/>
-                                <include reference="ScB-Dh-sqY"/>
-                                <include reference="Uax-vY-Tdm"/>
-                                <include reference="jh2-Dh-IMa"/>
-                                <include reference="4dd-yF-OmP"/>
                             </mask>
                         </variation>
                     </view>

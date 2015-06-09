@@ -1,7 +1,7 @@
 //
 //  TransactViewController.m
 //  shrb
-//
+//  注册会员
 //  Created by PayBay on 15/5/21.
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //

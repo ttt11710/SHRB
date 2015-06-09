@@ -1,7 +1,7 @@
 //
 //  HotDetailViewController.m
 //  shrb
-//
+//  热点详情
 //  Created by PayBay on 15/5/19.
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //

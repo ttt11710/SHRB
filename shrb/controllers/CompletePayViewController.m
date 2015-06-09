@@ -1,7 +1,7 @@
 //
 //  CompletePayViewController.m
 //  shrb
-//
+//  完成支付
 //  Created by PayBay on 15/5/20.
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //
@@ -33,6 +33,8 @@
     }
     
 }
+
+#pragma  mark - 完成支付Btn
 - (IBAction)finishBtnPressed:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *mainView = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainVC"];

@@ -49,6 +49,7 @@
     return cell;
 }
 
+#pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     HotFocusTableViewCell *cell =(HotFocusTableViewCell *)sender;
@@ -63,6 +64,4 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
     }
 }
-
-//BOOL isMemberPay =  [[NSUserDefaults standardUserDefaults] objectForKey:@"isMember"];
 @end

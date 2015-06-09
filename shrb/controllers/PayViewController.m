@@ -1,7 +1,7 @@
 //
 //  PayViewController.m
 //  shrb
-//
+//  支付界面
 //  Created by PayBay on 15/5/20.
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //
@@ -25,6 +25,7 @@
     _memberPayView.hidden = !_othersPayView.hidden;
 }
 
+#pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     CompletePayViewController *completePayViewController = segue.destinationViewController;
     completePayViewController.isMemberPay = self.isMemberPay;

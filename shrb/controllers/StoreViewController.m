@@ -1,7 +1,7 @@
 //
 //  StoreViewController.m
 //  shrb
-//
+//  商店首页
 //  Created by PayBay on 15/5/20.
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //
@@ -81,6 +81,7 @@
 
 }
 
+#pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     OrdersViewController *shoppingCartViewController = segue.destinationViewController;
