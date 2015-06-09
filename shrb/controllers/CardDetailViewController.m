@@ -10,6 +10,7 @@
 #import "Const.h"
 #import "CardTableViewCell.h"
 #import "ExpenseTableViewCell.h"
+#import "UITableView+Wave.h"
 
 @interface CardDetailViewController ()
 
@@ -26,6 +27,7 @@
     [super viewDidLoad];
     
     _data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
+    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
 #pragma mark - tableView dataSource

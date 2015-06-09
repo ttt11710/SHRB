@@ -11,6 +11,7 @@
 #import "ButtonTableViewCell.h"
 #import "OrdersViewController.h"
 #import "ProductDescriptionView.h"
+#import "UITableView+Wave.h"
 
 @interface StoreViewController ()
 {
@@ -29,6 +30,7 @@
     
      [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     _data = [[NSMutableArray alloc] initWithObjects:@"单人套餐",@"双人套餐",@"三人套餐",@"四人套餐", nil];
+    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
 #pragma mark - tableView dataSource

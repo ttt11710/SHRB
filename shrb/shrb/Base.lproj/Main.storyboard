@@ -1671,7 +1671,6 @@
                         <constraints>
                             <constraint firstItem="nat-Md-qIp" firstAttribute="top" secondItem="pl6-H6-6jL" secondAttribute="bottom" constant="60" id="4dd-yF-OmP"/>
                             <constraint firstItem="YSH-ru-bJ6" firstAttribute="top" secondItem="sW9-GC-GUV" secondAttribute="bottom" constant="23" id="7tj-iW-gpm"/>
-                            <constraint firstAttribute="height" secondItem="NHa-Br-Fph" secondAttribute="height" multiplier="4:1" id="GaN-fA-yox"/>
                             <constraint firstItem="NHa-Br-Fph" firstAttribute="leading" secondItem="hv2-Ll-512" secondAttribute="leadingMargin" constant="32" id="RHf-ir-pTk"/>
                             <constraint firstItem="NHa-Br-Fph" firstAttribute="top" secondItem="YSH-ru-bJ6" secondAttribute="bottom" constant="16" id="RKS-F3-fsJ"/>
                             <constraint firstItem="pl6-H6-6jL" firstAttribute="top" secondItem="NHa-Br-Fph" secondAttribute="bottom" constant="50" id="ScB-Dh-sqY"/>
@@ -1693,7 +1692,6 @@
                                 <exclude reference="ScB-Dh-sqY"/>
                                 <exclude reference="Uax-vY-Tdm"/>
                                 <exclude reference="jh2-Dh-IMa"/>
-                                <exclude reference="GaN-fA-yox"/>
                                 <exclude reference="RHf-ir-pTk"/>
                                 <exclude reference="RKS-F3-fsJ"/>
                                 <exclude reference="UQj-0f-Ix2"/>
@@ -1712,7 +1710,6 @@
                                 <include reference="ScB-Dh-sqY"/>
                                 <include reference="Uax-vY-Tdm"/>
                                 <include reference="jh2-Dh-IMa"/>
-                                <exclude reference="GaN-fA-yox"/>
                                 <include reference="RHf-ir-pTk"/>
                                 <include reference="RKS-F3-fsJ"/>
                                 <include reference="UQj-0f-Ix2"/>
@@ -2261,6 +2258,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="热点" id="cUf-b7-xtn"/>
+                    <connections>
+                        <outlet property="tableView" destination="yc8-h5-Qpo" id="EkV-zN-kRc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7V-Hw-ocw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

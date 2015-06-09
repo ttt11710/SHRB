@@ -8,6 +8,7 @@
 
 #import "CouponsTableViewController.h"
 #import "CouponsTableViewCell.h"
+#import "UITableView+Wave.h"
 
 @interface CouponsTableViewController ()
 {
@@ -21,6 +22,8 @@
     [super viewDidLoad];
     
     _data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
+    
+    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
 }
 

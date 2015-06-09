@@ -8,11 +8,13 @@
 
 #import "HotFocusViewController.h"
 #import "HotFocusTableViewCell.h"
+#import "UITableView+Wave.h"
 
 @interface HotFocusViewController ()
 {
     NSMutableArray *_data;
 }
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -21,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _data = [[NSMutableArray alloc] initWithObjects:@"未成为会员",@"已是会员",@"已是会员",@"已是会员", nil];
+    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
 #pragma mark - tableView dataSource

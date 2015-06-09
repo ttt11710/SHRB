@@ -8,6 +8,7 @@
 
 #import "CardTableViewController.h"
 #import "CardTableViewCell.h"
+#import "UITableView+Wave.h"
 
 @interface CardTableViewController ()
 {
@@ -25,6 +26,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     _data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
+    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
 #pragma mark - tableView dataSource

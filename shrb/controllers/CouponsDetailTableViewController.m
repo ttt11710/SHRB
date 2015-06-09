@@ -9,6 +9,7 @@
 #import "CouponsDetailTableViewController.h"
 #import "CouponsDetailTableViewCell.h"
 #import "StoreViewController.h"
+#import "UITableView+Wave.h"
 
 @interface CouponsDetailTableViewController ()
 {
@@ -22,7 +23,7 @@
     [super viewDidLoad];
     
     _data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
-    
+    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
 #pragma mark - Table view data source

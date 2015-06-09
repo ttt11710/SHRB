@@ -10,6 +10,7 @@
 #import "OrdersTableViewCell.h"
 #import "PayViewController.h"
 #import "ButtonTableViewCell.h"
+#import "UITableView+Wave.h"
 
 @interface OrdersViewController ()
 {
@@ -27,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _data = [[NSMutableArray alloc] initWithObjects:@"星巴克",@"小绵羊",@"可爱多",@"水果工厂", nil];
+    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
 - (void)viewWillAppear:(BOOL)animated

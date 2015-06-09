@@ -20,6 +20,7 @@
 		DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C6C1B0C8A4400FE499E /* CouponsTableViewController.m */; };
 		DF4E4C6F1B0C8D6400FE499E /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF4E4C6E1B0C8D6400FE499E /* Me.storyboard */; };
 		DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F24D1B267FF400FAE24F /* MainViewController.m */; };
+		DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2511B26AC5100FAE24F /* UITableView+Wave.m */; };
 		DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0BB1B0B339800CE6DC6 /* main.m */; };
 		DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0BE1B0B339800CE6DC6 /* AppDelegate.m */; };
 		DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0C11B0B339800CE6DC6 /* ViewController.m */; };
@@ -81,6 +82,8 @@
 		DF4E4C6E1B0C8D6400FE499E /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		DF70F24C1B267FF400FAE24F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		DF70F24D1B267FF400FAE24F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		DF70F2501B26AC5100FAE24F /* UITableView+Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Wave.h"; sourceTree = "<group>"; };
+		DF70F2511B26AC5100FAE24F /* UITableView+Wave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Wave.m"; sourceTree = "<group>"; };
 		DF72C0B61B0B339800CE6DC6 /* shrb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shrb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF72C0BA1B0B339800CE6DC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF72C0BB1B0B339800CE6DC6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -252,6 +255,15 @@
 			name = cardStoryboard;
 			sourceTree = "<group>";
 		};
+		DF70F24F1B26ABE100FAE24F /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				DF70F2501B26AC5100FAE24F /* UITableView+Wave.h */,
+				DF70F2511B26AC5100FAE24F /* UITableView+Wave.m */,
+			);
+			name = Lib;
+			sourceTree = "<group>";
+		};
 		DF72C0AD1B0B339800CE6DC6 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +287,7 @@
 		DF72C0B81B0B339800CE6DC6 /* shrb */ = {
 			isa = PBXGroup;
 			children = (
+				DF70F24F1B26ABE100FAE24F /* Lib */,
 				DF72C0BD1B0B339800CE6DC6 /* AppDelegate.h */,
 				DF72C0BE1B0B339800CE6DC6 /* AppDelegate.m */,
 				DF72C0C01B0B339800CE6DC6 /* ViewController.h */,
@@ -512,6 +525,7 @@
 				DF7D1E631B0DC9C600CD05B3 /* ExpenseTableViewCell.m in Sources */,
 				DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */,
 				DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */,
+				DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */,
 				DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
