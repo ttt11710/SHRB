@@ -9,6 +9,7 @@
 #import "HotFocusViewController.h"
 #import "HotFocusTableViewCell.h"
 #import "UITableView+Wave.h"
+#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @interface HotFocusViewController ()
 {

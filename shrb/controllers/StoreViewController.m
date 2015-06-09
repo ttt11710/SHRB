@@ -12,6 +12,8 @@
 #import "OrdersViewController.h"
 #import "ProductDescriptionView.h"
 #import "UITableView+Wave.h"
+#import "HJCAjustNumButton.h"
+#import "Const.h"
 
 @interface StoreViewController ()
 {
@@ -19,6 +21,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) HJCAjustNumButton *numbutton;
 
 @property (nonatomic,retain)ProductDescriptionView *productDescriptionView;
 @end
@@ -57,6 +60,17 @@
         cell.tradeNameLabel.text = [_data objectAtIndex:indexPath.row];
         cell.couponsImageView.image = [UIImage imageNamed:@"官方头像"];
         
+        
+        HJCAjustNumButton *numbutton = [[HJCAjustNumButton alloc] init];
+        numbutton.frame = CGRectMake(screenWidth-90, 30, 80, 25);
+        // 内容更改的block回调
+        numbutton.callBack = ^(NSString *currentNum){
+            NSLog(@"%@", currentNum);
+            NSLog(@"%ld",(long)indexPath.row);
+        };
+        
+        // 加到父控件上
+        [cell addSubview:numbutton];
         return cell;
     }
     else
