@@ -25,6 +25,7 @@ PODS:
   - AsyncDisplayKit/ASDealloc2MainObject (1.1.1)
   - FlatUIKit (1.6.1)
   - MBProgressHUD (0.9.1)
+  - pop (1.0.7)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - AsyncDisplayKit
   - FlatUIKit
   - MBProgressHUD
+  - pop
   - SDWebImage
 
 SPEC CHECKSUMS:
@@ -41,6 +43,7 @@ SPEC CHECKSUMS:
   AsyncDisplayKit: 2c355970d1aabe00608211d9a50e35b7a5dc0ae4
   FlatUIKit: c602127a0c4a347e0632b2c5aef5c8c5f386f2cf
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  pop: 2f14a1ea61339767af9e66741b418c831b3844df
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
 COCOAPODS: 0.37.1
