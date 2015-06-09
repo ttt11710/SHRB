@@ -26,7 +26,7 @@
         <!--我的-->
         <scene sceneID="KQT-sn-CIz">
             <objects>
-                <tableViewController id="914-jM-qFR" customClass="UserCenterTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="meView" id="914-jM-qFR" customClass="UserCenterTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" id="RFa-we-1hB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
