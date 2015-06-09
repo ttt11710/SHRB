@@ -46,6 +46,7 @@
     if (indexPath.row == 0) {
         static NSString *SimpleTableIdentifier = @"CardTableViewCellIdentifier";
         CardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         if (cell == nil) {
             cell = [[CardTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
@@ -62,6 +63,7 @@
     {
         static NSString *SimpleTableIdentifier = @"ExpenseTableViewIdentifier";
         ExpenseTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         if (cell == nil) {
             cell = [[ExpenseTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }

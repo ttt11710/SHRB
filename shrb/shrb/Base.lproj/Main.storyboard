@@ -1674,7 +1674,7 @@
                             <constraint firstAttribute="height" secondItem="NHa-Br-Fph" secondAttribute="height" multiplier="4:1" id="GaN-fA-yox"/>
                             <constraint firstItem="NHa-Br-Fph" firstAttribute="leading" secondItem="hv2-Ll-512" secondAttribute="leadingMargin" constant="32" id="RHf-ir-pTk"/>
                             <constraint firstItem="NHa-Br-Fph" firstAttribute="top" secondItem="YSH-ru-bJ6" secondAttribute="bottom" constant="16" id="RKS-F3-fsJ"/>
-                            <constraint firstItem="pl6-H6-6jL" firstAttribute="top" secondItem="NHa-Br-Fph" secondAttribute="bottom" constant="138" id="ScB-Dh-sqY"/>
+                            <constraint firstItem="pl6-H6-6jL" firstAttribute="top" secondItem="NHa-Br-Fph" secondAttribute="bottom" constant="50" id="ScB-Dh-sqY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NHa-Br-Fph" secondAttribute="trailing" constant="32" id="UQj-0f-Ix2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pl6-H6-6jL" secondAttribute="trailing" constant="60" id="Uax-vY-Tdm"/>
                             <constraint firstAttribute="centerX" secondItem="YSH-ru-bJ6" secondAttribute="centerX" id="jEg-Vm-XN8"/>
@@ -2041,6 +2041,7 @@
                         <viewControllerLayoutGuide type="bottom" id="XKp-Vn-YvC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cRB-ci-fJo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqW-nM-znX">
@@ -2127,8 +2128,8 @@
                                 <exclude reference="egi-hD-E8r"/>
                                 <exclude reference="kGn-Z6-AAf"/>
                                 <exclude reference="q17-as-Ywb"/>
-                                <exclude reference="7HE-8K-T8e"/>
                                 <exclude reference="Qov-Jc-Gg1"/>
+                                <exclude reference="7HE-8K-T8e"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -2146,8 +2147,8 @@
                                 <include reference="egi-hD-E8r"/>
                                 <include reference="kGn-Z6-AAf"/>
                                 <include reference="q17-as-Ywb"/>
-                                <include reference="7HE-8K-T8e"/>
                                 <include reference="Qov-Jc-Gg1"/>
+                                <include reference="7HE-8K-T8e"/>
                             </mask>
                         </variation>
                     </view>

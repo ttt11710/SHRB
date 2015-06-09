@@ -42,6 +42,7 @@
     
     static NSString *SimpleTableIdentifier = @"couponsTableViewCellIdentifier";
     CouponsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     if (cell == nil) {
         cell = [[CouponsTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:SimpleTableIdentifier];
     }

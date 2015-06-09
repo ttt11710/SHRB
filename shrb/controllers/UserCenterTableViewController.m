@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.meImageView.image = [UIImage imageNamed:@"官方头像"];
+    self.tableView.tableFooterView =[[UIView alloc]init];
 }
 
 #pragma mark - Table view data source
