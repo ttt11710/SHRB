@@ -18,7 +18,6 @@
 @interface StoreViewController ()
 {
     NSMutableArray *_data;
-    UIImageView *_imageView;
     NSMutableDictionary *_currentNumDic;
     CGRect _rect;
 }
@@ -42,12 +41,6 @@
     _data = [[NSMutableArray alloc] initWithObjects:@"单人套餐",@"双人套餐",@"三人套餐",@"四人套餐",@"五人套餐",@"六人套餐", nil];
     _currentNumDic = [[NSMutableDictionary alloc]init];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
-    
-    
-    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    _imageView.center = CGPointMake(200, screenHeight * 0.7);
-    
-    [self.view addSubview:_imageView];
 }
 
 #pragma mark - tableView dataSource
@@ -83,9 +76,7 @@
             NSLog(@"%ld",(long)indexPath.row);
             
             _rect = [self.tableView.superview convertRect:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height) fromView:cell];
-            
-            _imageView.image = [UIImage imageNamed:@"官方头像"];
-            
+
             if ([_currentNumDic count] == 0) {
                 [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
                 //商品起始位置
@@ -156,13 +147,6 @@
 
 }
 
-- (CGRect)rectForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CGRect cellRect = [self.tableView rectForRowAtIndexPath:indexPath];
-    
-    return cellRect;
-}
-
 -(void)startAnimation
 {
     if (!layer) {
@@ -208,46 +192,13 @@
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    //    [anim def];
     if (anim == [layer animationForKey:@"group"]) {
         self.gotopayViewBtn.enabled = YES;
         [layer removeFromSuperlayer];
         layer = nil;
-//        _cnt++;
-//        if (_cnt) {
-//            _cntLabel.hidden = NO;
-//        }
-        CATransition *animation = [CATransition animation];
-        animation.duration = 0.25f;
-//        _cntLabel.text = [NSString stringWithFormat:@"%d",_cnt];
-//        [_cntLabel.layer addAnimation:animation forKey:nil];
-        
-        CABasicAnimation *shakeAnimation = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
-        shakeAnimation.duration = 0.25f;
-        shakeAnimation.fromValue = [NSNumber numberWithFloat:-5];
-        shakeAnimation.toValue = [NSNumber numberWithFloat:5];
-        shakeAnimation.autoreverses = YES;
-        [_imageView.layer addAnimation:shakeAnimation forKey:nil];
     }
 }
 
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-
-{
-    
-    UITouch *touch = [touches anyObject];
-    
-    CGPoint touchPoint = [touch locationInView:self.view];
-    
-    NSLog(@"%f==%f",touchPoint.x,touchPoint.y);
-    int stringFloat = (int)(touchPoint.x);
-    int stringFloat1 = (int)(touchPoint.y);
-    NSLog(@"%i%i",stringFloat,stringFloat1);
-    
-    
-    //touchPoint.x ，touchPoint.y 就是触点的坐标。
-}
 
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

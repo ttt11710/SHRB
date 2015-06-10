@@ -26,7 +26,8 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
     
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:3] animated:YES];
+    //跳转到指定页面
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-3] animated:YES];
 }
 
 #pragma  mark - storyboard传值
