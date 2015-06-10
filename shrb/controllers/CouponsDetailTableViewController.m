@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    
     _data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }

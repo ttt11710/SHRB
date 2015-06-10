@@ -23,6 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    
     _data = [[NSMutableArray alloc] initWithObjects:@"未成为会员",@"已是会员",@"已是会员",@"已是会员", nil];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
