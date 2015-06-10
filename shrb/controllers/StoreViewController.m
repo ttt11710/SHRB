@@ -20,6 +20,7 @@
     NSMutableArray *_data;
     UIImageView *_imageView;
     NSMutableDictionary *_currentNumDic;
+    CGRect _rect;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -38,13 +39,12 @@
     [super viewDidLoad];
     
      [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    _data = [[NSMutableArray alloc] initWithObjects:@"单人套餐",@"双人套餐",@"三人套餐",@"四人套餐", nil];
+    _data = [[NSMutableArray alloc] initWithObjects:@"单人套餐",@"双人套餐",@"三人套餐",@"四人套餐",@"五人套餐",@"六人套餐", nil];
     _currentNumDic = [[NSMutableDictionary alloc]init];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
     
     _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    _imageView.image = [UIImage imageNamed:@"官方头像"];
     _imageView.center = CGPointMake(200, screenHeight * 0.7);
     
     [self.view addSubview:_imageView];
@@ -82,39 +82,48 @@
             NSLog(@"%@", currentNum);
             NSLog(@"%ld",(long)indexPath.row);
             
+            _rect = [self.tableView.superview convertRect:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height) fromView:cell];
+            
+            _imageView.image = [UIImage imageNamed:@"官方头像"];
+            
             if ([_currentNumDic count] == 0) {
                 [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
                 //商品起始位置
-                self.path = [UIBezierPath bezierPath];
-                [self.path moveToPoint:CGPointMake(46, indexPath.row*80+104)];
+                UIBezierPath *path = [UIBezierPath bezierPath];
+                [path moveToPoint:CGPointMake(46, _rect.origin.y+40)];
                 //商品最终位置和其中一个路径位置
-                [self.path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
-                _path = self.path;
-                [self startAnimation];
-            }
-            if ([_currentNumDic objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]==nil) {
-                [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-                //商品起始位置
-                self.path = [UIBezierPath bezierPath];
-                [self.path moveToPoint:CGPointMake(46, indexPath.row*80+104)];
-                //商品最终位置和其中一个路径位置
-                [self.path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
-                _path = self.path;
+                [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
+                _path = path;
                 [self startAnimation];
             }
             else {
-                if ([_currentNumDic objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]>currentNum) {
-                    [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-                }
-                else{
+                //没有插入数据
+                if ([_currentNumDic objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]==nil) {
                     [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
                     //商品起始位置
-                    self.path = [UIBezierPath bezierPath];
-                    [self.path moveToPoint:CGPointMake(46, indexPath.row*80+104)];
+                    UIBezierPath *path = [UIBezierPath bezierPath];
+                    [path moveToPoint:CGPointMake(46, _rect.origin.y+40)];
                     //商品最终位置和其中一个路径位置
-                    [self.path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
-                    _path = self.path;
+                    [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth/2, screenHeight * 0.6)];
+                    _path = path;
                     [self startAnimation];
+                }
+                else {
+                    //减少
+                    if ([[_currentNumDic objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]] intValue]>[currentNum intValue]) {
+                        [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+                    }
+                    //增加
+                    else{
+                        [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+                        //商品起始位置
+                        UIBezierPath *path = [UIBezierPath bezierPath];
+                        [path moveToPoint:CGPointMake(46, _rect.origin.y+40)];
+                        //商品最终位置和其中一个路径位置
+                        [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
+                        _path = path;
+                        [self startAnimation];
+                    }
                 }
             }
         };
@@ -147,6 +156,12 @@
 
 }
 
+- (CGRect)rectForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGRect cellRect = [self.tableView rectForRowAtIndexPath:indexPath];
+    
+    return cellRect;
+}
 
 -(void)startAnimation
 {
@@ -214,6 +229,24 @@
         shakeAnimation.autoreverses = YES;
         [_imageView.layer addAnimation:shakeAnimation forKey:nil];
     }
+}
+
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+
+{
+    
+    UITouch *touch = [touches anyObject];
+    
+    CGPoint touchPoint = [touch locationInView:self.view];
+    
+    NSLog(@"%f==%f",touchPoint.x,touchPoint.y);
+    int stringFloat = (int)(touchPoint.x);
+    int stringFloat1 = (int)(touchPoint.y);
+    NSLog(@"%i%i",stringFloat,stringFloat1);
+    
+    
+    //touchPoint.x ，touchPoint.y 就是触点的坐标。
 }
 
 #pragma  mark - storyboard传值
