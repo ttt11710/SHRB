@@ -128,6 +128,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="492"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="xw8-mg-3sr" id="6Tr-c3-IOW"/>
                                     <outlet property="delegate" destination="xw8-mg-3sr" id="VGB-CV-MyP"/>
@@ -140,9 +143,10 @@
                                     <constraint firstAttribute="height" constant="44" id="bQh-XQ-NAP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="进店看看">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -155,7 +159,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="NEb-Us-HgX" kind="push" id="zdE-yc-0Mx"/>
+                                    <action selector="gotoStoreView:" destination="xw8-mg-3sr" eventType="touchUpInside" id="9tJ-Ll-VSn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -621,6 +625,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="492"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="0KH-e0-PT6" id="oQs-BP-1ea"/>
                                     <outlet property="delegate" destination="0KH-e0-PT6" id="7Nr-ep-vF2"/>
@@ -701,7 +708,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01B-30-V1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1716" y="-45"/>
+            <point key="canvasLocation" x="1707" y="-23"/>
         </scene>
         <!--付款-->
         <scene sceneID="jaF-us-Qf4">
@@ -727,7 +734,8 @@
                                         <exclude reference="Z24-qh-c70"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="70" y="176" width="68" height="21"/>
                                     <mask key="constraints">
                                         <include reference="Z24-qh-c70"/>
                                     </mask>
@@ -738,6 +746,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="163" y="176" width="70" height="21"/>
+                                </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJ0-Bw-RoF" userLabel="会员付款View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -818,7 +829,8 @@
                                         <exclude reference="y27-tT-GeA"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="70" y="205" width="279" height="121"/>
                                     <mask key="subviews">
                                         <include reference="9an-pc-J8E"/>
                                         <include reference="69D-Yn-T5l"/>
@@ -933,7 +945,8 @@
                                         <exclude reference="0gp-xy-M9R"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="70" y="205" width="279" height="121"/>
                                     <mask key="subviews">
                                         <include reference="2Yr-JR-nwH"/>
                                         <include reference="BQO-Tl-Nfe"/>
@@ -1080,7 +1093,8 @@
                                         <exclude reference="hVj-kp-WSo"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="35" y="94" width="80" height="80"/>
                                     <mask key="constraints">
                                         <include reference="9f1-UL-nQa"/>
                                         <include reference="hVj-kp-WSo"/>
@@ -1102,7 +1116,8 @@
                                         <exclude reference="V2L-EI-umh"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="45" y="246" width="80" height="21"/>
                                     <mask key="constraints">
                                         <include reference="PPH-n6-z7J"/>
                                         <include reference="V2L-EI-umh"/>
@@ -1114,18 +1129,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="45" y="283" width="80" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金额" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tT-Gs-MvR">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="45" y="320" width="80" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zh8-Zu-HKK">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="45" y="357" width="80" height="21"/>
+                                </variation>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yxq-gZ-fNV">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
@@ -1141,7 +1165,8 @@
                                         <exclude reference="hpZ-EE-Vsr"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="105" y="316" width="174" height="30"/>
                                     <mask key="constraints">
                                         <include reference="Nsb-mG-66Y"/>
                                         <include reference="hpZ-EE-Vsr"/>
@@ -1165,7 +1190,8 @@
                                         <exclude reference="vIK-qF-HfK"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="105" y="353" width="174" height="30"/>
                                     <mask key="constraints">
                                         <include reference="8H3-OG-b00"/>
                                         <include reference="vIK-qF-HfK"/>
@@ -1215,7 +1241,8 @@
                                         <exclude reference="snI-Nz-mZn"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="105" y="242" width="174" height="30"/>
                                     <mask key="constraints">
                                         <include reference="2aH-Pd-YVo"/>
                                         <include reference="snI-Nz-mZn"/>
@@ -1236,7 +1263,8 @@
                                         <exclude reference="ZnO-A5-4ro"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="105" y="281" width="174" height="30"/>
                                     <mask key="constraints">
                                         <include reference="6Mg-8r-No7"/>
                                         <include reference="ZnO-A5-4ro"/>
@@ -1507,7 +1535,8 @@
                                         <exclude reference="7kp-y1-g9k"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="35" y="78" width="328" height="173"/>
                                     <mask key="subviews">
                                         <include reference="reT-18-tC8"/>
                                         <include reference="jV1-4F-d97"/>
@@ -1623,7 +1652,8 @@
                                         <exclude reference="3Nk-47-7Qp"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="158" y="87" width="85" height="21"/>
                                     <mask key="constraints">
                                         <include reference="3Nk-47-7Qp"/>
                                     </mask>
@@ -1635,8 +1665,9 @@
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                    <rect key="frame" x="48" y="124" width="304" height="322"/>
                                 </variation>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pl6-H6-6jL" customClass="BFPaperButton">
@@ -1938,6 +1969,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="492"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="NEb-Us-HgX" id="y7f-CS-WZv"/>
                                     <outlet property="delegate" destination="NEb-Us-HgX" id="3RS-h5-Bb5"/>
@@ -1993,7 +2027,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rk-vW-6QW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084.5" y="-37"/>
+            <point key="canvasLocation" x="1065" y="-23"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="Hwu-D9-TpP">
@@ -2059,7 +2093,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="YV9-CQ-dWl" kind="push" id="7GG-Vr-VQq"/>
+                                    <action selector="hotViewBtn:" destination="KtB-dP-m0U" eventType="touchUpInside" id="mEA-WI-SUh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2124,7 +2158,7 @@
         <!--热点-->
         <scene sceneID="5wz-pb-EF2">
             <objects>
-                <tableViewController id="YV9-CQ-dWl" customClass="HotFocusViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="hotView" id="YV9-CQ-dWl" customClass="HotFocusViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="yc8-h5-Qpo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

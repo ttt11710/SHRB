@@ -18,17 +18,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-- (IBAction)cardViewBtn:(id)sender {
+- (IBAction)hotViewBtn:(id)sender {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"hotView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    
+    //等待一定时间后执行
+    double delayInSeconds = 0.3;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.navigationController pushViewController:viewController animated:YES];
+    });
+
+}
+- (IBAction)cardViewBtn:(UIButton *)sender {
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"cardView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [self.navigationController pushViewController:viewController animated:YES];
+    
+    //等待一定时间后执行
+    double delayInSeconds = 0.3;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.navigationController pushViewController:viewController animated:YES];
+    });
 }
 - (IBAction)meViewBtn:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"meView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [self.navigationController pushViewController:viewController animated:YES];
+    double delayInSeconds = 0.3;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.navigationController pushViewController:viewController animated:YES];
+    });
 }
 
 

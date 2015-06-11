@@ -34,8 +34,13 @@
 #pragma  mark - 完成Btn
 - (IBAction)completeVoucherBtnPressed:(id)sender {
     
-    //跳转到指定页面
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+    //等待一定时间后执行
+    double delayInSeconds = 0.3;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        //跳转到指定页面
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+    });
 }
 
 @end

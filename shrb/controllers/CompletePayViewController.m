@@ -39,6 +39,14 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *mainView = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainVC"];
     [mainView setModalPresentationStyle:UIModalPresentationFullScreen];
-    [UIApplication sharedApplication].keyWindow.rootViewController = mainView;
+    
+    //等待一定时间后执行
+    double delayInSeconds = 0.3;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [UIApplication sharedApplication].keyWindow.rootViewController = mainView;
+
+    });
+
 }
 @end
