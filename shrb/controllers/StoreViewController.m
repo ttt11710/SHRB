@@ -38,7 +38,7 @@
     [super viewDidLoad];
     
      [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    _data = [[NSMutableArray alloc] initWithObjects:@"单人套餐",@"双人套餐",@"三人套餐",@"四人套餐",@"五人套餐",@"六人套餐", nil];
+    _data = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺",@"焦糖玛奇朵",@"美式咖啡",@"拿铁",@"浓缩咖啡",@"摩卡",@"香草拿铁", nil];
     _currentNumDic = [[NSMutableDictionary alloc]init];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
@@ -65,7 +65,7 @@
             cell = [[StoreTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
         cell.tradeNameLabel.text = [_data objectAtIndex:indexPath.row];
-        cell.couponsImageView.image = [UIImage imageNamed:@"官方头像"];
+        cell.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
         
         
         HJCAjustNumButton *numbutton = [[HJCAjustNumButton alloc] init];

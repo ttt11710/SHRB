@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LazyFadeInView.h"
 
 @interface HotDetailTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
-@property (weak, nonatomic) IBOutlet UITextView *detailTextView;
+@property (weak, nonatomic) IBOutlet LazyFadeInView *detailView;
+
 @end

@@ -48,6 +48,8 @@
 		DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE955D1B25407F006A495B /* GiveCouponsViewController.m */; };
 		DFAE95611B25434F006A495B /* CouponsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE95601B25434F006A495B /* CouponsDetailTableViewCell.m */; };
 		DFAE95651B254FB7006A495B /* UserCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE95641B254FB7006A495B /* UserCenterTableViewController.m */; };
+		DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */; };
+		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +143,11 @@
 		DFAE95601B25434F006A495B /* CouponsDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsDetailTableViewCell.m; sourceTree = "<group>"; };
 		DFAE95631B254FB7006A495B /* UserCenterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterTableViewController.h; sourceTree = "<group>"; };
 		DFAE95641B254FB7006A495B /* UserCenterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterTableViewController.m; sourceTree = "<group>"; };
+		DFC39BC01B294ECE006B50F4 /* LazyFadeIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeIn.h; sourceTree = "<group>"; };
+		DFC39BC11B294ECE006B50F4 /* LazyFadeInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInView.h; sourceTree = "<group>"; };
+		DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
+		DFC39BC31B294ECE006B50F4 /* LazyFadeInLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInLayer.h; sourceTree = "<group>"; };
+		DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +276,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DFC39BBF1B294EB6006B50F4 /* LazyFadeinView */,
 				DFAD61F41B26DF9E002437BD /* HJCAdjustNumButton */,
 				DF70F25A1B26B91900FAE24F /* tableviewWare */,
 				DF70F2531B26B91100FAE24F /* MODropAlert */,
@@ -400,6 +408,18 @@
 				DFAE95641B254FB7006A495B /* UserCenterTableViewController.m */,
 			);
 			name = meStoryboard;
+			sourceTree = "<group>";
+		};
+		DFC39BBF1B294EB6006B50F4 /* LazyFadeinView */ = {
+			isa = PBXGroup;
+			children = (
+				DFC39BC01B294ECE006B50F4 /* LazyFadeIn.h */,
+				DFC39BC11B294ECE006B50F4 /* LazyFadeInView.h */,
+				DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */,
+				DFC39BC31B294ECE006B50F4 /* LazyFadeInLayer.h */,
+				DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */,
+			);
+			name = LazyFadeinView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,6 +577,7 @@
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
+				DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */,
 				DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */,
 				DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */,
 				DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */,
@@ -565,6 +586,7 @@
 				DF0D9C851B0C423000C0AB3F /* CardTableViewCell.m in Sources */,
 				DF7D1E561B0D755500CD05B3 /* TransactMemberViewController.m in Sources */,
 				DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */,
+				DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */,
 				DF4E4C6A1B0C87D500FE499E /* BecomeMemberViewController.m in Sources */,
 				DF7D1E631B0DC9C600CD05B3 /* ExpenseTableViewCell.m in Sources */,
 				DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */,

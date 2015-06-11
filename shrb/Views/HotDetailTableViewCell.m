@@ -11,7 +11,7 @@
 @implementation HotDetailTableViewCell
 
 - (void)awakeFromNib {
-    self.detailTextView.text = @"优惠详情介绍";
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
