@@ -14,6 +14,7 @@
 #import "UITableView+Wave.h"
 #import "HJCAjustNumButton.h"
 #import "Const.h"
+#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @interface StoreViewController ()
 {
@@ -85,7 +86,7 @@
                 //商品最终位置和其中一个路径位置
                 [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
                 _path = path;
-                [self startAnimation];
+                [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
             }
             else {
                 //没有插入数据
@@ -97,7 +98,7 @@
                     //商品最终位置和其中一个路径位置
                     [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth/2, screenHeight * 0.6)];
                     _path = path;
-                    [self startAnimation];
+                    [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
                 }
                 else {
                     //减少
@@ -113,7 +114,7 @@
                         //商品最终位置和其中一个路径位置
                         [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
                         _path = path;
-                        [self startAnimation];
+                        [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
                     }
                 }
             }
@@ -147,12 +148,12 @@
 
 }
 
--(void)startAnimation
+-(void)startAnimationWithImageNsstring:(NSString *)imageNsstring
 {
     if (!layer) {
         self.gotopayViewBtn.enabled = NO;
         layer = [CALayer layer];
-        layer.contents = (__bridge id)[UIImage imageNamed:@"官方头像"].CGImage;
+        layer.contents = (__bridge id)[UIImage imageNamed:imageNsstring].CGImage;
         layer.contentsGravity = kCAGravityResizeAspectFill;
         layer.bounds = CGRectMake(screenWidth*0.1, screenHeight * 0.5, 50, 50);
         [layer setCornerRadius:CGRectGetHeight([layer bounds]) / 2];

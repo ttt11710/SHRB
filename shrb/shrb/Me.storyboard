@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -118,12 +119,12 @@
                                                     <exclude reference="WKL-cc-zCo"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="iU9-zt-Vke"/>
+                                                    <exclude reference="fwg-AU-TUC"/>
+                                                    <exclude reference="pwq-ge-GfP"/>
                                                     <exclude reference="T2z-n8-n54"/>
                                                     <exclude reference="fo2-tW-8sV"/>
                                                     <exclude reference="x7o-C6-VVf"/>
-                                                    <exclude reference="fwg-AU-TUC"/>
-                                                    <exclude reference="pwq-ge-GfP"/>
-                                                    <exclude reference="iU9-zt-Vke"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -133,12 +134,12 @@
                                                     <include reference="WKL-cc-zCo"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="iU9-zt-Vke"/>
+                                                    <include reference="fwg-AU-TUC"/>
+                                                    <include reference="pwq-ge-GfP"/>
                                                     <include reference="T2z-n8-n54"/>
                                                     <include reference="fo2-tW-8sV"/>
                                                     <include reference="x7o-C6-VVf"/>
-                                                    <include reference="fwg-AU-TUC"/>
-                                                    <include reference="pwq-ge-GfP"/>
-                                                    <include reference="iU9-zt-Vke"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

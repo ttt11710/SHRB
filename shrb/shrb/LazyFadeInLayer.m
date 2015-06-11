@@ -142,7 +142,7 @@
     
     for (id value in _tmpArray)
     {
-        NSLog(@"%@", value);
+        //NSLog(@"%@", value);
     }
     
     
@@ -163,7 +163,7 @@
     
     for (id value in _alphaArray)
     {
-        NSLog(@"%@", value);
+        //NSLog(@"%@", value);
     }
 }
 
