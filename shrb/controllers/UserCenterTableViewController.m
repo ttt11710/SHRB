@@ -7,9 +7,10 @@
 //
 
 #import "UserCenterTableViewController.h"
+#import "Const.h"
 
 @interface UserCenterTableViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *meImageView;
+@property (weak, nonatomic) IBOutlet UIButton *meHeadBtn;
 
 @end
 
@@ -17,9 +18,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.meImageView.image = [UIImage imageNamed:@"官方头像"];
+    
     //删除多余线
     self.tableView.tableFooterView =[[UIView alloc]init];
+    
+}
+
+
+-(UIButton *) produceButtonWithTitle:(NSString*) title
+{
+    UIButton * button =[UIButton buttonWithType:UIButtonTypeCustom];
+    button.backgroundColor= [UIColor whiteColor];
+    button.layer.cornerRadius=23;
+    button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    button.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1] forState:UIControlStateNormal];
+    return button;
 }
 
 #pragma mark - Table view data source
@@ -38,6 +53,10 @@
     return section == 0?1:section==1?2:3;
 }
 
+- (IBAction)changeMeHear:(id)sender {
+    
+    
+}
 
 
 @end
