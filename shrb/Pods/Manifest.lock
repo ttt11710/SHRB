@@ -1,49 +1,55 @@
 PODS:
-  - AFNetworking (2.5.3):
-    - AFNetworking/NSURLConnection (= 2.5.3)
-    - AFNetworking/NSURLSession (= 2.5.3)
-    - AFNetworking/Reachability (= 2.5.3)
-    - AFNetworking/Security (= 2.5.3)
-    - AFNetworking/Serialization (= 2.5.3)
-    - AFNetworking/UIKit (= 2.5.3)
-  - AFNetworking/NSURLConnection (2.5.3):
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.3):
+  - AFNetworking/NSURLSession (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.3)
-  - AFNetworking/Security (2.5.3)
-  - AFNetworking/Serialization (2.5.3)
-  - AFNetworking/UIKit (2.5.3):
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AsyncDisplayKit (1.1.1):
-    - AsyncDisplayKit/ASDealloc2MainObject (= 1.1.1)
-  - AsyncDisplayKit/ASDealloc2MainObject (1.1.1)
-  - FlatUIKit (1.6.1)
+  - AsyncDisplayKit (1.2):
+    - AsyncDisplayKit/ASDealloc2MainObject (= 1.2)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.2)
+  - BFPaperButton (2.0.18):
+    - UIColor+BFPaperColors
+  - FlatUIKit (1.6.2)
   - MBProgressHUD (0.9.1)
   - pop (1.0.7)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
+  - UIColor+BFPaperColors (1.7.1)
 
 DEPENDENCIES:
   - AFNetworking
   - AsyncDisplayKit
+  - BFPaperButton
   - FlatUIKit
   - MBProgressHUD
   - pop
   - SDWebImage
 
 SPEC CHECKSUMS:
-  AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
-  AsyncDisplayKit: 2c355970d1aabe00608211d9a50e35b7a5dc0ae4
-  FlatUIKit: c602127a0c4a347e0632b2c5aef5c8c5f386f2cf
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  AsyncDisplayKit: 32d5b9112b8c1b6644b54429e0cda4fbf6563781
+  BFPaperButton: 16b3ec9c2964d24f89f623a4113321d3f003ed60
+  FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  pop: 2f14a1ea61339767af9e66741b418c831b3844df
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  UIColor+BFPaperColors: b1efa4320e2f56c4b14f73232faf967ba0e5b4a2
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.37.2

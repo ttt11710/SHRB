@@ -20,7 +20,7 @@
   id<ASImageDownloaderProtocol> _downloader;
 
   // Only access any of these with _lock.
-  id<ASNetworkImageNodeDelegate> _delegate;
+  __weak id<ASNetworkImageNodeDelegate> _delegate;
 
   NSURL *_URL;
   UIImage *_defaultImage;
@@ -123,9 +123,16 @@
   return _delegate;
 }
 
-- (void)reclaimMemory
+- (void)displayWillStart
 {
-  [super reclaimMemory];
+  [super displayWillStart];
+
+  [self fetchData];
+}
+
+- (void)clearFetchedData
+{
+  [super clearFetchedData];
 
   {
     ASDN::MutexLocker l(_lock);
@@ -136,10 +143,10 @@
   }
 }
 
-- (void)displayWillStart
+- (void)fetchData
 {
-  [super displayWillStart];
-
+  [super fetchData];
+  
   {
     ASDN::MutexLocker l(_lock);
     [self _lazilyLoadImageIfNecessary];
@@ -213,7 +220,7 @@
         }
 
         if (responseImage != NULL) {
-          [strongSelf->_delegate imageNode:self didLoadImage:strongSelf.image];
+          [strongSelf->_delegate imageNode:strongSelf didLoadImage:strongSelf.image];
         }
       };
 
@@ -234,17 +241,11 @@
           }
         };
 
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-          [_cache fetchCachedImageWithURL:_URL
-                            callbackQueue:dispatch_get_main_queue()
-                               completion:cacheCompletion];
-        });
+        [_cache fetchCachedImageWithURL:_URL
+                          callbackQueue:dispatch_get_main_queue()
+                             completion:cacheCompletion];
       } else {
-          // NSURLSessionDownloadTask will do file I/O to create a temp directory. If called on the main thread this
-          // will cause significant performance issues.
-          dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-              [self _downloadImageWithCompletion:finished];
-          });
+        [self _downloadImageWithCompletion:finished];
       }
     }
   }

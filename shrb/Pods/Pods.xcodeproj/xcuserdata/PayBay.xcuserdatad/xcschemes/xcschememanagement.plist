@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-BFPaperButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FlatUIKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -25,6 +30,11 @@
 			<false/>
 		</dict>
 		<key>Pods-SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UIColor+BFPaperColors.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,37 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>05A9595F913AB0CE5B2843A0</key>
+		<key>138BE3A8182586B94B6FA15D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>454813F4581EA4FB702255C8</key>
+		<key>23E278B39E0D3E157BE44F16</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>857CD3F3CB891B3EA3D7DD07</key>
+		<key>4595814B6388EA191E7F978A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A115C81768EEED1D5F17B801</key>
+		<key>49EA431DD8533084A4A27426</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CCFCF024F28998A4DFA97DA8</key>
+		<key>6DA1FEF486E1C314DED9FDEC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4D5E6F8B123D8E64B7B334A</key>
+		<key>8D4D7C7FA5F0D9024F561AEC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D51B5A6B99108C0EF64CDF6B</key>
+		<key>96CD8FA3F97FC240FA8C453B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D8025585E6B739B2F10782E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EC892FEBC2B6F993035525F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

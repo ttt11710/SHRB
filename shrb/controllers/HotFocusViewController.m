@@ -9,7 +9,7 @@
 #import "HotFocusViewController.h"
 #import "HotFocusTableViewCell.h"
 #import "UITableView+Wave.h"
-#import <AsyncDisplayKit/AsyncDisplayKit.h>
+//#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @interface HotFocusViewController ()
 {
@@ -51,7 +51,7 @@
         cell = [[HotFocusTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
     [cell.memberBtn setTitle:[_data objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-     cell.hotImageView.image = [UIImage imageNamed:@"官方头像"];
+    cell.hotImageView.image = [UIImage imageNamed:@"官方头像"];
     cell.tag = indexPath.row;
     return cell;
 }

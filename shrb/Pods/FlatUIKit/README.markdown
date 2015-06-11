@@ -7,7 +7,7 @@ However, for backwards compatability, we will be attempting to maintain iOS6 com
 FlatUIKit
 ======
 
-FlatUIKit is a collection of iOS components styled with the "Flat UI" aesthetic that we created while building [Grouper for iPhone](http://www.joingrouper.com/ios). Its design inspiration comes from [Flat UI](http://designmodo.github.io/Flat-UI/) and [Kyle Miller](http://kylemillercreative.com/grouper-social-club). Styling is implemented via categories on/drop-in replacements for existing UIKit components, so integrating it into your project is very straightforward.
+FlatUIKit is a collection of iOS components styled with the "Flat UI" aesthetic that we created while building [Grouper for iPhone](http://www.joingrouper.com). Its design inspiration comes from [Flat UI](http://designmodo.github.io/Flat-UI/) and [Kyle Miller](http://kylemillercreative.com/grouper-social-club). Styling is implemented via categories on/drop-in replacements for existing UIKit components, so integrating it into your project is very straightforward.
 
 Installation
 -------
@@ -108,7 +108,12 @@ alertView.defaultButtonFont = [UIFont boldFlatFontOfSize:16];
 alertView.defaultButtonTitleColor = [UIColor asbestosColor];
 [alertView show];
 ```
-
+    
+NOTE: to create FUIAlertView instance in Swift please use default initializer
+s
+```swift
+let alertView = FUIAlertView()
+```
 <img src='https://raw.github.com/Grouper/FlatUIKit/master/Example/README%20images/fuialertview.gif' alt='FUIAlertView' width=316 height=336 />
 
 ### Sliders/Steppers/Progress Views

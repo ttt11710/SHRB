@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BFPaperButton.h"
+#import "UIColor+BFPaperColors.h"
 
 @interface ButtonTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *buttonModel;
+@property (weak, nonatomic) IBOutlet BFPaperButton *buttonModel;
 @end

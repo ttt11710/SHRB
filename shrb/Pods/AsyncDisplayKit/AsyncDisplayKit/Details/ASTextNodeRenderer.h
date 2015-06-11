@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 typedef void (^as_renderer_index_block_t)(NSUInteger characterIndex,
                                           CGRect glyphBoundingRect,
                                           BOOL *stop);
@@ -44,6 +45,12 @@ typedef NS_ENUM(NSUInteger, ASTextNodeRendererMeasureOption) {
  */
 @interface ASTextNodeRenderer : NSObject
 
+- (instancetype)initWithAttributedString:(NSAttributedString *)attributedString
+                        truncationString:(NSAttributedString *)truncationString
+                          truncationMode:(NSLineBreakMode)truncationMode
+                        maximumLineCount:(NSUInteger)maximumLineCount
+                          exclusionPaths:(NSArray *)exclusionPaths
+                         constrainedSize:(CGSize)constrainedSize;
 /*
  * Designated Initializer
  *
@@ -54,6 +61,7 @@ typedef NS_ENUM(NSUInteger, ASTextNodeRendererMeasureOption) {
 - (instancetype)initWithAttributedString:(NSAttributedString *)attributedString
                         truncationString:(NSAttributedString *)truncationString
                           truncationMode:(NSLineBreakMode)truncationMode
+                        maximumLineCount:(NSUInteger)maximumLineCount
                          constrainedSize:(CGSize)constrainedSize;
 #pragma mark - Drawing
 /*

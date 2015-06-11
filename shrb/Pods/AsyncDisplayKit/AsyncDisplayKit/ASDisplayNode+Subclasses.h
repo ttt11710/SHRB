@@ -186,6 +186,15 @@
 - (void)displayDidFinish ASDISPLAYNODE_REQUIRES_SUPER;
 
 /**
+ * @abstract Indicates that the node should fetch any external data, such as images.
+ *
+ * @discussion Subclasses may override this method to be notified when they should begin to fetch data. Fetching
+ * should be done asynchronously. The node is also responsible for managing the memory of any data.
+ * The data may be remote and accessed via the network, but could also be a local database query.
+ */
+- (void)fetchData ASDISPLAYNODE_REQUIRES_SUPER;
+
+/**
  * @abstract Indicates that the receiver is about to display its subnodes. This method is not called if there are no
  * subnodes present.
  *
@@ -198,8 +207,8 @@
  * @abstract Indicates that the receiver is finished displaying its subnodes. This method is not called if there are
  * no subnodes present.
  *
- * @discussion Subclasses may override this method to be notified when subnode display (asynchronous or synchronous) is
- * about to begin.
+ * @discussion Subclasses may override this method to be notified when subnode display (asynchronous or synchronous) has
+ * completed.
  */
 - (void)subnodeDisplayDidFinish:(ASDisplayNode *)subnode ASDISPLAYNODE_REQUIRES_SUPER;
 
@@ -313,12 +322,20 @@
 
 /**
  * Provides an opportunity to clear backing store and other memory-intensive intermediates, such as text layout managers
- * or downloaded content that can be written to a disk cache.
+ * on the current node.
  *
- * @discussion Called by -recursivelyReclaimMemory.   Base class implements self.contents = nil, clearing any backing
+ * @discussion Called by -recursivelyClearContents. Base class implements self.contents = nil, clearing any backing
  * store, for asynchronous regeneration when needed.
  */
-- (void)reclaimMemory ASDISPLAYNODE_REQUIRES_SUPER;
+- (void)clearContents ASDISPLAYNODE_REQUIRES_SUPER;
+
+/**
+ * Provides an opportunity to clear any fetched data (e.g. remote / network or database-queried) on the current node.
+ *
+ * @discussion This will not clear data recursively for all subnodes. Either call -recursivelyClearFetchedData or
+ * selectively clear fetched data.
+ */
+- (void)clearFetchedData ASDISPLAYNODE_REQUIRES_SUPER;
 
 
 /** @name Placeholders */
