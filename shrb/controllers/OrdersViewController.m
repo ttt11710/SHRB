@@ -27,7 +27,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _data = [[NSMutableArray alloc] initWithObjects:@"星巴克",@"小绵羊",@"可爱多",@"水果工厂", nil];
+    _data = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺", nil];
+    
+    //删除多余线
+    self.tableView.tableFooterView =[[UIView alloc]init];
+
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
@@ -42,7 +46,7 @@
     if (indexPath.row == [_data count]+3) {
         return 50;
     }
-    return indexPath.row <= [_data count]?80:150;
+    return indexPath.row <= [_data count]+1?80:100;
 }
 
 #pragma mark - tableView delegate
@@ -68,7 +72,7 @@
         if (indexPath.row <= [_data count]) {
             if (indexPath.row < [_data count]) {
                 cell.tradeNameLabel.text = [_data objectAtIndex:indexPath.row];
-                cell.couponsImageView.image = [UIImage imageNamed:@"官方头像"];
+                cell.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
                 cell.priceLabel.text = @"会员价：30元  原价：40元";
             }
             else  {
@@ -96,6 +100,7 @@
                 cell.couponLabel.hidden = NO;
                 cell.ruleTextView.hidden = YES;
                 cell.settlementTextView.text = @"总价：500RMB\n会员价：350RMB";
+                cell.couponLabel.font = [UIFont systemFontOfSize:14];
                 cell.couponLabel.text = @"100RMB电子券";
             }
             else
