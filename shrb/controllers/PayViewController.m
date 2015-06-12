@@ -8,10 +8,12 @@
 
 #import "PayViewController.h"
 #import "CompletePayViewController.h"
+#import "BFPaperButton.h"
 
 @interface PayViewController ()
 @property (weak, nonatomic) IBOutlet UIView *memberPayView;
 @property (weak, nonatomic) IBOutlet UIView *othersPayView;
+@property (weak, nonatomic) IBOutlet BFPaperButton *memberSubmitBtn;
 
 @end
 
@@ -21,8 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   _othersPayView.hidden = self.isMemberPay?  YES: NO;
+    _othersPayView.hidden = self.isMemberPay?  YES: NO;
     _memberPayView.hidden = !_othersPayView.hidden;
+    _memberSubmitBtn.hidden = _memberPayView.hidden;
+    
 }
 
 #pragma  mark - storyboard传值
