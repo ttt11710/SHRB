@@ -1581,7 +1581,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="COP-Rx-5ft" firstAttribute="leading" secondItem="zgQ-Yf-pqt" secondAttribute="leadingMargin" constant="-16" id="8c5-DE-lEy"/>
-                            <constraint firstItem="IMC-Kl-dWU" firstAttribute="top" secondItem="COP-Rx-5ft" secondAttribute="bottom" constant="138" id="Ica-bX-D3F"/>
+                            <constraint firstItem="IMC-Kl-dWU" firstAttribute="top" secondItem="COP-Rx-5ft" secondAttribute="bottom" id="Ica-bX-D3F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xjh-60-4JQ" secondAttribute="trailing" constant="21" id="JMk-nb-ZtQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="COP-Rx-5ft" secondAttribute="trailing" constant="-16" id="N8G-JT-Z8d"/>
                             <constraint firstItem="xjh-60-4JQ" firstAttribute="top" secondItem="lam-Vs-otf" secondAttribute="bottom" constant="14" id="RZz-ud-hSL"/>
