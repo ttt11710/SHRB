@@ -30,6 +30,8 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
+    self.tabBarController.tabBar.selectedItem.selectedImage = [UIImage imageNamed:@"恋人_highlight.png"];
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:127.0/255.0 green:176.0/255.0 blue:232.0/255.0 alpha:1];
     
     self.tableView.tableFooterView =[[UIView alloc]init];
     
