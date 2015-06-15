@@ -9,6 +9,7 @@
 #import "HotFocusViewController.h"
 #import "HotFocusTableViewCell.h"
 #import "UITableView+Wave.h"
+#import "Const.h"
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @interface HotFocusViewController ()
@@ -24,10 +25,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //导航颜色
+    self.navigationController.navigationBar.barTintColor = shrbPink;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    
     self.tableView.tableFooterView =[[UIView alloc]init];
     
     _data = [[NSMutableArray alloc] initWithObjects:@"未成为会员",@"已是会员",@"已是会员",@"已是会员", nil];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 #pragma mark - tableView dataSource
@@ -58,6 +77,9 @@
 
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     
     HotFocusTableViewCell *cell =(HotFocusTableViewCell *)sender;
     NSLog(@"cell.tag = %ld",(long)cell.tag);

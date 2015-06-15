@@ -19,6 +19,7 @@
 		DF4E4C6A1B0C87D500FE499E /* BecomeMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C691B0C87D500FE499E /* BecomeMemberViewController.m */; };
 		DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C6C1B0C8A4400FE499E /* CouponsTableViewController.m */; };
 		DF4E4C6F1B0C8D6400FE499E /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF4E4C6E1B0C8D6400FE499E /* Me.storyboard */; };
+		DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */; };
 		DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F24D1B267FF400FAE24F /* MainViewController.m */; };
 		DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2511B26AC5100FAE24F /* UITableView+Wave.m */; };
 		DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2551B26B91100FAE24F /* MODropAlertView.m */; };
@@ -86,6 +87,8 @@
 		DF4E4C6B1B0C8A4400FE499E /* CouponsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponsTableViewController.h; path = ../Views/CouponsTableViewController.h; sourceTree = "<group>"; };
 		DF4E4C6C1B0C8A4400FE499E /* CouponsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponsTableViewController.m; path = ../Views/CouponsTableViewController.m; sourceTree = "<group>"; };
 		DF4E4C6E1B0C8D6400FE499E /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		DF610B6B1B2E6AA7009E047A /* CardAndCouponsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardAndCouponsViewController.h; sourceTree = "<group>"; };
+		DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardAndCouponsViewController.m; sourceTree = "<group>"; };
 		DF70F24C1B267FF400FAE24F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		DF70F24D1B267FF400FAE24F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		DF70F2501B26AC5100FAE24F /* UITableView+Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Wave.h"; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 		DF0D9C7F1B0C2B8200C0AB3F /* cardStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				DF610B6B1B2E6AA7009E047A /* CardAndCouponsViewController.h */,
+				DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */,
 				DF4E4C561B0C448400FE499E /* CardTableViewController.h */,
 				DF4E4C571B0C448400FE499E /* CardTableViewController.m */,
 				DF7D1E5E1B0DC08700CD05B3 /* CardDetailViewController.h */,
@@ -560,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */,
 				DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */,
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
 				DFAE95651B254FB7006A495B /* UserCenterTableViewController.m in Sources */,

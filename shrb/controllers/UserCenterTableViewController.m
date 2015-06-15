@@ -19,11 +19,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //导航颜色
+    self.navigationController.navigationBar.barTintColor = shrbPink;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
     //删除多余线
     self.tableView.tableFooterView =[[UIView alloc]init];
     
 }
 
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+}
 
 -(UIButton *) produceButtonWithTitle:(NSString*) title
 {

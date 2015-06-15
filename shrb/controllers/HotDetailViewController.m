@@ -21,8 +21,15 @@
    
     //去除tableview顶部留白
     self.automaticallyAdjustsScrollViewInsets = false;
+    
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden=YES;
+}
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

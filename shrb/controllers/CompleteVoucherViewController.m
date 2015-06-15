@@ -39,7 +39,7 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //跳转到指定页面
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
     });
 }
 
