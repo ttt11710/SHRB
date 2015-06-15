@@ -19,6 +19,31 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-BFPaperTabBarController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-CBStoreHouseRefreshControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-CBZSplashView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-CRToast.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-DCAnimationKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FlatUIKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +77,72 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>138BE3A8182586B94B6FA15D</key>
+		<key>0D7A60EFA074BC24784E2095</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>23E278B39E0D3E157BE44F16</key>
+		<key>12A6B5D299C56F1B00154394</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4595814B6388EA191E7F978A</key>
+		<key>2A45D85E115ADC3FB155F0EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49EA431DD8533084A4A27426</key>
+		<key>2E7B55B49EF39E75C387411C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6DA1FEF486E1C314DED9FDEC</key>
+		<key>2F9D52698B630CD76FD00F26</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D4D7C7FA5F0D9024F561AEC</key>
+		<key>50FC594F32E4F3276775FD8C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>96CD8FA3F97FC240FA8C453B</key>
+		<key>6D5D638793B32F4C403A28BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D8025585E6B739B2F10782E0</key>
+		<key>9BE38CA85D807DE49DD43D13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EC892FEBC2B6F993035525F4</key>
+		<key>CE13A564049AF330EF5EABDA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D551C1182734D4B85FF7E9C7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E717107702526BA8B2D94F39</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ED2F79454D15A4598CC25798</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3F2E61B597CAEE62583C43A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB8F75808FFBB9F7EEF89AB7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

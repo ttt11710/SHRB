@@ -10,6 +10,8 @@
 #import "HotFocusTableViewCell.h"
 #import "UITableView+Wave.h"
 #import "Const.h"
+#import <CBZSplashView/CBZSplashView.h>
+
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @interface HotFocusViewController ()
@@ -31,12 +33,21 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     self.tabBarController.tabBar.selectedItem.selectedImage = [UIImage imageNamed:@"恋人_highlight.png"];
+    
     self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:127.0/255.0 green:176.0/255.0 blue:232.0/255.0 alpha:1];
+    
+    
+    UIImage *icon = [UIImage imageNamed:@"官方头像"];
+    UIColor *color = shrbPink;
+    CBZSplashView *splashView = [CBZSplashView splashViewWithIcon:icon backgroundColor:color];
+    [self.view addSubview:splashView];
+    [splashView startAnimation];
     
     self.tableView.tableFooterView =[[UIView alloc]init];
     
     _data = [[NSMutableArray alloc] initWithObjects:@"未成为会员",@"已是会员",@"已是会员",@"已是会员", nil];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated

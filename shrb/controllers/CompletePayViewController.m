@@ -8,9 +8,11 @@
 
 #import "CompletePayViewController.h"
 #import "LazyFadeInView.h"
+#import <DCAnimationKit/UIView+DCAnimationKit.h>
 
 @interface CompletePayViewController ()
 @property (weak, nonatomic) IBOutlet LazyFadeInView *payInfoView;
+@property (weak, nonatomic) IBOutlet UILabel *completePayLabel;
 
 @end
 
@@ -21,6 +23,7 @@
     [super viewDidLoad];
     
     [self initView];
+    [self.completePayLabel swing:nil];
 }
 
 #pragma mark - 初始化UI

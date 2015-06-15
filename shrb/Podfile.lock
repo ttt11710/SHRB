@@ -25,6 +25,12 @@ PODS:
   - AsyncDisplayKit/ASDealloc2MainObject (1.2)
   - BFPaperButton (2.0.18):
     - UIColor+BFPaperColors
+  - BFPaperTabBarController (2.1.10):
+    - UIColor+BFPaperColors
+  - CBStoreHouseRefreshControl (1.0)
+  - CBZSplashView (1.0.0)
+  - CRToast (0.0.7)
+  - DCAnimationKit (0.0.6)
   - FlatUIKit (1.6.2)
   - MBProgressHUD (0.9.1)
   - pop (1.0.7)
@@ -37,6 +43,11 @@ DEPENDENCIES:
   - AFNetworking
   - AsyncDisplayKit
   - BFPaperButton
+  - BFPaperTabBarController
+  - CBStoreHouseRefreshControl
+  - CBZSplashView
+  - CRToast
+  - DCAnimationKit
   - FlatUIKit
   - MBProgressHUD
   - pop
@@ -46,6 +57,11 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   AsyncDisplayKit: 32d5b9112b8c1b6644b54429e0cda4fbf6563781
   BFPaperButton: 16b3ec9c2964d24f89f623a4113321d3f003ed60
+  BFPaperTabBarController: feeb736ab4249226e850ae6cd677697c26158079
+  CBStoreHouseRefreshControl: a814bd725e74ff4c1e8dd96eb02358199b0da04f
+  CBZSplashView: 9ce4cba22024476ff4a97d6433e7347da6376016
+  CRToast: 99a28f4387def43b439ad88f957ce31357ff7373
+  DCAnimationKit: 7133bef877ce1aa113dcfeea1380ca67f91f7608
   FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923

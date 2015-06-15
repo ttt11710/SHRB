@@ -8,6 +8,8 @@
 
 #import "HotDetailViewController.h"
 #import "HotDetailTableViewCell.h"
+#import <DCAnimationKit/UIView+DCAnimationKit.h>
+#import <BFPaperButton/BFPaperButton.h>
 
 @interface HotDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,7 +23,7 @@
    
     //去除tableview顶部留白
     self.automaticallyAdjustsScrollViewInsets = false;
-    
+    [self.tableView bounce:nil];
 }
 
 

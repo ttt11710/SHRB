@@ -66,6 +66,36 @@
 #define COCOAPODS_VERSION_MINOR_BFPaperButton 0
 #define COCOAPODS_VERSION_PATCH_BFPaperButton 18
 
+// BFPaperTabBarController
+#define COCOAPODS_POD_AVAILABLE_BFPaperTabBarController
+#define COCOAPODS_VERSION_MAJOR_BFPaperTabBarController 2
+#define COCOAPODS_VERSION_MINOR_BFPaperTabBarController 1
+#define COCOAPODS_VERSION_PATCH_BFPaperTabBarController 10
+
+// CBStoreHouseRefreshControl
+#define COCOAPODS_POD_AVAILABLE_CBStoreHouseRefreshControl
+#define COCOAPODS_VERSION_MAJOR_CBStoreHouseRefreshControl 1
+#define COCOAPODS_VERSION_MINOR_CBStoreHouseRefreshControl 0
+#define COCOAPODS_VERSION_PATCH_CBStoreHouseRefreshControl 0
+
+// CBZSplashView
+#define COCOAPODS_POD_AVAILABLE_CBZSplashView
+#define COCOAPODS_VERSION_MAJOR_CBZSplashView 1
+#define COCOAPODS_VERSION_MINOR_CBZSplashView 0
+#define COCOAPODS_VERSION_PATCH_CBZSplashView 0
+
+// CRToast
+#define COCOAPODS_POD_AVAILABLE_CRToast
+#define COCOAPODS_VERSION_MAJOR_CRToast 0
+#define COCOAPODS_VERSION_MINOR_CRToast 0
+#define COCOAPODS_VERSION_PATCH_CRToast 7
+
+// DCAnimationKit
+#define COCOAPODS_POD_AVAILABLE_DCAnimationKit
+#define COCOAPODS_VERSION_MAJOR_DCAnimationKit 0
+#define COCOAPODS_VERSION_MINOR_DCAnimationKit 0
+#define COCOAPODS_VERSION_PATCH_DCAnimationKit 6
+
 // FlatUIKit
 #define COCOAPODS_POD_AVAILABLE_FlatUIKit
 #define COCOAPODS_VERSION_MAJOR_FlatUIKit 1
