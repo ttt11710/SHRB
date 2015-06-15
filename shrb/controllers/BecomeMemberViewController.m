@@ -8,6 +8,8 @@
 
 #import "BecomeMemberViewController.h"
 #import "OrdersViewController.h"
+#import <SVProgressHUD.h>
+#import "Const.h"
 
 @interface BecomeMemberViewController ()
 
@@ -22,18 +24,24 @@
 
 #pragma  mark - 成为会员
 - (IBAction)becomeMemberBtnPressed:(id)sender {
+    
+    
     //跳转到指定页面
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
+    [SVProgressHUD setBackgroundColor:shrbPink];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setFont:[UIFont boldSystemFontOfSize:18]];
     
+    [SVProgressHUD showSuccessWithStatus:@"duang的一声，您成为会员啦！"];
     
-    //等待一定时间后执行
-    double delayInSeconds = 0.3;
+    double delayInSeconds = 2;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        //跳转到指定页面
+        [SVProgressHUD dismiss];
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-3] animated:YES];
     });
+
 }
 
 #pragma  mark - storyboard传值

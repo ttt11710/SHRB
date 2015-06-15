@@ -10,6 +10,7 @@
 #import "HotFocusTableViewCell.h"
 #import "UITableView+Wave.h"
 #import "Const.h"
+#import <SVProgressHUD.h>
 #import <CBZSplashView/CBZSplashView.h>
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
@@ -34,8 +35,7 @@
     
     self.tabBarController.tabBar.selectedItem.selectedImage = [UIImage imageNamed:@"恋人_highlight.png"];
     
-    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:127.0/255.0 green:176.0/255.0 blue:232.0/255.0 alpha:1];
-    
+    self.tabBarController.tabBar.tintColor = shrbPink;
     
     UIImage *icon = [UIImage imageNamed:@"官方头像"];
     UIColor *color = shrbPink;
@@ -90,7 +90,6 @@
 
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     
     [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     
