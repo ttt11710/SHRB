@@ -35,17 +35,22 @@
 
 #pragma  mark - 完成支付Btn
 - (IBAction)finishBtnPressed:(id)sender {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *mainView = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainVC"];
-    [mainView setModalPresentationStyle:UIModalPresentationFullScreen];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIViewController *mainView = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainVC"];
+//    [mainView setModalPresentationStyle:UIModalPresentationFullScreen];
     
     //等待一定时间后执行
     double delayInSeconds = 0.3;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [UIApplication sharedApplication].keyWindow.rootViewController = mainView;
+      //  [UIApplication sharedApplication].keyWindow.rootViewController = mainView;
 
+        ////跳转到指定页面
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
     });
+    
+    
+    
 
 }
 @end
