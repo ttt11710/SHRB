@@ -8,6 +8,7 @@
 
 #import "CompletePayViewController.h"
 #import "LazyFadeInView.h"
+#import "SVProgressShow.h"
 #import <DCAnimationKit/UIView+DCAnimationKit.h>
 
 @interface CompletePayViewController ()
@@ -38,16 +39,13 @@
 
 #pragma  mark - 完成支付Btn
 - (IBAction)finishBtnPressed:(id)sender {
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UIViewController *mainView = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainVC"];
-//    [mainView setModalPresentationStyle:UIModalPresentationFullScreen];
     
     //等待一定时间后执行
-    double delayInSeconds = 0.3;
+    [SVProgressShow showSuccessWithStatus:@"到店领取宝贝吧！"];
+    double delayInSeconds = 1.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-      //  [UIApplication sharedApplication].keyWindow.rootViewController = mainView;
-
+        [SVProgressShow dismiss];
         ////跳转到指定页面
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
     });

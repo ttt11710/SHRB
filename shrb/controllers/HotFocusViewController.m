@@ -10,7 +10,6 @@
 #import "HotFocusTableViewCell.h"
 #import "UITableView+Wave.h"
 #import "Const.h"
-#import <SVProgressHUD.h>
 #import <CBZSplashView/CBZSplashView.h>
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>

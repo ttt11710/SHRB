@@ -51,6 +51,8 @@
 		DFAE95651B254FB7006A495B /* UserCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE95641B254FB7006A495B /* UserCenterTableViewController.m */; };
 		DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */; };
 		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
+		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
+		DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +153,10 @@
 		DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
 		DFC39BC31B294ECE006B50F4 /* LazyFadeInLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInLayer.h; sourceTree = "<group>"; };
 		DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInLayer.m; sourceTree = "<group>"; };
+		DFF330E01B2EC57500007582 /* SVProgressShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressShow.h; sourceTree = "<group>"; };
+		DFF330E11B2EC57500007582 /* SVProgressShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressShow.m; sourceTree = "<group>"; };
+		DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoucherCenterViewController.h; sourceTree = "<group>"; };
+		DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoucherCenterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +272,8 @@
 				DF4E4C571B0C448400FE499E /* CardTableViewController.m */,
 				DF7D1E5E1B0DC08700CD05B3 /* CardDetailViewController.h */,
 				DF7D1E5F1B0DC08700CD05B3 /* CardDetailViewController.m */,
+				DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */,
+				DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */,
 				DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */,
 				DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */,
 				DF4E4C6B1B0C8A4400FE499E /* CouponsTableViewController.h */,
@@ -332,6 +340,7 @@
 		DF72C0B81B0B339800CE6DC6 /* shrb */ = {
 			isa = PBXGroup;
 			children = (
+				DFF330DF1B2EC56100007582 /* common */,
 				DF70F24F1B26ABE100FAE24F /* Lib */,
 				DF72C0BD1B0B339800CE6DC6 /* AppDelegate.h */,
 				DF72C0BE1B0B339800CE6DC6 /* AppDelegate.m */,
@@ -425,6 +434,15 @@
 				DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */,
 			);
 			name = LazyFadeinView;
+			sourceTree = "<group>";
+		};
+		DFF330DF1B2EC56100007582 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				DFF330E01B2EC57500007582 /* SVProgressShow.h */,
+				DFF330E11B2EC57500007582 /* SVProgressShow.m */,
+			);
+			name = common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -572,10 +590,12 @@
 				DFAE95611B25434F006A495B /* CouponsDetailTableViewCell.m in Sources */,
 				DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */,
 				DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */,
+				DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */,
 				DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */,
 				DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */,
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,
 				DFAE95581B253588006A495B /* CouponsDetailTableViewController.m in Sources */,
+				DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */,
 				DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */,
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,
 				DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */,

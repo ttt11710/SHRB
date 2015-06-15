@@ -10,6 +10,7 @@
 #import "HotDetailTableViewCell.h"
 #import <DCAnimationKit/UIView+DCAnimationKit.h>
 #import <BFPaperButton/BFPaperButton.h>
+#import "SVProgressShow.h"
 
 @interface HotDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -54,14 +55,18 @@
     return cell;
 }
 - (IBAction)gotoStoreView:(id)sender {
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
-    //等待一定时间后执行
-    double delayInSeconds = 0.3;
+    
+    [SVProgressShow showWithStatus:@"进入店铺..."];
+    
+    double delayInSeconds = 1.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [SVProgressShow dismiss];
         [self.navigationController pushViewController:viewController animated:YES];
     });
 }

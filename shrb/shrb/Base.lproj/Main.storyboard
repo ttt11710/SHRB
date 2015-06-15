@@ -895,7 +895,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <segue destination="EQL-a9-zgR" kind="push" id="Lrr-Me-R97"/>
+                                            <action selector="alipayBtnPressed:" destination="yIz-FK-8ZI" eventType="touchUpInside" id="GX4-2K-iQ4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMC-fX-g9q">
@@ -924,7 +924,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <segue destination="EQL-a9-zgR" kind="push" id="M5l-21-FZQ"/>
+                                            <action selector="InternetbankBtnPressed:" destination="yIz-FK-8ZI" eventType="touchUpInside" id="kPz-4W-4yp"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -989,7 +989,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="EQL-a9-zgR" kind="push" id="2bc-5c-JfT"/>
+                                    <action selector="payBtnPressed:" destination="yIz-FK-8ZI" eventType="touchUpInside" id="5zq-dd-3eX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1226,7 +1226,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="tzR-Ro-6wu" kind="push" id="OuO-je-Rqt"/>
+                                    <action selector="gotoBecomeMemberView:" destination="5FE-8L-Ry0" eventType="touchUpInside" id="hSd-PV-10C"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="78473726578432" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DYJ-la-0kQ">
@@ -1406,7 +1406,7 @@
         <!--Become Member View Controller-->
         <scene sceneID="c3O-tY-d1z">
             <objects>
-                <viewController id="tzR-Ro-6wu" customClass="BecomeMemberViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="becomeMemberView" id="tzR-Ro-6wu" customClass="BecomeMemberViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lam-Vs-otf"/>
                         <viewControllerLayoutGuide type="bottom" id="IMC-Kl-dWU"/>
@@ -1629,7 +1629,7 @@
         <!--支付-->
         <scene sceneID="eu9-Vd-L0C">
             <objects>
-                <viewController id="EQL-a9-zgR" customClass="CompletePayViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompletePayView" id="EQL-a9-zgR" customClass="CompletePayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sW9-GC-GUV"/>
                         <viewControllerLayoutGuide type="bottom" id="nat-Md-qIp"/>
@@ -2774,6 +2774,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ji0-I5-0mj"/>
-        <segue reference="Lrr-Me-R97"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 //
 
 #import "TransactMemberViewController.h"
+#import "SVProgressShow.h"
 #import "Const.h"
 
 @interface TransactMemberViewController ()
@@ -50,6 +51,21 @@
     [self.moneyTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     return YES;
+}
+- (IBAction)gotoBecomeMemberView:(id)sender {
+    
+    //becomeMemberView
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"becomeMemberView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    
+    [SVProgressShow showWithStatus:@"会员卡生成中..."];
+    double delayInSeconds = 1.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [SVProgressShow dismiss];
+        [self.navigationController pushViewController:viewController animated:YES];
+    });
 }
 
 
