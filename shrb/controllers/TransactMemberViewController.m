@@ -52,6 +52,8 @@
     [self.passwordTextField resignFirstResponder];
     return YES;
 }
+
+#pragma mark - 成为会员
 - (IBAction)gotoBecomeMemberView:(id)sender {
     
     //becomeMemberView

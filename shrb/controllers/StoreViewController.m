@@ -148,6 +148,7 @@
 
 }
 
+#pragma mark - 购物动画
 -(void)startAnimationWithImageNsstring:(NSString *)imageNsstring
 {
     if (!layer) {

@@ -44,18 +44,6 @@
     self.tabBarController.tabBar.hidden = YES;
 }
 
--(UIButton *) produceButtonWithTitle:(NSString*) title
-{
-    UIButton * button =[UIButton buttonWithType:UIButtonTypeCustom];
-    button.backgroundColor= [UIColor whiteColor];
-    button.layer.cornerRadius=23;
-    button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    button.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16];
-    [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1] forState:UIControlStateNormal];
-    return button;
-}
-
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

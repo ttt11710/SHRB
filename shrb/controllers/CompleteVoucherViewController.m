@@ -53,7 +53,7 @@
                                 }];
 }
 
-#pragma  mark - 完成Btn
+#pragma  mark - 完成充值Btn
 - (IBAction)completeVoucherBtnPressed:(id)sender {
     
     //等待一定时间后执行

@@ -179,8 +179,8 @@ CGFloat const bfPaperTabBarController_tapCircleDiameterDefault = -2.f;
     self.tapCircleDiameterStartValue    = 5.f;
     self.tapCircleDiameter              = bfPaperTabBarController_tapCircleDiameterDefault;
     self.tapCircleBurstAmount           = 40.f;
-    self.dumbTapCircleFillColor         = [UIColor colorWithWhite:0.1 alpha:0.3f];
-    self.dumbBackgroundFadeColor        = [UIColor colorWithWhite:0.3 alpha:0.1f];
+    self.dumbTapCircleFillColor         = [UIColor colorWithWhite:0.5 alpha:0.4f];
+    self.dumbBackgroundFadeColor        = [UIColor colorWithWhite:0.3 alpha:0.3f];
     self.dumbUnderlineColor             = [UIColor colorWithWhite:0.3 alpha:1];
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

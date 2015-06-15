@@ -19,6 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+#pragma mark - 支付宝充值
 - (IBAction)alipayBtnPressde:(id)sender {
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
@@ -34,6 +36,8 @@
     });
 
 }
+
+#pragma mark - 网银充值
 - (IBAction)InternetbankBtnPressed:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];

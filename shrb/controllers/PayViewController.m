@@ -30,6 +30,7 @@
     
 }
 
+#pragma mark - 支付宝支付Btn
 - (IBAction)alipayBtnPressed:(id)sender {
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -44,6 +45,8 @@
         [self.navigationController pushViewController:viewController animated:YES];
     });
 }
+
+#pragma mark - 网银支付Btn
 - (IBAction)InternetbankBtnPressed:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompletePayView"];
@@ -58,6 +61,8 @@
     });
 
 }
+
+#pragma mark - 会员卡支付Btn
 - (IBAction)payBtnPressed:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompletePayView"];
@@ -71,6 +76,7 @@
         [self.navigationController pushViewController:viewController animated:YES];
     });
 }
+
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     CompletePayViewController *completePayViewController = segue.destinationViewController;
