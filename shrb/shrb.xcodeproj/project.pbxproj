@@ -749,7 +749,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				INFOPLIST_FILE = shrb/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "controllers/shrb-Bridging-Header.h";
@@ -767,7 +767,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				INFOPLIST_FILE = shrb/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "controllers/shrb-Bridging-Header.h";

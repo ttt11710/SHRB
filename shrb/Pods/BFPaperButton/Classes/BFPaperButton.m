@@ -208,7 +208,7 @@ CGFloat const bfPaperButton_tapCircleDiameterDefault = -2.f;
     self.liftedShadowRadius  = 4.5f;
     self.liftedShadowOffset  = CGSizeMake(2, 4);
     // Animation:
-    self.touchDownAnimationDuration  = 0.25f;
+    self.touchDownAnimationDuration  = 0.15f;
     self.touchUpAnimationDuration    = self.touchDownAnimationDuration * 2.5f;
     // Prettyness and Behaviour:
     self.usesSmartColor                    = YES;
@@ -222,7 +222,7 @@ CGFloat const bfPaperButton_tapCircleDiameterDefault = -2.f;
     self.tapCircleDiameterStartValue       = 5.f;
     self.tapCircleDiameter                 = bfPaperButton_tapCircleDiameterDefault;
     self.tapCircleBurstAmount              = 100.f;
-    self.dumbTapCircleFillColor            = [UIColor colorWithWhite:0.1 alpha:0.16f];
+    self.dumbTapCircleFillColor            = [UIColor colorWithWhite:0.1 alpha:0.5];
     self.clearBackgroundDumbTapCircleColor = [UIColor colorWithWhite:0.3 alpha:0.12f];
     self.clearBackgroundDumbFadeColor      = [UIColor colorWithWhite:0.3 alpha:0.12f];
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -165,11 +165,11 @@ CGFloat const bfPaperTabBarController_tapCircleDiameterDefault = -2.f;
     // Defaults for visual properties:                                                                                      //
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Animation:
-    self.touchDownAnimationDuration = 0.36f;
+    self.touchDownAnimationDuration = 0.15f;
     self.touchUpAnimationDuration   = self.touchDownAnimationDuration * 2.5f;
     // Prettyness and Behaviour:
     self.usesSmartColor                 = YES;
-    self.tapCircleColor                 = nil;
+    self.tapCircleColor                 = [UIColor colorWithRed:253.0/255.0 green:99.0/255.0 blue:93.0/255.0 alpha:1];
     self.backgroundFadeColor            = nil;
     self.underlineThickness             = 2.f;
     self.underlineColor                 = nil;
@@ -179,9 +179,9 @@ CGFloat const bfPaperTabBarController_tapCircleDiameterDefault = -2.f;
     self.tapCircleDiameterStartValue    = 5.f;
     self.tapCircleDiameter              = bfPaperTabBarController_tapCircleDiameterDefault;
     self.tapCircleBurstAmount           = 40.f;
-    self.dumbTapCircleFillColor         = [UIColor colorWithWhite:0.5 alpha:0.4f];
-    self.dumbBackgroundFadeColor        = [UIColor colorWithWhite:0.3 alpha:0.3f];
-    self.dumbUnderlineColor             = [UIColor colorWithWhite:0.3 alpha:1];
+    self.dumbTapCircleFillColor         = [UIColor colorWithRed:253.0/255.0 green:99.0/255.0 blue:93.0/255.0 alpha:0.8];
+    self.dumbBackgroundFadeColor        = [UIColor colorWithRed:253.0/255.0 green:99.0/255.0 blue:93.0/255.0 alpha:0.2];
+    self.dumbUnderlineColor             = [UIColor colorWithRed:253.0/255.0 green:99.0/255.0 blue:93.0/255.0 alpha:1];
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Set up the view which will hold all the animations:
