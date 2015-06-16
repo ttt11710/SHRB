@@ -191,7 +191,7 @@
         <!--会员卡-->
         <scene sceneID="PfG-qR-vu0">
             <objects>
-                <tableViewController storyboardIdentifier="cardTableViewController" id="foR-9j-Ejr" customClass="CardTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="cardTableViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" id="foR-9j-Ejr" customClass="CardTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" id="fYE-fc-W7l">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

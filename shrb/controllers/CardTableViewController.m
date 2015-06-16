@@ -11,6 +11,7 @@
 #import "UITableView+Wave.h"
 #import "SVPullToRefresh.h"
 #import "Const.h"
+#import "SVProgressShow.h"
 
 @interface CardTableViewController ()
 @property (nonatomic, strong) NSMutableArray *data;
@@ -25,7 +26,7 @@
     //tableView 去分界线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
+    self.data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4",@"5",@"6", nil];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
     __weak CardTableViewController *weakSelf = self;
@@ -48,12 +49,13 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [weakSelf.tableView beginUpdates];
-        [weakSelf.data insertObject:@"34" atIndex:0];
+        [weakSelf.data insertObject:[NSString stringWithFormat:@"%d",arc4random()%100] atIndex:0];
         [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
         [weakSelf.tableView endUpdates];
         
         [weakSelf.tableView.pullToRefreshView stopAnimating];
         [weakSelf.tableView reloadData];
+        [SVProgressShow showSuccessWithStatus:@"刷新成功！"];
     });
 }
 
@@ -65,11 +67,12 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [weakSelf.tableView beginUpdates];
-        [weakSelf.data addObject:@"77"];
+        [weakSelf.data addObject:[NSString stringWithFormat:@"%d",arc4random()%100]];
         [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.data.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
         [weakSelf.tableView endUpdates];
         
         [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        [SVProgressShow showSuccessWithStatus:@"加载成功！"];
     });
 }
 

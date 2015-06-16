@@ -1950,7 +1950,8 @@
                                                             <exclude reference="1tp-MJ-VfL"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="8" width="304" height="44"/>
                                                         <mask key="constraints">
                                                             <include reference="1tp-MJ-VfL"/>
                                                         </mask>
@@ -2617,8 +2618,7 @@
                                                             <exclude reference="OgV-xT-0s1"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="24" y="14" width="59" height="60"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="M1V-kr-Pp7"/>
                                                             <include reference="OgV-xT-0s1"/>
