@@ -72,6 +72,12 @@
 #define COCOAPODS_VERSION_MINOR_BFPaperTabBarController 1
 #define COCOAPODS_VERSION_PATCH_BFPaperTabBarController 10
 
+// BFPaperTableViewCell
+#define COCOAPODS_POD_AVAILABLE_BFPaperTableViewCell
+#define COCOAPODS_VERSION_MAJOR_BFPaperTableViewCell 2
+#define COCOAPODS_VERSION_MINOR_BFPaperTableViewCell 3
+#define COCOAPODS_VERSION_PATCH_BFPaperTableViewCell 3
+
 // CBStoreHouseRefreshControl
 #define COCOAPODS_POD_AVAILABLE_CBStoreHouseRefreshControl
 #define COCOAPODS_VERSION_MAJOR_CBStoreHouseRefreshControl 1

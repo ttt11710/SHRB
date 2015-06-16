@@ -47,7 +47,7 @@
         <!--热点详情-->
         <scene sceneID="4Hi-IU-uzR">
             <objects>
-                <viewController id="xw8-mg-3sr" customClass="HotDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HotDetailView" id="xw8-mg-3sr" customClass="HotDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yk4-GU-Oa9"/>
                         <viewControllerLayoutGuide type="bottom" id="wTA-7q-vky"/>
@@ -136,6 +136,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="443"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="xw8-mg-3sr" id="6Tr-c3-IOW"/>
                                     <outlet property="delegate" destination="xw8-mg-3sr" id="VGB-CV-MyP"/>
@@ -158,7 +161,8 @@
                                         <exclude reference="bQh-XQ-NAP"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="507" width="400" height="44"/>
                                     <mask key="constraints">
                                         <include reference="bQh-XQ-NAP"/>
                                     </mask>
@@ -2312,7 +2316,6 @@
                                 <connections>
                                     <outlet property="hotImageView" destination="2ia-bM-25r" id="WRl-Dn-zyq"/>
                                     <outlet property="memberBtn" destination="9OS-Mn-v8c" id="Pyk-AX-Us8"/>
-                                    <segue destination="xw8-mg-3sr" kind="push" id="anb-6w-yp8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

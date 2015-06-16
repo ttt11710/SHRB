@@ -81,20 +81,18 @@
     if (cell == nil) {
         cell = [[HotFocusTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
+    
     [cell.memberBtn setTitle:[_data objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     cell.hotImageView.image = [UIImage imageNamed:@"官方头像"];
     cell.tag = indexPath.row;
     return cell;
 }
 
-#pragma  mark - storyboard传值
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
-    
-    HotFocusTableViewCell *cell =(HotFocusTableViewCell *)sender;
-    NSLog(@"cell.tag = %ld",(long)cell.tag);
-    if (cell.tag < 1) {
+    if (indexPath.row ==0 ) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMember"];
     }
@@ -103,5 +101,16 @@
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
     }
+
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotDetailView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.navigationController pushViewController:viewController animated:YES];
+    });
 }
+
 @end

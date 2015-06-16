@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <BFPaperTableViewCell.h>
 
-@interface HotFocusTableViewCell : UITableViewCell
+@interface HotFocusTableViewCell : BFPaperTableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
 @property (weak, nonatomic) IBOutlet UIButton *memberBtn;
 

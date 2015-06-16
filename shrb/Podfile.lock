@@ -27,6 +27,8 @@ PODS:
     - UIColor+BFPaperColors
   - BFPaperTabBarController (2.1.10):
     - UIColor+BFPaperColors
+  - BFPaperTableViewCell (2.3.3):
+    - UIColor+BFPaperColors
   - CBStoreHouseRefreshControl (1.0)
   - CBZSplashView (1.0.0)
   - CRToast (0.0.7)
@@ -51,6 +53,7 @@ DEPENDENCIES:
   - AsyncDisplayKit
   - BFPaperButton
   - BFPaperTabBarController
+  - BFPaperTableViewCell
   - CBStoreHouseRefreshControl
   - CBZSplashView
   - CRToast
@@ -68,6 +71,7 @@ SPEC CHECKSUMS:
   AsyncDisplayKit: 32d5b9112b8c1b6644b54429e0cda4fbf6563781
   BFPaperButton: 16b3ec9c2964d24f89f623a4113321d3f003ed60
   BFPaperTabBarController: feeb736ab4249226e850ae6cd677697c26158079
+  BFPaperTableViewCell: 71fbd5fc1b3479c0c8620dc121d31d2a6694b4a8
   CBStoreHouseRefreshControl: a814bd725e74ff4c1e8dd96eb02358199b0da04f
   CBZSplashView: 9ce4cba22024476ff4a97d6433e7347da6376016
   CRToast: 99a28f4387def43b439ad88f957ce31357ff7373
