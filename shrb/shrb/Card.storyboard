@@ -191,7 +191,7 @@
         <!--会员卡-->
         <scene sceneID="PfG-qR-vu0">
             <objects>
-                <tableViewController storyboardIdentifier="cardTableViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" id="foR-9j-Ejr" customClass="CardTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="cardTableViewController" hidesBottomBarWhenPushed="YES" id="foR-9j-Ejr" customClass="CardTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" id="fYE-fc-W7l">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -371,6 +371,7 @@
                             <outlet property="delegate" destination="foR-9j-Ejr" id="MMS-uG-f8a"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="会员卡" id="4Im-wX-qPF"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0xb-0i-dI5" userLabel="First Responder" sceneMemberID="firstResponder"/>

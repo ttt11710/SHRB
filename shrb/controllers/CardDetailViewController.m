@@ -11,12 +11,11 @@
 #import "CardTableViewCell.h"
 #import "ExpenseTableViewCell.h"
 #import "UITableView+Wave.h"
+#import "SVProgressShow.h"
+#import "SVPullToRefresh.h"
 
 @interface CardDetailViewController ()
-
-{
-    NSMutableArray *_data;
-}
+@property (nonatomic, strong) NSMutableArray *data;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -26,8 +25,54 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
+    self.data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
+    __weak CardDetailViewController *weakSelf = self;
+    // setup pull-to-refresh
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakSelf insertRowAtTop];
+    }];
+    
+    // setup infinite scrolling
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf insertRowAtBottom];
+    }];
+}
+
+- (void)insertRowAtTop {
+    __weak CardDetailViewController *weakSelf = self;
+    
+    int64_t delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [weakSelf.tableView beginUpdates];
+        [weakSelf.data insertObject:[NSString stringWithFormat:@"%d",arc4random()%100] atIndex:0];
+        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+        [weakSelf.tableView endUpdates];
+        
+        [weakSelf.tableView.pullToRefreshView stopAnimating];
+        [weakSelf.tableView reloadData];
+        [SVProgressShow showSuccessWithStatus:@"刷新成功！"];
+    });
+}
+
+
+- (void)insertRowAtBottom {
+    __weak CardDetailViewController *weakSelf = self;
+    
+    int64_t delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [weakSelf.tableView beginUpdates];
+        [weakSelf.data addObject:[NSString stringWithFormat:@"%d",arc4random()%100]];
+        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.data.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+        [weakSelf.tableView endUpdates];
+        
+        [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        [SVProgressShow showSuccessWithStatus:@"加载成功！"];
+    });
 }
 
 #pragma mark - tableView dataSource
@@ -69,7 +114,7 @@
         if (cell == nil) {
             cell = [[ExpenseTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
-        cell.expenseTextView.text = @"消费记录：\n\n订单号：434544454676756765\n型号：M\n价格：70元\n";
+        cell.expenseTextView.text =[NSString stringWithFormat:@"消费记录：%@\n\n订单号：434544454676756765\n型号：M\n价格：70元\n",[self.data objectAtIndex:indexPath.row-1]] ;
 
         return cell;
     }    

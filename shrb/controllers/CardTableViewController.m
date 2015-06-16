@@ -25,12 +25,12 @@
     
     //tableView 去分界线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+ //   self.automaticallyAdjustsScrollViewInsets = false;
     
     self.data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4",@"5",@"6", nil];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
     __weak CardTableViewController *weakSelf = self;
-    
     // setup pull-to-refresh
     [self.tableView addPullToRefreshWithActionHandler:^{
         [weakSelf insertRowAtTop];
