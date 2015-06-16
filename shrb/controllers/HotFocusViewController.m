@@ -47,6 +47,7 @@
     _data = [[NSMutableArray alloc] initWithObjects:@"未成为会员",@"已是会员",@"已是会员",@"已是会员", nil];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
 }
 
 - (void)viewDidAppear:(BOOL)animated

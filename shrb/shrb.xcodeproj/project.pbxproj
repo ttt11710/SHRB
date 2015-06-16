@@ -24,6 +24,11 @@
 		DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2511B26AC5100FAE24F /* UITableView+Wave.m */; };
 		DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2551B26B91100FAE24F /* MODropAlertView.m */; };
 		DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2571B26B91100FAE24F /* UIImage+ImageEffects.m */; };
+		DF7176FF1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7176FE1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m */; };
+		DF7177341B300F2A00D3C3B9 /* OrderListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7177331B300F2A00D3C3B9 /* OrderListTableViewController.m */; };
+		DF7177391B30109500D3C3B9 /* OrderListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7177381B30109500D3C3B9 /* OrderListTableViewCell.m */; };
+		DF71773C1B30167900D3C3B9 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71773B1B30167900D3C3B9 /* SettingTableViewController.m */; };
+		DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71773E1B30180700D3C3B9 /* HelpCenterTableViewController.m */; };
 		DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0BB1B0B339800CE6DC6 /* main.m */; };
 		DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0BE1B0B339800CE6DC6 /* AppDelegate.m */; };
 		DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0C11B0B339800CE6DC6 /* ViewController.m */; };
@@ -99,6 +104,16 @@
 		DF70F2551B26B91100FAE24F /* MODropAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MODropAlertView.m; sourceTree = "<group>"; };
 		DF70F2561B26B91100FAE24F /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		DF70F2571B26B91100FAE24F /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		DF7176FD1B2FFF9300D3C3B9 /* BasicInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoTableViewController.h; sourceTree = "<group>"; };
+		DF7176FE1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoTableViewController.m; sourceTree = "<group>"; };
+		DF7177321B300F2A00D3C3B9 /* OrderListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableViewController.h; sourceTree = "<group>"; };
+		DF7177331B300F2A00D3C3B9 /* OrderListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableViewController.m; sourceTree = "<group>"; };
+		DF7177371B30109500D3C3B9 /* OrderListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableViewCell.h; sourceTree = "<group>"; };
+		DF7177381B30109500D3C3B9 /* OrderListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableViewCell.m; sourceTree = "<group>"; };
+		DF71773A1B30167900D3C3B9 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
+		DF71773B1B30167900D3C3B9 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
+		DF71773D1B30180700D3C3B9 /* HelpCenterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterTableViewController.h; sourceTree = "<group>"; };
+		DF71773E1B30180700D3C3B9 /* HelpCenterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCenterTableViewController.m; sourceTree = "<group>"; };
 		DF72C0B61B0B339800CE6DC6 /* shrb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shrb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF72C0BA1B0B339800CE6DC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF72C0BB1B0B339800CE6DC6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -317,6 +332,15 @@
 			name = tableviewWare;
 			sourceTree = "<group>";
 		};
+		DF7177351B30105600D3C3B9 /* me */ = {
+			isa = PBXGroup;
+			children = (
+				DF7177371B30109500D3C3B9 /* OrderListTableViewCell.h */,
+				DF7177381B30109500D3C3B9 /* OrderListTableViewCell.m */,
+			);
+			name = me;
+			sourceTree = "<group>";
+		};
 		DF72C0AD1B0B339800CE6DC6 = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +424,7 @@
 			children = (
 				DF0D9C791B0C2A0400C0AB3F /* main */,
 				DF0D9C7A1B0C2A2200C0AB3F /* card */,
+				DF7177351B30105600D3C3B9 /* me */,
 			);
 			name = Views;
 			path = ../Views;
@@ -420,6 +445,14 @@
 			children = (
 				DFAE95631B254FB7006A495B /* UserCenterTableViewController.h */,
 				DFAE95641B254FB7006A495B /* UserCenterTableViewController.m */,
+				DF7176FD1B2FFF9300D3C3B9 /* BasicInfoTableViewController.h */,
+				DF7176FE1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m */,
+				DF7177321B300F2A00D3C3B9 /* OrderListTableViewController.h */,
+				DF7177331B300F2A00D3C3B9 /* OrderListTableViewController.m */,
+				DF71773A1B30167900D3C3B9 /* SettingTableViewController.h */,
+				DF71773B1B30167900D3C3B9 /* SettingTableViewController.m */,
+				DF71773D1B30180700D3C3B9 /* HelpCenterTableViewController.h */,
+				DF71773E1B30180700D3C3B9 /* HelpCenterTableViewController.m */,
 			);
 			name = meStoryboard;
 			sourceTree = "<group>";
@@ -592,13 +625,17 @@
 				DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */,
 				DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */,
 				DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */,
+				DF7176FF1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m in Sources */,
 				DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */,
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,
+				DF7177391B30109500D3C3B9 /* OrderListTableViewCell.m in Sources */,
 				DFAE95581B253588006A495B /* CouponsDetailTableViewController.m in Sources */,
 				DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */,
 				DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */,
+				DF71773C1B30167900D3C3B9 /* SettingTableViewController.m in Sources */,
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,
 				DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */,
+				DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */,
 				DF72C0E21B0B403600CE6DC6 /* HotDetailViewController.m in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
@@ -614,6 +651,7 @@
 				DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */,
 				DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */,
 				DF4E4C6A1B0C87D500FE499E /* BecomeMemberViewController.m in Sources */,
+				DF7177341B300F2A00D3C3B9 /* OrderListTableViewController.m in Sources */,
 				DF7D1E631B0DC9C600CD05B3 /* ExpenseTableViewCell.m in Sources */,
 				DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */,
 				DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */,

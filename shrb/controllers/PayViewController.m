@@ -10,6 +10,7 @@
 #import "CompletePayViewController.h"
 #import "BFPaperButton.h"
 #import "SVProgressShow.h"
+#import "Const.h"
 
 @interface PayViewController ()
 @property (weak, nonatomic) IBOutlet UIView *memberPayView;

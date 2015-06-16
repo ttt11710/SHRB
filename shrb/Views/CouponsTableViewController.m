@@ -9,6 +9,7 @@
 #import "CouponsTableViewController.h"
 #import "CouponsTableViewCell.h"
 #import "UITableView+Wave.h"
+#import "Const.h"
 
 @interface CouponsTableViewController ()
 {
@@ -22,6 +23,7 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView =[[UIView alloc]init];
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
     
     _data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
     

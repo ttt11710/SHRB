@@ -10,6 +10,7 @@
 #import "CouponsDetailTableViewCell.h"
 #import "StoreViewController.h"
 #import "UITableView+Wave.h"
+#import "Const.h"
 
 @interface CouponsDetailTableViewController ()
 {
@@ -23,6 +24,7 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView =[[UIView alloc]init];
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
     
     _data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];

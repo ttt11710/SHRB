@@ -11,6 +11,7 @@
 #import "PayViewController.h"
 #import "ButtonTableViewCell.h"
 #import "UITableView+Wave.h"
+#import "Const.h"
 
 @interface OrdersViewController ()
 {
@@ -31,7 +32,8 @@
     
     //删除多余线
     self.tableView.tableFooterView =[[UIView alloc]init];
-
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 

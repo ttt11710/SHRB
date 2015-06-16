@@ -2557,10 +2557,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.94509803921568625" green="0.93725490196078431" blue="0.93725490196078431" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection headerTitle="   " id="aSC-rc-2PW">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="108" id="n6J-KG-G6K">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="108" id="n6J-KG-G6K">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n6J-KG-G6K" id="I29-Bz-xw5">
@@ -2604,68 +2605,62 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2S6-4v-flF">
-                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="默认女头像" translatesAutoresizingMaskIntoConstraints="NO" id="OOS-Cr-0Jb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="M1V-kr-Pp7"/>
-                                                        <constraint firstAttribute="height" constant="80" id="OgV-xT-0s1"/>
+                                                        <constraint firstAttribute="width" constant="60" id="Ry9-CP-bUy"/>
+                                                        <constraint firstAttribute="height" constant="60" id="z3c-hY-I5J"/>
                                                     </constraints>
-                                                    <state key="normal" image="默认女头像">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="M1V-kr-Pp7"/>
-                                                            <exclude reference="OgV-xT-0s1"/>
+                                                            <exclude reference="Ry9-CP-bUy"/>
+                                                            <exclude reference="z3c-hY-I5J"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="widthClass=compact">
                                                         <mask key="constraints">
-                                                            <include reference="M1V-kr-Pp7"/>
-                                                            <include reference="OgV-xT-0s1"/>
+                                                            <include reference="Ry9-CP-bUy"/>
+                                                            <include reference="z3c-hY-I5J"/>
                                                         </mask>
                                                     </variation>
-                                                    <connections>
-                                                        <action selector="changeMeHear:" destination="tpd-JZ-ghd" eventType="touchUpInside" id="3xC-J9-jW1"/>
-                                                    </connections>
-                                                </button>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="2S6-4v-flF" secondAttribute="centerY" id="9LO-76-Dbq"/>
+                                                <constraint firstItem="m20-UQ-MSJ" firstAttribute="leading" secondItem="OOS-Cr-0Jb" secondAttribute="trailing" constant="12" id="2R8-hg-Rqf"/>
                                                 <constraint firstItem="HM4-yG-dIk" firstAttribute="top" secondItem="m20-UQ-MSJ" secondAttribute="bottom" constant="10" id="C7X-he-mnO"/>
                                                 <constraint firstItem="m20-UQ-MSJ" firstAttribute="leading" secondItem="HM4-yG-dIk" secondAttribute="leading" constant="4" id="CVk-cn-XZ7"/>
-                                                <constraint firstItem="2S6-4v-flF" firstAttribute="top" secondItem="m20-UQ-MSJ" secondAttribute="top" constant="-8" id="Rea-6R-Vab"/>
-                                                <constraint firstItem="m20-UQ-MSJ" firstAttribute="leading" secondItem="2S6-4v-flF" secondAttribute="trailing" constant="10" id="j28-NU-iSW"/>
-                                                <constraint firstItem="2S6-4v-flF" firstAttribute="leading" secondItem="I29-Bz-xw5" secondAttribute="leadingMargin" constant="16" id="pOP-xK-GGU"/>
+                                                <constraint firstAttribute="centerY" secondItem="OOS-Cr-0Jb" secondAttribute="centerY" constant="-0.5" id="GIS-ff-qbQ"/>
+                                                <constraint firstItem="m20-UQ-MSJ" firstAttribute="top" secondItem="OOS-Cr-0Jb" secondAttribute="top" constant="8" id="hts-b0-OME"/>
+                                                <constraint firstItem="OOS-Cr-0Jb" firstAttribute="leading" secondItem="I29-Bz-xw5" secondAttribute="leadingMargin" constant="13" id="lt8-qP-uXN"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="m20-UQ-MSJ"/>
                                                     <exclude reference="HM4-yG-dIk"/>
-                                                    <exclude reference="2S6-4v-flF"/>
+                                                    <exclude reference="OOS-Cr-0Jb"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="C7X-he-mnO"/>
+                                                    <exclude reference="GIS-ff-qbQ"/>
+                                                    <exclude reference="lt8-qP-uXN"/>
+                                                    <exclude reference="2R8-hg-Rqf"/>
                                                     <exclude reference="CVk-cn-XZ7"/>
-                                                    <exclude reference="j28-NU-iSW"/>
-                                                    <exclude reference="9LO-76-Dbq"/>
-                                                    <exclude reference="Rea-6R-Vab"/>
-                                                    <exclude reference="pOP-xK-GGU"/>
+                                                    <exclude reference="hts-b0-OME"/>
+                                                    <exclude reference="C7X-he-mnO"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="m20-UQ-MSJ"/>
                                                     <include reference="HM4-yG-dIk"/>
-                                                    <include reference="2S6-4v-flF"/>
+                                                    <include reference="OOS-Cr-0Jb"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="C7X-he-mnO"/>
+                                                    <include reference="GIS-ff-qbQ"/>
+                                                    <include reference="lt8-qP-uXN"/>
+                                                    <include reference="2R8-hg-Rqf"/>
                                                     <include reference="CVk-cn-XZ7"/>
-                                                    <include reference="j28-NU-iSW"/>
-                                                    <include reference="9LO-76-Dbq"/>
-                                                    <include reference="Rea-6R-Vab"/>
-                                                    <include reference="pOP-xK-GGU"/>
+                                                    <include reference="hts-b0-OME"/>
+                                                    <include reference="C7X-he-mnO"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -2674,7 +2669,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="   " id="1ZX-Sm-nIA">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="lHJ-Fj-4bU" rowHeight="88" style="IBUITableViewCellStyleDefault" id="Kuh-4p-qqO">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="lHJ-Fj-4bU" rowHeight="88" style="IBUITableViewCellStyleDefault" id="Kuh-4p-qqO">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kuh-4p-qqO" id="zbY-p0-Am4">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -2691,7 +2686,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="vV0-ee-evp" style="IBUITableViewCellStyleDefault" id="I5Y-iY-edl">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="vV0-ee-evp" style="IBUITableViewCellStyleDefault" id="I5Y-iY-edl">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I5Y-iY-edl" id="mb4-Ct-UfB">
@@ -2713,7 +2708,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="   " id="fpd-b4-cJo">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="O5h-Jh-DdA" rowHeight="88" style="IBUITableViewCellStyleDefault" id="d6r-Rk-Rm9">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="O5h-Jh-DdA" rowHeight="88" style="IBUITableViewCellStyleDefault" id="d6r-Rk-Rm9">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d6r-Rk-Rm9" id="sXE-pU-lrB">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -2730,7 +2725,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="uC0-57-J7T" style="IBUITableViewCellStyleDefault" id="ECY-kL-MQl">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="uC0-57-J7T" style="IBUITableViewCellStyleDefault" id="ECY-kL-MQl">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ECY-kL-MQl" id="q0l-qL-vKA">
@@ -2748,7 +2743,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="Gki-SP-3f0" rowHeight="88" style="IBUITableViewCellStyleDefault" id="3wP-Bh-Fbm">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Gki-SP-3f0" rowHeight="88" style="IBUITableViewCellStyleDefault" id="3wP-Bh-Fbm">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3wP-Bh-Fbm" id="M9Z-fc-Clq">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -2774,9 +2769,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="我的" id="jJX-Qu-SlF"/>
-                    <connections>
-                        <outlet property="meHeadBtn" destination="2S6-4v-flF" id="HHC-Ul-ZQ7"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rc6-4e-FD5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

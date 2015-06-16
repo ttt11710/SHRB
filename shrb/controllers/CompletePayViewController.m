@@ -10,6 +10,7 @@
 #import "LazyFadeInView.h"
 #import "SVProgressShow.h"
 #import <DCAnimationKit/UIView+DCAnimationKit.h>
+#import "Const.h"
 
 @interface CompletePayViewController ()
 @property (weak, nonatomic) IBOutlet LazyFadeInView *payInfoView;

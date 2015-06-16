@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "UserCenterTableViewController.h"
 #import "Const.h"
 
@@ -28,6 +29,8 @@
     
     //删除多余线
     self.tableView.tableFooterView =[[UIView alloc]init];
+    
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
     
 }
 
@@ -60,10 +63,54 @@
     return section == 0?1:section==1?2:3;
 }
 
-- (IBAction)changeMeHear:(id)sender {
-    
-    
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return section == 0? 0:8;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //基本信息
+    if (indexPath.section == 0)
+    {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"infoView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    else if (indexPath.section == 1)
+    {
+        //我的订单
+        if (indexPath.row == 0) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"orderlistView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+        //设置
+        else if (indexPath.row == 1) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"settingView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+    }
+    else {
+        //帮助中心
+        if (indexPath.row == 0) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"helpCenterView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+        //客服
+        else if (indexPath.row == 1) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"shrbServiceView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+    }
+}
 
 @end
