@@ -10,4 +10,7 @@
 
 @interface StoreViewController : UIViewController
 
++ (StoreViewController *)shareStoreViewController;
+- (void)UpdateTableView;
+
 @end

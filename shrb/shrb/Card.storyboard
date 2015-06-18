@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n1F-pg-smL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -8,193 +8,12 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="yBA-RZ-b0m">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n1F-pg-smL" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7On-63-872">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="16c-66-SFk" kind="relationship" relationship="rootViewController" id="BId-iB-OIn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kmM-9l-njZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="135" y="349"/>
-        </scene>
-        <!--钱包-->
-        <scene sceneID="PIu-wC-YY3">
-            <objects>
-                <viewController storyboardIdentifier="cardView" id="16c-66-SFk" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Gek-dh-n9C"/>
-                        <viewControllerLayoutGuide type="bottom" id="fCO-MT-j5K"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AbY-iy-uin">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="默认女头像" translatesAutoresizingMaskIntoConstraints="NO" id="umH-ji-HDb">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="UuZ-as-HOI"/>
-                                    <constraint firstAttribute="width" constant="80" id="q0Y-gA-hpY"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="UuZ-as-HOI"/>
-                                        <exclude reference="q0Y-gA-hpY"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="UuZ-as-HOI"/>
-                                        <include reference="q0Y-gA-hpY"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rg7-Vd-oDc" customClass="BFPaperButton">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.39109040070000001" blue="0.36406832119999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Tai-bl-nRm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="会员卡">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Tai-bl-nRm"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Tai-bl-nRm"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="foR-9j-Ejr" kind="push" id="4wP-zu-mE0"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2V-Bf-pCl">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="95" id="hAM-Wp-Nhk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="hAM-Wp-Nhk"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="hAM-Wp-Nhk"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wo-vR-GvD" customClass="BFPaperButton">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.39109040070000001" blue="0.36406832119999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="xSL-jl-oA0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="电子券">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="xSL-jl-oA0"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="xSL-jl-oA0"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="ZIa-3Q-RgP" kind="push" id="W1Z-x7-Fbm"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="umH-ji-HDb" firstAttribute="leading" secondItem="AbY-iy-uin" secondAttribute="leadingMargin" constant="16" id="11Z-em-Pj8"/>
-                            <constraint firstItem="Rg7-Vd-oDc" firstAttribute="trailing" secondItem="9Wo-vR-GvD" secondAttribute="trailing" id="89z-H3-i3C"/>
-                            <constraint firstItem="S2V-Bf-pCl" firstAttribute="top" secondItem="Gek-dh-n9C" secondAttribute="bottom" constant="21" id="Dcs-MQ-auC"/>
-                            <constraint firstItem="S2V-Bf-pCl" firstAttribute="leading" secondItem="umH-ji-HDb" secondAttribute="trailing" constant="52" id="VRv-Hj-Bb9"/>
-                            <constraint firstItem="Rg7-Vd-oDc" firstAttribute="top" secondItem="umH-ji-HDb" secondAttribute="bottom" constant="100" id="ZTc-n9-Y3F"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Rg7-Vd-oDc" secondAttribute="trailing" constant="40" id="bub-ed-2NJ"/>
-                            <constraint firstItem="9Wo-vR-GvD" firstAttribute="top" secondItem="Rg7-Vd-oDc" secondAttribute="bottom" constant="32" id="fIg-KB-pfC"/>
-                            <constraint firstItem="Rg7-Vd-oDc" firstAttribute="leading" secondItem="AbY-iy-uin" secondAttribute="leadingMargin" constant="40" id="oFq-Oh-vxl"/>
-                            <constraint firstItem="Rg7-Vd-oDc" firstAttribute="leading" secondItem="9Wo-vR-GvD" secondAttribute="leading" id="xFY-Eu-ztm"/>
-                            <constraint firstItem="umH-ji-HDb" firstAttribute="top" secondItem="Gek-dh-n9C" secondAttribute="bottom" constant="16" id="xSp-ei-TEt"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="umH-ji-HDb"/>
-                                <exclude reference="Rg7-Vd-oDc"/>
-                                <exclude reference="S2V-Bf-pCl"/>
-                                <exclude reference="9Wo-vR-GvD"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="Dcs-MQ-auC"/>
-                                <exclude reference="VRv-Hj-Bb9"/>
-                                <exclude reference="fIg-KB-pfC"/>
-                                <exclude reference="89z-H3-i3C"/>
-                                <exclude reference="ZTc-n9-Y3F"/>
-                                <exclude reference="bub-ed-2NJ"/>
-                                <exclude reference="oFq-Oh-vxl"/>
-                                <exclude reference="xFY-Eu-ztm"/>
-                                <exclude reference="11Z-em-Pj8"/>
-                                <exclude reference="xSp-ei-TEt"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="umH-ji-HDb"/>
-                                <include reference="Rg7-Vd-oDc"/>
-                                <include reference="S2V-Bf-pCl"/>
-                                <include reference="9Wo-vR-GvD"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="Dcs-MQ-auC"/>
-                                <include reference="VRv-Hj-Bb9"/>
-                                <include reference="fIg-KB-pfC"/>
-                                <include reference="89z-H3-i3C"/>
-                                <include reference="ZTc-n9-Y3F"/>
-                                <include reference="bub-ed-2NJ"/>
-                                <include reference="oFq-Oh-vxl"/>
-                                <include reference="xFY-Eu-ztm"/>
-                                <include reference="11Z-em-Pj8"/>
-                                <include reference="xSp-ei-TEt"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <navigationItem key="navigationItem" title="钱包" id="uA1-fs-8aY"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lEq-LN-Z8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="769.5" y="348"/>
-        </scene>
         <!--会员卡-->
         <scene sceneID="PfG-qR-vu0">
             <objects>
                 <tableViewController storyboardIdentifier="cardTableViewController" hidesBottomBarWhenPushed="YES" id="foR-9j-Ejr" customClass="CardTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" id="fYE-fc-W7l">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1687,6 +1506,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="492"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="PeT-2W-kdR" id="FzJ-kr-yrP"/>
                                     <outlet property="delegate" destination="PeT-2W-kdR" id="Q6E-YN-eFE"/>
@@ -1772,6 +1594,5 @@
     </scenes>
     <resources>
         <image name="官方头像" width="50" height="50"/>
-        <image name="默认女头像" width="50" height="50"/>
     </resources>
 </document>

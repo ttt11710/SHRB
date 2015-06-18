@@ -15,7 +15,9 @@
 #import "HJCAjustNumButton.h"
 #import "Const.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
+#import "QRViewController.h"
 
+static StoreViewController *g_StoreViewController = nil;
 @interface StoreViewController ()
 {
     NSMutableArray *_data;
@@ -35,8 +37,15 @@
     CALayer     *layer;
 }
 
++ (StoreViewController *)shareStoreViewController
+{
+    return g_StoreViewController;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    g_StoreViewController = self;
     
      [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     _data = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺",@"焦糖玛奇朵",@"美式咖啡",@"拿铁",@"浓缩咖啡",@"摩卡",@"香草拿铁", nil];
@@ -44,6 +53,11 @@
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
+- (void)UpdateTableView
+{
+    [_data addObject:@"冰拿铁"];
+    [self.tableView reloadData];
+}
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -201,6 +215,30 @@
     }
 }
 
+#pragma mark - 扫描二维码
+- (IBAction)scanBtnPressed:(id)sender {
+    if ([self validateCamera]) {
+        
+        [self showQRViewController];
+        
+    } else {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没有摄像头或摄像头不可用" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+}
+
+- (BOOL)validateCamera {
+    
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] &&
+    [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+}
+
+- (void)showQRViewController {
+    
+    QRViewController *qrVC = [[QRViewController alloc] init];
+    [self.navigationController pushViewController:qrVC animated:YES];
+}
 
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -32,7 +32,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
-    self.tabBarController.tabBar.selectedItem.selectedImage = [UIImage imageNamed:@"恋人_highlight.png"];
+    self.tabBarController.tabBar.selectedItem.selectedImage = [UIImage imageNamed:@"恋人_highlight"];
     
     self.tabBarController.tabBar.tintColor = shrbPink;
     
@@ -85,6 +85,7 @@
     
     [cell.memberBtn setTitle:[_data objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     cell.hotImageView.image = [UIImage imageNamed:@"官方头像"];
+    
     cell.tag = indexPath.row;
     return cell;
 }

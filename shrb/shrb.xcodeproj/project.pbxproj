@@ -49,6 +49,10 @@
 		DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */; };
 		DFAD61F81B26DF9E002437BD /* HJCAdjustNumButton.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DFAD61F51B26DF9E002437BD /* HJCAdjustNumButton.bundle */; };
 		DFAD61F91B26DF9E002437BD /* HJCAjustNumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAD61F71B26DF9E002437BD /* HJCAjustNumButton.m */; };
+		DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE52A91B32743500B03B2F /* QRItem.m */; };
+		DFAE52AF1B32743500B03B2F /* QRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE52AB1B32743500B03B2F /* QRMenu.m */; };
+		DFAE52B01B32743500B03B2F /* QRView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE52AD1B32743500B03B2F /* QRView.m */; };
+		DFAE52B31B32751900B03B2F /* QRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE52B21B32751900B03B2F /* QRViewController.m */; };
 		DFAE95581B253588006A495B /* CouponsDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE95571B253588006A495B /* CouponsDetailTableViewController.m */; };
 		DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE955A1B253848006A495B /* CouponsTableViewCell.m */; };
 		DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE955D1B25407F006A495B /* GiveCouponsViewController.m */; };
@@ -153,6 +157,14 @@
 		DFAD61F51B26DF9E002437BD /* HJCAdjustNumButton.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HJCAdjustNumButton.bundle; sourceTree = "<group>"; };
 		DFAD61F61B26DF9E002437BD /* HJCAjustNumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCAjustNumButton.h; sourceTree = "<group>"; };
 		DFAD61F71B26DF9E002437BD /* HJCAjustNumButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCAjustNumButton.m; sourceTree = "<group>"; };
+		DFAE52A81B32743500B03B2F /* QRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRItem.h; sourceTree = "<group>"; };
+		DFAE52A91B32743500B03B2F /* QRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRItem.m; sourceTree = "<group>"; };
+		DFAE52AA1B32743500B03B2F /* QRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRMenu.h; sourceTree = "<group>"; };
+		DFAE52AB1B32743500B03B2F /* QRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRMenu.m; sourceTree = "<group>"; };
+		DFAE52AC1B32743500B03B2F /* QRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRView.h; sourceTree = "<group>"; };
+		DFAE52AD1B32743500B03B2F /* QRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRView.m; sourceTree = "<group>"; };
+		DFAE52B11B32751900B03B2F /* QRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRViewController.h; sourceTree = "<group>"; };
+		DFAE52B21B32751900B03B2F /* QRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRViewController.m; sourceTree = "<group>"; };
 		DFAE95561B253588006A495B /* CouponsDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsDetailTableViewController.h; sourceTree = "<group>"; };
 		DFAE95571B253588006A495B /* CouponsDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsDetailTableViewController.m; sourceTree = "<group>"; };
 		DFAE95591B253848006A495B /* CouponsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsTableViewCell.h; sourceTree = "<group>"; };
@@ -274,6 +286,8 @@
 				DF7D1E551B0D755500CD05B3 /* TransactMemberViewController.m */,
 				DF4E4C681B0C87D500FE499E /* BecomeMemberViewController.h */,
 				DF4E4C691B0C87D500FE499E /* BecomeMemberViewController.m */,
+				DFAE52B11B32751900B03B2F /* QRViewController.h */,
+				DFAE52B21B32751900B03B2F /* QRViewController.m */,
 			);
 			name = mainStoryboard;
 			sourceTree = "<group>";
@@ -304,6 +318,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DFAE52A71B32743500B03B2F /* QRView */,
 				DFC39BBF1B294EB6006B50F4 /* LazyFadeinView */,
 				DFAD61F41B26DF9E002437BD /* HJCAdjustNumButton */,
 				DF70F25A1B26B91900FAE24F /* tableviewWare */,
@@ -438,6 +453,19 @@
 				DFAD61F71B26DF9E002437BD /* HJCAjustNumButton.m */,
 			);
 			path = HJCAdjustNumButton;
+			sourceTree = "<group>";
+		};
+		DFAE52A71B32743500B03B2F /* QRView */ = {
+			isa = PBXGroup;
+			children = (
+				DFAE52A81B32743500B03B2F /* QRItem.h */,
+				DFAE52A91B32743500B03B2F /* QRItem.m */,
+				DFAE52AA1B32743500B03B2F /* QRMenu.h */,
+				DFAE52AB1B32743500B03B2F /* QRMenu.m */,
+				DFAE52AC1B32743500B03B2F /* QRView.h */,
+				DFAE52AD1B32743500B03B2F /* QRView.m */,
+			);
+			path = QRView;
 			sourceTree = "<group>";
 		};
 		DFAE95621B254F70006A495B /* meStoryboard */ = {
@@ -629,6 +657,7 @@
 				DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */,
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,
 				DF7177391B30109500D3C3B9 /* OrderListTableViewCell.m in Sources */,
+				DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */,
 				DFAE95581B253588006A495B /* CouponsDetailTableViewController.m in Sources */,
 				DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */,
 				DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */,
@@ -637,12 +666,14 @@
 				DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */,
 				DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */,
 				DF72C0E21B0B403600CE6DC6 /* HotDetailViewController.m in Sources */,
+				DFAE52AF1B32743500B03B2F /* QRMenu.m in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
 				DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */,
 				DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */,
 				DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */,
+				DFAE52B01B32743500B03B2F /* QRView.m in Sources */,
 				DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */,
 				DF7D1E591B0D792400CD05B3 /* ProductDescriptionView.m in Sources */,
 				DF7D1E601B0DC08700CD05B3 /* CardDetailViewController.m in Sources */,
@@ -658,6 +689,7 @@
 				DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */,
 				DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */,
 				DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */,
+				DFAE52B31B32751900B03B2F /* QRViewController.m in Sources */,
 				DFAD61F91B26DF9E002437BD /* HJCAjustNumButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -43,7 +43,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Azi-1Y-1lR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1669.5" y="616"/>
+            <point key="canvasLocation" x="-1806" y="726"/>
         </scene>
         <!--热点详情-->
         <scene sceneID="4Hi-IU-uzR">
@@ -134,9 +134,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="443"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="xw8-mg-3sr" id="6Tr-c3-IOW"/>
                                     <outlet property="delegate" destination="xw8-mg-3sr" id="VGB-CV-MyP"/>
@@ -159,8 +156,7 @@
                                         <exclude reference="bQh-XQ-NAP"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="507" width="400" height="44"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="bQh-XQ-NAP"/>
                                     </mask>
@@ -593,7 +589,8 @@
                                                             <exclude reference="Jgn-sx-xgK"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="8" width="304" height="44"/>
                                                         <mask key="constraints">
                                                             <include reference="Jgn-sx-xgK"/>
                                                         </mask>
@@ -1958,6 +1955,9 @@
                                                             <include reference="1tp-MJ-VfL"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="scanBtnPressed:" destination="NEb-Us-HgX" eventType="touchUpInside" id="NOJ-AQ-Z0H"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -2335,7 +2335,7 @@
         <scene sceneID="o0y-Ht-izf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kve-Zi-bRO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="热点" image="恋人" selectedImage="恋人_highlight" id="WPB-Mq-3cF"/>
+                    <tabBarItem key="tabBarItem" title="热点" image="恋人" id="WPB-Mq-3cF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i9L-yt-oi0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2354,7 +2354,7 @@
         <scene sceneID="OO3-DV-5C9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H6A-VQ-BCc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="卡包" image="寻觅" selectedImage="寻觅_highlight" id="2r1-0g-idV"/>
+                    <tabBarItem key="tabBarItem" title="卡包" image="寻觅" id="2r1-0g-idV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Rm-OL-Uhp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2536,7 +2536,7 @@
         <scene sceneID="gyq-C3-NKL">
             <objects>
                 <navigationController id="1Pf-dz-yDF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" image="我的" selectedImage="我的_highlight" id="RDr-ht-KiT"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="我的" id="RDr-ht-KiT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a10-um-h4V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2640,12 +2640,12 @@
                                                     <exclude reference="OOS-Cr-0Jb"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="GIS-ff-qbQ"/>
-                                                    <exclude reference="lt8-qP-uXN"/>
+                                                    <exclude reference="C7X-he-mnO"/>
                                                     <exclude reference="2R8-hg-Rqf"/>
                                                     <exclude reference="CVk-cn-XZ7"/>
                                                     <exclude reference="hts-b0-OME"/>
-                                                    <exclude reference="C7X-he-mnO"/>
+                                                    <exclude reference="GIS-ff-qbQ"/>
+                                                    <exclude reference="lt8-qP-uXN"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -2655,12 +2655,12 @@
                                                     <include reference="OOS-Cr-0Jb"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="GIS-ff-qbQ"/>
-                                                    <include reference="lt8-qP-uXN"/>
+                                                    <include reference="C7X-he-mnO"/>
                                                     <include reference="2R8-hg-Rqf"/>
                                                     <include reference="CVk-cn-XZ7"/>
                                                     <include reference="hts-b0-OME"/>
-                                                    <include reference="C7X-he-mnO"/>
+                                                    <include reference="GIS-ff-qbQ"/>
+                                                    <include reference="lt8-qP-uXN"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -2778,11 +2778,8 @@
     <resources>
         <image name="官方头像" width="50" height="50"/>
         <image name="寻觅" width="24" height="24"/>
-        <image name="寻觅_highlight" width="24" height="24"/>
         <image name="恋人" width="24" height="24"/>
-        <image name="恋人_highlight" width="24" height="24"/>
         <image name="我的" width="17" height="24"/>
-        <image name="我的_highlight" width="17" height="24"/>
         <image name="选中" width="601" height="92"/>
         <image name="默认女头像" width="50" height="50"/>
     </resources>

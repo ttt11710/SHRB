@@ -34,7 +34,7 @@
     
     
     NSDictionary *options = @{
-                              kCRToastImageKey : [UIImage imageNamed:@"官方头像.png"],
+                              kCRToastImageKey : [UIImage imageNamed:@"官方头像"],
                               kCRToastTextAlignmentKey:@(NSTextAlignmentLeft),
                               kCRToastTextKey:@"充值完成",
                               kCRToastFontKey:[UIFont boldSystemFontOfSize:18.0],
