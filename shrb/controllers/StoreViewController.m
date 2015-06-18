@@ -16,6 +16,7 @@
 #import "Const.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "QRViewController.h"
+#import "SVProgressShow.h"
 
 static StoreViewController *g_StoreViewController = nil;
 @interface StoreViewController ()
@@ -23,14 +24,15 @@ static StoreViewController *g_StoreViewController = nil;
     NSMutableArray *_data;
     NSMutableDictionary *_currentNumDic;
     CGRect _rect;
+    CGFloat lastContentOffset;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) HJCAjustNumButton *numbutton;
 @property (weak, nonatomic) IBOutlet UIButton *gotopayViewBtn;
 @property (nonatomic,strong) UIBezierPath *path;
+@property (weak, nonatomic) IBOutlet UIButton *topBtn;
 
-@property (nonatomic,retain)ProductDescriptionView *productDescriptionView;
 @end
 
 @implementation StoreViewController{
@@ -48,16 +50,25 @@ static StoreViewController *g_StoreViewController = nil;
     g_StoreViewController = self;
     
      [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    _data = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺",@"焦糖玛奇朵",@"美式咖啡",@"拿铁",@"浓缩咖啡",@"摩卡",@"香草拿铁", nil];
+    _data = [[NSMutableArray alloc] initWithObjects:@"提拉米苏",@"蜂蜜提子可颂",@"芝士可颂",@"牛奶",@"抹茶拿铁",@"英式红茶",@"冰拿铁",@"卡布奇诺",@"焦糖玛奇朵",@"美式咖啡",@"拿铁",@"浓缩咖啡",@"摩卡",@"香草拿铁", nil];
     _currentNumDic = [[NSMutableDictionary alloc]init];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
+#pragma mark - 更新tableView
 - (void)UpdateTableView
 {
     [_data addObject:@"冰拿铁"];
-    [self.tableView reloadData];
+    [SVProgressShow showWithStatus:@"更新订单中..."];
+    double delayInSeconds = 1.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [SVProgressShow dismiss];
+        [self.tableView reloadData];
+        [self.tableView scrollRectToVisible:CGRectMake(0, 0, screenWidth, screenHeight) animated:YES];
+    });
 }
+
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -151,15 +162,44 @@ static StoreViewController *g_StoreViewController = nil;
     }
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_productDescriptionView==nil) {
-        _productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-       [self.view addSubview:_productDescriptionView];
-    }
-    self.productDescriptionView.hidden=NO;
+    
+    ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    productDescriptionView.currentIndex = indexPath.row;
+    [self.view addSubview:productDescriptionView];
+    
+}
 
+#pragma mark - tableView滚动调用
+-(void)scrollViewWillBeginDragging:(UIScrollView*)scrollView {
+    
+    lastContentOffset = scrollView.contentOffset.y;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.y < lastContentOffset )
+    {
+        //向上
+        _topBtn.hidden = NO;
+        
+    } else if (scrollView. contentOffset.y >lastContentOffset){
+        //向下
+        CATransition *animation = [CATransition animation];
+        animation.type = kCATransitionMoveIn;
+        animation.duration = 1.0f;
+        [_topBtn.layer addAnimation:animation forKey:nil];
+        _topBtn.hidden = YES;
+    }
+    if (scrollView.contentOffset.y == 0) {
+        _topBtn.hidden = YES;
+    }
+}
+
+- (IBAction)tabViewSetContentToTop:(id)sender {
+
+    //到顶部
+    [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 #pragma mark - 购物动画

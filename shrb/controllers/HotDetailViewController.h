@@ -10,4 +10,6 @@
 
 @interface HotDetailViewController : UIViewController
 
+@property (nonatomic,assign) NSInteger storeNum;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "HotFocusViewController.h"
 #import "HotFocusTableViewCell.h"
+#import "HotDetailViewController.h"
 #import "UITableView+Wave.h"
 #import "Const.h"
 #import <CBZSplashView/CBZSplashView.h>
@@ -44,7 +45,26 @@
     
     self.tableView.tableFooterView =[[UIView alloc]init];
     
-    _data = [[NSMutableArray alloc] initWithObjects:@"未成为会员",@"已是会员",@"已是会员",@"已是会员", nil];
+   // _data = [[NSMutableArray alloc] initWithObjects:@"未成为会员",@"已是会员",@"已是会员",@"已是会员", nil];
+    
+    _data = [[NSMutableArray alloc] initWithObjects:
+             @{
+               @"status" : @"未成为会员",
+               @"storeName" : @"辛巴克",
+               },
+             @{
+               @"status" : @"已是会员",
+               @"storeName" : @"吉野家",
+               },
+             @{
+               @"status" : @"已是会员",
+               @"storeName" : @"雀巢",
+               },
+             @{
+               @"status" : @"已是会员",
+               @"storeName" : @"冰雪皇后",
+               },
+             nil ];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
@@ -83,8 +103,8 @@
         cell = [[HotFocusTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
     
-    [cell.memberBtn setTitle:[_data objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-    cell.hotImageView.image = [UIImage imageNamed:@"官方头像"];
+    [cell.memberBtn setTitle:[[_data objectAtIndex:indexPath.row] objectForKey:@"status"] forState:UIControlStateNormal];
+    cell.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[[_data objectAtIndex:indexPath.row] objectForKey:@"storeName"]]];
     
     cell.tag = indexPath.row;
     return cell;
@@ -105,7 +125,8 @@
     }
 
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotDetailView"];
+    HotDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotDetailView"];
+    viewController.storeNum = indexPath.row;
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
     double delayInSeconds = 0.5;
