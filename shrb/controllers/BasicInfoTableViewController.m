@@ -58,6 +58,7 @@
     [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
 }
 
+#pragma mark - 改变状态栏颜色
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }

@@ -93,6 +93,7 @@
     }];
 }
 
+#pragma mark - top插入数据
 - (void)insertRowAtTop {
     __weak CardDetailViewController *weakSelf = self;
     
@@ -116,7 +117,7 @@
     });
 }
 
-
+#pragma mark - bottom插入数据
 - (void)insertRowAtBottom {
     __weak CardDetailViewController *weakSelf = self;
     
