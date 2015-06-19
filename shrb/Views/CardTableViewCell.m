@@ -7,8 +7,26 @@
 //
 
 #import "CardTableViewCell.h"
+#import "CardModel.h"
 
+@interface CardTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIView *backView;
+@property (weak, nonatomic) IBOutlet UIImageView *memberCardImageView;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *integralLabel;
+
+@end
 @implementation CardTableViewCell
+
+- (void)setModel:(CardModel *)model
+{
+    self.memberCardImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.memberCardImage]];
+    self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@元",model.money];
+    self.cardNumberLabel.text = [NSString stringWithFormat:@"卡号：%@",model.cardNumber];
+    self.integralLabel.text =[NSString stringWithFormat:@"积分：%@",model.integral];
+}
 
 - (void)awakeFromNib {
     // Initialization code

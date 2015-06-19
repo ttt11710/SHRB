@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CardModel;
 
 @interface ExpenseTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UITextView *expenseTextView;
+@property (nonatomic,strong) CardModel * model;
 
 @end

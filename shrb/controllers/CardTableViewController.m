@@ -12,9 +12,10 @@
 #import "SVPullToRefresh.h"
 #import "Const.h"
 #import "SVProgressShow.h"
+#import "CardModel.h"
 
 @interface CardTableViewController ()
-@property (nonatomic, strong) NSMutableArray *data;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
@@ -27,7 +28,41 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
  //   self.automaticallyAdjustsScrollViewInsets = false;
     
-    self.data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4",@"5",@"6", nil];
+    //假数据
+    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
+                             @{
+                               @"memberCardImage" : @"雀巢",
+                               @"money" : @"1000",
+                               @"cardNumber":@"455133487465566",
+                               @"integral":@"45",
+                               },
+                             @{
+                               @"memberCardImage" : @"辛巴克",
+                               @"money" : @"200",
+                               @"cardNumber":@"7845123165468",
+                               @"integral":@"55",                               },
+                             @{
+                               @"memberCardImage" : @"吉野家",
+                               @"money" : @"100",
+                               @"cardNumber":@"998562144555456",
+                               @"integral":@"33",
+                               },
+                             @{
+                               @"memberCardImage" : @"冰雪皇后",
+                               @"money" : @"150",
+                               @"cardNumber":@"781123264645465654",
+                               @"integral":@"55",
+                               },
+                             nil];
+    
+    self.dataArray = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary * dict in array) {
+        CardModel * model = [[CardModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [self.dataArray addObject:model];
+    }
+
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
     __weak CardTableViewController *weakSelf = self;
@@ -49,7 +84,15 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [weakSelf.tableView beginUpdates];
-        [weakSelf.data insertObject:[NSString stringWithFormat:@"%d",arc4random()%100] atIndex:0];
+        
+        NSDictionary *dic = @{@"memberCardImage" : @"雀巢",
+                              @"money" : @"1000",
+                              @"cardNumber":@"455133487465566",
+                              @"integral":@"45"};
+        CardModel * model = [[CardModel alloc] init];
+        [model setValuesForKeysWithDictionary:dic];
+        [weakSelf.dataArray insertObject:model atIndex:0];
+        
         [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
         [weakSelf.tableView endUpdates];
         
@@ -67,8 +110,15 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [weakSelf.tableView beginUpdates];
-        [weakSelf.data addObject:[NSString stringWithFormat:@"%d",arc4random()%100]];
-        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.data.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+        NSDictionary *dic = @{@"memberCardImage" : @"雀巢",
+                              @"money" : @"1000",
+                              @"cardNumber":@"455133487465566",
+                              @"integral":@"45"};
+        CardModel * model = [[CardModel alloc] init];
+        [model setValuesForKeysWithDictionary:dic];
+        [weakSelf.dataArray addObject:model];
+        
+        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.dataArray.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
         [weakSelf.tableView endUpdates];
         
         [weakSelf.tableView.infiniteScrollingView stopAnimating];
@@ -85,7 +135,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.data count];
+    return [self.dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,10 +148,7 @@
     //cell 选中方式
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.memberCardImageView.image = [UIImage imageNamed:@"官方头像"];
-    cell.moneyLabel.text = @"金额：1000.00元";
-    cell.cardNumberLabel.text = @"卡号：54542354235321";
-    cell.integralLabel.text =[NSString stringWithFormat:@"积分：%@",[self.data objectAtIndex:indexPath.row]];
+    cell.model = self.dataArray[indexPath.row];
    
     return cell;
 }

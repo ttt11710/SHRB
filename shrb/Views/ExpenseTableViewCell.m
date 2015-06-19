@@ -7,8 +7,20 @@
 //
 
 #import "ExpenseTableViewCell.h"
+#import "CardModel.h"
+
+@interface ExpenseTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UITextView *expenseTextView;
+
+@end
 
 @implementation ExpenseTableViewCell
+
+- (void)setModel:(CardModel *)model
+{
+    self.expenseTextView.text = [NSString stringWithFormat:@"消费记录:%@\n\n订单号：%@\n价格：%@元\n",model.expenseNum,model.orderNum,model.expensePrice];
+}
 
 - (void)awakeFromNib {
     // Initialization code
