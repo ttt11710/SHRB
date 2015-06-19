@@ -89,6 +89,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifp-fP-D5k" customClass="LazyFadeInView">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                     <color key="backgroundColor" red="1" green="0.75845496840000004" blue="0.74243017499999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="42" y="116" width="236" height="353"/>
+                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -1923,8 +1926,8 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="couponsImageView" destination="efa-CF-qGM" id="NGz-ad-Jlg"/>
                                             <outlet property="priceLabel" destination="coO-u0-vLV" id="faG-Wq-4HD"/>
+                                            <outlet property="tradeImageView" destination="efa-CF-qGM" id="4dQ-lD-qzt"/>
                                             <outlet property="tradeNameLabel" destination="Qdp-zK-ye4" id="GrO-q9-vRk"/>
                                         </connections>
                                     </tableViewCell>
@@ -2049,15 +2052,15 @@
                                 <exclude reference="Rsd-p8-PDJ"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="bBW-o5-lMu"/>
-                                <exclude reference="c9A-aJ-lqV"/>
-                                <exclude reference="mXM-8L-TvA"/>
+                                <exclude reference="8uA-Zi-cfl"/>
+                                <exclude reference="qz3-cW-kKM"/>
                                 <exclude reference="A8f-sb-zCX"/>
                                 <exclude reference="305-oQ-LG8"/>
                                 <exclude reference="MDL-jc-9aS"/>
                                 <exclude reference="Zbu-al-Xq1"/>
-                                <exclude reference="8uA-Zi-cfl"/>
-                                <exclude reference="qz3-cW-kKM"/>
+                                <exclude reference="bBW-o5-lMu"/>
+                                <exclude reference="c9A-aJ-lqV"/>
+                                <exclude reference="mXM-8L-TvA"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -2067,15 +2070,15 @@
                                 <include reference="Rsd-p8-PDJ"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="bBW-o5-lMu"/>
-                                <include reference="c9A-aJ-lqV"/>
-                                <include reference="mXM-8L-TvA"/>
+                                <include reference="8uA-Zi-cfl"/>
+                                <include reference="qz3-cW-kKM"/>
                                 <include reference="A8f-sb-zCX"/>
                                 <include reference="305-oQ-LG8"/>
                                 <include reference="MDL-jc-9aS"/>
                                 <include reference="Zbu-al-Xq1"/>
-                                <include reference="8uA-Zi-cfl"/>
-                                <include reference="qz3-cW-kKM"/>
+                                <include reference="bBW-o5-lMu"/>
+                                <include reference="c9A-aJ-lqV"/>
+                                <include reference="mXM-8L-TvA"/>
                             </mask>
                         </variation>
                     </view>

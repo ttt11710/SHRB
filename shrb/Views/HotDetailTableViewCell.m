@@ -7,8 +7,22 @@
 //
 
 #import "HotDetailTableViewCell.h"
+#import "HotFocusModel.h"
+
+@interface HotDetailTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
+@property (weak, nonatomic) IBOutlet LazyFadeInView *detailView;
+
+@end
 
 @implementation HotDetailTableViewCell
+
+- (void)setModel:(HotFocusModel *)model
+{
+    self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.storeName]];
+    self.detailView.text = model.storeDetail;
+}
 
 - (void)awakeFromNib {
     

@@ -8,9 +8,21 @@
 
 #import "HotFocusTableViewCell.h"
 #import "UIColor+BFPaperColors.h"
+#import "HotFocusModel.h"
 
+@interface HotFocusTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
+@property (weak, nonatomic) IBOutlet UIButton *memberBtn;
+
+@end
 @implementation HotFocusTableViewCell
 
+- (void)setModel:(HotFocusModel *)model
+{
+    [self.memberBtn setTitle:model.status forState:UIControlStateNormal];
+    self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.storeName]];
+}
 
 - (void)awakeFromNib
 {

@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "LazyFadeInView.h"
+@class HotFocusModel;
 
 @interface HotDetailTableViewCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
-@property (weak, nonatomic) IBOutlet LazyFadeInView *detailView;
+@property (nonatomic,strong) HotFocusModel * model;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "HotFocusViewController.h"
 #import "HotFocusTableViewCell.h"
+#import "HotFocusModel.h"
 #import "HotDetailViewController.h"
 #import "UITableView+Wave.h"
 #import "Const.h"
@@ -16,10 +17,9 @@
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @interface HotFocusViewController ()
-{
-    NSMutableArray *_data;
-}
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic,strong) NSMutableArray * dataArray;
 
 @end
 
@@ -44,27 +44,36 @@
     [splashView startAnimation];
     
     self.tableView.tableFooterView =[[UIView alloc]init];
+
     
-   // _data = [[NSMutableArray alloc] initWithObjects:@"未成为会员",@"已是会员",@"已是会员",@"已是会员", nil];
+    //假数据
+    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
+                            @{
+                              @"status" : @"未成为会员",
+                              @"storeName" : @"辛巴克",
+                              },
+                            @{
+                              @"status" : @"已是会员",
+                              @"storeName" : @"吉野家",
+                              },
+                            @{
+                              @"status" : @"已是会员",
+                              @"storeName" : @"雀巢",
+                              },
+                            @{
+                              @"status" : @"已是会员",
+                              @"storeName" : @"冰雪皇后",
+                              },
+                            nil ];
     
-    _data = [[NSMutableArray alloc] initWithObjects:
-             @{
-               @"status" : @"未成为会员",
-               @"storeName" : @"辛巴克",
-               },
-             @{
-               @"status" : @"已是会员",
-               @"storeName" : @"吉野家",
-               },
-             @{
-               @"status" : @"已是会员",
-               @"storeName" : @"雀巢",
-               },
-             @{
-               @"status" : @"已是会员",
-               @"storeName" : @"冰雪皇后",
-               },
-             nil ];
+    self.dataArray = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary * dict in array) {
+        HotFocusModel * model = [[HotFocusModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [self.dataArray addObject:model];
+    }
+
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
@@ -91,7 +100,7 @@
 #pragma mark - tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_data count];
+    return [self.dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,8 +112,7 @@
         cell = [[HotFocusTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
     
-    [cell.memberBtn setTitle:[[_data objectAtIndex:indexPath.row] objectForKey:@"status"] forState:UIControlStateNormal];
-    cell.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[[_data objectAtIndex:indexPath.row] objectForKey:@"storeName"]]];
+    cell.model = self.dataArray[indexPath.row];
     
     cell.tag = indexPath.row;
     return cell;

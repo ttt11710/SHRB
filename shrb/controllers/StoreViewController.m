@@ -8,6 +8,7 @@
 
 #import "StoreViewController.h"
 #import "StoreTableViewCell.h"
+#import "TradeModel.h"
 #import "ButtonTableViewCell.h"
 #import "OrdersViewController.h"
 #import "ProductDescriptionView.h"
@@ -21,7 +22,6 @@
 static StoreViewController *g_StoreViewController = nil;
 @interface StoreViewController ()
 {
-    NSMutableArray *_data;
     NSMutableDictionary *_currentNumDic;
     CGRect _rect;
     CGFloat lastContentOffset;
@@ -32,6 +32,7 @@ static StoreViewController *g_StoreViewController = nil;
 @property (weak, nonatomic) IBOutlet UIButton *gotopayViewBtn;
 @property (nonatomic,strong) UIBezierPath *path;
 @property (weak, nonatomic) IBOutlet UIButton *topBtn;
+@property (nonatomic,strong) NSMutableArray * dataArray;
 
 @end
 
@@ -50,7 +51,103 @@ static StoreViewController *g_StoreViewController = nil;
     g_StoreViewController = self;
     
      [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    _data = [[NSMutableArray alloc] initWithObjects:@"提拉米苏",@"蜂蜜提子可颂",@"芝士可颂",@"牛奶",@"抹茶拿铁",@"英式红茶",@"冰拿铁",@"卡布奇诺",@"焦糖玛奇朵",@"美式咖啡",@"拿铁",@"浓缩咖啡",@"摩卡",@"香草拿铁", nil];
+    
+
+    //假数据
+    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
+                             @{
+                               @"tradeImage" : @"提拉米苏",
+                               @"tradeName" : @"提拉米苏",
+                               @"memberPrice":@"34",
+                               @"originalPrice":@"45",
+                               },
+                             @{
+                               @"tradeImage" : @"蜂蜜提子可颂",
+                               @"tradeName" : @"蜂蜜提子可颂",
+                               @"memberPrice":@"45",
+                               @"originalPrice":@"55",                               },
+                             @{
+                               @"tradeImage" : @"芝士可颂",
+                               @"tradeName" : @"芝士可颂",
+                               @"memberPrice":@"22",
+                               @"originalPrice":@"33",
+                               },
+                             @{
+                               @"tradeImage" : @"牛奶",
+                               @"tradeName" : @"牛奶",
+                               @"memberPrice":@"44",
+                               @"originalPrice":@"55",
+                               },
+                             @{
+                               @"tradeImage" : @"抹茶拿铁",
+                               @"tradeName" : @"抹茶拿铁",
+                               @"memberPrice":@"25",
+                               @"originalPrice":@"34",
+                               },
+                             @{
+                               @"tradeImage" : @"英式红茶",
+                               @"tradeName" : @"英式红茶",
+                               @"memberPrice":@"11",
+                               @"originalPrice":@"45",
+                               },
+                             @{
+                               @"tradeImage" : @"冰拿铁",
+                               @"tradeName" : @"冰拿铁",
+                               @"memberPrice":@"23",
+                               @"originalPrice":@"55",
+                               },
+                             @{
+                               @"tradeImage" : @"卡布奇诺",
+                               @"tradeName" : @"卡布奇诺",
+                               @"memberPrice":@"23",
+                               @"originalPrice":@"56",
+                               },
+                             @{
+                               @"tradeImage" : @"焦糖玛奇朵",
+                               @"tradeName" : @"焦糖玛奇朵",
+                               @"memberPrice":@"12",
+                               @"originalPrice":@"67",
+                               },
+                             @{
+                               @"tradeImage" : @"美式咖啡",
+                               @"tradeName" : @"美式咖啡",
+                               @"memberPrice":@"12",
+                               @"originalPrice":@"67",
+                               },
+                             @{
+                               @"tradeImage" : @"拿铁",
+                               @"tradeName" : @"拿铁",
+                               @"memberPrice":@"23",
+                               @"originalPrice":@"56",
+                               },
+                             @{
+                               @"tradeImage" : @"浓缩咖啡",
+                               @"tradeName" : @"浓缩咖啡",
+                               @"memberPrice":@"23",
+                               @"originalPrice":@"67",
+                               },
+                             @{
+                               @"tradeImage" : @"摩卡",
+                               @"tradeName" : @"摩卡",
+                               @"memberPrice":@"56",
+                               @"originalPrice":@"77",
+                               },
+                             @{
+                               @"tradeImage" : @"香草拿铁",
+                               @"tradeName" : @"香草拿铁",
+                               @"memberPrice":@"34",
+                               @"originalPrice":@"67",
+                               },
+                             nil ];
+    
+    self.dataArray = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary * dict in array) {
+        TradeModel * model = [[TradeModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [self.dataArray addObject:model];
+    }
+
     _currentNumDic = [[NSMutableDictionary alloc]init];
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
@@ -58,7 +155,12 @@ static StoreViewController *g_StoreViewController = nil;
 #pragma mark - 更新tableView
 - (void)UpdateTableView
 {
-    [_data addObject:@"冰拿铁"];
+    [self.dataArray addObject:@{
+                                @"tradeImage" : @"冰拿铁",
+                                @"tradeName" : @"冰拿铁",
+                                @"memberPrice":@"23",
+                                @"originalPrice":@"55",
+                                }];
     [SVProgressShow showWithStatus:@"更新订单中..."];
     double delayInSeconds = 1.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -72,27 +174,26 @@ static StoreViewController *g_StoreViewController = nil;
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.row < [_data count]?80:46;
+    return indexPath.row < [self.dataArray count]?80:46;
 }
 
 #pragma mark - tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_data count]+1;
+    return [self.dataArray count]+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < [_data count]) {
+    if (indexPath.row < [self.dataArray count]) {
         static NSString *SimpleTableIdentifier = @"CouponsTableViewCellIdentifier";
         StoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         if (cell == nil) {
             cell = [[StoreTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
-        cell.tradeNameLabel.text = [_data objectAtIndex:indexPath.row];
-        cell.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
         
+        cell.model = self.dataArray[indexPath.row];
         
         HJCAjustNumButton *numbutton = [[HJCAjustNumButton alloc] init];
         numbutton.frame = CGRectMake(screenWidth-90, 30, 80, 25);
@@ -111,7 +212,7 @@ static StoreViewController *g_StoreViewController = nil;
                 //商品最终位置和其中一个路径位置
                 [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
                 _path = path;
-                [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
+                [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row]]];
             }
             else {
                 //没有插入数据
@@ -123,7 +224,7 @@ static StoreViewController *g_StoreViewController = nil;
                     //商品最终位置和其中一个路径位置
                     [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth/2, screenHeight * 0.6)];
                     _path = path;
-                    [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
+                    [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row]]];
                 }
                 else {
                     //减少
@@ -139,7 +240,7 @@ static StoreViewController *g_StoreViewController = nil;
                         //商品最终位置和其中一个路径位置
                         [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
                         _path = path;
-                        [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
+                        [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row]]];
                     }
                 }
             }

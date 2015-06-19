@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AsyncDisplayKit/AsyncDisplayKit.h>
+
+@class TradeModel;
 
 @interface StoreTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet ASImageNode *couponsImageView;
-@property (weak, nonatomic) IBOutlet UILabel *tradeNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-
+@property (nonatomic,strong) TradeModel * model;
 
 @end
