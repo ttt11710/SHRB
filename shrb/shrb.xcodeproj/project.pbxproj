@@ -50,6 +50,7 @@
 		DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F5D1B33B13F005B2155 /* HotFocusModel.m */; };
 		DF958F611B33B83C005B2155 /* TradeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F601B33B83C005B2155 /* TradeModel.m */; };
 		DF958F641B33C11B005B2155 /* CardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F631B33C11B005B2155 /* CardModel.m */; };
+		DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F661B33DA67005B2155 /* CouponsModel.m */; };
 		DFAD61F81B26DF9E002437BD /* HJCAdjustNumButton.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DFAD61F51B26DF9E002437BD /* HJCAdjustNumButton.bundle */; };
 		DFAD61F91B26DF9E002437BD /* HJCAjustNumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAD61F71B26DF9E002437BD /* HJCAjustNumButton.m */; };
 		DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE52A91B32743500B03B2F /* QRItem.m */; };
@@ -163,6 +164,8 @@
 		DF958F601B33B83C005B2155 /* TradeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeModel.m; sourceTree = "<group>"; };
 		DF958F621B33C11B005B2155 /* CardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardModel.h; sourceTree = "<group>"; };
 		DF958F631B33C11B005B2155 /* CardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardModel.m; sourceTree = "<group>"; };
+		DF958F651B33DA67005B2155 /* CouponsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsModel.h; sourceTree = "<group>"; };
+		DF958F661B33DA67005B2155 /* CouponsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsModel.m; sourceTree = "<group>"; };
 		DFAD61F51B26DF9E002437BD /* HJCAdjustNumButton.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HJCAdjustNumButton.bundle; sourceTree = "<group>"; };
 		DFAD61F61B26DF9E002437BD /* HJCAjustNumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCAjustNumButton.h; sourceTree = "<group>"; };
 		DFAD61F71B26DF9E002437BD /* HJCAjustNumButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCAjustNumButton.m; sourceTree = "<group>"; };
@@ -454,6 +457,8 @@
 			children = (
 				DF958F621B33C11B005B2155 /* CardModel.h */,
 				DF958F631B33C11B005B2155 /* CardModel.m */,
+				DF958F651B33DA67005B2155 /* CouponsModel.h */,
+				DF958F661B33DA67005B2155 /* CouponsModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -724,6 +729,7 @@
 				DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */,
 				DF72C0E21B0B403600CE6DC6 /* HotDetailViewController.m in Sources */,
 				DFAE52AF1B32743500B03B2F /* QRMenu.m in Sources */,
+				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,

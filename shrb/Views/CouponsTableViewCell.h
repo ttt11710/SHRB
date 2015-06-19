@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CouponsModel;
 
 @interface CouponsTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *couponsImageView;
-@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+@property (nonatomic,strong) CouponsModel * model;
+
+
 
 @end

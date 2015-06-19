@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -844,7 +845,7 @@
         <!--电子券-->
         <scene sceneID="WCx-V1-gyR">
             <objects>
-                <tableViewController storyboardIdentifier="couponsTableViewId" id="ZIa-3Q-RgP" customClass="CouponsTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="couponsTableViewId" hidesBottomBarWhenPushed="YES" id="ZIa-3Q-RgP" customClass="CouponsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="22" sectionFooterHeight="22" id="kUb-PT-20A">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -928,6 +929,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="couponsImageView" destination="Mys-NJ-XCE" id="JhX-QP-DcA"/>
+                                    <outlet property="moneyLabel" destination="3Qw-M4-NsP" id="ofw-lL-mDa"/>
+                                    <outlet property="numberLabel" destination="rsc-nQ-TbT" id="QWX-OY-YcI"/>
                                     <segue destination="v8f-wU-HvC" kind="push" id="sfT-E7-2Fh"/>
                                 </connections>
                             </tableViewCell>
@@ -937,6 +940,7 @@
                             <outlet property="delegate" destination="ZIa-3Q-RgP" id="nZ5-1M-QfM"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="电子券" id="XPd-A5-g8e"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pU3-uU-hvW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1067,9 +1071,9 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="couponsImageView" destination="Z1T-0Z-8ka" id="PWV-rc-HHf"/>
                                     <outlet property="expirationDateLabel" destination="eAG-ob-Ax8" id="5nc-iB-7jd"/>
                                     <outlet property="moneyLabel" destination="Iz5-pA-oYU" id="EJR-Hn-Au7"/>
-                                    <outlet property="tradeImageView" destination="Z1T-0Z-8ka" id="wlt-tQ-dnq"/>
                                     <outlet property="userCouponsBtn" destination="Lra-jH-yS8" id="nrs-lg-5KQ"/>
                                 </connections>
                             </tableViewCell>

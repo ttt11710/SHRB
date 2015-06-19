@@ -7,8 +7,23 @@
 //
 
 #import "CouponsTableViewCell.h"
+#import "CouponsModel.h"
 
+@interface CouponsTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *couponsImageView;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+
+@end
 @implementation CouponsTableViewCell
+
+- (void)setModel:(CouponsModel *)model
+{
+    self.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.couponsImage]];
+    self.moneyLabel.text = [NSString stringWithFormat:@"总金额：%@元",model.money];
+    self.numberLabel.text = [NSString stringWithFormat:@"%@张",model.count];
+}
 
 - (void)awakeFromNib {
     // Initialization code

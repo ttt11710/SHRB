@@ -7,8 +7,24 @@
 //
 
 #import "CouponsDetailTableViewCell.h"
+#import "CouponsModel.h"
 
+@interface CouponsDetailTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *couponsImageView;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *expirationDateLabel;
+
+
+@end
 @implementation CouponsDetailTableViewCell
+
+- (void)setModel:(CouponsModel *)model
+{
+    self.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.couponsImage]];
+    self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@RMB",model.money];
+    self.expirationDateLabel.text = [NSString stringWithFormat:@"截止日期：%@",model.expirationDate];
+}
 
 - (void)awakeFromNib {
     // Initialization code

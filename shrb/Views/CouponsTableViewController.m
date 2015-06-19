@@ -8,13 +8,14 @@
 
 #import "CouponsTableViewController.h"
 #import "CouponsTableViewCell.h"
+#import "CouponsModel.h"
 #import "UITableView+Wave.h"
 #import "Const.h"
 
 @interface CouponsTableViewController ()
-{
-    NSMutableArray *_data;
-}
+
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
 @end
 
 @implementation CouponsTableViewController
@@ -25,7 +26,31 @@
     self.tableView.tableFooterView =[[UIView alloc]init];
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
     
-    _data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
+    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
+                             @{
+                               @"couponsImage" : @"雀巢",
+                               @"money" : @"1000",
+                               @"count":@"4",
+                               },
+                             @{
+                               @"couponsImage" : @"官方头像",
+                               @"money" : @"2000",
+                               @"count":@"1",
+                               },
+                             @{
+                               @"couponsImage" : @"辛巴克",
+                               @"money" : @"3000",
+                               @"count":@"2",
+                               },
+                             nil];
+    
+    self.dataArray = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary * dict in array) {
+        CouponsModel * model = [[CouponsModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [self.dataArray addObject:model];
+    }
     
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
@@ -40,7 +65,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [_data count];
+    return [self.dataArray count];
     
 }
 
@@ -54,9 +79,8 @@
         cell = [[CouponsTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:SimpleTableIdentifier];
     }
     
-    cell.couponsImageView.image = [UIImage imageNamed:@"官方头像"];
-    cell.moneyLabel.text = @"总金额：100RMB";
-    cell.numberLabel.text = [NSString stringWithFormat:@"%@张",[_data objectAtIndex:indexPath.row]];
+    cell.model = self.dataArray[indexPath.row];
+    
     return cell;
 }
 

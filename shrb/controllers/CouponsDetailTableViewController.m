@@ -8,14 +8,15 @@
 
 #import "CouponsDetailTableViewController.h"
 #import "CouponsDetailTableViewCell.h"
+#import "CouponsModel.h"
 #import "StoreViewController.h"
 #import "UITableView+Wave.h"
 #import "Const.h"
 
 @interface CouponsDetailTableViewController ()
-{
-    NSMutableArray *_data;
-}
+
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
 @end
 
 @implementation CouponsDetailTableViewController
@@ -26,7 +27,53 @@
     self.tableView.tableFooterView =[[UIView alloc]init];
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
     
-    _data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
+    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
+                             @{
+                               @"couponsImage" : @"辛巴克",
+                               @"money" : @"1000",
+                               @"count":@"4",
+                               @"expirationDate":@"2016.3.2"
+                               },
+                             @{
+                               @"couponsImage" : @"官方头像",
+                               @"money" : @"2000",
+                               @"count":@"1",
+                               @"expirationDate":@"2016.4.2"
+                               },
+                             @{
+                               @"couponsImage" : @"吉野家",
+                               @"money" : @"3000",
+                               @"count":@"3",
+                               @"expirationDate":@"2016.2.2"
+                               },
+                             @{
+                               @"couponsImage" : @"冰雪皇后",
+                               @"money" : @"4000",
+                               @"count":@"10",
+                               @"expirationDate":@"2016.1.2"
+                               },
+                             @{
+                               @"couponsImage" : @"雀巢",
+                               @"money" : @"200",
+                               @"count":@"2",
+                               @"expirationDate":@"2015.12.2"
+                               },
+                             @{
+                               @"couponsImage" : @"官方头像",
+                               @"money" : @"2000",
+                               @"count":@"1",
+                               @"expirationDate":@"2016.4.2"
+                               },
+                             nil];
+    
+    self.dataArray = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary * dict in array) {
+        CouponsModel * model = [[CouponsModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [self.dataArray addObject:model];
+    }
+
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
@@ -34,7 +81,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [_data count];
+    return [self.dataArray count];
     
 }
 
@@ -47,13 +94,12 @@
     if (cell == nil) {
         cell = [[CouponsDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:SimpleTableIdentifier];
     }
-    
-    cell.couponsImageView.image = [UIImage imageNamed:@"官方头像"];
-    cell.moneyLabel.text = @"金额：30RMB";
-    cell.expirationDateLabel.text = @"截止日期：2016.1.1";
+   
+    cell.model = self.dataArray[indexPath.row];
     cell.userCouponsBtn.tag = indexPath.row;
     return cell;
 }
+
 
 #pragma  mark - 使用电子券
 - (IBAction)userCouponsBtnPressed:(UIButton *)sender {
