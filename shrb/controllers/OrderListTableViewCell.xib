@@ -22,15 +22,16 @@
                             <constraint firstAttribute="height" constant="80" id="v9B-lm-u0l"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10000" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhC-Wm-fHA">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="10000" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhC-Wm-fHA">
                         <rect key="frame" x="108" y="20" width="198" height="80"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="UsG-Bg-QDR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="0wj-2u-4hs"/>
+                    <constraint firstItem="UsG-Bg-QDR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="Qjm-1I-UrW"/>
                     <constraint firstAttribute="bottomMargin" secondItem="WhC-Wm-fHA" secondAttribute="bottom" constant="3" id="XDZ-UP-Kxu"/>
                     <constraint firstAttribute="centerY" secondItem="UsG-Bg-QDR" secondAttribute="centerY" constant="-4.5" id="cJl-NS-bMP"/>
                     <constraint firstAttribute="trailingMargin" secondItem="WhC-Wm-fHA" secondAttribute="trailing" constant="6" id="eb7-d3-E9z"/>
@@ -40,6 +41,7 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="cJl-NS-bMP"/>
                         <exclude reference="zMP-cm-iME"/>
                     </mask>
                 </variation>
