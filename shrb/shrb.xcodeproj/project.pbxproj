@@ -47,6 +47,14 @@
 		DF7D1E601B0DC08700CD05B3 /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E5F1B0DC08700CD05B3 /* CardDetailViewController.m */; };
 		DF7D1E631B0DC9C600CD05B3 /* ExpenseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E621B0DC9C600CD05B3 /* ExpenseTableViewCell.m */; };
 		DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */; };
+		DF9119A41B392BA100833AAB /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119A31B392BA100833AAB /* OrderListViewController.swift */; };
+		DF9119A71B392BC500833AAB /* OrderListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */; };
+		DF9119A81B392BC500833AAB /* OrderListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF9119A61B392BC500833AAB /* OrderListTableViewCell.xib */; };
+		DF9119AD1B39486D00833AAB /* BasicInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119AC1B39486D00833AAB /* BasicInfoTableViewController.swift */; };
+		DF9119B01B394A3B00833AAB /* MeImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119AE1B394A3B00833AAB /* MeImageTableViewCell.swift */; };
+		DF9119B11B394A3B00833AAB /* MeImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF9119AF1B394A3B00833AAB /* MeImageTableViewCell.xib */; };
+		DF9119B41B394E2000833AAB /* RightDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119B21B394E2000833AAB /* RightDetailTableViewCell.swift */; };
+		DF9119B51B394E2000833AAB /* RightDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF9119B31B394E2000833AAB /* RightDetailTableViewCell.xib */; };
 		DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F5D1B33B13F005B2155 /* HotFocusModel.m */; };
 		DF958F611B33B83C005B2155 /* TradeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F601B33B83C005B2155 /* TradeModel.m */; };
 		DF958F641B33C11B005B2155 /* CardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F631B33C11B005B2155 /* CardModel.m */; };
@@ -158,6 +166,15 @@
 		DF7D1E621B0DC9C600CD05B3 /* ExpenseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpenseTableViewCell.m; path = ../Views/ExpenseTableViewCell.m; sourceTree = "<group>"; };
 		DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteVoucherViewController.h; sourceTree = "<group>"; };
 		DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteVoucherViewController.m; sourceTree = "<group>"; };
+		DF9119A31B392BA100833AAB /* OrderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
+		DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListTableViewCell.swift; sourceTree = "<group>"; };
+		DF9119A61B392BC500833AAB /* OrderListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListTableViewCell.xib; sourceTree = "<group>"; };
+		DF9119AA1B3935D400833AAB /* shrb-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "shrb-Bridging-Header.h"; sourceTree = "<group>"; };
+		DF9119AC1B39486D00833AAB /* BasicInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInfoTableViewController.swift; sourceTree = "<group>"; };
+		DF9119AE1B394A3B00833AAB /* MeImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeImageTableViewCell.swift; sourceTree = "<group>"; };
+		DF9119AF1B394A3B00833AAB /* MeImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeImageTableViewCell.xib; sourceTree = "<group>"; };
+		DF9119B21B394E2000833AAB /* RightDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailTableViewCell.swift; sourceTree = "<group>"; };
+		DF9119B31B394E2000833AAB /* RightDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightDetailTableViewCell.xib; sourceTree = "<group>"; };
 		DF958F5C1B33B13F005B2155 /* HotFocusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotFocusModel.h; sourceTree = "<group>"; };
 		DF958F5D1B33B13F005B2155 /* HotFocusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotFocusModel.m; sourceTree = "<group>"; };
 		DF958F5F1B33B83C005B2155 /* TradeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeModel.h; sourceTree = "<group>"; };
@@ -337,6 +354,7 @@
 		DF72C0B91B0B339800CE6DC6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DF9119AA1B3935D400833AAB /* shrb-Bridging-Header.h */,
 				DF72C0BA1B0B339800CE6DC6 /* Info.plist */,
 				DF72C0BB1B0B339800CE6DC6 /* main.m */,
 				DF7D1E5A1B0D7AFE00CD05B3 /* Const.h */,
@@ -372,6 +390,54 @@
 			);
 			name = controllers;
 			path = ../controllers;
+			sourceTree = "<group>";
+		};
+		DF9119AB1B3947FA00833AAB /* objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				DFAE95631B254FB7006A495B /* UserCenterTableViewController.h */,
+				DFAE95641B254FB7006A495B /* UserCenterTableViewController.m */,
+				DF7176FD1B2FFF9300D3C3B9 /* BasicInfoTableViewController.h */,
+				DF7176FE1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m */,
+				DF7177321B300F2A00D3C3B9 /* OrderListTableViewController.h */,
+				DF7177331B300F2A00D3C3B9 /* OrderListTableViewController.m */,
+				DF71773A1B30167900D3C3B9 /* SettingTableViewController.h */,
+				DF71773B1B30167900D3C3B9 /* SettingTableViewController.m */,
+				DF71773D1B30180700D3C3B9 /* HelpCenterTableViewController.h */,
+				DF71773E1B30180700D3C3B9 /* HelpCenterTableViewController.m */,
+			);
+			name = "objective-C";
+			sourceTree = "<group>";
+		};
+		DF9119B61B3955BC00833AAB /* swift */ = {
+			isa = PBXGroup;
+			children = (
+				DF9119AC1B39486D00833AAB /* BasicInfoTableViewController.swift */,
+				DF9119A31B392BA100833AAB /* OrderListViewController.swift */,
+			);
+			name = swift;
+			sourceTree = "<group>";
+		};
+		DF9119B71B3955D400833AAB /* objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				DF7177371B30109500D3C3B9 /* OrderListTableViewCell.h */,
+				DF7177381B30109500D3C3B9 /* OrderListTableViewCell.m */,
+			);
+			name = "objective-C";
+			sourceTree = "<group>";
+		};
+		DF9119B81B3955E300833AAB /* swift */ = {
+			isa = PBXGroup;
+			children = (
+				DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */,
+				DF9119A61B392BC500833AAB /* OrderListTableViewCell.xib */,
+				DF9119AE1B394A3B00833AAB /* MeImageTableViewCell.swift */,
+				DF9119AF1B394A3B00833AAB /* MeImageTableViewCell.xib */,
+				DF9119B21B394E2000833AAB /* RightDetailTableViewCell.swift */,
+				DF9119B31B394E2000833AAB /* RightDetailTableViewCell.xib */,
+			);
+			name = swift;
 			sourceTree = "<group>";
 		};
 		DF958F521B33AC85005B2155 /* control */ = {
@@ -481,16 +547,8 @@
 		DF958F581B33ACC8005B2155 /* control */ = {
 			isa = PBXGroup;
 			children = (
-				DFAE95631B254FB7006A495B /* UserCenterTableViewController.h */,
-				DFAE95641B254FB7006A495B /* UserCenterTableViewController.m */,
-				DF7176FD1B2FFF9300D3C3B9 /* BasicInfoTableViewController.h */,
-				DF7176FE1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m */,
-				DF7177321B300F2A00D3C3B9 /* OrderListTableViewController.h */,
-				DF7177331B300F2A00D3C3B9 /* OrderListTableViewController.m */,
-				DF71773A1B30167900D3C3B9 /* SettingTableViewController.h */,
-				DF71773B1B30167900D3C3B9 /* SettingTableViewController.m */,
-				DF71773D1B30180700D3C3B9 /* HelpCenterTableViewController.h */,
-				DF71773E1B30180700D3C3B9 /* HelpCenterTableViewController.m */,
+				DF9119AB1B3947FA00833AAB /* objective-C */,
+				DF9119B61B3955BC00833AAB /* swift */,
 			);
 			name = control;
 			sourceTree = "<group>";
@@ -505,8 +563,8 @@
 		DF958F5A1B33ACD2005B2155 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				DF7177371B30109500D3C3B9 /* OrderListTableViewCell.h */,
-				DF7177381B30109500D3C3B9 /* OrderListTableViewCell.m */,
+				DF9119B71B3955D400833AAB /* objective-C */,
+				DF9119B81B3955E300833AAB /* swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -648,10 +706,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF0D9C781B0C291500C0AB3F /* Card.storyboard in Resources */,
+				DF9119B11B394A3B00833AAB /* MeImageTableViewCell.xib in Resources */,
 				DFAD61F81B26DF9E002437BD /* HJCAdjustNumButton.bundle in Resources */,
 				DF72C0C51B0B339800CE6DC6 /* Main.storyboard in Resources */,
 				DF4E4C6F1B0C8D6400FE499E /* Me.storyboard in Resources */,
+				DF9119B51B394E2000833AAB /* RightDetailTableViewCell.xib in Resources */,
 				DF72C0CA1B0B339800CE6DC6 /* LaunchScreen.xib in Resources */,
+				DF9119A81B392BC500833AAB /* OrderListTableViewCell.xib in Resources */,
 				DF72C0C71B0B339800CE6DC6 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,6 +765,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */,
+				DF9119A41B392BA100833AAB /* OrderListViewController.swift in Sources */,
 				DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */,
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
 				DFAE95651B254FB7006A495B /* UserCenterTableViewController.m in Sources */,
@@ -714,6 +776,7 @@
 				DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */,
 				DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */,
 				DF958F611B33B83C005B2155 /* TradeModel.m in Sources */,
+				DF9119AD1B39486D00833AAB /* BasicInfoTableViewController.swift in Sources */,
 				DF7176FF1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m in Sources */,
 				DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */,
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,
@@ -729,11 +792,13 @@
 				DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */,
 				DF72C0E21B0B403600CE6DC6 /* HotDetailViewController.m in Sources */,
 				DFAE52AF1B32743500B03B2F /* QRMenu.m in Sources */,
+				DF9119B01B394A3B00833AAB /* MeImageTableViewCell.swift in Sources */,
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
 				DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */,
+				DF9119A71B392BC500833AAB /* OrderListTableViewCell.swift in Sources */,
 				DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */,
 				DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */,
 				DFAE52B01B32743500B03B2F /* QRView.m in Sources */,
@@ -752,6 +817,7 @@
 				DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */,
 				DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */,
 				DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */,
+				DF9119B41B394E2000833AAB /* RightDetailTableViewCell.swift in Sources */,
 				DFAE52B31B32751900B03B2F /* QRViewController.m in Sources */,
 				DFAD61F91B26DF9E002437BD /* HJCAjustNumButton.m in Sources */,
 			);
@@ -886,7 +952,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "controllers/shrb-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/PayBay/Desktop/paybay/shrb/shrb/shrb/shrb-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -905,7 +971,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "controllers/shrb-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/PayBay/Desktop/paybay/shrb/shrb/shrb/shrb-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UserCenterTableViewController.h"
+#import "shrb-swift.h"
 #import "Const.h"
 
 @interface UserCenterTableViewController ()
@@ -80,19 +81,26 @@
     //基本信息
     if (indexPath.section == 0)
     {
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
-        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"infoView"];
-        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        [self.navigationController pushViewController:viewController animated:YES];
+//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+//        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"infoView"];
+//        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//        [self.navigationController pushViewController:viewController animated:YES];
+        
+        BasicInfoTableViewController *basicInfoTableViewController = [[BasicInfoTableViewController alloc] init];
+        [self.navigationController pushViewController:basicInfoTableViewController animated:YES];
+        
     }
     else if (indexPath.section == 1)
     {
         //我的订单
         if (indexPath.row == 0) {
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
-            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"orderlistView"];
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            [self.navigationController pushViewController:viewController animated:YES];
+//            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+//            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"orderlistView"];
+//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//            [self.navigationController pushViewController:viewController animated:YES];
+            
+            OrderListViewController *orderListViewController = [[OrderListViewController alloc] init];
+            [self.navigationController pushViewController:orderListViewController animated:YES];
         }
         //设置
         else if (indexPath.row == 1) {
