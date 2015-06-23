@@ -28,55 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //导航颜色
-    self.navigationController.navigationBar.barTintColor = shrbPink;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
-    self.tabBarController.tabBar.selectedItem.selectedImage = [UIImage imageNamed:@"恋人_highlight"];
-    
-    self.tabBarController.tabBar.tintColor = shrbPink;
-    
-    UIImage *icon = [UIImage imageNamed:@"官方头像"];
-    UIColor *color = shrbPink;
-    CBZSplashView *splashView = [CBZSplashView splashViewWithIcon:icon backgroundColor:color];
-    [self.view addSubview:splashView];
-    [splashView startAnimation];
-    
-    self.tableView.tableFooterView =[[UIView alloc]init];
-
-    
-    //假数据
-    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
-                            @{
-                              @"status" : @"未成为会员",
-                              @"storeName" : @"辛巴克",
-                              },
-                            @{
-                              @"status" : @"已是会员",
-                              @"storeName" : @"吉野家",
-                              },
-                            @{
-                              @"status" : @"已是会员",
-                              @"storeName" : @"雀巢",
-                              },
-                            @{
-                              @"status" : @"已是会员",
-                              @"storeName" : @"冰雪皇后",
-                              },
-                            nil ];
-    
-    self.dataArray = [[NSMutableArray alloc] init];
-    
-    for (NSDictionary * dict in array) {
-        HotFocusModel * model = [[HotFocusModel alloc] init];
-        [model setValuesForKeysWithDictionary:dict];
-        [self.dataArray addObject:model];
-    }
-
-    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
-    
-    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    [self initController];
+    [self initData];
+    [self initTableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -89,6 +43,67 @@
 {
     [super viewDidDisappear:animated];
     self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)initController
+{
+    //导航颜色
+    self.navigationController.navigationBar.barTintColor = shrbPink;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    //工具栏图片 选中颜色
+    self.tabBarController.tabBar.selectedItem.selectedImage = [UIImage imageNamed:@"恋人_highlight"];
+    self.tabBarController.tabBar.tintColor = shrbPink;
+    
+    //动画 全屏
+    UIImage *icon = [UIImage imageNamed:@"官方头像"];
+    UIColor *color = shrbPink;
+    CBZSplashView *splashView = [CBZSplashView splashViewWithIcon:icon backgroundColor:color];
+    [self.view addSubview:splashView];
+    [splashView startAnimation];
+
+}
+
+- (void)initData
+{
+    //假数据
+    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
+                             @{
+                               @"status" : @"未成为会员",
+                               @"storeName" : @"辛巴克",
+                               },
+                             @{
+                               @"status" : @"已是会员",
+                               @"storeName" : @"吉野家",
+                               },
+                             @{
+                               @"status" : @"已是会员",
+                               @"storeName" : @"雀巢",
+                               },
+                             @{
+                               @"status" : @"已是会员",
+                               @"storeName" : @"冰雪皇后",
+                               },
+                             nil ];
+    
+    self.dataArray = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary * dict in array) {
+        HotFocusModel * model = [[HotFocusModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [self.dataArray addObject:model];
+    }
+}
+
+- (void)initTableView
+{
+    //删除底部多余横线
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    //动画
+    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+    
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
 }
 
 #pragma mark - tableView dataSource

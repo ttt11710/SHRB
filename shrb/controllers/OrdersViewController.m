@@ -28,13 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _data = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺", nil];
     
-    //删除多余线
-    self.tableView.tableFooterView =[[UIView alloc]init];
-    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
-    
-    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+    [self initData];
+    [self initTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -42,6 +38,21 @@
     isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
     [self.tableView reloadData];
 }
+
+- (void)initData
+{
+    _data = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺", nil];
+}
+
+- (void)initTableView
+{
+    //删除多余线
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    
+    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+}
+
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

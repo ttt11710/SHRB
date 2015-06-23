@@ -24,9 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.tableFooterView =[[UIView alloc]init];
-    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    [self initData];
+    [self initTableView];
     
+}
+
+- (void)initData
+{
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
                                @"couponsImage" : @"辛巴克",
@@ -73,7 +77,13 @@
         [model setValuesForKeysWithDictionary:dict];
         [self.dataArray addObject:model];
     }
+}
 
+- (void)initTableView
+{
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 

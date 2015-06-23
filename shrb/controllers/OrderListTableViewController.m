@@ -22,10 +22,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    self.data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
+    [self initData];
+    [self initTableView];
     
+}
+
+- (void)initData
+{
+    self.data = [[NSMutableArray alloc] initWithObjects:@"1",@"2",@"3",@"4", nil];
+}
+
+- (void)initTableView
+{
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+
 }
 
 #pragma mark - tableView dataSource

@@ -49,10 +49,16 @@ static StoreViewController *g_StoreViewController = nil;
     [super viewDidLoad];
     
     g_StoreViewController = self;
-    
-     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    
 
+    [self initData];
+    [self initTableView];
+}
+
+- (void)initData
+{
+    
+    _currentNumDic = [[NSMutableDictionary alloc]init];
+    
     //假数据
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
@@ -148,7 +154,13 @@ static StoreViewController *g_StoreViewController = nil;
         [self.dataArray addObject:model];
     }
 
-    _currentNumDic = [[NSMutableDictionary alloc]init];
+}
+
+- (void)initTableView
+{
+    //删除底部多余横线
+    _tableView.tableFooterView =[[UIView alloc]init];
+    //动画
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 

@@ -19,11 +19,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    [self initView];
+    [self initTableView];
+}
+
+- (void)initView
+{
     self.userImageBtn.layer.cornerRadius = 10;
     self.userImageBtn.layer.masksToBounds = YES;
-    
+}
+
+- (void)initTableView
+{
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
-    
     //删除多余线
     self.tableView.tableFooterView =[[UIView alloc]init];
 }

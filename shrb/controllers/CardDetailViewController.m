@@ -29,6 +29,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initData];
+    [self initTableView];
+    
+}
+
+- (void)initData
+{
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
                                @"memberCardImage" : @"雀巢",
@@ -67,7 +74,7 @@
                                       @"orderNum" : @"4523214655654498",
                                       @"expensePrice":@"89",
                                       },
-                             nil];
+                                    nil];
     
     self.expenseArray = [[NSMutableArray alloc] init];
     
@@ -76,18 +83,20 @@
         [model setValuesForKeysWithDictionary:dict];
         [self.expenseArray addObject:model];
     }
+}
 
-
+- (void)initTableView
+{
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     self.automaticallyAdjustsScrollViewInsets = false;
     
     __weak CardDetailViewController *weakSelf = self;
-    // setup pull-to-refresh
+    //下拉加载
     [self.tableView addPullToRefreshWithActionHandler:^{
         [weakSelf insertRowAtTop];
     }];
     
-    // setup infinite scrolling
+    //上拉刷新
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf insertRowAtBottom];
     }];

@@ -24,10 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //tableView 去分界线
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
- //   self.automaticallyAdjustsScrollViewInsets = false;
-    
+    [self initData];
+    [self initTableView];
+}
+
+- (void)initData
+{
     //假数据
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
@@ -63,18 +65,26 @@
         [self.dataArray addObject:model];
     }
 
+}
+
+- (void)initTableView
+{
+    //tableView 去分界线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //动画
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
     __weak CardTableViewController *weakSelf = self;
-    // setup pull-to-refresh
+    //下拉刷新
     [self.tableView addPullToRefreshWithActionHandler:^{
         [weakSelf insertRowAtTop];
     }];
     
-    // setup infinite scrolling
+    //上拉加载
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf insertRowAtBottom];
     }];
+ 
 }
 
 #pragma mark - top插入数据

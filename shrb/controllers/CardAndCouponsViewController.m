@@ -18,13 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //导航颜色
-    self.navigationController.navigationBar.barTintColor = shrbPink;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
-    self.tabBarController.tabBar.selectedItem.selectedImage = [UIImage imageNamed:@"寻觅_highlight"];
-    
+    [self initController];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -37,6 +31,16 @@
 {
     [super viewDidDisappear:animated];
     self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)initController
+{
+    //导航颜色
+    self.navigationController.navigationBar.barTintColor = shrbPink;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    self.tabBarController.tabBar.selectedItem.selectedImage = [UIImage imageNamed:@"寻觅_highlight"];
 }
 
 #pragma mark - 进入卡片View

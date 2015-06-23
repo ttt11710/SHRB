@@ -23,8 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.tableFooterView =[[UIView alloc]init];
-    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    [self initData];
+    [self initTableView];
+    
+}
+
+- (void)initData {
     
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
@@ -51,14 +55,14 @@
         [model setValuesForKeysWithDictionary:dict];
         [self.dataArray addObject:model];
     }
-    
-    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
-    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-   
+- (void)initTableView
+{
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    
+    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
 #pragma mark - Table view data source

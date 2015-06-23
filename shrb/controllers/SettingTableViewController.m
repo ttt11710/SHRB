@@ -18,8 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initTableView];
+}
+
+- (void)initTableView
+{
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
-    
     //删除多余线
     self.tableView.tableFooterView =[[UIView alloc]init];
 }
