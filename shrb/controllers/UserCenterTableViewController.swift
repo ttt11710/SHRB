@@ -1,7 +1,7 @@
 //
 //  UserCenterTableViewController.swift
 //  shrb
-//
+//  用户中心
 //  Created by PayBay on 15/6/24.
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //
@@ -126,7 +126,6 @@ class UserCenterTableViewController: UITableViewController {
             let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
             let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("helpCenterView") as! UIViewController
             self.navigationController?.pushViewController(viewController, animated: true)
-            
         }
         else if indexPath.section == 2 && indexPath.row == 1 {
             
