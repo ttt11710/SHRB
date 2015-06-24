@@ -113,5 +113,29 @@ class UserCenterTableViewController: UITableViewController {
             self.navigationController?.pushViewController(collectTableViewController, animated: true)
         }
         
+        else if indexPath.section == 1 && indexPath.row == 2 {
+            
+            let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("settingView") as! UIViewController
+            self.navigationController?.pushViewController(viewController, animated: true)
+            
+        }
+            
+        else if indexPath.section == 2 && indexPath.row == 0 {
+            
+            let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("helpCenterView") as! UIViewController
+            self.navigationController?.pushViewController(viewController, animated: true)
+            
+        }
+        else if indexPath.section == 2 && indexPath.row == 1 {
+            
+            let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("shrbServiceView") as! UIViewController
+            self.navigationController?.pushViewController(viewController, animated: true)
+            
+        }
+        
+        
     }
 }
