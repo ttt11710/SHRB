@@ -69,7 +69,10 @@
 		DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE955A1B253848006A495B /* CouponsTableViewCell.m */; };
 		DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE955D1B25407F006A495B /* GiveCouponsViewController.m */; };
 		DFAE95611B25434F006A495B /* CouponsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE95601B25434F006A495B /* CouponsDetailTableViewCell.m */; };
-		DFAE95651B254FB7006A495B /* UserCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE95641B254FB7006A495B /* UserCenterTableViewController.m */; };
+		DFAE95651B254FB7006A495B /* UserCenterObjevtiveTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE95641B254FB7006A495B /* UserCenterObjevtiveTableViewController.m */; };
+		DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */; };
+		DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */; };
+		DFB1E8351B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */; };
 		DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */; };
 		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
 		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
@@ -202,8 +205,11 @@
 		DFAE955D1B25407F006A495B /* GiveCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiveCouponsViewController.m; sourceTree = "<group>"; };
 		DFAE955F1B25434F006A495B /* CouponsDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponsDetailTableViewCell.h; path = ../Views/CouponsDetailTableViewCell.h; sourceTree = "<group>"; };
 		DFAE95601B25434F006A495B /* CouponsDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponsDetailTableViewCell.m; path = ../Views/CouponsDetailTableViewCell.m; sourceTree = "<group>"; };
-		DFAE95631B254FB7006A495B /* UserCenterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterTableViewController.h; sourceTree = "<group>"; };
-		DFAE95641B254FB7006A495B /* UserCenterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterTableViewController.m; sourceTree = "<group>"; };
+		DFAE95631B254FB7006A495B /* UserCenterObjevtiveTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterObjevtiveTableViewController.h; sourceTree = "<group>"; };
+		DFAE95641B254FB7006A495B /* UserCenterObjevtiveTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterObjevtiveTableViewController.m; sourceTree = "<group>"; };
+		DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterTableViewController.swift; sourceTree = "<group>"; };
+		DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeImageAndLabelsTableViewCell.swift; sourceTree = "<group>"; };
+		DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeImageAndLabelsTableViewCell.xib; sourceTree = "<group>"; };
 		DFC39BC01B294ECE006B50F4 /* LazyFadeIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeIn.h; sourceTree = "<group>"; };
 		DFC39BC11B294ECE006B50F4 /* LazyFadeInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInView.h; sourceTree = "<group>"; };
 		DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
@@ -395,8 +401,8 @@
 		DF9119AB1B3947FA00833AAB /* objective-C */ = {
 			isa = PBXGroup;
 			children = (
-				DFAE95631B254FB7006A495B /* UserCenterTableViewController.h */,
-				DFAE95641B254FB7006A495B /* UserCenterTableViewController.m */,
+				DFAE95631B254FB7006A495B /* UserCenterObjevtiveTableViewController.h */,
+				DFAE95641B254FB7006A495B /* UserCenterObjevtiveTableViewController.m */,
 				DF7176FD1B2FFF9300D3C3B9 /* BasicInfoTableViewController.h */,
 				DF7176FE1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m */,
 				DF7177321B300F2A00D3C3B9 /* OrderListTableViewController.h */,
@@ -412,6 +418,7 @@
 		DF9119B61B3955BC00833AAB /* swift */ = {
 			isa = PBXGroup;
 			children = (
+				DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */,
 				DF9119AC1B39486D00833AAB /* BasicInfoTableViewController.swift */,
 				DF9119A31B392BA100833AAB /* OrderListViewController.swift */,
 			);
@@ -430,6 +437,8 @@
 		DF9119B81B3955E300833AAB /* swift */ = {
 			isa = PBXGroup;
 			children = (
+				DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */,
+				DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */,
 				DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */,
 				DF9119A61B392BC500833AAB /* OrderListTableViewCell.xib */,
 				DF9119AE1B394A3B00833AAB /* MeImageTableViewCell.swift */,
@@ -709,6 +718,7 @@
 				DF9119B11B394A3B00833AAB /* MeImageTableViewCell.xib in Resources */,
 				DFAD61F81B26DF9E002437BD /* HJCAdjustNumButton.bundle in Resources */,
 				DF72C0C51B0B339800CE6DC6 /* Main.storyboard in Resources */,
+				DFB1E8351B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib in Resources */,
 				DF4E4C6F1B0C8D6400FE499E /* Me.storyboard in Resources */,
 				DF9119B51B394E2000833AAB /* RightDetailTableViewCell.xib in Resources */,
 				DF72C0CA1B0B339800CE6DC6 /* LaunchScreen.xib in Resources */,
@@ -768,7 +778,7 @@
 				DF9119A41B392BA100833AAB /* OrderListViewController.swift in Sources */,
 				DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */,
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
-				DFAE95651B254FB7006A495B /* UserCenterTableViewController.m in Sources */,
+				DFAE95651B254FB7006A495B /* UserCenterObjevtiveTableViewController.m in Sources */,
 				DFAE95611B25434F006A495B /* CouponsDetailTableViewCell.m in Sources */,
 				DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */,
 				DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */,
@@ -794,12 +804,14 @@
 				DFAE52AF1B32743500B03B2F /* QRMenu.m in Sources */,
 				DF9119B01B394A3B00833AAB /* MeImageTableViewCell.swift in Sources */,
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
+				DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
 				DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */,
 				DF9119A71B392BC500833AAB /* OrderListTableViewCell.swift in Sources */,
 				DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */,
+				DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */,
 				DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */,
 				DFAE52B01B32743500B03B2F /* QRView.m in Sources */,
 				DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */,

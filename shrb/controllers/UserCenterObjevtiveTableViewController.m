@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserCenterTableViewController.h"
+#import "UserCenterObjevtiveTableViewController.h"
 #import "shrb-swift.h"
 #import "Const.h"
 
-@interface UserCenterTableViewController ()
+@interface UserCenterObjevtiveTableViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *meHeadBtn;
 
 @end
 
-@implementation UserCenterTableViewController
+@implementation UserCenterObjevtiveTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

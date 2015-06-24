@@ -1,0 +1,94 @@
+//
+//  UserCenterTableViewController.swift
+//  shrb
+//
+//  Created by PayBay on 15/6/24.
+//  Copyright (c) 2015年 PayBay. All rights reserved.
+//
+
+import UIKit
+
+class UserCenterTableViewController: UITableViewController {
+
+    
+    let data = ["我的订单","设置","帮助中心","联系客服","关于通宝"]
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        //导航颜色
+        self.navigationController!.navigationBar.barTintColor = UIColor(red: 253.0/255.0, green: 99.0/255.0, blue: 93.0/255.0, alpha: 1);
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(),NSFontAttributeName: UIFont(name: "Heiti SC", size: 19.0)!]
+
+        self.tabBarController!.tabBar.selectedItem!.selectedImage = UIImage(named: "我的_highlight")
+        
+        self.tableView.tableFooterView = UIView()
+        self.tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 1)
+        
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController!.tabBar.hidden = false;
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.tabBarController!.tabBar.hidden = true;
+    }
+    
+    // MARK: - Table view data source
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
+        return 3
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
+        return section == 0 ? 1 : section == 1 ? 2 : 3
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 {
+            tableView.registerNib(UINib(nibName: "MeImageAndLabelsTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageAndLabelsCellId")
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("ImageAndLabelsCellId", forIndexPath: indexPath) as! MeImageAndLabelsTableViewCell
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle(rawValue: 0)!
+            cell.ImageView.image = UIImage(named: "默认女头像")
+            cell.titleLabel.text = "赵晓红"
+            cell.SubtitleLabel.text = "123456789456"
+            
+            return cell
+        }
+        else if indexPath.section == 1 {
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle(rawValue: 0)!
+            cell.textLabel?.text = data[indexPath.row]
+            cell.textLabel?.textColor = UIColor(red: 78.0/255.0, green: 78.0/255.0, blue: 78.0/255.0, alpha: 1)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle(rawValue: 0)!
+            cell.textLabel?.text = data[indexPath.row+2]
+            cell.textLabel?.textColor = UIColor(red: 78.0/255.0, green: 78.0/255.0, blue: 78.0/255.0, alpha: 1)
+            
+            return cell
+        }
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 100 : 60
+    }
+
+
+}
