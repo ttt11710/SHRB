@@ -11,7 +11,7 @@ import UIKit
 class UserCenterTableViewController: UITableViewController {
 
     
-    let data = ["我的订单","设置","帮助中心","联系客服","关于通宝"]
+    let data = ["我的订单","我的收藏","设置","帮助中心","联系客服","关于通宝"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,10 +46,15 @@ class UserCenterTableViewController: UITableViewController {
         return 3
     }
 
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 0 : 8
+
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return section == 0 ? 1 : section == 1 ? 2 : 3
+        return section == 0 ? 1 : 3
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -79,7 +84,7 @@ class UserCenterTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
             
             cell.selectionStyle = UITableViewCellSelectionStyle(rawValue: 0)!
-            cell.textLabel?.text = data[indexPath.row+2]
+            cell.textLabel?.text = data[indexPath.row+3]
             cell.textLabel?.textColor = UIColor(red: 78.0/255.0, green: 78.0/255.0, blue: 78.0/255.0, alpha: 1)
             
             return cell
@@ -89,6 +94,24 @@ class UserCenterTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return indexPath.section == 0 ? 100 : 60
     }
-
-
+    
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if indexPath.section == 0 {
+            var basicInfoTableViewController = BasicInfoTableViewController()
+            self.navigationController?.pushViewController(basicInfoTableViewController, animated: true)
+        }
+        else if indexPath.section == 1 && indexPath.row == 0 {
+            
+            var orderListViewController = OrderListViewController()
+            self.navigationController?.pushViewController(orderListViewController, animated: true)
+        }
+        else if indexPath.section == 1 && indexPath.row == 1 {
+            
+            var collectTableViewController = CollectTableViewController()
+            self.navigationController?.pushViewController(collectTableViewController, animated: true)
+        }
+        
+    }
 }
