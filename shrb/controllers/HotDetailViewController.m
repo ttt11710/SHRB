@@ -12,8 +12,13 @@
 #import <BFPaperButton/BFPaperButton.h>
 #import "SVProgressShow.h"
 #import "HotFocusModel.h"
+#import "Const.h"
+#import "DOPScrollableActionSheet.h"
 
 @interface HotDetailViewController ()
+{
+    UIView *_moreView;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray * dataArray;
@@ -27,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    [self makeNavigationBar];
     [self initData];
     [self initTableView];
 }
@@ -35,6 +41,38 @@
 {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
+}
+
+- (void)makeNavigationBar
+{
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBtnPressed)];
+    
+    _moreView = [[UIView alloc] initWithFrame:CGRectMake(screenWidth-85, 20+44-8, 80, 35*2)];
+    _moreView.hidden = YES;
+    UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    collectBtn.frame = CGRectMake(0, 0, 80, 35);
+    [collectBtn setTitle:@"收藏" forState:UIControlStateNormal];
+    [collectBtn setTitleColor:shrbPink forState:UIControlStateNormal];
+    [collectBtn setBackgroundColor:[UIColor whiteColor]];
+    collectBtn.layer.borderColor = shrbPink.CGColor;
+    collectBtn.layer.borderWidth = 1;
+    [collectBtn addTarget:self action:@selector(collectBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_moreView addSubview:collectBtn];
+    
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareBtn.frame = CGRectMake(0, collectBtn.frame.size.height-1, 80, 35);
+    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+    [shareBtn setTitleColor:shrbPink forState:UIControlStateNormal];
+    [shareBtn setBackgroundColor:[UIColor whiteColor]];
+    shareBtn.layer.borderColor = shrbPink.CGColor;
+    shareBtn.layer.borderWidth = 1;
+    [shareBtn addTarget:self action:@selector(shareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_moreView addSubview:shareBtn];
+    
+   [self.navigationController.view addSubview:_moreView];
+    
 }
 
 - (void)initData
@@ -100,11 +138,68 @@
     return cell;
 }
 
+#pragma mark - 更多按钮
+- (void)addBtnPressed
+{
+    _moreView.hidden = NO;
+}
+
+#pragma mark - 收藏
+- (void)collectBtnPressed
+{
+    _moreView.hidden = YES;
+    [SVProgressShow showWithStatus:@"请稍等..."];
+    double delayInSeconds = 1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [SVProgressShow showSuccessWithStatus:@"收藏成功！"];
+    });
+}
+
+#pragma mark - 分享
+- (void)shareBtnPressed
+{
+    _moreView.hidden = YES;
+    
+    DOPAction *action1 = [[DOPAction alloc] initWithName:@"Wechat" iconName:@"weixin" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"微信分享成功！"];
+    }];
+    DOPAction *action2 = [[DOPAction alloc] initWithName:@"QQ" iconName:@"qq" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"QQ分享成功！"];
+    }];
+    DOPAction *action3 = [[DOPAction alloc] initWithName:@"WxFriends" iconName:@"wxFriends" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"微信朋友圈分享成功！"];
+    }];
+    DOPAction *action4 = [[DOPAction alloc] initWithName:@"Qzone" iconName:@"qzone" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"QQ空间分享成功！"];
+    }];
+    DOPAction *action5 = [[DOPAction alloc] initWithName:@"Weibo" iconName:@"weibo" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"新浪微博分享成功！"];
+    }];
+    DOPAction *action6 = [[DOPAction alloc] initWithName:@"SMS" iconName:@"sms" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"短信发送成功！"];
+    }];
+    DOPAction *action7 = [[DOPAction alloc] initWithName:@"Email" iconName:@"email" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"邮件发送成功！"];
+    }];
+    
+    
+    NSArray *actions;
+    actions = @[@"Share",
+                @[action1, action2, action3, action4],
+                @"",
+                @[action5, action6, action7]];
+    DOPScrollableActionSheet *as = [[DOPScrollableActionSheet alloc] initWithActionArray:actions];
+    [as show];
+
+}
+
+
 #pragma mark - 进入商店
 - (IBAction)gotoStoreView:(id)sender {
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
     

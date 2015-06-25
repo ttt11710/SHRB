@@ -76,6 +76,9 @@
 		DFB1E8371B3A58ED00366200 /* CollectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8361B3A58ED00366200 /* CollectTableViewController.swift */; };
 		DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */; };
 		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
+		DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */; };
+		DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */; };
+		DFCDF94F1B3BE11500F70955 /* NewProductDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF94E1B3BE11500F70955 /* NewProductDescriptionViewController.m */; };
 		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
 		DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */; };
 /* End PBXBuildFile section */
@@ -217,6 +220,12 @@
 		DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
 		DFC39BC31B294ECE006B50F4 /* LazyFadeInLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInLayer.h; sourceTree = "<group>"; };
 		DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInLayer.m; sourceTree = "<group>"; };
+		DFCDF9461B3BD73600F70955 /* DOPScrollableActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPScrollableActionSheet.h; sourceTree = "<group>"; };
+		DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPScrollableActionSheet.m; sourceTree = "<group>"; };
+		DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreViewController.h; sourceTree = "<group>"; };
+		DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreViewController.m; sourceTree = "<group>"; };
+		DFCDF94D1B3BE11500F70955 /* NewProductDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewProductDescriptionViewController.h; sourceTree = "<group>"; };
+		DFCDF94E1B3BE11500F70955 /* NewProductDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewProductDescriptionViewController.m; sourceTree = "<group>"; };
 		DFF330E01B2EC57500007582 /* SVProgressShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressShow.h; sourceTree = "<group>"; };
 		DFF330E11B2EC57500007582 /* SVProgressShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressShow.m; sourceTree = "<group>"; };
 		DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoucherCenterViewController.h; sourceTree = "<group>"; };
@@ -293,6 +302,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DFCDF9451B3BD70F00F70955 /* DOPScrollableActionSheet */,
 				DFAE52A71B32743500B03B2F /* QRView */,
 				DFC39BBF1B294EB6006B50F4 /* LazyFadeinView */,
 				DFAD61F41B26DF9E002437BD /* HJCAdjustNumButton */,
@@ -461,6 +471,8 @@
 				DF72C0E11B0B403600CE6DC6 /* HotDetailViewController.m */,
 				DF77A5B91B0C155D00934A7C /* StoreViewController.h */,
 				DF77A5BA1B0C155D00934A7C /* StoreViewController.m */,
+				DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */,
+				DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */,
 				DF77A5BC1B0C1C6500934A7C /* OrdersViewController.h */,
 				DF77A5BD1B0C1C6500934A7C /* OrdersViewController.m */,
 				DF4E4C621B0C61CA00FE499E /* PayViewController.h */,
@@ -473,6 +485,8 @@
 				DF4E4C691B0C87D500FE499E /* BecomeMemberViewController.m */,
 				DFAE52B11B32751900B03B2F /* QRViewController.h */,
 				DFAE52B21B32751900B03B2F /* QRViewController.m */,
+				DFCDF94D1B3BE11500F70955 /* NewProductDescriptionViewController.h */,
+				DFCDF94E1B3BE11500F70955 /* NewProductDescriptionViewController.m */,
 			);
 			name = control;
 			sourceTree = "<group>";
@@ -624,6 +638,15 @@
 				DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */,
 			);
 			name = LazyFadeinView;
+			sourceTree = "<group>";
+		};
+		DFCDF9451B3BD70F00F70955 /* DOPScrollableActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				DFCDF9461B3BD73600F70955 /* DOPScrollableActionSheet.h */,
+				DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */,
+			);
+			name = DOPScrollableActionSheet;
 			sourceTree = "<group>";
 		};
 		DFF330DF1B2EC56100007582 /* common */ = {
@@ -783,6 +806,7 @@
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
 				DFAE95651B254FB7006A495B /* UserCenterObjevtiveTableViewController.m in Sources */,
 				DFAE95611B25434F006A495B /* CouponsDetailTableViewCell.m in Sources */,
+				DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */,
 				DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */,
 				DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */,
 				DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */,
@@ -791,6 +815,7 @@
 				DF958F611B33B83C005B2155 /* TradeModel.m in Sources */,
 				DF9119AD1B39486D00833AAB /* BasicInfoTableViewController.swift in Sources */,
 				DF7176FF1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m in Sources */,
+				DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */,
 				DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */,
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,
 				DF7177391B30109500D3C3B9 /* OrderListTableViewCell.m in Sources */,
@@ -809,6 +834,7 @@
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
 				DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
+				DFCDF94F1B3BE11500F70955 /* NewProductDescriptionViewController.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
 				DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */,
@@ -965,7 +991,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				INFOPLIST_FILE = shrb/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/PayBay/Desktop/paybay/shrb/shrb/shrb/shrb-Bridging-Header.h";
@@ -984,7 +1010,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				INFOPLIST_FILE = shrb/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/PayBay/Desktop/paybay/shrb/shrb/shrb/shrb-Bridging-Header.h";
