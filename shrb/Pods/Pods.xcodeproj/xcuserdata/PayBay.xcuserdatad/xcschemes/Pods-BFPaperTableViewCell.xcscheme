@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B4A0FD3BD46F099DA948622E"
+               BlueprintIdentifier = "7F7229070289101D1D5C14CF"
                BuildableName = "libPods-BFPaperTableViewCell.a"
                BlueprintName = "Pods-BFPaperTableViewCell"
                ReferencedContainer = "container:Pods.xcodeproj">
