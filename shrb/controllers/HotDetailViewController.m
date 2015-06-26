@@ -198,6 +198,10 @@
 #pragma mark - 进入商店
 - (IBAction)gotoStoreView:(id)sender {
     
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
+//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];

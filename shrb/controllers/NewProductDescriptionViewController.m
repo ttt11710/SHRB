@@ -10,6 +10,7 @@
 #import "Const.h"
 
 @interface NewProductDescriptionViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *tradeImageView;
 @property (weak, nonatomic) IBOutlet UILabel *saveMoneyLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
@@ -116,6 +117,8 @@
 }
 
 - (void)viewDidLayoutSubviews {
+    
+    self.scrollView.contentSize = CGSizeMake(0,screenHeight+100);
     
     self.tradeImageView.layer.cornerRadius = 10;
     self.tradeImageView.layer.masksToBounds = YES;

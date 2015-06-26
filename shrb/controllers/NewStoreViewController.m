@@ -16,6 +16,7 @@
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "SVProgressShow.h"
 #import "NewProductDescriptionViewController.h"
+#import "ProductTableViewController.h"
 
 static NewStoreViewController *g_StoreViewController = nil;
 @interface NewStoreViewController ()
@@ -208,7 +209,10 @@ static NewStoreViewController *g_StoreViewController = nil;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    NewProductDescriptionViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewProductDescriptionView"];
+//    NewProductDescriptionViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewProductDescriptionView"];
+//    viewController.currentIndex = indexPath.row;
+    
+    ProductTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductTableView"];
     viewController.currentIndex = indexPath.row;
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     

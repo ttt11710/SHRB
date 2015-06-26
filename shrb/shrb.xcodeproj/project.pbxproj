@@ -42,6 +42,9 @@
 		DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF77A5BA1B0C155D00934A7C /* StoreViewController.m */; };
 		DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF77A5BD1B0C1C6500934A7C /* OrdersViewController.m */; };
 		DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF77A5C01B0C1C9E00934A7C /* OrdersTableViewCell.m */; };
+		DF7A8A591B3CE90600528864 /* ProductTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A8A581B3CE90600528864 /* ProductTableViewController.m */; };
+		DF7A8A5C1B3CE97700528864 /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A8A5B1B3CE97700528864 /* ProductTableViewCell.m */; };
+		DF7A8A5F1B3CE9DC00528864 /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A8A5E1B3CE9DC00528864 /* ProductModel.m */; };
 		DF7D1E561B0D755500CD05B3 /* TransactMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E551B0D755500CD05B3 /* TransactMemberViewController.m */; };
 		DF7D1E591B0D792400CD05B3 /* ProductDescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E581B0D792400CD05B3 /* ProductDescriptionView.m */; };
 		DF7D1E601B0DC08700CD05B3 /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E5F1B0DC08700CD05B3 /* CardDetailViewController.m */; };
@@ -162,6 +165,12 @@
 		DF77A5BD1B0C1C6500934A7C /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
 		DF77A5BF1B0C1C9E00934A7C /* OrdersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrdersTableViewCell.h; path = ../Views/OrdersTableViewCell.h; sourceTree = "<group>"; };
 		DF77A5C01B0C1C9E00934A7C /* OrdersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrdersTableViewCell.m; path = ../Views/OrdersTableViewCell.m; sourceTree = "<group>"; };
+		DF7A8A571B3CE90600528864 /* ProductTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewController.h; sourceTree = "<group>"; };
+		DF7A8A581B3CE90600528864 /* ProductTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewController.m; sourceTree = "<group>"; };
+		DF7A8A5A1B3CE97700528864 /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
+		DF7A8A5B1B3CE97700528864 /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
+		DF7A8A5D1B3CE9DC00528864 /* ProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModel.h; sourceTree = "<group>"; };
+		DF7A8A5E1B3CE9DC00528864 /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
 		DF7D1E541B0D755500CD05B3 /* TransactMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactMemberViewController.h; sourceTree = "<group>"; };
 		DF7D1E551B0D755500CD05B3 /* TransactMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactMemberViewController.m; sourceTree = "<group>"; };
 		DF7D1E571B0D792400CD05B3 /* ProductDescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductDescriptionView.h; path = ../Views/ProductDescriptionView.h; sourceTree = "<group>"; };
@@ -487,6 +496,8 @@
 				DFAE52B21B32751900B03B2F /* QRViewController.m */,
 				DFCDF94D1B3BE11500F70955 /* NewProductDescriptionViewController.h */,
 				DFCDF94E1B3BE11500F70955 /* NewProductDescriptionViewController.m */,
+				DF7A8A571B3CE90600528864 /* ProductTableViewController.h */,
+				DF7A8A581B3CE90600528864 /* ProductTableViewController.m */,
 			);
 			name = control;
 			sourceTree = "<group>";
@@ -498,6 +509,8 @@
 				DF958F5D1B33B13F005B2155 /* HotFocusModel.m */,
 				DF958F5F1B33B83C005B2155 /* TradeModel.h */,
 				DF958F601B33B83C005B2155 /* TradeModel.m */,
+				DF7A8A5D1B3CE9DC00528864 /* ProductModel.h */,
+				DF7A8A5E1B3CE9DC00528864 /* ProductModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -517,6 +530,8 @@
 				DF4E4C601B0C59CD00FE499E /* ButtonTableViewCell.m */,
 				DF7D1E571B0D792400CD05B3 /* ProductDescriptionView.h */,
 				DF7D1E581B0D792400CD05B3 /* ProductDescriptionView.m */,
+				DF7A8A5A1B3CE97700528864 /* ProductTableViewCell.h */,
+				DF7A8A5B1B3CE97700528864 /* ProductTableViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -802,6 +817,7 @@
 			files = (
 				DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */,
 				DF9119A41B392BA100833AAB /* OrderListViewController.swift in Sources */,
+				DF7A8A591B3CE90600528864 /* ProductTableViewController.m in Sources */,
 				DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */,
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
 				DFAE95651B254FB7006A495B /* UserCenterObjevtiveTableViewController.m in Sources */,
@@ -820,6 +836,8 @@
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,
 				DF7177391B30109500D3C3B9 /* OrderListTableViewCell.m in Sources */,
 				DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */,
+				DF7A8A5C1B3CE97700528864 /* ProductTableViewCell.m in Sources */,
+				DF7A8A5F1B3CE9DC00528864 /* ProductModel.m in Sources */,
 				DFAE95581B253588006A495B /* CouponsDetailTableViewController.m in Sources */,
 				DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */,
 				DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */,
