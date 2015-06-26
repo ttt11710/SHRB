@@ -60,6 +60,6 @@ class BasicInfoTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 100 : 38
+        return indexPath.row == 0 ? 100 : 44
     }
 }

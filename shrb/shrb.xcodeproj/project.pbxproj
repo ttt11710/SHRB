@@ -77,11 +77,11 @@
 		DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */; };
 		DFB1E8351B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */; };
 		DFB1E8371B3A58ED00366200 /* CollectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8361B3A58ED00366200 /* CollectTableViewController.swift */; };
+		DFB7631F1B3D36330086ABB7 /* ProductIsMemberTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB7631E1B3D36330086ABB7 /* ProductIsMemberTableViewController.m */; };
 		DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */; };
 		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
 		DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */; };
 		DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */; };
-		DFCDF94F1B3BE11500F70955 /* NewProductDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF94E1B3BE11500F70955 /* NewProductDescriptionViewController.m */; };
 		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
 		DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */; };
 /* End PBXBuildFile section */
@@ -224,6 +224,8 @@
 		DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeImageAndLabelsTableViewCell.swift; sourceTree = "<group>"; };
 		DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeImageAndLabelsTableViewCell.xib; sourceTree = "<group>"; };
 		DFB1E8361B3A58ED00366200 /* CollectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectTableViewController.swift; sourceTree = "<group>"; };
+		DFB7631D1B3D36330086ABB7 /* ProductIsMemberTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductIsMemberTableViewController.h; sourceTree = "<group>"; };
+		DFB7631E1B3D36330086ABB7 /* ProductIsMemberTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductIsMemberTableViewController.m; sourceTree = "<group>"; };
 		DFC39BC01B294ECE006B50F4 /* LazyFadeIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeIn.h; sourceTree = "<group>"; };
 		DFC39BC11B294ECE006B50F4 /* LazyFadeInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInView.h; sourceTree = "<group>"; };
 		DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
@@ -233,8 +235,6 @@
 		DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPScrollableActionSheet.m; sourceTree = "<group>"; };
 		DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreViewController.h; sourceTree = "<group>"; };
 		DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreViewController.m; sourceTree = "<group>"; };
-		DFCDF94D1B3BE11500F70955 /* NewProductDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewProductDescriptionViewController.h; sourceTree = "<group>"; };
-		DFCDF94E1B3BE11500F70955 /* NewProductDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewProductDescriptionViewController.m; sourceTree = "<group>"; };
 		DFF330E01B2EC57500007582 /* SVProgressShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressShow.h; sourceTree = "<group>"; };
 		DFF330E11B2EC57500007582 /* SVProgressShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressShow.m; sourceTree = "<group>"; };
 		DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoucherCenterViewController.h; sourceTree = "<group>"; };
@@ -482,6 +482,10 @@
 				DF77A5BA1B0C155D00934A7C /* StoreViewController.m */,
 				DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */,
 				DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */,
+				DF7A8A571B3CE90600528864 /* ProductTableViewController.h */,
+				DF7A8A581B3CE90600528864 /* ProductTableViewController.m */,
+				DFB7631D1B3D36330086ABB7 /* ProductIsMemberTableViewController.h */,
+				DFB7631E1B3D36330086ABB7 /* ProductIsMemberTableViewController.m */,
 				DF77A5BC1B0C1C6500934A7C /* OrdersViewController.h */,
 				DF77A5BD1B0C1C6500934A7C /* OrdersViewController.m */,
 				DF4E4C621B0C61CA00FE499E /* PayViewController.h */,
@@ -494,10 +498,6 @@
 				DF4E4C691B0C87D500FE499E /* BecomeMemberViewController.m */,
 				DFAE52B11B32751900B03B2F /* QRViewController.h */,
 				DFAE52B21B32751900B03B2F /* QRViewController.m */,
-				DFCDF94D1B3BE11500F70955 /* NewProductDescriptionViewController.h */,
-				DFCDF94E1B3BE11500F70955 /* NewProductDescriptionViewController.m */,
-				DF7A8A571B3CE90600528864 /* ProductTableViewController.h */,
-				DF7A8A581B3CE90600528864 /* ProductTableViewController.m */,
 			);
 			name = control;
 			sourceTree = "<group>";
@@ -827,6 +827,7 @@
 				DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */,
 				DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */,
 				DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */,
+				DFB7631F1B3D36330086ABB7 /* ProductIsMemberTableViewController.m in Sources */,
 				DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */,
 				DF958F611B33B83C005B2155 /* TradeModel.m in Sources */,
 				DF9119AD1B39486D00833AAB /* BasicInfoTableViewController.swift in Sources */,
@@ -852,7 +853,6 @@
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
 				DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
-				DFCDF94F1B3BE11500F70955 /* NewProductDescriptionViewController.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
 				DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */,

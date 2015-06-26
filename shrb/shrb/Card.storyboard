@@ -1327,7 +1327,8 @@
                                                             <exclude reference="FHZ-cn-5od"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="181" y="112" width="107" height="21"/>
                                                         <mask key="constraints">
                                                             <include reference="2jQ-Yz-10F"/>
                                                             <include reference="FHZ-cn-5od"/>

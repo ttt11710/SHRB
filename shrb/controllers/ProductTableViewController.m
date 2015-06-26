@@ -12,9 +12,6 @@
 #import "Const.h"
 
 @interface ProductTableViewController ()
-{
-    ProductTableViewCell *_cell;
-}
 
 @property (nonatomic,strong) NSMutableArray * dataArray;
 @property (nonatomic,strong) NSMutableArray * array;
@@ -136,16 +133,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *SimpleTableIdentifier = @"ProductTableViewCellIdentifier";
-    _cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-    _cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    if (_cell == nil) {
-        _cell = [[ProductTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+    ProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    if (cell == nil) {
+        cell = [[ProductTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
     
-    _cell.model = self.dataArray[currentIndex];
+    cell.model = self.dataArray[currentIndex];
     
-    _cell.tag = indexPath.row;
-    return _cell;
+    cell.tag = indexPath.row;
+    return cell;
 }
 
 #pragma mark - tableView dataSource

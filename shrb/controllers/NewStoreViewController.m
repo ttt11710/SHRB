@@ -15,8 +15,8 @@
 #import "Const.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "SVProgressShow.h"
-#import "NewProductDescriptionViewController.h"
 #import "ProductTableViewController.h"
+#import "ProductIsMemberTableViewController.h"
 
 static NewStoreViewController *g_StoreViewController = nil;
 @interface NewStoreViewController ()
@@ -211,16 +211,30 @@ static NewStoreViewController *g_StoreViewController = nil;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    NewProductDescriptionViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewProductDescriptionView"];
 //    viewController.currentIndex = indexPath.row;
-    
-    ProductTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductTableView"];
-    viewController.currentIndex = indexPath.row;
-    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    
-    double delayInSeconds = 0.5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.navigationController pushViewController:viewController animated:YES];
-    });
+    BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
+    if (isMember) {
+        ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
+        viewController.currentIndex = indexPath.row;
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        
+        double delayInSeconds = 0.5;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self.navigationController pushViewController:viewController animated:YES];
+        });
+    }
+    else {
+        ProductTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductTableView"];
+        viewController.currentIndex = indexPath.row;
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        
+        double delayInSeconds = 0.5;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self.navigationController pushViewController:viewController animated:YES];
+        });
+
+    }
     
 }
 

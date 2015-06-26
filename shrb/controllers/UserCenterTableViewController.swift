@@ -92,7 +92,7 @@ class UserCenterTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 100 : 60
+        return indexPath.section == 0 ? 100 : 44
     }
     
     

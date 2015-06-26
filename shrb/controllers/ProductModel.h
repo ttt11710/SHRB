@@ -12,5 +12,8 @@
 @property(nonatomic,copy) NSString *tradeImage;
 @property(nonatomic,copy) NSString *saveMoney;
 @property(nonatomic,copy) NSString *tradeDescription;
+@property(nonatomic,copy) NSString *money;
+@property(nonatomic,copy) NSString *integral;
+@property(nonatomic,copy) NSString *cardNumber;
 
 @end

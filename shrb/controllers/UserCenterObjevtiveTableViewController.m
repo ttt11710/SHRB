@@ -59,7 +59,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.section == 0?100:60;
+    return indexPath.section == 0?100:44;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

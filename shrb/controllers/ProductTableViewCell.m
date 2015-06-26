@@ -17,6 +17,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *saveMoneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet BFPaperButton *signInBtn;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *integralLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
+
 
 @end
 @implementation ProductTableViewCell
@@ -27,6 +31,9 @@
     
     self.saveMoneyLabel.text = [NSString stringWithFormat:@"省￥%@元",model.saveMoney];
     self.descriptionLabel.text = model.tradeDescription;
+    self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@元",model.money];
+    self.integralLabel.text = [NSString stringWithFormat:@"积分：%@",model.integral];
+    self.cardNumberLabel.text = [NSString stringWithFormat:@"卡号：%@",model.cardNumber];
 
 }
 
