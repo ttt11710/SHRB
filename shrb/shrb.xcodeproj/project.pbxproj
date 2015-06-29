@@ -73,6 +73,11 @@
 		DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE955D1B25407F006A495B /* GiveCouponsViewController.m */; };
 		DFAE95611B25434F006A495B /* CouponsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE95601B25434F006A495B /* CouponsDetailTableViewCell.m */; };
 		DFAE95651B254FB7006A495B /* UserCenterObjevtiveTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE95641B254FB7006A495B /* UserCenterObjevtiveTableViewController.m */; };
+		DFB0578E1B40DF630091A1E1 /* DeskNumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB0578D1B40DF630091A1E1 /* DeskNumTableViewCell.m */; };
+		DFB057911B40E5D30091A1E1 /* HJCAjustNumButton3.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB0578F1B40E5D30091A1E1 /* HJCAjustNumButton3.m */; };
+		DFB057961B40F1840091A1E1 /* MemberPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB057951B40F1840091A1E1 /* MemberPayTableViewCell.m */; };
+		DFB057991B40F2BA0091A1E1 /* OtherPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB057981B40F2BA0091A1E1 /* OtherPayTableViewCell.m */; };
+		DFB0579C1B40F5B10091A1E1 /* PayOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB0579B1B40F5B10091A1E1 /* PayOrderTableViewCell.m */; };
 		DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */; };
 		DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */; };
 		DFB1E8351B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */; };
@@ -224,6 +229,16 @@
 		DFAE95601B25434F006A495B /* CouponsDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponsDetailTableViewCell.m; path = ../Views/CouponsDetailTableViewCell.m; sourceTree = "<group>"; };
 		DFAE95631B254FB7006A495B /* UserCenterObjevtiveTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterObjevtiveTableViewController.h; sourceTree = "<group>"; };
 		DFAE95641B254FB7006A495B /* UserCenterObjevtiveTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterObjevtiveTableViewController.m; sourceTree = "<group>"; };
+		DFB0578C1B40DF630091A1E1 /* DeskNumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeskNumTableViewCell.h; sourceTree = "<group>"; };
+		DFB0578D1B40DF630091A1E1 /* DeskNumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeskNumTableViewCell.m; sourceTree = "<group>"; };
+		DFB0578F1B40E5D30091A1E1 /* HJCAjustNumButton3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCAjustNumButton3.m; sourceTree = "<group>"; };
+		DFB057901B40E5D30091A1E1 /* HJCAjustNumButton3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCAjustNumButton3.h; sourceTree = "<group>"; };
+		DFB057941B40F1840091A1E1 /* MemberPayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberPayTableViewCell.h; sourceTree = "<group>"; };
+		DFB057951B40F1840091A1E1 /* MemberPayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberPayTableViewCell.m; sourceTree = "<group>"; };
+		DFB057971B40F2BA0091A1E1 /* OtherPayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherPayTableViewCell.h; sourceTree = "<group>"; };
+		DFB057981B40F2BA0091A1E1 /* OtherPayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherPayTableViewCell.m; sourceTree = "<group>"; };
+		DFB0579A1B40F5B10091A1E1 /* PayOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayOrderTableViewCell.h; sourceTree = "<group>"; };
+		DFB0579B1B40F5B10091A1E1 /* PayOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayOrderTableViewCell.m; sourceTree = "<group>"; };
 		DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterTableViewController.swift; sourceTree = "<group>"; };
 		DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeImageAndLabelsTableViewCell.swift; sourceTree = "<group>"; };
 		DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeImageAndLabelsTableViewCell.xib; sourceTree = "<group>"; };
@@ -492,22 +507,14 @@
 				DF0D9C811B0C2BAD00C0AB3F /* HotFocusViewController.m */,
 				DF72C0E01B0B403600CE6DC6 /* HotDetailViewController.h */,
 				DF72C0E11B0B403600CE6DC6 /* HotDetailViewController.m */,
-				DF77A5B91B0C155D00934A7C /* StoreViewController.h */,
-				DF77A5BA1B0C155D00934A7C /* StoreViewController.m */,
-				DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */,
-				DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */,
-				DF7A8A571B3CE90600528864 /* ProductTableViewController.h */,
-				DF7A8A581B3CE90600528864 /* ProductTableViewController.m */,
-				DFB7631D1B3D36330086ABB7 /* ProductIsMemberTableViewController.h */,
-				DFB7631E1B3D36330086ABB7 /* ProductIsMemberTableViewController.m */,
-				DF77A5BC1B0C1C6500934A7C /* OrdersViewController.h */,
-				DF77A5BD1B0C1C6500934A7C /* OrdersViewController.m */,
+				DF7D1E541B0D755500CD05B3 /* TransactMemberViewController.h */,
+				DF7D1E551B0D755500CD05B3 /* TransactMemberViewController.m */,
+				DFB057921B40E5FF0091A1E1 /* supermarket */,
+				DFB057931B40E6260091A1E1 /* order */,
 				DF4E4C621B0C61CA00FE499E /* PayViewController.h */,
 				DF4E4C631B0C61CA00FE499E /* PayViewController.m */,
 				DF0D9C731B0C252B00C0AB3F /* CompletePayViewController.h */,
 				DF0D9C741B0C252B00C0AB3F /* CompletePayViewController.m */,
-				DF7D1E541B0D755500CD05B3 /* TransactMemberViewController.h */,
-				DF7D1E551B0D755500CD05B3 /* TransactMemberViewController.m */,
 				DF4E4C681B0C87D500FE499E /* BecomeMemberViewController.h */,
 				DF4E4C691B0C87D500FE499E /* BecomeMemberViewController.m */,
 				DFAE52B11B32751900B03B2F /* QRViewController.h */,
@@ -538,6 +545,8 @@
 				DF72C0E51B0B413100CE6DC6 /* HotDetailTableViewCell.m */,
 				DF77A5B61B0C151F00934A7C /* StoreTableViewCell.h */,
 				DF77A5B71B0C151F00934A7C /* StoreTableViewCell.m */,
+				DFB0578C1B40DF630091A1E1 /* DeskNumTableViewCell.h */,
+				DFB0578D1B40DF630091A1E1 /* DeskNumTableViewCell.m */,
 				DF77A5BF1B0C1C9E00934A7C /* OrdersTableViewCell.h */,
 				DF77A5C01B0C1C9E00934A7C /* OrdersTableViewCell.m */,
 				DF4E4C5F1B0C59CD00FE499E /* ButtonTableViewCell.h */,
@@ -546,6 +555,12 @@
 				DF7D1E581B0D792400CD05B3 /* ProductDescriptionView.m */,
 				DF7A8A5A1B3CE97700528864 /* ProductTableViewCell.h */,
 				DF7A8A5B1B3CE97700528864 /* ProductTableViewCell.m */,
+				DFB057941B40F1840091A1E1 /* MemberPayTableViewCell.h */,
+				DFB057951B40F1840091A1E1 /* MemberPayTableViewCell.m */,
+				DFB057971B40F2BA0091A1E1 /* OtherPayTableViewCell.h */,
+				DFB057981B40F2BA0091A1E1 /* OtherPayTableViewCell.m */,
+				DFB0579A1B40F5B10091A1E1 /* PayOrderTableViewCell.h */,
+				DFB0579B1B40F5B10091A1E1 /* PayOrderTableViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -633,6 +648,8 @@
 		DFAD61F41B26DF9E002437BD /* HJCAdjustNumButton */ = {
 			isa = PBXGroup;
 			children = (
+				DFB057901B40E5D30091A1E1 /* HJCAjustNumButton3.h */,
+				DFB0578F1B40E5D30091A1E1 /* HJCAjustNumButton3.m */,
 				DFAD61F51B26DF9E002437BD /* HJCAdjustNumButton.bundle */,
 				DFAD61F61B26DF9E002437BD /* HJCAjustNumButton.h */,
 				DFAD61F71B26DF9E002437BD /* HJCAjustNumButton.m */,
@@ -661,6 +678,30 @@
 				DF958F5A1B33ACD2005B2155 /* view */,
 			);
 			name = me;
+			sourceTree = "<group>";
+		};
+		DFB057921B40E5FF0091A1E1 /* supermarket */ = {
+			isa = PBXGroup;
+			children = (
+				DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */,
+				DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */,
+				DF7A8A571B3CE90600528864 /* ProductTableViewController.h */,
+				DF7A8A581B3CE90600528864 /* ProductTableViewController.m */,
+				DFB7631D1B3D36330086ABB7 /* ProductIsMemberTableViewController.h */,
+				DFB7631E1B3D36330086ABB7 /* ProductIsMemberTableViewController.m */,
+			);
+			name = supermarket;
+			sourceTree = "<group>";
+		};
+		DFB057931B40E6260091A1E1 /* order */ = {
+			isa = PBXGroup;
+			children = (
+				DF77A5B91B0C155D00934A7C /* StoreViewController.h */,
+				DF77A5BA1B0C155D00934A7C /* StoreViewController.m */,
+				DF77A5BC1B0C1C6500934A7C /* OrdersViewController.h */,
+				DF77A5BD1B0C1C6500934A7C /* OrdersViewController.m */,
+			);
+			name = order;
 			sourceTree = "<group>";
 		};
 		DFC39BBF1B294EB6006B50F4 /* LazyFadeinView */ = {
@@ -845,6 +886,7 @@
 				DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */,
 				DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */,
 				DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */,
+				DFB057991B40F2BA0091A1E1 /* OtherPayTableViewCell.m in Sources */,
 				DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */,
 				DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */,
 				DFB7631F1B3D36330086ABB7 /* ProductIsMemberTableViewController.m in Sources */,
@@ -856,6 +898,7 @@
 				DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */,
 				DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */,
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,
+				DFB057911B40E5D30091A1E1 /* HJCAjustNumButton3.m in Sources */,
 				DF7177391B30109500D3C3B9 /* OrderListTableViewCell.m in Sources */,
 				DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */,
 				DF7A8A5C1B3CE97700528864 /* ProductTableViewCell.m in Sources */,
@@ -864,6 +907,7 @@
 				DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */,
 				DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */,
 				DF958F641B33C11B005B2155 /* CardModel.m in Sources */,
+				DFB0578E1B40DF630091A1E1 /* DeskNumTableViewCell.m in Sources */,
 				DF71773C1B30167900D3C3B9 /* SettingTableViewController.m in Sources */,
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,
 				DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */,
@@ -881,9 +925,11 @@
 				DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */,
 				DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */,
 				DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */,
+				DFB057961B40F1840091A1E1 /* MemberPayTableViewCell.m in Sources */,
 				DFB763281B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m in Sources */,
 				DFAE52B01B32743500B03B2F /* QRView.m in Sources */,
 				DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */,
+				DFB0579C1B40F5B10091A1E1 /* PayOrderTableViewCell.m in Sources */,
 				DF7D1E591B0D792400CD05B3 /* ProductDescriptionView.m in Sources */,
 				DF7D1E601B0DC08700CD05B3 /* CardDetailViewController.m in Sources */,
 				DF0D9C851B0C423000C0AB3F /* CardTableViewCell.m in Sources */,

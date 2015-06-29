@@ -10,4 +10,6 @@
 
 @interface TransactMemberViewController : UIViewController
 
+@property (nonatomic,assign) NSInteger currentIndex;
+
 @end

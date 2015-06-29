@@ -70,15 +70,15 @@
     //假数据
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
-                               @"status" : @"未成为会员",
+                               @"status" : @"超市不是会员",
                                @"storeName" : @"辛巴克",
                                },
                              @{
-                               @"status" : @"已是会员",
+                               @"status" : @"超市是会员",
                                @"storeName" : @"吉野家",
                                },
                              @{
-                               @"status" : @"已是会员",
+                               @"status" : @"点餐不是会员",
                                @"storeName" : @"雀巢",
                                },
                              @{
@@ -136,8 +136,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (indexPath.row ==0 ) {
+    //是否会员
+    if (indexPath.row ==0 || indexPath.row == 2) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMember"];
     }
@@ -145,6 +145,22 @@
     {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
+    }
+    
+     //商店类型 supermarket（超市）  order（点餐） store(小店)
+    if (indexPath.row ==0 || indexPath.row == 1) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"typesOfShops"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"supermarket" forKey:@"typesOfShops"];
+    }
+    else if (indexPath.row == 2 || indexPath.row == 3)
+    {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"typesOfShops"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"order" forKey:@"typesOfShops"];
+    }
+
+    else {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"typesOfShops"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"store" forKey:@"typesOfShops"];
     }
 
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

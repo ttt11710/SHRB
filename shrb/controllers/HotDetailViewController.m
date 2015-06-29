@@ -198,15 +198,22 @@
 #pragma mark - 进入商店
 - (IBAction)gotoStoreView:(id)sender {
     
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
-//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    NSString * typesOfShops = [[NSUserDefaults standardUserDefaults] stringForKey:@"typesOfShops"];
     
+    //supermarket
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
+    
+    UIViewController *viewController;
+    if ([typesOfShops isEqualToString:@"supermarket"]) {
+        //超市
+        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
+    }
+    else if ([typesOfShops isEqualToString:@"order"]) {
+        //点餐
+        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
+    }
+    
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    
-    
     [SVProgressShow showWithStatus:@"进入店铺..."];
     
     double delayInSeconds = 1.5;

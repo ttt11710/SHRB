@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 HJaycee. All rights reserved.
 //
 
-#import "HJCAjustNumButton.h"
+#import "HJCAjustNumButton3.h"
 
-@interface HJCAjustNumButton ()
+@interface HJCAjustNumButton3 ()
 {
     UIButton *_decreaseBtn;
     UIButton *_increaseBtn;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation HJCAjustNumButton
+@implementation HJCAjustNumButton3
 
 - (void)setFrame:(CGRect)frame{
     [super setFrame:frame];
@@ -53,27 +53,26 @@
 
 - (void)setupViews{
     
-    UIColor *lineColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
+    UIColor *lineColor = [UIColor colorWithRed:253.0/255.0 green:99.0/255.0 blue:93.0/255.0 alpha:1];
     
-    self.frame = CGRectMake(0, 0, 30, 30);
-  //  self.backgroundColor = [UIColor whiteColor];
-    self.backgroundColor = [UIColor colorWithRed:253.0/255.0 green:99.0/255.0 blue:93.0/255.0 alpha:1];
-    self.layer.cornerRadius = 15;
+    self.frame = CGRectMake(0, 0, 110, 30);
+    self.backgroundColor = [UIColor whiteColor];
+    self.layer.cornerRadius = 2;
     self.clipsToBounds = YES;
     self.layer.borderWidth = 1;
     self.layer.borderColor = [lineColor CGColor];
     
     _oneLine = [[UIView alloc] init];
     _oneLine.backgroundColor = lineColor;
-   // [self addSubview:_oneLine];
+    [self addSubview:_oneLine];
     
     _twoLine = [[UIView alloc] init];
     _twoLine.backgroundColor = lineColor;
-   // [self addSubview:_twoLine];
+    [self addSubview:_twoLine];
     
     _decreaseBtn = [[UIButton alloc] init];
     [self setupButton:_decreaseBtn normalImage:@"decrease@2x" HighlightImage:@"decrease2@2x"];
-   // [self addSubview:_decreaseBtn];
+    [self addSubview:_decreaseBtn];
     
     _increaseBtn = [[UIButton alloc] init];
     [self setupButton:_increaseBtn normalImage:@"increase@2x" HighlightImage:@"increase2@2x"];
@@ -85,7 +84,7 @@
     _textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _textField.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:15];
     _textField.text = @"0";
-  //  [self addSubview:_textField];
+    [self addSubview:_textField];
     
     [self commonSetup];
 }

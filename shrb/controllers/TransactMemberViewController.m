@@ -9,6 +9,7 @@
 #import "TransactMemberViewController.h"
 #import "SVProgressShow.h"
 #import "Const.h"
+#import "ProductIsMemberTableViewController.h"
 
 @interface TransactMemberViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
@@ -18,6 +19,8 @@
 @end
 
 @implementation TransactMemberViewController
+
+@synthesize currentIndex;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -56,18 +59,44 @@
 #pragma mark - 成为会员
 - (IBAction)gotoBecomeMemberView:(id)sender {
     
-    //becomeMemberView
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"becomeMemberView"];
-    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    //跳转到指定页面
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
     
-    [SVProgressShow showWithStatus:@"会员卡生成中..."];
-    double delayInSeconds = 1.5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [SVProgressShow dismiss];
-        [self.navigationController pushViewController:viewController animated:YES];
-    });
+    
+    NSString * typesOfShops = [[NSUserDefaults standardUserDefaults] stringForKey:@"typesOfShops"];
+    
+    //supermarket
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *viewController;
+    if ([typesOfShops isEqualToString:@"supermarket"]) {
+        //超市
+        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [SVProgressShow showWithStatus:@"会员卡生成中..."];
+        double delayInSeconds = 1.5;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow dismiss];
+            
+            UINavigationController *navController = self.navigationController;
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-3] animated:NO];
+            
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
+            viewController.currentIndex = currentIndex;
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            
+            [navController pushViewController:viewController animated:YES];
+            
+        });
+    }
+    else if ([typesOfShops isEqualToString:@"order"]) {
+        //点餐
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 

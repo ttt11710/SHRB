@@ -11,24 +11,88 @@
 #import "BFPaperButton.h"
 #import "SVProgressShow.h"
 #import "Const.h"
+#import "DeskNumTableViewCell.h"
+#import "PayOrderTableViewCell.h"
+#import "MemberPayTableViewCell.h"
+#import "OtherPayTableViewCell.h"
 
 @interface PayViewController ()
-@property (weak, nonatomic) IBOutlet UIView *memberPayView;
-@property (weak, nonatomic) IBOutlet UIView *othersPayView;
-@property (weak, nonatomic) IBOutlet BFPaperButton *memberSubmitBtn;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic,strong) NSMutableArray * dataArray;
 
 @end
 
 @implementation PayViewController
 
 @synthesize isMemberPay;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _othersPayView.hidden = self.isMemberPay?  YES: NO;
-    _memberPayView.hidden = !_othersPayView.hidden;
-    _memberSubmitBtn.hidden = _memberPayView.hidden;
+    self.dataArray = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺", nil];
+}
+
+
+#pragma mark - tableView dataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return 44;
+    }
+    else if (indexPath.row == [self.dataArray count]){
+        return 120;
+    }
+    else {
+        return 80;
+    }
+}
+
+#pragma mark - tableView delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.dataArray count]+2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+        }
+        cell.textLabel.text = @"共2件商品";
+        return cell;
+    }
     
+    else if (indexPath.row == [self.dataArray count]+1) {
+        
+        static NSString *SimpleTableIdentifier = @"MemberPayTableViewCellIdentifier";
+        MemberPayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        if (cell == nil) {
+            cell = [[MemberPayTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+        }
+        
+        return cell;
+    }
+    else
+    {
+        static NSString *SimpleTableIdentifier = @"PayOrderTableViewCellIdentifier";
+        PayOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        if (cell == nil) {
+            cell = [[PayOrderTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
+        }
+        
+        cell.orderImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row-1]]];
+        cell.orderNameLabel.text = [self.dataArray objectAtIndex:indexPath.row-1];
+    
+        return cell;
+    }
 }
 
 #pragma mark - 支付宝支付Btn

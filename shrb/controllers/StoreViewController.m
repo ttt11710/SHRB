@@ -7,6 +7,7 @@
 //
 
 #import "StoreViewController.h"
+#import "DeskNumTableViewCell.h"
 #import "StoreTableViewCell.h"
 #import "TradeModel.h"
 #import "ButtonTableViewCell.h"
@@ -22,6 +23,7 @@
 static StoreViewController *g_StoreViewController = nil;
 @interface StoreViewController ()
 {
+    NSMutableArray *_array;
     NSMutableDictionary *_currentNumDic;
     CGRect _rect;
     CGFloat lastContentOffset;
@@ -60,7 +62,7 @@ static StoreViewController *g_StoreViewController = nil;
     _currentNumDic = [[NSMutableDictionary alloc]init];
     
     //假数据
-    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
+    _array = [[NSMutableArray alloc] initWithObjects:
                              @{
                                @"tradeImage" : @"提拉米苏",
                                @"tradeName" : @"提拉米苏",
@@ -148,7 +150,7 @@ static StoreViewController *g_StoreViewController = nil;
     
     self.dataArray = [[NSMutableArray alloc] init];
     
-    for (NSDictionary * dict in array) {
+    for (NSDictionary * dict in _array) {
         TradeModel * model = [[TradeModel alloc] init];
         [model setValuesForKeysWithDictionary:dict];
         [self.dataArray addObject:model];
@@ -186,18 +188,28 @@ static StoreViewController *g_StoreViewController = nil;
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.row < [self.dataArray count]?80:44;
+    return (indexPath.row < [self.dataArray count]+1 && indexPath.row != 0)?80:44;
 }
 
 #pragma mark - tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataArray count]+1;
+    return [self.dataArray count]+2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < [self.dataArray count]) {
+    if (indexPath.row == 0) {
+        static NSString *SimpleTableIdentifier = @"DeskNumTableViewCellIdentifier";
+        DeskNumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        if (cell == nil) {
+            cell = [[DeskNumTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+        }
+        
+        return cell;
+    }
+   else  if (indexPath.row < [self.dataArray count]+1) {
         static NSString *SimpleTableIdentifier = @"CouponsTableViewCellIdentifier";
         StoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
@@ -205,54 +217,54 @@ static StoreViewController *g_StoreViewController = nil;
             cell = [[StoreTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
         
-        cell.model = self.dataArray[indexPath.row];
+        cell.model = self.dataArray[indexPath.row-1];
         
         HJCAjustNumButton *numbutton = [[HJCAjustNumButton alloc] init];
-        numbutton.frame = CGRectMake(screenWidth-90, 30, 80, 25);
+        numbutton.frame = CGRectMake(screenWidth-40, 30, 30, 30);
         // 内容更改的block回调
         numbutton.callBack = ^(NSString *currentNum){
             NSLog(@"%@", currentNum);
-            NSLog(@"%ld",(long)indexPath.row);
+            NSLog(@"%ld",(long)indexPath.row-1);
             
             _rect = [self.tableView.superview convertRect:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height) fromView:cell];
 
             if ([_currentNumDic count] == 0) {
-                [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+                [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row-1]];
                 //商品起始位置
                 UIBezierPath *path = [UIBezierPath bezierPath];
                 [path moveToPoint:CGPointMake(46, _rect.origin.y+40)];
                 //商品最终位置和其中一个路径位置
                 [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
                 _path = path;
-                [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row]]];
+                [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[_array objectAtIndex:indexPath.row-1][@"tradeImage"]]];
             }
             else {
                 //没有插入数据
-                if ([_currentNumDic objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]==nil) {
-                    [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+                if ([_currentNumDic objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row-1]]==nil) {
+                    [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row-1]];
                     //商品起始位置
                     UIBezierPath *path = [UIBezierPath bezierPath];
                     [path moveToPoint:CGPointMake(46, _rect.origin.y+40)];
                     //商品最终位置和其中一个路径位置
                     [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth/2, screenHeight * 0.6)];
                     _path = path;
-                    [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row]]];
+                    [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[_array objectAtIndex:indexPath.row-1][@"tradeImage"]]];
                 }
                 else {
                     //减少
-                    if ([[_currentNumDic objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]] intValue]>[currentNum intValue]) {
-                        [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+                    if ([[_currentNumDic objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row-1]] intValue]>[currentNum intValue]) {
+                        [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row-1]];
                     }
                     //增加
                     else{
-                        [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+                        [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row-1]];
                         //商品起始位置
                         UIBezierPath *path = [UIBezierPath bezierPath];
                         [path moveToPoint:CGPointMake(46, _rect.origin.y+40)];
                         //商品最终位置和其中一个路径位置
                         [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
                         _path = path;
-                        [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row]]];
+                        [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",[_array objectAtIndex:indexPath.row-1][@"tradeImage"]]];
                     }
                 }
             }
@@ -277,9 +289,11 @@ static StoreViewController *g_StoreViewController = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (indexPath.row == 0) {
+        return;
+    }
     ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    productDescriptionView.currentIndex = indexPath.row;
+    productDescriptionView.currentIndex = indexPath.row-1;
     [self.view addSubview:productDescriptionView];
     
 }

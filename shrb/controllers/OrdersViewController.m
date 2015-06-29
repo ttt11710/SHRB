@@ -12,6 +12,7 @@
 #import "ButtonTableViewCell.h"
 #import "UITableView+Wave.h"
 #import "Const.h"
+#import "HJCAjustNumButton3.h"
 
 @interface OrdersViewController ()
 {
@@ -57,7 +58,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == [_data count]+3) {
-        return 44;
+        return 46;
     }
     return indexPath.row <= [_data count]+1?80:100;
 }
@@ -87,6 +88,19 @@
                 cell.tradeNameLabel.text = [_data objectAtIndex:indexPath.row];
                 cell.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
                 cell.priceLabel.text = @"会员价：30元  原价：40元";
+                
+                //
+                HJCAjustNumButton3 *numbutton = [[HJCAjustNumButton3 alloc] init];
+                numbutton.frame = CGRectMake(screenWidth-90, 30, 80, 30);
+                // 内容更改的block回调
+                numbutton.callBack = ^(NSString *currentNum){
+                    NSLog(@"%@", currentNum);
+                    NSLog(@"%ld",(long)indexPath.row);
+                };
+                
+                // 加到父控件上
+                [cell addSubview:numbutton];
+
             }
             else  {
                 cell.tradeNameLabel.text = @"添加";
@@ -100,6 +114,7 @@
             cell.checkImageView.hidden = YES;
             cell.couponLabel.hidden = YES;
             cell.ruleTextView.hidden = YES;
+            
         }
         else
         {
@@ -138,7 +153,7 @@
             cell = [[ButtonTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
         }
         
-        [cell.buttonModel setTitle:@"我要变会员" forState:UIControlStateNormal];
+        [cell.buttonModel setTitle:@"注册" forState:UIControlStateNormal];
         
         return cell;
     }
@@ -154,13 +169,13 @@
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    PayViewController *payViewController = segue.destinationViewController;
-    if ([segue.identifier isEqualToString:@"memberPayidentifier"]) {
-        payViewController.isMemberPay = YES;
-    }
-    else if([segue.identifier isEqualToString:@"othersPayidentifier"])
-    {
-        payViewController.isMemberPay = NO;
-    }
+//    PayViewController *payViewController = segue.destinationViewController;
+//    if ([segue.identifier isEqualToString:@"memberPayidentifier"]) {
+//        payViewController.isMemberPay = YES;
+//    }
+//    else if([segue.identifier isEqualToString:@"othersPayidentifier"])
+//    {
+//        payViewController.isMemberPay = NO;
+//    }
 }
 @end

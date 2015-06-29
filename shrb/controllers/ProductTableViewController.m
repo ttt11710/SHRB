@@ -10,6 +10,7 @@
 #import "ProductTableViewCell.h"
 #import "ProductModel.h"
 #import "Const.h"
+#import "TransactMemberViewController.h"
 
 @interface ProductTableViewController ()
 
@@ -162,6 +163,15 @@
     self.tableView.scrollEnabled = YES;
     return label.frame.size.height + screenWidth-16+80+30;
 }
+
+
+#pragma  mark - storyboard传值
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    TransactMemberViewController *transactMemberViewController = segue.destinationViewController;
+    transactMemberViewController.currentIndex = currentIndex;
+}
+
 
 #pragma mark - 蒙版效果
 - (void)addBlurViewView:(UIView *)view
