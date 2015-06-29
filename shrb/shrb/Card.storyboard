@@ -1229,7 +1229,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="gas-cw-ktP"/>
+                    <navigationItem key="navigationItem" title="会员卡详情" id="gas-cw-ktP"/>
                     <connections>
                         <outlet property="tableView" destination="YoI-3c-MeD" id="PtN-TP-lGM"/>
                     </connections>
@@ -1238,7 +1238,7 @@
             </objects>
             <point key="canvasLocation" x="2019" y="1023"/>
         </scene>
-        <!--Trading Record Table View Controller-->
+        <!--交易记录-->
         <scene sceneID="Rxu-Iq-qTb">
             <objects>
                 <tableViewController storyboardIdentifier="TradingRecordTableView" hidesBottomBarWhenPushed="YES" id="YoG-G0-X8N" customClass="TradingRecordTableViewController" sceneMemberID="viewController">
@@ -1330,11 +1330,87 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="VdM-W1-icV"/>
+                    <navigationItem key="navigationItem" title="交易记录" id="kIQ-lg-Mdl"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zno-9N-NA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2644.5" y="1023"/>
+        </scene>
+        <!--适用门店电话及地址-->
+        <scene sceneID="PX1-1D-cc4">
+            <objects>
+                <tableViewController storyboardIdentifier="UserStoreInfoTableView" id="fuG-Pt-LMC" userLabel="适用门店电话及地址" customClass="UserStoreInfoTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" id="7bT-gG-u2q">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeftLabelTableViewCellIdentifier" rowHeight="44" id="Eg5-Mb-KYQ" customClass="LeftLabelTableViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eg5-Mb-KYQ" id="wdn-Dh-19w">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFD-b5-bo0">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="地址">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="HFD-b5-bo0" secondAttribute="centerY" id="5jg-S9-JQP"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="HFD-b5-bo0" secondAttribute="trailing" constant="8" id="D6P-xm-H3o"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="HFD-b5-bo0" secondAttribute="bottom" constant="4" id="Xn3-D1-4D8"/>
+                                        <constraint firstItem="HFD-b5-bo0" firstAttribute="leading" secondItem="wdn-Dh-19w" secondAttribute="leadingMargin" constant="8" id="n7f-kP-HiQ"/>
+                                        <constraint firstItem="HFD-b5-bo0" firstAttribute="top" secondItem="wdn-Dh-19w" secondAttribute="topMargin" constant="4" id="xho-0I-ezT"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="HFD-b5-bo0"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="Xn3-D1-4D8"/>
+                                            <exclude reference="xho-0I-ezT"/>
+                                            <exclude reference="D6P-xm-H3o"/>
+                                            <exclude reference="n7f-kP-HiQ"/>
+                                            <exclude reference="5jg-S9-JQP"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="HFD-b5-bo0"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="Xn3-D1-4D8"/>
+                                            <include reference="xho-0I-ezT"/>
+                                            <include reference="D6P-xm-H3o"/>
+                                            <include reference="n7f-kP-HiQ"/>
+                                            <include reference="5jg-S9-JQP"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="leftLabel" destination="HFD-b5-bo0" id="lg5-JN-bJv"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fuG-Pt-LMC" id="Da1-OC-SIS"/>
+                            <outlet property="delegate" destination="fuG-Pt-LMC" id="NUR-9W-6al"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="适用门店电话及地址" id="Q9m-ZO-opV"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dhb-fi-xvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3274.5" y="1023"/>
         </scene>
         <!--电子券详情-->
         <scene sceneID="bxg-xT-Z3o">

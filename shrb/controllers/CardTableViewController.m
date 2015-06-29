@@ -160,7 +160,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.model = self.dataArray[indexPath.row];
-   
+    
     return cell;
 }
 

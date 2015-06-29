@@ -201,11 +201,6 @@
         return 44;
     }
     else  {
-//        UILabel *label = [[UILabel alloc] init];
-//        label.font = [UIFont systemFontOfSize:17.0];
-//        [label sizeToFit];
-//        SectionModel *sectionModel = [_dataMutableArray objectAtIndex:[indexPath section]-1];
-//        label.text = [NSString stringWithFormat:@"%@",[sectionModel.sectionDataMutableArray objectAtIndex:[indexPath row]]]  ;
         
         UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 16, 0)];
         UIFont* theFont = [UIFont systemFontOfSize:17.0];
@@ -359,6 +354,12 @@
     if (indexPath.section == 3 && indexPath.row == 0) {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
         UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"TradingRecordTableView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    else if (indexPath.section == 3 && indexPath.row == 1) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"UserStoreInfoTableView"];
         [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
         [self.navigationController pushViewController:viewController animated:YES];
     }

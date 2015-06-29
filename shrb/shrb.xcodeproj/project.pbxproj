@@ -79,6 +79,7 @@
 		DFB057991B40F2BA0091A1E1 /* OtherPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB057981B40F2BA0091A1E1 /* OtherPayTableViewCell.m */; };
 		DFB0579C1B40F5B10091A1E1 /* PayOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB0579B1B40F5B10091A1E1 /* PayOrderTableViewCell.m */; };
 		DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */; };
+		DFB057A31B4132060091A1E1 /* UserStoreInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */; };
 		DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */; };
 		DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */; };
 		DFB1E8351B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */; };
@@ -241,6 +242,8 @@
 		DFB0579B1B40F5B10091A1E1 /* PayOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayOrderTableViewCell.m; sourceTree = "<group>"; };
 		DFB0579E1B4128C90091A1E1 /* TradingRecordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradingRecordTableViewController.h; sourceTree = "<group>"; };
 		DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradingRecordTableViewController.m; sourceTree = "<group>"; };
+		DFB057A11B4132060091A1E1 /* UserStoreInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStoreInfoTableViewController.h; sourceTree = "<group>"; };
+		DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStoreInfoTableViewController.m; sourceTree = "<group>"; };
 		DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterTableViewController.swift; sourceTree = "<group>"; };
 		DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeImageAndLabelsTableViewCell.swift; sourceTree = "<group>"; };
 		DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeImageAndLabelsTableViewCell.xib; sourceTree = "<group>"; };
@@ -572,6 +575,8 @@
 				DFB763241B3D495F0086ABB7 /* NewCardDetailViewController.m */,
 				DFB0579E1B4128C90091A1E1 /* TradingRecordTableViewController.h */,
 				DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */,
+				DFB057A11B4132060091A1E1 /* UserStoreInfoTableViewController.h */,
+				DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */,
 				DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */,
 				DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */,
 				DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */,
@@ -892,6 +897,7 @@
 				DFAE95651B254FB7006A495B /* UserCenterObjevtiveTableViewController.m in Sources */,
 				DFAE95611B25434F006A495B /* CouponsDetailTableViewCell.m in Sources */,
 				DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */,
+				DFB057A31B4132060091A1E1 /* UserStoreInfoTableViewController.m in Sources */,
 				DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */,
 				DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */,
 				DFB057991B40F2BA0091A1E1 /* OtherPayTableViewCell.m in Sources */,

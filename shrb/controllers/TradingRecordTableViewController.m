@@ -12,6 +12,7 @@
 #import "SVPullToRefresh.h"
 #import "UITableView+Wave.h"
 #import "SVProgressShow.h"
+#import "Const.h"
 
 @interface TradingRecordTableViewController ()
 
@@ -71,6 +72,12 @@
 
 - (void)initTableView
 {
+    
+    //删除底部多余横线
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     self.automaticallyAdjustsScrollViewInsets = false;
     
