@@ -11,7 +11,10 @@
 @implementation PayOrderTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    
+    self.orderImageView.layer.cornerRadius = 5;
+    self.orderImageView.layer.masksToBounds = YES;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

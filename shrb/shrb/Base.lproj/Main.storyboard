@@ -1393,7 +1393,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Wu-W0-gWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3589.5" y="-32"/>
+            <point key="canvasLocation" x="3013.5" y="-23"/>
         </scene>
         <!--星巴克-->
         <scene sceneID="kfl-my-Tcc">
@@ -3147,6 +3147,9 @@
                                         <include reference="Oly-Hl-aSD"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="EQL-a9-zgR" kind="push" id="wXN-du-6MW"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oA5-Xo-H5W">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -3511,7 +3514,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="176" id="Ad3-sc-WmU" customClass="OtherPayTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherPayTableViewCellIdentifier" rowHeight="176" id="Ad3-sc-WmU" customClass="OtherPayTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ad3-sc-WmU" id="tsW-Xp-Tae">
@@ -3593,6 +3596,9 @@
                                                                     <include reference="rZD-OZ-pjG"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <segue destination="EQL-a9-zgR" kind="push" id="QA7-jz-13b"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="付款方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yr-JR-nwH">
                                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -3646,6 +3652,9 @@
                                                                     <include reference="yxt-7S-tqs"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <segue destination="EQL-a9-zgR" kind="push" id="EvQ-T0-tnL"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3794,6 +3803,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="星巴克" id="9n5-8D-OUQ" userLabel="付款"/>
                     <connections>
+                        <outlet property="makeSurePayBtn" destination="TKF-0Q-kGB" id="kML-vw-Fxd"/>
                         <outlet property="tableView" destination="oA5-Xo-H5W" id="8JX-MU-ufg"/>
                     </connections>
                 </viewController>
@@ -3812,6 +3822,7 @@
         <image name="默认女头像" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="wXN-du-6MW"/>
         <segue reference="7gX-Xo-VKm"/>
         <segue reference="HKa-R9-m7o"/>
     </inferredMetricsTieBreakers>

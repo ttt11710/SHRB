@@ -78,6 +78,7 @@
 		DFB057961B40F1840091A1E1 /* MemberPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB057951B40F1840091A1E1 /* MemberPayTableViewCell.m */; };
 		DFB057991B40F2BA0091A1E1 /* OtherPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB057981B40F2BA0091A1E1 /* OtherPayTableViewCell.m */; };
 		DFB0579C1B40F5B10091A1E1 /* PayOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB0579B1B40F5B10091A1E1 /* PayOrderTableViewCell.m */; };
+		DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */; };
 		DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */; };
 		DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */; };
 		DFB1E8351B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */; };
@@ -86,7 +87,6 @@
 		DFB763251B3D495F0086ABB7 /* NewCardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB763241B3D495F0086ABB7 /* NewCardDetailViewController.m */; };
 		DFB763281B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB763271B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m */; };
 		DFB763301B3D51B10086ABB7 /* LeftLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB7632E1B3D51B10086ABB7 /* LeftLabelTableViewCell.m */; };
-		DFB763341B3D594E0086ABB7 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB763331B3D594E0086ABB7 /* MyTableViewCell.m */; };
 		DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */; };
 		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
 		DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */; };
@@ -239,6 +239,8 @@
 		DFB057981B40F2BA0091A1E1 /* OtherPayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherPayTableViewCell.m; sourceTree = "<group>"; };
 		DFB0579A1B40F5B10091A1E1 /* PayOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayOrderTableViewCell.h; sourceTree = "<group>"; };
 		DFB0579B1B40F5B10091A1E1 /* PayOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayOrderTableViewCell.m; sourceTree = "<group>"; };
+		DFB0579E1B4128C90091A1E1 /* TradingRecordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradingRecordTableViewController.h; sourceTree = "<group>"; };
+		DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradingRecordTableViewController.m; sourceTree = "<group>"; };
 		DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterTableViewController.swift; sourceTree = "<group>"; };
 		DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeImageAndLabelsTableViewCell.swift; sourceTree = "<group>"; };
 		DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeImageAndLabelsTableViewCell.xib; sourceTree = "<group>"; };
@@ -251,8 +253,6 @@
 		DFB763271B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardImageAndCardNumTableViewCell.m; sourceTree = "<group>"; };
 		DFB7632D1B3D51B10086ABB7 /* LeftLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftLabelTableViewCell.h; sourceTree = "<group>"; };
 		DFB7632E1B3D51B10086ABB7 /* LeftLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftLabelTableViewCell.m; sourceTree = "<group>"; };
-		DFB763321B3D594E0086ABB7 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
-		DFB763331B3D594E0086ABB7 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 		DFC39BC01B294ECE006B50F4 /* LazyFadeIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeIn.h; sourceTree = "<group>"; };
 		DFC39BC11B294ECE006B50F4 /* LazyFadeInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInView.h; sourceTree = "<group>"; };
 		DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
@@ -511,10 +511,6 @@
 				DF7D1E551B0D755500CD05B3 /* TransactMemberViewController.m */,
 				DFB057921B40E5FF0091A1E1 /* supermarket */,
 				DFB057931B40E6260091A1E1 /* order */,
-				DF4E4C621B0C61CA00FE499E /* PayViewController.h */,
-				DF4E4C631B0C61CA00FE499E /* PayViewController.m */,
-				DF0D9C731B0C252B00C0AB3F /* CompletePayViewController.h */,
-				DF0D9C741B0C252B00C0AB3F /* CompletePayViewController.m */,
 				DF4E4C681B0C87D500FE499E /* BecomeMemberViewController.h */,
 				DF4E4C691B0C87D500FE499E /* BecomeMemberViewController.m */,
 				DFAE52B11B32751900B03B2F /* QRViewController.h */,
@@ -555,12 +551,12 @@
 				DF7D1E581B0D792400CD05B3 /* ProductDescriptionView.m */,
 				DF7A8A5A1B3CE97700528864 /* ProductTableViewCell.h */,
 				DF7A8A5B1B3CE97700528864 /* ProductTableViewCell.m */,
+				DFB0579A1B40F5B10091A1E1 /* PayOrderTableViewCell.h */,
+				DFB0579B1B40F5B10091A1E1 /* PayOrderTableViewCell.m */,
 				DFB057941B40F1840091A1E1 /* MemberPayTableViewCell.h */,
 				DFB057951B40F1840091A1E1 /* MemberPayTableViewCell.m */,
 				DFB057971B40F2BA0091A1E1 /* OtherPayTableViewCell.h */,
 				DFB057981B40F2BA0091A1E1 /* OtherPayTableViewCell.m */,
-				DFB0579A1B40F5B10091A1E1 /* PayOrderTableViewCell.h */,
-				DFB0579B1B40F5B10091A1E1 /* PayOrderTableViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -572,10 +568,10 @@
 				DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */,
 				DF4E4C561B0C448400FE499E /* CardTableViewController.h */,
 				DF4E4C571B0C448400FE499E /* CardTableViewController.m */,
-				DF7D1E5E1B0DC08700CD05B3 /* CardDetailViewController.h */,
-				DF7D1E5F1B0DC08700CD05B3 /* CardDetailViewController.m */,
 				DFB763231B3D495F0086ABB7 /* NewCardDetailViewController.h */,
 				DFB763241B3D495F0086ABB7 /* NewCardDetailViewController.m */,
+				DFB0579E1B4128C90091A1E1 /* TradingRecordTableViewController.h */,
+				DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */,
 				DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */,
 				DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */,
 				DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */,
@@ -586,6 +582,7 @@
 				DFAE95571B253588006A495B /* CouponsDetailTableViewController.m */,
 				DFAE955C1B25407F006A495B /* GiveCouponsViewController.h */,
 				DFAE955D1B25407F006A495B /* GiveCouponsViewController.m */,
+				DFB0579D1B41283F0091A1E1 /* old */,
 			);
 			name = control;
 			sourceTree = "<group>";
@@ -614,8 +611,6 @@
 				DFAE95601B25434F006A495B /* CouponsDetailTableViewCell.m */,
 				DFB763261B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.h */,
 				DFB763271B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m */,
-				DFB763321B3D594E0086ABB7 /* MyTableViewCell.h */,
-				DFB763331B3D594E0086ABB7 /* MyTableViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -700,8 +695,21 @@
 				DF77A5BA1B0C155D00934A7C /* StoreViewController.m */,
 				DF77A5BC1B0C1C6500934A7C /* OrdersViewController.h */,
 				DF77A5BD1B0C1C6500934A7C /* OrdersViewController.m */,
+				DF4E4C621B0C61CA00FE499E /* PayViewController.h */,
+				DF4E4C631B0C61CA00FE499E /* PayViewController.m */,
+				DF0D9C731B0C252B00C0AB3F /* CompletePayViewController.h */,
+				DF0D9C741B0C252B00C0AB3F /* CompletePayViewController.m */,
 			);
 			name = order;
+			sourceTree = "<group>";
+		};
+		DFB0579D1B41283F0091A1E1 /* old */ = {
+			isa = PBXGroup;
+			children = (
+				DF7D1E5E1B0DC08700CD05B3 /* CardDetailViewController.h */,
+				DF7D1E5F1B0DC08700CD05B3 /* CardDetailViewController.m */,
+			);
+			name = old;
 			sourceTree = "<group>";
 		};
 		DFC39BBF1B294EB6006B50F4 /* LazyFadeinView */ = {
@@ -938,7 +946,7 @@
 				DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */,
 				DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */,
 				DF4E4C6A1B0C87D500FE499E /* BecomeMemberViewController.m in Sources */,
-				DFB763341B3D594E0086ABB7 /* MyTableViewCell.m in Sources */,
+				DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */,
 				DF7177341B300F2A00D3C3B9 /* OrderListTableViewController.m in Sources */,
 				DF7D1E631B0DC9C600CD05B3 /* ExpenseTableViewCell.m in Sources */,
 				DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */,

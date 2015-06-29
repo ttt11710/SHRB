@@ -169,13 +169,13 @@
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-//    PayViewController *payViewController = segue.destinationViewController;
-//    if ([segue.identifier isEqualToString:@"memberPayidentifier"]) {
-//        payViewController.isMemberPay = YES;
-//    }
-//    else if([segue.identifier isEqualToString:@"othersPayidentifier"])
-//    {
-//        payViewController.isMemberPay = NO;
-//    }
+    PayViewController *payViewController = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"memberPayidentifier"]) {
+        payViewController.isMemberPay = YES;
+    }
+    else if([segue.identifier isEqualToString:@"othersPayidentifier"])
+    {
+        payViewController.isMemberPay = NO;
+    }
 }
 @end

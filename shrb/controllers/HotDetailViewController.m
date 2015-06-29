@@ -94,6 +94,14 @@
                                @"storeName" : @"冰雪皇后",
                                @"storeDetail":@"        自从1940年夏天开第一家冰淇淋店开始，迄今为止，已在25个国家，开了近8000家连锁店。它提供Dairy Queen冰淇淋、Orange Julius鲜果露、Karmelkom爆米花等休闲食品，是世界销量第一的软冰淇淋专家和全球连锁快餐业巨头之一。\n        DQ的冰淇淋都是软体冰淇淋，经过均匀搅拌后，有倒杯不洒的美誉。明星产品“暴风雪”还能做到“倒杯不洒”，这是其它冰淇淋所不具备的，非常神奇。美国权威期刊“Restaurants and Institutions”每年对全球400个连锁餐饮品牌进行排名，DQ在冰淇淋产品市场连续数年全球排名第一！"
                                },
+                             @{
+                               @"storeName" : @"雀巢",
+                               @"storeDetail":@"        优质食品，美好生活是我们时时刻刻、无处不在的承诺——用优质的食品和饮料来提高生活质量，将该理念贯穿生命各个阶段"
+                               },
+                             @{
+                               @"storeName" : @"冰雪皇后",
+                               @"storeDetail":@"        自从1940年夏天开第一家冰淇淋店开始，迄今为止，已在25个国家，开了近8000家连锁店。它提供Dairy Queen冰淇淋、Orange Julius鲜果露、Karmelkom爆米花等休闲食品，是世界销量第一的软冰淇淋专家和全球连锁快餐业巨头之一。\n        DQ的冰淇淋都是软体冰淇淋，经过均匀搅拌后，有倒杯不洒的美誉。明星产品“暴风雪”还能做到“倒杯不洒”，这是其它冰淇淋所不具备的，非常神奇。美国权威期刊“Restaurants and Institutions”每年对全球400个连锁餐饮品牌进行排名，DQ在冰淇淋产品市场连续数年全球排名第一！"
+                               },
                              nil ];
     
     self.dataArray = [[NSMutableArray alloc] init];
@@ -211,6 +219,10 @@
     else if ([typesOfShops isEqualToString:@"order"]) {
         //点餐
         viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
+    }
+    else {
+        //小店 暂时和超市一样
+        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
     }
     
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];

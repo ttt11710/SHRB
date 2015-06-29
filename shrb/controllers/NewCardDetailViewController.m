@@ -10,7 +10,6 @@
 #import "CardImageAndCardNumTableViewCell.h"
 #import "LeftLabelTableViewCell.h"
 #import "Const.h"
-#import "MyTableViewCell.h"
 
 
 @interface SectionModel : NSObject
@@ -75,7 +74,7 @@
         
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
-            _imageView.layer.transform = CATransform3DMakeRotation(-90 * 3.1415926 / 180.0, 0, 0, 1);
+            _imageView.layer.transform = CATransform3DMakeRotation(-180 * 3.1415926 / 180.0, 0, 0, 1);
             
         } completion:^(BOOL finished) {
             
@@ -108,12 +107,12 @@
         
         _titleLabel = [[UILabel alloc] init];
         
-        _titleLabel.textColor = [UIColor blackColor];
+        _titleLabel.textColor = HexRGB(0x4e4e4e);
         
         [self addSubview:_titleLabel];
         
         _bottomLineView = [[UIView alloc] init];
-        _bottomLineView.backgroundColor = [UIColor lightGrayColor];
+        _bottomLineView.backgroundColor = HexRGB(0xF1EFEF);
         
         [self addSubview:_bottomLineView];
         
@@ -127,11 +126,11 @@
 //布局子视图的函数
 - (void)layoutSubviews
 {
-    _imageView.frame = CGRectMake(self.frame.size.width - 50, 15, 15, self.frame.size.height-25);
+    _imageView.frame = CGRectMake(self.frame.size.width - 25, 15, 15, self.frame.size.height-25);
     
-    _titleLabel.frame = CGRectMake(10, 0, self.frame.size.width - 100, self.frame.size.height);
+    _titleLabel.frame = CGRectMake(24, 0, self.frame.size.width - 100, self.frame.size.height);
     
-    _bottomLineView.frame = CGRectMake(0, self.frame.size.height-1, self.frame.size.width, 1);
+    _bottomLineView.frame = CGRectMake(16, self.frame.size.height-1, self.frame.size.width, 1);
 }
 
 @end
@@ -140,6 +139,7 @@
 {
     //model
     NSMutableArray   *_dataMutableArray;
+    NSMutableArray   *_rowDataMutableArray;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -153,7 +153,7 @@
     [super viewDidLoad];
     
     _dataMutableArray = [[NSMutableArray alloc] init];
-    
+    _rowDataMutableArray = [[NSMutableArray alloc] initWithObjects:@"会员规则\n1、会员返回酒店开始复活甲方范德萨。\n2、会员和vuagfhja几号放假的萨芬会发生\n3、与发货速度和衣服上多久发货时间的换房间热舞",@"积分规则\n1、范德萨发发生过个人头问题太热问题 台湾儿童。\n2、恶化过分的话股份的三个热突然去过人格会感受到公司\n3、额外热情人情味热舞肉味奇热网热舞奇热网玩儿热污染额外", nil];
     
     for (int i=0; i<2; i++)
     {
@@ -162,15 +162,26 @@
         
         sectionModel.flag = NO;//展开的
         
-        for (int j=0; j<2; j++)
+        for (int j=0; j<1; j++)
         {
-            [sectionModel.sectionDataMutableArray addObject:[NSString stringWithFormat:@"联系人%d", j+1]];
+            if (i == 0) {
+              [sectionModel.sectionDataMutableArray addObject:@"会员规则\n1、会员返回酒店开始复活甲方范德萨。\n2、会员和vuagfhja几号放假的萨芬会发生\n3、与发货速度和衣服上多久发货时间的换房间热舞"];
+            }
+            else {
+                [sectionModel.sectionDataMutableArray addObject:@"积分规则\n1、范德萨发发生过个人头问题太热问题 台湾儿童。\n2、恶化过分的话股份的三个热突然去过人格会感受到公司\n3、额外热情人情味热舞肉味奇热网热舞奇热网玩儿热污染额外"];
+            }
         }
 
         
         [_dataMutableArray addObject:sectionModel];
         
     }
+    
+    //删除底部多余横线
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+
 
 }
 
@@ -183,12 +194,34 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  indexPath.section == 0? 150:indexPath.section == 3?44:88;
+    if (indexPath.section == 0) {
+        return 150;
+    }
+    else if (indexPath.section == 3) {
+        return 44;
+    }
+    else  {
+//        UILabel *label = [[UILabel alloc] init];
+//        label.font = [UIFont systemFontOfSize:17.0];
+//        [label sizeToFit];
+//        SectionModel *sectionModel = [_dataMutableArray objectAtIndex:[indexPath section]-1];
+//        label.text = [NSString stringWithFormat:@"%@",[sectionModel.sectionDataMutableArray objectAtIndex:[indexPath row]]]  ;
+        
+        UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 16, 0)];
+        UIFont* theFont = [UIFont systemFontOfSize:17.0];
+        label.numberOfLines = 0;
+        [label setFont:theFont];
+        [label setText:_rowDataMutableArray[indexPath.section-1]];
+        
+        
+        [label sizeToFit];// 显示文本需要的长度和宽度
+        return label.frame.size.height+20;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return section == 0 || section == 3? 0:44;
+    return section == 0 || section == 3?0:44;
 }
 
 
@@ -199,10 +232,9 @@
         
         sectionHeaderView.tag = section-1;
         
-        sectionHeaderView.title = [NSString stringWithFormat:@"第%d分组",section-1];
+        sectionHeaderView.title = section == 1?@"会员金额：3000元":@"会员积分：0分";
         
         SectionModel *sectionModel = [_dataMutableArray objectAtIndex:section-1];
-        sectionHeaderView.number = [sectionModel.sectionDataMutableArray count];
         sectionHeaderView.flag=sectionModel.flag;
         UITapGestureRecognizer  *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionClick:)];
         
@@ -216,7 +248,6 @@
 - (void)sectionClick:(UITapGestureRecognizer  *)tapGestureRecognizer
 {
     SectionHeaderView  *sectionHeaderView = (SectionHeaderView *)tapGestureRecognizer.view;
-    NSLog(@"第%d个分段单击了", sectionHeaderView.tag);
     
     SectionModel * sectionModel = [_dataMutableArray objectAtIndex:sectionHeaderView.tag];
     
@@ -263,7 +294,7 @@
         SectionModel *sectionModel = [_dataMutableArray objectAtIndex:section-1];
         if (sectionModel.flag)
         {
-            return [sectionModel.sectionDataMutableArray count];;
+            return [sectionModel.sectionDataMutableArray count];
         }
         else
         {
@@ -296,25 +327,40 @@
         if (cell == nil) {
             cell = [[LeftLabelTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
-        
+        if (indexPath.row == 0) {
+            cell.leftLabel.text = @"交易记录";
+        }
+        else {
+            cell.leftLabel.text = @"试用门店电话及地址";
+        }
+
         return cell;
     }
     else {
-        static  NSString   *cellId = @"cellId";
         
-        
-        MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        if (cell == nil)
-        {
-            cell = [[MyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        static NSString *SimpleTableIdentifier = @"LeftLabelTableViewCellIdentifier";
+        LeftLabelTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        if (cell == nil) {
+            cell = [[LeftLabelTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
         
         SectionModel *sectionModel = [_dataMutableArray objectAtIndex:[indexPath section]-1];
-        
-        cell.textLabel.text = [sectionModel.sectionDataMutableArray objectAtIndex:[indexPath row]];
+        cell.leftLabel.text = [sectionModel.sectionDataMutableArray objectAtIndex:[indexPath row]];
+        cell.backgroundColor = HexRGB(0xF1EFEF);
         
         return cell;
 
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 3 && indexPath.row == 0) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"TradingRecordTableView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [self.navigationController pushViewController:viewController animated:YES];
     }
 }
 

@@ -82,7 +82,15 @@
                                @"storeName" : @"雀巢",
                                },
                              @{
-                               @"status" : @"已是会员",
+                               @"status" : @"点餐是会员",
+                               @"storeName" : @"冰雪皇后",
+                               },
+                             @{
+                               @"status" : @"小店不是会员",
+                               @"storeName" : @"雀巢",
+                               },
+                             @{
+                               @"status" : @"小店是会员",
                                @"storeName" : @"冰雪皇后",
                                },
                              nil ];
@@ -137,7 +145,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //是否会员
-    if (indexPath.row ==0 || indexPath.row == 2) {
+    if (indexPath.row %2 == 0) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMember"];
     }

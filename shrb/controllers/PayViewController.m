@@ -19,6 +19,7 @@
 @interface PayViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet BFPaperButton *makeSurePayBtn;
 
 @property (nonatomic,strong) NSMutableArray * dataArray;
 
@@ -32,6 +33,9 @@
     [super viewDidLoad];
     
     self.dataArray = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺", nil];
+    //删除底部多余横线
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
 }
 
 
@@ -41,8 +45,9 @@
     if (indexPath.row == 0) {
         return 44;
     }
-    else if (indexPath.row == [self.dataArray count]){
-        return 120;
+    else if (indexPath.row == [self.dataArray count]+1){
+        
+            return self.isMemberPay? 140:160;
     }
     else {
         return 80;
@@ -65,19 +70,38 @@
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
         cell.textLabel.text = @"共2件商品";
+        cell.textLabel.textColor = HexRGB(0x4e4e4e);
+        
         return cell;
     }
     
     else if (indexPath.row == [self.dataArray count]+1) {
         
-        static NSString *SimpleTableIdentifier = @"MemberPayTableViewCellIdentifier";
-        MemberPayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        if (cell == nil) {
-            cell = [[MemberPayTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+        if (self.isMemberPay) {
+            
+            self.makeSurePayBtn.hidden = NO;
+            
+            static NSString *SimpleTableIdentifier = @"MemberPayTableViewCellIdentifier";
+            MemberPayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            if (cell == nil) {
+                cell = [[MemberPayTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+            }
+            return cell;
+        }
+        else {
+            
+            self.makeSurePayBtn.hidden = YES;
+            
+            static NSString *SimpleTableIdentifier = @"OtherPayTableViewCellIdentifier";
+            OtherPayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            if (cell == nil) {
+                cell = [[OtherPayTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+            }
+            return cell;
         }
         
-        return cell;
     }
     else
     {

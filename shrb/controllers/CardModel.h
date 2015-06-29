@@ -17,5 +17,7 @@
 @property(nonatomic,copy) NSString * expenseNum;         //消费记录
 @property(nonatomic,copy) NSString * orderNum;           //订单号
 @property(nonatomic,copy) NSString * expensePrice;       //消费金额
+@property(nonatomic,copy) NSString * address;            //消费地址
+@property(nonatomic,copy) NSString * date;               //消费日期
 
 @end

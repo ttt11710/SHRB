@@ -11,6 +11,7 @@
 
 @interface ExpenseTableViewCell ()
 
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *expenseTextView;
 
 @end
@@ -19,7 +20,8 @@
 
 - (void)setModel:(CardModel *)model
 {
-    self.expenseTextView.text = [NSString stringWithFormat:@"消费记录:%@\n\n订单号：%@\n价格：%@元\n",model.expenseNum,model.orderNum,model.expensePrice];
+    self.dateLabel.text = model.date;
+    self.expenseTextView.text = [NSString stringWithFormat:@"金额:%@元\n订单：%@\n地址：%@",model.money,model.orderNum,model.address];
 }
 
 - (void)awakeFromNib {
