@@ -67,7 +67,15 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //跳转到指定页面
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+        UINavigationController *navController = self.navigationController;
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:NO];
+        
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"cardTableViewController"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        
+        [navController pushViewController:viewController animated:YES];
     });
 }
 

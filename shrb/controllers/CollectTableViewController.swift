@@ -65,4 +65,11 @@ class CollectTableViewController: UITableViewController {
         }
         return 110
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("HotDetailView") as! HotDetailViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+        }
 }

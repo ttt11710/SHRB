@@ -113,11 +113,10 @@
 
 #pragma  mark - 使用电子券
 - (IBAction)userCouponsBtnPressed:(UIButton *)sender {
-    NSLog(@"sender.tag = %ld",(long)sender.tag);
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    StoreViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
-    [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [self.navigationController pushViewController:storeViewController animated:YES];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"UserCouponsView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

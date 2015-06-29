@@ -80,6 +80,7 @@
 		DFB0579C1B40F5B10091A1E1 /* PayOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB0579B1B40F5B10091A1E1 /* PayOrderTableViewCell.m */; };
 		DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */; };
 		DFB057A31B4132060091A1E1 /* UserStoreInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */; };
+		DFB057A81B4141D60091A1E1 /* UserCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB057A71B4141D60091A1E1 /* UserCouponsViewController.m */; };
 		DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */; };
 		DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */; };
 		DFB1E8351B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */; };
@@ -244,6 +245,8 @@
 		DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradingRecordTableViewController.m; sourceTree = "<group>"; };
 		DFB057A11B4132060091A1E1 /* UserStoreInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStoreInfoTableViewController.h; sourceTree = "<group>"; };
 		DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStoreInfoTableViewController.m; sourceTree = "<group>"; };
+		DFB057A61B4141D60091A1E1 /* UserCouponsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCouponsViewController.h; sourceTree = "<group>"; };
+		DFB057A71B4141D60091A1E1 /* UserCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCouponsViewController.m; sourceTree = "<group>"; };
 		DFB1E8291B3A3ED800366200 /* UserCenterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterTableViewController.swift; sourceTree = "<group>"; };
 		DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeImageAndLabelsTableViewCell.swift; sourceTree = "<group>"; };
 		DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeImageAndLabelsTableViewCell.xib; sourceTree = "<group>"; };
@@ -569,24 +572,10 @@
 			children = (
 				DF610B6B1B2E6AA7009E047A /* CardAndCouponsViewController.h */,
 				DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */,
-				DF4E4C561B0C448400FE499E /* CardTableViewController.h */,
-				DF4E4C571B0C448400FE499E /* CardTableViewController.m */,
-				DFB763231B3D495F0086ABB7 /* NewCardDetailViewController.h */,
-				DFB763241B3D495F0086ABB7 /* NewCardDetailViewController.m */,
-				DFB0579E1B4128C90091A1E1 /* TradingRecordTableViewController.h */,
-				DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */,
-				DFB057A11B4132060091A1E1 /* UserStoreInfoTableViewController.h */,
-				DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */,
+				DFB057A41B413FF20091A1E1 /* Card */,
+				DFB057A51B41401E0091A1E1 /* Coupons */,
 				DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */,
 				DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */,
-				DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */,
-				DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */,
-				DF4E4C6B1B0C8A4400FE499E /* CouponsTableViewController.h */,
-				DF4E4C6C1B0C8A4400FE499E /* CouponsTableViewController.m */,
-				DFAE95561B253588006A495B /* CouponsDetailTableViewController.h */,
-				DFAE95571B253588006A495B /* CouponsDetailTableViewController.m */,
-				DFAE955C1B25407F006A495B /* GiveCouponsViewController.h */,
-				DFAE955D1B25407F006A495B /* GiveCouponsViewController.m */,
 				DFB0579D1B41283F0091A1E1 /* old */,
 			);
 			name = control;
@@ -715,6 +704,38 @@
 				DF7D1E5F1B0DC08700CD05B3 /* CardDetailViewController.m */,
 			);
 			name = old;
+			sourceTree = "<group>";
+		};
+		DFB057A41B413FF20091A1E1 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				DF4E4C561B0C448400FE499E /* CardTableViewController.h */,
+				DF4E4C571B0C448400FE499E /* CardTableViewController.m */,
+				DFB763231B3D495F0086ABB7 /* NewCardDetailViewController.h */,
+				DFB763241B3D495F0086ABB7 /* NewCardDetailViewController.m */,
+				DFB0579E1B4128C90091A1E1 /* TradingRecordTableViewController.h */,
+				DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */,
+				DFB057A11B4132060091A1E1 /* UserStoreInfoTableViewController.h */,
+				DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */,
+			);
+			name = Card;
+			sourceTree = "<group>";
+		};
+		DFB057A51B41401E0091A1E1 /* Coupons */ = {
+			isa = PBXGroup;
+			children = (
+				DF4E4C6B1B0C8A4400FE499E /* CouponsTableViewController.h */,
+				DF4E4C6C1B0C8A4400FE499E /* CouponsTableViewController.m */,
+				DFAE95561B253588006A495B /* CouponsDetailTableViewController.h */,
+				DFAE95571B253588006A495B /* CouponsDetailTableViewController.m */,
+				DFAE955C1B25407F006A495B /* GiveCouponsViewController.h */,
+				DFAE955D1B25407F006A495B /* GiveCouponsViewController.m */,
+				DFB057A61B4141D60091A1E1 /* UserCouponsViewController.h */,
+				DFB057A71B4141D60091A1E1 /* UserCouponsViewController.m */,
+				DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */,
+				DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */,
+			);
+			name = Coupons;
 			sourceTree = "<group>";
 		};
 		DFC39BBF1B294EB6006B50F4 /* LazyFadeinView */ = {
@@ -892,6 +913,7 @@
 				DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */,
 				DF9119A41B392BA100833AAB /* OrderListViewController.swift in Sources */,
 				DF7A8A591B3CE90600528864 /* ProductTableViewController.m in Sources */,
+				DFB057A81B4141D60091A1E1 /* UserCouponsViewController.m in Sources */,
 				DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */,
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
 				DFAE95651B254FB7006A495B /* UserCenterObjevtiveTableViewController.m in Sources */,

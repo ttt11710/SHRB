@@ -11,5 +11,6 @@
 
 #import "HotFocusModel.h"
 #import "Const.h"
+#import "HotDetailViewController.h"
 
 #endif
