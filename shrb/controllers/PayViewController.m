@@ -15,8 +15,13 @@
 #import "PayOrderTableViewCell.h"
 #import "MemberPayTableViewCell.h"
 #import "OtherPayTableViewCell.h"
+#import "TNCheckBoxData.h"
+#import "TNCheckBoxGroup.h"
 
 @interface PayViewController ()
+{
+    TNCheckBoxGroup *_loveGroup;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet BFPaperButton *makeSurePayBtn;
@@ -87,6 +92,23 @@
             if (cell == nil) {
                 cell = [[MemberPayTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
             }
+            
+            cell.checkLabel.hidden = YES;
+            TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
+            manData.identifier = @"man";
+            manData.labelText = @"100RMB电子券";
+            manData.checked = YES;
+            manData.checkedImage = [UIImage imageNamed:@"checked"];
+            manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
+            
+            _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
+            [_loveGroup create];
+            _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width-5, 4);
+            
+            [cell addSubview:_loveGroup];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loveGroupChanged:) name:GROUP_CHANGED object:_loveGroup];
+            
             return cell;
         }
         else {
@@ -99,6 +121,21 @@
             if (cell == nil) {
                 cell = [[OtherPayTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
             }
+            cell.checkLabel.hidden = YES;
+            TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
+            manData.identifier = @"man";
+            manData.labelText = @"100RMB电子券";
+            manData.checked = YES;
+            manData.checkedImage = [UIImage imageNamed:@"checked"];
+            manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
+            
+            _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
+            [_loveGroup create];
+            _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width-5, 4);
+            
+            [cell addSubview:_loveGroup];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loveGroupChanged:) name:GROUP_CHANGED object:_loveGroup];
             return cell;
         }
         
@@ -166,6 +203,12 @@
     });
 }
 
+- (void)loveGroupChanged:(NSNotification *)notification {
+    
+    NSLog(@"Checked checkboxes %@", _loveGroup.checkedCheckBoxes);
+    NSLog(@"Unchecked checkboxes %@", _loveGroup.uncheckedCheckBoxes);
+    
+}
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     CompletePayViewController *completePayViewController = segue.destinationViewController;

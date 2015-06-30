@@ -15,6 +15,15 @@
 		DF0D9C851B0C423000C0AB3F /* CardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0D9C841B0C423000C0AB3F /* CardTableViewCell.m */; };
 		DF2B0E121B422DDD0051AA1A /* PayQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E111B422DDD0051AA1A /* PayQRViewController.m */; };
 		DF2B0E151B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E141B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m */; };
+		DF2B0E2B1B423DB40051AA1A /* TNCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E181B423DB40051AA1A /* TNCheckBox.m */; };
+		DF2B0E2C1B423DB40051AA1A /* TNCheckBoxData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E1A1B423DB40051AA1A /* TNCheckBoxData.m */; };
+		DF2B0E2D1B423DB40051AA1A /* TNCheckBoxGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E1D1B423DB40051AA1A /* TNCheckBoxGroup.m */; };
+		DF2B0E2E1B423DB40051AA1A /* TNCircularCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E201B423DB40051AA1A /* TNCircularCheckBox.m */; };
+		DF2B0E2F1B423DB40051AA1A /* TNCircularCheckBoxData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E221B423DB40051AA1A /* TNCircularCheckBoxData.m */; };
+		DF2B0E301B423DB40051AA1A /* TNImageCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E241B423DB40051AA1A /* TNImageCheckbox.m */; };
+		DF2B0E311B423DB40051AA1A /* TNImageCheckBoxData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E261B423DB40051AA1A /* TNImageCheckBoxData.m */; };
+		DF2B0E321B423DB40051AA1A /* TNRectangularCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E281B423DB40051AA1A /* TNRectangularCheckBox.m */; };
+		DF2B0E331B423DB40051AA1A /* TNRectangularCheckBoxData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E2A1B423DB40051AA1A /* TNRectangularCheckBoxData.m */; };
 		DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C571B0C448400FE499E /* CardTableViewController.m */; };
 		DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C601B0C59CD00FE499E /* ButtonTableViewCell.m */; };
 		DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C631B0C61CA00FE499E /* PayViewController.m */; };
@@ -126,6 +135,26 @@
 		DF2B0E111B422DDD0051AA1A /* PayQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayQRViewController.m; sourceTree = "<group>"; };
 		DF2B0E131B4232EA0051AA1A /* ReceiveCouponsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveCouponsTableViewCell.h; sourceTree = "<group>"; };
 		DF2B0E141B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiveCouponsTableViewCell.m; sourceTree = "<group>"; };
+		DF2B0E171B423DB40051AA1A /* TNCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNCheckBox.h; sourceTree = "<group>"; };
+		DF2B0E181B423DB40051AA1A /* TNCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNCheckBox.m; sourceTree = "<group>"; };
+		DF2B0E191B423DB40051AA1A /* TNCheckBoxData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNCheckBoxData.h; sourceTree = "<group>"; };
+		DF2B0E1A1B423DB40051AA1A /* TNCheckBoxData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNCheckBoxData.m; sourceTree = "<group>"; };
+		DF2B0E1B1B423DB40051AA1A /* TNCheckBoxDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNCheckBoxDelegate.h; sourceTree = "<group>"; };
+		DF2B0E1C1B423DB40051AA1A /* TNCheckBoxGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNCheckBoxGroup.h; sourceTree = "<group>"; };
+		DF2B0E1D1B423DB40051AA1A /* TNCheckBoxGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNCheckBoxGroup.m; sourceTree = "<group>"; };
+		DF2B0E1E1B423DB40051AA1A /* TNCheckBoxProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNCheckBoxProtocol.h; sourceTree = "<group>"; };
+		DF2B0E1F1B423DB40051AA1A /* TNCircularCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNCircularCheckBox.h; sourceTree = "<group>"; };
+		DF2B0E201B423DB40051AA1A /* TNCircularCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNCircularCheckBox.m; sourceTree = "<group>"; };
+		DF2B0E211B423DB40051AA1A /* TNCircularCheckBoxData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNCircularCheckBoxData.h; sourceTree = "<group>"; };
+		DF2B0E221B423DB40051AA1A /* TNCircularCheckBoxData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNCircularCheckBoxData.m; sourceTree = "<group>"; };
+		DF2B0E231B423DB40051AA1A /* TNImageCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNImageCheckbox.h; sourceTree = "<group>"; };
+		DF2B0E241B423DB40051AA1A /* TNImageCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNImageCheckbox.m; sourceTree = "<group>"; };
+		DF2B0E251B423DB40051AA1A /* TNImageCheckBoxData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNImageCheckBoxData.h; sourceTree = "<group>"; };
+		DF2B0E261B423DB40051AA1A /* TNImageCheckBoxData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNImageCheckBoxData.m; sourceTree = "<group>"; };
+		DF2B0E271B423DB40051AA1A /* TNRectangularCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNRectangularCheckBox.h; sourceTree = "<group>"; };
+		DF2B0E281B423DB40051AA1A /* TNRectangularCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNRectangularCheckBox.m; sourceTree = "<group>"; };
+		DF2B0E291B423DB40051AA1A /* TNRectangularCheckBoxData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNRectangularCheckBoxData.h; sourceTree = "<group>"; };
+		DF2B0E2A1B423DB40051AA1A /* TNRectangularCheckBoxData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNRectangularCheckBoxData.m; sourceTree = "<group>"; };
 		DF4E4C561B0C448400FE499E /* CardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTableViewController.h; sourceTree = "<group>"; };
 		DF4E4C571B0C448400FE499E /* CardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTableViewController.m; sourceTree = "<group>"; };
 		DF4E4C5F1B0C59CD00FE499E /* ButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonTableViewCell.h; path = ../Views/ButtonTableViewCell.h; sourceTree = "<group>"; };
@@ -347,9 +376,37 @@
 			name = card;
 			sourceTree = "<group>";
 		};
+		DF2B0E161B423DB40051AA1A /* TNCheckBoxGroup */ = {
+			isa = PBXGroup;
+			children = (
+				DF2B0E171B423DB40051AA1A /* TNCheckBox.h */,
+				DF2B0E181B423DB40051AA1A /* TNCheckBox.m */,
+				DF2B0E191B423DB40051AA1A /* TNCheckBoxData.h */,
+				DF2B0E1A1B423DB40051AA1A /* TNCheckBoxData.m */,
+				DF2B0E1B1B423DB40051AA1A /* TNCheckBoxDelegate.h */,
+				DF2B0E1C1B423DB40051AA1A /* TNCheckBoxGroup.h */,
+				DF2B0E1D1B423DB40051AA1A /* TNCheckBoxGroup.m */,
+				DF2B0E1E1B423DB40051AA1A /* TNCheckBoxProtocol.h */,
+				DF2B0E1F1B423DB40051AA1A /* TNCircularCheckBox.h */,
+				DF2B0E201B423DB40051AA1A /* TNCircularCheckBox.m */,
+				DF2B0E211B423DB40051AA1A /* TNCircularCheckBoxData.h */,
+				DF2B0E221B423DB40051AA1A /* TNCircularCheckBoxData.m */,
+				DF2B0E231B423DB40051AA1A /* TNImageCheckbox.h */,
+				DF2B0E241B423DB40051AA1A /* TNImageCheckbox.m */,
+				DF2B0E251B423DB40051AA1A /* TNImageCheckBoxData.h */,
+				DF2B0E261B423DB40051AA1A /* TNImageCheckBoxData.m */,
+				DF2B0E271B423DB40051AA1A /* TNRectangularCheckBox.h */,
+				DF2B0E281B423DB40051AA1A /* TNRectangularCheckBox.m */,
+				DF2B0E291B423DB40051AA1A /* TNRectangularCheckBoxData.h */,
+				DF2B0E2A1B423DB40051AA1A /* TNRectangularCheckBoxData.m */,
+			);
+			path = TNCheckBoxGroup;
+			sourceTree = "<group>";
+		};
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DF2B0E161B423DB40051AA1A /* TNCheckBoxGroup */,
 				DFCDF9451B3BD70F00F70955 /* DOPScrollableActionSheet */,
 				DFAE52A71B32743500B03B2F /* QRView */,
 				DFC39BBF1B294EB6006B50F4 /* LazyFadeinView */,
@@ -928,11 +985,14 @@
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
 				DFAE95651B254FB7006A495B /* UserCenterObjevtiveTableViewController.m in Sources */,
 				DFAE95611B25434F006A495B /* CouponsDetailTableViewCell.m in Sources */,
+				DF2B0E2D1B423DB40051AA1A /* TNCheckBoxGroup.m in Sources */,
 				DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */,
 				DFB057A31B4132060091A1E1 /* UserStoreInfoTableViewController.m in Sources */,
 				DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */,
 				DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */,
+				DF2B0E2F1B423DB40051AA1A /* TNCircularCheckBoxData.m in Sources */,
 				DFB057991B40F2BA0091A1E1 /* OtherPayTableViewCell.m in Sources */,
+				DF2B0E331B423DB40051AA1A /* TNRectangularCheckBoxData.m in Sources */,
 				DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */,
 				DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */,
 				DFB7631F1B3D36330086ABB7 /* ProductIsMemberTableViewController.m in Sources */,
@@ -964,6 +1024,7 @@
 				DF9119B01B394A3B00833AAB /* MeImageTableViewCell.swift in Sources */,
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
 				DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */,
+				DF2B0E2E1B423DB40051AA1A /* TNCircularCheckBox.m in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
@@ -972,6 +1033,7 @@
 				DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */,
 				DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */,
 				DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */,
+				DF2B0E311B423DB40051AA1A /* TNImageCheckBoxData.m in Sources */,
 				DFB057961B40F1840091A1E1 /* MemberPayTableViewCell.m in Sources */,
 				DFB763281B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m in Sources */,
 				DFAE52B01B32743500B03B2F /* QRView.m in Sources */,
@@ -981,13 +1043,16 @@
 				DF7D1E601B0DC08700CD05B3 /* CardDetailViewController.m in Sources */,
 				DF0D9C851B0C423000C0AB3F /* CardTableViewCell.m in Sources */,
 				DF7D1E561B0D755500CD05B3 /* TransactMemberViewController.m in Sources */,
+				DF2B0E301B423DB40051AA1A /* TNImageCheckbox.m in Sources */,
 				DFB763301B3D51B10086ABB7 /* LeftLabelTableViewCell.m in Sources */,
+				DF2B0E321B423DB40051AA1A /* TNRectangularCheckBox.m in Sources */,
 				DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */,
 				DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */,
 				DF4E4C6A1B0C87D500FE499E /* BecomeMemberViewController.m in Sources */,
 				DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */,
 				DF7177341B300F2A00D3C3B9 /* OrderListTableViewController.m in Sources */,
 				DF7D1E631B0DC9C600CD05B3 /* ExpenseTableViewCell.m in Sources */,
+				DF2B0E2B1B423DB40051AA1A /* TNCheckBox.m in Sources */,
 				DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */,
 				DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */,
 				DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */,
@@ -997,6 +1062,7 @@
 				DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */,
 				DF9119B41B394E2000833AAB /* RightDetailTableViewCell.swift in Sources */,
 				DFAE52B31B32751900B03B2F /* QRViewController.m in Sources */,
+				DF2B0E2C1B423DB40051AA1A /* TNCheckBoxData.m in Sources */,
 				DFAD61F91B26DF9E002437BD /* HJCAjustNumButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

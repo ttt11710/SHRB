@@ -10,4 +10,5 @@
 
 @interface OtherPayTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *checkLabel;
 @end

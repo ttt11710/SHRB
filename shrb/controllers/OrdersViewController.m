@@ -13,10 +13,13 @@
 #import "UITableView+Wave.h"
 #import "Const.h"
 #import "HJCAjustNumButton3.h"
+#import "TNImageCheckBoxData.h"
+#import "TNCheckBoxGroup.h"
 
 @interface OrdersViewController ()
 {
     NSMutableArray *_data;
+    TNCheckBoxGroup *_loveGroup;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *showOtherPayBtn;
@@ -124,12 +127,30 @@
             if (indexPath.row == [_data count]+1)
             {
                 cell.settlementTextView.hidden = NO;
-                cell.checkImageView.hidden = NO;
-                cell.couponLabel.hidden = NO;
+               // cell.checkImageView.hidden = NO;
+               // cell.couponLabel.hidden = NO;
+                cell.checkImageView.hidden = YES;
+                cell.couponLabel.hidden = YES;
                 cell.ruleTextView.hidden = YES;
                 cell.settlementTextView.text = @"总价：500RMB\n会员价：350RMB";
                 cell.couponLabel.font = [UIFont systemFontOfSize:14];
                 cell.couponLabel.text = @"100RMB电子券";
+                
+                TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
+                manData.identifier = @"man";
+                manData.labelText = @"100RMB电子券";
+                manData.checked = YES;
+                manData.checkedImage = [UIImage imageNamed:@"checked"];
+                manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
+                
+                _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
+                [_loveGroup create];
+                _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width-5, 40);
+                
+                [cell addSubview:_loveGroup];
+                
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loveGroupChanged:) name:GROUP_CHANGED object:_loveGroup];
+                
             }
             else
             {
@@ -178,4 +199,12 @@
         payViewController.isMemberPay = NO;
     }
 }
+
+- (void)loveGroupChanged:(NSNotification *)notification {
+    
+    NSLog(@"Checked checkboxes %@", _loveGroup.checkedCheckBoxes);
+    NSLog(@"Unchecked checkboxes %@", _loveGroup.uncheckedCheckBoxes);
+    
+}
+
 @end

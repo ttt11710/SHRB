@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MemberPayTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *checkLabel;
 
 @end
