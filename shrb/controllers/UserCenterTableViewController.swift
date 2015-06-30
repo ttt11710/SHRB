@@ -99,18 +99,23 @@ class UserCenterTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if indexPath.section == 0 {
-            var basicInfoTableViewController = BasicInfoTableViewController()
-            self.navigationController?.pushViewController(basicInfoTableViewController, animated: true)
+            let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("infoView") as! UIViewController
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
         else if indexPath.section == 1 && indexPath.row == 0 {
             
-            var orderListViewController = OrderListViewController()
-            self.navigationController?.pushViewController(orderListViewController, animated: true)
+            let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("orderlistView") as! UIViewController
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
         else if indexPath.section == 1 && indexPath.row == 1 {
             
-            var collectTableViewController = CollectTableViewController()
-            self.navigationController?.pushViewController(collectTableViewController, animated: true)
+//            var collectTableViewController = CollectTableViewController()
+//            self.navigationController?.pushViewController(collectTableViewController, animated: true)
+            let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("collectView") as! UIViewController
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
         
         else if indexPath.section == 1 && indexPath.row == 2 {

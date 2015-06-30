@@ -57,7 +57,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="506" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eyk-qA-JAi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="506" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eyk-qA-JAi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -89,9 +89,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifp-fP-D5k" customClass="LazyFadeInView">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                     <color key="backgroundColor" red="1" green="0.75845496840000004" blue="0.74243017499999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="42" y="116" width="236" height="353"/>
-                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -835,7 +832,7 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.39109040070000001" blue="0.36406832119999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="kVn-ff-If2"/>
+                                    <constraint firstAttribute="height" constant="44" id="kVn-ff-If2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2155,25 +2152,6 @@
                                     <action selector="CardView:" destination="E7b-XO-FVz" eventType="touchUpInside" id="j4z-6g-AvH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ8-Qm-Un7">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="95" id="Mr2-bK-HNb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Mr2-bK-HNb"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Mr2-bK-HNb"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTT-f2-zuz" customClass="BFPaperButton">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.39109040070000001" blue="0.36406832119999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2204,26 +2182,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="BPx-BI-reO" firstAttribute="leading" secondItem="QBT-sE-TUS" secondAttribute="leadingMargin" constant="16" id="2ZS-dC-jZc"/>
-                            <constraint firstItem="qQ8-Qm-Un7" firstAttribute="leading" secondItem="BPx-BI-reO" secondAttribute="trailing" constant="52" id="86t-7W-JrL"/>
-                            <constraint firstItem="qQ8-Qm-Un7" firstAttribute="top" secondItem="neu-xA-vMe" secondAttribute="bottom" constant="21" id="KC9-aq-qLb"/>
                             <constraint firstItem="Xag-Yg-u1Y" firstAttribute="leading" secondItem="QBT-sE-TUS" secondAttribute="leadingMargin" constant="40" id="OgG-Bf-cp1"/>
                             <constraint firstItem="hTT-f2-zuz" firstAttribute="top" secondItem="Xag-Yg-u1Y" secondAttribute="bottom" constant="32" id="dhY-bg-0gX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xag-Yg-u1Y" secondAttribute="trailing" constant="40" id="gCB-Rb-rt9"/>
                             <constraint firstItem="Xag-Yg-u1Y" firstAttribute="trailing" secondItem="hTT-f2-zuz" secondAttribute="trailing" id="hoE-b9-bGD"/>
                             <constraint firstItem="BPx-BI-reO" firstAttribute="top" secondItem="neu-xA-vMe" secondAttribute="bottom" constant="16" id="jdi-Bb-rG2"/>
                             <constraint firstItem="Xag-Yg-u1Y" firstAttribute="leading" secondItem="hTT-f2-zuz" secondAttribute="leading" id="kOU-QC-X6l"/>
-                            <constraint firstItem="Xag-Yg-u1Y" firstAttribute="top" secondItem="BPx-BI-reO" secondAttribute="bottom" constant="100" id="qB8-x4-Hp0"/>
+                            <constraint firstItem="Xag-Yg-u1Y" firstAttribute="top" secondItem="BPx-BI-reO" secondAttribute="bottom" constant="40" id="qB8-x4-Hp0"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="BPx-BI-reO"/>
                                 <exclude reference="Xag-Yg-u1Y"/>
-                                <exclude reference="qQ8-Qm-Un7"/>
                                 <exclude reference="hTT-f2-zuz"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="86t-7W-JrL"/>
-                                <exclude reference="KC9-aq-qLb"/>
                                 <exclude reference="OgG-Bf-cp1"/>
                                 <exclude reference="gCB-Rb-rt9"/>
                                 <exclude reference="hoE-b9-bGD"/>
@@ -2238,12 +2211,9 @@
                             <mask key="subviews">
                                 <include reference="BPx-BI-reO"/>
                                 <include reference="Xag-Yg-u1Y"/>
-                                <include reference="qQ8-Qm-Un7"/>
                                 <include reference="hTT-f2-zuz"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="86t-7W-JrL"/>
-                                <include reference="KC9-aq-qLb"/>
                                 <include reference="OgG-Bf-cp1"/>
                                 <include reference="gCB-Rb-rt9"/>
                                 <include reference="hoE-b9-bGD"/>
@@ -3569,7 +3539,7 @@
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMC-fX-g9q">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                            <color key="backgroundColor" red="1" green="0.75845496840000004" blue="0.74243017499999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.99215686270000003" green="0.38823529410000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="99" id="o26-C0-edK"/>
                                                                 <constraint firstAttribute="height" constant="30" id="rZD-OZ-pjG"/>
@@ -3625,7 +3595,7 @@
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQO-Tl-Nfe">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                            <color key="backgroundColor" red="1" green="0.75845496840000004" blue="0.74243017499999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.99215686270000003" green="0.38823529410000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="VFq-Nx-RlF"/>
                                                                 <constraint firstAttribute="width" constant="99" id="yxt-7S-tqs"/>

@@ -191,8 +191,8 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     self.tableView.tableFooterView =[[UIView alloc]init];
     
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
-
-
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
 }
 
 #pragma mark - tableView dataSource
@@ -309,6 +309,11 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return section == 0?1:0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -321,7 +326,7 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         }
         //cell 选中方式
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.accessoryType = UITableViewCellAccessoryNone;
+       
         return cell;
     }
     else if (indexPath.section == 3)

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -146,14 +147,14 @@
                             <outlet property="delegate" destination="1LT-Xw-J6Z" id="FkR-Ak-YVg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="基本信息" id="Alm-HQ-r4d" userLabel="基本信息"/>
+                    <navigationItem key="navigationItem" title="基本信息" id="uRe-i5-vdJ" userLabel="基本信息"/>
                     <connections>
                         <outlet property="userImageBtn" destination="jPU-Cn-dYA" id="BLG-en-5kW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLc-5U-vcl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="931.5" y="415"/>
+            <point key="canvasLocation" x="406.5" y="415"/>
         </scene>
         <!--订单-->
         <scene sceneID="cv6-rE-yCu">
@@ -251,7 +252,33 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jR-ff-lnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1557" y="415"/>
+            <point key="canvasLocation" x="1032" y="415"/>
+        </scene>
+        <!--我的收藏-->
+        <scene sceneID="9TD-O7-Xa0">
+            <objects>
+                <tableViewController storyboardIdentifier="collectView" hidesBottomBarWhenPushed="YES" id="Ora-io-zHt" userLabel="我的收藏" customClass="CollectTableViewController" customModule="shrb" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="b5h-hi-Osd">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jEj-K8-uVj">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jEj-K8-uVj" id="Mu0-Fd-y7O">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ora-io-zHt" id="Zxp-Hh-MiT"/>
+                            <outlet property="delegate" destination="Ora-io-zHt" id="SYT-oV-Hkg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="我的收藏" id="ib7-9P-F5f" userLabel="我的收藏"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tca-7I-K2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1663.5" y="415"/>
         </scene>
         <!--设置-->
         <scene sceneID="bQi-mC-wSg">
@@ -460,16 +487,16 @@
                             <outlet property="delegate" destination="xJW-IP-AS7" id="KqD-2l-swc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="基本信息" id="MCU-nS-zAP" userLabel="设置"/>
+                    <navigationItem key="navigationItem" title="设置" id="MCU-nS-zAP" userLabel="设置"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eo7-Lh-bvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236.5" y="415"/>
+            <point key="canvasLocation" x="2310" y="415"/>
         </scene>
-        <!--View Controller-->
+        <!--联系客服-->
         <scene sceneID="SLu-xN-UBg">
             <objects>
-                <viewController storyboardIdentifier="shrbServiceView" id="61I-LA-x9H" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="shrbServiceView" id="61I-LA-x9H" userLabel="联系客服" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CZ7-xL-G1M"/>
                         <viewControllerLayoutGuide type="bottom" id="GCB-Dd-IER"/>
@@ -572,6 +599,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="联系客服" id="96r-Nh-nHW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ocf-26-ioa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -698,7 +726,7 @@
                             <outlet property="delegate" destination="15k-FE-Nqb" id="dfu-FT-D2f"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="基本信息" id="zS1-TC-n31" userLabel="帮助中心"/>
+                    <navigationItem key="navigationItem" title="帮助中心" id="zS1-TC-n31" userLabel="帮助中心"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plD-Pt-QUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

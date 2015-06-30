@@ -37,12 +37,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataArray = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺", nil];
+    self.dataArray = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺",@"冰拿铁",@"卡布奇诺",@"冰拿铁",@"卡布奇诺", nil];
     //删除底部多余横线
     self.tableView.tableFooterView =[[UIView alloc]init];
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
 }
 
+- (void)viewDidLayoutSubviews {
+  
+    if (!self.isMemberPay)
+    {
+       self.tableView.frame = CGRectMake(0, 20+44, screenWidth, screenHeight - 20 - 44);
+    }
+}
 
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

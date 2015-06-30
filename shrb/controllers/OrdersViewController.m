@@ -94,7 +94,7 @@
                 
                 //
                 HJCAjustNumButton3 *numbutton = [[HJCAjustNumButton3 alloc] init];
-                numbutton.frame = CGRectMake(screenWidth-90, 30, 80, 30);
+                numbutton.frame = CGRectMake(screenWidth-85, 15, 75, 25);
                 // 内容更改的block回调
                 numbutton.callBack = ^(NSString *currentNum){
                     NSLog(@"%@", currentNum);
