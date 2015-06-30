@@ -13,7 +13,7 @@
 
 @interface ProductTableViewCell ()
 
-
+@property (weak, nonatomic) IBOutlet UIView *ImageBackView;
 @property (weak, nonatomic) IBOutlet UILabel *saveMoneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet BFPaperButton *signInBtn;
@@ -40,9 +40,13 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
-    self.tradeImageView.layer.cornerRadius = 10;
-    self.tradeImageView.layer.masksToBounds = YES;
+    self.ImageBackView.layer.cornerRadius = 10;
+    self.ImageBackView.layer.masksToBounds = YES;
+    
+    [self addBlurViewView:self.blurView];
 }
+
+
 
 #pragma mark - 蒙版效果
 - (void)addBlurViewView:(UIView *)view
@@ -51,14 +55,21 @@
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
         UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-        blurEffectView.frame = CGRectMake(0, view.frame.size.width-45, view.frame.size.width, 45);
+        blurEffectView.frame = CGRectMake(0, 0, screenWidth-64, 45);
         [view insertSubview:blurEffectView atIndex:0];
     }
     else{
-        UIView *blurEffectView = [[UIView alloc] init];
-        blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-        blurEffectView.frame = CGRectMake(0, view.frame.size.height-45, view.frame.size.width, 45);
+//        UIView *blurEffectView = [[UIView alloc] init];
+//        blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+//        blurEffectView.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
+//        [view insertSubview:blurEffectView atIndex:0];
+        
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        UIVisualEffectView * blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        blurEffectView.frame = view.bounds;
         [view insertSubview:blurEffectView atIndex:0];
+
+        
     }
 }
 

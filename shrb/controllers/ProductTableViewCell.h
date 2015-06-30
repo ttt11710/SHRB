@@ -12,5 +12,6 @@
 @interface ProductTableViewCell : UITableViewCell
 @property (nonatomic,strong) ProductModel * model;
 @property (weak, nonatomic) IBOutlet UIImageView *tradeImageView;
+@property (weak, nonatomic) IBOutlet UIView *blurView;
 
 @end
