@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DeskNumTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UITextField *deskTextField;
 
 @end

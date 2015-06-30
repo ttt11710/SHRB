@@ -55,21 +55,14 @@
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
         UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-        blurEffectView.frame = CGRectMake(0, 0, screenWidth-64, 45);
+        blurEffectView.frame =  view.bounds;
         [view insertSubview:blurEffectView atIndex:0];
     }
     else{
-//        UIView *blurEffectView = [[UIView alloc] init];
-//        blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-//        blurEffectView.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
-//        [view insertSubview:blurEffectView atIndex:0];
-        
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-        UIVisualEffectView * blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        UIView *blurEffectView = [[UIView alloc] init];
+        blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
         blurEffectView.frame = view.bounds;
         [view insertSubview:blurEffectView atIndex:0];
-
-        
     }
 }
 

@@ -8,10 +8,23 @@
 
 #import "DeskNumTableViewCell.h"
 
+@interface DeskNumTableViewCell () <UITextFieldDelegate>
+
+
+@end
+
 @implementation DeskNumTableViewCell
 
+
+#pragma mark - 单击键盘return键回调
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.deskTextField resignFirstResponder];
+    return YES;
+}
+
 - (void)awakeFromNib {
-    // Initialization code
+    self.deskTextField.delegate = self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

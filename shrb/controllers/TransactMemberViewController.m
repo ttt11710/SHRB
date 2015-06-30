@@ -12,8 +12,10 @@
 #import "ProductIsMemberTableViewController.h"
 
 @interface TransactMemberViewController ()
+{
+    CGFloat _keyY;
+}
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
-@property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
@@ -27,31 +29,41 @@
     
 }
 
+
 #pragma mark textfield的deletage事件
 //键盘即将显示的时候回调
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if (IsiPhone4s? YES:NO) {
-        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^
-         {
-             self.view.layer.transform = CATransform3DTranslate(self.view.layer.transform, 0, -180,0);
-         }completion:^(BOOL finished){}];
+    
+    CGFloat d =  screenHeight - (textField.frame.origin.y +  textField.frame.size.height);
+    if (d < 216)
+    {
+        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.view.layer.transform = CATransform3DTranslate(self.view.layer.transform, 0, -(216 - d + 40), 0);
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        
     }
 }
 //键盘即将消失的时候回调
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^
-     {
-         self.view.layer.transform = CATransform3DIdentity;
-     }completion:^(BOOL finished){}];
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.view.layer.transform = CATransform3DIdentity;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 #pragma mark - 单击键盘return键回调
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.phoneNumberTextField resignFirstResponder];
-    [self.moneyTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     return YES;
 }
