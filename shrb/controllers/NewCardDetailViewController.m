@@ -9,8 +9,12 @@
 #import "NewCardDetailViewController.h"
 #import "CardImageAndCardNumTableViewCell.h"
 #import "LeftLabelTableViewCell.h"
+#import "SVProgressShow.h"
 #import "Const.h"
+#import "PayQRViewController.h"
 
+
+static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 
 @interface SectionModel : NSObject
 {
@@ -148,9 +152,15 @@
 
 @implementation NewCardDetailViewController
 
++ (NewCardDetailViewController *)shareNewCardDetailViewController
+{
+    return g_NewCardDetailViewController;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    g_NewCardDetailViewController = self;
     
     _dataMutableArray = [[NSMutableArray alloc] init];
     _rowDataMutableArray = [[NSMutableArray alloc] initWithObjects:@"会员规则\n1、会员返回酒店开始复活甲方范德萨。\n2、会员和vuagfhja几号放假的萨芬会发生\n3、与发货速度和衣服上多久发货时间的换房间热舞",@"积分规则\n1、范德萨发发生过个人头问题太热问题 台湾儿童。\n2、恶化过分的话股份的三个热突然去过人格会感受到公司\n3、额外热情人情味热舞肉味奇热网热舞奇热网玩儿热污染额外", nil];
@@ -364,5 +374,41 @@
         [self.navigationController pushViewController:viewController animated:YES];
     }
 }
+
+#pragma mark - 扫码支付
+- (IBAction)payBtnPressed:(id)sender {
+    
+    if ([self validateCamera]) {
+        
+        [self showQRViewController];
+        
+    } else {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没有摄像头或摄像头不可用" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+}
+
+
+- (BOOL)validateCamera {
+    
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] &&
+    [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+}
+
+- (void)showQRViewController {
+    
+    PayQRViewController *qrVC = [[PayQRViewController alloc] init];
+    [self.navigationController pushViewController:qrVC animated:YES];
+}
+
+#pragma mark - 完成支付
+- (void)completePay
+{
+    [SVProgressShow showSuccessWithStatus:@"支付成功！"];
+}
+//#pragma mark - 充值
+//- (IBAction)voucherCenterBtnPressed:(id)sender {
+//}
 
 @end

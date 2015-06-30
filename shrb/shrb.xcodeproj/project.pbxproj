@@ -13,6 +13,8 @@
 		DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0D9C7C1B0C2A7400C0AB3F /* HotFocusTableViewCell.m */; };
 		DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0D9C811B0C2BAD00C0AB3F /* HotFocusViewController.m */; };
 		DF0D9C851B0C423000C0AB3F /* CardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0D9C841B0C423000C0AB3F /* CardTableViewCell.m */; };
+		DF2B0E121B422DDD0051AA1A /* PayQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E111B422DDD0051AA1A /* PayQRViewController.m */; };
+		DF2B0E151B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E141B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m */; };
 		DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C571B0C448400FE499E /* CardTableViewController.m */; };
 		DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C601B0C59CD00FE499E /* ButtonTableViewCell.m */; };
 		DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C631B0C61CA00FE499E /* PayViewController.m */; };
@@ -120,6 +122,10 @@
 		DF0D9C811B0C2BAD00C0AB3F /* HotFocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotFocusViewController.m; sourceTree = "<group>"; };
 		DF0D9C831B0C423000C0AB3F /* CardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTableViewCell.h; path = ../Views/CardTableViewCell.h; sourceTree = "<group>"; };
 		DF0D9C841B0C423000C0AB3F /* CardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardTableViewCell.m; path = ../Views/CardTableViewCell.m; sourceTree = "<group>"; };
+		DF2B0E101B422DDD0051AA1A /* PayQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayQRViewController.h; sourceTree = "<group>"; };
+		DF2B0E111B422DDD0051AA1A /* PayQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayQRViewController.m; sourceTree = "<group>"; };
+		DF2B0E131B4232EA0051AA1A /* ReceiveCouponsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveCouponsTableViewCell.h; sourceTree = "<group>"; };
+		DF2B0E141B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiveCouponsTableViewCell.m; sourceTree = "<group>"; };
 		DF4E4C561B0C448400FE499E /* CardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTableViewController.h; sourceTree = "<group>"; };
 		DF4E4C571B0C448400FE499E /* CardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTableViewController.m; sourceTree = "<group>"; };
 		DF4E4C5F1B0C59CD00FE499E /* ButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonTableViewCell.h; path = ../Views/ButtonTableViewCell.h; sourceTree = "<group>"; };
@@ -519,8 +525,6 @@
 				DFB057931B40E6260091A1E1 /* order */,
 				DF4E4C681B0C87D500FE499E /* BecomeMemberViewController.h */,
 				DF4E4C691B0C87D500FE499E /* BecomeMemberViewController.m */,
-				DFAE52B11B32751900B03B2F /* QRViewController.h */,
-				DFAE52B21B32751900B03B2F /* QRViewController.m */,
 			);
 			name = control;
 			sourceTree = "<group>";
@@ -601,6 +605,8 @@
 				DF7D1E621B0DC9C600CD05B3 /* ExpenseTableViewCell.m */,
 				DFAE95591B253848006A495B /* CouponsTableViewCell.h */,
 				DFAE955A1B253848006A495B /* CouponsTableViewCell.m */,
+				DF2B0E131B4232EA0051AA1A /* ReceiveCouponsTableViewCell.h */,
+				DF2B0E141B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m */,
 				DFAE955F1B25434F006A495B /* CouponsDetailTableViewCell.h */,
 				DFAE95601B25434F006A495B /* CouponsDetailTableViewCell.m */,
 				DFB763261B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.h */,
@@ -687,6 +693,8 @@
 			children = (
 				DF77A5B91B0C155D00934A7C /* StoreViewController.h */,
 				DF77A5BA1B0C155D00934A7C /* StoreViewController.m */,
+				DFAE52B11B32751900B03B2F /* QRViewController.h */,
+				DFAE52B21B32751900B03B2F /* QRViewController.m */,
 				DF77A5BC1B0C1C6500934A7C /* OrdersViewController.h */,
 				DF77A5BD1B0C1C6500934A7C /* OrdersViewController.m */,
 				DF4E4C621B0C61CA00FE499E /* PayViewController.h */,
@@ -717,6 +725,8 @@
 				DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */,
 				DFB057A11B4132060091A1E1 /* UserStoreInfoTableViewController.h */,
 				DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */,
+				DF2B0E101B422DDD0051AA1A /* PayQRViewController.h */,
+				DF2B0E111B422DDD0051AA1A /* PayQRViewController.m */,
 			);
 			name = Card;
 			sourceTree = "<group>";
@@ -945,6 +955,7 @@
 				DF958F641B33C11B005B2155 /* CardModel.m in Sources */,
 				DFB0578E1B40DF630091A1E1 /* DeskNumTableViewCell.m in Sources */,
 				DF71773C1B30167900D3C3B9 /* SettingTableViewController.m in Sources */,
+				DF2B0E151B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m in Sources */,
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,
 				DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */,
 				DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */,
@@ -980,6 +991,7 @@
 				DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */,
 				DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */,
 				DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */,
+				DF2B0E121B422DDD0051AA1A /* PayQRViewController.m in Sources */,
 				DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */,
 				DFB1E8371B3A58ED00366200 /* CollectTableViewController.swift in Sources */,
 				DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */,
@@ -1115,7 +1127,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				INFOPLIST_FILE = shrb/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/PayBay/Desktop/paybay/shrb/shrb/shrb/shrb-Bridging-Header.h";
@@ -1134,7 +1146,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
 				INFOPLIST_FILE = shrb/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/PayBay/Desktop/paybay/shrb/shrb/shrb/shrb-Bridging-Header.h";

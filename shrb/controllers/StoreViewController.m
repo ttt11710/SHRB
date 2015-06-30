@@ -169,12 +169,18 @@ static StoreViewController *g_StoreViewController = nil;
 #pragma mark - 更新tableView
 - (void)UpdateTableView
 {
-    [self.dataArray addObject:@{
-                                @"tradeImage" : @"冰拿铁",
-                                @"tradeName" : @"冰拿铁",
-                                @"memberPrice":@"23",
-                                @"originalPrice":@"55",
-                                }];
+    NSArray *array = [[NSArray alloc] initWithObjects:@{
+                                                       @"tradeImage" : @"冰拿铁",
+                                                       @"tradeName" : @"冰拿铁",
+                                                       @"memberPrice":@"23",
+                                                       @"originalPrice":@"55",
+                                                       }, nil];
+    
+    for (NSDictionary * dict in array) {
+        TradeModel * model = [[TradeModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [self.dataArray addObject:model];
+    }
     [SVProgressShow showWithStatus:@"更新订单中..."];
     double delayInSeconds = 1.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);

@@ -10,4 +10,7 @@
 
 @interface NewCardDetailViewController : UIViewController
 
++ (NewCardDetailViewController *)shareNewCardDetailViewController;
+- (void)completePay;
+
 @end
