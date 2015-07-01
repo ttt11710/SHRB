@@ -10,15 +10,23 @@
 #import "Const.h"
 #import "BecomeMemberView.h"
 
+@interface ButtonTableViewCell () {
+    
+    BecomeMemberView *_becomeMemberView;
+    UIButton *_sureBtn;
+    CGRect _bounds;
+    BOOL _flag ;
+}
+
+@end
 @implementation ButtonTableViewCell
 
+
 - (void)awakeFromNib {
+        
     self.buttonModel.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:120.0/255.0 blue:161.0/255.0 alpha:1];
     [self.buttonModel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [self.buttonModel setTitleFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.f]];
-//    self.buttonModel.usesSmartColor = NO;
     [self.buttonModel addTarget:self action:@selector(buttonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -34,38 +42,79 @@
         return ;
     }
     
-    BecomeMemberView *view = [[BecomeMemberView alloc] initWithFrame:CGRectMake(screenWidth, 10, screenWidth/2, 180)];
-    [self addSubview:view];
+    if (_becomeMemberView == nil) {
+        _becomeMemberView = [[BecomeMemberView alloc] initWithFrame:CGRectMake(screenWidth, 10, screenWidth/2, 180)];
+        [self addSubview:_becomeMemberView];
+        
+        _sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _sureBtn.frame = CGRectMake(screenWidth/2-45,  self.buttonModel.frame.origin.y, 90, 44);
+        _sureBtn.hidden = YES;
+        [_sureBtn setTitle:@"注册" forState:UIControlStateNormal];
+        [_sureBtn setTintColor:[UIColor clearColor]];
+        [_sureBtn setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:120.0/255.0 blue:161.0/255.0 alpha:1]];
+        [_sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_sureBtn addTarget:self action:@selector(sureBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_sureBtn];
+    }
+    
+    if (_bounds.size.width == 0) {
+        _bounds = self.buttonModel.bounds;
+    }
     
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-
-        CGRect bounds = self.buttonModel.bounds;
+        
+        CGRect bounds = _bounds;
         bounds.size.width = bounds.size.width/4;
         self.buttonModel.bounds = bounds;
         
     } completion:^(BOOL finished) {
         
-        [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
-            self.buttonModel.layer.transform = CATransform3DTranslate(self.buttonModel.layer.transform, -(screenWidth/2-self.buttonModel.frame.size.width)-20, 0, 0);
+            self.buttonModel.hidden = YES;
+            _sureBtn.hidden = NO;
+            _sureBtn.layer.transform = CATransform3DMakeTranslation(-(screenWidth/2-_sureBtn.frame.size.width)-20, 0, 0);
             
-            view.layer.transform = CATransform3DTranslate(view.layer.transform, -screenWidth/2-30, 0, 0);
+            _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
+            
             
         } completion:^(BOOL finished) {
             
+            
         }];
-
+        
     }];
     
-//    CGRect bounds = self.buttonModel.bounds;
-//    bounds.size.width = bounds.size.width/2;
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDuration:1.0];
-//    //放大缩小了的bounds放回到原来button中
-//    self.buttonModel.bounds = bounds;
-//    //提交动画
-//    [UIView commitAnimations];
-//
 }
+
+
+- (void)sureBtnPressed
+{
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        _sureBtn.layer.transform = CATransform3DIdentity;
+        
+        _becomeMemberView.layer.transform = CATransform3DIdentity;
+        
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            _sureBtn.hidden = YES;
+            self.buttonModel.hidden = NO;
+        
+            self.buttonModel.bounds = _bounds;
+            
+        } completion:^(BOOL finished) {
+            
+            [[BecomeMemberView shareBecomeMemberView] textFieldResignFirstResponder];
+            
+        }];
+        
+    }];
+ 
+}
+
 
 @end

@@ -10,4 +10,8 @@
 
 @interface BecomeMemberView : UIView
 
+
++ (BecomeMemberView *)shareBecomeMemberView;
+- (void)textFieldResignFirstResponder;
+
 @end

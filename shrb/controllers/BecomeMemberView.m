@@ -7,14 +7,35 @@
 //
 
 #import "BecomeMemberView.h"
+#import "OrdersViewController.h"
 #import "Const.h"
+#import "SVProgressShow.h"
 
+static BecomeMemberView *g_BecomeMemberView = nil;
+
+@interface BecomeMemberView () <UITextFieldDelegate>
+{
+    
+    UITextField *_telephoneTextField;
+    UITextField *_passwordTextField;
+}
+
+@end
 @implementation BecomeMemberView
+
+
++ (BecomeMemberView *)shareBecomeMemberView
+{
+    return g_BecomeMemberView;
+}
+
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        g_BecomeMemberView = self;
         
         [self initView];
     }
@@ -40,9 +61,10 @@
     [telephoneLabel setFont:[UIFont systemFontOfSize:16]];
     [self addSubview:telephoneLabel];
     
-    UITextField *telephoneTextField = [[UITextField alloc] initWithFrame:CGRectMake(telephoneLabel.frame.size.width+4, telephoneLabel.frame.origin.y, 150, 30)];
-    telephoneTextField.borderStyle = UITextBorderStyleBezel;
-    [self addSubview:telephoneTextField];
+    _telephoneTextField = [[UITextField alloc] initWithFrame:CGRectMake(telephoneLabel.frame.size.width+4, telephoneLabel.frame.origin.y, 150, 30)];
+    _telephoneTextField.borderStyle = UITextBorderStyleBezel;
+    _telephoneTextField.delegate = self;
+    [self addSubview:_telephoneTextField];
     
     UILabel *passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, telephoneLabel.frame.origin.y + telephoneLabel.frame.size.height+4, 50, 30)];
     [passwordLabel setText:@"密码"];
@@ -50,10 +72,11 @@
     [passwordLabel setFont:[UIFont systemFontOfSize:16]];
     [self addSubview:passwordLabel];
     
-    UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(passwordLabel.frame.size.width+4, passwordLabel.frame.origin.y, 150, 30)];
-    passwordTextField.borderStyle = UITextBorderStyleBezel;
-    passwordTextField.secureTextEntry = YES;
-    [self addSubview:passwordTextField];
+    _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(passwordLabel.frame.size.width+4, passwordLabel.frame.origin.y, 150, 30)];
+    _passwordTextField.borderStyle = UITextBorderStyleBezel;
+    _passwordTextField.secureTextEntry = YES;
+    _passwordTextField.delegate = self;
+    [self addSubview:_passwordTextField];
     
     UIButton *sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sureBtn.frame = CGRectMake(0, passwordLabel.frame.origin.y + passwordLabel.frame.size.height+8, 200, 44);
@@ -61,7 +84,51 @@
     [sureBtn setTintColor:[UIColor clearColor]];
     [sureBtn setBackgroundColor:shrbPink];
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [sureBtn addTarget:self action:@selector(becomeMemberBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:sureBtn];
     
 }
+
+#pragma mark textfield的deletage事件
+//键盘即将显示的时候回调
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+    self.superview.superview.layer.transform = CATransform3DTranslate(self.superview.superview.layer.transform, 0, -200, 0);
+}
+//键盘即将消失的时候回调
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.superview.superview.layer.transform = CATransform3DIdentity;
+}
+
+#pragma mark - 单击键盘return键回调
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [_telephoneTextField resignFirstResponder];
+    [_passwordTextField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldResignFirstResponder
+{
+    [_telephoneTextField resignFirstResponder];
+    [_passwordTextField resignFirstResponder];
+}
+
+- (void)becomeMemberBtnPressed {
+    
+    //跳转到指定页面
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
+    
+    [SVProgressShow showWithStatus:@"会员卡生成中..."];
+    double delayInSeconds = 1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [SVProgressShow dismiss];
+        [[OrdersViewController shareOrdersViewController] UpdateTableView];
+    });
+}
+
 @end

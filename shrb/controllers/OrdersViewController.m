@@ -15,6 +15,10 @@
 #import "HJCAjustNumButton3.h"
 #import "TNImageCheckBoxData.h"
 #import "TNCheckBoxGroup.h"
+#import "BecomeMemberView.h"
+
+
+static OrdersViewController *g_OrdersViewController = nil;
 
 @interface OrdersViewController ()
 {
@@ -30,8 +34,20 @@
 
 @synthesize isMember;
 
++ (OrdersViewController *)shareOrdersViewController
+{
+    return g_OrdersViewController;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    g_OrdersViewController = self;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+    self.view.userInteractionEnabled = YES;
+    [self.view addGestureRecognizer:tap];
+    
     
     [self initData];
     [self initTableView];
@@ -57,6 +73,12 @@
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
+- (void)UpdateTableView
+{
+    isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
+    [self.tableView reloadData];
+}
+
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -67,17 +89,6 @@
         return 80;
     }
     else {
-//        UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 32, 0)];
-//        UIFont* theFont = [UIFont systemFontOfSize:17.0];
-//        label.numberOfLines = 0;
-//        [label setFont:theFont];
-//        [label setText:@"会员好处：成为会员可以享受会员折扣，付款可直接用会员卡，并有更多优惠哦！\n\n会员规则:会员卡充值后不可以取现，可以注销，同时扣除手续费5%。"];
-//        CGFloat height = label.frame.size.height;
-//        
-//        if (label.frame.size.height < 100) {
-//            return 100;
-//        }
-//            return label.frame.size.height+20;
         
         return 120;
     }
@@ -199,9 +210,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  //  [[BecomeMemberView shareBecomeMemberView] textFieldResignFirstResponder];
+    
     if (indexPath.row == [_data count]) {
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+-(void)tap {
+    
+    [[BecomeMemberView shareBecomeMemberView] textFieldResignFirstResponder];
 }
 
 #pragma  mark - storyboard传值
@@ -217,11 +235,11 @@
     }
 }
 
+#pragma mark - 电子券打钩
 - (void)loveGroupChanged:(NSNotification *)notification {
     
     NSLog(@"Checked checkboxes %@", _loveGroup.checkedCheckBoxes);
     NSLog(@"Unchecked checkboxes %@", _loveGroup.uncheckedCheckBoxes);
     
 }
-
 @end

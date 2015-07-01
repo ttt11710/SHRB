@@ -13,4 +13,5 @@
 @interface ButtonTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonModel;
+
 @end

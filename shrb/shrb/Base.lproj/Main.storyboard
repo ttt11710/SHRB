@@ -797,32 +797,6 @@
                                     <outlet property="delegate" destination="5FE-8L-Ry0" id="pS0-iD-xev"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hS-YE-MQe" customClass="BFPaperButton">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.39109040070000001" blue="0.36406832119999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="kVn-ff-If2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="确定">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="kVn-ff-If2"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="kVn-ff-If2"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="gotoBecomeMemberView:" destination="5FE-8L-Ry0" eventType="touchUpInside" id="hSd-PV-10C"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="78473726578432" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DYJ-la-0kQ">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <constraints>
@@ -868,6 +842,32 @@
                                     <outlet property="delegate" destination="5FE-8L-Ry0" id="1yG-xi-2G3"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hS-YE-MQe" customClass="BFPaperButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.39109040070000001" blue="0.36406832119999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="kVn-ff-If2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="确定">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="kVn-ff-If2"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="kVn-ff-If2"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="gotoBecomeMemberView:" destination="5FE-8L-Ry0" eventType="touchUpInside" id="hSd-PV-10C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -900,9 +900,9 @@
                                 <exclude reference="f78-ED-NgI"/>
                                 <exclude reference="9tT-Gs-MvR"/>
                                 <exclude reference="yxq-gZ-fNV"/>
-                                <exclude reference="1hS-YE-MQe"/>
                                 <exclude reference="DYJ-la-0kQ"/>
                                 <exclude reference="P41-Pn-qCs"/>
+                                <exclude reference="1hS-YE-MQe"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="WCc-Tm-wQh"/>
@@ -935,9 +935,9 @@
                                 <include reference="f78-ED-NgI"/>
                                 <include reference="9tT-Gs-MvR"/>
                                 <include reference="yxq-gZ-fNV"/>
-                                <include reference="1hS-YE-MQe"/>
                                 <include reference="DYJ-la-0kQ"/>
                                 <include reference="P41-Pn-qCs"/>
+                                <include reference="1hS-YE-MQe"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="WCc-Tm-wQh"/>
