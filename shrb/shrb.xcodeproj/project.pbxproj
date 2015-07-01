@@ -104,6 +104,7 @@
 		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
 		DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */; };
 		DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */; };
+		DFDC89671B43929C0051D763 /* BecomeMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDC89661B43929C0051D763 /* BecomeMemberView.m */; };
 		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
 		DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */; };
 /* End PBXBuildFile section */
@@ -303,6 +304,8 @@
 		DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPScrollableActionSheet.m; sourceTree = "<group>"; };
 		DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreViewController.h; sourceTree = "<group>"; };
 		DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreViewController.m; sourceTree = "<group>"; };
+		DFDC89651B43929C0051D763 /* BecomeMemberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BecomeMemberView.h; sourceTree = "<group>"; };
+		DFDC89661B43929C0051D763 /* BecomeMemberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BecomeMemberView.m; sourceTree = "<group>"; };
 		DFF330E01B2EC57500007582 /* SVProgressShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressShow.h; sourceTree = "<group>"; };
 		DFF330E11B2EC57500007582 /* SVProgressShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressShow.m; sourceTree = "<group>"; };
 		DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoucherCenterViewController.h; sourceTree = "<group>"; };
@@ -614,6 +617,8 @@
 				DF77A5C01B0C1C9E00934A7C /* OrdersTableViewCell.m */,
 				DF4E4C5F1B0C59CD00FE499E /* ButtonTableViewCell.h */,
 				DF4E4C601B0C59CD00FE499E /* ButtonTableViewCell.m */,
+				DFDC89651B43929C0051D763 /* BecomeMemberView.h */,
+				DFDC89661B43929C0051D763 /* BecomeMemberView.m */,
 				DF7D1E571B0D792400CD05B3 /* ProductDescriptionView.h */,
 				DF7D1E581B0D792400CD05B3 /* ProductDescriptionView.m */,
 				DF7A8A5A1B3CE97700528864 /* ProductTableViewCell.h */,
@@ -1020,6 +1025,7 @@
 				DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */,
 				DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */,
 				DF72C0E21B0B403600CE6DC6 /* HotDetailViewController.m in Sources */,
+				DFDC89671B43929C0051D763 /* BecomeMemberView.m in Sources */,
 				DFAE52AF1B32743500B03B2F /* QRMenu.m in Sources */,
 				DF9119B01B394A3B00833AAB /* MeImageTableViewCell.swift in Sources */,
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,

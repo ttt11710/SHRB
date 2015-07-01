@@ -11,7 +11,7 @@ import UIKit
 class UserCenterTableViewController: UITableViewController {
 
     
-    let data = ["我的订单","我的收藏","设置","帮助中心","联系客服","关于通宝"]
+    let data = ["我的订单","我的收藏","设置","帮助中心","通宝客服","关于通宝"]
     override func viewDidLoad() {
         super.viewDidLoad()
 

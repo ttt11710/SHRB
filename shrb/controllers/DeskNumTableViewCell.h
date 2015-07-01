@@ -12,7 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *deskTextField;
 
 + (DeskNumTableViewCell *)shareDeskNumTableViewCell;
-- (void)deskTextFieldResignFirstResponder:(NSSet *)touches;
 - (void)deskTextFieldResignFirstResponder;
 
 @end

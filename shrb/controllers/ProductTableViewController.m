@@ -172,23 +172,4 @@
     transactMemberViewController.currentIndex = currentIndex;
 }
 
-
-#pragma mark - 蒙版效果
-- (void)addBlurViewView:(UIView *)view
-{
-    if (IsIOS8) {
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-        blurEffectView.frame = CGRectMake(0, view.frame.size.height-45, view.frame.size.width, 45);
-        [view insertSubview:blurEffectView atIndex:0];
-    }
-    else{
-        UIView *blurEffectView = [[UIView alloc] init];
-        blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-        blurEffectView.frame = CGRectMake(0, view.frame.size.height-45, screenWidth - 32, 45);
-        [view insertSubview:blurEffectView atIndex:0];
-    }
-}
-
 @end

@@ -416,11 +416,6 @@ static StoreViewController *g_StoreViewController = nil;
     [self.navigationController pushViewController:qrVC animated:YES];
 }
 
-#pragma mark - 单击屏幕键盘弹回
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    [[DeskNumTableViewCell shareDeskNumTableViewCell] deskTextFieldResignFirstResponder:touches];
-}
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     

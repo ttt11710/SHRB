@@ -11,4 +11,7 @@
 @interface MemberPayTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *checkLabel;
 
++ (MemberPayTableViewCell *)shareMemberPayTableViewCell;
+- (void)passwordTextFieldResignFirstResponder;
+
 @end

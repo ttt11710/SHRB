@@ -61,9 +61,26 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == [_data count]+3) {
-        return 46;
+        return 200;
     }
-    return indexPath.row <= [_data count]+1?80:100;
+    else if (indexPath.row <= [_data count]+1) {
+        return 80;
+    }
+    else {
+//        UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 32, 0)];
+//        UIFont* theFont = [UIFont systemFontOfSize:17.0];
+//        label.numberOfLines = 0;
+//        [label setFont:theFont];
+//        [label setText:@"会员好处：成为会员可以享受会员折扣，付款可直接用会员卡，并有更多优惠哦！\n\n会员规则:会员卡充值后不可以取现，可以注销，同时扣除手续费5%。"];
+//        CGFloat height = label.frame.size.height;
+//        
+//        if (label.frame.size.height < 100) {
+//            return 100;
+//        }
+//            return label.frame.size.height+20;
+        
+        return 120;
+    }
 }
 
 #pragma mark - tableView delegate
@@ -159,7 +176,7 @@
                 cell.couponLabel.hidden = YES;
                 cell.ruleTextView.hidden = NO;
                 cell.ruleTextView.textAlignment = NSTextAlignmentLeft;
-                cell.ruleTextView.text = @"会员好处：范德萨发几款的结果看见啊\n\n会员规则:芭芭拉回复将恢复快热好可恶";
+                cell.ruleTextView.text = @"会员好处：成为会员可以享受会员折扣，付款可直接用会员卡，并有更多优惠哦！\n\n会员规则:会员卡充值后不可以取现，可以注销，同时扣除手续费5%。";
             }
             
         }

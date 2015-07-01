@@ -31,13 +31,6 @@ static DeskNumTableViewCell *g_DeskNumTableViewCell = nil;
     return YES;
 }
 
-- (void)deskTextFieldResignFirstResponder:(NSSet *)touches
-{
-    if ([[touches anyObject]view]!= self.deskTextField ) {
-        [self.deskTextField resignFirstResponder];
-    }
-}
-
 - (void)deskTextFieldResignFirstResponder
 {
     [self.deskTextField resignFirstResponder];

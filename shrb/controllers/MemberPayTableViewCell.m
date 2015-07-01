@@ -17,12 +17,19 @@
 
 @implementation MemberPayTableViewCell
 
+static MemberPayTableViewCell *g_MemberPayTableViewCell = nil;
 
+
++ (MemberPayTableViewCell *)shareMemberPayTableViewCell
+{
+    return g_MemberPayTableViewCell;
+}
 
 - (void)awakeFromNib {
     // Initialization code
     
     self.passwordTextField.delegate = self;
+    g_MemberPayTableViewCell = self;
 }
 
 //键盘即将显示的时候回调
@@ -56,6 +63,10 @@
     return YES;
 }
 
+- (void)passwordTextFieldResignFirstResponder
+{
+    [self.passwordTextField resignFirstResponder];
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

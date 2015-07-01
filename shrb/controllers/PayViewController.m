@@ -163,6 +163,11 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[MemberPayTableViewCell shareMemberPayTableViewCell] passwordTextFieldResignFirstResponder];
+}
+
 #pragma mark - 支付宝支付Btn
 - (IBAction)alipayBtnPressed:(id)sender {
     
