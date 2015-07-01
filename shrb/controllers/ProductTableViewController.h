@@ -12,4 +12,7 @@
 
 @property(nonatomic,assign)NSInteger currentIndex;//当前
 
++ (ProductTableViewController *)shareProductTableViewController;
+- (void)becomeMember;
+
 @end

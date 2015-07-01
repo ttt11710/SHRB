@@ -10,13 +10,20 @@
 #import "ProductModel.h"
 #import <BFPaperButton.h>
 #import "Const.h"
+#import "SuperBecomeMemberView.h"
 
-@interface ProductTableViewCell ()
+@interface ProductTableViewCell () {
+    
+    SuperBecomeMemberView *_becomeMemberView;
+    UIButton *_smallbuttonModel;
+    CGRect _bounds;
+}
+
 
 @property (weak, nonatomic) IBOutlet UIView *ImageBackView;
 @property (weak, nonatomic) IBOutlet UILabel *saveMoneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet BFPaperButton *signInBtn;
+@property (weak, nonatomic) IBOutlet UIButton *signInBtn;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *integralLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
@@ -43,10 +50,88 @@
     self.ImageBackView.layer.cornerRadius = 10;
     self.ImageBackView.layer.masksToBounds = YES;
     
+    [self.signInBtn addTarget:self action:@selector(buttonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self addBlurViewView:self.blurView];
 }
 
 
+- (void)buttonWasPressed:(id)sender
+{
+    
+    if (_becomeMemberView == nil) {
+        _becomeMemberView = [[SuperBecomeMemberView alloc] initWithFrame:CGRectMake(screenWidth, self.signInBtn.frame.origin.y-63, screenWidth/2, 180)];
+        [self addSubview:_becomeMemberView];
+        
+        _smallbuttonModel = [UIButton buttonWithType:UIButtonTypeCustom];
+        _smallbuttonModel.frame = CGRectMake(screenWidth/2-45,  self.signInBtn.frame.origin.y, 90, 44);
+        _smallbuttonModel.hidden = YES;
+        [_smallbuttonModel setTitle:@"注册" forState:UIControlStateNormal];
+        [_smallbuttonModel setTintColor:[UIColor clearColor]];
+        [_smallbuttonModel setBackgroundColor:shrbPink];
+        [_smallbuttonModel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_smallbuttonModel addTarget:self action:@selector(sureBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_smallbuttonModel];
+    }
+    
+    if (_bounds.size.width == 0) {
+        _bounds = self.signInBtn.bounds;
+    }
+    
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        CGRect bounds = _bounds;
+        bounds.size.width = bounds.size.width/4;
+        self.signInBtn.bounds = bounds;
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.signInBtn.hidden = YES;
+            _smallbuttonModel.hidden = NO;
+            _smallbuttonModel.layer.transform = CATransform3DMakeTranslation(-(screenWidth/2-_smallbuttonModel.frame.size.width)-20, 0, 0);
+            
+            _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
+            
+            
+        } completion:^(BOOL finished) {
+            
+            
+        }];
+        
+    }];
+    
+}
+
+
+- (void)sureBtnPressed
+{
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        _smallbuttonModel.layer.transform = CATransform3DIdentity;
+        
+        _becomeMemberView.layer.transform = CATransform3DIdentity;
+        
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            _smallbuttonModel.hidden = YES;
+            self.signInBtn.hidden = NO;
+            
+            self.signInBtn.bounds = _bounds;
+            
+        } completion:^(BOOL finished) {
+            
+            [[SuperBecomeMemberView shareSuperBecomeMemberView] textFieldResignFirstResponder];
+            
+        }];
+        
+    }];
+    
+}
 
 #pragma mark - 蒙版效果
 - (void)addBlurViewView:(UIView *)view

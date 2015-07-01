@@ -2774,7 +2774,7 @@
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZ4-7l-6Nu" customClass="BFPaperButton">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZ4-7l-6Nu">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                             <color key="backgroundColor" red="1" green="0.39109040070000001" blue="0.36406832119999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -2798,9 +2798,6 @@
                                                     <exclude reference="ite-fg-Mi5"/>
                                                 </mask>
                                             </variation>
-                                            <connections>
-                                                <segue destination="5FE-8L-Ry0" kind="push" id="hc5-gP-CsN"/>
-                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="1000" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oR-KC-UrI" userLabel="详情">
                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -2817,7 +2814,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="5oR-KC-UrI" secondAttribute="trailing" constant="8" id="g7b-cK-qdh"/>
                                         <constraint firstItem="5oR-KC-UrI" firstAttribute="top" secondItem="RuS-Pj-8DM" secondAttribute="bottom" constant="16" id="g8t-ag-Ayz"/>
                                         <constraint firstItem="RuS-Pj-8DM" firstAttribute="top" secondItem="eDv-Nu-bC2" secondAttribute="topMargin" constant="5" id="kge-yN-kkJ"/>
-                                        <constraint firstItem="yZ4-7l-6Nu" firstAttribute="top" secondItem="5oR-KC-UrI" secondAttribute="bottom" constant="15" id="l3l-0Z-8Uk"/>
+                                        <constraint firstItem="yZ4-7l-6Nu" firstAttribute="top" secondItem="5oR-KC-UrI" secondAttribute="bottom" constant="70" id="l3l-0Z-8Uk"/>
                                         <constraint firstItem="5oR-KC-UrI" firstAttribute="leading" secondItem="eDv-Nu-bC2" secondAttribute="leadingMargin" constant="8" id="vHi-Hz-Zt0"/>
                                     </constraints>
                                     <variation key="default">

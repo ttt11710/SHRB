@@ -11,7 +11,10 @@
 #import "ProductModel.h"
 #import "Const.h"
 #import "TransactMemberViewController.h"
+#import "ProductIsMemberTableViewController.h"
 
+
+static ProductTableViewController *g_ProductTableViewController = nil;
 @interface ProductTableViewController ()
 
 @property (nonatomic,strong) NSMutableArray * dataArray;
@@ -23,8 +26,16 @@
 
 @synthesize currentIndex;
 
+
++ (ProductTableViewController *)shareProductTableViewController
+{
+    return g_ProductTableViewController;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    g_ProductTableViewController = self;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -155,15 +166,28 @@
     label.text = self.array[currentIndex][@"tradeDescription"];
     
     [label sizeToFit];
-    if (label.frame.size.height + screenWidth-16+80+20 < screenHeight-20-44) {
+    if (label.frame.size.height + screenWidth-16+180+20 < screenHeight-20-44) {
         self.tableView.scrollEnabled = NO;
         return screenHeight ;
     }
     
     self.tableView.scrollEnabled = YES;
-    return label.frame.size.height + screenWidth-16+80+30;
+    return label.frame.size.height + screenWidth-16+180+30;
 }
 
+- (void)becomeMember
+{
+    UINavigationController *navController = self.navigationController;
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
+    viewController.currentIndex = currentIndex;
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    
+    [navController pushViewController:viewController animated:NO];
+    
+}
 
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

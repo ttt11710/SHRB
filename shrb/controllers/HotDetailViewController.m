@@ -247,7 +247,7 @@
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     [SVProgressShow showWithStatus:@"进入店铺..."];
     
-    double delayInSeconds = 1.5;
+    double delayInSeconds = 1;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [SVProgressShow dismiss];
