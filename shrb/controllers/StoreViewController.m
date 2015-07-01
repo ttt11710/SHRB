@@ -298,6 +298,9 @@ static StoreViewController *g_StoreViewController = nil;
     if (indexPath.row == 0) {
         return;
     }
+    else {
+        [[DeskNumTableViewCell shareDeskNumTableViewCell] deskTextFieldResignFirstResponder];
+    }
     ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     productDescriptionView.currentIndex = indexPath.row-1;
     [self.view addSubview:productDescriptionView];
@@ -413,6 +416,11 @@ static StoreViewController *g_StoreViewController = nil;
     [self.navigationController pushViewController:qrVC animated:YES];
 }
 
+#pragma mark - 单击屏幕键盘弹回
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [[DeskNumTableViewCell shareDeskNumTableViewCell] deskTextFieldResignFirstResponder:touches];
+}
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     

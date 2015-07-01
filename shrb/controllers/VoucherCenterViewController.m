@@ -8,8 +8,10 @@
 
 #import "VoucherCenterViewController.h"
 #import "SVProgressShow.h"
+#import "Const.h"
 
 @interface VoucherCenterViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 
 @end
 
@@ -20,6 +22,49 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma mark textfield的deletage事件
+//键盘即将显示的时候回调
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+    CGFloat d =  screenHeight - (textField.frame.origin.y +  textField.frame.size.height);
+    if (d < 216)
+    {
+        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.view.layer.transform = CATransform3DTranslate(self.view.layer.transform, 0, -(216 - d + 40), 0);
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+    }
+}
+//键盘即将消失的时候回调
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.view.layer.transform = CATransform3DIdentity;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+#pragma mark - 单击键盘return键回调
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.moneyTextField resignFirstResponder];
+    return YES;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    if ([[touches anyObject]view]!= self.moneyTextField) {
+        [self.moneyTextField resignFirstResponder];
+    }
+}
 #pragma mark - 支付宝充值
 - (IBAction)alipayBtnPressde:(id)sender {
     

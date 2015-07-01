@@ -123,7 +123,7 @@
     
     [_mainView insertSubview:_descriptionView atIndex:0];
     
-    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 12, 100, 21)];
+    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 12, 200, 21)];
     _nameLabel.text = [_data objectAtIndex:_currentIndex][@"storeName"];
     _nameLabel.textColor = [UIColor blackColor];
     [_descriptionView addSubview:_nameLabel];
@@ -138,14 +138,14 @@
     moneyLabel.textColor = [UIColor orangeColor];
     [_descriptionImageView addSubview:moneyLabel];
     
-    _descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(12, _descriptionImageView.frame.origin.y+_descriptionImageView.frame.size.height+4, 4*screenWidth/5-12*2, 150)];
+    _descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(12, _descriptionImageView.frame.origin.y+_descriptionImageView.frame.size.height+4, 4*screenWidth/5-12*2, 3*screenHeight/4-4*screenWidth/5-45)];
     _descriptionTextView.text = [_data objectAtIndex:_currentIndex][@"detail"];
     _descriptionTextView.backgroundColor = [UIColor whiteColor];
     _descriptionTextView.textColor = [UIColor grayColor];
     _descriptionTextView.editable = NO;
     [_descriptionView addSubview:_descriptionTextView];
     
-    UIButton *closeButton=[[UIButton alloc]initWithFrame:CGRectMake(4*screenWidth/5-39, 12, 27, 27)];
+    UIButton *closeButton=[[UIButton alloc]initWithFrame:CGRectMake(4*screenWidth/5-35, 8, 27, 27)];
     [closeButton setImage:[UIImage imageNamed:@"dislike_pressed"] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(closeButtonEven) forControlEvents:UIControlEventTouchUpInside];
     [_descriptionView addSubview:closeButton];
@@ -253,10 +253,19 @@ static NSInteger oldIndex;
 #pragma mark - 蒙版效果
 - (void)addBlurViewView:(UIView *)view
 {
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-     UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    blurEffectView.frame = CGRectMake(0, view.frame.size.height-30, view.frame.size.width, 30);
-    [view insertSubview:blurEffectView atIndex:0];
+    if (IsIOS8) {
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+        blurEffectView.frame =  CGRectMake(0, view.frame.size.height-30, view.frame.size.width, 30);
+        [view insertSubview:blurEffectView atIndex:0];
+    }
+    else{
+        UIView *blurEffectView = [[UIView alloc] init];
+        blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+        blurEffectView.frame = CGRectMake(0, view.frame.size.height-30, view.frame.size.width, 30);
+        [view insertSubview:blurEffectView atIndex:0];
+    }
 }
 
 @end

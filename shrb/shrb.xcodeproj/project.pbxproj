@@ -633,10 +633,10 @@
 			children = (
 				DF610B6B1B2E6AA7009E047A /* CardAndCouponsViewController.h */,
 				DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */,
-				DFB057A41B413FF20091A1E1 /* Card */,
-				DFB057A51B41401E0091A1E1 /* Coupons */,
 				DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */,
 				DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */,
+				DFB057A41B413FF20091A1E1 /* Card */,
+				DFB057A51B41401E0091A1E1 /* Coupons */,
 				DFB0579D1B41283F0091A1E1 /* old */,
 			);
 			name = control;

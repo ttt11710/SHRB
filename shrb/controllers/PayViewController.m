@@ -81,7 +81,7 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
-        cell.textLabel.text = @"共2件商品";
+        cell.textLabel.text = [NSString stringWithFormat:@"共%d件商品",[self.dataArray count]];
         cell.textLabel.textColor = HexRGB(0x4e4e4e);
         
         return cell;

@@ -29,7 +29,6 @@
     
 }
 
-
 #pragma mark textfield的deletage事件
 //键盘即将显示的时候回调
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -66,6 +65,14 @@
     [self.phoneNumberTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     return YES;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    if ([[touches anyObject]view]!= self.phoneNumberTextField &&[[touches anyObject]view]!=self.passwordTextField) {
+        [self.phoneNumberTextField resignFirstResponder];
+        [self.passwordTextField resignFirstResponder];
+    }
 }
 
 #pragma mark - 成为会员

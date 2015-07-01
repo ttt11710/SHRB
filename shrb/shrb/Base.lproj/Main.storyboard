@@ -1450,9 +1450,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="NxG-hY-7AR" firstAttribute="leading" secondItem="o4U-02-IKV" secondAttribute="leadingMargin" constant="15" id="7lp-hc-SZP"/>
-                                                <constraint firstItem="2nA-XI-RUi" firstAttribute="leading" secondItem="NxG-hY-7AR" secondAttribute="trailing" constant="-1" id="NRG-bN-of6"/>
+                                                <constraint firstItem="2nA-XI-RUi" firstAttribute="leading" secondItem="NxG-hY-7AR" secondAttribute="trailing" constant="4" id="NRG-bN-of6"/>
                                                 <constraint firstAttribute="centerY" secondItem="NxG-hY-7AR" secondAttribute="centerY" constant="0.5" id="jU7-xL-XUM"/>
-                                                <constraint firstAttribute="centerY" secondItem="2nA-XI-RUi" secondAttribute="centerY" constant="3" id="zIe-8d-X9G"/>
+                                                <constraint firstAttribute="centerY" secondItem="2nA-XI-RUi" secondAttribute="centerY" id="zIe-8d-X9G"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
@@ -1617,7 +1617,8 @@
                                                             <exclude reference="1tp-MJ-VfL"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="8" width="304" height="44"/>
                                                         <mask key="constraints">
                                                             <include reference="1tp-MJ-VfL"/>
                                                         </mask>
@@ -3311,7 +3312,8 @@
                                                             <exclude reference="RRg-CB-VNJ"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="139" y="15" width="150" height="25"/>
                                                         <mask key="constraints">
                                                             <include reference="RRg-CB-VNJ"/>
                                                         </mask>
@@ -3425,7 +3427,8 @@
                                                             <exclude reference="o4O-1z-qO9"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="17" y="40" width="288" height="80"/>
                                                         <mask key="subviews">
                                                             <include reference="804-9F-GWC"/>
                                                             <include reference="VxJ-ue-SpD"/>

@@ -16,6 +16,14 @@
 @implementation DeskNumTableViewCell
 
 
+static DeskNumTableViewCell *g_DeskNumTableViewCell = nil;
+
+
++ (DeskNumTableViewCell *)shareDeskNumTableViewCell
+{
+    return g_DeskNumTableViewCell;
+}
+
 #pragma mark - 单击键盘return键回调
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -23,10 +31,28 @@
     return YES;
 }
 
-- (void)awakeFromNib {
-    self.deskTextField.delegate = self;
+- (void)deskTextFieldResignFirstResponder:(NSSet *)touches
+{
+    if ([[touches anyObject]view]!= self.deskTextField ) {
+        [self.deskTextField resignFirstResponder];
+    }
 }
 
+- (void)deskTextFieldResignFirstResponder
+{
+    [self.deskTextField resignFirstResponder];
+}
+
+- (void)awakeFromNib {
+    self.deskTextField.delegate = self;
+    g_DeskNumTableViewCell = self;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    if ([[touches anyObject]view]!= self.deskTextField ) {
+        [self.deskTextField resignFirstResponder];    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
