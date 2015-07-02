@@ -171,21 +171,17 @@
         [[NSUserDefaults standardUserDefaults] setObject:@"store" forKey:@"typesOfShops"];
     }
 
+    HotFocusTableViewCell* cell = (HotFocusTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     HotDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotDetailView"];
     viewController.storeNum = indexPath.row;
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
-    double delayInSeconds = 0.5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        
-        HotFocusTableViewCell* cell = (HotFocusTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-        cell.selected = NO;
-        
-        [self.navigationController pushViewController:viewController animated:YES];
-        
-    });
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+    
 }
 
 @end

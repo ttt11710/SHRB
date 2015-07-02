@@ -12,6 +12,8 @@
 
 @implementation SVProgressShow
 
+static float progress = 0.0f;
+
 + (void)setBackgroundColorAndForegroundColor
 {
     [SVProgressHUD setFont:[UIFont boldSystemFontOfSize:18.0]];

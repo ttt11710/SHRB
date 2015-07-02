@@ -223,6 +223,15 @@
 #pragma mark - 进入商店
 - (IBAction)gotoStoreView:(id)sender {
     
+    [SVProgressShow showWithStatus:@"进入店铺..."];
+    
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething) object:nil];
+    [self performSelector:@selector(todoSomething) withObject:nil afterDelay:0.4f];
+}
+
+#pragma mark - 延时显示状态然后跳转
+- (void)todoSomething
+{
     NSString * typesOfShops = [[NSUserDefaults standardUserDefaults] stringForKey:@"typesOfShops"];
     
     //supermarket
@@ -243,14 +252,7 @@
     }
     
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [SVProgressShow showWithStatus:@"进入店铺..."];
-    
-    double delayInSeconds = 1;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [SVProgressShow dismiss];
-        [self.navigationController pushViewController:viewController animated:YES];
-    });
+    [self.navigationController pushViewController:viewController animated:YES];
+    [SVProgressShow dismiss];
 }
-
 @end

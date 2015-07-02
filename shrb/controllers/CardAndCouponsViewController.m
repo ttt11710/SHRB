@@ -49,12 +49,10 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"cardTableViewController"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    double delayInSeconds = 0.3;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.navigationController pushViewController:viewController animated:YES];
-    });
-
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+    
 }
 
 #pragma mark - 进入电子券View
@@ -63,13 +61,8 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"couponsTableViewId"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    double delayInSeconds = 0.3;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        
-        [self.navigationController pushViewController:viewController animated:YES];
-    });
-
+    [self.navigationController pushViewController:viewController animated:YES];
+    
 }
 
 @end
