@@ -15,7 +15,6 @@ static SuperBecomeMemberView *g_SuperBecomeMemberView = nil;
 
 @interface SuperBecomeMemberView () <UITextFieldDelegate>
 {
-    
     UITextField *_telephoneTextField;
     UITextField *_passwordTextField;
 }
@@ -88,66 +87,6 @@ static SuperBecomeMemberView *g_SuperBecomeMemberView = nil;
     [self addSubview:sureBtn];
     
 }
-
-#pragma mark textfield的deletage事件
-//键盘即将显示的时候回调
-//- (void)textFieldDidBeginEditing:(UITextField *)textField
-//{
-//    UITableView *tableView;
-//    if(IsIOS7)
-//    {
-//        tableView = (UITableView *)self.superview.superview.superview.superview;
-//    }
-//    else
-//    {
-//        tableView=(UITableView *)self.superview.superview.superview;
-//    }
-//    
-//    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//        
-//        tableView.superview.layer.transform = CATransform3DIdentity;
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        
-//    }];
-//
-////    if (textField == _passwordTextField) {
-////        self.superview.superview.layer.transform = CATransform3DTranslate(self.superview.superview.layer.transform, 0, -200, 0);
-////    }
-//}
-////键盘即将消失的时候回调
-//- (void)textFieldDidEndEditing:(UITextField *)textField
-//{
-//    UITableView *tableView;
-//    if(IsIOS7)
-//    {
-//        tableView = (UITableView *)self.superview.superview.superview.superview;
-//    }
-//    else
-//    {
-//        tableView=(UITableView *)self.superview.superview.superview;
-//    }
-//    
-//    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//        
-//        tableView.superview.layer.transform = CATransform3DIdentity;
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        
-//    }];
-//
-////    self.superview.superview.layer.transform = CATransform3DIdentity;
-//}
-//
-//#pragma mark - 单击键盘return键回调
-//- (BOOL)textFieldShouldReturn:(UITextField *)textField
-//{
-//    [_telephoneTextField resignFirstResponder];
-//    [_passwordTextField resignFirstResponder];
-//    return YES;
-//}
 
 - (void)textFieldResignFirstResponder
 {

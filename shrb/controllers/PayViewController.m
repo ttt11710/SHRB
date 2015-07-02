@@ -184,7 +184,7 @@
     });
 }
 
-#pragma mark - 网银支付Btn
+#pragma mark - 银联支付Btn
 - (IBAction)InternetbankBtnPressed:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompletePayView"];

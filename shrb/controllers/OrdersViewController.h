@@ -13,6 +13,7 @@
 @property (nonatomic,assign) BOOL isMember;
 
 + (OrdersViewController *)shareOrdersViewController;
+- (void)addTap;
 - (void)UpdateTableView;
 
 @end

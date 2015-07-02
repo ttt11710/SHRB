@@ -24,6 +24,7 @@ static OrdersViewController *g_OrdersViewController = nil;
 {
     NSMutableArray *_data;
     TNCheckBoxGroup *_loveGroup;
+    UITapGestureRecognizer *_tap;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *showOtherPayBtn;
@@ -43,11 +44,6 @@ static OrdersViewController *g_OrdersViewController = nil;
     [super viewDidLoad];
     
     g_OrdersViewController = self;
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
-    self.view.userInteractionEnabled = YES;
-    [self.view addGestureRecognizer:tap];
-    
     
     [self initData];
     [self initTableView];
@@ -71,6 +67,21 @@ static OrdersViewController *g_OrdersViewController = nil;
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
     
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+}
+
+- (void)addTap
+{
+    if (_tap == nil) {
+        _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+        self.view.userInteractionEnabled = YES;
+        [self.view addGestureRecognizer:_tap];
+    }
+}
+
+- (void)removeTap
+{
+    [self.view removeGestureRecognizer:_tap];
+    _tap = nil;
 }
 
 - (void)UpdateTableView
@@ -235,6 +246,8 @@ static OrdersViewController *g_OrdersViewController = nil;
 -(void)tap {
     
     [[BecomeMemberView shareBecomeMemberView] textFieldResignFirstResponder];
+    
+    [self removeTap];
 }
 
 #pragma  mark - storyboard传值

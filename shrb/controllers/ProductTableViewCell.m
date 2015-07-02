@@ -60,7 +60,7 @@
 {
     
     if (_becomeMemberView == nil) {
-        _becomeMemberView = [[SuperBecomeMemberView1 alloc] initWithFrame:CGRectMake(screenWidth, self.signInBtn.frame.origin.y-63, screenWidth/2, 180)];
+        _becomeMemberView = [[SuperBecomeMemberView1 alloc] initWithFrame:CGRectMake(screenWidth, self.signInBtn.frame.origin.y, screenWidth/2, 180)];
         [self addSubview:_becomeMemberView];
         
         _smallbuttonModel = [UIButton buttonWithType:UIButtonTypeCustom];

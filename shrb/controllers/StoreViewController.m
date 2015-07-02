@@ -194,7 +194,15 @@ static StoreViewController *g_StoreViewController = nil;
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return (indexPath.row < [self.dataArray count]+1 && indexPath.row != 0)?80:44;
+    
+    if (indexPath.row == 0) {
+        return 44;
+    }
+    else if (indexPath.row == [self.dataArray count]) {
+        return 60;
+    }
+    else
+        return 80;
 }
 
 #pragma mark - tableView delegate

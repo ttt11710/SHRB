@@ -93,7 +93,7 @@ static BecomeMemberView *g_BecomeMemberView = nil;
 //键盘即将显示的时候回调
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    
+    [[OrdersViewController shareOrdersViewController]addTap];
     UITableView *tableView;
     if(IsIOS7)
     {

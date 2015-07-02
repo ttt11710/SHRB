@@ -41,6 +41,8 @@
         return ;
     }
     
+    
+    
     if (_becomeMemberView == nil) {
         _becomeMemberView = [[BecomeMemberView alloc] initWithFrame:CGRectMake(screenWidth, 10, screenWidth/2, 180)];
         [self addSubview:_becomeMemberView];
@@ -114,6 +116,7 @@
     }];
  
 }
+
 
 
 @end

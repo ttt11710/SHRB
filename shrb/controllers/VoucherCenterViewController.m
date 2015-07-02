@@ -82,7 +82,7 @@
 
 }
 
-#pragma mark - 网银充值
+#pragma mark - 银联充值
 - (IBAction)InternetbankBtnPressed:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
