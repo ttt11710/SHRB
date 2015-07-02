@@ -35,9 +35,19 @@ static MemberPayTableViewCell *g_MemberPayTableViewCell = nil;
 //键盘即将显示的时候回调
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    UITableView *tableView;
+    if(IsIOS7)
+    {
+        tableView = (UITableView *)self.superview.superview;
+    }
+    else
+    {
+        tableView=(UITableView *)self.superview;
+    }
+
     [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
-        self.superview.layer.transform = CATransform3DTranslate(self.superview.layer.transform, 0, -216, 0);
+        tableView.superview.layer.transform = CATransform3DTranslate(self.superview.layer.transform, 0, -216, 0);
         
     } completion:^(BOOL finished) {
         
@@ -47,13 +57,24 @@ static MemberPayTableViewCell *g_MemberPayTableViewCell = nil;
 //键盘即将消失的时候回调
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    UITableView *tableView;
+    if(IsIOS7)
+    {
+        tableView = (UITableView *)self.superview.superview;
+    }
+    else
+    {
+        tableView=(UITableView *)self.superview;
+    }
+    
+    [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
-        self.superview.layer.transform = CATransform3DIdentity;
+        tableView.superview.layer.transform = CATransform3DIdentity;
         
     } completion:^(BOOL finished) {
         
     }];
+
 }
 
 #pragma mark - 单击键盘return键回调

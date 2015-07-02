@@ -94,12 +94,48 @@ static BecomeMemberView *g_BecomeMemberView = nil;
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     
-    self.superview.superview.layer.transform = CATransform3DTranslate(self.superview.superview.layer.transform, 0, -200, 0);
+    UITableView *tableView;
+    if(IsIOS7)
+    {
+        tableView = (UITableView *)self.superview.superview.superview;
+    }
+    else
+    {
+        tableView=(UITableView *)self.superview.superview;
+    }
+    
+    
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        tableView.superview.layer.transform = CATransform3DTranslate(tableView.superview.layer.transform, 0, -200, 0);
+        
+    } completion:^(BOOL finished) {
+        
+        
+    }];
 }
 //键盘即将消失的时候回调
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    self.superview.superview.layer.transform = CATransform3DIdentity;
+    UITableView *tableView;
+    if(IsIOS7)
+    {
+        tableView = (UITableView *)self.superview.superview.superview;
+    }
+    else
+    {
+        tableView=(UITableView *)self.superview.superview;
+    }
+    
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        tableView.superview.layer.transform = CATransform3DIdentity;
+        
+    } completion:^(BOOL finished) {
+        
+        
+    }];
+    
 }
 
 #pragma mark - 单击键盘return键回调

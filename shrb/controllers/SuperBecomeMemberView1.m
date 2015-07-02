@@ -1,19 +1,19 @@
 //
-//  BecomeMemberView.m
+//  SuperBecomeMemberView1.m
 //  shrb
 //
-//  Created by PayBay on 15/7/1.
+//  Created by PayBay on 15/7/2.
 //  Copyright (c) 2015年 PayBay. All rights reserved.
 //
 
-#import "SuperBecomeMemberView.h"
+#import "SuperBecomeMemberView1.h"
 #import "Const.h"
 #import "SVProgressShow.h"
 #import "ProductTableViewController.h"
 
-static SuperBecomeMemberView *g_SuperBecomeMemberView = nil;
+static SuperBecomeMemberView1 *g_SuperBecomeMemberView = nil;
 
-@interface SuperBecomeMemberView () <UITextFieldDelegate>
+@interface SuperBecomeMemberView1 () <UITextFieldDelegate>
 {
     
     UITextField *_telephoneTextField;
@@ -21,10 +21,10 @@ static SuperBecomeMemberView *g_SuperBecomeMemberView = nil;
 }
 
 @end
-@implementation SuperBecomeMemberView
+@implementation SuperBecomeMemberView1
 
 
-+ (SuperBecomeMemberView *)shareSuperBecomeMemberView
++ (SuperBecomeMemberView1 *)shareSuperBecomeMemberView
 {
     return g_SuperBecomeMemberView;
 }
@@ -102,52 +102,52 @@ static SuperBecomeMemberView *g_SuperBecomeMemberView = nil;
 //    {
 //        tableView=(UITableView *)self.superview.superview.superview;
 //    }
-//    
+//
 //    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//        
+//
 //        tableView.superview.layer.transform = CATransform3DIdentity;
-//        
+//
 //    } completion:^(BOOL finished) {
-//        
-//        
+//
+//
 //    }];
 //
 ////    if (textField == _passwordTextField) {
 ////        self.superview.superview.layer.transform = CATransform3DTranslate(self.superview.superview.layer.transform, 0, -200, 0);
 ////    }
 //}
-////键盘即将消失的时候回调
-//- (void)textFieldDidEndEditing:(UITextField *)textField
-//{
-//    UITableView *tableView;
-//    if(IsIOS7)
-//    {
-//        tableView = (UITableView *)self.superview.superview.superview.superview;
-//    }
-//    else
-//    {
-//        tableView=(UITableView *)self.superview.superview.superview;
-//    }
-//    
-//    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//        
-//        tableView.superview.layer.transform = CATransform3DIdentity;
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        
-//    }];
-//
-////    self.superview.superview.layer.transform = CATransform3DIdentity;
-//}
-//
-//#pragma mark - 单击键盘return键回调
-//- (BOOL)textFieldShouldReturn:(UITextField *)textField
-//{
-//    [_telephoneTextField resignFirstResponder];
-//    [_passwordTextField resignFirstResponder];
-//    return YES;
-//}
+//键盘即将消失的时候回调
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    UITableView *tableView;
+    if(IsIOS7)
+    {
+        tableView = (UITableView *)self.superview.superview.superview.superview;
+    }
+    else
+    {
+        tableView=(UITableView *)self.superview.superview.superview;
+    }
+
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+
+        tableView.superview.layer.transform = CATransform3DIdentity;
+
+    } completion:^(BOOL finished) {
+
+
+    }];
+
+//    self.superview.superview.layer.transform = CATransform3DIdentity;
+}
+
+#pragma mark - 单击键盘return键回调
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [_telephoneTextField resignFirstResponder];
+    [_passwordTextField resignFirstResponder];
+    return YES;
+}
 
 - (void)textFieldResignFirstResponder
 {
@@ -160,7 +160,7 @@ static SuperBecomeMemberView *g_SuperBecomeMemberView = nil;
     //跳转到指定页面
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
-
+    
     [SVProgressShow showWithStatus:@"会员卡生成中..."];
     double delayInSeconds = 1;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -171,3 +171,4 @@ static SuperBecomeMemberView *g_SuperBecomeMemberView = nil;
 }
 
 @end
+

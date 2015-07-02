@@ -10,11 +10,11 @@
 #import "ProductModel.h"
 #import <BFPaperButton.h>
 #import "Const.h"
-#import "SuperBecomeMemberView.h"
+#import "SuperBecomeMemberView1.h"
 
 @interface ProductTableViewCell () {
     
-    SuperBecomeMemberView *_becomeMemberView;
+    SuperBecomeMemberView1 *_becomeMemberView;
     UIButton *_smallbuttonModel;
     CGRect _bounds;
 }
@@ -60,7 +60,7 @@
 {
     
     if (_becomeMemberView == nil) {
-        _becomeMemberView = [[SuperBecomeMemberView alloc] initWithFrame:CGRectMake(screenWidth, self.signInBtn.frame.origin.y-63, screenWidth/2, 180)];
+        _becomeMemberView = [[SuperBecomeMemberView1 alloc] initWithFrame:CGRectMake(screenWidth, self.signInBtn.frame.origin.y-63, screenWidth/2, 180)];
         [self addSubview:_becomeMemberView];
         
         _smallbuttonModel = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -90,7 +90,7 @@
             
             self.signInBtn.hidden = YES;
             _smallbuttonModel.hidden = NO;
-            _smallbuttonModel.layer.transform = CATransform3DMakeTranslation(-(screenWidth/2-_smallbuttonModel.frame.size.width)-20, 0, 0);
+            _smallbuttonModel.layer.transform = CATransform3DMakeTranslation(-(screenWidth/2-_smallbuttonModel.frame.size.width)-30, 0, 0);
             
             _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
             
@@ -125,7 +125,7 @@
             
         } completion:^(BOOL finished) {
             
-            [[SuperBecomeMemberView shareSuperBecomeMemberView] textFieldResignFirstResponder];
+            [[SuperBecomeMemberView1 shareSuperBecomeMemberView] textFieldResignFirstResponder];
             
         }];
         

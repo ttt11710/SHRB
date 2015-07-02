@@ -12,6 +12,7 @@
 #import "Const.h"
 #import "TransactMemberViewController.h"
 #import "ProductIsMemberTableViewController.h"
+#import "SuperBecomeMemberView1.h"
 
 
 static ProductTableViewController *g_ProductTableViewController = nil;
@@ -36,6 +37,10 @@ static ProductTableViewController *g_ProductTableViewController = nil;
     [super viewDidLoad];
     
     g_ProductTableViewController = self;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+    self.view.userInteractionEnabled = YES;
+    [self.view addGestureRecognizer:tap];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -126,6 +131,12 @@ static ProductTableViewController *g_ProductTableViewController = nil;
         [model setValuesForKeysWithDictionary:dict];
         [self.dataArray addObject:model];
     }
+}
+
+
+-(void)tap {
+    
+    [[SuperBecomeMemberView1 shareSuperBecomeMemberView] textFieldResignFirstResponder];
 }
 
 #pragma mark - Table view data source

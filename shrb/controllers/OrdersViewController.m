@@ -76,7 +76,17 @@ static OrdersViewController *g_OrdersViewController = nil;
 - (void)UpdateTableView
 {
     isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
-    [self.tableView reloadData];
+    
+    UINavigationController *navController = self.navigationController;
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    OrdersViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+    viewController.isMember = isMember;
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    
+    [navController pushViewController:viewController animated:NO];
+
 }
 
 #pragma mark - tableView dataSource
@@ -115,6 +125,7 @@ static OrdersViewController *g_OrdersViewController = nil;
         }
         
         if (indexPath.row <= [_data count]) {
+            
             if (indexPath.row < [_data count]) {
                 cell.tradeNameLabel.text = [_data objectAtIndex:indexPath.row];
                 cell.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
@@ -149,6 +160,7 @@ static OrdersViewController *g_OrdersViewController = nil;
         }
         else
         {
+            
             cell.couponsImageView.hidden = YES;
             cell.tradeNameLabel.hidden = YES;
             cell.priceLabel.hidden = YES;
@@ -164,6 +176,8 @@ static OrdersViewController *g_OrdersViewController = nil;
                 cell.couponLabel.font = [UIFont systemFontOfSize:14];
                 cell.couponLabel.text = @"100RMB电子券";
                 
+                
+                
                 TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
                 manData.identifier = @"man";
                 manData.labelText = @"100RMB电子券";
@@ -171,11 +185,14 @@ static OrdersViewController *g_OrdersViewController = nil;
                 manData.checkedImage = [UIImage imageNamed:@"checked"];
                 manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
                 
-                _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
-                [_loveGroup create];
-                _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width-5, 40);
+                if (_loveGroup == nil) {
+                    _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
+                    [_loveGroup create];
+                    _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width-5, 40);
+                    
+                    [cell addSubview:_loveGroup];
+                }
                 
-                [cell addSubview:_loveGroup];
                 
                 [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loveGroupChanged:) name:GROUP_CHANGED object:_loveGroup];
                 
@@ -210,8 +227,6 @@ static OrdersViewController *g_OrdersViewController = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  //  [[BecomeMemberView shareBecomeMemberView] textFieldResignFirstResponder];
-    
     if (indexPath.row == [_data count]) {
         [self.navigationController popViewControllerAnimated:YES];
     }
