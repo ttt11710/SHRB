@@ -7,6 +7,7 @@
 //
 
 #import "BasicInfoTableViewController.h"
+#import "SVProgressShow.h"
 #import "Const.h"
 
 @interface BasicInfoTableViewController ()
@@ -50,7 +51,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 3;
+    return 4;
 }
 
 #pragma mark - 改头像
@@ -68,10 +69,11 @@
 
 #pragma mark - 改变状态栏颜色
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
-#pragma mark - imagePickerController delegate 发送图片
+#pragma mark - imagePickerController delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image =  [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -80,6 +82,7 @@
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
     [self.userImageBtn setBackgroundImage:image forState:UIControlStateNormal];
+    [SVProgressShow showSuccessWithStatus:@"头像修改成功！"];
    // [self.tableView reloadData];
 }
 

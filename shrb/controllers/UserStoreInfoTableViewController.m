@@ -22,6 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIBarButtonItem *selectCityBtn = [[UIBarButtonItem alloc] initWithTitle:@"切换城市" style:UIBarButtonItemStylePlain target:self action:@selector(selectCityBtnPressed)];
+    
+    self.navigationItem.rightBarButtonItem = selectCityBtn;
+    
     [self initData];
     
     //删除底部多余横线
@@ -121,4 +125,10 @@
     return cell;
 }
 
+
+#pragma mark - 选择城市
+- (void)selectCityBtnPressed
+{
+    NSLog(@"选择城市");
+}
 @end
