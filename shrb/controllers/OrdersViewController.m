@@ -16,6 +16,7 @@
 #import "TNImageCheckBoxData.h"
 #import "TNCheckBoxGroup.h"
 #import "BecomeMemberView.h"
+#import "CardTableViewCell.h"
 
 
 static OrdersViewController *g_OrdersViewController = nil;
@@ -110,8 +111,7 @@ static OrdersViewController *g_OrdersViewController = nil;
         return 68;
     }
     else {
-        
-        return 120;
+        return isMember?160:120;
     }
 }
 
@@ -120,7 +120,7 @@ static OrdersViewController *g_OrdersViewController = nil;
 {
     if (isMember) {
         _showOtherPayBtn.hidden = YES;
-        return [_data count]+2;
+        return [_data count]+3;
     }
     return [_data count]+4;
 }
@@ -212,14 +212,29 @@ static OrdersViewController *g_OrdersViewController = nil;
             }
             else
             {
-                cell.settlementLable.hidden = YES;
-                cell.checkImageView.hidden = YES;
-                cell.couponLabel.hidden = YES;
-                cell.ruleTextView.hidden = NO;
-                cell.ruleTextView.textAlignment = NSTextAlignmentLeft;
-                cell.ruleTextView.text = @"会员好处：成为会员可以享受会员折扣，付款可直接用会员卡，并有更多优惠哦！\n\n会员规则:会员卡充值后不可以取现，可以注销，同时扣除手续费5%。";
+                if (isMember) {
+                    
+                    static NSString *SimpleTableIdentifier = @"CardTableViewCellIdentifier";
+                    CardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+                    if (cell == nil) {
+                        cell = [[CardTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+                    }
+                    //cell 选中方式
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                   // cell.model = self.dataArray[indexPath.row];
+                    
+                    return cell;
+                }
+                else {
+                    cell.settlementLable.hidden = YES;
+                    cell.checkImageView.hidden = YES;
+                    cell.couponLabel.hidden = YES;
+                    cell.ruleTextView.hidden = NO;
+                    cell.ruleTextView.textAlignment = NSTextAlignmentLeft;
+                    cell.ruleTextView.text = @"会员好处：成为会员可以享受会员折扣，付款可直接用会员卡，并有更多优惠哦！\n\n会员规则:会员卡充值后不可以取现，可以注销，同时扣除手续费5%。";
+                }
             }
-            
         }
         return cell;
     }
@@ -242,6 +257,15 @@ static OrdersViewController *g_OrdersViewController = nil;
 {
     if (indexPath.row == [_data count]) {
         [self.navigationController popViewControllerAnimated:YES];
+    }
+    if (isMember) {
+        //会员卡详情页面
+        if (indexPath.row == [_data count]+2) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
     }
 }
 

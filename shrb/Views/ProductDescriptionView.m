@@ -7,6 +7,7 @@
 //
 
 #import "ProductDescriptionView.h"
+#import "SVProgressShow.h"
 #import "Const.h"
 
 @interface ProductDescriptionView ()
@@ -145,10 +146,14 @@
     _descriptionTextView.editable = NO;
     [_descriptionView addSubview:_descriptionTextView];
     
-    UIButton *closeButton=[[UIButton alloc]initWithFrame:CGRectMake(4*screenWidth/5-35, 8, 27, 27)];
-    [closeButton setImage:[UIImage imageNamed:@"dislike_pressed"] forState:UIControlStateNormal];
-    [closeButton addTarget:self action:@selector(closeButtonEven) forControlEvents:UIControlEventTouchUpInside];
-    [_descriptionView addSubview:closeButton];
+    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(4*screenWidth/5-35, 8, 28, 28)];
+    [addButton setBackgroundColor:shrbPink];
+    addButton.layer.cornerRadius = 14;
+    addButton.layer.masksToBounds = YES;
+    //[addButton setTitle:@"+" forState:UIControlStateNormal];
+    [addButton setBackgroundImage:[UIImage imageNamed:@"increase2"] forState:UIControlStateNormal];
+    [addButton addTarget:self action:@selector(addButtonEven) forControlEvents:UIControlEventTouchUpInside];
+    [_descriptionView addSubview:addButton];
 }
 
 - (void)refreshDescriptionView {
@@ -245,9 +250,9 @@ static NSInteger oldIndex;
 
 
 #pragma mark - 关掉页面
--(void)closeButtonEven{
-    
-    [self removeFromSuperview];
+-(void)addButtonEven
+{
+    [SVProgressShow showSuccessWithStatus:@"添加成功"];
 }
 
 #pragma mark - 蒙版效果

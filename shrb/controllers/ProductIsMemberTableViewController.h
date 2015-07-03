@@ -12,5 +12,7 @@
 
 @property(nonatomic,assign)NSInteger currentIndex;//当前
 
++ (ProductIsMemberTableViewController *)shareProductIsMemberTableViewController;
+- (void)gotoCardDetailView;
 
 @end

@@ -11,6 +11,8 @@
 #import "ProductModel.h"
 #import "Const.h"
 
+
+static ProductIsMemberTableViewController *g_ProductIsMemberTableViewController = nil;
 @interface ProductIsMemberTableViewController ()
 
 @property (nonatomic,strong) NSMutableArray * dataArray;
@@ -22,8 +24,15 @@
 
 @synthesize currentIndex;
 
++ (ProductIsMemberTableViewController *)shareProductIsMemberTableViewController
+{
+    return g_ProductIsMemberTableViewController;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    g_ProductIsMemberTableViewController = self;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -204,6 +213,16 @@
     
     self.tableView.scrollEnabled = YES;
     return label.frame.size.height + screenWidth-16+125+20;
+}
+
+
+#pragma mark - push会员卡详情页面
+- (void)gotoCardDetailView
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

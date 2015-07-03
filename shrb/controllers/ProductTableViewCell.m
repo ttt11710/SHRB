@@ -11,6 +11,7 @@
 #import <BFPaperButton.h>
 #import "Const.h"
 #import "SuperBecomeMemberView1.h"
+#import "ProductIsMemberTableViewController.h"
 
 @interface ProductTableViewCell () {
     
@@ -19,7 +20,7 @@
     CGRect _bounds;
 }
 
-
+@property (weak, nonatomic) IBOutlet UIView *cardDetailView;
 @property (weak, nonatomic) IBOutlet UIView *ImageBackView;
 @property (weak, nonatomic) IBOutlet UILabel *saveMoneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -53,9 +54,13 @@
     [self.signInBtn addTarget:self action:@selector(buttonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [self addBlurViewView:self.blurView];
+    
+    
+    UITapGestureRecognizer *gotoCardDetailTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoCardDetailTap)];
+    [self.cardDetailView addGestureRecognizer:gotoCardDetailTap];
 }
 
-
+#pragma mark - 注册
 - (void)buttonWasPressed:(id)sender
 {
     
@@ -104,7 +109,7 @@
     
 }
 
-
+#pragma mark - 确定注册
 - (void)sureBtnPressed
 {
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
@@ -151,6 +156,13 @@
     }
 }
 
+
+#pragma mark - 会员卡详情页面
+- (void)gotoCardDetailTap
+{
+    
+    [[ProductIsMemberTableViewController shareProductIsMemberTableViewController] gotoCardDetailView];
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
