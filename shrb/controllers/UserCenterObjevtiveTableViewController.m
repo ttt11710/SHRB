@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UserCenterObjevtiveTableViewController.h"
-#import "shrb-swift.h"
+//#import "shrb-swift.h"
 #import "Const.h"
 
 @interface UserCenterObjevtiveTableViewController ()
@@ -59,7 +59,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.section == 0?100:44;
+    return indexPath.section == 0? 68:44;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -68,7 +68,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
  
-    return section == 0?1:section==1?2:3;
+    return section == 0?1:section==1?3:3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -81,13 +81,13 @@
     //基本信息
     if (indexPath.section == 0)
     {
-//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
-//        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"infoView"];
-//        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//        [self.navigationController pushViewController:viewController animated:YES];
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"infoView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [self.navigationController pushViewController:viewController animated:YES];
         
-        BasicInfoTableViewController *basicInfoTableViewController = [[BasicInfoTableViewController alloc] init];
-        [self.navigationController pushViewController:basicInfoTableViewController animated:YES];
+//        BasicInfoTableViewController *basicInfoTableViewController = [[BasicInfoTableViewController alloc] init];
+//        [self.navigationController pushViewController:basicInfoTableViewController animated:YES];
         
     }
     else if (indexPath.section == 1)
@@ -99,11 +99,19 @@
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
             [self.navigationController pushViewController:viewController animated:YES];
             
-//            OrderListViewController *orderListViewController = [[OrderListViewController alloc] init];
-//            [self.navigationController pushViewController:orderListViewController animated:YES];
+            //            OrderListViewController *orderListViewController = [[OrderListViewController alloc] init];
+            //            [self.navigationController pushViewController:orderListViewController animated:YES];
+        }
+        //我的收藏
+        else if (indexPath.row == 1) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"collectObjectiveView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            [self.navigationController pushViewController:viewController animated:YES];
+
         }
         //设置
-        else if (indexPath.row == 1) {
+        else if (indexPath.row == 2) {
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
             UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"settingView"];
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];

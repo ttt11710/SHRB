@@ -24,6 +24,8 @@
 		DF2B0E311B423DB40051AA1A /* TNImageCheckBoxData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E261B423DB40051AA1A /* TNImageCheckBoxData.m */; };
 		DF2B0E321B423DB40051AA1A /* TNRectangularCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E281B423DB40051AA1A /* TNRectangularCheckBox.m */; };
 		DF2B0E331B423DB40051AA1A /* TNRectangularCheckBoxData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E2A1B423DB40051AA1A /* TNRectangularCheckBoxData.m */; };
+		DF2D7A281B466919003790A5 /* CollectObjectiveTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */; };
+		DF2D7A2B1B466E6F003790A5 /* CollectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2D7A2A1B466E6F003790A5 /* CollectTableViewCell.m */; };
 		DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C571B0C448400FE499E /* CardTableViewController.m */; };
 		DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C601B0C59CD00FE499E /* ButtonTableViewCell.m */; };
 		DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C631B0C61CA00FE499E /* PayViewController.m */; };
@@ -158,6 +160,10 @@
 		DF2B0E281B423DB40051AA1A /* TNRectangularCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNRectangularCheckBox.m; sourceTree = "<group>"; };
 		DF2B0E291B423DB40051AA1A /* TNRectangularCheckBoxData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNRectangularCheckBoxData.h; sourceTree = "<group>"; };
 		DF2B0E2A1B423DB40051AA1A /* TNRectangularCheckBoxData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNRectangularCheckBoxData.m; sourceTree = "<group>"; };
+		DF2D7A261B466919003790A5 /* CollectObjectiveTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectObjectiveTableViewController.h; sourceTree = "<group>"; };
+		DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectObjectiveTableViewController.m; sourceTree = "<group>"; };
+		DF2D7A291B466E6F003790A5 /* CollectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectTableViewCell.h; sourceTree = "<group>"; };
+		DF2D7A2A1B466E6F003790A5 /* CollectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectTableViewCell.m; sourceTree = "<group>"; };
 		DF4E4C561B0C448400FE499E /* CardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTableViewController.h; sourceTree = "<group>"; };
 		DF4E4C571B0C448400FE499E /* CardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTableViewController.m; sourceTree = "<group>"; };
 		DF4E4C5F1B0C59CD00FE499E /* ButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonTableViewCell.h; path = ../Views/ButtonTableViewCell.h; sourceTree = "<group>"; };
@@ -533,6 +539,8 @@
 				DF7176FE1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m */,
 				DF7177321B300F2A00D3C3B9 /* OrderListTableViewController.h */,
 				DF7177331B300F2A00D3C3B9 /* OrderListTableViewController.m */,
+				DF2D7A261B466919003790A5 /* CollectObjectiveTableViewController.h */,
+				DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */,
 				DF71773A1B30167900D3C3B9 /* SettingTableViewController.h */,
 				DF71773B1B30167900D3C3B9 /* SettingTableViewController.m */,
 				DF71773D1B30180700D3C3B9 /* HelpCenterTableViewController.h */,
@@ -559,6 +567,8 @@
 				DF7177381B30109500D3C3B9 /* OrderListTableViewCell.m */,
 				DFB7632D1B3D51B10086ABB7 /* LeftLabelTableViewCell.h */,
 				DFB7632E1B3D51B10086ABB7 /* LeftLabelTableViewCell.m */,
+				DF2D7A291B466E6F003790A5 /* CollectTableViewCell.h */,
+				DF2D7A2A1B466E6F003790A5 /* CollectTableViewCell.m */,
 			);
 			name = "objective-C";
 			sourceTree = "<group>";
@@ -1011,6 +1021,7 @@
 				DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */,
 				DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */,
 				DFB7631F1B3D36330086ABB7 /* ProductIsMemberTableViewController.m in Sources */,
+				DF2D7A281B466919003790A5 /* CollectObjectiveTableViewController.m in Sources */,
 				DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */,
 				DF958F611B33B83C005B2155 /* TradeModel.m in Sources */,
 				DFB763251B3D495F0086ABB7 /* NewCardDetailViewController.m in Sources */,
@@ -1061,6 +1072,7 @@
 				DF7D1E601B0DC08700CD05B3 /* CardDetailViewController.m in Sources */,
 				DF0D9C851B0C423000C0AB3F /* CardTableViewCell.m in Sources */,
 				DF7D1E561B0D755500CD05B3 /* TransactMemberViewController.m in Sources */,
+				DF2D7A2B1B466E6F003790A5 /* CollectTableViewCell.m in Sources */,
 				DF2B0E301B423DB40051AA1A /* TNImageCheckbox.m in Sources */,
 				DFB763301B3D51B10086ABB7 /* LeftLabelTableViewCell.m in Sources */,
 				DF2B0E321B423DB40051AA1A /* TNRectangularCheckBox.m in Sources */,

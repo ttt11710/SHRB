@@ -11,5 +11,5 @@
 @interface OrderListTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *storeLogoImageView;
-@property (weak, nonatomic) IBOutlet UITextView *orderListInfoTextView;
+@property (weak, nonatomic) IBOutlet UILabel *orderListInfoLabel;
 @end
