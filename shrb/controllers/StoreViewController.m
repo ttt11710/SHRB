@@ -202,7 +202,7 @@ static StoreViewController *g_StoreViewController = nil;
         return 60;
     }
     else
-        return 80;
+        return 68;
 }
 
 #pragma mark - tableView delegate

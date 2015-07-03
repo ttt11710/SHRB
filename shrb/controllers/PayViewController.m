@@ -37,17 +37,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataArray = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺",@"冰拿铁",@"卡布奇诺",@"冰拿铁",@"卡布奇诺", nil];
+    self.dataArray = [[NSMutableArray alloc] initWithObjects:
+                      @{
+                        @"tradeImage" : @"提拉米苏",
+                        @"tradeName" : @"提拉米苏",
+                        @"amount":@"10",
+                        @"money":@"450",
+                        },
+                      @{
+                        @"tradeImage" : @"蜂蜜提子可颂",
+                        @"tradeName" : @"蜂蜜提子可颂",
+                        @"amount":@"2",
+                        @"money":@"60",
+                        },
+                      @{
+                        @"tradeImage" : @"芝士可颂",
+                        @"tradeName" : @"芝士可颂",
+                        @"amount":@"1",
+                        @"money":@"25",
+                        
+                        },
+                      nil];
     //删除底部多余横线
     self.tableView.tableFooterView =[[UIView alloc]init];
     self.tableView.backgroundColor = HexRGB(0xF1EFEF);
 }
 
 - (void)viewDidLayoutSubviews {
-  
+    
     if (!self.isMemberPay)
     {
-       self.tableView.frame = CGRectMake(0, 20+44, screenWidth, screenHeight - 20 - 44);
+        self.tableView.frame = CGRectMake(0, 20+44, screenWidth, screenHeight - 20 - 44);
     }
 }
 
@@ -59,10 +79,10 @@
     }
     else if (indexPath.row == [self.dataArray count]+1){
         
-            return self.isMemberPay? 140:160;
+            return self.isMemberPay? 120:160;
     }
     else {
-        return 80;
+        return 60;
     }
 }
 
@@ -82,6 +102,7 @@
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
         cell.textLabel.text = [NSString stringWithFormat:@"共%d件商品",[self.dataArray count]];
+        cell.textLabel.font = [UIFont systemFontOfSize:15.0];
         cell.textLabel.textColor = HexRGB(0x4e4e4e);
         
         return cell;
@@ -156,9 +177,11 @@
             cell = [[PayOrderTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
         }
         
-        cell.orderImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row-1]]];
-        cell.orderNameLabel.text = [self.dataArray objectAtIndex:indexPath.row-1];
-    
+        cell.orderImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row-1][@"tradeImage"]]];
+        cell.orderNameLabel.text = [self.dataArray objectAtIndex:indexPath.row-1][@"tradeName"];
+        cell.amountTextField.text = [self.dataArray objectAtIndex:indexPath.row-1][@"amount"];
+        cell.moneyLabel.text = [NSString stringWithFormat:@"共%@元",[self.dataArray objectAtIndex:indexPath.row-1][@"money"]];
+
         return cell;
     }
 }

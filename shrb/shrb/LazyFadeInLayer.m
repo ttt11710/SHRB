@@ -83,7 +83,7 @@
             shouldRemoveTimer = NO;
         }
         
-        UIColor *letterColor = [UIColor colorWithWhite:0 alpha:alpha];
+        UIColor *letterColor = [UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1]; //[UIColor colorWithWhite:0 alpha:alpha];
         [self.attributedString addAttribute:(NSString *)kCTForegroundColorAttributeName
                                       value:(id)letterColor.CGColor
                                       range:NSMakeRange(i, 1)];

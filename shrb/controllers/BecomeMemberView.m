@@ -46,7 +46,7 @@ static BecomeMemberView *g_BecomeMemberView = nil;
 {
     UILabel *cardNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
     [cardNumLabel setText:@"会员号"];
-    [cardNumLabel setTextColor:[UIColor blackColor]];
+    [cardNumLabel setTextColor:[UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1]];
     [cardNumLabel setFont:[UIFont systemFontOfSize:16]];
     [self addSubview:cardNumLabel];
     
@@ -57,7 +57,7 @@ static BecomeMemberView *g_BecomeMemberView = nil;
     
     UILabel *telephoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, cardNumLabel.frame.origin.y + cardNumLabel.frame.size.height+4, 50, 30)];
     [telephoneLabel setText:@"手机号"];
-    [telephoneLabel setTextColor:[UIColor blackColor]];
+    [telephoneLabel setTextColor:[UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1]];
     [telephoneLabel setFont:[UIFont systemFontOfSize:16]];
     [self addSubview:telephoneLabel];
     
@@ -68,7 +68,7 @@ static BecomeMemberView *g_BecomeMemberView = nil;
     
     UILabel *passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, telephoneLabel.frame.origin.y + telephoneLabel.frame.size.height+4, 50, 30)];
     [passwordLabel setText:@"密码"];
-    [passwordLabel setTextColor:[UIColor blackColor]];
+    [passwordLabel setTextColor:[UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1]];
     [passwordLabel setFont:[UIFont systemFontOfSize:16]];
     [self addSubview:passwordLabel];
     

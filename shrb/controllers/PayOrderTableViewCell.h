@@ -11,5 +11,7 @@
 @interface PayOrderTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *orderImageView;
 @property (weak, nonatomic) IBOutlet UILabel *orderNameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *amountTextField;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 
 @end

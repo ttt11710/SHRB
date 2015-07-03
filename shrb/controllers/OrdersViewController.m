@@ -107,7 +107,7 @@ static OrdersViewController *g_OrdersViewController = nil;
         return 200;
     }
     else if (indexPath.row <= [_data count]+1) {
-        return 80;
+        return 68;
     }
     else {
         
@@ -163,7 +163,7 @@ static OrdersViewController *g_OrdersViewController = nil;
             cell.couponsImageView.hidden = NO;
             cell.tradeNameLabel.hidden = NO;
             cell.priceLabel.hidden = NO;
-            cell.settlementTextView.hidden = YES;
+            cell.settlementLable.hidden = YES;
             cell.checkImageView.hidden = YES;
             cell.couponLabel.hidden = YES;
             cell.ruleTextView.hidden = YES;
@@ -177,13 +177,13 @@ static OrdersViewController *g_OrdersViewController = nil;
             cell.priceLabel.hidden = YES;
             if (indexPath.row == [_data count]+1)
             {
-                cell.settlementTextView.hidden = NO;
+                cell.settlementLable.hidden = NO;
                // cell.checkImageView.hidden = NO;
                // cell.couponLabel.hidden = NO;
                 cell.checkImageView.hidden = YES;
                 cell.couponLabel.hidden = YES;
                 cell.ruleTextView.hidden = YES;
-                cell.settlementTextView.text = @"总价：500RMB\n会员价：350RMB";
+                cell.settlementLable.text = @"总价：500RMB\n会员价：350RMB";
                 cell.couponLabel.font = [UIFont systemFontOfSize:14];
                 cell.couponLabel.text = @"100RMB电子券";
                 
@@ -192,6 +192,8 @@ static OrdersViewController *g_OrdersViewController = nil;
                 TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
                 manData.identifier = @"man";
                 manData.labelText = @"100RMB电子券";
+                manData.labelColor = [UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1];
+                manData.labelFont = [UIFont systemFontOfSize:14.0];
                 manData.checked = YES;
                 manData.checkedImage = [UIImage imageNamed:@"checked"];
                 manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
@@ -199,7 +201,7 @@ static OrdersViewController *g_OrdersViewController = nil;
                 if (_loveGroup == nil) {
                     _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
                     [_loveGroup create];
-                    _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width-5, 40);
+                    _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width, 40);
                     
                     [cell addSubview:_loveGroup];
                 }
@@ -210,7 +212,7 @@ static OrdersViewController *g_OrdersViewController = nil;
             }
             else
             {
-                cell.settlementTextView.hidden = YES;
+                cell.settlementLable.hidden = YES;
                 cell.checkImageView.hidden = YES;
                 cell.couponLabel.hidden = YES;
                 cell.ruleTextView.hidden = NO;

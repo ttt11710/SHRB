@@ -28,7 +28,7 @@ NSString *const GROUP_CHANGED = @"groupChanged";
     if (self) {
         self.checkBoxData = checkBoxData;
         self.layout = layout;
-        self.marginBetweenItems = 15;
+        self.marginBetweenItems = 0;
     }
     
     return self;

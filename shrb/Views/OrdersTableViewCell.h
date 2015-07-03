@@ -10,7 +10,9 @@
 
 @interface OrdersTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *couponsImageView;
-@property (weak, nonatomic) IBOutlet UITextView *settlementTextView;
+//@property (weak, nonatomic) IBOutlet UITextView *settlementTextView;
+@property (weak, nonatomic) IBOutlet UILabel*settlementLable;
+
 @property (weak, nonatomic) IBOutlet UIImageView *checkImageView;
 @property (weak, nonatomic) IBOutlet UILabel *couponLabel;
 @property (weak, nonatomic) IBOutlet UITextView *ruleTextView;

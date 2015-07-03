@@ -125,7 +125,7 @@
     
     _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 12, 200, 21)];
     _nameLabel.text = [_data objectAtIndex:_currentIndex][@"storeName"];
-    _nameLabel.textColor = [UIColor blackColor];
+    _nameLabel.textColor = [UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1];
     [_descriptionView addSubview:_nameLabel];
     
     _descriptionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(12, _nameLabel.frame.origin.y+_nameLabel.frame.size.height+4, 4*screenWidth/5-12*2, 4*screenWidth/5-50)];
