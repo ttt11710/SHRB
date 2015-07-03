@@ -133,7 +133,7 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 {
     _imageView.frame = CGRectMake(self.frame.size.width - 25, 15, 15, self.frame.size.height-25);
     
-    _titleLabel.frame = CGRectMake(24, 0, self.frame.size.width - 100, self.frame.size.height);
+    _titleLabel.frame = CGRectMake(18, 0, self.frame.size.width - 100, self.frame.size.height);
     
     _bottomLineView.frame = CGRectMake(16, self.frame.size.height-1, self.frame.size.width, 1);
 }
@@ -213,7 +213,7 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return 150;
+        return 130;
     }
     else if (indexPath.section == 3) {
         return 44;

@@ -21,7 +21,7 @@
 - (void)setModel:(CardModel *)model
 {
     self.dateLabel.text = model.date;
-    self.expenseTextView.text = [NSString stringWithFormat:@"金额:%@元\n订单：%@\n地址：%@",model.money,model.orderNum,model.address];
+    self.expenseTextView.text = [NSString stringWithFormat:@"金额:  %@元\n订单：%@\n地址：%@",model.money,model.orderNum,model.address];
 }
 
 - (void)awakeFromNib {

@@ -37,26 +37,26 @@
     NSMutableArray *expenseArray = [[NSMutableArray alloc] initWithObjects:
                                     @{
                                       @"date" : @"15:20  2016.3.1",
-                                      @"money" : @"1",
-                                      @"orderNum" : @"4523214655654498",
+                                      @"money" : @"100",
+                                      @"orderNum" : @"785125632548756321",
                                       @"address":@"上海市",
                                       },
                                     @{
-                                      @"date" : @"15:20  2016.3.1",
-                                      @"money" : @"1",
-                                      @"orderNum" : @"4523214655654498",
+                                      @"date" : @"13:40  2016.4.1",
+                                      @"money" : @"200",
+                                      @"orderNum" : @"8562541236652589651",
                                       @"address":@"浙江省",
                                       },
                                     @{
-                                      @"date" : @"15:20  2016.3.3",
-                                      @"money" : @"1",
-                                      @"orderNum" : @"4523214655654498",
+                                      @"date" : @"8:12  2015.2.23",
+                                      @"money" : @"560",
+                                      @"orderNum" : @"856554587452130210",
                                       @"address":@"江苏市",
                                       },
                                     @{
                                       @"date" : @"15:20  2016.3.4",
-                                      @"money" : @"1",
-                                      @"orderNum" : @"4523214655654498",
+                                      @"money" : @"890",
+                                      @"orderNum" : @"965874521032120120",
                                       @"address":@"云南",
                                       },
                                     nil];
@@ -103,7 +103,7 @@
         [weakSelf.tableView beginUpdates];
         NSDictionary *dic = @{ @"date" : @"15:20  2016.4.1",
                                @"money" : @"20",
-                               @"orderNum" : @"4523214655654498",
+                               @"orderNum" : @"785456320123069852",
                                @"address":@"徐汇区",
                                };
         CardModel * model = [[CardModel alloc] init];
@@ -129,7 +129,7 @@
         [weakSelf.tableView beginUpdates];
         NSDictionary *dic = @{ @"date" : @"15:20  2015.3.1",
                                @"money" : @"100",
-                               @"orderNum" : @"4523214655654498",
+                               @"orderNum" : @"965214785630120125",
                                @"address":@"上海浦东",
                                };
         CardModel * model = [[CardModel alloc] init];

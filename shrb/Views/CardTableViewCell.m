@@ -32,6 +32,9 @@
     // Initialization code
     self.backView.layer.cornerRadius = 10;
     self.backView.layer.masksToBounds = YES;
+    
+    self.memberCardImageView.layer.cornerRadius = 4;
+    self.memberCardImageView.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
