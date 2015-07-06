@@ -202,7 +202,7 @@ static OrdersViewController *g_OrdersViewController = nil;
                 if (_loveGroup == nil) {
                     _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
                     [_loveGroup create];
-                    _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width, 40);
+                    _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width-20, 40);
                     
                     [cell addSubview:_loveGroup];
                 }

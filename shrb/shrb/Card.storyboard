@@ -1704,7 +1704,7 @@
             </objects>
             <point key="canvasLocation" x="3274.5" y="1023"/>
         </scene>
-        <!--City List View Controller-->
+        <!--切换城市-->
         <scene sceneID="Wuh-xM-MJJ">
             <objects>
                 <viewController storyboardIdentifier="CityListViewControllerView" id="tEU-8Q-CWI" customClass="CityListViewController" sceneMemberID="viewController">
@@ -1716,6 +1716,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYb-fl-lBx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="tEU-8Q-CWI" id="ZuI-mB-6Q1"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RlK-ha-zhQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1743,35 +1750,48 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="RlK-ha-zhQ" secondAttribute="trailing" constant="-16" id="9oj-8r-Dqw"/>
-                            <constraint firstItem="RlK-ha-zhQ" firstAttribute="top" secondItem="zTl-5c-sWt" secondAttribute="bottom" id="Oj1-UK-2E9"/>
+                            <constraint firstItem="UYb-fl-lBx" firstAttribute="leading" secondItem="FTF-kJ-4Ba" secondAttribute="leadingMargin" constant="-16" id="4JR-DM-BwC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RlK-ha-zhQ" secondAttribute="trailing" constant="-8" id="9oj-8r-Dqw"/>
                             <constraint firstItem="RlK-ha-zhQ" firstAttribute="leading" secondItem="FTF-kJ-4Ba" secondAttribute="leadingMargin" constant="-16" id="SoF-sK-1xV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UYb-fl-lBx" secondAttribute="trailing" constant="-16" id="gk8-ya-tYL"/>
+                            <constraint firstItem="UYb-fl-lBx" firstAttribute="top" secondItem="zTl-5c-sWt" secondAttribute="bottom" id="j60-aO-jJI"/>
                             <constraint firstItem="wKI-d8-CtW" firstAttribute="top" secondItem="RlK-ha-zhQ" secondAttribute="bottom" id="r2e-LD-XpR"/>
+                            <constraint firstItem="RlK-ha-zhQ" firstAttribute="top" secondItem="UYb-fl-lBx" secondAttribute="bottom" id="wNz-fd-Rmm"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="UYb-fl-lBx"/>
                                 <exclude reference="RlK-ha-zhQ"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="r2e-LD-XpR"/>
+                                <exclude reference="4JR-DM-BwC"/>
+                                <exclude reference="gk8-ya-tYL"/>
+                                <exclude reference="j60-aO-jJI"/>
                                 <exclude reference="9oj-8r-Dqw"/>
-                                <exclude reference="Oj1-UK-2E9"/>
                                 <exclude reference="SoF-sK-1xV"/>
+                                <exclude reference="wNz-fd-Rmm"/>
+                                <exclude reference="r2e-LD-XpR"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
+                                <include reference="UYb-fl-lBx"/>
                                 <include reference="RlK-ha-zhQ"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="r2e-LD-XpR"/>
+                                <include reference="4JR-DM-BwC"/>
+                                <include reference="gk8-ya-tYL"/>
+                                <include reference="j60-aO-jJI"/>
                                 <include reference="9oj-8r-Dqw"/>
-                                <include reference="Oj1-UK-2E9"/>
                                 <include reference="SoF-sK-1xV"/>
+                                <include reference="wNz-fd-Rmm"/>
+                                <include reference="r2e-LD-XpR"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="切换城市" id="qap-rZ-aY7" userLabel="切换城市"/>
                     <connections>
+                        <outlet property="searchBar" destination="UYb-fl-lBx" id="F30-x6-nIF"/>
                         <outlet property="tableView" destination="RlK-ha-zhQ" id="qS2-j2-oVw"/>
                     </connections>
                 </viewController>

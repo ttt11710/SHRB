@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 
-@interface CityListViewController : UIViewController  {
+@interface CityListViewController : UIViewController <UISearchBarDelegate, UISearchDisplayDelegate,UITableViewDataSource, UITableViewDelegate >  {
     NSDictionary *cities;  
     NSMutableArray *keys;
     id __unsafe_unretained delegate1;
     UITableView *tableView;
+    
+    UISearchDisplayController  *_mysearchDisplayController;
+    
 }
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 

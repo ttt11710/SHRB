@@ -63,20 +63,45 @@
                       nil];
 }
 
-- (void)updateData
+- (void)updateData:(NSString*)selectedCity
 {
     [self.dataArray removeAllObjects];
-    self.dataArray = [NSMutableArray arrayWithObjects:
-                      @{
-                        @"storeName" : @"北京王府井店",
-                        @"address":@"北京市闵行区沪闵路6088号莘庄凯德龙之梦购物中心B2楼",
-                        @"telephone":@"4008007320"
-                        },
-                      @{
-                        @"storeName" : @"北京王府井店",
-                        @"address":@"北京市徐汇区钦州南路100号103",
-                        @"telephone":@"4008007320"
-                        },nil];
+    if ([selectedCity isEqualToString:@"上海"]) {
+        self.dataArray = [NSMutableArray arrayWithObjects:
+                          @{
+                            @"storeName" : @"上海莘庄店",
+                            @"address":@"上海市 闵行区沪闵路6088号莘庄凯德龙之梦购物中心B2楼",
+                            @"telephone":@"4008007320"
+                            },
+                          @{
+                            @"storeName" : @"上海浦东店",
+                            @"address":@"上海市",
+                            @"telephone":@"4008007320"
+                            },
+                          @{
+                            @"storeName" : @"上海虹桥店",
+                            @"address":@"上海市",
+                            @"telephone":@"4008007320"
+                            },
+                          @{
+                            @"storeName" : @"上海徐汇店",
+                            @"address":@"上海市徐汇区钦州南路100号103",
+                            @"telephone":@"4008007320"
+                            },nil];
+    }
+    else {
+        self.dataArray = [NSMutableArray arrayWithObjects:
+                          @{
+                            @"storeName" : @"北京王府井店",
+                            @"address":@"北京市闵行区沪闵路6088号莘庄凯德龙之梦购物中心B2楼",
+                            @"telephone":@"4008007320"
+                            },
+                          @{
+                            @"storeName" : @"北京王府井店",
+                            @"address":@"北京市徐汇区钦州南路100号103",
+                            @"telephone":@"4008007320"
+                            },nil];
+    }
     [self.tableView reloadData];
 }
 
@@ -160,7 +185,7 @@
 - (void) citySelectionUpdate:(NSString*)selectedCity
 {
     NSLog(@"selectedCity = %@",selectedCity);
-    [self updateData];
+    [self updateData:selectedCity];
 }
 
 - (NSString*) getDefaultCity

@@ -208,7 +208,8 @@ static StoreViewController *g_StoreViewController = nil;
 #pragma mark - tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataArray count]+2;
+ //   return [self.dataArray count]+2; 有扫码加单
+    return [self.dataArray count]+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -234,7 +235,7 @@ static StoreViewController *g_StoreViewController = nil;
         cell.model = self.dataArray[indexPath.row-1];
         
         HJCAjustNumButton *numbutton = [[HJCAjustNumButton alloc] init];
-        numbutton.frame = CGRectMake(screenWidth-40, 30, 30, 30);
+        numbutton.frame = CGRectMake(screenWidth-40, 15, 30, 30);
         // 内容更改的block回调
         numbutton.callBack = ^(NSString *currentNum){
             NSLog(@"%@", currentNum);
