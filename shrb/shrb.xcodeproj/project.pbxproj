@@ -76,6 +76,8 @@
 		DF958F641B33C11B005B2155 /* CardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F631B33C11B005B2155 /* CardModel.m */; };
 		DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F661B33DA67005B2155 /* CouponsModel.m */; };
 		DFA544281B4A160400CC9999 /* CompletePayOrdersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */; };
+		DFA5442B1B4A292B00CC9999 /* CityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA5442A1B4A292B00CC9999 /* CityListViewController.m */; };
+		DFA5442D1B4A293E00CC9999 /* citydict.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFA5442C1B4A293E00CC9999 /* citydict.plist */; };
 		DFAD61F81B26DF9E002437BD /* HJCAdjustNumButton.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DFAD61F51B26DF9E002437BD /* HJCAdjustNumButton.bundle */; };
 		DFAD61F91B26DF9E002437BD /* HJCAjustNumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAD61F71B26DF9E002437BD /* HJCAjustNumButton.m */; };
 		DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE52A91B32743500B03B2F /* QRItem.m */; };
@@ -257,6 +259,9 @@
 		DF958F661B33DA67005B2155 /* CouponsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsModel.m; sourceTree = "<group>"; };
 		DFA544261B4A160400CC9999 /* CompletePayOrdersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletePayOrdersTableViewCell.h; sourceTree = "<group>"; };
 		DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletePayOrdersTableViewCell.m; sourceTree = "<group>"; };
+		DFA544291B4A292B00CC9999 /* CityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListViewController.h; sourceTree = "<group>"; };
+		DFA5442A1B4A292B00CC9999 /* CityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListViewController.m; sourceTree = "<group>"; };
+		DFA5442C1B4A293E00CC9999 /* citydict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = citydict.plist; sourceTree = "<group>"; };
 		DFAD61F51B26DF9E002437BD /* HJCAdjustNumButton.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HJCAdjustNumButton.bundle; sourceTree = "<group>"; };
 		DFAD61F61B26DF9E002437BD /* HJCAjustNumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCAjustNumButton.h; sourceTree = "<group>"; };
 		DFAD61F71B26DF9E002437BD /* HJCAjustNumButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCAjustNumButton.m; sourceTree = "<group>"; };
@@ -499,6 +504,7 @@
 				DF72C0BA1B0B339800CE6DC6 /* Info.plist */,
 				DF72C0BB1B0B339800CE6DC6 /* main.m */,
 				DF7D1E5A1B0D7AFE00CD05B3 /* Const.h */,
+				DFA5442C1B4A293E00CC9999 /* citydict.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -814,6 +820,8 @@
 				DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */,
 				DFB057A11B4132060091A1E1 /* UserStoreInfoTableViewController.h */,
 				DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */,
+				DFA544291B4A292B00CC9999 /* CityListViewController.h */,
+				DFA5442A1B4A292B00CC9999 /* CityListViewController.m */,
 				DF2B0E101B422DDD0051AA1A /* PayQRViewController.h */,
 				DF2B0E111B422DDD0051AA1A /* PayQRViewController.m */,
 			);
@@ -952,6 +960,7 @@
 				DFAD61F81B26DF9E002437BD /* HJCAdjustNumButton.bundle in Resources */,
 				DF72C0C51B0B339800CE6DC6 /* Main.storyboard in Resources */,
 				DFB1E8351B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib in Resources */,
+				DFA5442D1B4A293E00CC9999 /* citydict.plist in Resources */,
 				DF4E4C6F1B0C8D6400FE499E /* Me.storyboard in Resources */,
 				DF9119B51B394E2000833AAB /* RightDetailTableViewCell.xib in Resources */,
 				DF72C0CA1B0B339800CE6DC6 /* LaunchScreen.xib in Resources */,
@@ -1052,6 +1061,7 @@
 				DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */,
 				DFA544281B4A160400CC9999 /* CompletePayOrdersTableViewCell.m in Sources */,
 				DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */,
+				DFA5442B1B4A292B00CC9999 /* CityListViewController.m in Sources */,
 				DFDC896A1B43EDC80051D763 /* SuperBecomeMemberView.m in Sources */,
 				DF72C0E21B0B403600CE6DC6 /* HotDetailViewController.m in Sources */,
 				DFDC89671B43929C0051D763 /* BecomeMemberView.m in Sources */,

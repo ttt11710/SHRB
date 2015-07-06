@@ -9,6 +9,7 @@
 #import "UserStoreInfoTableViewController.h"
 #import "LeftLabelTableViewCell.h"
 #import "Const.h"
+#import "CityListViewController.h"
 
 @interface UserStoreInfoTableViewController ()
 
@@ -62,6 +63,23 @@
                       nil];
 }
 
+- (void)updateData
+{
+    [self.dataArray removeAllObjects];
+    self.dataArray = [NSMutableArray arrayWithObjects:
+                      @{
+                        @"storeName" : @"北京王府井店",
+                        @"address":@"北京市闵行区沪闵路6088号莘庄凯德龙之梦购物中心B2楼",
+                        @"telephone":@"4008007320"
+                        },
+                      @{
+                        @"storeName" : @"北京王府井店",
+                        @"address":@"北京市徐汇区钦州南路100号103",
+                        @"telephone":@"4008007320"
+                        },nil];
+    [self.tableView reloadData];
+}
+
 #pragma mark - tableView dataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -83,8 +101,7 @@
         [label setText:self.dataArray[indexPath.section][@"telephone"]];
     }
     [label sizeToFit];// 显示文本需要的长度和宽度
-    CGFloat height = label.frame.size.height;
-    
+
     return label.frame.size.height+30 > 44? label.frame.size.height+30:44;
 }
 
@@ -130,5 +147,25 @@
 - (void)selectCityBtnPressed
 {
     NSLog(@"选择城市");
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+    CityListViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CityListViewControllerView"];
+    viewController.delegate1 = self;
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [self.navigationController pushViewController:viewController animated:YES];
+    
 }
+
+//CityListViewController protocol
+- (void) citySelectionUpdate:(NSString*)selectedCity
+{
+    NSLog(@"selectedCity = %@",selectedCity);
+    [self updateData];
+}
+
+- (NSString*) getDefaultCity
+{
+    return @"getDefaultCity";
+}
+
 @end

@@ -1704,6 +1704,81 @@
             </objects>
             <point key="canvasLocation" x="3274.5" y="1023"/>
         </scene>
+        <!--City List View Controller-->
+        <scene sceneID="Wuh-xM-MJJ">
+            <objects>
+                <viewController storyboardIdentifier="CityListViewControllerView" id="tEU-8Q-CWI" customClass="CityListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zTl-5c-sWt"/>
+                        <viewControllerLayoutGuide type="bottom" id="wKI-d8-CtW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FTF-kJ-4Ba">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RlK-ha-zhQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hcZ-CH-EPw">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hcZ-CH-EPw" id="lqX-F6-Nqa">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" rowHeight="78" id="er8-ut-iMK">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="er8-ut-iMK" id="lep-2U-xAz">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tEU-8Q-CWI" id="zDB-UC-jS6"/>
+                                    <outlet property="delegate" destination="tEU-8Q-CWI" id="0kN-c5-U1H"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="RlK-ha-zhQ" secondAttribute="trailing" constant="-16" id="9oj-8r-Dqw"/>
+                            <constraint firstItem="RlK-ha-zhQ" firstAttribute="top" secondItem="zTl-5c-sWt" secondAttribute="bottom" id="Oj1-UK-2E9"/>
+                            <constraint firstItem="RlK-ha-zhQ" firstAttribute="leading" secondItem="FTF-kJ-4Ba" secondAttribute="leadingMargin" constant="-16" id="SoF-sK-1xV"/>
+                            <constraint firstItem="wKI-d8-CtW" firstAttribute="top" secondItem="RlK-ha-zhQ" secondAttribute="bottom" id="r2e-LD-XpR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="RlK-ha-zhQ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="r2e-LD-XpR"/>
+                                <exclude reference="9oj-8r-Dqw"/>
+                                <exclude reference="Oj1-UK-2E9"/>
+                                <exclude reference="SoF-sK-1xV"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="RlK-ha-zhQ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="r2e-LD-XpR"/>
+                                <include reference="9oj-8r-Dqw"/>
+                                <include reference="Oj1-UK-2E9"/>
+                                <include reference="SoF-sK-1xV"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="RlK-ha-zhQ" id="qS2-j2-oVw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QT7-UC-Hup" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3901.5" y="1023"/>
+        </scene>
         <!--电子券详情-->
         <scene sceneID="bxg-xT-Z3o">
             <objects>

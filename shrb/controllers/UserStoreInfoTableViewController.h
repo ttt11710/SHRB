@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CityListViewController.h"
 
-@interface UserStoreInfoTableViewController : UITableViewController
+@interface UserStoreInfoTableViewController : UITableViewController <CityListViewControllerProtocol>
 
 @end
