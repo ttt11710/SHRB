@@ -10,6 +10,7 @@
 #import "ProductTableViewCell.h"
 #import "ProductModel.h"
 #import "Const.h"
+#import "NewCardDetailViewController.h"
 
 
 static ProductIsMemberTableViewController *g_ProductIsMemberTableViewController = nil;
@@ -220,8 +221,9 @@ static ProductIsMemberTableViewController *g_ProductIsMemberTableViewController 
 - (void)gotoCardDetailView
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
+    NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    viewController.viewControllerName = @"NewCardDetailViewController";
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

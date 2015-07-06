@@ -12,6 +12,7 @@
 #import "StoreViewController.h"
 #import "UITableView+Wave.h"
 #import "Const.h"
+#import "UserCouponsViewController.h"
 
 @interface CouponsDetailTableViewController ()
 
@@ -116,11 +117,12 @@
 }
 
 
-#pragma  mark - 使用电子券
+#pragma  mark - 转存电子券
 - (IBAction)userCouponsBtnPressed:(UIButton *)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"UserCouponsView"];
+    UserCouponsViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"UserCouponsView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    viewController.viewControllerName = @"UserCouponsViewController";
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

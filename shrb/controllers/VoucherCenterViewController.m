@@ -9,13 +9,18 @@
 #import "VoucherCenterViewController.h"
 #import "SVProgressShow.h"
 #import "Const.h"
+#import "CompleteVoucherViewController.h"
 
 @interface VoucherCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
+@property (weak, nonatomic) IBOutlet UIButton *alipayBtn;
+@property (weak, nonatomic) IBOutlet UIButton *internetbankBtn;
 
 @end
 
 @implementation VoucherCenterViewController
+
+@synthesize viewControllerName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -69,31 +74,37 @@
 - (IBAction)alipayBtnPressde:(id)sender {
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
+    CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    viewController.viewControllerName = viewControllerName;
     
     [SVProgressShow showWithStatus:@"充值处理中..."];
-    double delayInSeconds = 1.5;
+    
+    self.internetbankBtn.userInteractionEnabled = NO;
+    double delayInSeconds = 1;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [SVProgressShow dismiss];
         [self.navigationController pushViewController:viewController animated:YES];
+        self.internetbankBtn.userInteractionEnabled = YES;
     });
-
 }
 
 #pragma mark - 银联充值
-- (IBAction)InternetbankBtnPressed:(id)sender {
+- (IBAction)internetbankBtnPressed:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
+    CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    viewController.viewControllerName = viewControllerName;
     
     [SVProgressShow showWithStatus:@"充值处理中..."];
-    double delayInSeconds = 1.5;
+    self.alipayBtn.userInteractionEnabled = NO;
+    double delayInSeconds = 1;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [SVProgressShow dismiss];
         [self.navigationController pushViewController:viewController animated:YES];
+        self.alipayBtn.userInteractionEnabled = YES;
     });
 }
 

@@ -12,6 +12,7 @@
 #import "SVProgressShow.h"
 #import "Const.h"
 #import "PayQRViewController.h"
+#import "VoucherCenterViewController.h"
 
 
 static NewCardDetailViewController *g_NewCardDetailViewController = nil;
@@ -154,6 +155,9 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 
 
 @implementation NewCardDetailViewController
+
+
+@synthesize viewControllerName;
 
 + (NewCardDetailViewController *)shareNewCardDetailViewController
 {
@@ -420,8 +424,12 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 {
     [SVProgressShow showSuccessWithStatus:@"支付成功！"];
 }
-//#pragma mark - 充值
-//- (IBAction)voucherCenterBtnPressed:(id)sender {
-//}
+
+#pragma  mark - storyboard传值
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    VoucherCenterViewController *voucherCenterViewController = segue.destinationViewController;
+    voucherCenterViewController.viewControllerName = viewControllerName;
+}
 
 @end

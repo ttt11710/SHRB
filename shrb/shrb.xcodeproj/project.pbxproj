@@ -75,6 +75,7 @@
 		DF958F611B33B83C005B2155 /* TradeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F601B33B83C005B2155 /* TradeModel.m */; };
 		DF958F641B33C11B005B2155 /* CardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F631B33C11B005B2155 /* CardModel.m */; };
 		DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F661B33DA67005B2155 /* CouponsModel.m */; };
+		DFA544281B4A160400CC9999 /* CompletePayOrdersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */; };
 		DFAD61F81B26DF9E002437BD /* HJCAdjustNumButton.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DFAD61F51B26DF9E002437BD /* HJCAdjustNumButton.bundle */; };
 		DFAD61F91B26DF9E002437BD /* HJCAjustNumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAD61F71B26DF9E002437BD /* HJCAjustNumButton.m */; };
 		DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE52A91B32743500B03B2F /* QRItem.m */; };
@@ -254,6 +255,8 @@
 		DF958F631B33C11B005B2155 /* CardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardModel.m; sourceTree = "<group>"; };
 		DF958F651B33DA67005B2155 /* CouponsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsModel.h; sourceTree = "<group>"; };
 		DF958F661B33DA67005B2155 /* CouponsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsModel.m; sourceTree = "<group>"; };
+		DFA544261B4A160400CC9999 /* CompletePayOrdersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletePayOrdersTableViewCell.h; sourceTree = "<group>"; };
+		DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletePayOrdersTableViewCell.m; sourceTree = "<group>"; };
 		DFAD61F51B26DF9E002437BD /* HJCAdjustNumButton.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HJCAdjustNumButton.bundle; sourceTree = "<group>"; };
 		DFAD61F61B26DF9E002437BD /* HJCAjustNumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCAjustNumButton.h; sourceTree = "<group>"; };
 		DFAD61F71B26DF9E002437BD /* HJCAjustNumButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCAjustNumButton.m; sourceTree = "<group>"; };
@@ -649,6 +652,8 @@
 				DFB057951B40F1840091A1E1 /* MemberPayTableViewCell.m */,
 				DFB057971B40F2BA0091A1E1 /* OtherPayTableViewCell.h */,
 				DFB057981B40F2BA0091A1E1 /* OtherPayTableViewCell.m */,
+				DFA544261B4A160400CC9999 /* CompletePayOrdersTableViewCell.h */,
+				DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -660,6 +665,8 @@
 				DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */,
 				DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */,
 				DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */,
+				DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */,
+				DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */,
 				DFB057A41B413FF20091A1E1 /* Card */,
 				DFB057A51B41401E0091A1E1 /* Coupons */,
 				DFB0579D1B41283F0091A1E1 /* old */,
@@ -824,8 +831,6 @@
 				DFAE955D1B25407F006A495B /* GiveCouponsViewController.m */,
 				DFB057A61B4141D60091A1E1 /* UserCouponsViewController.h */,
 				DFB057A71B4141D60091A1E1 /* UserCouponsViewController.m */,
-				DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */,
-				DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */,
 			);
 			name = Coupons;
 			sourceTree = "<group>";
@@ -1045,6 +1050,7 @@
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,
 				DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */,
 				DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */,
+				DFA544281B4A160400CC9999 /* CompletePayOrdersTableViewCell.m in Sources */,
 				DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */,
 				DFDC896A1B43EDC80051D763 /* SuperBecomeMemberView.m in Sources */,
 				DF72C0E21B0B403600CE6DC6 /* HotDetailViewController.m in Sources */,

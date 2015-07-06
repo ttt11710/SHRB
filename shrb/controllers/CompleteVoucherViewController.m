@@ -23,6 +23,8 @@
 
 @implementation CompleteVoucherViewController
 
+@synthesize viewControllerName;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -66,16 +68,24 @@
     double delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        //跳转到指定页面
-        UINavigationController *navController = self.navigationController;
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:NO];
         
+        if ([viewControllerName isEqualToString:@"UserCouponsViewController"]) {
+            
+            //跳转到指定页面
+            UINavigationController *navController = self.navigationController;
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:NO];
+            
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"cardTableViewController"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            
+            [navController pushViewController:viewController animated:YES];
+        }
         
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"cardTableViewController"];
-        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        
-        [navController pushViewController:viewController animated:YES];
+        else  {
+            
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-4] animated:YES];
+        }
     });
 }
 

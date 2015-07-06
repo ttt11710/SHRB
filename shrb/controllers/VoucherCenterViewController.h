@@ -10,4 +10,6 @@
 
 @interface VoucherCenterViewController : UIViewController
 
+@property (nonatomic,assign) NSString *viewControllerName;
+
 @end

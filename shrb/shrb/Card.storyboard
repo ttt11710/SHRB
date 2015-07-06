@@ -429,24 +429,6 @@
                                     <action selector="alipayBtnPressde:" destination="wgb-ay-aPr" eventType="touchUpInside" id="pgB-wO-wfM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Otd-Lf-sRW">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.75845496840000004" blue="0.74243017499999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="银联">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="InternetbankBtnPressed:" destination="wgb-ay-aPr" eventType="touchUpInside" id="W6S-JT-Uu0"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请填写充值金额" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rqe-Oz-GQg">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <constraints>
@@ -471,6 +453,24 @@
                                     <outlet property="delegate" destination="wgb-ay-aPr" id="Rga-lf-BdR"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Otd-Lf-sRW">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.75845496840000004" blue="0.74243017499999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="银联">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="internetbankBtnPressed:" destination="wgb-ay-aPr" eventType="touchUpInside" id="aeU-mT-5zL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -513,8 +513,8 @@
                                 <exclude reference="bKE-4q-NJg"/>
                                 <exclude reference="TNL-uk-Wuy"/>
                                 <exclude reference="VC3-Os-ocJ"/>
-                                <exclude reference="Otd-Lf-sRW"/>
                                 <exclude reference="Rqe-Oz-GQg"/>
+                                <exclude reference="Otd-Lf-sRW"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="rdp-eh-dnG"/>
@@ -557,8 +557,8 @@
                                 <include reference="bKE-4q-NJg"/>
                                 <include reference="TNL-uk-Wuy"/>
                                 <include reference="VC3-Os-ocJ"/>
-                                <include reference="Otd-Lf-sRW"/>
                                 <include reference="Rqe-Oz-GQg"/>
+                                <include reference="Otd-Lf-sRW"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="rdp-eh-dnG"/>
@@ -594,6 +594,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="会员卡充值" id="64i-PQ-BZV"/>
                     <connections>
+                        <outlet property="alipayBtn" destination="VC3-Os-ocJ" id="Ypa-nf-HFi"/>
+                        <outlet property="internetbankBtn" destination="Otd-Lf-sRW" id="uOC-Hb-Gzr"/>
                         <outlet property="moneyTextField" destination="Rqe-Oz-GQg" id="RdO-nS-5HE"/>
                     </connections>
                 </viewController>
@@ -1186,7 +1188,8 @@
                                                             <exclude reference="X3b-xu-kg6"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="18" y="84" width="284" height="1"/>
                                                         <mask key="constraints">
                                                             <include reference="X3b-xu-kg6"/>
                                                         </mask>
@@ -1197,6 +1200,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="136" y="95" width="166" height="21"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -1256,6 +1262,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="18" y="12" width="286" height="19"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>

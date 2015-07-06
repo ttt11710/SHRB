@@ -17,6 +17,7 @@
 #import "TNCheckBoxGroup.h"
 #import "BecomeMemberView.h"
 #import "CardTableViewCell.h"
+#import "NewCardDetailViewController.h"
 
 
 static OrdersViewController *g_OrdersViewController = nil;
@@ -262,8 +263,9 @@ static OrdersViewController *g_OrdersViewController = nil;
         //会员卡详情页面
         if (indexPath.row == [_data count]+2) {
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
+            NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            viewController.viewControllerName = @"OrdersViewController";
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }
