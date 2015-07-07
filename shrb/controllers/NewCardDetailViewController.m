@@ -422,5 +422,16 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     [SVProgressShow showSuccessWithStatus:@"支付成功！"];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    NSString *QRPay = [[NSUserDefaults standardUserDefaults] stringForKey:@"QRPay"];
+    if ([segue.identifier isEqualToString:@"gotoVoucherCenter"])
+    {
+        if ( [QRPay isEqualToString:@"SupermarketOrOrder"]) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketOrOrderVoucher" forKey:@"QRPay"];
+        }
+    }
+}
 
 @end

@@ -70,8 +70,11 @@
             [self.navigationController popToRootViewControllerAnimated:NO];
         }
         //卡包扫描
-        else {
+        else if ([QRPay isEqualToString:@"Card"]){
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:NO];
+        }
+        else if ([QRPay isEqualToString:@"SupermarketOrOrderVoucher"]) {
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-4] animated:YES];
         }
 }
 

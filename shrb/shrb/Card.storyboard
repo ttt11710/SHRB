@@ -1452,7 +1452,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wgb-ay-aPr" kind="push" id="VnL-12-lVv"/>
+                                    <segue destination="wgb-ay-aPr" kind="push" identifier="gotoVoucherCenter" id="VnL-12-lVv"/>
                                 </connections>
                             </button>
                         </subviews>

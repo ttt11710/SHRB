@@ -168,7 +168,6 @@
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
     [[NSUserDefaults standardUserDefaults] setObject:@"Card" forKey:@"QRPay"];
-    
 }
 
 @end
