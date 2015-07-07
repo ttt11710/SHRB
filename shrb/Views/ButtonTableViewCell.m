@@ -25,6 +25,8 @@
         
     self.buttonModel.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:120.0/255.0 blue:161.0/255.0 alpha:1];
     [self.buttonModel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.buttonModel.layer.cornerRadius = 10;
+    self.buttonModel.layer.masksToBounds = YES;
     [self.buttonModel addTarget:self action:@selector(buttonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -50,6 +52,8 @@
         _smallbuttonModel = [UIButton buttonWithType:UIButtonTypeCustom];
         _smallbuttonModel.frame = CGRectMake(screenWidth/2-45,  self.buttonModel.frame.origin.y, 90, 44);
         _smallbuttonModel.hidden = YES;
+        _smallbuttonModel.layer.cornerRadius = 4;
+        _smallbuttonModel.layer.masksToBounds = YES;
         [_smallbuttonModel setTitle:@"注册" forState:UIControlStateNormal];
         [_smallbuttonModel setTintColor:[UIColor clearColor]];
         [_smallbuttonModel setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:120.0/255.0 blue:161.0/255.0 alpha:1]];

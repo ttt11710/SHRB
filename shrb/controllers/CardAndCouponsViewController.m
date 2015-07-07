@@ -8,8 +8,16 @@
 
 #import "CardAndCouponsViewController.h"
 #import "Const.h"
+#import "KYCuteView.h"
+#import "BFPaperButton.h"
 
 @interface CardAndCouponsViewController ()
+{
+    KYCuteView *_badgeLabel;
+}
+
+@property (weak, nonatomic) IBOutlet BFPaperButton *couponsBtn;
+//@property (weak, nonatomic) IBOutlet KYCuteView *badgeLabel;
 
 @end
 
@@ -18,7 +26,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _badgeLabel = [[KYCuteView alloc]initWithPoint:CGPointMake((screenWidth-80)*0.5+15, -10) superView:self.couponsBtn];
+    _badgeLabel.viscosity = 20;
+    _badgeLabel.bubbleWidth = 25;
+    _badgeLabel.bubbleColor = [UIColor redColor];
+    [_badgeLabel setUp];
+    [_badgeLabel addGesture];
+    _badgeLabel.bubbleLabel.text = @"2";
+    _badgeLabel.bubbleLabel.textColor = [UIColor whiteColor];
+    
     [self initController];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated

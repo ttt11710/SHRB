@@ -18,6 +18,9 @@
 @interface HotDetailViewController ()
 {
     UIView *_moreView;
+    UIButton *_collectBtn;
+    UIButton *_shareBtn;
+    
     NSMutableArray *_array;
 }
 
@@ -50,27 +53,31 @@
     
     _moreView = [[UIView alloc] initWithFrame:CGRectMake(screenWidth-85, 20+44-8, 80, 35*2)];
     _moreView.hidden = YES;
-    UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    collectBtn.frame = CGRectMake(0, 0, 80, 35);
-    [collectBtn setTitle:@"收藏" forState:UIControlStateNormal];
-    [collectBtn setTitleColor:shrbPink forState:UIControlStateNormal];
-    [collectBtn setBackgroundColor:[UIColor whiteColor]];
-    collectBtn.layer.borderColor = shrbPink.CGColor;
-    collectBtn.layer.borderWidth = 1;
-    [collectBtn addTarget:self action:@selector(collectBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    _collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _collectBtn.frame = CGRectMake(0, 0, 80, 35);
+    [_collectBtn setTitle:@"收藏" forState:UIControlStateNormal];
+    [_collectBtn setTitleColor:shrbPink forState:UIControlStateNormal];
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"button_highlight"] forState:UIControlStateHighlighted];
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
+    [_collectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    _collectBtn.layer.borderColor = shrbPink.CGColor;
+    _collectBtn.layer.borderWidth = 1;
+    [_collectBtn addTarget:self action:@selector(collectBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     
-    [_moreView addSubview:collectBtn];
+    [_moreView addSubview:_collectBtn];
     
-    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    shareBtn.frame = CGRectMake(0, collectBtn.frame.size.height-1, 80, 35);
-    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
-    [shareBtn setTitleColor:shrbPink forState:UIControlStateNormal];
-    [shareBtn setBackgroundColor:[UIColor whiteColor]];
-    shareBtn.layer.borderColor = shrbPink.CGColor;
-    shareBtn.layer.borderWidth = 1;
-    [shareBtn addTarget:self action:@selector(shareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _shareBtn.frame = CGRectMake(0, _collectBtn.frame.size.height-1, 80, 35);
+    [_shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+    [_shareBtn setTitleColor:shrbPink forState:UIControlStateNormal];
+    [_shareBtn setBackgroundImage:[UIImage imageNamed:@"button_highlight"] forState:UIControlStateHighlighted];
+    [_shareBtn setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
+    _shareBtn.layer.borderColor = shrbPink.CGColor;
+    _shareBtn.layer.borderWidth = 1;
+    [_shareBtn addTarget:self action:@selector(shareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     
-    [_moreView addSubview:shareBtn];
+    [_moreView addSubview:_shareBtn];
     
     [self.navigationController.view addSubview:_moreView];
     
@@ -173,7 +180,7 @@
 - (void)collectBtnPressed
 {
     _moreView.hidden = YES;
-    [SVProgressShow showWithStatus:@"请稍等..."];
+    [SVProgressShow showWithStatus:@"收藏中..."];
     double delayInSeconds = 1;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -218,7 +225,6 @@
     [as show];
 
 }
-
 
 #pragma mark - 进入商店
 - (IBAction)gotoStoreView:(id)sender {

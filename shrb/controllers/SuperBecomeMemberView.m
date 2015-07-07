@@ -83,6 +83,8 @@ static SuperBecomeMemberView *g_SuperBecomeMemberView = nil;
     [sureBtn setTintColor:[UIColor clearColor]];
     [sureBtn setBackgroundColor:shrbPink];
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    sureBtn.layer.cornerRadius = 4;
+    sureBtn.layer.masksToBounds = YES;
     [sureBtn addTarget:self action:@selector(becomeMemberBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:sureBtn];
     

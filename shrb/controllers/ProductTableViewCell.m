@@ -36,7 +36,8 @@
 - (void)setModel:(ProductModel *)model
 {
     self.tradeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.tradeImage]];
-    
+    self.signInBtn.layer.cornerRadius = 4;
+    self.signInBtn.layer.masksToBounds = YES;
     self.saveMoneyLabel.text = [NSString stringWithFormat:@"省￥%@元",model.saveMoney];
     self.descriptionLabel.text = model.tradeDescription;
     self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@元",model.money];
@@ -71,6 +72,8 @@
         _smallbuttonModel = [UIButton buttonWithType:UIButtonTypeCustom];
         _smallbuttonModel.frame = CGRectMake(screenWidth/2-45,  self.signInBtn.frame.origin.y, 90, 44);
         _smallbuttonModel.hidden = YES;
+        _smallbuttonModel.layer.cornerRadius = 4;
+        _smallbuttonModel.layer.masksToBounds = YES;
         [_smallbuttonModel setTitle:@"注册" forState:UIControlStateNormal];
         [_smallbuttonModel setTintColor:[UIColor clearColor]];
         [_smallbuttonModel setBackgroundColor:shrbPink];

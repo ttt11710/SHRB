@@ -71,6 +71,7 @@
 		DF9119B11B394A3B00833AAB /* MeImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF9119AF1B394A3B00833AAB /* MeImageTableViewCell.xib */; };
 		DF9119B41B394E2000833AAB /* RightDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119B21B394E2000833AAB /* RightDetailTableViewCell.swift */; };
 		DF9119B51B394E2000833AAB /* RightDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF9119B31B394E2000833AAB /* RightDetailTableViewCell.xib */; };
+		DF9372F81B4B68FE00960F86 /* KYCuteView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9372F71B4B68FE00960F86 /* KYCuteView.m */; };
 		DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F5D1B33B13F005B2155 /* HotFocusModel.m */; };
 		DF958F611B33B83C005B2155 /* TradeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F601B33B83C005B2155 /* TradeModel.m */; };
 		DF958F641B33C11B005B2155 /* CardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F631B33C11B005B2155 /* CardModel.m */; };
@@ -249,6 +250,8 @@
 		DF9119AF1B394A3B00833AAB /* MeImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeImageTableViewCell.xib; sourceTree = "<group>"; };
 		DF9119B21B394E2000833AAB /* RightDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailTableViewCell.swift; sourceTree = "<group>"; };
 		DF9119B31B394E2000833AAB /* RightDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightDetailTableViewCell.xib; sourceTree = "<group>"; };
+		DF9372F61B4B68FE00960F86 /* KYCuteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYCuteView.h; sourceTree = "<group>"; };
+		DF9372F71B4B68FE00960F86 /* KYCuteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYCuteView.m; sourceTree = "<group>"; };
 		DF958F5C1B33B13F005B2155 /* HotFocusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotFocusModel.h; sourceTree = "<group>"; };
 		DF958F5D1B33B13F005B2155 /* HotFocusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotFocusModel.m; sourceTree = "<group>"; };
 		DF958F5F1B33B83C005B2155 /* TradeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeModel.h; sourceTree = "<group>"; };
@@ -429,6 +432,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DF9372F91B4B690400960F86 /* KYCuteView */,
 				DF2B0E161B423DB40051AA1A /* TNCheckBoxGroup */,
 				DFCDF9451B3BD70F00F70955 /* DOPScrollableActionSheet */,
 				DFAE52A71B32743500B03B2F /* QRView */,
@@ -595,6 +599,15 @@
 				DF9119B31B394E2000833AAB /* RightDetailTableViewCell.xib */,
 			);
 			name = swift;
+			sourceTree = "<group>";
+		};
+		DF9372F91B4B690400960F86 /* KYCuteView */ = {
+			isa = PBXGroup;
+			children = (
+				DF9372F61B4B68FE00960F86 /* KYCuteView.h */,
+				DF9372F71B4B68FE00960F86 /* KYCuteView.m */,
+			);
+			name = KYCuteView;
 			sourceTree = "<group>";
 		};
 		DF958F521B33AC85005B2155 /* control */ = {
@@ -1098,6 +1111,7 @@
 				DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */,
 				DF7177341B300F2A00D3C3B9 /* OrderListTableViewController.m in Sources */,
 				DF7D1E631B0DC9C600CD05B3 /* ExpenseTableViewCell.m in Sources */,
+				DF9372F81B4B68FE00960F86 /* KYCuteView.m in Sources */,
 				DF2B0E2B1B423DB40051AA1A /* TNCheckBox.m in Sources */,
 				DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */,
 				DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */,

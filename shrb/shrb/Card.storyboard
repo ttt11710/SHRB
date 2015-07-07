@@ -1764,13 +1764,13 @@
                                 <exclude reference="RlK-ha-zhQ"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="r2e-LD-XpR"/>
                                 <exclude reference="4JR-DM-BwC"/>
                                 <exclude reference="gk8-ya-tYL"/>
                                 <exclude reference="j60-aO-jJI"/>
                                 <exclude reference="9oj-8r-Dqw"/>
                                 <exclude reference="SoF-sK-1xV"/>
                                 <exclude reference="wNz-fd-Rmm"/>
-                                <exclude reference="r2e-LD-XpR"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -1779,13 +1779,13 @@
                                 <include reference="RlK-ha-zhQ"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="r2e-LD-XpR"/>
                                 <include reference="4JR-DM-BwC"/>
                                 <include reference="gk8-ya-tYL"/>
                                 <include reference="j60-aO-jJI"/>
                                 <include reference="9oj-8r-Dqw"/>
                                 <include reference="SoF-sK-1xV"/>
                                 <include reference="wNz-fd-Rmm"/>
-                                <include reference="r2e-LD-XpR"/>
                             </mask>
                         </variation>
                     </view>
