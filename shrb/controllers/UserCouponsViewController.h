@@ -10,6 +10,5 @@
 
 @interface UserCouponsViewController : UIViewController
 
-@property (nonatomic,assign) NSString *viewControllerName;
 
 @end

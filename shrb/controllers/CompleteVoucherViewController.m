@@ -23,8 +23,6 @@
 
 @implementation CompleteVoucherViewController
 
-@synthesize viewControllerName;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -40,53 +38,41 @@
     self.cardNumberLabel.text = @"卡号：6789674329589432";
     self.recordTextView.text = @"2015年5月20日     PM15:47\n完成一次100元的充值交易";
     
-    //动画
-    NSDictionary *options = @{
-                              kCRToastImageKey : [UIImage imageNamed:@"官方头像"],
-                              kCRToastTextAlignmentKey:@(NSTextAlignmentLeft),
-                              kCRToastTextKey:@"充值完成",
-                              kCRToastFontKey:[UIFont boldSystemFontOfSize:18.0],
-                              kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
-                              kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                              kCRToastBackgroundColorKey : [UIColor colorWithRed:255.0/255.0 green:100.0/255.0 blue:93.0/255.0 alpha:1],
-                              kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
-                              kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),
-                              kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionLeft),
-                              kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionRight)
-                              };
-    
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-                                    
-                                }];
+//    //动画
+//    NSDictionary *options = @{
+//                              kCRToastImageKey : [UIImage imageNamed:@"官方头像"],
+//                              kCRToastTextAlignmentKey:@(NSTextAlignmentLeft),
+//                              kCRToastTextKey:@"充值完成",
+//                              kCRToastFontKey:[UIFont boldSystemFontOfSize:18.0],
+//                              kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
+//                              kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+//                              kCRToastBackgroundColorKey : [UIColor colorWithRed:255.0/255.0 green:100.0/255.0 blue:93.0/255.0 alpha:1],
+//                              kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
+//                              kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),
+//                              kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionLeft),
+//                              kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionRight)
+//                              };
+//    
+//    [CRToastManager showNotificationWithOptions:options
+//                                completionBlock:^{
+//                                    
+//                                }];
 }
 
 #pragma  mark - 完成充值Btn
 - (IBAction)completeVoucherBtnPressed:(id)sender {
     
-    //等待一定时间后执行
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    
+       NSString *QRPay =  [[NSUserDefaults standardUserDefaults] stringForKey:@"QRPay"];
         
-        if ([viewControllerName isEqualToString:@"UserCouponsViewController"]) {
-            
-            //跳转到指定页面
-            UINavigationController *navController = self.navigationController;
-            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:NO];
-            
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"cardTableViewController"];
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            
-            [navController pushViewController:viewController animated:YES];
+        //超市或者点餐扫码
+        if ([QRPay isEqualToString:@"SupermarketOrOrder"]) {
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
-        
-        else  {
-            
-            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-4] animated:YES];
+        //卡包扫描
+        else {
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:NO];
         }
-    });
 }
 
 @end

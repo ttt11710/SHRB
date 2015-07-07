@@ -13,6 +13,7 @@
 #import "UITableView+Wave.h"
 #import "Const.h"
 #import <CBZSplashView/CBZSplashView.h>
+#import "KYCuteView.h"
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
@@ -136,6 +137,21 @@
     }
     
     cell.model = self.dataArray[indexPath.row];
+    
+    if (indexPath.row == 0) {
+        KYCuteView *badgeLabel = [[KYCuteView alloc]initWithPoint:CGPointMake(60, 4) superView:cell];
+        badgeLabel.viscosity = 8;
+        badgeLabel.bubbleWidth = 20;
+        badgeLabel.bubbleColor = [UIColor redColor];
+        [badgeLabel setUp];
+        [badgeLabel addGesture];
+        badgeLabel.bubbleLabel.text = @"2";
+        badgeLabel.bubbleLabel.textColor = [UIColor whiteColor];
+        
+        NSString *badgeNum = badgeLabel.bubbleLabel.text;
+        NSInteger num =  [badgeNum integerValue];
+        badgeLabel.frontView.hidden = num == 0?YES:NO;
+    }
     
     cell.tag = indexPath.row;
     return cell;

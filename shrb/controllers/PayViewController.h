@@ -11,4 +11,5 @@
 @interface PayViewController : UIViewController
 
 @property (nonatomic,assign) BOOL isMemberPay;
+
 @end

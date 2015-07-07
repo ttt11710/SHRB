@@ -390,9 +390,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="81" y="21" width="223" height="17"/>
-                                                    </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="选中" translatesAutoresizingMaskIntoConstraints="NO" id="TUi-U4-zKC">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -3322,7 +3319,7 @@
         <!--付款-->
         <scene sceneID="a4X-cv-9A7">
             <objects>
-                <viewController id="C0U-qe-Hci" userLabel="付款" customClass="PayViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PayView" id="C0U-qe-Hci" userLabel="付款" customClass="PayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6jd-Rq-DLl"/>
                         <viewControllerLayoutGuide type="bottom" id="jIs-VX-1ph"/>
@@ -3354,7 +3351,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="18D-xn-n1a" kind="push" id="2fc-On-nbO"/>
+                                    <action selector="payBtnPressed:" destination="C0U-qe-Hci" eventType="touchUpInside" id="cIg-Dh-E3g"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oA5-Xo-H5W">
@@ -3436,20 +3433,29 @@
                                                             <exclude reference="pMu-iC-ESN"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="222" y="15" width="29" height="30"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="pMu-iC-ESN"/>
                                                         </mask>
                                                     </variation>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥315" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHp-Zn-c9I">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥315" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHp-Zn-c9I">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="sz3-vK-fK6"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="261" y="21" width="41" height="18"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="sz3-vK-fK6"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="sz3-vK-fK6"/>
+                                                        </mask>
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nI4-Yn-OR3">
@@ -4022,7 +4028,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="星巴克" id="9n5-8D-OUQ" userLabel="付款"/>
+                    <navigationItem key="navigationItem" title="付款" id="9n5-8D-OUQ" userLabel="付款"/>
                     <connections>
                         <outlet property="makeSurePayBtn" destination="TKF-0Q-kGB" id="kML-vw-Fxd"/>
                         <outlet property="tableView" destination="oA5-Xo-H5W" id="8JX-MU-ufg"/>
@@ -4163,7 +4169,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥318" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJR-kV-BPe">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="ycY-HJ-9t8"/>
+                                                        <constraint firstAttribute="width" constant="70" id="ycY-HJ-9t8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4184,9 +4190,9 @@
                                                 <constraint firstItem="ZkU-NA-YUA" firstAttribute="leading" secondItem="vL3-zG-Z8q" secondAttribute="leadingMargin" constant="10" id="HU3-Qi-cyf"/>
                                                 <constraint firstAttribute="centerY" secondItem="WJR-kV-BPe" secondAttribute="centerY" id="Uap-PO-4kg"/>
                                                 <constraint firstAttribute="centerY" secondItem="ZkU-NA-YUA" secondAttribute="centerY" id="XK8-dA-2Vh"/>
-                                                <constraint firstItem="WJR-kV-BPe" firstAttribute="leading" secondItem="an3-Jg-6G1" secondAttribute="trailing" constant="26" id="Z3m-Ne-kah"/>
+                                                <constraint firstItem="WJR-kV-BPe" firstAttribute="leading" secondItem="an3-Jg-6G1" secondAttribute="trailing" constant="10" id="Z3m-Ne-kah"/>
                                                 <constraint firstItem="WJR-kV-BPe" firstAttribute="trailing" secondItem="vL3-zG-Z8q" secondAttribute="trailingMargin" constant="-10" id="cBD-n4-cUX"/>
-                                                <constraint firstAttribute="centerY" secondItem="an3-Jg-6G1" secondAttribute="centerY" constant="-1.5" id="oSa-7l-Ifo"/>
+                                                <constraint firstAttribute="centerY" secondItem="an3-Jg-6G1" secondAttribute="centerY" id="oSa-7l-Ifo"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
@@ -4347,7 +4353,7 @@
         <image name="默认女头像" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YY3-SB-znO"/>
         <segue reference="7gX-Xo-VKm"/>
+        <segue reference="YY3-SB-znO"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,8 +10,6 @@
 
 @interface NewCardDetailViewController : UIViewController
 
-@property (nonatomic,assign) NSString *viewControllerName;
-
 + (NewCardDetailViewController *)shareNewCardDetailViewController;
 - (void)completePay;
 

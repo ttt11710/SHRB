@@ -35,39 +35,35 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     
     UIButton *button = (UIButton *)sender;
-    switch (button.tag) {
-        case 1:
-            //短信
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    
+    //短信
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
+        
+        switch (button.tag) {
+            case 1:
                 [SVProgressShow showSuccessWithStatus:@"短信赠送成功！"];
-            });
-            break;
-        case 2:
-            //微信
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                break;
+            case 2:
+                //微信
                 [SVProgressShow showSuccessWithStatus:@"微信赠送成功！"];
-            });
-            break;
-        case 3:
-            //QQ
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                break;
+            case 3:
+                //微信
                 [SVProgressShow showSuccessWithStatus:@"QQ赠送成功！"];
-            });
-            
-            break;
-        case 4:
-            //微博
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                break;
+            case 4:
+                //微信
                 [SVProgressShow showSuccessWithStatus:@"微博赠送成功！"];
-            });
-            break;
-        default:
-            break;
-    }
-    
-    
-    
+                break;
+                
+            default:
+                break;
+        }
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    });
 }
+
 
 
 

@@ -17,6 +17,7 @@
 #import "OtherPayTableViewCell.h"
 #import "TNCheckBoxData.h"
 #import "TNCheckBoxGroup.h"
+#import "CompleteVoucherViewController.h"
 
 @interface PayViewController ()
 {
@@ -124,14 +125,17 @@
             cell.checkLabel.hidden = YES;
             TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
             manData.identifier = @"man";
-            manData.labelText = @"100RMB电子券";
+            manData.labelText = @"2张电子券 100RMB";
             manData.checked = YES;
             manData.checkedImage = [UIImage imageNamed:@"checked"];
             manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
             
             _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
             [_loveGroup create];
-            _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width-5, 4);
+            
+            CGFloat x = IsiPhone4s? screenWidth-_loveGroup.frame.size.width:screenWidth-24 -_loveGroup.frame.size.width;
+            
+            _loveGroup.position = CGPointMake(x, 4);
             
             [cell addSubview:_loveGroup];
             
@@ -152,14 +156,17 @@
             cell.checkLabel.hidden = YES;
             TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
             manData.identifier = @"man";
-            manData.labelText = @"100RMB电子券";
+            manData.labelText = @"2张电子券 100RMB";
             manData.checked = YES;
             manData.checkedImage = [UIImage imageNamed:@"checked"];
             manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
             
             _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
             [_loveGroup create];
-            _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width-5, 4);
+            
+            CGFloat x = IsiPhone4s? screenWidth-_loveGroup.frame.size.width:screenWidth-24 -_loveGroup.frame.size.width;
+            
+            _loveGroup.position = CGPointMake(x, 40);
             
             [cell addSubview:_loveGroup];
             
@@ -225,12 +232,13 @@
 
 #pragma mark - 会员卡支付Btn
 - (IBAction)payBtnPressed:(id)sender {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompletePayView"];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+    CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
-    [SVProgressShow showWithStatus:@"付款处理中..."];
-    double delayInSeconds = 1.5;
+    [SVProgressShow showWithStatus:@"充值处理中..."];
+    
+    double delayInSeconds = 1;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [SVProgressShow dismiss];
@@ -246,6 +254,7 @@
 }
 #pragma  mark - storyboard传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     CompletePayViewController *completePayViewController = segue.destinationViewController;
     completePayViewController.isMemberPay = self.isMemberPay;
 }

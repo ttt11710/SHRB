@@ -10,6 +10,4 @@
 
 @interface CompleteVoucherViewController : UIViewController
 
-@property (nonatomic,assign) NSString *viewControllerName;
-
 @end

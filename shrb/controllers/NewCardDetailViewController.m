@@ -156,9 +156,6 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 
 @implementation NewCardDetailViewController
 
-
-@synthesize viewControllerName;
-
 + (NewCardDetailViewController *)shareNewCardDetailViewController
 {
     return g_NewCardDetailViewController;
@@ -425,11 +422,5 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     [SVProgressShow showSuccessWithStatus:@"支付成功！"];
 }
 
-#pragma  mark - storyboard传值
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    VoucherCenterViewController *voucherCenterViewController = segue.destinationViewController;
-    voucherCenterViewController.viewControllerName = viewControllerName;
-}
 
 @end

@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "NewCardDetailViewController.h"
 #import "QRView.h"
+#import "PayViewController.h"
 
 @interface PayQRViewController ()<AVCaptureMetadataOutputObjectsDelegate,QRViewDelegate>
 
@@ -102,8 +103,18 @@
 #pragma mark - 返回
 - (void)pop:(UIButton *)button {
     
-    [[NewCardDetailViewController shareNewCardDetailViewController] completePay];
-    [self.navigationController popViewControllerAnimated:YES];
+//    [[NewCardDetailViewController shareNewCardDetailViewController] completePay];
+    
+    //跳转到指定页面
+    UINavigationController *navController = self.navigationController;
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    PayViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PayView"];
+    viewController.isMemberPay = YES;
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [navController pushViewController:viewController animated:YES];
+    
 }
 
 #pragma mark QRViewDelegate

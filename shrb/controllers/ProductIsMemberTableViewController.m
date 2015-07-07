@@ -223,7 +223,9 @@ static ProductIsMemberTableViewController *g_ProductIsMemberTableViewController 
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    viewController.viewControllerName = @"NewCardDetailViewController";
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketOrOrder" forKey:@"QRPay"];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

@@ -192,7 +192,7 @@ static OrdersViewController *g_OrdersViewController = nil;
                 
                 TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
                 manData.identifier = @"man";
-                manData.labelText = @"100RMB电子券";
+                manData.labelText = @"2张电子券 100RMB";
                 manData.labelColor = [UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1];
                 manData.labelFont = [UIFont systemFontOfSize:14.0];
                 manData.checked = YES;
@@ -202,7 +202,10 @@ static OrdersViewController *g_OrdersViewController = nil;
                 if (_loveGroup == nil) {
                     _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
                     [_loveGroup create];
-                    _loveGroup.position = CGPointMake(screenWidth-_loveGroup.frame.size.width-20, 40);
+    
+                    CGFloat x = IsiPhone4s? screenWidth-_loveGroup.frame.size.width:screenWidth-24 -_loveGroup.frame.size.width;
+                  
+                    _loveGroup.position = CGPointMake(x, 40);
                     
                     [cell addSubview:_loveGroup];
                 }
@@ -265,7 +268,6 @@ static OrdersViewController *g_OrdersViewController = nil;
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
             NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            viewController.viewControllerName = @"OrdersViewController";
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }

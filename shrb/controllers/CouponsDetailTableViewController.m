@@ -122,7 +122,6 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     UserCouponsViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"UserCouponsView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    viewController.viewControllerName = @"UserCouponsViewController";
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

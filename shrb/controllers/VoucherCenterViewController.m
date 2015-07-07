@@ -20,8 +20,6 @@
 
 @implementation VoucherCenterViewController
 
-@synthesize viewControllerName;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -76,7 +74,6 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    viewController.viewControllerName = viewControllerName;
     
     [SVProgressShow showWithStatus:@"充值处理中..."];
     
@@ -95,7 +92,6 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    viewController.viewControllerName = viewControllerName;
     
     [SVProgressShow showWithStatus:@"充值处理中..."];
     self.alipayBtn.userInteractionEnabled = NO;
