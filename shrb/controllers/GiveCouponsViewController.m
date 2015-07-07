@@ -28,6 +28,7 @@
     self.descriptionTextView.text = @"使用期限\n2015.01.01——2016.05.20\n\n送好友\n好友接收到电子券，就可以凭券消费。。。\n\n转送方式\n以链接的方式，直接通过短信、微信、QQ、微博等发给指定好友即可。";
 }
 
+#pragma mark - 赠送电子券
 - (IBAction)giveCouponsBtnPressed:(id)sender {
     
     double delayInSeconds = 1;

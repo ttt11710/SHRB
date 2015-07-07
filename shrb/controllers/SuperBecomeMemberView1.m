@@ -157,6 +157,7 @@ static SuperBecomeMemberView1 *g_SuperBecomeMemberView = nil;
     [_passwordTextField resignFirstResponder];
 }
 
+#pragma mark - 成为会员
 - (void)becomeMemberBtnPressed {
     
     //跳转到指定页面

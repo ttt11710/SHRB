@@ -63,6 +63,7 @@
                       nil];
 }
 
+#pragma mark - 更新tableView
 - (void)updateData:(NSString*)selectedCity
 {
     [self.dataArray removeAllObjects];
@@ -182,11 +183,9 @@
 }
 
 
-#pragma mark - 选择城市
+#pragma mark - 跳转到选择城市界面
 - (void)selectCityBtnPressed
 {
-    NSLog(@"选择城市");
-    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     CityListViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CityListViewControllerView"];
     viewController.delegate1 = self;
@@ -195,7 +194,7 @@
     
 }
 
-//CityListViewController protocol
+#pragma mark - 城市选完回调
 - (void) citySelectionUpdate:(NSString*)selectedCity
 {
     NSLog(@"selectedCity = %@",selectedCity);

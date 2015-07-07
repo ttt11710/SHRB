@@ -256,6 +256,7 @@ static NewStoreViewController *g_StoreViewController = nil;
     }
 }
 
+#pragma mark - tableView滚回最前面
 - (IBAction)tabViewSetContentToTop:(id)sender {
     
     //到顶部

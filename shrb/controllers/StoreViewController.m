@@ -419,6 +419,7 @@ static StoreViewController *g_StoreViewController = nil;
     [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
 }
 
+#pragma mark - 进入扫码页面
 - (void)showQRViewController {
     
     QRViewController *qrVC = [[QRViewController alloc] init];

@@ -422,6 +422,7 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     [SVProgressShow showSuccessWithStatus:@"支付成功！"];
 }
 
+#pragma mark - 故事版传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
     NSString *QRPay = [[NSUserDefaults standardUserDefaults] stringForKey:@"QRPay"];

@@ -493,6 +493,7 @@
     }
 }
 
+#pragma mark - 选择热门城市
 - (void)selectCityBtnPressed:(UIButton *)button
 {
     NSLog(@"button.tag = %ld",(long)button.tag);
@@ -506,6 +507,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - 选择国家
 - (void)selectcountryBtnPressed:(UIButton *)button
 {
     [delegate1 citySelectionUpdate:[self.countryArray objectAtIndex:button.tag]];

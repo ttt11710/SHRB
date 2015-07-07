@@ -246,6 +246,7 @@
     });
 }
 
+#pragma mark - 单选框点击调用
 - (void)loveGroupChanged:(NSNotification *)notification {
     
     NSLog(@"Checked checkboxes %@", _loveGroup.checkedCheckBoxes);

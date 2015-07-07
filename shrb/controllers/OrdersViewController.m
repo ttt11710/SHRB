@@ -71,6 +71,7 @@ static OrdersViewController *g_OrdersViewController = nil;
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
+#pragma mark - 添加手势
 - (void)addTap
 {
     if (_tap == nil) {
@@ -80,12 +81,14 @@ static OrdersViewController *g_OrdersViewController = nil;
     }
 }
 
+#pragma mark - 去除手势
 - (void)removeTap
 {
     [self.view removeGestureRecognizer:_tap];
     _tap = nil;
 }
 
+#pragma mark - 更新tableView
 - (void)UpdateTableView
 {
     isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
@@ -273,6 +276,7 @@ static OrdersViewController *g_OrdersViewController = nil;
     }
 }
 
+#pragma mark - 键盘消失
 -(void)tap {
     
     [[BecomeMemberView shareBecomeMemberView] textFieldResignFirstResponder];

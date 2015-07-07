@@ -164,6 +164,7 @@
     return cell;
 }
 
+#pragma mark - 故事版传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];

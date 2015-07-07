@@ -67,6 +67,7 @@
     return YES;
 }
 
+#pragma mark - 单击屏幕键盘消失
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
     if ([[touches anyObject]view]!= self.phoneNumberTextField &&[[touches anyObject]view]!=self.passwordTextField) {

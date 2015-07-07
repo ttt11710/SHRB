@@ -133,7 +133,7 @@ static ProductTableViewController *g_ProductTableViewController = nil;
     }
 }
 
-
+#pragma mark - 单击屏幕键盘消失
 -(void)tap {
     
     [[SuperBecomeMemberView1 shareSuperBecomeMemberView] textFieldResignFirstResponder];
@@ -186,6 +186,7 @@ static ProductTableViewController *g_ProductTableViewController = nil;
     return label.frame.size.height + screenWidth-16+180+30;
 }
 
+#pragma mark - 成为会员时页面重push
 - (void)becomeMember
 {
     UINavigationController *navController = self.navigationController;
