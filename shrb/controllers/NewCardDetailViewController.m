@@ -113,12 +113,12 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         
         _titleLabel = [[UILabel alloc] init];
         
-        _titleLabel.textColor = HexRGB(0x4e4e4e);
+        _titleLabel.textColor = shrbText;
         
         [self addSubview:_titleLabel];
         
         _bottomLineView = [[UIView alloc] init];
-        _bottomLineView.backgroundColor = HexRGB(0xF1EFEF);
+        _bottomLineView.backgroundColor = shrbTableViewColor;
         
         [self addSubview:_bottomLineView];
         
@@ -199,7 +199,7 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     //删除底部多余横线
     self.tableView.tableFooterView =[[UIView alloc]init];
     
-    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    self.tableView.backgroundColor = shrbTableViewColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
 }
@@ -366,7 +366,7 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         
         SectionModel *sectionModel = [_dataMutableArray objectAtIndex:[indexPath section]-1];
         cell.leftLabel.text = [sectionModel.sectionDataMutableArray objectAtIndex:[indexPath row]];
-        cell.backgroundColor = HexRGB(0xF1EFEF);
+        cell.backgroundColor = shrbTableViewColor;
         
         return cell;
 

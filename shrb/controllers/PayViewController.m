@@ -61,7 +61,7 @@
                       nil];
     //删除底部多余横线
     self.tableView.tableFooterView =[[UIView alloc]init];
-    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    self.tableView.backgroundColor = shrbTableViewColor;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -102,9 +102,9 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
-        cell.textLabel.text = [NSString stringWithFormat:@"共%d件商品",[self.dataArray count]];
+        cell.textLabel.text = [NSString stringWithFormat:@"共%lu件商品",(unsigned long)[self.dataArray count]];
         cell.textLabel.font = [UIFont systemFontOfSize:15.0];
-        cell.textLabel.textColor = HexRGB(0x4e4e4e);
+        cell.textLabel.textColor = shrbText;
         
         return cell;
     }

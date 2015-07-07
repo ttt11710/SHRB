@@ -83,7 +83,7 @@
 - (void)initTableView
 {
     self.tableView.tableFooterView =[[UIView alloc]init];
-    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    self.tableView.backgroundColor = shrbTableViewColor;
     
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }

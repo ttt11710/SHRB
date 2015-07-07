@@ -32,7 +32,7 @@
 
 - (void)initTableView
 {
-    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    self.tableView.backgroundColor = shrbTableViewColor;
     //删除多余线
     self.tableView.tableFooterView =[[UIView alloc]init];
 }

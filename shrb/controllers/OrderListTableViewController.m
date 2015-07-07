@@ -64,7 +64,7 @@
 
 - (void)initTableView
 {
-    self.tableView.backgroundColor = HexRGB(0xF1EFEF);
+    self.tableView.backgroundColor = shrbTableViewColor;
 }
 
 #pragma mark - tableView dataSource
