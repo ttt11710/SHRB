@@ -147,7 +147,7 @@
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  130;
+    return  120;
 }
 
 #pragma mark - Table view data source

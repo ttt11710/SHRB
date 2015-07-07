@@ -79,7 +79,7 @@ static SuperBecomeMemberView1 *g_SuperBecomeMemberView = nil;
     [self addSubview:_passwordTextField];
     
     UIButton *sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    sureBtn.frame = CGRectMake(0, passwordLabel.frame.origin.y + passwordLabel.frame.size.height+8, 200, 44);
+    sureBtn.frame = CGRectMake(0, passwordLabel.frame.origin.y + passwordLabel.frame.size.height+8, 204, 44);
     [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
     [sureBtn setTintColor:[UIColor clearColor]];
     [sureBtn setBackgroundColor:shrbPink];

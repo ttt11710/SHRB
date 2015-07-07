@@ -75,8 +75,7 @@
     //去除tableview顶部留白
     self.automaticallyAdjustsScrollViewInsets = false;
     //改变索引的颜色
-    self.tableView.sectionIndexColor = [UIColor grayColor];
-    
+    self.tableView.sectionIndexColor = shrbPink;
     
     _mysearchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:_searchBar contentsController:self];
     
@@ -384,6 +383,41 @@
         }
  
     }
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    CGFloat height ;
+    height = section <=2 ?30:21;
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, height)] ;
+    [headerView setBackgroundColor:shrbSectionColor];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, (height-18)*0.5, tableView.bounds.size.width - 10, 18)];
+    if(self.tableView != tableView) {
+        label.text = @"搜索结果";
+    }
+    else {
+        if (section == 0) {
+            label.text = @"当前位置";
+        }
+        else if (section == 1) {
+            label.text = @"热门城市";
+        }
+        else if (section == 2) {
+            label.text = @"其他国家";
+        }
+        else {
+            NSString *key = [keys objectAtIndex:section-3];
+            label.text = key;
+        }
+        
+    }
+    label.textColor = shrbText;
+    label.backgroundColor = [UIColor clearColor];
+    [headerView addSubview:label];
+    
+    return headerView;
 }
 
 //返回索引数组

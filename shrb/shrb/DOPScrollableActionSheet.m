@@ -7,6 +7,7 @@
 //
 
 #import "DOPScrollableActionSheet.h"
+#import "Const.h"
 
 static CGFloat horizontalMargin = 20.0;
 
@@ -117,7 +118,7 @@ static CGFloat horizontalMargin = 20.0;
         UIButton *cancel = [UIButton buttonWithType:UIButtonTypeSystem];
         cancel.frame = CGRectMake(0, y, _screenRect.size.width, 60);
         [cancel setTitle:NSLocalizedString(@"Cancel", @"cancel button name") forState:UIControlStateNormal];
-        [cancel setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
+        [cancel setTitleColor:shrbPink forState:UIControlStateNormal];
         cancel.titleLabel.font = [UIFont systemFontOfSize:25];
         cancel.backgroundColor = [UIColor whiteColor];
         [self addSubview:cancel];
