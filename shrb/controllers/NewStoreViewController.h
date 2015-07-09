@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewStoreViewController : UIViewController
+@interface NewStoreViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 
 + (NewStoreViewController *)shareStoreViewController;

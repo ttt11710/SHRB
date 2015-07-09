@@ -146,12 +146,20 @@
     _descriptionTextView.editable = NO;
     [_descriptionView addSubview:_descriptionTextView];
     
-    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(4*screenWidth/5-35, 8, 28, 28)];
-    [addButton setBackgroundColor:shrbPink];
-    addButton.layer.cornerRadius = 14;
+    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(4*screenWidth/5-55, 8, 40, 25)];
+    addButton.layer.cornerRadius = 4;
     addButton.layer.masksToBounds = YES;
+    addButton.layer.borderColor = shrbPink.CGColor;
+    addButton.layer.borderWidth = 1;
+    addButton.font = [UIFont boldSystemFontOfSize:14];
+    [addButton setTitle:@"添加" forState:UIControlStateNormal];
+    [addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [addButton setTintColor:[UIColor clearColor]];
+    [addButton setTitleColor:shrbPink forState:UIControlStateHighlighted];
+    [addButton setBackgroundImage:[UIImage imageNamed:@"button_highlight"] forState:UIControlStateNormal];
+    [addButton setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateHighlighted];
     //[addButton setTitle:@"+" forState:UIControlStateNormal];
-    [addButton setBackgroundImage:[UIImage imageNamed:@"increase2"] forState:UIControlStateNormal];
+   // [addButton setBackgroundImage:[UIImage imageNamed:@"increase2"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(addButtonEven) forControlEvents:UIControlEventTouchUpInside];
     [_descriptionView addSubview:addButton];
 }

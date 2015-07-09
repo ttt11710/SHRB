@@ -21,6 +21,7 @@
 - (void)setModel:(HotFocusModel *)model
 {
     self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.storeName]];
+    
     self.detailView.text = model.storeDetail;
 }
 
