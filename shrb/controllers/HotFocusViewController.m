@@ -72,27 +72,33 @@
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
                                @"status" : @"超市不是会员",
-                               @"storeName" : @"辛巴克",
+                               @"storeName" : @"holy",
+                               @"storeDetail":@"享受夏日悠闲午后时光",
                                },
                              @{
                                @"status" : @"超市是会员",
-                               @"storeName" : @"吉野家",
+                               @"storeName" : @"16D",
+                               @"storeDetail":@"16èME NORD，品味法国高雅文化与时尚潮流。",
                                },
                              @{
                                @"status" : @"点餐不是会员",
-                               @"storeName" : @"雀巢",
+                               @"storeName" : @"holy",
+                               @"storeDetail":@"享受夏日悠闲午后时光",
                                },
                              @{
                                @"status" : @"点餐是会员",
-                               @"storeName" : @"冰雪皇后",
+                               @"storeName" : @"16D",
+                               @"storeDetail":@"16èME NORD，品味法国高雅文化与时尚潮流。",
                                },
                              @{
                                @"status" : @"小店不是会员",
-                               @"storeName" : @"雀巢",
+                               @"storeName" : @"holy",
+                               @"storeDetail":@"享受夏日悠闲午后时光",
                                },
                              @{
                                @"status" : @"小店是会员",
-                               @"storeName" : @"冰雪皇后",
+                               @"storeName" : @"16D",
+                               @"storeDetail":@"16èME NORD，品味法国高雅文化与时尚潮流。",
                                },
                              nil ];
     
@@ -118,7 +124,7 @@
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 244;
 }
 
 #pragma mark - tableView delegate
@@ -138,20 +144,20 @@
     
     cell.model = self.dataArray[indexPath.row];
     
-    if (indexPath.row == 0) {
-        KYCuteView *badgeLabel = [[KYCuteView alloc]initWithPoint:CGPointMake(60, 4) superView:cell];
-        badgeLabel.viscosity = 8;
-        badgeLabel.bubbleWidth = 20;
-        badgeLabel.bubbleColor = [UIColor redColor];
-        [badgeLabel setUp];
-        [badgeLabel addGesture];
-        badgeLabel.bubbleLabel.text = @"2";
-        badgeLabel.bubbleLabel.textColor = [UIColor whiteColor];
-        
-        NSString *badgeNum = badgeLabel.bubbleLabel.text;
-        NSInteger num =  [badgeNum integerValue];
-        badgeLabel.frontView.hidden = num == 0?YES:NO;
-    }
+//    if (indexPath.row == 0) {
+//        KYCuteView *badgeLabel = [[KYCuteView alloc]initWithPoint:CGPointMake(60, 4) superView:cell];
+//        badgeLabel.viscosity = 8;
+//        badgeLabel.bubbleWidth = 20;
+//        badgeLabel.bubbleColor = [UIColor redColor];
+//        [badgeLabel setUp];
+//        [badgeLabel addGesture];
+//        badgeLabel.bubbleLabel.text = @"2";
+//        badgeLabel.bubbleLabel.textColor = [UIColor whiteColor];
+//        
+//        NSString *badgeNum = badgeLabel.bubbleLabel.text;
+//        NSInteger num =  [badgeNum integerValue];
+//        badgeLabel.frontView.hidden = num == 0?YES:NO;
+//    }
     
     cell.tag = indexPath.row;
     return cell;

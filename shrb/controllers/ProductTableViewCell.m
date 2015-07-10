@@ -21,6 +21,9 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIView *cardDetailView;
+
+@property (weak, nonatomic) IBOutlet UIView *imageShadowView;
+
 @property (weak, nonatomic) IBOutlet UIView *ImageBackView;
 @property (weak, nonatomic) IBOutlet UILabel *saveMoneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -49,6 +52,13 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
+    
+    self.imageShadowView.layer.cornerRadius = 10;
+    self.imageShadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.imageShadowView.layer.shadowOffset = CGSizeMake(2,2);
+    self.imageShadowView.layer.shadowOpacity = 0.5;
+    self.imageShadowView.layer.shadowRadius = 2.0;
+    
     self.ImageBackView.layer.cornerRadius = 10;
     self.ImageBackView.layer.masksToBounds = YES;
     

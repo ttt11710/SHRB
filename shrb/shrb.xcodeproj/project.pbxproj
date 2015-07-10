@@ -33,6 +33,7 @@
 		DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C6C1B0C8A4400FE499E /* CouponsTableViewController.m */; };
 		DF4E4C6F1B0C8D6400FE499E /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF4E4C6E1B0C8D6400FE499E /* Me.storyboard */; };
 		DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */; };
+		DF635CFF1B4F5B6D00439576 /* holy.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF635CFE1B4F5B6D00439576 /* holy.plist */; };
 		DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F24D1B267FF400FAE24F /* MainViewController.m */; };
 		DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2511B26AC5100FAE24F /* UITableView+Wave.m */; };
 		DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2551B26B91100FAE24F /* MODropAlertView.m */; };
@@ -181,6 +182,7 @@
 		DF4E4C6E1B0C8D6400FE499E /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		DF610B6B1B2E6AA7009E047A /* CardAndCouponsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardAndCouponsViewController.h; sourceTree = "<group>"; };
 		DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardAndCouponsViewController.m; sourceTree = "<group>"; };
+		DF635CFE1B4F5B6D00439576 /* holy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = holy.plist; sourceTree = "<group>"; };
 		DF70F24C1B267FF400FAE24F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		DF70F24D1B267FF400FAE24F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		DF70F2501B26AC5100FAE24F /* UITableView+Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Wave.h"; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				DF72C0BB1B0B339800CE6DC6 /* main.m */,
 				DF7D1E5A1B0D7AFE00CD05B3 /* Const.h */,
 				DFA5442C1B4A293E00CC9999 /* citydict.plist */,
+				DF635CFE1B4F5B6D00439576 /* holy.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 				DFA5442D1B4A293E00CC9999 /* citydict.plist in Resources */,
 				DF4E4C6F1B0C8D6400FE499E /* Me.storyboard in Resources */,
 				DF9119B51B394E2000833AAB /* RightDetailTableViewCell.xib in Resources */,
+				DF635CFF1B4F5B6D00439576 /* holy.plist in Resources */,
 				DF72C0CA1B0B339800CE6DC6 /* LaunchScreen.xib in Resources */,
 				DF9119A81B392BC500833AAB /* OrderListTableViewCell.xib in Resources */,
 				DF72C0C71B0B339800CE6DC6 /* Images.xcassets in Resources */,

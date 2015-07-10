@@ -68,9 +68,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>蛋糕</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>蛋糕</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -78,9 +78,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>柠檬磅蛋糕</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>柠檬磅蛋糕</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -88,9 +88,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>贝壳蛋糕</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>贝壳蛋糕</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -98,9 +98,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>布朗尼</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>布朗尼</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -108,13 +108,43 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>马卡龙</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>马卡龙</string>
+			</dict>
+			<dict>
+				<key>originalPrice</key>
+				<string>45</string>
+				<key>memberPrice</key>
+				<string>34</string>
+				<key>tradeName</key>
+				<string>泡芙塔</string>
+				<key>tradeImage</key>
+				<string>泡芙塔</string>
+			</dict>
+			<dict>
+				<key>originalPrice</key>
+				<string>45</string>
+				<key>memberPrice</key>
+				<string>34</string>
+				<key>tradeName</key>
+				<string>纸杯蛋糕</string>
+				<key>tradeImage</key>
+				<string>纸杯蛋糕</string>
+			</dict>
+			<dict>
+				<key>originalPrice</key>
+				<string>45</string>
+				<key>memberPrice</key>
+				<string>34</string>
+				<key>tradeName</key>
+				<string>蓝莓磅蛋糕</string>
+				<key>tradeImage</key>
+				<string>蓝莓磅蛋糕</string>
 			</dict>
 		</array>
 		<key>dessert</key>
-		<string>甜品</string>
+		<string>西点</string>
 	</dict>
 	<dict>
 		<key>info</key>
@@ -125,9 +155,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>卡布奇诺</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>卡布奇诺</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -135,9 +165,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>美式咖啡</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>美式咖啡</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -145,9 +175,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>摩卡</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>摩卡</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -155,9 +185,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>拿铁</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>拿铁</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -165,13 +195,13 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>意式浓缩咖啡</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>意式浓缩咖啡</string>
 			</dict>
 		</array>
 		<key>dessert</key>
-		<string>甜品</string>
+		<string>咖啡</string>
 	</dict>
 	<dict>
 		<key>info</key>
@@ -182,9 +212,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>草本清新</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>草本清新</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -192,9 +222,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>粉红佳人</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>粉红佳人</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -202,9 +232,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>炭培乌龙</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>炭培乌龙</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -212,9 +242,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>夏日柠檬</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>夏日柠檬</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -222,13 +252,23 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>EarlGreyTea</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>EarlGreyTea</string>
+			</dict>
+			<dict>
+				<key>originalPrice</key>
+				<string>45</string>
+				<key>memberPrice</key>
+				<string>34</string>
+				<key>tradeName</key>
+				<string>TeaCup</string>
+				<key>tradeImage</key>
+				<string>TeaCup</string>
 			</dict>
 		</array>
 		<key>dessert</key>
-		<string>甜品</string>
+		<string>茶</string>
 	</dict>
 	<dict>
 		<key>info</key>
@@ -239,9 +279,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>草莓奶昔</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>草莓奶昔</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -249,9 +289,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>哈密瓜汁</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>哈密瓜汁</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -259,9 +299,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>芒果椰奶</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>芒果椰奶</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -269,9 +309,9 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>芒果汁</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>芒果汁</string>
 			</dict>
 			<dict>
 				<key>originalPrice</key>
@@ -279,70 +319,23 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
+				<string>猕猴桃汁</string>
 				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
+				<string>猕猴桃汁</string>
+			</dict>
+			<dict>
+				<key>originalPrice</key>
+				<string>45</string>
+				<key>memberPrice</key>
+				<string>34</string>
+				<key>tradeName</key>
+				<string>牛油果奶昔</string>
+				<key>tradeImage</key>
+				<string>牛油果奶昔</string>
 			</dict>
 		</array>
 		<key>dessert</key>
-		<string>甜品</string>
-	</dict>
-	<dict>
-		<key>info</key>
-		<array>
-			<dict>
-				<key>originalPrice</key>
-				<string>45</string>
-				<key>memberPrice</key>
-				<string>34</string>
-				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
-				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
-			</dict>
-			<dict>
-				<key>originalPrice</key>
-				<string>45</string>
-				<key>memberPrice</key>
-				<string>34</string>
-				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
-				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
-			</dict>
-			<dict>
-				<key>originalPrice</key>
-				<string>45</string>
-				<key>memberPrice</key>
-				<string>34</string>
-				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
-				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
-			</dict>
-			<dict>
-				<key>originalPrice</key>
-				<string>45</string>
-				<key>memberPrice</key>
-				<string>34</string>
-				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
-				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
-			</dict>
-			<dict>
-				<key>originalPrice</key>
-				<string>45</string>
-				<key>memberPrice</key>
-				<string>34</string>
-				<key>tradeName</key>
-				<string>白头偕老双皮奶</string>
-				<key>tradeImage</key>
-				<string>白头偕老双皮奶</string>
-			</dict>
-		</array>
-		<key>dessert</key>
-		<string>甜品</string>
+		<string>饮品</string>
 	</dict>
 </array>
 </plist>

@@ -22,7 +22,8 @@
 
 @implementation TransactMemberViewController
 
-@synthesize currentIndex;
+@synthesize currentSection;
+@synthesize currentRow;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -105,7 +106,9 @@
             
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
-            viewController.currentIndex = currentIndex;
+            viewController.currentSection = currentSection;
+            viewController.currentRow = currentRow;
+            
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
             
             [navController pushViewController:viewController animated:YES];
@@ -131,7 +134,9 @@
             
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
-            viewController.currentIndex = currentIndex;
+            viewController.currentSection = currentSection;
+            viewController.currentRow = currentRow;
+            
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
             
             [navController pushViewController:viewController animated:YES];

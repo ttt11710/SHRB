@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ProductDescriptionView : UIView
-{
-    NSInteger _currentIndex;
-}
 
-@property(nonatomic,assign)NSInteger currentIndex;//当前
+@property(nonatomic,assign)NSInteger currentSection;
+@property(nonatomic,assign)NSInteger currentRow;
 
 @end

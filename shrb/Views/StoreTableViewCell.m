@@ -8,6 +8,7 @@
 
 #import "StoreTableViewCell.h"
 #import "TradeModel.h"
+#import "Const.h"
 
 @interface StoreTableViewCell ()
 
@@ -31,6 +32,8 @@
     // Initialization code
     self.tradeImageView.layer.cornerRadius = 10;
     self.tradeImageView.layer.masksToBounds = YES;
+    self.tradeImageView.layer.borderColor = shrbPink.CGColor;
+    self.tradeImageView.layer.borderWidth = 1;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

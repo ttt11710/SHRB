@@ -10,7 +10,8 @@
 
 @interface ProductTableViewController : UITableViewController
 
-@property(nonatomic,assign)NSInteger currentIndex;//当前
+@property(nonatomic,assign)NSInteger currentSection;
+@property(nonatomic,assign)NSInteger currentRow;
 
 + (ProductTableViewController *)shareProductTableViewController;
 - (void)becomeMember;

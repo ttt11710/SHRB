@@ -33,8 +33,9 @@ static NewStoreViewController *g_StoreViewController = nil;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) UIBezierPath *path;
 @property (weak, nonatomic) IBOutlet UIButton *topBtn;
-@property (nonatomic,strong) NSMutableArray * dataArray;
-@property (nonatomic, strong) NSMutableDictionary *dataDic;
+
+@property (nonatomic,strong) NSMutableArray * modelArray;
+@property (nonatomic, strong) NSMutableArray *plistArr;
 
 @end
 
@@ -72,267 +73,19 @@ static NewStoreViewController *g_StoreViewController = nil;
     selectTypeTableView.delegate = self;
     selectTypeTableView.dataSource = self;
     
+    [self.view insertSubview:selectTypeTableViewBackView aboveSubview:self.view];
+    [self.view insertSubview:selectTypeTableView aboveSubview:self.view];
 }
 
 - (void)initData
 {
-    
     _currentNumDic = [[NSMutableDictionary alloc]init];
     
+    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"holy" ofType:@"plist"]];
     
-    //假数据
-    NSMutableArray *dessertArray = [[NSMutableArray alloc] initWithObjects:
-                             @{
-                               @"tradeImage" : @"白头偕老双皮奶",
-                               @"tradeName" : @"白头偕老双皮奶",
-                               @"memberPrice":@"34",
-                               @"originalPrice":@"45",
-                               },
-                             @{
-                               @"tradeImage" : @"果果们醉了",
-                               @"tradeName" : @"果果们醉了",
-                               @"memberPrice":@"45",
-                               @"originalPrice":@"55",                               },
-                             @{
-                               @"tradeImage" : @"红与黑",
-                               @"tradeName" : @"红与黑",
-                               @"memberPrice":@"22",
-                               @"originalPrice":@"33",
-                               },
-                             @{
-                               @"tradeImage" : @"戒不掉的杨枝甘露",
-                               @"tradeName" : @"戒不掉的杨枝甘露",
-                               @"memberPrice":@"44",
-                               @"originalPrice":@"55",
-                               },
-                             @{
-                               @"tradeImage" : @"满满的幸福",
-                               @"tradeName" : @"满满的幸福",
-                               @"memberPrice":@"25",
-                               @"originalPrice":@"34",
-                               },
-                             @{
-                               @"tradeImage" : @"萌萌哒烤芒果",
-                               @"tradeName" : @"萌萌哒考芒果",
-                               @"memberPrice":@"11",
-                               @"originalPrice":@"45",
-                               },
-                             @{
-                               @"tradeImage" : @"水果很芒",
-                               @"tradeName" : @"水果很芒",
-                               @"memberPrice":@"23",
-                               @"originalPrice":@"55",
-                               },
-                             @{
-                               @"tradeImage" : @"我们仨",
-                               @"tradeName" : @"我们仨",
-                               @"memberPrice":@"23",
-                               @"originalPrice":@"56",
-                               },
-                             @{
-                               @"tradeImage" : @"致柔软的青春",
-                               @"tradeName" : @"致柔软的青春",
-                               @"memberPrice":@"12",
-                               @"originalPrice":@"67",
-                               },
-                             nil ];
-    
-    NSMutableArray *sweetmeatsArray = [[NSMutableArray alloc] initWithObjects:
-                                    @{
-                                      @"tradeImage" : @"蛋糕",
-                                      @"tradeName" : @"蛋糕",
-                                      @"memberPrice":@"34",
-                                      @"originalPrice":@"45",
-                                      },
-                                    @{
-                                      @"tradeImage" : @"柠檬磅蛋糕",
-                                      @"tradeName" : @"柠檬磅蛋糕",
-                                      @"memberPrice":@"45",
-                                      @"originalPrice":@"55",                               },
-                                    @{
-                                      @"tradeImage" : @"贝壳蛋糕",
-                                      @"tradeName" : @"贝壳蛋糕",
-                                      @"memberPrice":@"22",
-                                      @"originalPrice":@"33",
-                                      },
-                                    @{
-                                      @"tradeImage" : @"布朗尼",
-                                      @"tradeName" : @"布朗尼",
-                                      @"memberPrice":@"44",
-                                      @"originalPrice":@"55",
-                                      },
-                                    @{
-                                      @"tradeImage" : @"马卡龙",
-                                      @"tradeName" : @"马卡龙",
-                                      @"memberPrice":@"25",
-                                      @"originalPrice":@"34",
-                                      },
-                                    @{
-                                      @"tradeImage" : @"泡芙塔",
-                                      @"tradeName" : @"泡芙塔",
-                                      @"memberPrice":@"11",
-                                      @"originalPrice":@"45",
-                                      },
-                                    @{
-                                      @"tradeImage" : @"纸杯蛋糕",
-                                      @"tradeName" : @"纸杯蛋糕",
-                                      @"memberPrice":@"23",
-                                      @"originalPrice":@"55",
-                                      },
-                                    @{
-                                      @"tradeImage" : @"蓝莓磅蛋糕",
-                                      @"tradeName" : @"蓝莓磅蛋糕",
-                                      @"memberPrice":@"23",
-                                      @"originalPrice":@"56",
-                                      },
-                                    nil ];
-    NSMutableArray *coffeeArray = [[NSMutableArray alloc] initWithObjects:
-                                       @{
-                                         @"tradeImage" : @"卡布奇诺",
-                                         @"tradeName" : @"卡布奇诺",
-                                         @"memberPrice":@"34",
-                                         @"originalPrice":@"45",
-                                         },
-                                       @{
-                                         @"tradeImage" : @"美式咖啡",
-                                         @"tradeName" : @"美式咖啡",
-                                         @"memberPrice":@"45",
-                                         @"originalPrice":@"55",                               },
-                                       @{
-                                         @"tradeImage" : @"摩卡",
-                                         @"tradeName" : @"摩卡",
-                                         @"memberPrice":@"22",
-                                         @"originalPrice":@"33",
-                                         },
-                                       @{
-                                         @"tradeImage" : @"拿铁",
-                                         @"tradeName" : @"拿铁",
-                                         @"memberPrice":@"44",
-                                         @"originalPrice":@"55",
-                                         },
-                                       @{
-                                         @"tradeImage" : @"意式浓缩咖啡",
-                                         @"tradeName" : @"意式浓缩咖啡",
-                                         @"memberPrice":@"25",
-                                         @"originalPrice":@"34",
-                                         },
-                                   nil ];
-    NSMutableArray *teaArray = [[NSMutableArray alloc] initWithObjects:
-                                @{
-                                  @"tradeImage" : @"草本清新",
-                                  @"tradeName" : @"草本清新",
-                                  @"memberPrice":@"34",
-                                  @"originalPrice":@"45",
-                                  },
-                                @{
-                                  @"tradeImage" : @"粉红佳人",
-                                  @"tradeName" : @"粉红佳人",
-                                  @"memberPrice":@"45",
-                                  @"originalPrice":@"55",                               },
-                                @{
-                                  @"tradeImage" : @"炭培乌龙",
-                                  @"tradeName" : @"炭培乌龙",
-                                  @"memberPrice":@"22",
-                                  @"originalPrice":@"33",
-                                  },
-                                @{
-                                  @"tradeImage" : @"夏日柠檬",
-                                  @"tradeName" : @"夏日柠檬",
-                                  @"memberPrice":@"44",
-                                  @"originalPrice":@"55",
-                                  },
-                                @{
-                                  @"tradeImage" : @"EarlGreyTea",
-                                  @"tradeName" : @"EarlGreyTea",
-                                  @"memberPrice":@"25",
-                                  @"originalPrice":@"34",
-                                  },
-                                @{
-                                  @"tradeImage" : @"TeaCup",
-                                  @"tradeName" : @"TeaCup",
-                                  @"memberPrice":@"25",
-                                  @"originalPrice":@"34",
-                                  },
-                                nil ];
-    NSMutableArray *drinkArray = [[NSMutableArray alloc] initWithObjects:
-                                @{
-                                  @"tradeImage" : @"草莓奶昔",
-                                  @"tradeName" : @"草莓奶昔",
-                                  @"memberPrice":@"34",
-                                  @"originalPrice":@"45",
-                                  },
-                                @{
-                                  @"tradeImage" : @"哈密瓜汁",
-                                  @"tradeName" : @"哈密瓜汁",
-                                  @"memberPrice":@"45",
-                                  @"originalPrice":@"55",                               },
-                                @{
-                                  @"tradeImage" : @"芒果椰奶",
-                                  @"tradeName" : @"芒果椰奶",
-                                  @"memberPrice":@"22",
-                                  @"originalPrice":@"33",
-                                  },
-                                @{
-                                  @"tradeImage" : @"芒果汁",
-                                  @"tradeName" : @"芒果汁",
-                                  @"memberPrice":@"44",
-                                  @"originalPrice":@"55",
-                                  },
-                                @{
-                                  @"tradeImage" : @"猕猴桃汁",
-                                  @"tradeName" : @"猕猴桃汁",
-                                  @"memberPrice":@"25",
-                                  @"originalPrice":@"34",
-                                  },
-                                @{
-                                  @"tradeImage" : @"牛油果奶昔",
-                                  @"tradeName" : @"牛油果奶昔",
-                                  @"memberPrice":@"25",
-                                  @"originalPrice":@"34",
-                                  },
-                                nil ];
-    
-    
-    self.dataArray = [[NSMutableArray alloc] init];
-    
-//    for (NSDictionary * dict in dessertArray) {
-//        TradeModel * model = [[TradeModel alloc] init];
-//        [model setValuesForKeysWithDictionary:dict];
-//        [self.dataArray addObject:model];
-//    }
-    
-    self.dataDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:dessertArray,@"甜品",sweetmeatsArray,@"西点",coffeeArray,@"咖啡",teaArray,@"茶",drinkArray,@"饮品", nil];
-    
-
-    
-    for (NSDictionary * dict in self.dataDic[@"甜品"]) {
-        TradeModel * model = [[TradeModel alloc] init];
-        [model setValuesForKeysWithDictionary:dict];
-        [self.dataArray addObject:model];
-    }
-    for (NSDictionary * dict in self.dataDic[@"饮品"]) {
-        TradeModel * model = [[TradeModel alloc] init];
-        [model setValuesForKeysWithDictionary:dict];
-        [self.dataArray addObject:model];
-    }
-    for (NSDictionary * dict in self.dataDic[@"西点"]) {
-        TradeModel * model = [[TradeModel alloc] init];
-        [model setValuesForKeysWithDictionary:dict];
-        [self.dataArray addObject:model];
-    }
-    for (NSDictionary * dict in self.dataDic[@"咖啡"]) {
-        TradeModel * model = [[TradeModel alloc] init];
-        [model setValuesForKeysWithDictionary:dict];
-        [self.dataArray addObject:model];
-    }
-    for (NSDictionary * dict in self.dataDic[@"茶"]) {
-        TradeModel * model = [[TradeModel alloc] init];
-        [model setValuesForKeysWithDictionary:dict];
-        [self.dataArray addObject:model];
-    }
+    self.modelArray = [[NSMutableArray alloc] init];
     
     showSelectTypeTableView = NO;
-    
 }
 
 - (void)initTableView
@@ -343,14 +96,6 @@ static NewStoreViewController *g_StoreViewController = nil;
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
 
-- (void)viewDidLayoutSubviews {
-    
-    [super viewDidLayoutSubviews];
-    
-    [self.view addSubview:selectTypeTableViewBackView];
-    [self.view addSubview:selectTypeTableView];
-
-}
 #pragma mark - 分类选择
 - (void)selectType
 {
@@ -382,7 +127,7 @@ static NewStoreViewController *g_StoreViewController = nil;
 #pragma mark - 更新tableView
 - (void)UpdateTableView
 {
-    [self.dataArray addObject:@{
+    [self.modelArray addObject:@{
                                 @"tradeImage" : @"冰拿铁",
                                 @"tradeName" : @"冰拿铁",
                                 @"memberPrice":@"23",
@@ -413,21 +158,15 @@ static NewStoreViewController *g_StoreViewController = nil;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView != selectTypeTableView) {
-        return [self.dataDic count];
+        return [self.plistArr count];
     }
     return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSEnumerator * enumeratorKey = [self.dataDic keyEnumerator];
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    //快速枚举遍历所有KEY的值
-    for (NSObject *object in enumeratorKey) {
-        [array addObject:object];
-    }
     if (tableView != selectTypeTableView) {
-        return [array objectAtIndex:section];
+        return [self.plistArr objectAtIndex:section][@"type"];
     }
     else
         return @"";
@@ -444,13 +183,6 @@ static NewStoreViewController *g_StoreViewController = nil;
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSEnumerator * enumeratorKey = [self.dataDic keyEnumerator];
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    //快速枚举遍历所有KEY的值
-    for (NSObject *object in enumeratorKey) {
-        [array addObject:object];
-    }
-
     CGFloat height ;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, height)] ;
     [headerView setBackgroundColor:shrbSectionColor];
@@ -462,7 +194,7 @@ static NewStoreViewController *g_StoreViewController = nil;
         
         label.backgroundColor = [UIColor clearColor];
         [headerView addSubview:label];
-        label.text = [array objectAtIndex:section];;
+        label.text = [self.plistArr objectAtIndex:section][@"type"];
         return headerView;
     }
     else {
@@ -475,24 +207,10 @@ static NewStoreViewController *g_StoreViewController = nil;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == selectTypeTableView) {
-        return [self.dataDic count];
+        return [self.plistArr count];
     }
     else {
-        if (section == 0) {
-            return [self.dataDic[@"甜品"] count];
-        }
-        else if (section == 1){
-            return [self.dataDic[@"饮品"] count];
-        }
-        else if (section == 2){
-            return [self.dataDic[@"西点"] count];
-        }
-        else if (section == 3){
-            return [self.dataDic[@"咖啡"] count];
-        }
-        else {
-            return [self.dataDic[@"茶"] count];
-        }
+        return [[self.plistArr objectAtIndex:section][@"info"] count];
     }
 }
 
@@ -505,14 +223,8 @@ static NewStoreViewController *g_StoreViewController = nil;
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        
-        NSEnumerator * enumeratorKey = [self.dataDic keyEnumerator];
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-        //快速枚举遍历所有KEY的值
-        for (NSObject *object in enumeratorKey) {
-            [array addObject:object];
-        }
-        cell.textLabel.text = array[indexPath.row];
+    
+        cell.textLabel.text = [self.plistArr objectAtIndex:indexPath.row][@"type"];
         
         return cell;
     }
@@ -523,21 +235,14 @@ static NewStoreViewController *g_StoreViewController = nil;
         if (cell == nil) {
             cell = [[StoreTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
-        if (indexPath.section == 0) {
-            cell.model = self.dataArray[indexPath.row];
+        [self.modelArray removeAllObjects];
+        for (NSDictionary * dict in [self.plistArr objectAtIndex:indexPath.section][@"info"]) {
+            TradeModel * model = [[TradeModel alloc] init];
+            [model setValuesForKeysWithDictionary:dict];
+            [self.modelArray addObject:model];
         }
-        else if (indexPath.section == 1) {
-            cell.model = self.dataArray[indexPath.row+[self.dataDic[@"甜品"] count]];
-        }
-        else if (indexPath.section == 2) {
-            cell.model = self.dataArray[indexPath.row+[self.dataDic[@"甜品"] count]+[self.dataDic[@"饮品"] count]];
-        }
-        else if (indexPath.section == 3) {
-            cell.model = self.dataArray[indexPath.row+[self.dataDic[@"甜品"] count]+[self.dataDic[@"饮品"] count]+[self.dataDic[@"西点"] count]];
-        }
-        else {
-            cell.model = self.dataArray[indexPath.row+[self.dataDic[@"甜品"] count]+[self.dataDic[@"饮品"] count]+[self.dataDic[@"西点"] count]+[self.dataDic[@"咖啡"] count]];
-        }
+        
+        cell.model = self.modelArray[indexPath.row];
         return cell;
     }
 }
@@ -564,7 +269,8 @@ static NewStoreViewController *g_StoreViewController = nil;
         BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
         if (isMember) {
             ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
-            viewController.currentIndex = indexPath.row;
+            viewController.currentSection = indexPath.section;
+            viewController.currentRow = indexPath.row;
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
             
             
@@ -573,7 +279,8 @@ static NewStoreViewController *g_StoreViewController = nil;
         }
         else {
             ProductTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductTableView"];
-            viewController.currentIndex = indexPath.row;
+            viewController.currentSection = indexPath.section;
+            viewController.currentRow = indexPath.row;
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
             
             [self.navigationController pushViewController:viewController animated:YES];

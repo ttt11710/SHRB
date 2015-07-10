@@ -12,16 +12,17 @@
 
 @interface HotFocusTableViewCell ()
 
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
 @property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
-@property (weak, nonatomic) IBOutlet UIButton *memberBtn;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end
 @implementation HotFocusTableViewCell
 
 - (void)setModel:(HotFocusModel *)model
 {
-    [self.memberBtn setTitle:model.status forState:UIControlStateNormal];
     self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.storeName]];
+    self.descriptionLabel.text = model.storeDetail;
 }
 
 - (void)awakeFromNib
@@ -33,7 +34,15 @@
 
 - (void)customSetup
 {
-    // Even though defaults values are cool, I'm setting all of the customizable options here as an example:
+    self.shadowView.layer.cornerRadius = 5;
+    self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.shadowView.layer.shadowOffset = CGSizeMake(2,2);
+    self.shadowView.layer.shadowOpacity = 0.5;
+    self.shadowView.layer.shadowRadius = 2.0;
+    
+    self.hotImageView.layer.cornerRadius = 5;
+    self.hotImageView.layer.masksToBounds = YES;
+    
     self.usesSmartColor = NO;
     self.tapCircleDiameter = bfPaperTableViewCell_tapCircleDiameterFull;
     self.rippleFromTapLocation = YES;

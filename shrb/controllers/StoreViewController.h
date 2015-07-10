@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StoreViewController : UIViewController
+@interface StoreViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 + (StoreViewController *)shareStoreViewController;
 - (void)UpdateTableView;
