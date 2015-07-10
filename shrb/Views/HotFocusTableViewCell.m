@@ -13,7 +13,6 @@
 @interface HotFocusTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
-@property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end
@@ -22,7 +21,21 @@
 - (void)setModel:(HotFocusModel *)model
 {
     self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.storeName]];
-    self.descriptionLabel.text = model.storeDetail;
+    
+    // load all the frames of our animation
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for (NSString *str in model.images) {
+        [arr addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%@",str]]];
+    }
+    
+    self.hotImageView.animationImages = [arr copy];
+    
+    // all frames will execute in 1.75 seconds
+    self.hotImageView.animationDuration = 9;
+    // repeat the annimation forever
+    self.hotImageView.animationRepeatCount = 0;
+    
+    self.descriptionLabel.text = model.simpleStoreDetail;
 }
 
 - (void)awakeFromNib

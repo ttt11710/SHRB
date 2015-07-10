@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray * dataArray;
+@property (nonatomic,strong) NSMutableArray * plistArr;
 
 @end
 
@@ -68,47 +69,8 @@
 
 - (void)initData
 {
-    //假数据
-    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
-                             @{
-                               @"status" : @"超市不是会员",
-                               @"storeName" : @"holy",
-                               @"storeDetail":@"享受夏日悠闲午后时光",
-                               },
-                             @{
-                               @"status" : @"超市是会员",
-                               @"storeName" : @"16D",
-                               @"storeDetail":@"16èME NORD，品味法国高雅文化与时尚潮流。",
-                               },
-                             @{
-                               @"status" : @"点餐不是会员",
-                               @"storeName" : @"holy",
-                               @"storeDetail":@"享受夏日悠闲午后时光",
-                               },
-                             @{
-                               @"status" : @"点餐是会员",
-                               @"storeName" : @"16D",
-                               @"storeDetail":@"16èME NORD，品味法国高雅文化与时尚潮流。",
-                               },
-                             @{
-                               @"status" : @"小店不是会员",
-                               @"storeName" : @"holy",
-                               @"storeDetail":@"享受夏日悠闲午后时光",
-                               },
-                             @{
-                               @"status" : @"小店是会员",
-                               @"storeName" : @"16D",
-                               @"storeDetail":@"16èME NORD，品味法国高雅文化与时尚潮流。",
-                               },
-                             nil ];
-    
     self.dataArray = [[NSMutableArray alloc] init];
-    
-    for (NSDictionary * dict in array) {
-        HotFocusModel * model = [[HotFocusModel alloc] init];
-        [model setValuesForKeysWithDictionary:dict];
-        [self.dataArray addObject:model];
-    }
+    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"store" ofType:@"plist"]];
 }
 
 - (void)initTableView
@@ -130,7 +92,7 @@
 #pragma mark - tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataArray count];
+    return [self.plistArr count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,7 +104,17 @@
         cell = [[HotFocusTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
     
+    [self.dataArray removeAllObjects];
+    for (NSDictionary * dict in self.plistArr) {
+        HotFocusModel * model = [[HotFocusModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [self.dataArray addObject:model];
+    }
+
     cell.model = self.dataArray[indexPath.row];
+    // start animating
+    [cell.hotImageView startAnimating];
+
     
 //    if (indexPath.row == 0) {
 //        KYCuteView *badgeLabel = [[KYCuteView alloc]initWithPoint:CGPointMake(60, 4) superView:cell];
@@ -170,11 +142,15 @@
     if (indexPath.row %2 == 0) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMember"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"store"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"holy" forKey:@"store"];
     }
     else
     {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"store"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"16D" forKey:@"store"];
     }
     
      //商店类型 supermarket（超市）  order（点餐） store(小店)

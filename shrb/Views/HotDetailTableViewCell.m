@@ -20,12 +20,15 @@
 
 - (void)setModel:(HotFocusModel *)model
 {
-    self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.storeName]];
+    self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",model.storeLogo]];
     
     self.detailView.text = model.storeDetail;
 }
 
 - (void)awakeFromNib {
+    
+    self.hotImageView.layer.cornerRadius = 4;
+    self.hotImageView.layer.masksToBounds = YES;
     
 }
 

@@ -84,7 +84,9 @@ static StoreViewController *g_StoreViewController = nil;
 - (void)initData
 {
     
-    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"holy" ofType:@"plist"]];
+    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"store"];
+    
+    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
     
     self.modelArray = [[NSMutableArray alloc] init];
 

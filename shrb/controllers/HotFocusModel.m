@@ -11,6 +11,6 @@
 @implementation HotFocusModel
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    
+    self.images = [[NSArray alloc] init];
 }
 @end

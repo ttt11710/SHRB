@@ -12,4 +12,6 @@
 
 @interface HotFocusTableViewCell : BFPaperTableViewCell
 @property (nonatomic,strong) HotFocusModel * model;
+@property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
+
 @end

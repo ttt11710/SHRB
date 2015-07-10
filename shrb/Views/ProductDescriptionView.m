@@ -61,7 +61,9 @@
 
 - (void)initData
 {
-    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"holy" ofType:@"plist"]];
+    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"store"];
+    
+    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
 }
 -(void)initMainView {
     

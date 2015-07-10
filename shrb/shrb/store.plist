@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>storeLogo</key>
+		<string>holyLogo</string>
+		<key>storeDetail</key>
+		<string>     我们一直谨记以心调配，坚持手造甜品的理念，结合新颖，风尚滋味。每款甜品，皆是一场味蕾的精彩体验，亦盛载了顾客的甜蜜记忆。</string>
+		<key>images</key>
+		<array>
+			<string>holy.jpg</string>
+			<string>holy1.jpg</string>
+			<string>holy2.jpg</string>
+			<string>holy3.jpg</string>
+			<string>holy4.jpg</string>
+		</array>
+		<key>simpleStoreDetail</key>
+		<string>享受夏日悠闲午后时光</string>
+		<key>storeName</key>
+		<string>甜品</string>
+	</dict>
+	<dict>
+		<key>storeDetail</key>
+		<string>        16N是由年轻的法国品牌总监路易与中国的Ada与2011年共同经营的品牌。Ada和路易相识在浪漫之都巴黎，两人拥有共同的爱好与梦想，以及对时尚艺术的无尽热情和追求。路易出生并成长于法国巴黎的16区，那里是巴黎顶尖的时尚与经典的汇聚地之一。路易所创造的品牌精神，源自于自己在巴黎的生活经历以及对童年的回忆。整个品牌在设计风格上的灵感来自于他的经历，他的家庭以及童年所浏览过的地方。</string>
+		<key>storeLogo</key>
+		<string>16DLogo</string>
+		<key>images</key>
+		<array>
+			<string>16D.jpg</string>
+			<string>16D1.jpg</string>
+			<string>16D2.jpg</string>
+			<string>16D3.jpg</string>
+		</array>
+		<key>simpleStoreDetail</key>
+		<string>16èME NORD，品味法国高雅文化与时尚潮流</string>
+		<key>storeName</key>
+		<string>16D</string>
+	</dict>
+</array>
+</plist>
