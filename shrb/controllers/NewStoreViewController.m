@@ -17,6 +17,7 @@
 #import "SVProgressShow.h"
 #import "ProductTableViewController.h"
 #import "ProductIsMemberTableViewController.h"
+#import "SuperQRViewController.h"
 
 static NewStoreViewController *g_StoreViewController = nil;
 @interface NewStoreViewController ()
@@ -64,17 +65,6 @@ static NewStoreViewController *g_StoreViewController = nil;
 {
     UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
     self.navigationItem.rightBarButtonItem = selectType;
-    
-//    self.selectTypeTableViewBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-40)];
-//    selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
-//    selectTypeTableViewBackView.hidden = YES;
-    
-//    selectTypeTableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth, 20+44, screenWidth/2, screenHeight-20-44) style:UITableViewStylePlain];
-//    selectTypeTableView.delegate = self;
-//    selectTypeTableView.dataSource = self;
-    
-   // [self.view insertSubview:selectTypeTableViewBackView aboveSubview:self.view];
-  //  [self.view insertSubview:selectTypeTableView aboveSubview:self.view];
 }
 
 - (void)initData
@@ -92,6 +82,9 @@ static NewStoreViewController *g_StoreViewController = nil;
 
 - (void)initTableView
 {
+    //去除tableview顶部留白
+    self.automaticallyAdjustsScrollViewInsets = false;
+   
     //删除底部多余横线
     _tableView.tableFooterView =[[UIView alloc]init];
     
@@ -317,11 +310,38 @@ static NewStoreViewController *g_StoreViewController = nil;
     }
 }
 
-#pragma mark - tableView滚回最前面
-- (IBAction)tabViewSetContentToTop:(id)sender {
+//#pragma mark - tableView滚回最前面
+//- (IBAction)tabViewSetContentToTop:(id)sender {
+//    
+//    //到顶部
+//    [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+//}
+
+
+#pragma mark - 扫码支付
+- (IBAction)goToQRView:(id)sender {
+    if ([self validateCamera]) {
+        
+        [self showQRViewController];
+        
+    } else {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没有摄像头或摄像头不可用" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+}
+
+- (BOOL)validateCamera {
     
-    //到顶部
-    [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] &&
+    [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+}
+
+#pragma mark - 进入扫码页面
+- (void)showQRViewController {
+    
+    SuperQRViewController *qrVC = [[SuperQRViewController alloc] init];
+    [self.navigationController pushViewController:qrVC animated:YES];
 }
 
 #pragma  mark - storyboard传值

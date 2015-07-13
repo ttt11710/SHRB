@@ -70,18 +70,6 @@ static StoreViewController *g_StoreViewController = nil;
 {
     UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
     self.navigationItem.rightBarButtonItem = selectType;
-    
-//    selectTypeTableViewBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-40)];
-//    selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
-//    selectTypeTableViewBackView.hidden = YES;
-//    
-//    selectTypeTableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth, 20+44, screenWidth/2, screenHeight-20-44) style:UITableViewStylePlain];
-//    selectTypeTableView.delegate = self;
-//    selectTypeTableView.dataSource = self;
-//    
-//    [self.view insertSubview:selectTypeTableViewBackView aboveSubview:self.view];
-//    [self.view insertSubview:selectTypeTableView aboveSubview:self.view];
-    
 }
 
 - (void)initData
@@ -97,6 +85,9 @@ static StoreViewController *g_StoreViewController = nil;
 
 - (void)initTableView
 {
+    //去除tableview顶部留白
+    self.automaticallyAdjustsScrollViewInsets = false;
+   
     //去除tableview顶部留白
     self.automaticallyAdjustsScrollViewInsets = false;
     

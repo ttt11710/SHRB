@@ -36,6 +36,8 @@
 		DF635CFF1B4F5B6D00439576 /* holy.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF635CFE1B4F5B6D00439576 /* holy.plist */; };
 		DF635D011B4FA9DE00439576 /* store.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF635D001B4FA9DE00439576 /* store.plist */; };
 		DF635D031B4FC07800439576 /* 16D.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF635D021B4FC07800439576 /* 16D.plist */; };
+		DF66B83D1B535B43002E9EFC /* SuperQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */; };
+		DF66B8401B53689E002E9EFC /* SuperCompletePayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B83F1B53689D002E9EFC /* SuperCompletePayViewController.m */; };
 		DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F24D1B267FF400FAE24F /* MainViewController.m */; };
 		DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2511B26AC5100FAE24F /* UITableView+Wave.m */; };
 		DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2551B26B91100FAE24F /* MODropAlertView.m */; };
@@ -187,6 +189,10 @@
 		DF635CFE1B4F5B6D00439576 /* holy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = holy.plist; sourceTree = "<group>"; };
 		DF635D001B4FA9DE00439576 /* store.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = store.plist; sourceTree = "<group>"; };
 		DF635D021B4FC07800439576 /* 16D.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 16D.plist; sourceTree = "<group>"; };
+		DF66B83B1B535B43002E9EFC /* SuperQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperQRViewController.h; sourceTree = "<group>"; };
+		DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperQRViewController.m; sourceTree = "<group>"; };
+		DF66B83E1B53689D002E9EFC /* SuperCompletePayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperCompletePayViewController.h; sourceTree = "<group>"; };
+		DF66B83F1B53689D002E9EFC /* SuperCompletePayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperCompletePayViewController.m; sourceTree = "<group>"; };
 		DF70F24C1B267FF400FAE24F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		DF70F24D1B267FF400FAE24F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		DF70F2501B26AC5100FAE24F /* UITableView+Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Wave.h"; sourceTree = "<group>"; };
@@ -797,6 +803,10 @@
 			children = (
 				DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */,
 				DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */,
+				DF66B83B1B535B43002E9EFC /* SuperQRViewController.h */,
+				DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */,
+				DF66B83E1B53689D002E9EFC /* SuperCompletePayViewController.h */,
+				DF66B83F1B53689D002E9EFC /* SuperCompletePayViewController.m */,
 				DF7A8A571B3CE90600528864 /* ProductTableViewController.h */,
 				DF7A8A581B3CE90600528864 /* ProductTableViewController.m */,
 				DFB7631D1B3D36330086ABB7 /* ProductIsMemberTableViewController.h */,
@@ -1044,6 +1054,7 @@
 				DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */,
 				DF9119A41B392BA100833AAB /* OrderListViewController.swift in Sources */,
 				DF7A8A591B3CE90600528864 /* ProductTableViewController.m in Sources */,
+				DF66B83D1B535B43002E9EFC /* SuperQRViewController.m in Sources */,
 				DFB057A81B4141D60091A1E1 /* UserCouponsViewController.m in Sources */,
 				DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */,
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
@@ -1079,6 +1090,7 @@
 				DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */,
 				DF958F641B33C11B005B2155 /* CardModel.m in Sources */,
 				DFB0578E1B40DF630091A1E1 /* DeskNumTableViewCell.m in Sources */,
+				DF66B8401B53689E002E9EFC /* SuperCompletePayViewController.m in Sources */,
 				DF71773C1B30167900D3C3B9 /* SettingTableViewController.m in Sources */,
 				DF2B0E151B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m in Sources */,
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,

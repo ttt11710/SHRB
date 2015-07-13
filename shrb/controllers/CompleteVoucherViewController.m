@@ -63,20 +63,20 @@
 - (IBAction)completeVoucherBtnPressed:(id)sender {
     
     
-       NSString *QRPay =  [[NSUserDefaults standardUserDefaults] stringForKey:@"QRPay"];
-        
-        //超市或者点餐扫码
-        if ([QRPay isEqualToString:@"SupermarketOrOrder"]) {
-            [self.navigationController popToRootViewControllerAnimated:NO];
-        }
-        //卡包扫描和充值
-        else if ([QRPay isEqualToString:@"Card"]){
-            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:NO];
-        }
-        //超市或者点餐充值
-        else if ([QRPay isEqualToString:@"SupermarketOrOrderVoucher"]) {
-            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-4] animated:YES];
-        }
+    NSString *QRPay =  [[NSUserDefaults standardUserDefaults] stringForKey:@"QRPay"];
+    
+    //超市或者点餐扫码
+    if ([QRPay isEqualToString:@"SupermarketOrOrder"]) {
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+    //卡包扫描和充值
+    else if ([QRPay isEqualToString:@"Card"]){
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:NO];
+    }
+    //超市或者点餐充值
+    else if ([QRPay isEqualToString:@"SupermarketOrOrderVoucher"]) {
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-4] animated:YES];
+    }
 }
 
 @end

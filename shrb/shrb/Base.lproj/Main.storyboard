@@ -1364,7 +1364,7 @@
         <!--支付-->
         <scene sceneID="eu9-Vd-L0C">
             <objects>
-                <viewController storyboardIdentifier="CompletePayView" id="EQL-a9-zgR" customClass="CompletePayViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="superCompletePayView" id="EQL-a9-zgR" customClass="SuperCompletePayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sW9-GC-GUV"/>
                         <viewControllerLayoutGuide type="bottom" id="nat-Md-qIp"/>
@@ -1394,7 +1394,7 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGm-eN-dO1" customClass="LazyFadeInView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="1" green="0.75845496840000004" blue="0.74243017499999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pl6-H6-6jL" customClass="BFPaperButton">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1419,7 +1419,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="finishBtnPressed:" destination="EQL-a9-zgR" eventType="touchUpInside" id="Ffx-2N-TBe"/>
+                                    <action selector="completePayBtn:" destination="EQL-a9-zgR" eventType="touchUpInside" id="18P-Ua-Ep2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1474,7 +1474,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="支付" id="kkL-KJ-RjA"/>
                     <connections>
-                        <outlet property="payInfoView" destination="sGm-eN-dO1" id="tze-ul-PbP"/>
+                        <outlet property="payInfoView" destination="sGm-eN-dO1" id="O11-gW-d8l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Wu-W0-gWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2668,39 +2668,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR8-Th-eqr" userLabel="Top">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.99215686270000003" green="0.38823529410000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="7bt-Qe-y6n"/>
-                                    <constraint firstAttribute="width" constant="40" id="hM8-k4-oWj"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Top">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="7bt-Qe-y6n"/>
-                                        <exclude reference="hM8-k4-oWj"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="7bt-Qe-y6n"/>
-                                        <include reference="hM8-k4-oWj"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="tabViewSetContentToTop:" destination="roz-Cw-d4O" eventType="touchUpInside" id="qlI-9s-GrF"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dp4-cY-oGM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2823,6 +2790,61 @@
                                     <outlet property="delegate" destination="roz-Cw-d4O" id="v79-lH-2RZ"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR8-Th-eqr" userLabel="扫码支付">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.38823529410000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7bt-Qe-y6n"/>
+                                    <constraint firstAttribute="width" constant="60" id="hM8-k4-oWj"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7bt-Qe-y6n"/>
+                                        <exclude reference="hM8-k4-oWj"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="7bt-Qe-y6n"/>
+                                        <include reference="hM8-k4-oWj"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="goToQRView:" destination="roz-Cw-d4O" eventType="touchUpInside" id="An8-SD-QZ3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫一扫支付" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYM-mV-m9g" userLabel="扫一扫支付">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="FgP-wP-gkQ"/>
+                                    <constraint firstAttribute="height" constant="50" id="lVS-fO-fVi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="FgP-wP-gkQ"/>
+                                        <exclude reference="lVS-fO-fVi"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="FgP-wP-gkQ"/>
+                                        <include reference="lVS-fO-fVi"/>
+                                    </mask>
+                                </variation>
+                            </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yb2-r4-Pie">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2844,23 +2866,28 @@
                             <constraint firstItem="dp4-cY-oGM" firstAttribute="top" secondItem="zdT-La-nZm" secondAttribute="bottom" id="7qX-4k-6CV"/>
                             <constraint firstItem="1dJ-N8-kY0" firstAttribute="top" secondItem="dp4-cY-oGM" secondAttribute="bottom" id="D0O-An-KHE"/>
                             <constraint firstItem="dp4-cY-oGM" firstAttribute="bottom" secondItem="Qdg-aL-KNs" secondAttribute="bottom" id="EeY-oX-kOn"/>
+                            <constraint firstItem="mYM-mV-m9g" firstAttribute="centerY" secondItem="sR8-Th-eqr" secondAttribute="centerY" id="FoS-vo-I3w"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sR8-Th-eqr" secondAttribute="trailing" constant="20" id="HD7-6e-ueN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yb2-r4-Pie" secondAttribute="trailing" constant="-16" id="MFa-02-g7m"/>
+                            <constraint firstItem="mYM-mV-m9g" firstAttribute="centerX" secondItem="sR8-Th-eqr" secondAttribute="centerX" id="SFF-DD-Dzy"/>
                             <constraint firstItem="Qdg-aL-KNs" firstAttribute="leading" secondItem="dp4-cY-oGM" secondAttribute="trailing" id="bNH-9R-HQC"/>
                             <constraint firstItem="dp4-cY-oGM" firstAttribute="top" secondItem="Qdg-aL-KNs" secondAttribute="top" id="fLc-ad-Qn2"/>
-                            <constraint firstItem="1dJ-N8-kY0" firstAttribute="top" secondItem="sR8-Th-eqr" secondAttribute="bottom" constant="60" id="hHw-g3-HR3"/>
+                            <constraint firstItem="1dJ-N8-kY0" firstAttribute="top" secondItem="sR8-Th-eqr" secondAttribute="bottom" constant="30" id="hHw-g3-HR3"/>
                             <constraint firstItem="1dJ-N8-kY0" firstAttribute="top" secondItem="yb2-r4-Pie" secondAttribute="bottom" id="hhy-cq-dNN"/>
                             <constraint firstItem="dp4-cY-oGM" firstAttribute="leading" secondItem="PNK-rd-Tun" secondAttribute="leadingMargin" constant="-16" id="uat-BB-ZLw"/>
                             <constraint firstItem="dp4-cY-oGM" firstAttribute="width" secondItem="Qdg-aL-KNs" secondAttribute="width" multiplier="2:1" id="wKe-zh-E36"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="sR8-Th-eqr"/>
                                 <exclude reference="dp4-cY-oGM"/>
+                                <exclude reference="sR8-Th-eqr"/>
+                                <exclude reference="mYM-mV-m9g"/>
                                 <exclude reference="yb2-r4-Pie"/>
                                 <exclude reference="Qdg-aL-KNs"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="FoS-vo-I3w"/>
+                                <exclude reference="SFF-DD-Dzy"/>
                                 <exclude reference="6uc-37-5OO"/>
                                 <exclude reference="7qX-4k-6CV"/>
                                 <exclude reference="EeY-oX-kOn"/>
@@ -2879,12 +2906,15 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="sR8-Th-eqr"/>
                                 <include reference="dp4-cY-oGM"/>
+                                <include reference="sR8-Th-eqr"/>
+                                <include reference="mYM-mV-m9g"/>
                                 <include reference="yb2-r4-Pie"/>
                                 <include reference="Qdg-aL-KNs"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="FoS-vo-I3w"/>
+                                <include reference="SFF-DD-Dzy"/>
                                 <include reference="6uc-37-5OO"/>
                                 <include reference="7qX-4k-6CV"/>
                                 <include reference="EeY-oX-kOn"/>
@@ -2907,7 +2937,6 @@
                         <outlet property="selectTypeTableView" destination="Qdg-aL-KNs" id="mb4-3g-wzG"/>
                         <outlet property="selectTypeTableViewBackView" destination="yb2-r4-Pie" id="F30-kT-fJJ"/>
                         <outlet property="tableView" destination="dp4-cY-oGM" id="WCf-Qu-JJv"/>
-                        <outlet property="topBtn" destination="sR8-Th-eqr" id="oLE-Mb-jqV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jm2-dT-2qR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3946,7 +3975,7 @@
                                                                 </mask>
                                                             </variation>
                                                             <connections>
-                                                                <segue destination="18D-xn-n1a" kind="push" id="YY3-SB-znO"/>
+                                                                <action selector="InternetbankBtnPressed:" destination="C0U-qe-Hci" eventType="touchUpInside" id="70b-cw-o2Z"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="付款方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yr-JR-nwH">
@@ -4002,7 +4031,7 @@
                                                                 </mask>
                                                             </variation>
                                                             <connections>
-                                                                <segue destination="18D-xn-n1a" kind="push" id="Hs7-ha-NMs"/>
+                                                                <action selector="alipayBtnPressed:" destination="C0U-qe-Hci" eventType="touchUpInside" id="Bgz-1L-5pF"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -4170,7 +4199,7 @@
         <!--支付-->
         <scene sceneID="6ek-W2-bD6">
             <objects>
-                <viewController id="18D-xn-n1a" customClass="CompletePayViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="orderCompletePayView" id="18D-xn-n1a" customClass="CompletePayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gGx-Vt-yLa"/>
                         <viewControllerLayoutGuide type="bottom" id="IIr-yA-yd7"/>
@@ -4476,7 +4505,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfU-jq-TXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3013.5" y="-23"/>
+            <point key="canvasLocation" x="3007.5" y="-23"/>
         </scene>
     </scenes>
     <resources>
@@ -4491,6 +4520,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7gX-Xo-VKm"/>
-        <segue reference="YY3-SB-znO"/>
     </inferredMetricsTieBreakers>
 </document>

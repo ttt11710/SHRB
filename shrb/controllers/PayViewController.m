@@ -200,36 +200,50 @@
 
 #pragma mark - 支付宝支付Btn
 - (IBAction)alipayBtnPressed:(id)sender {
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompletePayView"];
-    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    
-    [SVProgressShow showWithStatus:@"付款处理中..."];
-    double delayInSeconds = 1.5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [SVProgressShow dismiss];
-        [self.navigationController pushViewController:viewController animated:YES];
-    });
+
+    [self notMmeberpushView:@"支付宝"];
 }
 
 #pragma mark - 银联支付Btn
 - (IBAction)InternetbankBtnPressed:(id)sender {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompletePayView"];
-    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
-    [SVProgressShow showWithStatus:@"付款处理中..."];
-    double delayInSeconds = 1.5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [SVProgressShow dismiss];
-        [self.navigationController pushViewController:viewController animated:YES];
-    });
-
+    [self notMmeberpushView:@"银联"];
 }
 
+- (void)notMmeberpushView:(NSString *)string
+{
+    NSString *QRPay =  [[NSUserDefaults standardUserDefaults] stringForKey:@"QRPay"];
+    
+    //超市商品页扫码支付
+    if ([QRPay isEqualToString:@"SupermarketNewStore"])
+    {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"superCompletePayView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        
+        [SVProgressShow showWithStatus:@"付款处理中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow dismiss];
+            [self.navigationController pushViewController:viewController animated:YES];
+        });
+    }
+    //非会员支付
+    else {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *viewController  =  [mainStoryboard instantiateViewControllerWithIdentifier:@"orderCompletePayView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        
+        [SVProgressShow showWithStatus:@"付款处理中..."];
+        double delayInSeconds = 1.5;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow dismiss];
+            [self.navigationController pushViewController:viewController animated:YES];
+        });
+    }
+}
 #pragma mark - 会员卡支付Btn
 - (IBAction)payBtnPressed:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];

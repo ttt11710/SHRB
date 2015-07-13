@@ -31,7 +31,7 @@
     self.hotImageView.animationImages = [arr copy];
     
     // all frames will execute in 1.75 seconds
-    self.hotImageView.animationDuration = 9;
+    self.hotImageView.animationDuration = (arc4random() % 10) + 10;
     // repeat the annimation forever
     self.hotImageView.animationRepeatCount = 0;
     

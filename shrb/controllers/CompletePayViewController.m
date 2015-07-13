@@ -192,14 +192,22 @@
 #pragma  mark - 完成支付Btn
 - (IBAction)finishBtnPressed:(id)sender {
     
+    NSString *QRPay =  [[NSUserDefaults standardUserDefaults] stringForKey:@"QRPay"];
+    
     //等待一定时间后执行
     [SVProgressShow showSuccessWithStatus:@"等待我们为您服务吧！"];
     double delayInSeconds = 1.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [SVProgressShow dismiss];
-        ////跳转到指定页面
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+        //超市商品页面直接扫码
+        if ([QRPay isEqualToString:@"SupermarketNewStore"]) {
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-4] animated:YES];
+        }
+        else {
+            //跳转到热点页面
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+        }
     });
 }
 @end
