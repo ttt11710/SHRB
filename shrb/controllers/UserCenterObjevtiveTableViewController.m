@@ -12,8 +12,9 @@
 #import "Const.h"
 
 @interface UserCenterObjevtiveTableViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *meHeadBtn;
 
+@property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *memberNumLabel;
 @end
 
 @implementation UserCenterObjevtiveTableViewController
@@ -21,20 +22,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
     [self initController];
     [self initTableView];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"IsLogin"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"IsLogin"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
+    
+    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
+    if (!isLogin)
+    {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [viewController setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     self.tabBarController.tabBar.hidden = YES;
+
 }
 
 - (void)initController
@@ -76,8 +93,10 @@
     return section == 0? 0:8;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     //基本信息
     if (indexPath.section == 0)
     {

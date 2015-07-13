@@ -38,6 +38,11 @@
 		DF635D031B4FC07800439576 /* 16D.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF635D021B4FC07800439576 /* 16D.plist */; };
 		DF66B83D1B535B43002E9EFC /* SuperQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */; };
 		DF66B8401B53689E002E9EFC /* SuperCompletePayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B83F1B53689D002E9EFC /* SuperCompletePayViewController.m */; };
+		DF66B8421B538C78002E9EFC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF66B8411B538C78002E9EFC /* Login.storyboard */; };
+		DF66B8451B539F4E002E9EFC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B8441B539F4E002E9EFC /* LoginViewController.m */; };
+		DF66B8491B53AF33002E9EFC /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B8481B53AF33002E9EFC /* ForgetPasswordViewController.m */; };
+		DF66B84C1B53B13E002E9EFC /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B84B1B53B13E002E9EFC /* ChangePasswordViewController.m */; };
+		DF66B84F1B53B484002E9EFC /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B84E1B53B484002E9EFC /* RegisterViewController.m */; };
 		DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F24D1B267FF400FAE24F /* MainViewController.m */; };
 		DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2511B26AC5100FAE24F /* UITableView+Wave.m */; };
 		DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2551B26B91100FAE24F /* MODropAlertView.m */; };
@@ -56,6 +61,7 @@
 		DF72C0D61B0B339800CE6DC6 /* shrbTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0D51B0B339800CE6DC6 /* shrbTests.m */; };
 		DF72C0E21B0B403600CE6DC6 /* HotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0E11B0B403600CE6DC6 /* HotDetailViewController.m */; };
 		DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0E51B0B413100CE6DC6 /* HotDetailTableViewCell.m */; };
+		DF73D97A1B53BC8B00C1F317 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF73D9791B53BC8B00C1F317 /* MainTabBarController.m */; };
 		DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF77A5B71B0C151F00934A7C /* StoreTableViewCell.m */; };
 		DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF77A5BA1B0C155D00934A7C /* StoreViewController.m */; };
 		DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF77A5BD1B0C1C6500934A7C /* OrdersViewController.m */; };
@@ -193,6 +199,15 @@
 		DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperQRViewController.m; sourceTree = "<group>"; };
 		DF66B83E1B53689D002E9EFC /* SuperCompletePayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperCompletePayViewController.h; sourceTree = "<group>"; };
 		DF66B83F1B53689D002E9EFC /* SuperCompletePayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperCompletePayViewController.m; sourceTree = "<group>"; };
+		DF66B8411B538C78002E9EFC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		DF66B8431B539F4E002E9EFC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		DF66B8441B539F4E002E9EFC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		DF66B8471B53AF33002E9EFC /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		DF66B8481B53AF33002E9EFC /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
+		DF66B84A1B53B13E002E9EFC /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		DF66B84B1B53B13E002E9EFC /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		DF66B84D1B53B484002E9EFC /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		DF66B84E1B53B484002E9EFC /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		DF70F24C1B267FF400FAE24F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		DF70F24D1B267FF400FAE24F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		DF70F2501B26AC5100FAE24F /* UITableView+Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Wave.h"; sourceTree = "<group>"; };
@@ -228,6 +243,8 @@
 		DF72C0E11B0B403600CE6DC6 /* HotDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotDetailViewController.m; sourceTree = "<group>"; };
 		DF72C0E41B0B413100CE6DC6 /* HotDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotDetailTableViewCell.h; path = ../Views/HotDetailTableViewCell.h; sourceTree = "<group>"; };
 		DF72C0E51B0B413100CE6DC6 /* HotDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotDetailTableViewCell.m; path = ../Views/HotDetailTableViewCell.m; sourceTree = "<group>"; };
+		DF73D9781B53BC8B00C1F317 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		DF73D9791B53BC8B00C1F317 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		DF77A5B61B0C151F00934A7C /* StoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreTableViewCell.h; path = ../Views/StoreTableViewCell.h; sourceTree = "<group>"; };
 		DF77A5B71B0C151F00934A7C /* StoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreTableViewCell.m; path = ../Views/StoreTableViewCell.m; sourceTree = "<group>"; };
 		DF77A5B91B0C155D00934A7C /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
@@ -387,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				DF72C0C81B0B339800CE6DC6 /* LaunchScreen.xib */,
+				DF66B8411B538C78002E9EFC /* Login.storyboard */,
 				DF72C0C31B0B339800CE6DC6 /* Main.storyboard */,
 				DF0D9C771B0C291500C0AB3F /* Card.storyboard */,
 				DF4E4C6E1B0C8D6400FE499E /* Me.storyboard */,
@@ -439,6 +457,21 @@
 				DF2B0E2A1B423DB40051AA1A /* TNRectangularCheckBoxData.m */,
 			);
 			path = TNCheckBoxGroup;
+			sourceTree = "<group>";
+		};
+		DF66B8461B53AEC1002E9EFC /* login */ = {
+			isa = PBXGroup;
+			children = (
+				DF66B8431B539F4E002E9EFC /* LoginViewController.h */,
+				DF66B8441B539F4E002E9EFC /* LoginViewController.m */,
+				DF66B8471B53AF33002E9EFC /* ForgetPasswordViewController.h */,
+				DF66B8481B53AF33002E9EFC /* ForgetPasswordViewController.m */,
+				DF66B84A1B53B13E002E9EFC /* ChangePasswordViewController.h */,
+				DF66B84B1B53B13E002E9EFC /* ChangePasswordViewController.m */,
+				DF66B84D1B53B484002E9EFC /* RegisterViewController.h */,
+				DF66B84E1B53B484002E9EFC /* RegisterViewController.m */,
+			);
+			name = login;
 			sourceTree = "<group>";
 		};
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
@@ -550,6 +583,9 @@
 			children = (
 				DF70F24C1B267FF400FAE24F /* MainViewController.h */,
 				DF70F24D1B267FF400FAE24F /* MainViewController.m */,
+				DF73D9781B53BC8B00C1F317 /* MainTabBarController.h */,
+				DF73D9791B53BC8B00C1F317 /* MainTabBarController.m */,
+				DF66B8461B53AEC1002E9EFC /* login */,
 				DF0D9C7E1B0C2B6C00C0AB3F /* main */,
 				DF0D9C7F1B0C2B8200C0AB3F /* card */,
 				DFAE95621B254F70006A495B /* me */,
@@ -995,6 +1031,7 @@
 				DFA5442D1B4A293E00CC9999 /* citydict.plist in Resources */,
 				DF4E4C6F1B0C8D6400FE499E /* Me.storyboard in Resources */,
 				DF9119B51B394E2000833AAB /* RightDetailTableViewCell.xib in Resources */,
+				DF66B8421B538C78002E9EFC /* Login.storyboard in Resources */,
 				DF635D031B4FC07800439576 /* 16D.plist in Resources */,
 				DF635D011B4FA9DE00439576 /* store.plist in Resources */,
 				DF635CFF1B4F5B6D00439576 /* holy.plist in Resources */,
@@ -1095,6 +1132,7 @@
 				DF2B0E151B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m in Sources */,
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,
 				DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */,
+				DF73D97A1B53BC8B00C1F317 /* MainTabBarController.m in Sources */,
 				DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */,
 				DFA544281B4A160400CC9999 /* CompletePayOrdersTableViewCell.m in Sources */,
 				DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */,
@@ -1104,6 +1142,8 @@
 				DFDC89671B43929C0051D763 /* BecomeMemberView.m in Sources */,
 				DFAE52AF1B32743500B03B2F /* QRMenu.m in Sources */,
 				DF9119B01B394A3B00833AAB /* MeImageTableViewCell.swift in Sources */,
+				DF66B84C1B53B13E002E9EFC /* ChangePasswordViewController.m in Sources */,
+				DF66B8491B53AF33002E9EFC /* ForgetPasswordViewController.m in Sources */,
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
 				DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */,
 				DF2B0E2E1B423DB40051AA1A /* TNCircularCheckBox.m in Sources */,
@@ -1111,6 +1151,7 @@
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
 				DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */,
+				DF66B8451B539F4E002E9EFC /* LoginViewController.m in Sources */,
 				DF9119A71B392BC500833AAB /* OrderListTableViewCell.swift in Sources */,
 				DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */,
 				DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */,
@@ -1144,6 +1185,7 @@
 				DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */,
 				DFB1E8371B3A58ED00366200 /* CollectTableViewController.swift in Sources */,
 				DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */,
+				DF66B84F1B53B484002E9EFC /* RegisterViewController.m in Sources */,
 				DF9119B41B394E2000833AAB /* RightDetailTableViewCell.swift in Sources */,
 				DFAE52B31B32751900B03B2F /* QRViewController.m in Sources */,
 				DF2B0E2C1B423DB40051AA1A /* TNCheckBoxData.m in Sources */,
