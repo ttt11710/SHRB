@@ -8,6 +8,7 @@
 
 #import "SuperCompletePayViewController.h"
 #import "LazyFadeInView.h"
+#import "Const.h"
 
 @interface SuperCompletePayViewController ()
 
@@ -25,6 +26,7 @@
 
 - (void)initView {
     self.payInfoView.text = @"消费记录：\n2015年5月20日                               PM15:47\n完成一次100元的消费交易";
+    self.payInfoView.backgroundColor = shrbPink;
     
 }
 

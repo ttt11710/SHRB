@@ -166,7 +166,7 @@
             
             CGFloat x = IsiPhone4s? screenWidth-_loveGroup.frame.size.width:screenWidth-24 -_loveGroup.frame.size.width;
             
-            _loveGroup.position = CGPointMake(x, 40);
+            _loveGroup.position = CGPointMake(x, 4);
             
             [cell addSubview:_loveGroup];
             

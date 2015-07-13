@@ -104,22 +104,42 @@
 - (void)setupButton:(UIButton *)btn normalImage:(NSString *)norImage HighlightImage:(NSString *)highImage{
     [btn setImage:[self readImageFromBundle:norImage] forState:UIControlStateNormal];
     [btn setImage:[self readImageFromBundle:highImage] forState:UIControlStateHighlighted];
-    [btn addTarget:self action:@selector(btnTouchDown:) forControlEvents:UIControlEventTouchDown];
-    [btn addTarget:self action:@selector(btnTouchUp:) forControlEvents:UIControlEventTouchUpOutside|UIControlEventTouchUpInside|UIControlEventTouchCancel];
+   // [btn addTarget:self action:@selector(btnTouchDown:) forControlEvents:UIControlEventTouchDown];
+    [btn addTarget:self action:@selector(btnTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+   // [btn addTarget:self action:@selector(btnTouchUp:) forControlEvents:UIControlEventTouchUpOutside|UIControlEventTouchUpInside|UIControlEventTouchCancel];
+    
 }
 
 - (void)btnTouchDown:(UIButton *)btn{
     [_textField resignFirstResponder];
     
-    if (btn == _increaseBtn) {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(increase) userInfo:nil repeats:YES];
-    } else {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(decrease) userInfo:nil repeats:YES];
-    }
-    [_timer fire];
+    [self increase];
+//    if (btn == _increaseBtn) {
+//        _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(increase) userInfo:nil repeats:YES];
+//    } else {
+//        _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(decrease) userInfo:nil repeats:YES];
+//    }
+//    [_timer fire];
+//    
+//    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:nil];
+//    [self performSelector:@selector(todoSomething:) withObject:btn afterDelay:0.4f];
+}
+
+- (void)btnTouchUpInside:(UIButton *)btn{
+    
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:nil];
+    [self performSelector:@selector(todoSomething:) withObject:btn afterDelay:1.0f];
+    
+    [self increase];
+}
+
+- (void)todoSomething:(UIButton *)btn
+{
+    
 }
 
 - (void)btnTouchUp:(UIButton *)btn{
+    
     [self cleanTimer];
 }
 

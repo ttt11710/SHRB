@@ -1493,6 +1493,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsd-p8-PDJ" userLabel="Top">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.38823529410000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="1lo-0F-DQ9"/>
+                                    <constraint firstAttribute="height" constant="40" id="zYj-X4-0zV"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Top">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1lo-0F-DQ9"/>
+                                        <exclude reference="zYj-X4-0zV"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="1lo-0F-DQ9"/>
+                                        <include reference="zYj-X4-0zV"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="tabViewSetContentToTop:" destination="NEb-Us-HgX" eventType="touchUpInside" id="ljK-0z-Vkh"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vt6-mZ-mfh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1750,39 +1783,6 @@
                                     <outlet property="delegate" destination="NEb-Us-HgX" id="3RS-h5-Bb5"/>
                                 </connections>
                             </tableView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsd-p8-PDJ" userLabel="Top">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.99215686270000003" green="0.38823529410000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="1lo-0F-DQ9"/>
-                                    <constraint firstAttribute="height" constant="40" id="zYj-X4-0zV"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Top">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="1lo-0F-DQ9"/>
-                                        <exclude reference="zYj-X4-0zV"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="1lo-0F-DQ9"/>
-                                        <include reference="zYj-X4-0zV"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="tabViewSetContentToTop:" destination="NEb-Us-HgX" eventType="touchUpInside" id="ljK-0z-Vkh"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBc-65-9wt" customClass="BFPaperButton">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.39109040070000001" blue="0.36406832119999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1844,8 +1844,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="vt6-mZ-mfh"/>
                                 <exclude reference="Rsd-p8-PDJ"/>
+                                <exclude reference="vt6-mZ-mfh"/>
                                 <exclude reference="mBc-65-9wt"/>
                                 <exclude reference="kQT-eH-Ts3"/>
                                 <exclude reference="fMp-9n-xGh"/>
@@ -1872,8 +1872,8 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="vt6-mZ-mfh"/>
                                 <include reference="Rsd-p8-PDJ"/>
+                                <include reference="vt6-mZ-mfh"/>
                                 <include reference="mBc-65-9wt"/>
                                 <include reference="kQT-eH-Ts3"/>
                                 <include reference="fMp-9n-xGh"/>
@@ -3712,8 +3712,7 @@
                                                             <exclude reference="RRg-CB-VNJ"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="169" y="12" width="133" height="21"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="RRg-CB-VNJ"/>
                                                         </mask>
@@ -3827,8 +3826,7 @@
                                                             <exclude reference="o4O-1z-qO9"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="18" y="33" width="284" height="108"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="subviews">
                                                             <include reference="804-9F-GWC"/>
                                                             <include reference="VxJ-ue-SpD"/>
@@ -3909,8 +3907,7 @@
                                                             <exclude reference="Aw6-T8-5XE"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="169" y="12" width="133" height="21"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="Aw6-T8-5XE"/>
                                                         </mask>
@@ -4072,8 +4069,7 @@
                                                             <exclude reference="Zr6-Pt-pEZ"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="18" y="33" width="284" height="108"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="subviews">
                                                             <include reference="GRi-5Q-iKQ"/>
                                                             <include reference="l6f-Tt-ABD"/>

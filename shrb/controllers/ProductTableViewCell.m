@@ -62,6 +62,8 @@
     self.ImageBackView.layer.cornerRadius = 10;
     self.ImageBackView.layer.masksToBounds = YES;
     
+    self.saveMoneyLabel.textColor = shrbPink;
+    
     [self.signInBtn addTarget:self action:@selector(buttonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [self addBlurViewView:self.blurView];

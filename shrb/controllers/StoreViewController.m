@@ -88,9 +88,6 @@ static StoreViewController *g_StoreViewController = nil;
     //去除tableview顶部留白
     self.automaticallyAdjustsScrollViewInsets = false;
    
-    //去除tableview顶部留白
-    self.automaticallyAdjustsScrollViewInsets = false;
-    
     //删除底部多余横线
     _tableView.tableFooterView =[[UIView alloc]init];
     
@@ -253,10 +250,16 @@ static StoreViewController *g_StoreViewController = nil;
             numbutton.frame = CGRectMake(screenWidth-40, 15, 30, 30);
             // 内容更改的block回调
             numbutton.callBack = ^(NSString *currentNum){
-                NSLog(@"%@", currentNum);
-                NSLog(@"%ld",(long)indexPath.row-1);
+                
+                
+                
+                NSLog(@"%ld",(long)indexPath.row);
                 
                 _rect = [self.tableView.superview convertRect:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height) fromView:cell];
+                
+                
+                NSLog(@"%@",[[self.plistArr objectAtIndex:indexPath.section-1][@"info"] objectAtIndex:indexPath.row][@"tradeImage"]);
+                
                 
                 if ([_currentNumDic count] == 0) {
                     [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row-1]];
@@ -384,6 +387,7 @@ static StoreViewController *g_StoreViewController = nil;
 #pragma mark - 购物动画
 -(void)startAnimationWithImageNsstring:(NSString *)imageNsstring
 {
+    self.selectTypeTableViewBackView.hidden = NO;
     if (!layer) {
         self.gotopayViewBtn.enabled = NO;
         layer = [CALayer layer];
@@ -427,6 +431,7 @@ static StoreViewController *g_StoreViewController = nil;
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
+    self.selectTypeTableViewBackView.hidden = YES;
     if (anim == [layer animationForKey:@"group"]) {
         self.gotopayViewBtn.enabled = YES;
         [layer removeFromSuperlayer];
