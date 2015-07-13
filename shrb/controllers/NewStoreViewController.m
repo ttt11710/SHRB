@@ -24,11 +24,10 @@ static NewStoreViewController *g_StoreViewController = nil;
     NSMutableDictionary *_currentNumDic;
     CGRect _rect;
     CGFloat lastContentOffset;
-    
-    UIView *selectTypeTableViewBackView;
-    UITableView *selectTypeTableView;
     BOOL showSelectTypeTableView;
 }
+@property (weak, nonatomic) IBOutlet UIView *selectTypeTableViewBackView;
+@property (weak, nonatomic) IBOutlet UITableView *selectTypeTableView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) UIBezierPath *path;
@@ -66,16 +65,16 @@ static NewStoreViewController *g_StoreViewController = nil;
     UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
     self.navigationItem.rightBarButtonItem = selectType;
     
-    selectTypeTableViewBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-40)];
-    selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
-    selectTypeTableViewBackView.hidden = YES;
+//    self.selectTypeTableViewBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-40)];
+//    selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
+//    selectTypeTableViewBackView.hidden = YES;
     
-    selectTypeTableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth, 20+44, screenWidth/2, screenHeight-20-44) style:UITableViewStylePlain];
-    selectTypeTableView.delegate = self;
-    selectTypeTableView.dataSource = self;
+//    selectTypeTableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth, 20+44, screenWidth/2, screenHeight-20-44) style:UITableViewStylePlain];
+//    selectTypeTableView.delegate = self;
+//    selectTypeTableView.dataSource = self;
     
-    [self.view insertSubview:selectTypeTableViewBackView aboveSubview:self.view];
-    [self.view insertSubview:selectTypeTableView aboveSubview:self.view];
+   // [self.view insertSubview:selectTypeTableViewBackView aboveSubview:self.view];
+  //  [self.view insertSubview:selectTypeTableView aboveSubview:self.view];
 }
 
 - (void)initData
@@ -95,6 +94,8 @@ static NewStoreViewController *g_StoreViewController = nil;
 {
     //删除底部多余横线
     _tableView.tableFooterView =[[UIView alloc]init];
+    
+    self.selectTypeTableView.tableFooterView = [[UIView alloc] init];
     //动画
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
@@ -104,11 +105,11 @@ static NewStoreViewController *g_StoreViewController = nil;
 {
     showSelectTypeTableView = !showSelectTypeTableView;
     if (showSelectTypeTableView) {
-        selectTypeTableViewBackView.hidden = NO;
+        self.selectTypeTableViewBackView.hidden = NO;
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
-            selectTypeTableView.layer.transform = CATransform3DMakeTranslation(-screenWidth/2, 0, 0);
-            selectTypeTableViewBackView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+            self.selectTypeTableView.layer.transform = CATransform3DMakeTranslation(-screenWidth/2, 0, 0);
+            self.selectTypeTableViewBackView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
             
         } completion:^(BOOL finished) {
             
@@ -117,12 +118,12 @@ static NewStoreViewController *g_StoreViewController = nil;
     else {
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
-            selectTypeTableView.layer.transform = CATransform3DIdentity;
-            selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
+            self.selectTypeTableView.layer.transform = CATransform3DIdentity;
+            self.selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
             
         } completion:^(BOOL finished) {
             
-            selectTypeTableViewBackView.hidden = YES;
+            self.selectTypeTableViewBackView.hidden = YES;
         }];
     }
 }
@@ -149,7 +150,7 @@ static NewStoreViewController *g_StoreViewController = nil;
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == selectTypeTableView) {
+    if (tableView == self.selectTypeTableView) {
         return 44;
     }
     else {
@@ -160,7 +161,7 @@ static NewStoreViewController *g_StoreViewController = nil;
 #pragma mark - tableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (tableView != selectTypeTableView) {
+    if (tableView != self.selectTypeTableView) {
         return [self.plistArr count];
     }
     return 1;
@@ -168,7 +169,7 @@ static NewStoreViewController *g_StoreViewController = nil;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (tableView != selectTypeTableView) {
+    if (tableView != self.selectTypeTableView) {
         return [self.plistArr objectAtIndex:section][@"type"];
     }
     else
@@ -177,7 +178,7 @@ static NewStoreViewController *g_StoreViewController = nil;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (tableView != selectTypeTableView) {
+    if (tableView != self.selectTypeTableView) {
         return 30;
     }
     else
@@ -190,7 +191,7 @@ static NewStoreViewController *g_StoreViewController = nil;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, height)] ;
     [headerView setBackgroundColor:shrbSectionColor];
     
-    if (tableView != selectTypeTableView) {
+    if (tableView != self.selectTypeTableView) {
         height = 30;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, (height-18)*0.5, tableView.bounds.size.width - 10, 18)];
         label.textColor = shrbText;
@@ -209,7 +210,7 @@ static NewStoreViewController *g_StoreViewController = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == selectTypeTableView) {
+    if (tableView == self.selectTypeTableView) {
         return [self.plistArr count];
     }
     else {
@@ -219,7 +220,7 @@ static NewStoreViewController *g_StoreViewController = nil;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == selectTypeTableView) {
+    if (tableView == self.selectTypeTableView) {
         static NSString *SimpleTableIdentifier = @"cellId";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
         if (cell == nil) {
@@ -253,16 +254,16 @@ static NewStoreViewController *g_StoreViewController = nil;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (tableView == selectTypeTableView) {
+    if (tableView == self.selectTypeTableView) {
         showSelectTypeTableView = !showSelectTypeTableView;
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
-            selectTypeTableView.layer.transform = CATransform3DIdentity;
-            selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
+            self.selectTypeTableView.layer.transform = CATransform3DIdentity;
+            self.selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
             
         } completion:^(BOOL finished) {
             
-            selectTypeTableViewBackView.hidden = YES;
+            self.selectTypeTableViewBackView.hidden = YES;
             
             [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row] animated:YES scrollPosition:UITableViewScrollPositionTop];
         }];
