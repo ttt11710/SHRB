@@ -70,6 +70,7 @@ static MainTabBarController *g_MainTabBarController = nil;
 
 - (void)showHotView
 {
-    self.selectedIndex = 0 ;
+   // self.selectedIndex = 0 ;
+    [self selectTabAtIndex:0 animated:YES];
 }
 @end
