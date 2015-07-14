@@ -2412,7 +2412,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yid-7L-jHW">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OOS-Cr-0Jb">
+                                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OOS-Cr-0Jb">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="80" id="07h-10-fbV"/>
@@ -2453,21 +2453,58 @@
                                                                 </mask>
                                                             </variation>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="El4-nL-KBv">
+                                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                            <color key="backgroundColor" red="1" green="0.75686274509803919" blue="0.74117647058823533" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="El4-nL-KBv" secondAttribute="height" multiplier="1:1" id="4hd-BY-5Ci"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <state key="normal" title="点击登录">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="4hd-BY-5Ci"/>
+                                                                </mask>
+                                                            </variation>
+                                                            <variation key="widthClass=compact">
+                                                                <mask key="constraints">
+                                                                    <include reference="4hd-BY-5Ci"/>
+                                                                </mask>
+                                                            </variation>
+                                                            <connections>
+                                                                <action selector="loginBtnPressed:" destination="tpd-JZ-ghd" eventType="touchUpInside" id="md7-hI-34y"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="centerX" secondItem="El4-nL-KBv" secondAttribute="centerX" constant="0.5" id="4r7-25-z9l"/>
+                                                        <constraint firstAttribute="height" secondItem="El4-nL-KBv" secondAttribute="height" multiplier="2.5:1" id="6RE-Kb-FVL"/>
                                                         <constraint firstItem="OOS-Cr-0Jb" firstAttribute="height" secondItem="Yid-7L-jHW" secondAttribute="height" multiplier="1:2.5" id="I9w-40-OsT"/>
                                                         <constraint firstItem="HM4-yG-dIk" firstAttribute="top" secondItem="OOS-Cr-0Jb" secondAttribute="bottom" constant="10" id="NuJ-BJ-ZDq"/>
                                                         <constraint firstItem="OOS-Cr-0Jb" firstAttribute="top" secondItem="Yid-7L-jHW" secondAttribute="top" constant="62" id="XiJ-J8-6Jk"/>
                                                         <constraint firstAttribute="centerX" secondItem="OOS-Cr-0Jb" secondAttribute="centerX" constant="0.5" id="YMr-o8-y4u"/>
+                                                        <constraint firstItem="El4-nL-KBv" firstAttribute="top" secondItem="Yid-7L-jHW" secondAttribute="top" constant="62" id="cIJ-Ta-2s9"/>
                                                         <constraint firstItem="OOS-Cr-0Jb" firstAttribute="centerX" secondItem="HM4-yG-dIk" secondAttribute="centerX" id="vo7-2h-UoF"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="subviews">
                                                             <exclude reference="OOS-Cr-0Jb"/>
                                                             <exclude reference="HM4-yG-dIk"/>
+                                                            <exclude reference="El4-nL-KBv"/>
                                                         </mask>
                                                         <mask key="constraints">
+                                                            <exclude reference="4r7-25-z9l"/>
+                                                            <exclude reference="6RE-Kb-FVL"/>
+                                                            <exclude reference="cIJ-Ta-2s9"/>
                                                             <exclude reference="I9w-40-OsT"/>
                                                             <exclude reference="XiJ-J8-6Jk"/>
                                                             <exclude reference="YMr-o8-y4u"/>
@@ -2479,8 +2516,12 @@
                                                         <mask key="subviews">
                                                             <include reference="OOS-Cr-0Jb"/>
                                                             <include reference="HM4-yG-dIk"/>
+                                                            <include reference="El4-nL-KBv"/>
                                                         </mask>
                                                         <mask key="constraints">
+                                                            <include reference="4r7-25-z9l"/>
+                                                            <include reference="6RE-Kb-FVL"/>
+                                                            <include reference="cIJ-Ta-2s9"/>
                                                             <include reference="I9w-40-OsT"/>
                                                             <include reference="XiJ-J8-6Jk"/>
                                                             <include reference="YMr-o8-y4u"/>
@@ -2656,6 +2697,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="我的" id="jJX-Qu-SlF"/>
                     <connections>
+                        <outlet property="loginBtn" destination="El4-nL-KBv" id="xS2-NA-jzL"/>
                         <outlet property="memberImageView" destination="OOS-Cr-0Jb" id="uuw-nb-doZ"/>
                         <outlet property="memberNumLabel" destination="HM4-yG-dIk" id="mlw-QC-qbj"/>
                     </connections>

@@ -10,6 +10,10 @@
 
 @interface ChangePasswordViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *surePasswordTextField;
+
+
 @end
 
 @implementation ChangePasswordViewController
@@ -29,5 +33,20 @@
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
 }
 
+#pragma mark - 单击键盘return键回调
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.passwordTextField resignFirstResponder];
+    [self.surePasswordTextField resignFirstResponder];
+    return YES;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    if ([[touches anyObject]view]!=self.passwordTextField||[[touches anyObject]view]!= self.surePasswordTextField) {
+        [self.passwordTextField resignFirstResponder];
+        [self.surePasswordTextField resignFirstResponder];
+    }
+}
 
 @end

@@ -32,6 +32,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) NSArray *uncheckedCheckBoxes;
 
 @property (nonatomic, strong) NSArray *radioButtons;
+@property (nonatomic, strong) NSArray *checkBoxData;
+@property (nonatomic) TNCheckBoxLayout layout;
 
 - (instancetype)initWithCheckBoxData:(NSArray *)checkBoxData style:(TNCheckBoxLayout)layout;
 - (void)create;

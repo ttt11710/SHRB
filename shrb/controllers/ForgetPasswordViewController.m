@@ -11,6 +11,7 @@
 
 @interface ForgetPasswordViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *memberNumField;
+@property (weak, nonatomic) IBOutlet UITextField *captchaTextField;
 
 @end
 
@@ -25,10 +26,19 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)backEven{
-    
-    
-    
+#pragma mark - 单击键盘return键回调
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.captchaTextField resignFirstResponder];
+    return YES;
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    if ([[touches anyObject]view]!=self.captchaTextField) {
+        [self.captchaTextField resignFirstResponder];
+    }
+}
+
 
 @end

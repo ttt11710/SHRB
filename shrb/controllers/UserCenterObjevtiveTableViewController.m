@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "UserCenterObjevtiveTableViewController.h"
-//#import "shrb-swift.h"
+#import "SVProgressShow.h"
 #import "Const.h"
 
 @interface UserCenterObjevtiveTableViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UILabel *memberNumLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *memberImageView;
 
@@ -34,22 +35,12 @@
 {
     [super viewDidAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
-//    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
-//    if (!isLogin)
-//    {
-//        CGFloat x = self.memberImageView.frame.origin.x;
-//        CGFloat w = self.memberImageView.frame.size.height;
-//        CGFloat h = self.memberImageView.frame.size.width;
-//        CGFloat y = self.memberImageView.frame.origin.y;
-//        self.memberImageView.image = [UIImage imageNamed:@"官方头像"];
-//        self.memberNumLabel.text = @"100000";
-//        
-//    }
-//    else {
-//        self.memberImageView.image = [UIImage imageNamed:@"默认女头像.png"];
-//        self.memberNumLabel.text = @"通宝号：56325698541";
-//    }
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidLayoutSubviews
@@ -57,26 +48,24 @@
     BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
     if (!isLogin)
     {
-        CGFloat x = self.memberImageView.frame.origin.x;
-        CGFloat w = self.memberImageView.frame.size.height;
-        CGFloat h = self.memberImageView.frame.size.width;
-        CGFloat y = self.memberImageView.frame.origin.y;
-        self.memberImageView.image = [UIImage imageNamed:@"默认女头像"];
-        self.memberNumLabel.text = @"通宝号：100000";
-        
+        self.loginBtn.hidden = NO;
+        self.memberImageView.hidden = YES;
+        self.memberNumLabel.hidden = YES;
     }
     else {
+        self.loginBtn.hidden = YES;
+        self.memberImageView.hidden = NO;
         self.memberImageView.image = [UIImage imageNamed:@"默认女头像.png"];
+        self.memberNumLabel.hidden = NO;
         self.memberNumLabel.text = @"通宝号：56325698541";
     }
 
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
+    [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = YES;
-
 }
 
 - (void)initController
@@ -123,16 +112,7 @@
 {
 
     BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
-    if (!isLogin)
-    {
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginView"];
-        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        [viewController setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:viewController animated:YES];
-        return ;
-    }
-
+    
     //基本信息
     if (indexPath.section == 0)
     {
@@ -149,6 +129,13 @@
     {
         //我的订单
         if (indexPath.row == 0) {
+            
+            if (!isLogin) {
+            
+                [SVProgressShow showInfoWithStatus:@"登录账号才能查看我的订单"];
+                
+                return ;
+            }
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
             UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"orderlistView"];
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
@@ -159,6 +146,13 @@
         }
         //我的收藏
         else if (indexPath.row == 1) {
+            if (!isLogin) {
+                
+                [SVProgressShow showInfoWithStatus:@"登录账号才能查看我的收藏"];
+                
+                return ;
+            }
+
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
             UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"collectObjectiveView"];
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
@@ -189,6 +183,17 @@
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }
+}
+
+
+#pragma mark - 登录按钮
+- (IBAction)loginBtnPressed:(id)sender {
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [viewController setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

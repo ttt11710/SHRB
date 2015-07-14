@@ -12,8 +12,8 @@ NSString *const GROUP_CHANGED = @"groupChanged";
 
 @interface TNCheckBoxGroup()
 
-@property (nonatomic, strong) NSArray *checkBoxData;
-@property (nonatomic) TNCheckBoxLayout layout;
+
+
 @property (nonatomic) NSInteger widthOfComponent;
 @property (nonatomic) NSInteger heightOfComponent;
 
@@ -35,6 +35,8 @@ NSString *const GROUP_CHANGED = @"groupChanged";
 }
 
 - (void)create {
+    self.marginBetweenItems = 0;
+    
     [self createCheckBoxes];
     
     self.frame = CGRectMake(0, 0, self.widthOfComponent, self.heightOfComponent);
