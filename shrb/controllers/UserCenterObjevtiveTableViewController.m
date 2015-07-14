@@ -13,16 +13,15 @@
 
 @interface UserCenterObjevtiveTableViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *memberNumLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *memberImageView;
+
 @end
 
 @implementation UserCenterObjevtiveTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     
     [self initController];
     [self initTableView];
@@ -35,15 +34,40 @@
 {
     [super viewDidAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
+//    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
+//    if (!isLogin)
+//    {
+//        CGFloat x = self.memberImageView.frame.origin.x;
+//        CGFloat w = self.memberImageView.frame.size.height;
+//        CGFloat h = self.memberImageView.frame.size.width;
+//        CGFloat y = self.memberImageView.frame.origin.y;
+//        self.memberImageView.image = [UIImage imageNamed:@"官方头像"];
+//        self.memberNumLabel.text = @"100000";
+//        
+//    }
+//    else {
+//        self.memberImageView.image = [UIImage imageNamed:@"默认女头像.png"];
+//        self.memberNumLabel.text = @"通宝号：56325698541";
+//    }
+
+}
+
+- (void)viewDidLayoutSubviews
+{
     BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
     if (!isLogin)
     {
-        self.nickNameLabel.text = @"未登录";
-        self.memberNumLabel.text = @"";
+        CGFloat x = self.memberImageView.frame.origin.x;
+        CGFloat w = self.memberImageView.frame.size.height;
+        CGFloat h = self.memberImageView.frame.size.width;
+        CGFloat y = self.memberImageView.frame.origin.y;
+        self.memberImageView.image = [UIImage imageNamed:@"默认女头像"];
+        self.memberNumLabel.text = @"通宝号：100000";
+        
     }
     else {
-        self.nickNameLabel.text = @"声息";
-        self.memberNumLabel.text = @"56325698541";
+        self.memberImageView.image = [UIImage imageNamed:@"默认女头像.png"];
+        self.memberNumLabel.text = @"通宝号：56325698541";
     }
 
 }
@@ -77,7 +101,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.section == 0? 68:44;
+    return indexPath.section == 0? 200:44;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -91,7 +115,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return section == 0? 0:8;
+    return (section == 0 || section == 1)? 0:8;
 }
 
 
