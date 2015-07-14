@@ -113,7 +113,7 @@
 
     cell.model = self.dataArray[indexPath.row];
     // start animating
-    [cell.hotImageView startAnimating];
+ //   [cell.hotImageView startAnimating];
 
     
 //    if (indexPath.row == 0) {

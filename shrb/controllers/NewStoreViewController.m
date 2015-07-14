@@ -320,6 +320,12 @@ static NewStoreViewController *g_StoreViewController = nil;
 
 #pragma mark - 扫码支付
 - (IBAction)goToQRView:(id)sender {
+    
+//    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
+//    if (!isLogin) {
+//        [SVProgressShow showInfoWithStatus:@"请先登录账号！"];
+//        return ;
+//    }
     if ([self validateCamera]) {
         
         [self showQRViewController];

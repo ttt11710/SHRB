@@ -10,7 +10,74 @@
 #import "UIColor+BFPaperColors.h"
 #import "HotFocusModel.h"
 
-@interface HotFocusTableViewCell ()
+
+@interface myImageView : UIImageView
+{
+    NSInteger  _currentInt;
+    NSMutableArray *_imageArr;
+}
+@property(assign, readwrite, nonatomic)NSInteger currentInt;
+@property(readwrite, nonatomic)NSMutableArray *imageArr;
+
+
+@end
+
+@implementation myImageView
+
+
+- (void)setCurrentInt:(NSInteger)currentInt
+{
+    _currentInt = currentInt;
+}
+
+- (void)initImageArr
+{
+    _imageArr = [[NSMutableArray alloc] init];
+    
+}
+
+- (void)beginAnimation
+{
+    self.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:0]]];
+    
+    [self performSelector:@selector(layerAnimation)
+               withObject:nil
+               afterDelay:(arc4random() % 2)+1];
+}
+
+- (void)layerAnimation
+{
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:_currentInt]]];
+    CABasicAnimation *contentsAnimation = [CABasicAnimation animationWithKeyPath:@"contents"];
+    contentsAnimation.fromValue = self;
+    contentsAnimation.toValue = (__bridge id)(image.CGImage);
+    contentsAnimation.duration = 1.f;
+    contentsAnimation.delegate = self;
+    contentsAnimation.fillMode=kCAFillModeForwards;
+    contentsAnimation.removedOnCompletion = NO;
+    [self.layer addAnimation:contentsAnimation forKey:nil];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    _currentInt++;
+    if (_currentInt == [_imageArr count]) {
+        _currentInt = 0;
+    }
+    
+    [self performSelector:@selector(layerAnimation)
+               withObject:nil
+               afterDelay:(arc4random() % 3) + 3];
+}
+
+@end
+
+
+@interface HotFocusTableViewCell () 
+{
+    NSMutableArray *_arr;
+    NSMutableArray *_imageArr;
+}
 
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -20,23 +87,40 @@
 
 - (void)setModel:(HotFocusModel *)model
 {
-    self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.storeName]];
-    
-    // load all the frames of our animation
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
+//    // load all the frames of our animation
+    _arr = [[NSMutableArray alloc] init];
     for (NSString *str in model.images) {
-        [arr addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%@",str]]];
+        [_arr addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%@",str]]];
+    }
+    _imageArr = [[NSMutableArray alloc] init];
+    for (NSString *str in model.images) {
+        [_imageArr addObject:str];
     }
     
-    self.hotImageView.animationImages = [arr copy];
+//    self.descriptionLabel.text = model.simpleStoreDetail;
+//    
+//    
+//    self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",_imageArr[0]]];
+//
+//    self.hotImageView.animationImages = [_arr copy];
+//    
+//    // all frames will execute in 1.75 seconds
+//    self.hotImageView.animationDuration = (arc4random() % 10) + 10;
+//    // repeat the annimation forever
+//    self.hotImageView.animationRepeatCount = 0;
     
-    // all frames will execute in 1.75 seconds
-    self.hotImageView.animationDuration = (arc4random() % 10) + 10;
-    // repeat the annimation forever
-    self.hotImageView.animationRepeatCount = 0;
     
-    self.descriptionLabel.text = model.simpleStoreDetail;
+    
+    
+    self.hotImageView.currentInt = 1;
+    [self.hotImageView initImageArr];
+    self.hotImageView.imageArr = _imageArr;
+    [self.hotImageView beginAnimation];
+    
+    
+    
 }
+
 
 - (void)awakeFromNib
 {

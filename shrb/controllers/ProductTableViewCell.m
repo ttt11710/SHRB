@@ -12,6 +12,7 @@
 #import "Const.h"
 #import "SuperBecomeMemberView1.h"
 #import "ProductIsMemberTableViewController.h"
+#import "SVProgressShow.h"
 
 @interface ProductTableViewCell () {
     
@@ -76,6 +77,11 @@
 #pragma mark - 注册
 - (void)buttonWasPressed:(id)sender
 {
+//    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
+//    if (!isLogin) {
+//        [SVProgressShow showInfoWithStatus:@"请先登录！"];
+//        return ;
+//    }
     
     if (_becomeMemberView == nil) {
         _becomeMemberView = [[SuperBecomeMemberView1 alloc] initWithFrame:CGRectMake(screenWidth, self.signInBtn.frame.origin.y, screenWidth/2, 180)];
