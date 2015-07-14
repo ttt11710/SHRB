@@ -31,9 +31,9 @@
 - (IBAction)cancelBtnPressed:(id)sender {
     
     self.navigationController.navigationBarHidden = NO;
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
     
-    [[MainTabBarController shareMainTabBarController] showHotView];
+   // [[MainTabBarController shareMainTabBarController] showHotView];
 }
 
 

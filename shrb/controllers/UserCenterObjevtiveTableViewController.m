@@ -35,16 +35,17 @@
 {
     [super viewDidAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
-    
     BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
     if (!isLogin)
     {
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginView"];
-        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        [viewController setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:viewController animated:YES];
+        self.nickNameLabel.text = @"未登录";
+        self.memberNumLabel.text = @"";
     }
+    else {
+        self.nickNameLabel.text = @"声息";
+        self.memberNumLabel.text = @"56325698541";
+    }
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -96,6 +97,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
+    if (!isLogin)
+    {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [viewController setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:viewController animated:YES];
+        return ;
+    }
 
     //基本信息
     if (indexPath.section == 0)

@@ -10,6 +10,7 @@
 #import "SVProgressShow.h"
 
 @interface ForgetPasswordViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *memberNumField;
 
 @end
 
