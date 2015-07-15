@@ -54,7 +54,7 @@
         _smallbuttonModel.hidden = YES;
         _smallbuttonModel.layer.cornerRadius = 4;
         _smallbuttonModel.layer.masksToBounds = YES;
-        [_smallbuttonModel setTitle:@"注册" forState:UIControlStateNormal];
+        [_smallbuttonModel setTitle:@"会员注册" forState:UIControlStateNormal];
         [_smallbuttonModel setTintColor:[UIColor clearColor]];
         [_smallbuttonModel setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:120.0/255.0 blue:161.0/255.0 alpha:1]];
         [_smallbuttonModel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

@@ -254,7 +254,7 @@ static OrdersViewController *g_OrdersViewController = nil;
             cell = [[ButtonTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
         }
         
-        [cell.buttonModel setTitle:@"注册" forState:UIControlStateNormal];
+        [cell.buttonModel setTitle:@"会员注册" forState:UIControlStateNormal];
         
         return cell;
     }

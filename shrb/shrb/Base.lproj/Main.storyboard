@@ -535,7 +535,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <state key="normal" title="注册">
+                                                    <state key="normal" title="会员注册">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -3140,7 +3140,7 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="ite-fg-Mi5"/>
                                             </constraints>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <state key="normal" title="注册">
+                                            <state key="normal" title="会员注册">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -3166,9 +3166,9 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="RuS-Pj-8DM" firstAttribute="top" secondItem="w80-Kc-9td" secondAttribute="top" id="4BM-TO-du9"/>
-                                        <constraint firstItem="yZ4-7l-6Nu" firstAttribute="leading" secondItem="eDv-Nu-bC2" secondAttribute="leadingMargin" constant="-8" id="Kbl-g3-1kY"/>
+                                        <constraint firstItem="yZ4-7l-6Nu" firstAttribute="leading" secondItem="eDv-Nu-bC2" secondAttribute="leadingMargin" constant="16" id="Kbl-g3-1kY"/>
                                         <constraint firstItem="RuS-Pj-8DM" firstAttribute="bottom" secondItem="w80-Kc-9td" secondAttribute="bottom" id="N46-ei-Py3"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="yZ4-7l-6Nu" secondAttribute="trailing" constant="-8" id="Os8-X1-7AS"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yZ4-7l-6Nu" secondAttribute="trailing" constant="16" id="Os8-X1-7AS"/>
                                         <constraint firstItem="RuS-Pj-8DM" firstAttribute="trailing" secondItem="w80-Kc-9td" secondAttribute="trailing" id="XNJ-nk-PHm"/>
                                         <constraint firstItem="RuS-Pj-8DM" firstAttribute="leading" secondItem="eDv-Nu-bC2" secondAttribute="leadingMargin" constant="16" id="YjM-I0-VAX"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="RuS-Pj-8DM" secondAttribute="trailing" constant="16" id="a9T-S4-B7W"/>
