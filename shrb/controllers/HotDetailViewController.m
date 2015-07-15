@@ -104,7 +104,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 68, 0)];
-    UIFont* theFont = [UIFont systemFontOfSize:17.0];
+    UIFont* theFont = [UIFont systemFontOfSize:15.0];
     label.numberOfLines = 0;
     [label setFont:theFont];
     [label setText:_array[storeNum][@"storeDetail"]];
@@ -112,11 +112,11 @@
     
     [label sizeToFit];// 显示文本需要的长度和宽度
     
-    if (label.frame.size.height+140 < screenHeight-(20+44+44)) {
+    if (label.frame.size.height+160 < screenHeight-(20+44+44)) {
         return screenHeight-(20+44+44);
     }
     else {
-       return label.frame.size.height+176;
+       return label.frame.size.height+160;
     }
 }
 

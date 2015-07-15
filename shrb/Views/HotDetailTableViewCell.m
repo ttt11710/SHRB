@@ -12,7 +12,7 @@
 @interface HotDetailTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
-@property (weak, nonatomic) IBOutlet LazyFadeInView *detailView;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
 @end
 
@@ -22,7 +22,7 @@
 {
     self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",model.storeLogo]];
     
-    self.detailView.text = model.storeDetail;
+    self.detailLabel.text = model.storeDetail;
 }
 
 - (void)awakeFromNib {
