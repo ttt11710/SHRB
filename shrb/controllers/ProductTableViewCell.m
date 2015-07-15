@@ -13,6 +13,7 @@
 #import "SuperBecomeMemberView1.h"
 #import "ProductIsMemberTableViewController.h"
 #import "SVProgressShow.h"
+#import "DOPScrollableActionSheet.h"
 
 @interface ProductTableViewCell () {
     
@@ -89,6 +90,7 @@
         
         _smallbuttonModel = [UIButton buttonWithType:UIButtonTypeCustom];
         _smallbuttonModel.frame = CGRectMake(screenWidth/2-45,  self.signInBtn.frame.origin.y, 90, 44);
+        _smallbuttonModel.font = [UIFont systemFontOfSize:15.0f];
         _smallbuttonModel.hidden = YES;
         _smallbuttonModel.layer.cornerRadius = 4;
         _smallbuttonModel.layer.masksToBounds = YES;
@@ -190,5 +192,53 @@
 
     // Configure the view for the selected state
 }
+
+#pragma mark - 收藏
+- (IBAction)collectBtnPressed:(id)sender {
+    [SVProgressShow showWithStatus:@"收藏中..."];
+    double delayInSeconds = 1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [SVProgressShow showSuccessWithStatus:@"收藏成功！"];
+    });
+
+}
+
+#pragma mark - 分享
+- (IBAction)shareBtnPressed:(id)sender {
+    DOPAction *action1 = [[DOPAction alloc] initWithName:@"Wechat" iconName:@"weixin" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"微信分享成功！"];
+    }];
+    DOPAction *action2 = [[DOPAction alloc] initWithName:@"QQ" iconName:@"qq" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"QQ分享成功！"];
+    }];
+    DOPAction *action3 = [[DOPAction alloc] initWithName:@"WxFriends" iconName:@"wxFriends" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"微信朋友圈分享成功！"];
+    }];
+    DOPAction *action4 = [[DOPAction alloc] initWithName:@"Qzone" iconName:@"qzone" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"QQ空间分享成功！"];
+    }];
+    DOPAction *action5 = [[DOPAction alloc] initWithName:@"Weibo" iconName:@"weibo" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"新浪微博分享成功！"];
+    }];
+    DOPAction *action6 = [[DOPAction alloc] initWithName:@"SMS" iconName:@"sms" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"短信发送成功！"];
+    }];
+    DOPAction *action7 = [[DOPAction alloc] initWithName:@"Email" iconName:@"email" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"邮件发送成功！"];
+    }];
+    
+    
+    NSArray *actions;
+    actions = @[@"Share",
+                @[action1, action2, action3, action4],
+                @"",
+                @[action5, action6, action7]];
+    DOPScrollableActionSheet *as = [[DOPScrollableActionSheet alloc] initWithActionArray:actions];
+    [as show];
+
+}
+
+
 
 @end

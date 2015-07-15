@@ -14,6 +14,7 @@
 #import "Const.h"
 #import <CBZSplashView/CBZSplashView.h>
 #import "KYCuteView.h"
+#import "SVProgressShow.h"
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
@@ -153,6 +154,20 @@
         [[NSUserDefaults standardUserDefaults] setObject:@"16D" forKey:@"store"];
     }
     
+    if (indexPath.row == 0) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"16D" forKey:@"store"];
+    }
+    else if (indexPath.row == 1) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"yunifang" forKey:@"store"];
+    }
+    else if (indexPath.row == 2) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"holy" forKey:@"store"];
+    }
+    else if (indexPath.row == 3) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"McDonalds" forKey:@"store"];
+    }
+    
+    
      //商店类型 supermarket（超市）  order（点餐） store(小店)
     if (indexPath.row ==0 || indexPath.row == 1) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"typesOfShops"];
@@ -172,15 +187,47 @@
     HotFocusTableViewCell* cell = (HotFocusTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    HotDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotDetailView"];
-    viewController.storeNum = indexPath.row;
-    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    HotDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotDetailView"];
+//    viewController.storeNum = indexPath.row;
+//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    
+//    [self.navigationController pushViewController:viewController animated:YES];
     
-    [self.navigationController pushViewController:viewController animated:YES];
+    [SVProgressShow showWithStatus:@"进入店铺..."];
+    
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething) object:nil];
+    [self performSelector:@selector(todoSomething) withObject:nil afterDelay:0.4f];
     
 }
 
+
+#pragma mark - 延时显示状态然后跳转
+- (void)todoSomething
+{
+    NSString * typesOfShops = [[NSUserDefaults standardUserDefaults] stringForKey:@"typesOfShops"];
+    
+    //supermarket
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *viewController;
+    if ([typesOfShops isEqualToString:@"supermarket"]) {
+        //超市
+        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
+    }
+    else if ([typesOfShops isEqualToString:@"order"]) {
+        //点餐
+        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
+    }
+    else {
+        //小店 暂时和超市一样
+        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
+    }
+    
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [self.navigationController pushViewController:viewController animated:YES];
+    [SVProgressShow dismiss];
+}
 @end
 
 

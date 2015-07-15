@@ -9,6 +9,7 @@
 #import "ProductDescriptionView.h"
 #import "SVProgressShow.h"
 #import "Const.h"
+#import "DOPScrollableActionSheet.h"
 
 @interface ProductDescriptionView ()
 {
@@ -156,7 +157,24 @@
     _descriptionTextView.textColor = [UIColor grayColor];
     _descriptionTextView.editable = NO;
     [_descriptionView addSubview:_descriptionTextView];
+
     
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareBtn.frame = CGRectMake(_descriptionImageView.frame.origin.x+_descriptionImageView.frame.size.width-40, _descriptionImageView.frame.origin.y + _descriptionImageView.frame.size.height-30, 25, 25);
+    [shareBtn setBackgroundImage:[UIImage imageNamed:@"fenxiang"] forState:UIControlStateNormal];
+    [shareBtn addTarget:self action:@selector(shareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    
+    [_descriptionView addSubview:shareBtn];
+
+    UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    collectBtn.frame = CGRectMake(shareBtn.frame.origin.x-8-25, shareBtn.frame.origin.y, 25, 25);
+    [collectBtn setBackgroundImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
+    [collectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [collectBtn addTarget:self action:@selector(collectBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_descriptionView addSubview:collectBtn];
+
     UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(4*screenWidth/5-55, 8, 40, 25)];
     addButton.layer.cornerRadius = 4;
     addButton.layer.masksToBounds = YES;
@@ -262,14 +280,6 @@ static NSInteger oldRow;
     
 }
 
-//-(void)setCurrentInfo:(NSInteger)currentindex
-//{
-//    if (_data.count<=0) {
-//        return;
-//    }
-//    _currentIndex = currentindex;
-//    [self refreshDescriptionView];
-//}
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
@@ -279,7 +289,56 @@ static NSInteger oldRow;
 }
 
 
-#pragma mark - 关掉页面
+#pragma mark - 收藏
+- (void)collectBtnPressed
+{
+    
+    [SVProgressShow showWithStatus:@"收藏中..."];
+    double delayInSeconds = 1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [SVProgressShow showSuccessWithStatus:@"收藏成功！"];
+    });
+}
+
+#pragma mark - 分享
+- (void)shareBtnPressed
+{
+    
+    DOPAction *action1 = [[DOPAction alloc] initWithName:@"Wechat" iconName:@"weixin" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"微信分享成功！"];
+    }];
+    DOPAction *action2 = [[DOPAction alloc] initWithName:@"QQ" iconName:@"qq" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"QQ分享成功！"];
+    }];
+    DOPAction *action3 = [[DOPAction alloc] initWithName:@"WxFriends" iconName:@"wxFriends" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"微信朋友圈分享成功！"];
+    }];
+    DOPAction *action4 = [[DOPAction alloc] initWithName:@"Qzone" iconName:@"qzone" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"QQ空间分享成功！"];
+    }];
+    DOPAction *action5 = [[DOPAction alloc] initWithName:@"Weibo" iconName:@"weibo" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"新浪微博分享成功！"];
+    }];
+    DOPAction *action6 = [[DOPAction alloc] initWithName:@"SMS" iconName:@"sms" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"短信发送成功！"];
+    }];
+    DOPAction *action7 = [[DOPAction alloc] initWithName:@"Email" iconName:@"email" handler:^{
+        [SVProgressShow showSuccessWithStatus:@"邮件发送成功！"];
+    }];
+    
+    
+    NSArray *actions;
+    actions = @[@"Share",
+                @[action1, action2, action3, action4],
+                @"",
+                @[action5, action6, action7]];
+    DOPScrollableActionSheet *as = [[DOPScrollableActionSheet alloc] initWithActionArray:actions];
+    [as show];
+    
+}
+
+#pragma mark - 添加商品
 -(void)addButtonEven
 {
     [SVProgressShow showSuccessWithStatus:@"添加成功"];

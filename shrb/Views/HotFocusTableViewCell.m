@@ -97,7 +97,7 @@
         [_imageArr addObject:str];
     }
     
-//    self.descriptionLabel.text = model.simpleStoreDetail;
+    self.descriptionLabel.text = model.simpleStoreDetail;
 //    
 //    
 //    self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",_imageArr[0]]];

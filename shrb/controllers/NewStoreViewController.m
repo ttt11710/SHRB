@@ -222,7 +222,7 @@ static NewStoreViewController *g_StoreViewController = nil;
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
         cell.textLabel.text = [self.plistArr objectAtIndex:indexPath.row][@"type"];
-        
+        cell.textLabel.textColor = shrbText;
         return cell;
     }
     else {
