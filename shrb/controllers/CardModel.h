@@ -19,5 +19,6 @@
 @property(nonatomic,copy) NSString * expensePrice;       //消费金额
 @property(nonatomic,copy) NSString * address;            //消费地址
 @property(nonatomic,copy) NSString * date;               //消费日期
+@property(nonatomic,copy) NSString * backCardImage;      //卡片背景
 
 @end

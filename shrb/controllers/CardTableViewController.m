@@ -33,27 +33,32 @@
     //假数据
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
-                               @"memberCardImage" : @"雀巢",
+                               @"memberCardImage" : @"16DLogo",
                                @"money" : @"1000",
                                @"cardNumber":@"455133487465566",
                                @"integral":@"45",
+                               @"backCardImage":@"back_card0",
                                },
                              @{
-                               @"memberCardImage" : @"辛巴克",
+                               @"memberCardImage" : @"holyLogo",
                                @"money" : @"200",
                                @"cardNumber":@"7845123165468",
-                               @"integral":@"55",                               },
+                               @"integral":@"55",
+                               @"backCardImage":@"back_card1",
+                               },
                              @{
-                               @"memberCardImage" : @"吉野家",
+                               @"memberCardImage" : @"16DLogo",
                                @"money" : @"100",
                                @"cardNumber":@"998562144555456",
                                @"integral":@"33",
+                               @"backCardImage":@"back_card2",
                                },
                              @{
-                               @"memberCardImage" : @"冰雪皇后",
+                               @"memberCardImage" : @"holyLogo",
                                @"money" : @"150",
                                @"cardNumber":@"781123264645465654",
                                @"integral":@"55",
+                               @"backCardImage":@"back_card3",
                                },
                              nil];
     
@@ -96,10 +101,11 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [weakSelf.tableView beginUpdates];
         
-        NSDictionary *dic = @{@"memberCardImage" : @"雀巢",
+        NSDictionary *dic = @{@"memberCardImage" : @"holyLogo",
                               @"money" : @"1000",
                               @"cardNumber":@"455133487465566",
-                              @"integral":@"45"};
+                              @"integral":@"45",
+                              @"backCardImage":@"back_card2",};
         CardModel * model = [[CardModel alloc] init];
         [model setValuesForKeysWithDictionary:dic];
         [weakSelf.dataArray insertObject:model atIndex:0];
@@ -121,10 +127,11 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [weakSelf.tableView beginUpdates];
-        NSDictionary *dic = @{@"memberCardImage" : @"雀巢",
+        NSDictionary *dic = @{@"memberCardImage" : @"16DLogo",
                               @"money" : @"1000",
                               @"cardNumber":@"455133487465566",
-                              @"integral":@"45"};
+                              @"integral":@"45",
+                              @"backCardImage":@"back_card0",};
         CardModel * model = [[CardModel alloc] init];
         [model setValuesForKeysWithDictionary:dic];
         [weakSelf.dataArray addObject:model];
@@ -140,7 +147,7 @@
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    return 200;
 }
 
 #pragma mark - Table view data source

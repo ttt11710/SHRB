@@ -11,6 +11,8 @@
 
 @interface CardTableViewCell ()
 
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
+@property (weak, nonatomic) IBOutlet UIImageView *backImageView;
 @property (weak, nonatomic) IBOutlet UIView *backView;
 @property (weak, nonatomic) IBOutlet UIImageView *memberCardImageView;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
@@ -25,15 +27,24 @@
     self.memberCardImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.memberCardImage]];
     self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@元",model.money];
     self.cardNumberLabel.text = [NSString stringWithFormat:@"卡号：%@",model.cardNumber];
-    self.integralLabel.text =[NSString stringWithFormat:@"积分：%@",model.integral];
+    self.integralLabel.text =[NSString stringWithFormat:@"积分：%@分",model.integral];
+    self.backImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",model.backCardImage]];
 }
 
 - (void)awakeFromNib {
     // Initialization code
-    self.backView.layer.cornerRadius = 10;
-    self.backView.layer.masksToBounds = YES;
     
-    self.memberCardImageView.layer.cornerRadius = 4;
+    
+    self.shadowView.layer.cornerRadius = 10;
+    self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.shadowView.layer.shadowOffset = CGSizeMake(2,2);
+    self.shadowView.layer.shadowOpacity = 0.5;
+    self.shadowView.layer.shadowRadius = 2.0;
+    
+    self.backImageView.layer.cornerRadius = 10;
+    self.backImageView.layer.masksToBounds = YES;
+    
+    self.memberCardImageView.layer.cornerRadius = 10;
     self.memberCardImageView.layer.masksToBounds = YES;
 }
 
