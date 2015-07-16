@@ -3039,7 +3039,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuS-Pj-8DM" userLabel="backView">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuS-Pj-8DM" userLabel="backView" customClass="FoldingView">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="冰拿铁" translatesAutoresizingMaskIntoConstraints="NO" id="MuC-gs-ZgO">
@@ -3430,7 +3430,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkf-ZT-zQ8" userLabel="backView">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkf-ZT-zQ8" userLabel="backView" customClass="FoldingView">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="冰拿铁" translatesAutoresizingMaskIntoConstraints="NO" id="rHW-OK-tR3">
@@ -3460,6 +3460,9 @@
                                                                     <include reference="SGN-fT-c7x"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <action selector="shareBtnPressed:" destination="U4Q-ve-wde" eventType="touchUpInside" id="Pa6-jk-qEc"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwp-I5-qEW" userLabel="收藏">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -3482,6 +3485,9 @@
                                                                     <include reference="kbT-Dt-je6"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <action selector="collectBtnPressed:" destination="U4Q-ve-wde" eventType="touchUpInside" id="BkQ-ys-apq"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

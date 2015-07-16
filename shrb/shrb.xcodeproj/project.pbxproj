@@ -124,6 +124,9 @@
 		DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC45A211B44DA8C0055C4C3 /* SuperBecomeMemberView1.m */; };
 		DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */; };
 		DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */; };
+		DFCF89F01B5779DE00D09A4A /* FoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCF89EF1B5779DE00D09A4A /* FoldingView.m */; };
+		DFCF89F61B577AE600D09A4A /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCF89F31B577AE600D09A4A /* UIColor+CustomColors.m */; };
+		DFCF89F71B577AE600D09A4A /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCF89F51B577AE600D09A4A /* UIImage+Blur.m */; };
 		DFDC89671B43929C0051D763 /* BecomeMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDC89661B43929C0051D763 /* BecomeMemberView.m */; };
 		DFDC896A1B43EDC80051D763 /* SuperBecomeMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDC89681B43EDC80051D763 /* SuperBecomeMemberView.m */; };
 		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
@@ -358,6 +361,12 @@
 		DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPScrollableActionSheet.m; sourceTree = "<group>"; };
 		DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreViewController.h; sourceTree = "<group>"; };
 		DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreViewController.m; sourceTree = "<group>"; };
+		DFCF89EE1B5779DE00D09A4A /* FoldingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldingView.h; sourceTree = "<group>"; };
+		DFCF89EF1B5779DE00D09A4A /* FoldingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldingView.m; sourceTree = "<group>"; };
+		DFCF89F21B577AE600D09A4A /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
+		DFCF89F31B577AE600D09A4A /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
+		DFCF89F41B577AE600D09A4A /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
+		DFCF89F51B577AE600D09A4A /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
 		DFDC89651B43929C0051D763 /* BecomeMemberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BecomeMemberView.h; sourceTree = "<group>"; };
 		DFDC89661B43929C0051D763 /* BecomeMemberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BecomeMemberView.m; sourceTree = "<group>"; };
 		DFDC89681B43EDC80051D763 /* SuperBecomeMemberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperBecomeMemberView.m; sourceTree = "<group>"; };
@@ -481,6 +490,8 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DFCF89F11B577ACD00D09A4A /* POPCategories */,
+				DFCF89ED1B5779C900D09A4A /* POPFoldingView */,
 				DF9372F91B4B690400960F86 /* KYCuteView */,
 				DF2B0E161B423DB40051AA1A /* TNCheckBoxGroup */,
 				DFCDF9451B3BD70F00F70955 /* DOPScrollableActionSheet */,
@@ -938,6 +949,26 @@
 			name = DOPScrollableActionSheet;
 			sourceTree = "<group>";
 		};
+		DFCF89ED1B5779C900D09A4A /* POPFoldingView */ = {
+			isa = PBXGroup;
+			children = (
+				DFCF89EE1B5779DE00D09A4A /* FoldingView.h */,
+				DFCF89EF1B5779DE00D09A4A /* FoldingView.m */,
+			);
+			name = POPFoldingView;
+			sourceTree = "<group>";
+		};
+		DFCF89F11B577ACD00D09A4A /* POPCategories */ = {
+			isa = PBXGroup;
+			children = (
+				DFCF89F21B577AE600D09A4A /* UIColor+CustomColors.h */,
+				DFCF89F31B577AE600D09A4A /* UIColor+CustomColors.m */,
+				DFCF89F41B577AE600D09A4A /* UIImage+Blur.h */,
+				DFCF89F51B577AE600D09A4A /* UIImage+Blur.m */,
+			);
+			name = POPCategories;
+			sourceTree = "<group>";
+		};
 		DFF330DF1B2EC56100007582 /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1130,6 +1161,7 @@
 				DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */,
 				DF7A8A5C1B3CE97700528864 /* ProductTableViewCell.m in Sources */,
 				DF7A8A5F1B3CE9DC00528864 /* ProductModel.m in Sources */,
+				DFCF89F01B5779DE00D09A4A /* FoldingView.m in Sources */,
 				DFAE95581B253588006A495B /* CouponsDetailTableViewController.m in Sources */,
 				DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */,
 				DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */,
@@ -1152,6 +1184,7 @@
 				DF9119B01B394A3B00833AAB /* MeImageTableViewCell.swift in Sources */,
 				DF66B84C1B53B13E002E9EFC /* ChangePasswordViewController.m in Sources */,
 				DF66B8491B53AF33002E9EFC /* ForgetPasswordViewController.m in Sources */,
+				DFCF89F71B577AE600D09A4A /* UIImage+Blur.m in Sources */,
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
 				DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */,
 				DF2B0E2E1B423DB40051AA1A /* TNCircularCheckBox.m in Sources */,
@@ -1165,6 +1198,7 @@
 				DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */,
 				DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */,
 				DF2B0E311B423DB40051AA1A /* TNImageCheckBoxData.m in Sources */,
+				DFCF89F61B577AE600D09A4A /* UIColor+CustomColors.m in Sources */,
 				DFB057961B40F1840091A1E1 /* MemberPayTableViewCell.m in Sources */,
 				DFB763281B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m in Sources */,
 				DFAE52B01B32743500B03B2F /* QRView.m in Sources */,

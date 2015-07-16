@@ -15,6 +15,7 @@
 #import "SVProgressShow.h"
 #import "DOPScrollableActionSheet.h"
 #import <POP/POP.h>
+#import "FoldingView.h"
 
 @interface ProductTableViewCell () {
     
@@ -27,7 +28,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *imageShadowView;
 
-@property (weak, nonatomic) IBOutlet UIView *ImageBackView;
+
 @property (weak, nonatomic) IBOutlet UILabel *saveMoneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *signInBtn;
@@ -42,6 +43,13 @@
 - (void)setModel:(ProductModel *)model
 {
     self.tradeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.tradeImage]];
+    
+    
+    self.tradeImageView.hidden = YES;
+    self.imageShadowView.hidden = YES;
+    [self.ImageBackView myInitWithFrame:CGRectMake(0, 0, screenWidth-48, screenWidth-48) image:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.tradeImage]]];
+    
+    
     self.signInBtn.layer.cornerRadius = 4;
     self.signInBtn.layer.masksToBounds = YES;
     self.saveMoneyLabel.text = [NSString stringWithFormat:@"省￥%@元",model.saveMoney];
@@ -58,7 +66,7 @@
     
     self.imageShadowView.layer.cornerRadius = 10;
     self.imageShadowView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.imageShadowView.layer.shadowOffset = CGSizeMake(2,2);
+    self.imageShadowView.layer.shadowOffset = CGSizeMake(0,2);
     self.imageShadowView.layer.shadowOpacity = 0.5;
     self.imageShadowView.layer.shadowRadius = 2.0;
     
@@ -74,6 +82,7 @@
     
     UITapGestureRecognizer *gotoCardDetailTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoCardDetailTap)];
     [self.cardDetailView addGestureRecognizer:gotoCardDetailTap];
+    
 }
 
 #pragma mark - 注册

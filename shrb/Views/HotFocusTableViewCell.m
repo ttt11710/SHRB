@@ -16,6 +16,7 @@
 {
     NSInteger  _currentInt;
     NSMutableArray *_imageArr;
+    CAGradientLayer *_gradientLayer;
     UIView *_containerView;
     CGRect _oldframe;
 }
@@ -40,23 +41,27 @@
 
 - (void)beginAnimation
 {
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(0, 0,screenWidth*2 , 250);
-    gradientLayer.colors = @[(__bridge id)[UIColor blackColor].CGColor,
-                             (__bridge id)[UIColor colorWithWhite:0.1 alpha:0.1].CGColor,
+    _gradientLayer = [CAGradientLayer layer];
+    _gradientLayer.frame = CGRectMake(0, 0,screenWidth*2 , 250);
+    _gradientLayer.colors = @[(__bridge id)[UIColor blackColor].CGColor,
+                             (__bridge id)[UIColor colorWithWhite:0.1 alpha:0.8].CGColor,
                              (__bridge id)[UIColor blackColor].CGColor,
                              ];
-    gradientLayer.locations = @[@(0.1),@(0.5),@(0.9)];
-    gradientLayer.startPoint = CGPointMake(0, 0);
-    gradientLayer.endPoint = CGPointMake(1, 0);
+    _gradientLayer.locations = @[@(0.4),@(0.5),@(0.6)];
+    _gradientLayer.startPoint = CGPointMake(0, 0);
+    _gradientLayer.endPoint = CGPointMake(1, 0);
     
     
     _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,screenWidth*2 , 250)];
-    [_containerView.layer addSublayer:gradientLayer];
-  //  self.maskView = _containerView;
-    _oldframe= _containerView.frame;
-    _oldframe.origin.x -=screenWidth;
-    _containerView.frame = _oldframe;
+    [_containerView.layer addSublayer:_gradientLayer];
+    
+    if (IsIOS8) {
+       // self.maskView = _containerView;
+        _oldframe= _containerView.frame;
+        _oldframe.origin.x -=screenWidth;
+        _containerView.frame = _oldframe;
+        
+    }
 
     
     self.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:0]]];
@@ -81,7 +86,10 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    _containerView.frame = _oldframe;
+    if (IsIOS8) {
+        _containerView.frame = _oldframe;
+    }
+    
     _currentInt++;
     if (_currentInt == [_imageArr count]) {
         _currentInt = 0;
@@ -92,9 +100,12 @@
                afterDelay:(arc4random() % 3) + 3];
     
     [UIView animateWithDuration:1.f animations:^{
-        CGRect frame = _containerView.frame;
-        frame.origin.x += screenWidth;
-        _containerView.frame = frame;
+        if (IsIOS8) {
+            CGRect frame = _containerView.frame;
+            frame.origin.x += screenWidth;
+            _containerView.frame = frame;
+        }
+        
     } completion:^(BOOL finished) {
     }];
     
