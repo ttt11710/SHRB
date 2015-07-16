@@ -1483,7 +1483,7 @@
         <!--星巴克-->
         <scene sceneID="kfl-my-Tcc">
             <objects>
-                <viewController storyboardIdentifier="storeView" id="NEb-Us-HgX" customClass="StoreViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="storeView" hidesBottomBarWhenPushed="YES" id="NEb-Us-HgX" customClass="StoreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T7N-si-oAp"/>
                         <viewControllerLayoutGuide type="bottom" id="bgr-c2-eaA"/>
@@ -1899,6 +1899,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="星巴克" id="2PF-rv-fSy"/>
                     <connections>
                         <outlet property="gotopayViewBtn" destination="mBc-65-9wt" id="qHS-d1-gi6"/>
@@ -2735,7 +2736,7 @@
         <!--店名-->
         <scene sceneID="Hpi-JM-IK1">
             <objects>
-                <viewController storyboardIdentifier="newstoreView" id="roz-Cw-d4O" userLabel="店名" customClass="NewStoreViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newstoreView" hidesBottomBarWhenPushed="YES" id="roz-Cw-d4O" userLabel="店名" customClass="NewStoreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zdT-La-nZm"/>
                         <viewControllerLayoutGuide type="bottom" id="1dJ-N8-kY0"/>
@@ -3008,6 +3009,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="星巴克" id="b5F-fR-Qgc"/>
                     <connections>
                         <outlet property="selectTypeTableView" destination="Qdg-aL-KNs" id="mb4-3g-wzG"/>
@@ -3470,14 +3472,14 @@
                                                             </state>
                                                             <variation key="default">
                                                                 <mask key="constraints">
-                                                                    <exclude reference="kbT-Dt-je6"/>
                                                                     <exclude reference="7oo-EP-TNS"/>
+                                                                    <exclude reference="kbT-Dt-je6"/>
                                                                 </mask>
                                                             </variation>
                                                             <variation key="widthClass=compact">
                                                                 <mask key="constraints">
-                                                                    <include reference="kbT-Dt-je6"/>
                                                                     <include reference="7oo-EP-TNS"/>
+                                                                    <include reference="kbT-Dt-je6"/>
                                                                 </mask>
                                                             </variation>
                                                         </button>
@@ -3495,10 +3497,10 @@
                                                             <exclude reference="fwp-I5-qEW"/>
                                                         </mask>
                                                         <mask key="constraints">
-                                                            <exclude reference="nVk-PG-8pM"/>
                                                             <exclude reference="Ki5-jq-3BO"/>
                                                             <exclude reference="PO5-w2-PGM"/>
                                                             <exclude reference="ruH-PT-jFg"/>
+                                                            <exclude reference="nVk-PG-8pM"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="widthClass=compact">
@@ -3507,10 +3509,10 @@
                                                             <include reference="fwp-I5-qEW"/>
                                                         </mask>
                                                         <mask key="constraints">
-                                                            <include reference="nVk-PG-8pM"/>
                                                             <include reference="Ki5-jq-3BO"/>
                                                             <include reference="PO5-w2-PGM"/>
                                                             <include reference="ruH-PT-jFg"/>
+                                                            <include reference="nVk-PG-8pM"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
@@ -3556,6 +3558,9 @@
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="317-v1-tRh"/>
+                                                    <exclude reference="Klc-aE-04Q"/>
+                                                    <exclude reference="NkH-T6-ERG"/>
+                                                    <exclude reference="ovJ-7c-mke"/>
                                                     <exclude reference="21E-VN-oCl"/>
                                                     <exclude reference="JLL-tE-lJi"/>
                                                     <exclude reference="hDf-ki-z3P"/>
@@ -3563,9 +3568,6 @@
                                                     <exclude reference="3aX-Yc-Hfz"/>
                                                     <exclude reference="fIB-xz-WJN"/>
                                                     <exclude reference="ytf-RE-7MR"/>
-                                                    <exclude reference="Klc-aE-04Q"/>
-                                                    <exclude reference="NkH-T6-ERG"/>
-                                                    <exclude reference="ovJ-7c-mke"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -3576,6 +3578,9 @@
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="317-v1-tRh"/>
+                                                    <include reference="Klc-aE-04Q"/>
+                                                    <include reference="NkH-T6-ERG"/>
+                                                    <include reference="ovJ-7c-mke"/>
                                                     <include reference="21E-VN-oCl"/>
                                                     <include reference="JLL-tE-lJi"/>
                                                     <include reference="hDf-ki-z3P"/>
@@ -3583,9 +3588,6 @@
                                                     <include reference="3aX-Yc-Hfz"/>
                                                     <include reference="fIB-xz-WJN"/>
                                                     <include reference="ytf-RE-7MR"/>
-                                                    <include reference="Klc-aE-04Q"/>
-                                                    <include reference="NkH-T6-ERG"/>
-                                                    <include reference="ovJ-7c-mke"/>
                                                 </mask>
                                             </variation>
                                         </view>

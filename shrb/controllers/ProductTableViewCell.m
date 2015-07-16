@@ -14,6 +14,7 @@
 #import "ProductIsMemberTableViewController.h"
 #import "SVProgressShow.h"
 #import "DOPScrollableActionSheet.h"
+#import <POP/POP.h>
 
 @interface ProductTableViewCell () {
     
@@ -106,6 +107,7 @@
         _bounds = self.signInBtn.bounds;
     }
     
+
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         CGRect bounds = _bounds;
@@ -125,12 +127,26 @@
             
         } completion:^(BOOL finished) {
             
+            //pop大小缩放
+            POPSpringAnimation *sizeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+            sizeAnimation.springSpeed = 0.f;
+            sizeAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, _smallbuttonModel.frame.size.width+5, _smallbuttonModel.frame.size.height+5)];
+            [_smallbuttonModel pop_addAnimation:sizeAnimation forKey:nil];
             
+   
+            //pop左右弹动
+            POPSpringAnimation *positionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionX];
+            positionAnimation.velocity = @2000;
+            positionAnimation.springBounciness = 20;
+            [positionAnimation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
+                _smallbuttonModel.userInteractionEnabled = YES;
+            }];
+            [_smallbuttonModel.layer pop_addAnimation:positionAnimation forKey:@"positionAnimation"];
         }];
-        
     }];
     
 }
+
 
 #pragma mark - 确定注册
 - (void)sureBtnPressed
@@ -154,7 +170,10 @@
         } completion:^(BOOL finished) {
             
             [[SuperBecomeMemberView1 shareSuperBecomeMemberView] textFieldResignFirstResponder];
-            
+            POPSpringAnimation *sizeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+            sizeAnimation.springSpeed = 0.f;
+            sizeAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, _smallbuttonModel.frame.size.width-5, _smallbuttonModel.frame.size.height-5)];
+            [_smallbuttonModel pop_addAnimation:sizeAnimation forKey:nil];
         }];
         
     }];

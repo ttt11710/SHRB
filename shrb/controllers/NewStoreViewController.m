@@ -60,6 +60,11 @@ static NewStoreViewController *g_StoreViewController = nil;
     [self initTableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden=YES;
+}
 
 - (void)initView
 {

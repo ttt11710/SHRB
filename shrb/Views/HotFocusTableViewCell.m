@@ -9,16 +9,18 @@
 #import "HotFocusTableViewCell.h"
 #import "UIColor+BFPaperColors.h"
 #import "HotFocusModel.h"
+#import "Const.h"
 
 
 @interface myImageView : UIImageView
 {
     NSInteger  _currentInt;
     NSMutableArray *_imageArr;
+    UIView *_containerView;
+    CGRect _oldframe;
 }
 @property(assign, readwrite, nonatomic)NSInteger currentInt;
 @property(readwrite, nonatomic)NSMutableArray *imageArr;
-
 
 @end
 
@@ -38,6 +40,25 @@
 
 - (void)beginAnimation
 {
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0,screenWidth*2 , 250);
+    gradientLayer.colors = @[(__bridge id)[UIColor blackColor].CGColor,
+                             (__bridge id)[UIColor colorWithWhite:0.1 alpha:0.1].CGColor,
+                             (__bridge id)[UIColor blackColor].CGColor,
+                             ];
+    gradientLayer.locations = @[@(0.1),@(0.5),@(0.9)];
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1, 0);
+    
+    
+    _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,screenWidth*2 , 250)];
+    [_containerView.layer addSublayer:gradientLayer];
+  //  self.maskView = _containerView;
+    _oldframe= _containerView.frame;
+    _oldframe.origin.x -=screenWidth;
+    _containerView.frame = _oldframe;
+
+    
     self.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:0]]];
     
     [self performSelector:@selector(layerAnimation)
@@ -60,6 +81,7 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
+    _containerView.frame = _oldframe;
     _currentInt++;
     if (_currentInt == [_imageArr count]) {
         _currentInt = 0;
@@ -68,6 +90,14 @@
     [self performSelector:@selector(layerAnimation)
                withObject:nil
                afterDelay:(arc4random() % 3) + 3];
+    
+    [UIView animateWithDuration:1.f animations:^{
+        CGRect frame = _containerView.frame;
+        frame.origin.x += screenWidth;
+        _containerView.frame = frame;
+    } completion:^(BOOL finished) {
+    }];
+    
 }
 
 @end

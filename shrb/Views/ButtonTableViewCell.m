@@ -115,6 +115,8 @@
             
             [[BecomeMemberView shareBecomeMemberView] textFieldResignFirstResponder];
             
+            
+            
         }];
         
     }];
