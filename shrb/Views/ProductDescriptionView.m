@@ -68,14 +68,14 @@
 }
 -(void)initMainView {
     
-    _mainView=[[UIView alloc]initWithFrame:CGRectMake(screenWidth/10, screenHeight/8+44, 4*screenWidth/5, 3*screenHeight/4 -50)];
+    _mainView=[[UIView alloc]initWithFrame:CGRectMake(screenWidth/10, 20, 4*screenWidth/5, 3*screenHeight/4 )];
     _mainView.backgroundColor=[UIColor clearColor];
     [self addSubview:_mainView];
 }
 
 - (void)initSubView
 {
-    _descriptionView=[[UIView alloc]initWithFrame:CGRectMake(0,0, 4*screenWidth/5, 3*screenHeight/4 -50)];
+    _descriptionView=[[UIView alloc]initWithFrame:CGRectMake(0,0, 4*screenWidth/5, 3*screenHeight/4)];
     _descriptionView.backgroundColor = [UIColor whiteColor];
     _descriptionView.userInteractionEnabled=YES;
     UIPanGestureRecognizer *panGestureRecognizer=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(cardPanEven:)];
@@ -152,11 +152,17 @@
     moneyLabel.textColor = [UIColor orangeColor];
     [_descriptionImageView addSubview:moneyLabel];
     
-    _descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(12, _descriptionImageView.frame.origin.y+_descriptionImageView.frame.size.height+4, 4*screenWidth/5-12*2, 3*screenHeight/4-4*screenWidth/5-45)];
+    _descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(12, _descriptionImageView.frame.origin.y+_descriptionImageView.frame.size.height+4, 4*screenWidth/5-12*2, 3*screenHeight/4-4*screenWidth/5-2)];
     _descriptionTextView.text = [[self.plistArr objectAtIndex:_currentSection][@"info"] objectAtIndex:_currentRow][@"tradeDescription"];    _descriptionTextView.backgroundColor = [UIColor whiteColor];
     _descriptionTextView.textColor = [UIColor grayColor];
     _descriptionTextView.editable = NO;
     [_descriptionView addSubview:_descriptionTextView];
+    if (IsiPhone4s) {
+        _descriptionTextView.font = [UIFont systemFontOfSize:15];
+    }
+    else {
+        _descriptionTextView.font = [UIFont systemFontOfSize:16];
+    }
 
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -230,7 +236,7 @@ static NSInteger oldRow;
         _currentRow = oldRow;
         
         [self initSubView];
-        _descriptionView.transform=CGAffineTransformMakeScale(0.9, 0.9);
+        _descriptionView.transform=CGAffineTransformMakeScale(0.5, 0.5);
         [self refreshDescriptionView];
         //[self setCurrentInfo:_currentIndex];
         _descriptionView.userInteractionEnabled=NO;
@@ -247,7 +253,7 @@ static NSInteger oldRow;
     
     CGFloat scale= (abs(endPoint.x-startPoint.x)+abs(endPoint.y-startPoint.y))*0.0005;
     scale=MIN(0.1, scale);
-    _descriptionView.transform=CGAffineTransformMakeScale(0.9+scale, 0.9+scale);
+    _descriptionView.transform=CGAffineTransformMakeScale(0.5+scale, 0.5+scale);
     
     if (sender.state==UIGestureRecognizerStateEnded) {
         
