@@ -30,6 +30,7 @@
 
 - (void)initData
 {
+    
     //假数据
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
@@ -38,6 +39,11 @@
                                @"cardNumber":@"455133487465566",
                                @"integral":@"45",
                                @"backCardImage":@"back_card0",
+                               @"emitterCellImage":@"落叶",
+                               @"emitterPositionX":@(screenWidth),
+                               @"xAcceleration":@(-5),
+                               @"yAcceleration":@(2),
+                               @"spinRange":@(0.1),
                                },
                              @{
                                @"memberCardImage" : @"McDonaldsLogo",
@@ -45,6 +51,11 @@
                                @"cardNumber":@"7845123165468",
                                @"integral":@"55",
                                @"backCardImage":@"back_card1",
+                               @"emitterCellImage":@"汉堡",
+                               @"emitterPositionX":@(screenWidth/2),
+                               @"xAcceleration":@(0),
+                               @"yAcceleration":@(2),
+                               @"spinRange":@(0.25),
                                },
                              @{
                                @"memberCardImage" : @"16DLogo",
@@ -52,6 +63,11 @@
                                @"cardNumber":@"998562144555456",
                                @"integral":@"33",
                                @"backCardImage":@"back_card2",
+                               @"emitterCellImage":@"枫叶",
+                               @"emitterPositionX":@(0),
+                               @"xAcceleration":@(5),
+                               @"yAcceleration":@(2),
+                               @"spinRange":@(0.1),
                                },
                              @{
                                @"memberCardImage" : @"御泥坊Logo",
@@ -59,6 +75,11 @@
                                @"cardNumber":@"781123264645465654",
                                @"integral":@"55",
                                @"backCardImage":@"back_card3",
+                               @"emitterCellImage":@"DazFlake",
+                               @"emitterPositionX":@(screenWidth/2),
+                               @"xAcceleration":@(0),
+                               @"yAcceleration":@(2),
+                               @"spinRange":@(0.25),
                                },
                              nil];
     
@@ -107,7 +128,13 @@
                               @"cardNumber":@"781123264645465654",
                               @"integral":@"55",
                               @"backCardImage":@"back_card3",
+                              @"emitterCellImage":@"DazFlake",
+                              @"emitterPositionX":@(screenWidth/2),
+                              @"xAcceleration":@(0),
+                              @"yAcceleration":@(2),
+                              @"spinRange":@(0.25),
                               };
+
         CardModel * model = [[CardModel alloc] init];
         [model setValuesForKeysWithDictionary:dic];
         [weakSelf.dataArray insertObject:model atIndex:0];
@@ -135,6 +162,11 @@
                               @"cardNumber":@"455133487465566",
                               @"integral":@"45",
                               @"backCardImage":@"back_card0",
+                              @"emitterCellImage":@"落叶",
+                              @"emitterPositionX":@(screenWidth),
+                              @"xAcceleration":@(-5),
+                              @"yAcceleration":@(2),
+                              @"spinRange":@(0.1),
                               };
         CardModel * model = [[CardModel alloc] init];
         [model setValuesForKeysWithDictionary:dic];
@@ -169,8 +201,9 @@
     }
     //cell 选中方式
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.accessoryType = UITableViewCellAccessoryNone;
+  //  cell.accessoryType = UITableViewCellAccessoryNone;
     cell.model = self.dataArray[indexPath.row];
+    
     
     return cell;
 }

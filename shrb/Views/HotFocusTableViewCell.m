@@ -10,6 +10,7 @@
 #import "UIColor+BFPaperColors.h"
 #import "HotFocusModel.h"
 #import "Const.h"
+#import <QuartzCore/CoreAnimation.h>
 
 
 @interface myImageView : UIImageView
@@ -189,6 +190,7 @@
     
     self.tapCircleColor = [UIColor colorWithRed:253.0/255.0 green:99.0/255.0 blue:93.0/255.0 alpha:0.5];
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

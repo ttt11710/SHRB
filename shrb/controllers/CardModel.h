@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 /*会员卡模型*/
 @interface CardModel : NSObject
@@ -20,5 +21,11 @@
 @property(nonatomic,copy) NSString * address;            //消费地址
 @property(nonatomic,copy) NSString * date;               //消费日期
 @property(nonatomic,copy) NSString * backCardImage;      //卡片背景
+@property(nonatomic,copy) NSString * emitterCellImage;   //粒子图片
+@property(nonatomic) CGFloat emitterPositionX;
+@property(nonatomic) CGFloat xAcceleration;
+@property(nonatomic) CGFloat yAcceleration;
+@property(nonatomic) CGFloat spinRange;
+
 
 @end
