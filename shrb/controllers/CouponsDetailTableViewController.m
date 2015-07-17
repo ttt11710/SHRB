@@ -37,39 +37,46 @@
                                @"couponsImage" : @"辛巴克",
                                @"money" : @"1000",
                                @"count":@"4",
-                               @"expirationDate":@"2016.3.2"
+                               @"expirationDate":@"2016.3.2",
+                               @"canUse":@YES
                                },
                              @{
                                @"couponsImage" : @"官方头像",
                                @"money" : @"2000",
                                @"count":@"1",
-                               @"expirationDate":@"2016.4.2"
+                               @"expirationDate":@"2016.4.2",
+                               @"canUse":@YES
                                },
                              @{
                                @"couponsImage" : @"吉野家",
                                @"money" : @"3000",
                                @"count":@"3",
-                               @"expirationDate":@"2016.2.2"
+                               @"expirationDate":@"2016.2.2",
+                               @"canUse":@NO,
                                },
                              @{
                                @"couponsImage" : @"冰雪皇后",
                                @"money" : @"4000",
                                @"count":@"10",
-                               @"expirationDate":@"2016.1.2"
+                               @"expirationDate":@"2016.1.2",
+                               @"canUse":@NO
                                },
                              @{
                                @"couponsImage" : @"雀巢",
                                @"money" : @"200",
                                @"count":@"2",
-                               @"expirationDate":@"2015.12.2"
+                               @"expirationDate":@"2015.12.2",
+                               @"canUse":@NO
                                },
                              @{
                                @"couponsImage" : @"官方头像",
                                @"money" : @"2000",
                                @"count":@"1",
-                               @"expirationDate":@"2016.4.2"
+                               @"expirationDate":@"2016.4.2",
+                               @"canUse":@YES
                                },
                              nil];
+
     
     self.dataArray = [[NSMutableArray alloc] init];
     
@@ -112,7 +119,7 @@
     }
    
     cell.model = self.dataArray[indexPath.row];
-    cell.userCouponsBtn.tag = indexPath.row;
+    cell.userCouponBtn.tag = indexPath.row;
     return cell;
 }
 

@@ -15,5 +15,6 @@
 @property(nonatomic,copy) NSString * money;              //金额
 @property(nonatomic,copy) NSString * count;         //张数
 @property(nonatomic,copy) NSString * expirationDate;         //截止日期
+@property(nonatomic)BOOL canUse;
 
 @end

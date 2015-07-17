@@ -547,8 +547,7 @@
                                                             <exclude reference="Jgn-sx-xgK"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="12" width="304" height="44"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="Jgn-sx-xgK"/>
                                                         </mask>
@@ -556,9 +555,11 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="F0t-qB-l9J" firstAttribute="top" secondItem="vuh-WV-wZn" secondAttribute="topMargin" constant="4" id="2b8-l0-AVh"/>
-                                                <constraint firstItem="F0t-qB-l9J" firstAttribute="leading" secondItem="vuh-WV-wZn" secondAttribute="leadingMargin" id="9td-I0-gqn"/>
-                                                <constraint firstItem="F0t-qB-l9J" firstAttribute="trailing" secondItem="vuh-WV-wZn" secondAttribute="trailingMargin" id="Ayn-pb-pw3"/>
+                                                <constraint firstItem="F0t-qB-l9J" firstAttribute="top" secondItem="vuh-WV-wZn" secondAttribute="topMargin" constant="4" id="2b8-l0-AVh">
+                                                    <variation key="widthClass=compact" constant="3"/>
+                                                </constraint>
+                                                <constraint firstItem="F0t-qB-l9J" firstAttribute="leading" secondItem="vuh-WV-wZn" secondAttribute="leadingMargin" constant="16" id="9td-I0-gqn"/>
+                                                <constraint firstItem="F0t-qB-l9J" firstAttribute="trailing" secondItem="vuh-WV-wZn" secondAttribute="trailingMargin" constant="-16" id="Ayn-pb-pw3"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
@@ -1641,7 +1642,7 @@
                                                     </variation>
                                                     <variation key="widthClass=compact">
                                                         <mask key="constraints">
-                                                            <include reference="bwF-o5-qf1"/>
+                                                            <exclude reference="bwF-o5-qf1"/>
                                                             <include reference="swh-mE-cC6"/>
                                                         </mask>
                                                     </variation>
@@ -2792,7 +2793,7 @@
                                                     <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="0GV-IS-xMC"/>
-                                                            <include reference="qIg-b1-lNJ"/>
+                                                            <exclude reference="qIg-b1-lNJ"/>
                                                         </mask>
                                                     </variation>
                                                 </label>

@@ -15,6 +15,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *expirationDateLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *giveFriendsBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *giveFriendsOnlyBtn;
+
 
 @end
 @implementation CouponsDetailTableViewCell
@@ -24,9 +28,22 @@
     self.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.couponsImage]];
     self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@RMB",model.money];
     self.expirationDateLabel.text = [NSString stringWithFormat:@"截止日期：%@",model.expirationDate];
+    
+    if (model.canUse) {
+        self.giveFriendsOnlyBtn.hidden = YES;
+        self.giveFriendsBtn.hidden = NO;
+        self.userCouponBtn.hidden = NO;
+    }
+    else {
+        self.giveFriendsBtn.hidden = YES;
+        self.userCouponBtn.hidden = YES;
+        self.giveFriendsOnlyBtn.hidden = NO;
+    }
 }
 
 - (void)awakeFromNib {
+    
+    
     // Initialization code
 }
 

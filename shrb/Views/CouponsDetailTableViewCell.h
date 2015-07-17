@@ -11,5 +11,5 @@
 
 @interface CouponsDetailTableViewCell : UITableViewCell
 @property (nonatomic,strong) CouponsModel * model;
-@property (weak, nonatomic) IBOutlet UIButton *userCouponsBtn;
+@property (weak, nonatomic) IBOutlet UIButton *userCouponBtn;
 @end

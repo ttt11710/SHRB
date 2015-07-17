@@ -9,6 +9,7 @@
 #import "ButtonTableViewCell.h"
 #import "Const.h"
 #import "BecomeMemberView.h"
+#import <POP/POP.h>
 
 @interface ButtonTableViewCell () {
     
@@ -23,7 +24,7 @@
 
 - (void)awakeFromNib {
         
-    self.buttonModel.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:120.0/255.0 blue:161.0/255.0 alpha:1];
+    self.buttonModel.backgroundColor = shrbPink;
     [self.buttonModel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.buttonModel.layer.cornerRadius = 10;
     self.buttonModel.layer.masksToBounds = YES;
@@ -56,7 +57,7 @@
         _smallbuttonModel.layer.masksToBounds = YES;
         [_smallbuttonModel setTitle:@"会员注册" forState:UIControlStateNormal];
         [_smallbuttonModel setTintColor:[UIColor clearColor]];
-        [_smallbuttonModel setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:120.0/255.0 blue:161.0/255.0 alpha:1]];
+        [_smallbuttonModel setBackgroundColor:shrbPink];
         [_smallbuttonModel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_smallbuttonModel addTarget:self action:@selector(sureBtnPressed) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_smallbuttonModel];
@@ -85,6 +86,21 @@
             
         } completion:^(BOOL finished) {
             
+            //pop大小缩放
+            POPSpringAnimation *sizeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+            sizeAnimation.springSpeed = 0.f;
+            sizeAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, _smallbuttonModel.frame.size.width+5, _smallbuttonModel.frame.size.height+5)];
+            [_smallbuttonModel pop_addAnimation:sizeAnimation forKey:nil];
+            
+            
+            //pop左右弹动
+            POPSpringAnimation *positionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionX];
+            positionAnimation.velocity = @2000;
+            positionAnimation.springBounciness = 20;
+            [positionAnimation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
+                _smallbuttonModel.userInteractionEnabled = YES;
+            }];
+            [_smallbuttonModel.layer pop_addAnimation:positionAnimation forKey:@"positionAnimation"];
             
         }];
         
@@ -115,7 +131,10 @@
             
             [[BecomeMemberView shareBecomeMemberView] textFieldResignFirstResponder];
             
-            
+            POPSpringAnimation *sizeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+            sizeAnimation.springSpeed = 0.f;
+            sizeAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, _smallbuttonModel.frame.size.width-5, _smallbuttonModel.frame.size.height-5)];
+            [_smallbuttonModel pop_addAnimation:sizeAnimation forKey:nil];
             
         }];
         

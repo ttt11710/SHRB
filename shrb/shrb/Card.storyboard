@@ -1886,7 +1886,7 @@
                                             <color key="textColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE1-nZ-ThT">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE1-nZ-ThT" userLabel="送好友总">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="TVC-Zu-AG9"/>
@@ -1910,29 +1910,67 @@
                                                 <segue destination="3vE-rK-c1f" kind="push" id="mWi-Tf-pRE"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lra-jH-yS8">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZP-US-2Bb">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="hge-sL-gjX"/>
+                                            </constraints>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <state key="normal" title="送好友">
+                                                <color key="titleColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="hge-sL-gjX"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="hge-sL-gjX"/>
+                                                </mask>
+                                            </variation>
+                                            <connections>
+                                                <segue destination="3vE-rK-c1f" kind="push" id="MCc-QT-f6J"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43T-CQ-aMC" userLabel="转存总">
+                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="u08-IY-zgz"/>
+                                            </constraints>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <state key="normal" title="转存">
                                                 <color key="titleColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="u08-IY-zgz"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="u08-IY-zgz"/>
+                                                </mask>
+                                            </variation>
                                             <connections>
-                                                <action selector="userCouponsBtnPressed:" destination="v8f-wU-HvC" eventType="touchUpInside" id="p8l-gN-NZa"/>
+                                                <action selector="userCouponsBtnPressed:" destination="v8f-wU-HvC" eventType="touchUpInside" id="Ldd-mF-igi"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Lra-jH-yS8" firstAttribute="top" secondItem="wE1-nZ-ThT" secondAttribute="bottom" id="6bx-05-UB2"/>
                                         <constraint firstItem="Z1T-0Z-8ka" firstAttribute="leading" secondItem="kQa-5X-xAE" secondAttribute="leadingMargin" constant="10" id="C7f-aN-iog"/>
                                         <constraint firstAttribute="centerY" secondItem="Z1T-0Z-8ka" secondAttribute="centerY" id="DpY-RR-QYr"/>
                                         <constraint firstItem="wE1-nZ-ThT" firstAttribute="top" secondItem="Iz5-pA-oYU" secondAttribute="top" id="FKu-mS-I6J"/>
+                                        <constraint firstItem="43T-CQ-aMC" firstAttribute="trailing" secondItem="wE1-nZ-ThT" secondAttribute="trailing" id="GR6-NB-sY6"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="wE1-nZ-ThT" secondAttribute="trailing" constant="10" id="KWW-Sz-WNC"/>
                                         <constraint firstItem="Z1T-0Z-8ka" firstAttribute="top" secondItem="Iz5-pA-oYU" secondAttribute="top" id="OqV-hD-IrS"/>
+                                        <constraint firstAttribute="centerY" secondItem="ZZP-US-2Bb" secondAttribute="centerY" id="PSW-Bp-wlA"/>
                                         <constraint firstItem="Iz5-pA-oYU" firstAttribute="leading" secondItem="Z1T-0Z-8ka" secondAttribute="trailing" constant="10" id="iNL-Zl-Fmf"/>
+                                        <constraint firstItem="ZZP-US-2Bb" firstAttribute="trailing" secondItem="wE1-nZ-ThT" secondAttribute="trailing" id="m7V-br-UPp"/>
                                         <constraint firstItem="eAG-ob-Ax8" firstAttribute="leading" secondItem="Iz5-pA-oYU" secondAttribute="leading" id="u3M-Ah-xgq"/>
-                                        <constraint firstItem="Lra-jH-yS8" firstAttribute="top" secondItem="wE1-nZ-ThT" secondAttribute="bottom" constant="-20" id="uwS-AD-Gob"/>
-                                        <constraint firstItem="wE1-nZ-ThT" firstAttribute="trailing" secondItem="Lra-jH-yS8" secondAttribute="trailing" id="vPe-Mz-J3x"/>
+                                        <constraint firstItem="43T-CQ-aMC" firstAttribute="top" secondItem="wE1-nZ-ThT" secondAttribute="bottom" constant="5" id="weL-nM-6Ay"/>
                                         <constraint firstItem="eAG-ob-Ax8" firstAttribute="top" secondItem="Iz5-pA-oYU" secondAttribute="bottom" constant="10" id="ytJ-V2-pkX"/>
                                     </constraints>
                                     <variation key="default">
@@ -1941,20 +1979,22 @@
                                             <exclude reference="Iz5-pA-oYU"/>
                                             <exclude reference="eAG-ob-Ax8"/>
                                             <exclude reference="wE1-nZ-ThT"/>
-                                            <exclude reference="Lra-jH-yS8"/>
+                                            <exclude reference="ZZP-US-2Bb"/>
+                                            <exclude reference="43T-CQ-aMC"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="iNL-Zl-Fmf"/>
-                                            <exclude reference="u3M-Ah-xgq"/>
-                                            <exclude reference="ytJ-V2-pkX"/>
-                                            <exclude reference="6bx-05-UB2"/>
-                                            <exclude reference="uwS-AD-Gob"/>
-                                            <exclude reference="FKu-mS-I6J"/>
-                                            <exclude reference="KWW-Sz-WNC"/>
-                                            <exclude reference="vPe-Mz-J3x"/>
                                             <exclude reference="C7f-aN-iog"/>
                                             <exclude reference="DpY-RR-QYr"/>
                                             <exclude reference="OqV-hD-IrS"/>
+                                            <exclude reference="iNL-Zl-Fmf"/>
+                                            <exclude reference="u3M-Ah-xgq"/>
+                                            <exclude reference="ytJ-V2-pkX"/>
+                                            <exclude reference="FKu-mS-I6J"/>
+                                            <exclude reference="KWW-Sz-WNC"/>
+                                            <exclude reference="PSW-Bp-wlA"/>
+                                            <exclude reference="m7V-br-UPp"/>
+                                            <exclude reference="GR6-NB-sY6"/>
+                                            <exclude reference="weL-nM-6Ay"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -1963,28 +2003,32 @@
                                             <include reference="Iz5-pA-oYU"/>
                                             <include reference="eAG-ob-Ax8"/>
                                             <include reference="wE1-nZ-ThT"/>
-                                            <include reference="Lra-jH-yS8"/>
+                                            <include reference="ZZP-US-2Bb"/>
+                                            <include reference="43T-CQ-aMC"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="iNL-Zl-Fmf"/>
-                                            <include reference="u3M-Ah-xgq"/>
-                                            <include reference="ytJ-V2-pkX"/>
-                                            <include reference="6bx-05-UB2"/>
-                                            <exclude reference="uwS-AD-Gob"/>
-                                            <include reference="FKu-mS-I6J"/>
-                                            <include reference="KWW-Sz-WNC"/>
-                                            <include reference="vPe-Mz-J3x"/>
                                             <include reference="C7f-aN-iog"/>
                                             <include reference="DpY-RR-QYr"/>
                                             <include reference="OqV-hD-IrS"/>
+                                            <include reference="iNL-Zl-Fmf"/>
+                                            <include reference="u3M-Ah-xgq"/>
+                                            <include reference="ytJ-V2-pkX"/>
+                                            <include reference="FKu-mS-I6J"/>
+                                            <include reference="KWW-Sz-WNC"/>
+                                            <include reference="PSW-Bp-wlA"/>
+                                            <include reference="m7V-br-UPp"/>
+                                            <include reference="GR6-NB-sY6"/>
+                                            <include reference="weL-nM-6Ay"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="couponsImageView" destination="Z1T-0Z-8ka" id="PWV-rc-HHf"/>
                                     <outlet property="expirationDateLabel" destination="eAG-ob-Ax8" id="5nc-iB-7jd"/>
+                                    <outlet property="giveFriendsBtn" destination="wE1-nZ-ThT" id="BZR-La-IbK"/>
+                                    <outlet property="giveFriendsOnlyBtn" destination="ZZP-US-2Bb" id="LFH-5d-TQc"/>
                                     <outlet property="moneyLabel" destination="Iz5-pA-oYU" id="EJR-Hn-Au7"/>
-                                    <outlet property="userCouponsBtn" destination="Lra-jH-yS8" id="nrs-lg-5KQ"/>
+                                    <outlet property="userCouponBtn" destination="43T-CQ-aMC" id="KxY-1h-UDM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2783,6 +2827,7 @@
         <image name="官方头像" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="mWi-Tf-pRE"/>
         <segue reference="VnL-12-lVv"/>
     </inferredMetricsTieBreakers>
 </document>
