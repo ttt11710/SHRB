@@ -25,7 +25,34 @@
 {
     self.tradeNameLabel.text = model.tradeName;
     self.tradeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.tradeImage]];
-    self.priceLabel.text = [NSString stringWithFormat:@"会员价：%@元  原价：%@元",model.memberPrice,model.originalPrice];
+    
+    NSString *string = [NSString stringWithFormat:@"会员价：%@元  原价：%@元",model.memberPrice,model.originalPrice];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string];
+//    [attributedString addAttribute:NSForegroundColorAttributeName
+//                             value:[UIColor redColor]
+//                             range:NSMakeRange(4, 5)];
+//    
+//    [attributedString addAttribute:NSFontAttributeName
+//                             value:[UIFont systemFontOfSize:18.f]
+//                             range:NSMakeRange(4, 5)];
+    
+    [attributedString addAttribute:NSForegroundColorAttributeName
+                             value:[UIColor redColor]
+                             range:NSMakeRange(4, 2)];
+    
+    [attributedString addAttribute:NSFontAttributeName
+                             value:[UIFont systemFontOfSize:18.f]
+                             range:NSMakeRange(4, 2)];
+
+    [attributedString addAttribute:NSForegroundColorAttributeName
+                             value:[UIColor redColor]
+                             range:NSMakeRange(12, 2)];
+    
+    [attributedString addAttribute:NSFontAttributeName
+                             value:[UIFont systemFontOfSize:18.f]
+                             range:NSMakeRange(12, 2)];
+    
+    self.priceLabel.attributedText = attributedString;
 }
 
 - (void)awakeFromNib {
