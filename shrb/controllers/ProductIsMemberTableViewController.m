@@ -43,7 +43,7 @@ static ProductIsMemberTableViewController *g_ProductIsMemberTableViewController 
 
 - (void)initData
 {
-    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"store"];
+    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
     
     self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
     

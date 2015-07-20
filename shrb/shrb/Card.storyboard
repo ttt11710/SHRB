@@ -643,7 +643,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLv-sZ-kjl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2019" y="1708"/>
+            <point key="canvasLocation" x="2019" y="1714"/>
         </scene>
         <!--充值完成-->
         <scene sceneID="ujR-ge-Z6H">

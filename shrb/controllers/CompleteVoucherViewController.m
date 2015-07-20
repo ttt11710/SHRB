@@ -69,6 +69,10 @@
     if ([QRPay isEqualToString:@"SupermarketOrOrder"]) {
         [self.navigationController popToRootViewControllerAnimated:NO];
     }
+    //超市扫码
+    else if ([QRPay isEqualToString:@"SupermarketNewStore"]) {
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:NO];
+    }
     //卡包扫描和充值
     else if ([QRPay isEqualToString:@"Card"]){
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:NO];

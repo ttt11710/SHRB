@@ -1481,7 +1481,7 @@
             </objects>
             <point key="canvasLocation" x="3628.5" y="-23"/>
         </scene>
-        <!--星巴克-->
+        <!--Store View Controller-->
         <scene sceneID="kfl-my-Tcc">
             <objects>
                 <viewController storyboardIdentifier="storeView" hidesBottomBarWhenPushed="YES" id="NEb-Us-HgX" customClass="StoreViewController" sceneMemberID="viewController">
@@ -1901,7 +1901,6 @@
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="星巴克" id="2PF-rv-fSy"/>
                     <connections>
                         <outlet property="gotopayViewBtn" destination="mBc-65-9wt" id="qHS-d1-gi6"/>
                         <outlet property="selectTypeTableView" destination="fMp-9n-xGh" id="mA4-KA-hfE"/>
@@ -3011,7 +3010,6 @@
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="星巴克" id="b5F-fR-Qgc"/>
                     <connections>
                         <outlet property="selectTypeTableView" destination="Qdg-aL-KNs" id="mb4-3g-wzG"/>
                         <outlet property="selectTypeTableViewBackView" destination="yb2-r4-Pie" id="F30-kT-fJJ"/>

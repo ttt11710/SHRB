@@ -10,6 +10,8 @@
 
 @interface StoreViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
+@property(nonatomic,assign)NSInteger currentRow;
+
 + (StoreViewController *)shareStoreViewController;
 - (void)UpdateTableView;
 

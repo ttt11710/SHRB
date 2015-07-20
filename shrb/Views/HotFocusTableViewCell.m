@@ -65,20 +65,27 @@
 //    }
 
     
-    self.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:0]]];
+    self.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:_currentInt]]];
     
     [self performSelector:@selector(layerAnimation)
                withObject:nil
-               afterDelay:(arc4random() % 2)+1];
+               afterDelay:(arc4random() % 5)+3];
 }
 
 - (void)layerAnimation
 {
+    
+    _currentInt++;
+    if (_currentInt == [_imageArr count]) {
+        _currentInt = 0;
+    }
+    
+   // [self.layer removeAllAnimations]
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:_currentInt]]];
     CABasicAnimation *contentsAnimation = [CABasicAnimation animationWithKeyPath:@"contents"];
     contentsAnimation.fromValue = self;
     contentsAnimation.toValue = (__bridge id)(image.CGImage);
-    contentsAnimation.duration = 1.f;
+    contentsAnimation.duration = 2.f;
     contentsAnimation.delegate = self;
     contentsAnimation.fillMode=kCAFillModeForwards;
     contentsAnimation.removedOnCompletion = NO;
@@ -91,25 +98,22 @@
 //        _containerView.frame = _oldframe;
 //    }
     
-    _currentInt++;
-    if (_currentInt == [_imageArr count]) {
-        _currentInt = 0;
-    }
+    
     
     [self performSelector:@selector(layerAnimation)
                withObject:nil
-               afterDelay:(arc4random() % 3) + 3];
+               afterDelay:(arc4random() % 3) + 5];
     
-    [UIView animateWithDuration:1.f animations:^{
-//        if (IsIOS8) {
-//            CGRect frame = _containerView.frame;
-//            frame.origin.x += screenWidth;
-//            _containerView.frame = frame;
-//        }
-        
-    } completion:^(BOOL finished) {
-    }];
-    
+//    [UIView animateWithDuration:1.f animations:^{
+////        if (IsIOS8) {
+////            CGRect frame = _containerView.frame;
+////            frame.origin.x += screenWidth;
+////            _containerView.frame = frame;
+////        }
+//        
+//    } completion:^(BOOL finished) {
+//    }];
+//    
 }
 
 @end
@@ -154,7 +158,7 @@
     
     
     
-    self.hotImageView.currentInt = 1;
+    self.hotImageView.currentInt = 0;
     [self.hotImageView initImageArr];
     self.hotImageView.imageArr = _imageArr;
     [self.hotImageView beginAnimation];

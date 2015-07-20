@@ -31,7 +31,9 @@
 }
 
 - (IBAction)completePayBtn:(id)sender {
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-4] animated:YES];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+    
+  //  [self.navigationController.viewControllers count]-4
 }
 
 @end

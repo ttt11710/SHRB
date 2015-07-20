@@ -76,6 +76,7 @@
 		DF7D1E601B0DC08700CD05B3 /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E5F1B0DC08700CD05B3 /* CardDetailViewController.m */; };
 		DF7D1E631B0DC9C600CD05B3 /* ExpenseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E621B0DC9C600CD05B3 /* ExpenseTableViewCell.m */; };
 		DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */; };
+		DF87575F1B58D66A00964738 /* TQTableViewCellRemoveController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF87575E1B58D66A00964738 /* TQTableViewCellRemoveController.m */; };
 		DF9119A41B392BA100833AAB /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119A31B392BA100833AAB /* OrderListViewController.swift */; };
 		DF9119A71B392BC500833AAB /* OrderListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */; };
 		DF9119A81B392BC500833AAB /* OrderListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF9119A61B392BC500833AAB /* OrderListTableViewCell.xib */; };
@@ -277,6 +278,8 @@
 		DF7D1E621B0DC9C600CD05B3 /* ExpenseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpenseTableViewCell.m; path = ../Views/ExpenseTableViewCell.m; sourceTree = "<group>"; };
 		DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteVoucherViewController.h; sourceTree = "<group>"; };
 		DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteVoucherViewController.m; sourceTree = "<group>"; };
+		DF87575D1B58D66A00964738 /* TQTableViewCellRemoveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQTableViewCellRemoveController.h; sourceTree = "<group>"; };
+		DF87575E1B58D66A00964738 /* TQTableViewCellRemoveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TQTableViewCellRemoveController.m; sourceTree = "<group>"; };
 		DF9119A31B392BA100833AAB /* OrderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
 		DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListTableViewCell.swift; sourceTree = "<group>"; };
 		DF9119A61B392BC500833AAB /* OrderListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListTableViewCell.xib; sourceTree = "<group>"; };
@@ -490,6 +493,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DF87575C1B58D66A00964738 /* TQRemoveController */,
 				DFCF89F11B577ACD00D09A4A /* POPCategories */,
 				DFCF89ED1B5779C900D09A4A /* POPFoldingView */,
 				DF9372F91B4B690400960F86 /* KYCuteView */,
@@ -609,6 +613,15 @@
 			);
 			name = controllers;
 			path = ../controllers;
+			sourceTree = "<group>";
+		};
+		DF87575C1B58D66A00964738 /* TQRemoveController */ = {
+			isa = PBXGroup;
+			children = (
+				DF87575D1B58D66A00964738 /* TQTableViewCellRemoveController.h */,
+				DF87575E1B58D66A00964738 /* TQTableViewCellRemoveController.m */,
+			);
+			path = TQRemoveController;
 			sourceTree = "<group>";
 		};
 		DF9119AB1B3947FA00833AAB /* objective-C */ = {
@@ -1209,6 +1222,7 @@
 				DF0D9C851B0C423000C0AB3F /* CardTableViewCell.m in Sources */,
 				DF7D1E561B0D755500CD05B3 /* TransactMemberViewController.m in Sources */,
 				DF2D7A2B1B466E6F003790A5 /* CollectTableViewCell.m in Sources */,
+				DF87575F1B58D66A00964738 /* TQTableViewCellRemoveController.m in Sources */,
 				DF2B0E301B423DB40051AA1A /* TNImageCheckbox.m in Sources */,
 				DFB763301B3D51B10086ABB7 /* LeftLabelTableViewCell.m in Sources */,
 				DF2B0E321B423DB40051AA1A /* TNRectangularCheckBox.m in Sources */,

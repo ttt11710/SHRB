@@ -17,6 +17,7 @@ static BecomeMemberView *g_BecomeMemberView = nil;
 {
     
     UITextField *_telephoneTextField;
+    UITextField *_verificationCodeTextField;
     UITextField *_passwordTextField;
 }
 
@@ -78,8 +79,27 @@ static BecomeMemberView *g_BecomeMemberView = nil;
     _passwordTextField.delegate = self;
     [self addSubview:_passwordTextField];
     
+    _verificationCodeTextField= [[UITextField alloc] initWithFrame:CGRectMake(0, passwordLabel.frame.origin.y + passwordLabel.frame.size.height+4, 120, 30)];
+    _verificationCodeTextField.borderStyle = UITextBorderStyleBezel;
+    _verificationCodeTextField.secureTextEntry = YES;
+    _verificationCodeTextField.delegate = self;
+    [self addSubview:_verificationCodeTextField];
+    
+    UIButton *verificationCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    verificationCodeBtn.frame = CGRectMake(_verificationCodeTextField.frame.size.width+4, _verificationCodeTextField.frame.origin.y, 80, 30);
+    [verificationCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [verificationCodeBtn setTintColor:[UIColor clearColor]];
+    [verificationCodeBtn setBackgroundColor:shrbPink];
+    [verificationCodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    verificationCodeBtn.font = [UIFont systemFontOfSize:14.f];
+    verificationCodeBtn.layer.cornerRadius = 8;
+    verificationCodeBtn.layer.masksToBounds = YES;
+    [verificationCodeBtn addTarget:self action:@selector(giveVerificationCodeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:verificationCodeBtn];
+
+    
     UIButton *sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    sureBtn.frame = CGRectMake(0, passwordLabel.frame.origin.y + passwordLabel.frame.size.height+8, 204, 44);
+    sureBtn.frame = CGRectMake(0, _verificationCodeTextField.frame.origin.y + _verificationCodeTextField.frame.size.height+8, 204, 44);
     [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
     [sureBtn setTintColor:[UIColor clearColor]];
     [sureBtn setBackgroundColor:shrbPink];
@@ -145,6 +165,7 @@ static BecomeMemberView *g_BecomeMemberView = nil;
 {
     [_telephoneTextField resignFirstResponder];
     [_passwordTextField resignFirstResponder];
+    [_verificationCodeTextField resignFirstResponder];
     return YES;
 }
 
@@ -152,6 +173,8 @@ static BecomeMemberView *g_BecomeMemberView = nil;
 {
     [_telephoneTextField resignFirstResponder];
     [_passwordTextField resignFirstResponder];
+    [_verificationCodeTextField resignFirstResponder];
+
 }
 
 #pragma mark - 成为会员
@@ -170,4 +193,14 @@ static BecomeMemberView *g_BecomeMemberView = nil;
     });
 }
 
+#pragma mark - 发送验证码
+- (void)giveVerificationCodeBtnPressed
+{
+    [SVProgressShow showSuccessWithStatus:@"您的验证码是：869563"];
+    double delayInSeconds = 1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [SVProgressShow dismiss];
+    });
+}
 @end

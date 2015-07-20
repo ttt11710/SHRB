@@ -49,7 +49,7 @@ static ProductTableViewController *g_ProductTableViewController = nil;
 
 - (void)initData
 {
-    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"store"];
+    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
     
     self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
     
@@ -105,13 +105,13 @@ static ProductTableViewController *g_ProductTableViewController = nil;
     label.text = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeDescription"];
     
     [label sizeToFit];
-    if (label.frame.size.height + screenWidth-16+180+20 < screenHeight-20-44) {
+    if (label.frame.size.height + screenWidth-16+200+20 < screenHeight-20-44) {
         self.tableView.scrollEnabled = NO;
         return screenHeight ;
     }
     
     self.tableView.scrollEnabled = YES;
-    return label.frame.size.height + screenWidth-16+180+30;
+    return label.frame.size.height + screenWidth-16+200+30;
 }
 
 #pragma mark - 成为会员时页面重push

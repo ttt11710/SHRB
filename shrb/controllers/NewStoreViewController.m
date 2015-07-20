@@ -43,6 +43,8 @@ static NewStoreViewController *g_StoreViewController = nil;
     CALayer     *layer;
 }
 
+@synthesize currentRow;
+
 + (NewStoreViewController *)shareStoreViewController
 {
     return g_StoreViewController;
@@ -68,6 +70,8 @@ static NewStoreViewController *g_StoreViewController = nil;
 
 - (void)initView
 {
+    self.title = [[NSUserDefaults standardUserDefaults] stringForKey:@"storeName"];
+    
     UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
     self.navigationItem.rightBarButtonItem = selectType;
 }
@@ -76,7 +80,7 @@ static NewStoreViewController *g_StoreViewController = nil;
 {
     _currentNumDic = [[NSMutableDictionary alloc]init];
     
-    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"store"];
+    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
     
     self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
     

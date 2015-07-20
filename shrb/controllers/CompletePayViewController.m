@@ -202,7 +202,7 @@
         [SVProgressShow dismiss];
         //超市商品页面直接扫码
         if ([QRPay isEqualToString:@"SupermarketNewStore"]) {
-            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-4] animated:YES];
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-5] animated:YES];
         }
         else {
             //跳转到热点页面

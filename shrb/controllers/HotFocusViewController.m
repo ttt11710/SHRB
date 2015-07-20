@@ -15,14 +15,20 @@
 #import <CBZSplashView/CBZSplashView.h>
 #import "KYCuteView.h"
 #import "SVProgressShow.h"
+#import "NewStoreViewController.h"
+#import "StoreViewController.h"
+#import "TQTableViewCellRemoveController.h"
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
-@interface HotFocusViewController ()
+@interface HotFocusViewController () <TQTableViewCellRemoveControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray * dataArray;
 @property (nonatomic,strong) NSMutableArray * plistArr;
+
+
+@property (nonatomic,strong) TQTableViewCellRemoveController *cellRemoveController;
 
 @end
 
@@ -82,6 +88,9 @@
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
     self.tableView.backgroundColor = shrbTableViewColor;
+    
+    self.cellRemoveController = [[TQTableViewCellRemoveController alloc] initWithTableView:self.tableView];
+    self.cellRemoveController.delegate = self;
 }
 
 #pragma mark - tableView dataSource
@@ -139,51 +148,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+     NSString*storePlistName = self.plistArr[indexPath.row][@"storePlistName"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storePlistName"];
+    [[NSUserDefaults standardUserDefaults] setObject:storePlistName forKey:@"storePlistName"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storeName"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.plistArr[indexPath.row][@"storeName"] forKey:@"storeName"];
+    
+    
     //是否会员
-    if (indexPath.row %2 == 0) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
+    if ([storePlistName isEqualToString:@"16D"] || [storePlistName isEqualToString:@"holy"] ) {
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMember"];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"store"];
-        [[NSUserDefaults standardUserDefaults] setObject:@"holy" forKey:@"store"];
     }
-    else
-    {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"store"];
-        [[NSUserDefaults standardUserDefaults] setObject:@"16D" forKey:@"store"];
+    else {
+       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
     }
     
-    if (indexPath.row == 0) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"16D" forKey:@"store"];
-    }
-    else if (indexPath.row == 1) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"yunifang" forKey:@"store"];
-    }
-    else if (indexPath.row == 2) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"holy" forKey:@"store"];
-    }
-    else if (indexPath.row == 3) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"McDonalds" forKey:@"store"];
-    }
-    
-    
-     //商店类型 supermarket（超市）  order（点餐） store(小店)
-    if (indexPath.row ==0 || indexPath.row == 1) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"typesOfShops"];
+    //店铺类型
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"typesOfShops"];
+    if ([storePlistName isEqualToString:@"16D"] || [storePlistName isEqualToString:@"yunifang"] ) {
         [[NSUserDefaults standardUserDefaults] setObject:@"supermarket" forKey:@"typesOfShops"];
     }
-    else if (indexPath.row == 2 || indexPath.row == 3)
-    {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"typesOfShops"];
+    else {
         [[NSUserDefaults standardUserDefaults] setObject:@"order" forKey:@"typesOfShops"];
     }
-
-    else {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"typesOfShops"];
-        [[NSUserDefaults standardUserDefaults] setObject:@"store" forKey:@"typesOfShops"];
-    }
-
+    
+    
     HotFocusTableViewCell* cell = (HotFocusTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -196,38 +187,75 @@
     
     [SVProgressShow showWithStatus:@"进入店铺..."];
     
-    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething) object:nil];
-    [self performSelector:@selector(todoSomething) withObject:nil afterDelay:0.4f];
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:nil];
+    [self performSelector:@selector(todoSomething:) withObject:indexPath afterDelay:0.4f];
     
 }
 
 
 #pragma mark - 延时显示状态然后跳转
-- (void)todoSomething
+- (void)todoSomething:(NSIndexPath *)indexPath
 {
     NSString * typesOfShops = [[NSUserDefaults standardUserDefaults] stringForKey:@"typesOfShops"];
     
     //supermarket
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    UIViewController *viewController;
+    
+    
     if ([typesOfShops isEqualToString:@"supermarket"]) {
         //超市
-        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
+        NewStoreViewController *newStoreViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
+        newStoreViewController.currentRow = indexPath.row;
+        [newStoreViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [self.navigationController pushViewController:newStoreViewController animated:YES];
+        [SVProgressShow dismiss];
     }
     else if ([typesOfShops isEqualToString:@"order"]) {
         //点餐
-        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
+        StoreViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
+        storeViewController.currentRow = indexPath.row;
+        [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [self.navigationController pushViewController:storeViewController animated:YES];
+        [SVProgressShow dismiss];
     }
-    else {
-        //小店 暂时和超市一样
-        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
-    }
-    
-    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [self.navigationController pushViewController:viewController animated:YES];
-    [SVProgressShow dismiss];
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.alpha = 1;
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    cell.alpha = 0;
+    cell.transform = CGAffineTransformMakeTranslation(0, 0);
+}
+
+
+- (void)didRemoveTableViewCellWithIndexPath:(NSIndexPath *)indexPath
+{
+    
+    NSMutableArray* deleteArr = [NSMutableArray arrayWithObject:[self.plistArr objectAtIndex:indexPath.row]];
+    [self.plistArr removeObjectAtIndex:indexPath.row];
+    
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView endUpdates];
+    
+//    NSMutableArray *insertion = [[NSMutableArray alloc]init];
+//    [insertion addObject:[NSIndexPath indexPathForRow:self.plistArr.count inSection:0]];
+//    
+//    [self.plistArr addObjectsFromArray:deleteArr];
+//    [self.tableView beginUpdates];
+//    [self.tableView insertRowsAtIndexPaths:insertion withRowAnimation:UITableViewRowAnimationTop];
+//    [self.tableView endUpdates];
+    
+    [self.plistArr addObjectsFromArray:deleteArr];
+    [self.tableView reloadData];
+}
+
+
 @end
 
 

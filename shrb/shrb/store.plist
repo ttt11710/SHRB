@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>storePlistName</key>
+		<string>16D</string>
 		<key>storeDetail</key>
 		<string>        16N是由年轻的法国品牌总监路易与中国的Ada与2011年共同经营的品牌。Ada和路易相识在浪漫之都巴黎，两人拥有共同的爱好与梦想，以及对时尚艺术的无尽热情和追求。路易出生并成长于法国巴黎的16区，那里是巴黎顶尖的时尚与经典的汇聚地之一。路易所创造的品牌精神，源自于自己在巴黎的生活经历以及对童年的回忆。整个品牌在设计风格上的灵感来自于他的经历，他的家庭以及童年所浏览过的地方。</string>
 		<key>storeLogo</key>
@@ -20,6 +22,8 @@
 		<string>16D</string>
 	</dict>
 	<dict>
+		<key>storePlistName</key>
+		<string>yunifang</string>
 		<key>storeLogo</key>
 		<string>御泥坊Logo</string>
 		<key>storeDetail</key>
@@ -37,6 +41,8 @@
 		<string>御泥坊</string>
 	</dict>
 	<dict>
+		<key>storePlistName</key>
+		<string>holy</string>
 		<key>storeLogo</key>
 		<string>holyLogo</string>
 		<key>storeDetail</key>
@@ -55,6 +61,8 @@
 		<string>holy</string>
 	</dict>
 	<dict>
+		<key>storePlistName</key>
+		<string>McDonalds</string>
 		<key>storeDetail</key>
 		<string>          麦当劳于1990年进入中国大陆市场，一直坚持为顾客提供高品质的食品、亲切友善的服务、以及清洁舒适的用餐环境。麦当劳还相继引入甜品站（1994年）、24小时营业餐厅（2005年）、得来速汽车餐厅（2006年）、24小时麦乐送（2008年）及McCafé（2001年）。截至2014年底，麦当劳在中国大陆拥有超过2000家餐厅，旗下员工超过100,000名。麦当劳中国已五度蝉联知名调研机构Top Employers Institute评选的“中国杰出雇主”，并已连续第四次获得怡安翰威特（Aon Hewitt）“亚太地区最佳雇主“和“中国最佳雇主“称号。</string>
 		<key>storeLogo</key>

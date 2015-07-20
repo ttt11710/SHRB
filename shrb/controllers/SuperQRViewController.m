@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "QRView.h"
 #import "PayViewController.h"
+#import "OrdersViewController.h"
 
 @interface SuperQRViewController ()<AVCaptureMetadataOutputObjectsDelegate,QRViewDelegate>
 
@@ -106,11 +107,24 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
     [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketNewStore" forKey:@"QRPay"];
     
+    
+    UINavigationController *nav = self.navigationController;
+    
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PayViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PayView"];
-    viewController.isMemberPay = NO;
+    OrdersViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+    viewController.isMember = isMember;
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [self.navigationController pushViewController:viewController animated:YES];
+    
+    [nav pushViewController:viewController animated:NO];
+    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    PayViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PayView"];
+//    viewController.isMemberPay = NO;
+//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma mark QRViewDelegate
