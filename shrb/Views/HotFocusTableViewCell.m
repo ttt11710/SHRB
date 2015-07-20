@@ -67,9 +67,10 @@
     
     self.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:_currentInt]]];
     
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(layerAnimation) object:nil];
     [self performSelector:@selector(layerAnimation)
                withObject:nil
-               afterDelay:(arc4random() % 5)+3];
+               afterDelay:(arc4random() % 3)+3];
 }
 
 - (void)layerAnimation
@@ -99,10 +100,10 @@
 //    }
     
     
-    
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(layerAnimation) object:nil];
     [self performSelector:@selector(layerAnimation)
                withObject:nil
-               afterDelay:(arc4random() % 3) + 5];
+               afterDelay:(arc4random() % 3) + 3];
     
 //    [UIView animateWithDuration:1.f animations:^{
 ////        if (IsIOS8) {
