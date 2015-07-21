@@ -58,7 +58,7 @@
                                @"spinRange":@(0.25),
                                },
                              @{
-                               @"memberCardImage" : @"16DLogo",
+                               @"memberCardImage" : @"16NLogo",
                                @"money" : @"100",
                                @"cardNumber":@"998562144555456",
                                @"integral":@"33",

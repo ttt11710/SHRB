@@ -9,6 +9,8 @@
 #import "StoreTableViewCell.h"
 #import "TradeModel.h"
 #import "Const.h"
+#import "NSString+AttributedStyle.h"
+
 
 @interface StoreTableViewCell ()
 
@@ -27,32 +29,14 @@
     self.tradeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.tradeImage]];
     
     NSString *string = [NSString stringWithFormat:@"会员价：%@元  原价：%@元",model.memberPrice,model.originalPrice];
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string];
-//    [attributedString addAttribute:NSForegroundColorAttributeName
-//                             value:[UIColor redColor]
-//                             range:NSMakeRange(4, 5)];
-//    
-//    [attributedString addAttribute:NSFontAttributeName
-//                             value:[UIFont systemFontOfSize:18.f]
-//                             range:NSMakeRange(4, 5)];
     
-    [attributedString addAttribute:NSForegroundColorAttributeName
-                             value:[UIColor redColor]
-                             range:NSMakeRange(4, 2)];
-    
-    [attributedString addAttribute:NSFontAttributeName
-                             value:[UIFont systemFontOfSize:18.f]
-                             range:NSMakeRange(4, 2)];
-
-    [attributedString addAttribute:NSForegroundColorAttributeName
-                             value:[UIColor redColor]
-                             range:NSMakeRange(12, 2)];
-    
-    [attributedString addAttribute:NSFontAttributeName
-                             value:[UIFont systemFontOfSize:18.f]
-                             range:NSMakeRange(12, 2)];
-    
-    self.priceLabel.attributedText = attributedString;
+    self.priceLabel.attributedText = [string createrAttributedStringWithStyles:
+                                      @[
+                                         [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(4, model.memberPrice.length)],
+                                         [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(12, model.originalPrice.length)],
+                                         [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(4, model.memberPrice.length)],
+                                         [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(12, model.originalPrice.length)]
+                                         ]];
 }
 
 - (void)awakeFromNib {

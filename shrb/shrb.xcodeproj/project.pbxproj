@@ -37,7 +37,7 @@
 		DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */; };
 		DF635CFF1B4F5B6D00439576 /* holy.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF635CFE1B4F5B6D00439576 /* holy.plist */; };
 		DF635D011B4FA9DE00439576 /* store.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF635D001B4FA9DE00439576 /* store.plist */; };
-		DF635D031B4FC07800439576 /* 16D.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF635D021B4FC07800439576 /* 16D.plist */; };
+		DF635D031B4FC07800439576 /* 16N.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF635D021B4FC07800439576 /* 16N.plist */; };
 		DF66B83D1B535B43002E9EFC /* SuperQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */; };
 		DF66B8401B53689E002E9EFC /* SuperCompletePayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B83F1B53689D002E9EFC /* SuperCompletePayViewController.m */; };
 		DF66B8421B538C78002E9EFC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF66B8411B538C78002E9EFC /* Login.storyboard */; };
@@ -90,6 +90,10 @@
 		DF958F611B33B83C005B2155 /* TradeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F601B33B83C005B2155 /* TradeModel.m */; };
 		DF958F641B33C11B005B2155 /* CardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F631B33C11B005B2155 /* CardModel.m */; };
 		DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F661B33DA67005B2155 /* CouponsModel.m */; };
+		DF9D09D01B5DD73E0007A7FB /* AttributedStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09CF1B5DD73E0007A7FB /* AttributedStyle.m */; };
+		DF9D09D31B5DD8C20007A7FB /* NSString+AttributedStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09D21B5DD8C20007A7FB /* NSString+AttributedStyle.m */; };
+		DF9D09D61B5DDB160007A7FB /* ForeGroundColorStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09D51B5DDB160007A7FB /* ForeGroundColorStyle.m */; };
+		DF9D09D91B5DE0B50007A7FB /* FontStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09D81B5DE0B50007A7FB /* FontStyle.m */; };
 		DFA544281B4A160400CC9999 /* CompletePayOrdersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */; };
 		DFA5442B1B4A292B00CC9999 /* CityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA5442A1B4A292B00CC9999 /* CityListViewController.m */; };
 		DFA5442D1B4A293E00CC9999 /* citydict.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFA5442C1B4A293E00CC9999 /* citydict.plist */; };
@@ -202,7 +206,7 @@
 		DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardAndCouponsViewController.m; sourceTree = "<group>"; };
 		DF635CFE1B4F5B6D00439576 /* holy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = holy.plist; sourceTree = "<group>"; };
 		DF635D001B4FA9DE00439576 /* store.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = store.plist; sourceTree = "<group>"; };
-		DF635D021B4FC07800439576 /* 16D.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 16D.plist; sourceTree = "<group>"; };
+		DF635D021B4FC07800439576 /* 16N.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 16N.plist; sourceTree = "<group>"; };
 		DF66B83B1B535B43002E9EFC /* SuperQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperQRViewController.h; sourceTree = "<group>"; };
 		DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperQRViewController.m; sourceTree = "<group>"; };
 		DF66B83E1B53689D002E9EFC /* SuperCompletePayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperCompletePayViewController.h; sourceTree = "<group>"; };
@@ -299,6 +303,14 @@
 		DF958F631B33C11B005B2155 /* CardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardModel.m; sourceTree = "<group>"; };
 		DF958F651B33DA67005B2155 /* CouponsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsModel.h; sourceTree = "<group>"; };
 		DF958F661B33DA67005B2155 /* CouponsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsModel.m; sourceTree = "<group>"; };
+		DF9D09CE1B5DD73E0007A7FB /* AttributedStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedStyle.h; sourceTree = "<group>"; };
+		DF9D09CF1B5DD73E0007A7FB /* AttributedStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedStyle.m; sourceTree = "<group>"; };
+		DF9D09D11B5DD8C20007A7FB /* NSString+AttributedStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AttributedStyle.h"; sourceTree = "<group>"; };
+		DF9D09D21B5DD8C20007A7FB /* NSString+AttributedStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AttributedStyle.m"; sourceTree = "<group>"; };
+		DF9D09D41B5DDB160007A7FB /* ForeGroundColorStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForeGroundColorStyle.h; sourceTree = "<group>"; };
+		DF9D09D51B5DDB160007A7FB /* ForeGroundColorStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForeGroundColorStyle.m; sourceTree = "<group>"; };
+		DF9D09D71B5DE0B50007A7FB /* FontStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontStyle.h; sourceTree = "<group>"; };
+		DF9D09D81B5DE0B50007A7FB /* FontStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontStyle.m; sourceTree = "<group>"; };
 		DFA544261B4A160400CC9999 /* CompletePayOrdersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletePayOrdersTableViewCell.h; sourceTree = "<group>"; };
 		DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletePayOrdersTableViewCell.m; sourceTree = "<group>"; };
 		DFA544291B4A292B00CC9999 /* CityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListViewController.h; sourceTree = "<group>"; };
@@ -575,7 +587,7 @@
 				DFA5442C1B4A293E00CC9999 /* citydict.plist */,
 				DF635D001B4FA9DE00439576 /* store.plist */,
 				DF635CFE1B4F5B6D00439576 /* holy.plist */,
-				DF635D021B4FC07800439576 /* 16D.plist */,
+				DF635D021B4FC07800439576 /* 16N.plist */,
 				DF1504F61B5645980095D6A3 /* yunifang.plist */,
 				DF1504F81B5655160095D6A3 /* McDonalds.plist */,
 			);
@@ -829,6 +841,21 @@
 			name = view;
 			sourceTree = "<group>";
 		};
+		DF9D09DA1B5DE21E0007A7FB /* AttributedString */ = {
+			isa = PBXGroup;
+			children = (
+				DF9D09CE1B5DD73E0007A7FB /* AttributedStyle.h */,
+				DF9D09CF1B5DD73E0007A7FB /* AttributedStyle.m */,
+				DF9D09D11B5DD8C20007A7FB /* NSString+AttributedStyle.h */,
+				DF9D09D21B5DD8C20007A7FB /* NSString+AttributedStyle.m */,
+				DF9D09D41B5DDB160007A7FB /* ForeGroundColorStyle.h */,
+				DF9D09D51B5DDB160007A7FB /* ForeGroundColorStyle.m */,
+				DF9D09D71B5DE0B50007A7FB /* FontStyle.h */,
+				DF9D09D81B5DE0B50007A7FB /* FontStyle.m */,
+			);
+			name = AttributedString;
+			sourceTree = "<group>";
+		};
 		DFAD61F41B26DF9E002437BD /* HJCAdjustNumButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -985,6 +1012,7 @@
 		DFF330DF1B2EC56100007582 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				DF9D09DA1B5DE21E0007A7FB /* AttributedString */,
 				DFF330E01B2EC57500007582 /* SVProgressShow.h */,
 				DFF330E11B2EC57500007582 /* SVProgressShow.m */,
 			);
@@ -1084,7 +1112,7 @@
 				DF1504F91B5655160095D6A3 /* McDonalds.plist in Resources */,
 				DF66B8421B538C78002E9EFC /* Login.storyboard in Resources */,
 				DF1504F71B5645980095D6A3 /* yunifang.plist in Resources */,
-				DF635D031B4FC07800439576 /* 16D.plist in Resources */,
+				DF635D031B4FC07800439576 /* 16N.plist in Resources */,
 				DF635D011B4FA9DE00439576 /* store.plist in Resources */,
 				DF635CFF1B4F5B6D00439576 /* holy.plist in Resources */,
 				DF72C0CA1B0B339800CE6DC6 /* LaunchScreen.xib in Resources */,
@@ -1151,6 +1179,7 @@
 				DFAE95611B25434F006A495B /* CouponsDetailTableViewCell.m in Sources */,
 				DF2B0E2D1B423DB40051AA1A /* TNCheckBoxGroup.m in Sources */,
 				DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */,
+				DF9D09D01B5DD73E0007A7FB /* AttributedStyle.m in Sources */,
 				DFB057A31B4132060091A1E1 /* UserStoreInfoTableViewController.m in Sources */,
 				DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */,
 				DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */,
@@ -1181,6 +1210,7 @@
 				DF958F641B33C11B005B2155 /* CardModel.m in Sources */,
 				DFB0578E1B40DF630091A1E1 /* DeskNumTableViewCell.m in Sources */,
 				DF66B8401B53689E002E9EFC /* SuperCompletePayViewController.m in Sources */,
+				DF9D09D91B5DE0B50007A7FB /* FontStyle.m in Sources */,
 				DF71773C1B30167900D3C3B9 /* SettingTableViewController.m in Sources */,
 				DF2B0E151B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m in Sources */,
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,
@@ -1220,6 +1250,7 @@
 				DF7D1E591B0D792400CD05B3 /* ProductDescriptionView.m in Sources */,
 				DF7D1E601B0DC08700CD05B3 /* CardDetailViewController.m in Sources */,
 				DF0D9C851B0C423000C0AB3F /* CardTableViewCell.m in Sources */,
+				DF9D09D31B5DD8C20007A7FB /* NSString+AttributedStyle.m in Sources */,
 				DF7D1E561B0D755500CD05B3 /* TransactMemberViewController.m in Sources */,
 				DF2D7A2B1B466E6F003790A5 /* CollectTableViewCell.m in Sources */,
 				DF87575F1B58D66A00964738 /* TQTableViewCellRemoveController.m in Sources */,
@@ -1238,6 +1269,7 @@
 				DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */,
 				DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */,
 				DF2B0E121B422DDD0051AA1A /* PayQRViewController.m in Sources */,
+				DF9D09D61B5DDB160007A7FB /* ForeGroundColorStyle.m in Sources */,
 				DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */,
 				DFB1E8371B3A58ED00366200 /* CollectTableViewController.swift in Sources */,
 				DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */,

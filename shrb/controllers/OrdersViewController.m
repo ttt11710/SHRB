@@ -18,6 +18,7 @@
 #import "BecomeMemberView.h"
 #import "CardTableViewCell.h"
 #import "NewCardDetailViewController.h"
+#import "NSString+AttributedStyle.h"
 
 
 static OrdersViewController *g_OrdersViewController = nil;
@@ -144,7 +145,18 @@ static OrdersViewController *g_OrdersViewController = nil;
             if (indexPath.row < [_data count]) {
                 cell.tradeNameLabel.text = [_data objectAtIndex:indexPath.row];
                 cell.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
-                cell.priceLabel.text = @"会员价：30元  原价：40元";
+                
+                NSString *string = @"会员价：30元  原价：40元";
+                
+                cell.priceLabel.attributedText = [string createrAttributedStringWithStyles:
+                                                  @[
+                                                    [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(4, 2)],
+                                                    [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(12, 2)],
+                                                    [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(4, 2)],
+                                                    [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(12, 2)]
+                                                    ]];
+
+                
                 
                 //
                 HJCAjustNumButton3 *numbutton = [[HJCAjustNumButton3 alloc] init];

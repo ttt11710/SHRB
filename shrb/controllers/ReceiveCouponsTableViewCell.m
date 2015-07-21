@@ -8,6 +8,7 @@
 
 #import "ReceiveCouponsTableViewCell.h"
 #import "CouponsModel.h"
+#import "NSString+AttributedStyle.h"
 
 
 @interface ReceiveCouponsTableViewCell ()
@@ -23,7 +24,16 @@
 - (void)setModel:(CouponsModel *)model
 {
     self.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.couponsImage]];
-    self.moneyLabel.text = [NSString stringWithFormat:@"总金额：%@元",model.money];
+    
+    NSString *string = [NSString stringWithFormat:@"总金额：%@元",model.money];
+    
+    self.moneyLabel.attributedText = [string createrAttributedStringWithStyles:
+                                      @[
+                                        [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(4, model.money.length)],
+                                        [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(4, model.money.length)]
+                                        ]];
+
+    
     self.numberLabel.text = [NSString stringWithFormat:@"%@张",model.count];
 }
 

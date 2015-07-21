@@ -17,6 +17,7 @@
 #import "OtherPayTableViewCell.h"
 #import "TNCheckBoxData.h"
 #import "TNCheckBoxGroup.h"
+#import "NSString+AttributedStyle.h"
 #import "CompleteVoucherViewController.h"
 
 @interface PayViewController ()
@@ -187,7 +188,15 @@
         cell.orderImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row-1][@"tradeImage"]]];
         cell.orderNameLabel.text = [self.dataArray objectAtIndex:indexPath.row-1][@"tradeName"];
         cell.amountTextField.text = [self.dataArray objectAtIndex:indexPath.row-1][@"amount"];
-        cell.moneyLabel.text = [NSString stringWithFormat:@"共%@元",[self.dataArray objectAtIndex:indexPath.row-1][@"money"]];
+        NSString *string = [NSString stringWithFormat:@"共%@元",[self.dataArray objectAtIndex:indexPath.row-1][@"money"]];
+        
+        cell.moneyLabel.attributedText = [string createrAttributedStringWithStyles:
+                                          @[
+                                            [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(1, string.length-2)],
+                                            [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(1, string.length-2)]
+                                            ]];
+
+        
 
         return cell;
     }

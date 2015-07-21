@@ -20,6 +20,7 @@
 #import "QRViewController.h"
 #import "SVProgressShow.h"
 
+
 static StoreViewController *g_StoreViewController = nil;
 @interface StoreViewController ()
 {

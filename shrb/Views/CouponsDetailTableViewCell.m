@@ -8,6 +8,7 @@
 
 #import "CouponsDetailTableViewCell.h"
 #import "CouponsModel.h"
+#import "NSString+AttributedStyle.h"
 
 @interface CouponsDetailTableViewCell ()
 
@@ -26,7 +27,16 @@
 - (void)setModel:(CouponsModel *)model
 {
     self.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.couponsImage]];
-    self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@RMB",model.money];
+    
+    NSString *string = [NSString stringWithFormat:@"金额：%@RMB",model.money];
+    
+    self.moneyLabel.attributedText = [string createrAttributedStringWithStyles:
+                                      @[
+                                        [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(3, model.money.length)],
+                                        [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(3, model.money.length)]
+                                        ]];
+
+    
     self.expirationDateLabel.text = [NSString stringWithFormat:@"截止日期：%@",model.expirationDate];
     
     if (model.canUse) {

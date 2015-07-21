@@ -4,22 +4,22 @@
 <array>
 	<dict>
 		<key>storePlistName</key>
-		<string>16D</string>
+		<string>16N</string>
 		<key>storeDetail</key>
 		<string>        16N是由年轻的法国品牌总监路易与中国的Ada与2011年共同经营的品牌。Ada和路易相识在浪漫之都巴黎，两人拥有共同的爱好与梦想，以及对时尚艺术的无尽热情和追求。路易出生并成长于法国巴黎的16区，那里是巴黎顶尖的时尚与经典的汇聚地之一。路易所创造的品牌精神，源自于自己在巴黎的生活经历以及对童年的回忆。整个品牌在设计风格上的灵感来自于他的经历，他的家庭以及童年所浏览过的地方。</string>
 		<key>storeLogo</key>
-		<string>16DLogo</string>
+		<string>16NLogo</string>
 		<key>images</key>
 		<array>
-			<string>16D.jpg</string>
-			<string>16D1.jpg</string>
-			<string>16D2.jpg</string>
-			<string>16D3.jpg</string>
+			<string>16N.jpg</string>
+			<string>16N1.jpg</string>
+			<string>16N2.jpg</string>
+			<string>16N3.jpg</string>
 		</array>
 		<key>simpleStoreDetail</key>
 		<string>16èME NORD，品味法国高雅文化与时尚潮流</string>
 		<key>storeName</key>
-		<string>16D</string>
+		<string>16N</string>
 	</dict>
 	<dict>
 		<key>storePlistName</key>

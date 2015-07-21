@@ -158,7 +158,7 @@
     
     //是否会员
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
-    if ([storePlistName isEqualToString:@"16D"] || [storePlistName isEqualToString:@"holy"] ) {
+    if ([storePlistName isEqualToString:@"16N"] || [storePlistName isEqualToString:@"holy"] ) {
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMember"];
     }
     else {
@@ -167,7 +167,7 @@
     
     //店铺类型
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"typesOfShops"];
-    if ([storePlistName isEqualToString:@"16D"] || [storePlistName isEqualToString:@"yunifang"] ) {
+    if ([storePlistName isEqualToString:@"16N"] || [storePlistName isEqualToString:@"yunifang"] ) {
         [[NSUserDefaults standardUserDefaults] setObject:@"supermarket" forKey:@"typesOfShops"];
     }
     else {
