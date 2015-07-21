@@ -128,6 +128,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *storeLabelImage;
 
 @end
 @implementation HotFocusTableViewCell
@@ -145,6 +146,9 @@
     }
     
     self.descriptionLabel.text = model.simpleStoreDetail;
+    
+    self.storeLabelImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",model.storeLabel]];
+    self.storeLabelImage.contentMode = UIViewContentModeCenter;
 //    
 //    
 //    self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",_imageArr[0]]];
