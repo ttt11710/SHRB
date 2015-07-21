@@ -94,6 +94,11 @@
 		DF9D09D31B5DD8C20007A7FB /* NSString+AttributedStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09D21B5DD8C20007A7FB /* NSString+AttributedStyle.m */; };
 		DF9D09D61B5DDB160007A7FB /* ForeGroundColorStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09D51B5DDB160007A7FB /* ForeGroundColorStyle.m */; };
 		DF9D09D91B5DE0B50007A7FB /* FontStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09D81B5DE0B50007A7FB /* FontStyle.m */; };
+		DF9D09E01B5DF0500007A7FB /* BookTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09DD1B5DF0500007A7FB /* BookTextView.m */; };
+		DF9D09E11B5DF0500007A7FB /* ExclusionView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09DF1B5DF0500007A7FB /* ExclusionView.m */; };
+		DF9D09E81B5DF0C80007A7FB /* ParagraphAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09E31B5DF0C80007A7FB /* ParagraphAttributes.m */; };
+		DF9D09E91B5DF0C80007A7FB /* ParagraphAttributes+Constructor.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09E51B5DF0C80007A7FB /* ParagraphAttributes+Constructor.m */; };
+		DF9D09EA1B5DF0C80007A7FB /* ConfigAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09E71B5DF0C80007A7FB /* ConfigAttributedString.m */; };
 		DFA544281B4A160400CC9999 /* CompletePayOrdersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */; };
 		DFA5442B1B4A292B00CC9999 /* CityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA5442A1B4A292B00CC9999 /* CityListViewController.m */; };
 		DFA5442D1B4A293E00CC9999 /* citydict.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFA5442C1B4A293E00CC9999 /* citydict.plist */; };
@@ -311,6 +316,17 @@
 		DF9D09D51B5DDB160007A7FB /* ForeGroundColorStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForeGroundColorStyle.m; sourceTree = "<group>"; };
 		DF9D09D71B5DE0B50007A7FB /* FontStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontStyle.h; sourceTree = "<group>"; };
 		DF9D09D81B5DE0B50007A7FB /* FontStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontStyle.m; sourceTree = "<group>"; };
+		DF9D09DC1B5DF0500007A7FB /* BookTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookTextView.h; sourceTree = "<group>"; };
+		DF9D09DD1B5DF0500007A7FB /* BookTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookTextView.m; sourceTree = "<group>"; };
+		DF9D09DE1B5DF0500007A7FB /* ExclusionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExclusionView.h; sourceTree = "<group>"; };
+		DF9D09DF1B5DF0500007A7FB /* ExclusionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExclusionView.m; sourceTree = "<group>"; };
+		DF9D09E21B5DF0C80007A7FB /* ParagraphAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParagraphAttributes.h; sourceTree = "<group>"; };
+		DF9D09E31B5DF0C80007A7FB /* ParagraphAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParagraphAttributes.m; sourceTree = "<group>"; };
+		DF9D09E41B5DF0C80007A7FB /* ParagraphAttributes+Constructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParagraphAttributes+Constructor.h"; sourceTree = "<group>"; };
+		DF9D09E51B5DF0C80007A7FB /* ParagraphAttributes+Constructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ParagraphAttributes+Constructor.m"; sourceTree = "<group>"; };
+		DF9D09E61B5DF0C80007A7FB /* ConfigAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigAttributedString.h; sourceTree = "<group>"; };
+		DF9D09E71B5DF0C80007A7FB /* ConfigAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigAttributedString.m; sourceTree = "<group>"; };
+		DF9D09EB1B5DF3620007A7FB /* 方正清刻本悦宋简体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "方正清刻本悦宋简体.ttf"; sourceTree = "<group>"; };
 		DFA544261B4A160400CC9999 /* CompletePayOrdersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletePayOrdersTableViewCell.h; sourceTree = "<group>"; };
 		DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletePayOrdersTableViewCell.m; sourceTree = "<group>"; };
 		DFA544291B4A292B00CC9999 /* CityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListViewController.h; sourceTree = "<group>"; };
@@ -856,6 +872,24 @@
 			name = AttributedString;
 			sourceTree = "<group>";
 		};
+		DF9D09DB1B5DF03D0007A7FB /* Textkit */ = {
+			isa = PBXGroup;
+			children = (
+				DF9D09DC1B5DF0500007A7FB /* BookTextView.h */,
+				DF9D09DD1B5DF0500007A7FB /* BookTextView.m */,
+				DF9D09DE1B5DF0500007A7FB /* ExclusionView.h */,
+				DF9D09DF1B5DF0500007A7FB /* ExclusionView.m */,
+				DF9D09E21B5DF0C80007A7FB /* ParagraphAttributes.h */,
+				DF9D09E31B5DF0C80007A7FB /* ParagraphAttributes.m */,
+				DF9D09E41B5DF0C80007A7FB /* ParagraphAttributes+Constructor.h */,
+				DF9D09E51B5DF0C80007A7FB /* ParagraphAttributes+Constructor.m */,
+				DF9D09E61B5DF0C80007A7FB /* ConfigAttributedString.h */,
+				DF9D09EB1B5DF3620007A7FB /* 方正清刻本悦宋简体.ttf */,
+				DF9D09E71B5DF0C80007A7FB /* ConfigAttributedString.m */,
+			);
+			name = Textkit;
+			sourceTree = "<group>";
+		};
 		DFAD61F41B26DF9E002437BD /* HJCAdjustNumButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -1012,6 +1046,7 @@
 		DFF330DF1B2EC56100007582 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				DF9D09DB1B5DF03D0007A7FB /* Textkit */,
 				DF9D09DA1B5DE21E0007A7FB /* AttributedString */,
 				DFF330E01B2EC57500007582 /* SVProgressShow.h */,
 				DFF330E11B2EC57500007582 /* SVProgressShow.m */,
@@ -1171,6 +1206,7 @@
 				DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */,
 				DF9119A41B392BA100833AAB /* OrderListViewController.swift in Sources */,
 				DF7A8A591B3CE90600528864 /* ProductTableViewController.m in Sources */,
+				DF9D09E01B5DF0500007A7FB /* BookTextView.m in Sources */,
 				DF66B83D1B535B43002E9EFC /* SuperQRViewController.m in Sources */,
 				DFB057A81B4141D60091A1E1 /* UserCouponsViewController.m in Sources */,
 				DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */,
@@ -1214,6 +1250,7 @@
 				DF71773C1B30167900D3C3B9 /* SettingTableViewController.m in Sources */,
 				DF2B0E151B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m in Sources */,
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,
+				DF9D09E11B5DF0500007A7FB /* ExclusionView.m in Sources */,
 				DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */,
 				DF73D97A1B53BC8B00C1F317 /* MainTabBarController.m in Sources */,
 				DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */,
@@ -1238,6 +1275,7 @@
 				DF66B8451B539F4E002E9EFC /* LoginViewController.m in Sources */,
 				DF9119A71B392BC500833AAB /* OrderListTableViewCell.swift in Sources */,
 				DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */,
+				DF9D09EA1B5DF0C80007A7FB /* ConfigAttributedString.m in Sources */,
 				DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */,
 				DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */,
 				DF2B0E311B423DB40051AA1A /* TNImageCheckBoxData.m in Sources */,
@@ -1258,6 +1296,7 @@
 				DFB763301B3D51B10086ABB7 /* LeftLabelTableViewCell.m in Sources */,
 				DF2B0E321B423DB40051AA1A /* TNRectangularCheckBox.m in Sources */,
 				DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */,
+				DF9D09E81B5DF0C80007A7FB /* ParagraphAttributes.m in Sources */,
 				DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */,
 				DF4E4C6A1B0C87D500FE499E /* BecomeMemberViewController.m in Sources */,
 				DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */,
@@ -1267,6 +1306,7 @@
 				DF2B0E2B1B423DB40051AA1A /* TNCheckBox.m in Sources */,
 				DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */,
 				DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */,
+				DF9D09E91B5DF0C80007A7FB /* ParagraphAttributes+Constructor.m in Sources */,
 				DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */,
 				DF2B0E121B422DDD0051AA1A /* PayQRViewController.m in Sources */,
 				DF9D09D61B5DDB160007A7FB /* ForeGroundColorStyle.m in Sources */,

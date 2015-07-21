@@ -112,11 +112,11 @@
     
     [label sizeToFit];// 显示文本需要的长度和宽度
     
-    if (label.frame.size.height+160 < screenHeight-(20+44+44)) {
-        return screenHeight-(20+44+44);
+    if (label.frame.size.height+180 < screenHeight-(20+44)) {
+        return screenHeight + 180;
     }
     else {
-       return label.frame.size.height+160;
+       return label.frame.size.height+220;
     }
 }
 
