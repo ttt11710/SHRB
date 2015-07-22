@@ -11,11 +11,14 @@
 @class ProductModel;
 
 
-@interface ProductTableViewCell : UITableViewCell
+@interface ProductTableViewCell : UITableViewCell <UIScrollViewDelegate,UIPageViewControllerDelegate>
+
 @property (nonatomic,strong) ProductModel * model;
 @property (weak, nonatomic) IBOutlet UIImageView *tradeImageView;
 @property (weak, nonatomic) IBOutlet UIView *blurView;
 
 @property (weak, nonatomic) IBOutlet FoldingView *ImageBackView;
+
++(void)setscrollView;
 
 @end

@@ -16,12 +16,22 @@
 #import "DOPScrollableActionSheet.h"
 #import <POP/POP.h>
 #import "FoldingView.h"
+#import "UIImageView+WebCache.h"
+
+
+#define imageWidth  screenWidth-32
+#define imageHeight  screenWidth-32
 
 @interface ProductTableViewCell () {
     
     SuperBecomeMemberView1 *_becomeMemberView;
     UIButton *_smallbuttonModel;
     CGRect _bounds;
+    
+    //照片轮播时间
+    NSTimer   *_timer;
+    //图片数组
+    NSArray *_imageArray;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *cardDetailView;
@@ -36,6 +46,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *integralLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @end
 @implementation ProductTableViewCell
@@ -43,7 +55,13 @@
 - (void)setModel:(ProductModel *)model
 {
     self.tradeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.tradeImage]];
+    _imageArray = [[NSMutableArray alloc] initWithObjects:
+                   @"http://static.lover1314.me/image/2015/04/16/1552f5e302fae3_orig.jpg",
+                   @"http://static.lover1314.me/image/2015/04/16/1552f5e2b1fee1_orig.jpg",
+                   @"http://static.lover1314.me/image/2015/04/16/1552f5e1903f9b_orig.jpg", nil];
     
+
+
     
     self.tradeImageView.hidden = YES;
     self.imageShadowView.hidden = YES;
@@ -57,7 +75,25 @@
     self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@元",model.money];
     self.integralLabel.text = [NSString stringWithFormat:@"积分：%@",model.integral];
     self.cardNumberLabel.text = [NSString stringWithFormat:@"卡号：%@",model.cardNumber];
-
+    
+    CGFloat width =  self.imageShadowView.frame.size.width;
+    CGFloat height =  self.imageShadowView.frame.size.height;
+    CGFloat width1 =  _imageScrollView.frame.size.width;
+    CGFloat height1 = _imageScrollView.frame.size.width;
+    
+     CGFloat width2 = imageWidth;
+    
+    for (int i = 0 ; i < [_imageArray count]; i++)
+    {
+        UIImageView *_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageWidth *i, 0, imageWidth, imageHeight)];
+        _imageView.clipsToBounds = YES;
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [_imageView sd_setImageWithURL:[NSURL URLWithString:[_imageArray objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"默认女头像"]];
+        [_imageScrollView addSubview:_imageView];
+    }
+    _imageScrollView.contentSize = CGSizeMake(imageWidth*[_imageArray count] , imageHeight);
+    _pageControl.numberOfPages = [_imageArray count];
+    
 }
 
 - (void)awakeFromNib {

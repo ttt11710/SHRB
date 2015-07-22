@@ -19,6 +19,11 @@
 #import "ProductIsMemberTableViewController.h"
 #import "SuperQRViewController.h"
 
+
+#import "ProductViewController.h"
+#import "ProductIsMemberViewController.h"
+
+
 static NewStoreViewController *g_StoreViewController = nil;
 @interface NewStoreViewController ()
 {
@@ -66,6 +71,13 @@ static NewStoreViewController *g_StoreViewController = nil;
 {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
+    self.view.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.view.hidden = YES;
 }
 
 - (void)initView
@@ -274,21 +286,31 @@ static NewStoreViewController *g_StoreViewController = nil;
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
         if (isMember) {
-            ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
-            viewController.currentSection = indexPath.section;
+//            ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
+//            viewController.currentSection = indexPath.section;
+//            viewController.currentRow = indexPath.row;
+//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//            [self.navigationController pushViewController:viewController animated:YES];
+            
+            ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
             viewController.currentRow = indexPath.row;
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            
-            
+            viewController.currentSection = indexPath.section;
             [self.navigationController pushViewController:viewController animated:YES];
+            
             
         }
         else {
-            ProductTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductTableView"];
-            viewController.currentSection = indexPath.section;
-            viewController.currentRow = indexPath.row;
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//            ProductTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductTableView"];
+//            viewController.currentSection = indexPath.section;
+//            viewController.currentRow = indexPath.row;
+//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//            
+//            [self.navigationController pushViewController:viewController animated:YES];
             
+            
+            ProductViewController *viewController = [[ProductViewController alloc] init];
+            viewController.currentRow = indexPath.row;
+            viewController.currentSection = indexPath.section;
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }

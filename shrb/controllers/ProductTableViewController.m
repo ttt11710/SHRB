@@ -13,6 +13,7 @@
 #import "TransactMemberViewController.h"
 #import "ProductIsMemberTableViewController.h"
 #import "SuperBecomeMemberView1.h"
+#import "ProductIsMemberViewController.h"
 
 
 static ProductTableViewController *g_ProductTableViewController = nil;
@@ -124,10 +125,13 @@ static ProductTableViewController *g_ProductTableViewController = nil;
     ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
     viewController.currentSection = currentSection;
     viewController.currentRow = currentRow;
-    
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    
     [navController pushViewController:viewController animated:NO];
+    
+//    ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
+//    viewController.currentRow = currentRow;
+//    viewController.currentSection = currentSection;
+//    [self.navigationController pushViewController:viewController animated:YES];
     
 }
 
