@@ -1136,6 +1136,8 @@
 		DF72C0AE1B0B339800CE6DC6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = PayBay;
 				TargetAttributes = {

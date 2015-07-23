@@ -24,6 +24,8 @@ static ProductViewController *g_ProductViewController = nil;
 {
     NSMutableArray *_imageArray;
     CGRect _bounds;
+    
+    NSTimer *_timer;
 }
 
 @property (nonatomic,strong) NSMutableArray * modelArray;
@@ -72,6 +74,8 @@ static ProductViewController *g_ProductViewController = nil;
     [self initTradeDescriptionView];
     [self initRegisterView];
     
+    [self startTime];
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     self.view.userInteractionEnabled = YES;
     [self.view addGestureRecognizer:tap];
@@ -103,7 +107,6 @@ static ProductViewController *g_ProductViewController = nil;
 - (void)initMainView
 {
     _mainScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    _mainScrollView.delegate = self;
     [self.view addSubview:_mainScrollView];
 }
 
@@ -131,7 +134,8 @@ static ProductViewController *g_ProductViewController = nil;
     [_mainScrollView insertSubview:_cardShadowView atIndex:0];
     
     _cardScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, _cardView.frame.size.width, _cardView.frame.size.height)];
-    _cardScrollView.contentSize = CGSizeMake(_cardScrollView.frame.size.width*[_imageArray count], 0);
+    _cardScrollView.contentSize = CGSizeMake(_cardScrollView.frame.size.width*([_imageArray count]+2), 0);
+    _cardScrollView.contentOffset = CGPointMake(_cardScrollView.frame.size.width, 0);
     _cardScrollView.delegate = self;
     _cardScrollView.pagingEnabled = YES;
     _cardScrollView.showsHorizontalScrollIndicator = NO;
@@ -141,10 +145,12 @@ static ProductViewController *g_ProductViewController = nil;
     _imagePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _cardView.frame.size.height-70, _cardView.frame.size.width, 20)];
     _imagePageControl.numberOfPages = [_imageArray count];
     _imagePageControl.currentPage = 0;
+    [_imagePageControl addTarget:self action:@selector(pageControlValueChanged) forControlEvents:UIControlEventValueChanged];
+
     [_cardView addSubview:_imagePageControl];
     
     if ([_imageArray count]<= 0 ) {
-        UIImageView *_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _cardScrollView.frame.size.width, _cardScrollView.frame.size.height)];
+        UIImageView *_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_cardScrollView.frame.size.width, 0, _cardScrollView.frame.size.width, _cardScrollView.frame.size.height)];
         _imageView.clipsToBounds = YES;
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
         [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"官方头像"]];
@@ -152,15 +158,28 @@ static ProductViewController *g_ProductViewController = nil;
 
     }
     else {
-        for (int i = 0 ; i < [_imageArray count]; i++)
+        for (int i = 0 ; i < [_imageArray count]+2; i++)
         {
             UIImageView *_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_cardScrollView.frame.size.width *i, 0, _cardScrollView.frame.size.width, _cardScrollView.frame.size.height)];
             _imageView.clipsToBounds = YES;
             _imageView.contentMode = UIViewContentModeScaleAspectFill;
-            [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_imageArray objectAtIndex:i]]]];
             
+            if (i == 0)
+            {
+                [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_imageArray objectAtIndex:[_imageArray count]-1]]]];
+                _imageView.tag = [_imageArray count]-1;
+            }
+            else if (i == [_imageArray count]+1)
+            {
+                [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_imageArray objectAtIndex:0]]]];
+                _imageView.tag = 0;
+            }
+            else {
+                [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_imageArray objectAtIndex:i-1]]]];
+                _imageView.tag = i-1;
+            }
+
             _imageView.userInteractionEnabled = YES ;
-            _imageView.tag = i ;
             UITapGestureRecognizer *tapGestureRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showMeImageViewPressed:)];
             [_imageView addGestureRecognizer:tapGestureRecognizer];
 
@@ -243,6 +262,34 @@ static ProductViewController *g_ProductViewController = nil;
     [_mainScrollView addSubview:_registerBtn];
 }
 
+#pragma mark - 开启时间
+- (void)startTime
+{
+    _timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerFun) userInfo:nil repeats:YES];
+}
+
+
+- (void)timerFun
+{
+    
+    _imagePageControl.currentPage =  (_imagePageControl.currentPage+1)%[_imageArray count];
+    
+    if (_imagePageControl.currentPage == 0)
+    {
+        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            _cardScrollView.contentOffset = CGPointMake(([_imageArray count]+1)*_cardScrollView.bounds.size.width, 0);
+            
+        } completion:^(BOOL finished) {
+            
+            _cardScrollView.contentOffset = CGPointMake(1*_cardScrollView.bounds.size.width, 0);
+        }];
+    }
+    else
+    {
+        [_cardScrollView setContentOffset:CGPointMake((_imagePageControl.currentPage + 1)*_cardScrollView.bounds.size.width, 0) animated:YES];
+    }
+}
 
 
 #pragma mark - 注册
@@ -419,15 +466,45 @@ static ProductViewController *g_ProductViewController = nil;
     
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
+
+#pragma  mark - pageControl
+- (void)pageControlValueChanged
 {
-    //    分页计算方法
-    //    当前页=(scrollView.contentOffset.x+scrollView.frame.size.width/2)/scrollView.frame.size.width
-    CGFloat page = (scrollView.contentOffset.x+scrollView.frame.size.width/2)/(scrollView.frame.size.width);
     
-    _imagePageControl.currentPage=page;
-    
+    [_cardScrollView setContentOffset:CGPointMake((_imagePageControl.currentPage + 1)*_cardView.bounds.size.width, 0) animated:YES];
 }
+
+#pragma mark - scrollView delegate
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [_timer invalidate];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    
+    [self startTime];
+    
+    int page = scrollView.contentOffset.x / scrollView.bounds.size.width;
+    
+    if (page ==[_imageArray count]+1)
+    {
+        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+        
+        _imagePageControl.currentPage = 0;
+    }
+    else if (page == 0)
+    {
+        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width * [_imageArray count], 0);
+        
+        _imagePageControl.currentPage = [_imageArray count]-1;
+    }
+    else
+    {
+        _imagePageControl.currentPage = page - 1;
+    }
+}
+
 
 
 #pragma mark - 单击屏幕键盘消失

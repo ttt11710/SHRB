@@ -72,7 +72,7 @@ class UserCenterTableViewController: UITableViewController {
         }
         else if indexPath.section == 1 {
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
             
             cell.selectionStyle = UITableViewCellSelectionStyle(rawValue: 0)!
             cell.textLabel?.text = data[indexPath.row]
@@ -80,7 +80,7 @@ class UserCenterTableViewController: UITableViewController {
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
             
             cell.selectionStyle = UITableViewCellSelectionStyle(rawValue: 0)!
             cell.textLabel?.text = data[indexPath.row+3]
@@ -99,13 +99,13 @@ class UserCenterTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("infoView") as! UIViewController
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("infoView") as UIViewController
             self.navigationController?.pushViewController(viewController, animated: true)
         }
         else if indexPath.section == 1 && indexPath.row == 0 {
             
             let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("orderlistView") as! UIViewController
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("orderlistView") as UIViewController
             self.navigationController?.pushViewController(viewController, animated: true)
         }
         else if indexPath.section == 1 && indexPath.row == 1 {
@@ -113,14 +113,14 @@ class UserCenterTableViewController: UITableViewController {
 //            var collectTableViewController = CollectTableViewController()
 //            self.navigationController?.pushViewController(collectTableViewController, animated: true)
             let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("collectView") as! UIViewController
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("collectView") as UIViewController
             self.navigationController?.pushViewController(viewController, animated: true)
         }
         
         else if indexPath.section == 1 && indexPath.row == 2 {
             
             let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("settingView") as! UIViewController
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("settingView") as UIViewController
             self.navigationController?.pushViewController(viewController, animated: true)
             
         }
@@ -128,13 +128,13 @@ class UserCenterTableViewController: UITableViewController {
         else if indexPath.section == 2 && indexPath.row == 0 {
             
             let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("helpCenterView") as! UIViewController
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("helpCenterView") as UIViewController
             self.navigationController?.pushViewController(viewController, animated: true)
         }
         else if indexPath.section == 2 && indexPath.row == 1 {
             
             let mainStoryboard = UIStoryboard(name: "Me", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("shrbServiceView") as! UIViewController
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("shrbServiceView") as UIViewController
             self.navigationController?.pushViewController(viewController, animated: true)
             
         }

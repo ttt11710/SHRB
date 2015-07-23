@@ -24,7 +24,7 @@
 
 -(void)viewDidLoad{
 
-    self.view.backgroundColor=[UIColor whiteColor];
+    self.view.backgroundColor=[UIColor blackColor];
     
     _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
     [self.view addSubview:_imageView];
@@ -104,7 +104,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor=[UIColor whiteColor];
+    self.view.backgroundColor=[UIColor blackColor];
     self.view.userInteractionEnabled=YES;
     UITapGestureRecognizer *tapGestureRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureEven:)];
     [self.view addGestureRecognizer:tapGestureRecognizer];
