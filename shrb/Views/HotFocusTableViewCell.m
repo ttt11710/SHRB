@@ -67,26 +67,29 @@
     
     self.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:_currentInt]]];
     
-    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(layerAnimation) object:nil];
-    [self performSelector:@selector(layerAnimation)
+    [self timeForShowImage];
+}
+
+
+- (void)timeForShowImage
+{
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(nextImage) object:nil];
+    [self performSelector:@selector(nextImage)
                withObject:nil
                afterDelay:(arc4random() % 3)+3];
 }
 
-- (void)layerAnimation
+- (void)nextImage
 {
-    
     _currentInt++;
     if (_currentInt == [_imageArr count]) {
         _currentInt = 0;
     }
-    
-   // [self.layer removeAllAnimations]
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:_currentInt]]];
     CABasicAnimation *contentsAnimation = [CABasicAnimation animationWithKeyPath:@"contents"];
     contentsAnimation.fromValue = self;
     contentsAnimation.toValue = (__bridge id)(image.CGImage);
-    contentsAnimation.duration = 2.f;
+    contentsAnimation.duration = 1.f;
     contentsAnimation.delegate = self;
     contentsAnimation.fillMode=kCAFillModeForwards;
     contentsAnimation.removedOnCompletion = NO;
@@ -95,26 +98,7 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-//    if (IsIOS8) {
-//        _containerView.frame = _oldframe;
-//    }
-    
-    
-    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(layerAnimation) object:nil];
-    [self performSelector:@selector(layerAnimation)
-               withObject:nil
-               afterDelay:(arc4random() % 3) + 3];
-    
-//    [UIView animateWithDuration:1.f animations:^{
-////        if (IsIOS8) {
-////            CGRect frame = _containerView.frame;
-////            frame.origin.x += screenWidth;
-////            _containerView.frame = frame;
-////        }
-//        
-//    } completion:^(BOOL finished) {
-//    }];
-//    
+    [self timeForShowImage];
 }
 
 @end

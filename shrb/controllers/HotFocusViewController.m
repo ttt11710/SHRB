@@ -122,10 +122,7 @@
     }
 
     cell.model = self.dataArray[indexPath.row];
-    // start animating
- //   [cell.hotImageView startAnimating];
 
-    
 //    if (indexPath.row == 0) {
 //        KYCuteView *badgeLabel = [[KYCuteView alloc]initWithPoint:CGPointMake(60, 4) superView:cell];
 //        badgeLabel.viscosity = 8;
