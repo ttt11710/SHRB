@@ -74,12 +74,30 @@ static ProductViewController *g_ProductViewController = nil;
     [self initTradeDescriptionView];
     [self initRegisterView];
     
-    [self startTime];
-    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     self.view.userInteractionEnabled = YES;
     [self.view addGestureRecognizer:tap];
+    
+    [self cardAnimation];
 }
+
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self startTime];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [_timer invalidate];
+}
+
+
 
 - (void)initData
 {
@@ -107,6 +125,7 @@ static ProductViewController *g_ProductViewController = nil;
 - (void)initMainView
 {
     _mainScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    _mainScrollView.backgroundColor = [UIColor whiteColor] ;
     [self.view addSubview:_mainScrollView];
 }
 
@@ -260,6 +279,42 @@ static ProductViewController *g_ProductViewController = nil;
     _registerBtn.layer.masksToBounds = YES;
     [_registerBtn addTarget:self action:@selector(registerBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_mainScrollView addSubview:_registerBtn];
+}
+
+
+#pragma mark - 卡片动画
+- (void)cardAnimation
+{
+    
+    self.registerBtn.layer.transform = CATransform3DMakeTranslation(screenWidth, 0, 0);
+    self.descriptionLabel.alpha = 0;
+    
+    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.cardView.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1);
+        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.registerBtn.layer.transform = CATransform3DMakeScale(0.5, 1, 1);
+            self.cardView.layer.transform = CATransform3DIdentity;
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        [UIView animateWithDuration:1.5 delay:0.2 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.registerBtn.layer.transform = CATransform3DIdentity;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }];
+    
+    [UIView transitionWithView:self.descriptionLabel duration:2 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        self.descriptionLabel.alpha = 1;
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 #pragma mark - 开启时间
@@ -483,7 +538,7 @@ static ProductViewController *g_ProductViewController = nil;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     
-    [self startTime];
+    [_timer fire];
     
     int page = scrollView.contentOffset.x / scrollView.bounds.size.width;
     
@@ -518,11 +573,26 @@ static ProductViewController *g_ProductViewController = nil;
 - (void)showMeImageViewPressed:(UITapGestureRecognizer *)tap
 {
     
-    ShowMeImageViewController *viewController = [[ShowMeImageViewController alloc] init];
-    viewController.imagesArray=_imageArray;
-    viewController.currentImageIndex=tap.view.tag;
-    [self presentViewController:viewController animated:YES completion:^{
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
+        self.cardView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 1);
+        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.cardView.layer.transform = CATransform3DIdentity;
+            
+        } completion:^(BOOL finished) {
+            
+            ShowMeImageViewController *viewController = [[ShowMeImageViewController alloc] init];
+            viewController.imagesArray=_imageArray;
+            viewController.currentImageIndex=tap.view.tag;
+            [self presentViewController:viewController animated:YES completion:^{
+                
+            }];
+            
+        }];
     }];
+    
 }
 @end

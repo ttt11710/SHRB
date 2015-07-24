@@ -120,9 +120,16 @@ static NewStoreViewController *g_StoreViewController = nil;
     showSelectTypeTableView = !showSelectTypeTableView;
     if (showSelectTypeTableView) {
         self.selectTypeTableViewBackView.hidden = NO;
+        
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.selectTypeTableView.layer.transform = CATransform3DMakeTranslation(-screenWidth/2, 0, 0);
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
-            self.selectTypeTableView.layer.transform = CATransform3DMakeTranslation(-screenWidth/2, 0, 0);
             self.selectTypeTableViewBackView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
             
         } completion:^(BOOL finished) {
@@ -130,10 +137,25 @@ static NewStoreViewController *g_StoreViewController = nil;
         }];
     }
     else {
+        
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.selectTypeTableView.layer.transform = CATransform3DMakeTranslation(-screenWidth/2, 0, 0);
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
             self.selectTypeTableView.layer.transform = CATransform3DIdentity;
-            self.selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
             
         } completion:^(BOOL finished) {
             

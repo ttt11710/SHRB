@@ -184,9 +184,28 @@
     
     [SVProgressShow showWithStatus:@"进入店铺..."];
     
-    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:nil];
-    [self performSelector:@selector(todoSomething:) withObject:indexPath afterDelay:0.4f];
-    
+    //点击弹动动画
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        cell.hotImageView.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1);
+        cell.shadowView.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1);
+        cell.storeLabelImage.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1);
+        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            cell.hotImageView.layer.transform = CATransform3DIdentity;
+            cell.shadowView.layer.transform = CATransform3DIdentity;
+            cell.storeLabelImage.layer.transform = CATransform3DIdentity;
+            
+        } completion:^(BOOL finished) {
+            
+            [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:nil];
+            [self performSelector:@selector(todoSomething:) withObject:indexPath afterDelay:0.0f];
+            
+        }];
+        
+    }];
 }
 
 

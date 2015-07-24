@@ -53,7 +53,7 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 @property (retain, nonatomic) UIButton *shareBtn;       //分享
 
 @property (retain, nonatomic) UILabel *descriptionLabel; //产品描述
-@property (retain, nonatomic) UIButton *registerBtn;     //注册
+
 
 @end
 
@@ -79,8 +79,23 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
     [self initCardView];
     [self initTradeDescriptionView];
     
+    [self cardAnimation];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
     [self startTime];
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [_timer invalidate];
+}
+
 
 - (void)initData
 {
@@ -287,6 +302,39 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
     _mainScrollView.contentSize = CGSizeMake(0, _descriptionLabel.frame.size.height + _cardView.frame.origin.y + _cardView.frame.size.height+200+10);
 }
 
+#pragma mark - 卡片动画
+- (void)cardAnimation
+{
+    self.memberCardView.layer.transform = CATransform3DMakeTranslation(screenWidth, 0, 0);
+    self.cardView.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
+    self.descriptionLabel.alpha = 0;
+    
+    
+    [UIView animateWithDuration:1.6 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.memberCardView.layer.transform = CATransform3DIdentity;
+        
+    } completion:^(BOOL finished) {
+    
+    }];
+    
+    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.cardView.layer.transform = CATransform3DIdentity;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    
+    [UIView transitionWithView:self.descriptionLabel duration:2 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        self.descriptionLabel.alpha = 1;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+
 #pragma mark - 收藏
 - (void)collectBtnPressed {
     [SVProgressShow showWithStatus:@"收藏中..."];
@@ -393,7 +441,7 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     
-    [self startTime];
+    [_timer fire];
     
     int page = scrollView.contentOffset.x / scrollView.bounds.size.width;
     

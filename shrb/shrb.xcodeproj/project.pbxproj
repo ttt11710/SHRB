@@ -94,6 +94,7 @@
 		DF958F611B33B83C005B2155 /* TradeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F601B33B83C005B2155 /* TradeModel.m */; };
 		DF958F641B33C11B005B2155 /* CardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F631B33C11B005B2155 /* CardModel.m */; };
 		DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F661B33DA67005B2155 /* CouponsModel.m */; };
+		DF976B3A1B62099E0097790E /* MyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF976B391B62099E0097790E /* MyImageView.m */; };
 		DF9D09D01B5DD73E0007A7FB /* AttributedStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09CF1B5DD73E0007A7FB /* AttributedStyle.m */; };
 		DF9D09D31B5DD8C20007A7FB /* NSString+AttributedStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09D21B5DD8C20007A7FB /* NSString+AttributedStyle.m */; };
 		DF9D09D61B5DDB160007A7FB /* ForeGroundColorStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09D51B5DDB160007A7FB /* ForeGroundColorStyle.m */; };
@@ -320,6 +321,8 @@
 		DF958F631B33C11B005B2155 /* CardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardModel.m; sourceTree = "<group>"; };
 		DF958F651B33DA67005B2155 /* CouponsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsModel.h; sourceTree = "<group>"; };
 		DF958F661B33DA67005B2155 /* CouponsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsModel.m; sourceTree = "<group>"; };
+		DF976B381B62099E0097790E /* MyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImageView.h; sourceTree = "<group>"; };
+		DF976B391B62099E0097790E /* MyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImageView.m; sourceTree = "<group>"; };
 		DF9D09CE1B5DD73E0007A7FB /* AttributedStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedStyle.h; sourceTree = "<group>"; };
 		DF9D09CF1B5DD73E0007A7FB /* AttributedStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedStyle.m; sourceTree = "<group>"; };
 		DF9D09D11B5DD8C20007A7FB /* NSString+AttributedStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AttributedStyle.h"; sourceTree = "<group>"; };
@@ -784,6 +787,8 @@
 			children = (
 				DF0D9C7B1B0C2A7400C0AB3F /* HotFocusTableViewCell.h */,
 				DF0D9C7C1B0C2A7400C0AB3F /* HotFocusTableViewCell.m */,
+				DF976B381B62099E0097790E /* MyImageView.h */,
+				DF976B391B62099E0097790E /* MyImageView.m */,
 				DF72C0E41B0B413100CE6DC6 /* HotDetailTableViewCell.h */,
 				DF72C0E51B0B413100CE6DC6 /* HotDetailTableViewCell.m */,
 				DF77A5B61B0C151F00934A7C /* StoreTableViewCell.h */,
@@ -1317,6 +1322,7 @@
 				DF9D09EA1B5DF0C80007A7FB /* ConfigAttributedString.m in Sources */,
 				DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */,
 				DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */,
+				DF976B3A1B62099E0097790E /* MyImageView.m in Sources */,
 				DF2B0E311B423DB40051AA1A /* TNImageCheckBoxData.m in Sources */,
 				DFCF89F61B577AE600D09A4A /* UIColor+CustomColors.m in Sources */,
 				DFB057961B40F1840091A1E1 /* MemberPayTableViewCell.m in Sources */,

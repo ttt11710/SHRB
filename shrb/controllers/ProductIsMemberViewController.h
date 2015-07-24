@@ -14,6 +14,5 @@
 @property(nonatomic,assign)NSInteger currentRow;
 
 + (ProductIsMemberViewController *)shareProductIsMemberViewController;
-- (void)gotoCardDetailView;
 
 @end

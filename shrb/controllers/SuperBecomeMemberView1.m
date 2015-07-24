@@ -48,7 +48,7 @@ static SuperBecomeMemberView1 *g_SuperBecomeMemberView = nil;
 {
     UILabel *cardNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
     [cardNumLabel setText:@"会员号"];
-    [cardNumLabel setTextColor:[UIColor blackColor]];
+    [cardNumLabel setTextColor:shrbText];
     [cardNumLabel setFont:[UIFont systemFontOfSize:16]];
     [self addSubview:cardNumLabel];
     
@@ -59,7 +59,7 @@ static SuperBecomeMemberView1 *g_SuperBecomeMemberView = nil;
     
     UILabel *telephoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, cardNumLabel.frame.origin.y + cardNumLabel.frame.size.height+4, 50, 30)];
     [telephoneLabel setText:@"手机号"];
-    [telephoneLabel setTextColor:[UIColor blackColor]];
+    [telephoneLabel setTextColor:shrbText];
     [telephoneLabel setFont:[UIFont systemFontOfSize:16]];
     [self addSubview:telephoneLabel];
     
@@ -70,7 +70,7 @@ static SuperBecomeMemberView1 *g_SuperBecomeMemberView = nil;
     
     UILabel *passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, telephoneLabel.frame.origin.y + telephoneLabel.frame.size.height+4, 50, 30)];
     [passwordLabel setText:@"密码"];
-    [passwordLabel setTextColor:[UIColor blackColor]];
+    [passwordLabel setTextColor:shrbText];
     [passwordLabel setFont:[UIFont systemFontOfSize:16]];
     [self addSubview:passwordLabel];
     
