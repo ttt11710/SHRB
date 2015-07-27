@@ -47,8 +47,7 @@
     [super viewWillAppear:animated];
     self.view.hidden = NO;
     
-    [self ballAnimation];
-    [self btnAnimation];
+    [self ballBackViewAnimation];
     
 }
 
@@ -71,7 +70,7 @@
     self.ballBackview.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.ballBackview];
     
-    self.ballview = [[UIView alloc] initWithFrame:CGRectMake((screenWidth-60)/2, 70, 60, 60)];
+    self.ballview = [[UIView alloc] initWithFrame:CGRectMake((screenWidth-60)/2, 20, 60, 60)];
     self.ballview.backgroundColor = shrbPink;
     self.ballview.layer.cornerRadius = self.ballview.frame.size.width/2;
     self.ballview.layer.masksToBounds = YES;
@@ -88,6 +87,23 @@
 }
 
 
+- (void)ballBackViewAnimation
+{
+    
+    [self ballAnimation];
+    
+    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.ballBackview.alpha = 0.9;
+        self.ballBackview.layer.transform = CATransform3DMakeTranslation(0, screenHeight-20-44, 0);
+        
+    } completion:^(BOOL finished) {
+        
+        [self btnAnimation];
+    }];
+    
+}
+
 - (void)ballAnimation
 {
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -97,16 +113,6 @@
     } completion:^(BOOL finished) {
         [self ballAnimation];
     }];
-    
-    [UIView animateWithDuration:3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        
-        self.ballBackview.alpha = 0.9;
-        self.ballBackview.layer.transform = CATransform3DMakeTranslation(0, screenHeight, 0);
-        
-    } completion:^(BOOL finished) {
-        
-    }];
-    
 }
 
 
@@ -125,6 +131,7 @@
     [self.QRViewBtn addTarget:self action:@selector(goToQRView) forControlEvents:UIControlEventTouchUpInside];
     [self.QRViewBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     
+    
     [self.view addSubview:self.QRViewBtn];
     
     self.QRLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
@@ -135,6 +142,8 @@
     self.QRLabel.textColor = [UIColor whiteColor];
     self.QRLabel.font = [UIFont systemFontOfSize:15.f];
     [self.QRViewBtn addSubview:self.QRLabel];
+    
+    self.QRViewBtn.layer.transform = CATransform3DMakeScale(1, 0, 1);
 
 }
 - (void)initData
@@ -166,11 +175,12 @@
     [self.view addSubview:self.collectionView];
 }
 
+
+#pragma mark - 扫一扫动画
 - (void)btnAnimation
 {
-    self.QRViewBtn.layer.transform = CATransform3DMakeScale(1, 0, 1);
     
-    [UIView animateWithDuration:0.5 delay:1.0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         self.QRViewBtn.layer.transform = CATransform3DIdentity;
         
@@ -179,7 +189,7 @@
     }];
 }
 
-
+#pragma mark - 商品image动画
 - (void)cardAnimation
 {
     for (NSIndexPath *indexPath in [self.collectionView indexPathsForVisibleItems] )
@@ -228,7 +238,9 @@
     cell.model = self.modelArray[indexPath.row];
     cell.backgroundColor = [UIColor whiteColor];
     
-    cell.tradeImageView.layer.transform = CATransform3DMakeScale(1, 0, 1);
+  //  cell.tradeImageView.layer.transform = CATransform3DMakeScale(1, 0, 1);
+    cell.tradeImageView.layer.transform = CATransform3DMakeTranslation(0, -screenWidth/2, 0);
+    
     cell.tradeNameLabel.alpha = 0;
     cell.priceLabel.alpha = 0;
     
