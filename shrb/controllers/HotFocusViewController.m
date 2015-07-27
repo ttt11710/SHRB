@@ -18,6 +18,7 @@
 #import "NewStoreViewController.h"
 #import "StoreViewController.h"
 #import "TQTableViewCellRemoveController.h"
+#import "NewStoreCollectController.h"
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
@@ -40,12 +41,15 @@
     [self initController];
     [self initData];
     [self initTableView];
+    
+    [self cardAnimation];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -91,6 +95,26 @@
     
     self.cellRemoveController = [[TQTableViewCellRemoveController alloc] initWithTableView:self.tableView];
     self.cellRemoveController.delegate = self;
+}
+
+- (void)cardAnimation
+{
+    for (NSIndexPath* indexPath in [self.tableView indexPathsForVisibleRows])
+    {
+        HotFocusTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        cell.hotImageView.layer.transform = CATransform3DMakeScale(1, 0, 1);
+        cell.shadowView.layer.transform = CATransform3DMakeScale(1, 0, 1);
+        cell.storeLabelImage.layer.transform = CATransform3DMakeScale(1, 0, 1);
+        
+        //点击弹动动画
+        
+        [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            cell.hotImageView.layer.transform = CATransform3DIdentity;
+            cell.shadowView.layer.transform = CATransform3DIdentity;
+            cell.storeLabelImage.layer.transform = CATransform3DIdentity;
+        } completion:nil];
+    }
 }
 
 #pragma mark - tableView dataSource
@@ -206,6 +230,18 @@
         }];
         
     }];
+    
+//    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//        
+//        cell.hotImageView.layer.transform = CATransform3DMakeScale(5, 5, 1);
+//        
+//        
+//    } completion:^(BOOL finished) {
+//        
+//        [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:nil];
+//        [self performSelector:@selector(todoSomething:) withObject:indexPath afterDelay:0.0f];
+//        cell.hotImageView.layer.transform = CATransform3DIdentity;
+//    }];
 }
 
 
@@ -221,10 +257,16 @@
     
     if ([typesOfShops isEqualToString:@"supermarket"]) {
         //超市
-        NewStoreViewController *newStoreViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
-        newStoreViewController.currentRow = indexPath.row;
-        [newStoreViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        [self.navigationController pushViewController:newStoreViewController animated:YES];
+//        NewStoreViewController *newStoreViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
+//        newStoreViewController.currentRow = indexPath.row;
+//        [newStoreViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//        [self.navigationController pushViewController:newStoreViewController animated:YES];
+//        [SVProgressShow dismiss];
+        
+        
+        NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:newStoreCollectController animated:YES];
         [SVProgressShow dismiss];
     }
     else if ([typesOfShops isEqualToString:@"order"]) {

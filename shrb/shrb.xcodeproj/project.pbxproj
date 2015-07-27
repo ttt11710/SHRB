@@ -28,6 +28,9 @@
 		DF2B0E331B423DB40051AA1A /* TNRectangularCheckBoxData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E2A1B423DB40051AA1A /* TNRectangularCheckBoxData.m */; };
 		DF2D7A281B466919003790A5 /* CollectObjectiveTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */; };
 		DF2D7A2B1B466E6F003790A5 /* CollectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2D7A2A1B466E6F003790A5 /* CollectTableViewCell.m */; };
+		DF3CCDD41B6614690076A33F /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3CCDCF1B6614690076A33F /* JVFloatLabeledTextField.m */; };
+		DF3CCDD51B6614690076A33F /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3CCDD11B6614690076A33F /* JVFloatLabeledTextView.m */; };
+		DF3CCDD61B6614690076A33F /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3CCDD31B6614690076A33F /* NSString+TextDirectionality.m */; };
 		DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C571B0C448400FE499E /* CardTableViewController.m */; };
 		DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C601B0C59CD00FE499E /* ButtonTableViewCell.m */; };
 		DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C631B0C61CA00FE499E /* PayViewController.m */; };
@@ -146,6 +149,9 @@
 		DFDC896A1B43EDC80051D763 /* SuperBecomeMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDC89681B43EDC80051D763 /* SuperBecomeMemberView.m */; };
 		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
 		DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */; };
+		DFF766DF1B65D02E005BB71C /* NewStoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF766DE1B65D02E005BB71C /* NewStoreCollectionViewCell.m */; };
+		DFF766E11B65D054005BB71C /* NewStoreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF766E01B65D054005BB71C /* NewStoreCollectionViewCell.xib */; };
+		DFF766E41B65D2CE005BB71C /* NewStoreCollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF766E31B65D2CE005BB71C /* NewStoreCollectController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +207,12 @@
 		DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectObjectiveTableViewController.m; sourceTree = "<group>"; };
 		DF2D7A291B466E6F003790A5 /* CollectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectTableViewCell.h; sourceTree = "<group>"; };
 		DF2D7A2A1B466E6F003790A5 /* CollectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectTableViewCell.m; sourceTree = "<group>"; };
+		DF3CCDCE1B6614690076A33F /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextField.h; sourceTree = "<group>"; };
+		DF3CCDCF1B6614690076A33F /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextField.m; sourceTree = "<group>"; };
+		DF3CCDD01B6614690076A33F /* JVFloatLabeledTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextView.h; sourceTree = "<group>"; };
+		DF3CCDD11B6614690076A33F /* JVFloatLabeledTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextView.m; sourceTree = "<group>"; };
+		DF3CCDD21B6614690076A33F /* NSString+TextDirectionality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TextDirectionality.h"; sourceTree = "<group>"; };
+		DF3CCDD31B6614690076A33F /* NSString+TextDirectionality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TextDirectionality.m"; sourceTree = "<group>"; };
 		DF4E4C561B0C448400FE499E /* CardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTableViewController.h; sourceTree = "<group>"; };
 		DF4E4C571B0C448400FE499E /* CardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTableViewController.m; sourceTree = "<group>"; };
 		DF4E4C5F1B0C59CD00FE499E /* ButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonTableViewCell.h; path = ../Views/ButtonTableViewCell.h; sourceTree = "<group>"; };
@@ -421,6 +433,11 @@
 		DFF330E11B2EC57500007582 /* SVProgressShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressShow.m; sourceTree = "<group>"; };
 		DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoucherCenterViewController.h; sourceTree = "<group>"; };
 		DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoucherCenterViewController.m; sourceTree = "<group>"; };
+		DFF766DD1B65D02E005BB71C /* NewStoreCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreCollectionViewCell.h; sourceTree = "<group>"; };
+		DFF766DE1B65D02E005BB71C /* NewStoreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreCollectionViewCell.m; sourceTree = "<group>"; };
+		DFF766E01B65D054005BB71C /* NewStoreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewStoreCollectionViewCell.xib; sourceTree = "<group>"; };
+		DFF766E21B65D2CE005BB71C /* NewStoreCollectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreCollectController.h; sourceTree = "<group>"; };
+		DFF766E31B65D2CE005BB71C /* NewStoreCollectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreCollectController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +535,19 @@
 			path = TNCheckBoxGroup;
 			sourceTree = "<group>";
 		};
+		DF3CCDCD1B6614690076A33F /* JVFloatLabeledTextField */ = {
+			isa = PBXGroup;
+			children = (
+				DF3CCDCE1B6614690076A33F /* JVFloatLabeledTextField.h */,
+				DF3CCDCF1B6614690076A33F /* JVFloatLabeledTextField.m */,
+				DF3CCDD01B6614690076A33F /* JVFloatLabeledTextView.h */,
+				DF3CCDD11B6614690076A33F /* JVFloatLabeledTextView.m */,
+				DF3CCDD21B6614690076A33F /* NSString+TextDirectionality.h */,
+				DF3CCDD31B6614690076A33F /* NSString+TextDirectionality.m */,
+			);
+			path = JVFloatLabeledTextField;
+			sourceTree = "<group>";
+		};
 		DF6311EF1B5F788700ABBB22 /* POP */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,6 +585,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DF3CCDCD1B6614690076A33F /* JVFloatLabeledTextField */,
 				DF6311EF1B5F788700ABBB22 /* POP */,
 				DF87575C1B58D66A00964738 /* TQRemoveController */,
 				DF9372F91B4B690400960F86 /* KYCuteView */,
@@ -787,6 +818,9 @@
 			children = (
 				DF0D9C7B1B0C2A7400C0AB3F /* HotFocusTableViewCell.h */,
 				DF0D9C7C1B0C2A7400C0AB3F /* HotFocusTableViewCell.m */,
+				DFF766DD1B65D02E005BB71C /* NewStoreCollectionViewCell.h */,
+				DFF766DE1B65D02E005BB71C /* NewStoreCollectionViewCell.m */,
+				DFF766E01B65D054005BB71C /* NewStoreCollectionViewCell.xib */,
 				DF976B381B62099E0097790E /* MyImageView.h */,
 				DF976B391B62099E0097790E /* MyImageView.m */,
 				DF72C0E41B0B413100CE6DC6 /* HotDetailTableViewCell.h */,
@@ -965,6 +999,8 @@
 			children = (
 				DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */,
 				DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */,
+				DFF766E21B65D2CE005BB71C /* NewStoreCollectController.h */,
+				DFF766E31B65D2CE005BB71C /* NewStoreCollectController.m */,
 				DF66B83B1B535B43002E9EFC /* SuperQRViewController.h */,
 				DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */,
 				DF66B83E1B53689D002E9EFC /* SuperCompletePayViewController.h */,
@@ -1196,6 +1232,7 @@
 				DF72C0CA1B0B339800CE6DC6 /* LaunchScreen.xib in Resources */,
 				DF9119A81B392BC500833AAB /* OrderListTableViewCell.xib in Resources */,
 				DF72C0C71B0B339800CE6DC6 /* Images.xcassets in Resources */,
+				DFF766E11B65D054005BB71C /* NewStoreCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1283,6 +1320,8 @@
 				DF7A8A5C1B3CE97700528864 /* ProductTableViewCell.m in Sources */,
 				DF7A8A5F1B3CE9DC00528864 /* ProductModel.m in Sources */,
 				DFCF89F01B5779DE00D09A4A /* FoldingView.m in Sources */,
+				DFF766E41B65D2CE005BB71C /* NewStoreCollectController.m in Sources */,
+				DF3CCDD61B6614690076A33F /* NSString+TextDirectionality.m in Sources */,
 				DFAE95581B253588006A495B /* CouponsDetailTableViewController.m in Sources */,
 				DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */,
 				DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */,
@@ -1326,6 +1365,7 @@
 				DF2B0E311B423DB40051AA1A /* TNImageCheckBoxData.m in Sources */,
 				DFCF89F61B577AE600D09A4A /* UIColor+CustomColors.m in Sources */,
 				DFB057961B40F1840091A1E1 /* MemberPayTableViewCell.m in Sources */,
+				DFF766DF1B65D02E005BB71C /* NewStoreCollectionViewCell.m in Sources */,
 				DFB763281B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m in Sources */,
 				DFAE52B01B32743500B03B2F /* QRView.m in Sources */,
 				DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */,
@@ -1352,11 +1392,13 @@
 				DF2B0E2B1B423DB40051AA1A /* TNCheckBox.m in Sources */,
 				DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */,
 				DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */,
+				DF3CCDD41B6614690076A33F /* JVFloatLabeledTextField.m in Sources */,
 				DF6311F61B5F817200ABBB22 /* ProductIsMemberViewController.m in Sources */,
 				DF9D09E91B5DF0C80007A7FB /* ParagraphAttributes+Constructor.m in Sources */,
 				DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */,
 				DF6311F31B5F78AC00ABBB22 /* ImageView.m in Sources */,
 				DF2B0E121B422DDD0051AA1A /* PayQRViewController.m in Sources */,
+				DF3CCDD51B6614690076A33F /* JVFloatLabeledTextView.m in Sources */,
 				DF9D09D61B5DDB160007A7FB /* ForeGroundColorStyle.m in Sources */,
 				DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */,
 				DFB1E8371B3A58ED00366200 /* CollectTableViewController.swift in Sources */,

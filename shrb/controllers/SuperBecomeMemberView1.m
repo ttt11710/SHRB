@@ -11,6 +11,7 @@
 #import "SVProgressShow.h"
 #import "ProductTableViewController.h"
 #import "ProductViewController.h"
+#import "JVFloatLabeledTextField.h"
 
 static SuperBecomeMemberView1 *g_SuperBecomeMemberView = nil;
 
@@ -67,7 +68,7 @@ static SuperBecomeMemberView1 *g_SuperBecomeMemberView = nil;
     _telephoneTextField.borderStyle = UITextBorderStyleBezel;
     _telephoneTextField.delegate = self;
     [self addSubview:_telephoneTextField];
-    
+
     UILabel *passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, telephoneLabel.frame.origin.y + telephoneLabel.frame.size.height+4, 50, 30)];
     [passwordLabel setText:@"密码"];
     [passwordLabel setTextColor:shrbText];

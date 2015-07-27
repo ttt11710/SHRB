@@ -37,7 +37,8 @@ static NewStoreViewController *g_StoreViewController = nil;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) UIBezierPath *path;
-@property (weak, nonatomic) IBOutlet UIButton *topBtn;
+@property (weak, nonatomic) IBOutlet UIButton *QRViewBtn;
+@property (weak, nonatomic) IBOutlet UILabel *QRLabel;
 
 @property (nonatomic,strong) NSMutableArray * modelArray;
 @property (nonatomic, strong) NSMutableArray *plistArr;
@@ -72,6 +73,8 @@ static NewStoreViewController *g_StoreViewController = nil;
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
     self.view.hidden = NO;
+    
+    [self btnAnimation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -112,6 +115,45 @@ static NewStoreViewController *g_StoreViewController = nil;
     self.selectTypeTableView.tableFooterView = [[UIView alloc] init];
     //动画
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+}
+
+
+- (void)btnAnimation
+{
+    self.QRViewBtn.layer.transform = CATransform3DMakeScale(1, 0, 1);
+    
+    [UIView animateWithDuration:0.5 delay:1.0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.QRViewBtn.layer.transform = CATransform3DIdentity;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)btnAnimation1
+{
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.QRViewBtn.layer.transform = CATransform3DMakeScale(0.95, 0.95, 1);
+        self.QRLabel.layer.transform = CATransform3DMakeScale(0.95, 0.95, 1);
+        
+    } completion:^(BOOL finished) {
+        [self btnAnimation2];
+    }];
+}
+
+
+- (void)btnAnimation2
+{
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.QRViewBtn.layer.transform = CATransform3DIdentity;
+        self.QRLabel.layer.transform = CATransform3DIdentity;
+        
+    } completion:^(BOOL finished) {
+        [self btnAnimation1];
+    }];
 }
 
 #pragma mark - 分类选择
@@ -344,24 +386,24 @@ static NewStoreViewController *g_StoreViewController = nil;
     lastContentOffset = scrollView.contentOffset.y;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.y < lastContentOffset )
-    {
-        //向上
-        _topBtn.hidden = NO;
-        
-    } else if (scrollView. contentOffset.y >lastContentOffset){
-        //向下
-        CATransition *animation = [CATransition animation];
-        animation.type = kCATransitionMoveIn;
-        animation.duration = 1.0f;
-        [_topBtn.layer addAnimation:animation forKey:nil];
-        _topBtn.hidden = YES;
-    }
-    if (scrollView.contentOffset.y == 0) {
-        _topBtn.hidden = YES;
-    }
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    if (scrollView.contentOffset.y < lastContentOffset )
+//    {
+//        //向上
+//        _topBtn.hidden = NO;
+//        
+//    } else if (scrollView. contentOffset.y >lastContentOffset){
+//        //向下
+//        CATransition *animation = [CATransition animation];
+//        animation.type = kCATransitionMoveIn;
+//        animation.duration = 1.0f;
+//        [_topBtn.layer addAnimation:animation forKey:nil];
+//        _topBtn.hidden = YES;
+//    }
+//    if (scrollView.contentOffset.y == 0) {
+//        _topBtn.hidden = YES;
+//    }
+//}
 
 //#pragma mark - tableView滚回最前面
 //- (IBAction)tabViewSetContentToTop:(id)sender {

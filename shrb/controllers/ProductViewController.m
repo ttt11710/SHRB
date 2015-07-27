@@ -88,11 +88,12 @@ static ProductViewController *g_ProductViewController = nil;
     [super viewWillAppear:animated];
     
     [self startTime];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     
-    [super viewWillAppear:animated];
+    [super viewWillDisappear:animated];
     
     [_timer invalidate];
 }
@@ -132,10 +133,10 @@ static ProductViewController *g_ProductViewController = nil;
 -(void)initCardView{
     
     if (screenHeight>480) {
-        _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(10, 10, screenWidth-20, screenHeight/5*3-20)];
+        _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(16, 16, screenWidth-32, screenHeight/5*3-20)];
     }
     else{
-        _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(10, 10, screenWidth-20, screenHeight/2+30)];
+        _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(16, 16, screenWidth-32, screenHeight/2+30)];
     }
     
     _cardShadowView.layer.cornerRadius = 8;
@@ -287,31 +288,31 @@ static ProductViewController *g_ProductViewController = nil;
 {
     
     self.registerBtn.layer.transform = CATransform3DMakeTranslation(screenWidth, 0, 0);
+    self.cardView.layer.transform = CATransform3DMakeScale(0, 0, 1);
     self.descriptionLabel.alpha = 0;
     
-    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.8 delay:0.1 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
-        self.cardView.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1);
+        self.cardView.layer.transform = CATransform3DIdentity;
         
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            
-            self.registerBtn.layer.transform = CATransform3DMakeScale(0.5, 1, 1);
-            self.cardView.layer.transform = CATransform3DIdentity;
-            
-        } completion:^(BOOL finished) {
-            
-        }];
-        [UIView animateWithDuration:1.5 delay:0.2 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            
-            self.registerBtn.layer.transform = CATransform3DIdentity;
-        } completion:^(BOOL finished) {
-            
-        }];
+        
     }];
     
-    [UIView transitionWithView:self.descriptionLabel duration:2 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+    [UIView animateWithDuration:2.0 delay:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
         self.descriptionLabel.alpha = 1;
+    } completion:nil];
+    
+    [UIView animateWithDuration:0.8 delay:1.5 usingSpringWithDamping:0.3 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.registerBtn.layer.transform = CATransform3DMakeScale(0.5, 1, 1);
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    [UIView animateWithDuration:1.5 delay:1.5 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.registerBtn.layer.transform = CATransform3DIdentity;
     } completion:^(BOOL finished) {
         
     }];

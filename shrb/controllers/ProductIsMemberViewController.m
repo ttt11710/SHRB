@@ -87,11 +87,12 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
     [super viewWillAppear:animated];
     
     [self startTime];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     
-    [super viewWillAppear:animated];
+    [super viewWillDisappear:animated];
     
     [_timer invalidate];
 }
@@ -122,6 +123,7 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 - (void)initMainView
 {
     _mainScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    _mainScrollView.backgroundColor = [UIColor whiteColor] ;
     [self.view addSubview:_mainScrollView];
 }
 
@@ -167,10 +169,10 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 -(void)initCardView{
     
     if (screenHeight>480) {
-        _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(10, _memberCardView.frame.origin.y + _memberCardView.frame.size.height + 10, screenWidth-20, screenHeight/5*3-20)];
+        _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(16, _memberCardView.frame.origin.y + _memberCardView.frame.size.height + 16, screenWidth-32, screenHeight/5*3-20)];
     }
     else{
-        _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(10, _memberCardView.frame.origin.y + _memberCardView.frame.size.height + 10, screenWidth-20, screenHeight/2+30)];
+        _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(16, _memberCardView.frame.origin.y + _memberCardView.frame.size.height + 16, screenWidth-32, screenHeight/2+30)];
     }
     
     _cardShadowView.layer.cornerRadius = 8;
@@ -306,11 +308,11 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 - (void)cardAnimation
 {
     self.memberCardView.layer.transform = CATransform3DMakeTranslation(screenWidth, 0, 0);
-    self.cardView.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
+    self.cardView.layer.transform = CATransform3DMakeScale(0, 0, 1);
     self.descriptionLabel.alpha = 0;
     
     
-    [UIView animateWithDuration:1.6 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:1.6 delay:0.1 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         self.memberCardView.layer.transform = CATransform3DIdentity;
         
@@ -318,7 +320,7 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
     
     }];
     
-    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.8 delay:1.0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         self.cardView.layer.transform = CATransform3DIdentity;
         
@@ -326,12 +328,15 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
         
     }];
     
-    
-    [UIView transitionWithView:self.descriptionLabel duration:2 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+    [UIView animateWithDuration:2.0 delay:1.5 options:UIViewAnimationOptionCurveLinear animations:^{
         self.descriptionLabel.alpha = 1;
-    } completion:^(BOOL finished) {
-        
-    }];
+    } completion:nil];
+    
+//    [UIView transitionWithView:self.descriptionLabel duration:2 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+//        
+//    } completion:^(BOOL finished) {
+//        
+//    }];
 }
 
 
