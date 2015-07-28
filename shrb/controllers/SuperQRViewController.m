@@ -12,6 +12,8 @@
 #import "QRView.h"
 #import "PayViewController.h"
 #import "OrdersViewController.h"
+#import "Const.h"
+#import <CBZSplashView/CBZSplashView.h>
 
 @interface SuperQRViewController ()<AVCaptureMetadataOutputObjectsDelegate,QRViewDelegate>
 
@@ -65,9 +67,7 @@
     _preview.videoGravity =AVLayerVideoGravityResize;
     _preview.frame =self.view.layer.bounds;
     [self.view.layer insertSublayer:_preview atIndex:0];
-    
-    
-    
+
     [_session startRunning];
     
     
@@ -86,8 +86,8 @@
     [self.view addSubview:pop];
     
     //修正扫描区域
-    CGFloat screenHeight = self.view.frame.size.height;
-    CGFloat screenWidth = self.view.frame.size.width;
+//    CGFloat screenHeight = self.view.frame.size.height;
+//    CGFloat screenWidth = self.view.frame.size.width;
     CGRect cropRect = CGRectMake((screenWidth - qrRectView.transparentArea.width) / 2,
                                  (screenHeight - qrRectView.transparentArea.height) / 2,
                                  qrRectView.transparentArea.width,
@@ -98,6 +98,13 @@
                                           cropRect.size.height / screenHeight,
                                           cropRect.size.width / screenWidth)];
     
+    
+    //动画 全屏
+    UIImage *icon = [UIImage imageNamed:@"Oval"];
+    UIColor *color = shrbPink;
+    CBZSplashView *splashView = [CBZSplashView splashViewWithIcon:icon backgroundColor:color];
+    [self.view addSubview:splashView];
+    [splashView startAnimation];
 }
 
 #pragma mark - 返回

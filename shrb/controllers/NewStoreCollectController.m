@@ -38,7 +38,7 @@
     [self createCollection];
     [self QRButtonView];
     
-    [self initBallView];
+   // [self initBallView];
     
 }
 
@@ -47,7 +47,9 @@
     [super viewWillAppear:animated];
     self.view.hidden = NO;
     
-    [self ballBackViewAnimation];
+    [self btnAnimation];
+    
+  //  [self ballBackViewAnimation];
     
 }
 
@@ -180,7 +182,7 @@
 - (void)btnAnimation
 {
     
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.5 delay:0.5 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         self.QRViewBtn.layer.transform = CATransform3DIdentity;
         
@@ -321,20 +323,36 @@
 #pragma mark - 扫码支付
 - (void)goToQRView {
     
-    //    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
-    //    if (!isLogin) {
-    //        [SVProgressShow showInfoWithStatus:@"请先登录账号！"];
-    //        return ;
-    //    }
-    if ([self validateCamera]) {
+//    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
+//    if (!isLogin) {
+//        [SVProgressShow showInfoWithStatus:@"请先登录账号！"];
+//        return ;
+//    }
+    
+    //点击弹动动画
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
-        [self showQRViewController];
+        self.QRViewBtn.layer.transform = CATransform3DMakeScale(1.2, 1.2, 1);
         
-    } else {
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没有摄像头或摄像头不可用" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
-    }
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.QRViewBtn.layer.transform = CATransform3DIdentity;
+            
+        } completion:^(BOOL finished) {
+            
+            if ([self validateCamera]) {
+                
+                [self showQRViewController];
+                
+            } else {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没有摄像头或摄像头不可用" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+            }
+        }];
+    }];
+    
 }
 
 - (BOOL)validateCamera {
@@ -346,8 +364,45 @@
 #pragma mark - 进入扫码页面
 - (void)showQRViewController {
     
-    SuperQRViewController *qrVC = [[SuperQRViewController alloc] init];
-    [self.navigationController pushViewController:qrVC animated:YES];
+    
+    self.QRLabel.hidden = YES;
+    
+    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0.8 options:UIViewAnimationOptionCurveLinear animations:^{
+        
+        self.QRViewBtn.layer.transform = CATransform3DMakeTranslation(-(self.QRViewBtn.frame.origin.x-screenWidth/2+self.QRViewBtn.frame.size.width/2), -(self.QRViewBtn.frame.origin.y-screenHeight/2+self.QRViewBtn.frame.size.height/2), 0);
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+//    [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+//        self.QRViewBtn.layer.transform = CATransform3DMakeTranslation(-(self.QRViewBtn.frame.origin.x-screenWidth/2+self.QRViewBtn.frame.size.width/2), -(self.QRViewBtn.frame.origin.y-screenHeight/2+self.QRViewBtn.frame.size.height/2), 0);
+//        
+//    } completion:^(BOOL finished) {
+//    
+////        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+////            
+////            CGRect bounds = self.QRViewBtn.bounds;
+////            bounds.size.width = bounds.size.width*20;
+////            bounds.size.height = bounds.size.height*20;
+////            
+////            self.QRViewBtn.layer.cornerRadius = self.QRViewBtn.bounds.size.width/2;
+////            self.QRViewBtn.bounds = bounds;
+////            
+////        } completion:^(BOOL finished) {
+////        
+////        }];
+//    }];
+    
+    [UIView animateWithDuration:0.0 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        
+    } completion:^(BOOL finished) {
+        
+        SuperQRViewController *qrVC = [[SuperQRViewController alloc] init];
+        [self.navigationController pushViewController:qrVC animated:NO];
+        self.QRViewBtn.layer.transform = CATransform3DIdentity;
+        self.QRLabel.hidden = NO;
+    }];
 }
 
 @end
