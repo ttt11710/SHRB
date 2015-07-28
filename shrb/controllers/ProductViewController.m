@@ -87,7 +87,9 @@ static ProductViewController *g_ProductViewController = nil;
     
     [super viewWillAppear:animated];
     
-    [self startTime];
+    if (!_timer.isValid) {
+        [self startTime];
+    }
     
 }
 
@@ -95,7 +97,10 @@ static ProductViewController *g_ProductViewController = nil;
     
     [super viewWillDisappear:animated];
     
-    [_timer invalidate];
+    if (_timer.isValid) {
+       [_timer invalidate];
+    }
+    
 }
 
 
@@ -535,12 +540,16 @@ static ProductViewController *g_ProductViewController = nil;
 #pragma mark - scrollView delegate
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    [_timer invalidate];
+    if (_timer.isValid) {
+        [_timer invalidate];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self startTime];
+    if (!_timer.isValid) {
+        [self startTime];
+    }
     
     int page = scrollView.contentOffset.x / scrollView.bounds.size.width;
     
@@ -583,6 +592,10 @@ static ProductViewController *g_ProductViewController = nil;
             self.cardView.layer.transform = CATransform3DIdentity;
             
         } completion:^(BOOL finished) {
+            
+            if (_timer.isValid) {
+                [_timer invalidate];
+            }
             
             ShowMeImageViewController *viewController = [[ShowMeImageViewController alloc] init];
             viewController.imagesArray=_imageArray;
