@@ -452,6 +452,9 @@ static ProductViewController *g_ProductViewController = nil;
             sizeAnimation.springSpeed = 0.f;
             sizeAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, self.smallbutton.frame.size.width-5, self.smallbutton.frame.size.height-5)];
             [self.smallbutton pop_addAnimation:sizeAnimation forKey:nil];
+            
+            self.becomeMemberView = nil;
+            [self.becomeMemberView removeFromSuperview];
         }];
         
     }];
