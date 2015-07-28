@@ -86,12 +86,15 @@
 
 - (void)initTableView
 {
+    //tableView 去分界线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //删除底部多余横线
     self.tableView.tableFooterView =[[UIView alloc]init];
     //动画
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
-    self.tableView.backgroundColor = shrbTableViewColor;
+   // self.tableView.backgroundColor = shrbTableViewColor;
+    self.tableView.backgroundColor = [UIColor whiteColor];
     
     self.cellRemoveController = [[TQTableViewCellRemoveController alloc] initWithTableView:self.tableView];
     self.cellRemoveController.delegate = self;

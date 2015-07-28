@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "Const.h"
 #import "SVProgressShow.h"
+#import "ProductViewController.h"
 
 
 @interface SubPageViewController : UIViewController<UIAlertViewDelegate>

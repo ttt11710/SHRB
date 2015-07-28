@@ -321,7 +321,9 @@ static ProductViewController *g_ProductViewController = nil;
 #pragma mark - 开启时间
 - (void)startTime
 {
+    
     _timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerFun) userInfo:nil repeats:YES];
+    
 }
 
 
@@ -538,8 +540,7 @@ static ProductViewController *g_ProductViewController = nil;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    
-    [_timer fire];
+    [self startTime];
     
     int page = scrollView.contentOffset.x / scrollView.bounds.size.width;
     
@@ -560,8 +561,6 @@ static ProductViewController *g_ProductViewController = nil;
         _imagePageControl.currentPage = page - 1;
     }
 }
-
-
 
 #pragma mark - 单击屏幕键盘消失
 -(void)tap {
