@@ -13,4 +13,5 @@
 
 + (SuperBecomeMemberView1 *)shareSuperBecomeMemberView;
 - (void)textFieldResignFirstResponder;
+- (void)showView;
 @end

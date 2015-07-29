@@ -401,7 +401,7 @@ static ProductViewController *g_ProductViewController = nil;
             self.smallbutton.hidden = NO;
             self.smallbutton.layer.transform = CATransform3DMakeTranslation(-(screenWidth/2-self.smallbutton.frame.size.width)-30, 0, 0);
             
-            _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
+          //  _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
             
             
         } completion:^(BOOL finished) {
@@ -421,6 +421,15 @@ static ProductViewController *g_ProductViewController = nil;
                 self.smallbutton.userInteractionEnabled = YES;
             }];
             [self.smallbutton.layer pop_addAnimation:positionAnimation forKey:@"positionAnimation"];
+        }];
+        
+        
+        [UIView animateWithDuration:0.1 delay:0.5 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
+        } completion:^(BOOL finished) {
+            
+            [[SuperBecomeMemberView1 shareSuperBecomeMemberView] showView];
+            
         }];
     }];
     

@@ -14,7 +14,10 @@
 #import "SVProgressShow.h"
 #import "CardModel.h"
 
+static int i = 0 ;
+
 @interface CardTableViewController ()
+
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
@@ -26,6 +29,14 @@
     
     [self initData];
     [self initTableView];
+    
+    [self cardAnimation];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
 }
 
 - (void)initData
@@ -98,7 +109,7 @@
     //tableView 去分界线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //动画
-    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+   // [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
     __weak CardTableViewController *weakSelf = self;
     //下拉刷新
@@ -111,6 +122,59 @@
         [weakSelf insertRowAtBottom];
     }];
  
+}
+
+
+- (void)cardAnimation
+{
+    
+    for (NSIndexPath* indexPath in [self.tableView indexPathsForVisibleRows])
+    {
+        i++;
+        CardTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        cell.shadowView.hidden = YES;
+        
+        cell.backImageView.layer.transform = CATransform3DMakeTranslation(0, -220, 0);
+        cell.backView.layer.transform = CATransform3DMakeTranslation(0, -220, 0);
+
+        
+        [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:nil];
+        [self performSelector:@selector(todoSomething:) withObject:cell afterDelay:0.2f*i];
+    }
+    i = 0 ;
+}
+
+
+- (void)todoSomething:(CardTableViewCell *)cell
+{
+    
+    [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        cell.backImageView.layer.transform = CATransform3DTranslate(cell.backImageView.layer.transform, 0, 220, 0);
+        cell.backView.layer.transform = CATransform3DTranslate(cell.backView.layer.transform, 0, 220, 0);
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        cell.backImageView.layer.transform = CATransform3DMakeScale(0.5, 0.5, 1);
+        cell.backView.layer.transform = CATransform3DMakeScale(0.5, 0.5, 1);
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    [UIView animateWithDuration:0.5 delay:0.4 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        cell.backImageView.layer.transform = CATransform3DScale(cell.backImageView.layer.transform, 2, 2, 1);
+        cell.backView.layer.transform = CATransform3DScale(cell.backView.layer.transform, 2, 2, 1);
+        
+    } completion:^(BOOL finished) {
+        
+        cell.shadowView.hidden = NO;
+    }];
+
 }
 
 #pragma mark - top插入数据

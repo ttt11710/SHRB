@@ -18,10 +18,18 @@ static  int Num = 0 ;
 
 @interface SuperBecomeMemberView1 () <UITextFieldDelegate>
 {
+    UILabel *_cardNumLabel;
+    UITextField *_cardNumTextField;
     
+    UILabel *_telephoneLabel;
     UITextField *_telephoneTextField;
+    
+    UILabel *_passwordLabel;
     UITextField *_passwordTextField;
+    
+    UIButton *_verificationCodeBtn;
     UITextField *_verificationCodeTextField;
+    
     UIButton *_sureBtn;
 }
 
@@ -49,58 +57,58 @@ static  int Num = 0 ;
 
 - (void)initView
 {
-    UILabel *cardNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-    [cardNumLabel setText:@"会员号"];
-    [cardNumLabel setTextColor:shrbText];
-    [cardNumLabel setFont:[UIFont systemFontOfSize:16]];
-    [self addSubview:cardNumLabel];
+    _cardNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [_cardNumLabel setText:@"会员号"];
+    [_cardNumLabel setTextColor:shrbText];
+    [_cardNumLabel setFont:[UIFont systemFontOfSize:16]];
+    [self addSubview:_cardNumLabel];
     
-    UITextField *cardNumTextField = [[UITextField alloc] initWithFrame:CGRectMake(cardNumLabel.frame.size.width+4, 0, 150, 30)];
-    cardNumTextField.placeholder = @"265842365122";
-    cardNumTextField.borderStyle = UITextBorderStyleBezel;
-    [self addSubview:cardNumTextField];
+    _cardNumTextField = [[UITextField alloc] initWithFrame:CGRectMake(_cardNumLabel.frame.size.width+4, 0, 150, 30)];
+    _cardNumTextField.placeholder = @"265842365122";
+    _cardNumTextField.borderStyle = UITextBorderStyleBezel;
+    [self addSubview:_cardNumTextField];
     
-    UILabel *telephoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, cardNumLabel.frame.origin.y + cardNumLabel.frame.size.height+4, 50, 30)];
-    [telephoneLabel setText:@"手机号"];
-    [telephoneLabel setTextColor:shrbText];
-    [telephoneLabel setFont:[UIFont systemFontOfSize:16]];
-    [self addSubview:telephoneLabel];
+    _telephoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _cardNumLabel.frame.origin.y + _cardNumLabel.frame.size.height+4, 50, 30)];
+    [_telephoneLabel setText:@"手机号"];
+    [_telephoneLabel setTextColor:shrbText];
+    [_telephoneLabel setFont:[UIFont systemFontOfSize:16]];
+    [self addSubview:_telephoneLabel];
     
-    _telephoneTextField = [[UITextField alloc] initWithFrame:CGRectMake(telephoneLabel.frame.size.width+4, telephoneLabel.frame.origin.y, 150, 30)];
+    _telephoneTextField = [[UITextField alloc] initWithFrame:CGRectMake(_telephoneLabel.frame.size.width+4, _telephoneLabel.frame.origin.y, 150, 30)];
     _telephoneTextField.borderStyle = UITextBorderStyleBezel;
     _telephoneTextField.delegate = self;
     [self addSubview:_telephoneTextField];
 
-    UILabel *passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, telephoneLabel.frame.origin.y + telephoneLabel.frame.size.height+4, 50, 30)];
-    [passwordLabel setText:@"密码"];
-    [passwordLabel setTextColor:shrbText];
-    [passwordLabel setFont:[UIFont systemFontOfSize:16]];
-    [self addSubview:passwordLabel];
+    _passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _telephoneLabel.frame.origin.y + _telephoneLabel.frame.size.height+4, 50, 30)];
+    [_passwordLabel setText:@"密码"];
+    [_passwordLabel setTextColor:shrbText];
+    [_passwordLabel setFont:[UIFont systemFontOfSize:16]];
+    [self addSubview:_passwordLabel];
     
-    _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(passwordLabel.frame.size.width+4, passwordLabel.frame.origin.y, 150, 30)];
+    _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(_passwordLabel.frame.size.width+4, _passwordLabel.frame.origin.y, 150, 30)];
     _passwordTextField.borderStyle = UITextBorderStyleBezel;
     _passwordTextField.secureTextEntry = YES;
     _passwordTextField.delegate = self;
     [self addSubview:_passwordTextField];
     
     
-    _verificationCodeTextField= [[UITextField alloc] initWithFrame:CGRectMake(0, passwordLabel.frame.origin.y + passwordLabel.frame.size.height+4, 120, 30)];
+    _verificationCodeTextField= [[UITextField alloc] initWithFrame:CGRectMake(0, _passwordLabel.frame.origin.y + _passwordLabel.frame.size.height+4, 120, 30)];
     _verificationCodeTextField.borderStyle = UITextBorderStyleBezel;
     _verificationCodeTextField.secureTextEntry = YES;
     _verificationCodeTextField.delegate = self;
     [self addSubview:_verificationCodeTextField];
     
-    UIButton *verificationCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    verificationCodeBtn.frame = CGRectMake(_verificationCodeTextField.frame.size.width+4, _verificationCodeTextField.frame.origin.y, 80, 30);
-    [verificationCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-    [verificationCodeBtn setTintColor:[UIColor clearColor]];
-    [verificationCodeBtn setBackgroundColor:shrbPink];
-    [verificationCodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    verificationCodeBtn.font = [UIFont systemFontOfSize:14.f];
-    verificationCodeBtn.layer.cornerRadius = 8;
-    verificationCodeBtn.layer.masksToBounds = YES;
-    [verificationCodeBtn addTarget:self action:@selector(giveVerificationCodeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:verificationCodeBtn];
+    _verificationCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _verificationCodeBtn.frame = CGRectMake(_verificationCodeTextField.frame.size.width+4, _verificationCodeTextField.frame.origin.y, 80, 30);
+    [_verificationCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [_verificationCodeBtn setTintColor:[UIColor clearColor]];
+    [_verificationCodeBtn setBackgroundColor:shrbPink];
+    [_verificationCodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _verificationCodeBtn.font = [UIFont systemFontOfSize:14.f];
+    _verificationCodeBtn.layer.cornerRadius = 8;
+    _verificationCodeBtn.layer.masksToBounds = YES;
+    [_verificationCodeBtn addTarget:self action:@selector(giveVerificationCodeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_verificationCodeBtn];
 
     
     _sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -113,6 +121,10 @@ static  int Num = 0 ;
     _sureBtn.layer.masksToBounds = YES;
     [_sureBtn addTarget:self action:@selector(becomeMemberBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_sureBtn];
+    
+    for (UIView *view in self.subviews) {
+        view.alpha = 0;
+    }
     
 }
 
@@ -219,6 +231,8 @@ static  int Num = 0 ;
             [_sureBtn setBackgroundImage:nil forState:UIControlStateNormal];
             _sureBtn.layer.transform = CATransform3DIdentity;
             
+         //   [self.layer removeAllAnimations];
+            
             [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
                 
                 CGRect bounds = _sureBtn.bounds;
@@ -286,5 +300,63 @@ static  int Num = 0 ;
     });
 }
 
+- (void)showView
+{
+//    UILabel *_cardNumLabel;
+//    UITextField *_cardNumTextField;
+//    
+//    UILabel *_telephoneLabel;
+//    UITextField *_telephoneTextField;
+//    
+//    UILabel *_passwordLabel;
+//    UITextField *_passwordTextField;
+//    
+//    UIButton *_verificationCodeBtn;
+//    UITextField *_verificationCodeTextField;
+//    
+//    UIButton *_sureBtn;
+
+    
+    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    
+        _cardNumLabel.alpha = 1;
+        _cardNumTextField.alpha = 1;
+    
+    } completion:^(BOOL finished) {
+        
+    }];
+    [UIView animateWithDuration:0.4 delay:0.2 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        _telephoneLabel.alpha = 1;
+        _telephoneTextField.alpha = 1;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    [UIView animateWithDuration:0.4 delay:0.4 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        _passwordLabel.alpha = 1;
+        _passwordTextField.alpha = 1;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    [UIView animateWithDuration:0.4 delay:0.6 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        _verificationCodeBtn.alpha = 1;
+        _verificationCodeTextField.alpha = 1;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    [UIView animateWithDuration:0.4 delay:0.8 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        _sureBtn.alpha = 1;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+
+}
 @end
 

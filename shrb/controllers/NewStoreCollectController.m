@@ -188,8 +188,36 @@
         
     } completion:^(BOOL finished) {
         
+        [self btnAnimation1];
+        [self btnAnimation2];
+        
     }];
 }
+
+- (void)btnAnimation1
+{
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        
+        self.QRViewBtn.layer.transform = CATransform3DMakeScale(0.9, 0.9, 1);
+        self.QRLabel.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1);
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)btnAnimation2
+{
+    [UIView animateWithDuration:0.5 delay:0.2 usingSpringWithDamping:0.3 initialSpringVelocity:0.2 options:UIViewAnimationOptionCurveLinear animations:^{
+        
+        self.QRViewBtn.layer.transform = CATransform3DIdentity;
+        self.QRLabel.layer.transform = CATransform3DIdentity;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 
 #pragma mark - 商品image动画
 - (void)cardAnimation
@@ -296,21 +324,32 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
-    if (isMember) {
+    
+    NewStoreCollectionViewCell* cell = (NewStoreCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+
+    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
-        ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
-        viewController.currentRow = indexPath.row;
-        viewController.currentSection = indexPath.section;
-        [self.navigationController pushViewController:viewController animated:YES];
-    }
-    else {
+        cell.layer.transform = CATransform3DMakeScale(5, 5, 1);
         
-        ProductViewController *viewController = [[ProductViewController alloc] init];
-        viewController.currentRow = indexPath.row;
-        viewController.currentSection = indexPath.section;
-        [self.navigationController pushViewController:viewController animated:YES];
-    }
+    } completion:^(BOOL finished) {
+    
+    }];
+    
+//    BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
+//    if (isMember) {
+//        
+//        ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
+//        viewController.currentRow = indexPath.row;
+//        viewController.currentSection = indexPath.section;
+//        [self.navigationController pushViewController:viewController animated:YES];
+//    }
+//    else {
+//        
+//        ProductViewController *viewController = [[ProductViewController alloc] init];
+//        viewController.currentRow = indexPath.row;
+//        viewController.currentSection = indexPath.section;
+//        [self.navigationController pushViewController:viewController animated:YES];
+//    }
 }
 
 

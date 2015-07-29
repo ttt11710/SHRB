@@ -12,4 +12,8 @@
 @interface CardTableViewCell : UITableViewCell
 @property (nonatomic,strong) CardModel * model;
 
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
+@property (weak, nonatomic) IBOutlet UIImageView *backImageView;
+@property (weak, nonatomic) IBOutlet UIView *backView;
+
 @end

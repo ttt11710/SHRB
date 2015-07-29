@@ -12,9 +12,7 @@
 
 @interface CardTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIView *shadowView;
-@property (weak, nonatomic) IBOutlet UIImageView *backImageView;
-@property (weak, nonatomic) IBOutlet UIView *backView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *memberCardImageView;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
