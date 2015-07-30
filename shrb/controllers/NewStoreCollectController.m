@@ -325,31 +325,31 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NewStoreCollectionViewCell* cell = (NewStoreCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-
-    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        
-        cell.layer.transform = CATransform3DMakeScale(5, 5, 1);
-        
-    } completion:^(BOOL finished) {
-    
-    }];
-    
-//    BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
-//    if (isMember) {
+//    NewStoreCollectionViewCell* cell = (NewStoreCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//
+//    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
 //        
-//        ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
-//        viewController.currentRow = indexPath.row;
-//        viewController.currentSection = indexPath.section;
-//        [self.navigationController pushViewController:viewController animated:YES];
-//    }
-//    else {
+//        cell.layer.transform = CATransform3DMakeScale(5, 5, 1);
 //        
-//        ProductViewController *viewController = [[ProductViewController alloc] init];
-//        viewController.currentRow = indexPath.row;
-//        viewController.currentSection = indexPath.section;
-//        [self.navigationController pushViewController:viewController animated:YES];
-//    }
+//    } completion:^(BOOL finished) {
+//    
+//    }];
+    
+    BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
+    if (isMember) {
+        
+        ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
+        viewController.currentRow = indexPath.row;
+        viewController.currentSection = indexPath.section;
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    else {
+        
+        ProductViewController *viewController = [[ProductViewController alloc] init];
+        viewController.currentRow = indexPath.row;
+        viewController.currentSection = indexPath.section;
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 
