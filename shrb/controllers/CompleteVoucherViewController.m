@@ -10,6 +10,8 @@
 #import "CardTableViewController.h"
 #import <DCAnimationKit/UIView+DCAnimationKit.h>
 #import <CRToast.h>
+#import <BFPaperButton/BFPaperButton.h>
+#import "Const.h"
 
 @interface CompleteVoucherViewController ()
 
@@ -19,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
 @property (weak, nonatomic) IBOutlet UITextView *recordTextView;
 
+@property (weak, nonatomic) IBOutlet BFPaperButton *completeVoucherBtn;
 @end
 
 @implementation CompleteVoucherViewController
@@ -37,6 +40,9 @@
     self.integralLabel.text = @"积分：10000分";
     self.cardNumberLabel.text = @"卡号：6789674329589432";
     self.recordTextView.text = @"2015年5月20日     PM15:47\n完成一次100元的充值交易";
+    
+    [self.completeVoucherBtn setBackgroundColor:shrbPink];
+    
     
 //    //动画
 //    NSDictionary *options = @{

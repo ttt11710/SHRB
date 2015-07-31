@@ -45,9 +45,9 @@
     [self cardAnimation];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
     
 }
@@ -268,7 +268,7 @@
         
         
         NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
-        self.hidesBottomBarWhenPushed = YES;
+        //self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:newStoreCollectController animated:YES];
         [SVProgressShow dismiss];
     }

@@ -31,6 +31,8 @@ static OrdersViewController *g_OrdersViewController = nil;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *showOtherPayBtn;
+@property (weak, nonatomic) IBOutlet BFPaperButton *memberPayBtn;
+@property (weak, nonatomic) IBOutlet BFPaperButton *otherPayBtn;
 
 @end
 
@@ -48,6 +50,7 @@ static OrdersViewController *g_OrdersViewController = nil;
     
     g_OrdersViewController = self;
     
+    [self initBtn];
     [self initData];
     [self initTableView];
 }
@@ -56,6 +59,13 @@ static OrdersViewController *g_OrdersViewController = nil;
 {
     isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
     [self.tableView reloadData];
+}
+
+- (void)initBtn
+{
+    [self.showOtherPayBtn setBackgroundColor:shrbPink];
+    [self.memberPayBtn setBackgroundColor:shrbPink];
+    [self.otherPayBtn setBackgroundColor:shrbPink];
 }
 
 - (void)initData

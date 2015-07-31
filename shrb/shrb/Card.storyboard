@@ -944,6 +944,7 @@
                     <connections>
                         <outlet property="cardImageView" destination="pCh-F8-30p" id="HzH-Mz-6oT"/>
                         <outlet property="cardNumberLabel" destination="Ean-bT-AxC" id="HWI-oL-zXl"/>
+                        <outlet property="completeVoucherBtn" destination="lok-i2-NCq" id="6vQ-lY-3fY"/>
                         <outlet property="integralLabel" destination="sJW-Bk-FLv" id="m2M-kk-w6T"/>
                         <outlet property="moneyLabel" destination="5qW-CD-BxJ" id="TO4-rL-54H"/>
                         <outlet property="recordTextView" destination="t3r-mT-kcc" id="Jss-Oi-Mlk"/>
@@ -1578,7 +1579,9 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="会员卡详情" id="gas-cw-ktP"/>
                     <connections>
+                        <outlet property="payBtn" destination="DFR-df-8Qq" id="QHa-ch-Ww5"/>
                         <outlet property="tableView" destination="YoI-3c-MeD" id="PtN-TP-lGM"/>
+                        <outlet property="voucherBtn" destination="NZv-9A-2GT" id="kJP-5r-djJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1b-sY-B0C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2216,39 +2219,6 @@
                                     <action selector="giveCouponsBtnPressed:" destination="3vE-rK-c1f" eventType="touchUpInside" id="DQf-9U-wYY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xT-IR-Ga7">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.99215686270000003" green="0.38823529410000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="pcr-rM-MiL"/>
-                                    <constraint firstAttribute="height" constant="30" id="zlQ-ys-SwY"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="QQ">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="pcr-rM-MiL"/>
-                                        <exclude reference="zlQ-ys-SwY"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="pcr-rM-MiL"/>
-                                        <include reference="zlQ-ys-SwY"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="giveCouponsBtnPressed:" destination="3vE-rK-c1f" eventType="touchUpInside" id="Uab-kI-bTd"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8n-LW-B3M">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.38823529410000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2321,6 +2291,39 @@
                                     <action selector="giveCouponsBtnPressed:" destination="3vE-rK-c1f" eventType="touchUpInside" id="ayg-jP-mWx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xT-IR-Ga7">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.38823529410000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="pcr-rM-MiL"/>
+                                    <constraint firstAttribute="height" constant="30" id="zlQ-ys-SwY"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="QQ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="pcr-rM-MiL"/>
+                                        <exclude reference="zlQ-ys-SwY"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="pcr-rM-MiL"/>
+                                        <include reference="zlQ-ys-SwY"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="giveCouponsBtnPressed:" destination="3vE-rK-c1f" eventType="touchUpInside" id="Uab-kI-bTd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2345,9 +2348,9 @@
                                 <exclude reference="n5Z-WU-gUH"/>
                                 <exclude reference="iFW-Ld-vmU"/>
                                 <exclude reference="irq-1Z-tyY"/>
-                                <exclude reference="5xT-IR-Ga7"/>
                                 <exclude reference="W8n-LW-B3M"/>
                                 <exclude reference="Sro-5Z-AY8"/>
+                                <exclude reference="5xT-IR-Ga7"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="6wC-lZ-jDE"/>
@@ -2372,9 +2375,9 @@
                                 <include reference="n5Z-WU-gUH"/>
                                 <include reference="iFW-Ld-vmU"/>
                                 <include reference="irq-1Z-tyY"/>
-                                <include reference="5xT-IR-Ga7"/>
                                 <include reference="W8n-LW-B3M"/>
                                 <include reference="Sro-5Z-AY8"/>
+                                <include reference="5xT-IR-Ga7"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="6wC-lZ-jDE"/>
@@ -2397,9 +2400,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="送好友界面" id="Sle-ML-okj"/>
                     <connections>
+                        <outlet property="QQBtn" destination="5xT-IR-Ga7" id="69Z-Q0-8uJ"/>
                         <outlet property="couponsImageView" destination="oVV-tf-FNW" id="O7I-E0-jWE"/>
                         <outlet property="descriptionTextView" destination="2Mx-PP-P9e" id="Fyg-yQ-mal"/>
+                        <outlet property="duanxinBtn" destination="Sro-5Z-AY8" id="eCY-oB-XAs"/>
                         <outlet property="moneyLabel" destination="Ckr-Ja-3N8" id="Pxv-8O-Mom"/>
+                        <outlet property="weiboBtn" destination="W8n-LW-B3M" id="tfX-DN-gGL"/>
+                        <outlet property="weixinBtn" destination="irq-1Z-tyY" id="XLg-fb-Fc5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFb-ik-7IF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2535,6 +2542,7 @@
                         <outlet property="couponsImageView" destination="94Q-Tz-TW3" id="QHG-6r-b7F"/>
                         <outlet property="moneyLabel" destination="WCk-Gk-Wfi" id="zKy-aD-coJ"/>
                         <outlet property="ruleLabel" destination="NSo-V0-3GJ" id="E0P-T2-y03"/>
+                        <outlet property="userBtn" destination="g4l-lo-pWp" id="FG7-Bv-UxZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3o6-s2-d5O" userLabel="First Responder" sceneMemberID="firstResponder"/>

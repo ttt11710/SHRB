@@ -16,6 +16,7 @@
     KYCuteView *_badgeLabel;
 }
 
+@property (weak, nonatomic) IBOutlet BFPaperButton *cardBtn;
 @property (weak, nonatomic) IBOutlet BFPaperButton *couponsBtn;
 //@property (weak, nonatomic) IBOutlet KYCuteView *badgeLabel;
 
@@ -26,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initBtn];
     [self initBadgeLabel];
     [self initController];
     
@@ -41,6 +43,12 @@
 {
     [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)initBtn
+{
+    [self.cardBtn setBackgroundColor:shrbPink];
+    [self.couponsBtn setBackgroundColor:shrbPink];
 }
 
 - (void)initBadgeLabel

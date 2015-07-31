@@ -150,6 +150,9 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     NSMutableArray  *_integralRuleArray;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *payBtn;
+@property (weak, nonatomic) IBOutlet UIButton *voucherBtn;
+
 
 @end
 
@@ -166,13 +169,25 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     
     g_NewCardDetailViewController = self;
     
+    [self initBtn];
+    [self initData];
+    [self initTableView];
+}
+
+- (void)initBtn
+{
+    [self.payBtn setBackgroundColor:shrbPink];
+    [self.voucherBtn setBackgroundColor:shrbPink];
+}
+
+- (void)initData
+{
     _dataMutableArray = [[NSMutableArray alloc] init];
     _rowDataMutableArray = [[NSMutableArray alloc] initWithObjects:@"会员规则\n1、会员卡注册不需缴纳任何费用。\n2、针对不同商家使用同一张会员卡，但优惠金额由商家决定。\n3、会员卡注销时需缴纳余额5%的手续费，且注销后不再享受会员优惠。",@"积分规则\n1、免费注册会员，即刻赠送20积分。\n2、成功交易一笔订单可获得积分，不同商品积分标准不同。\n3、消费时可使用积分抵消现金，不同商品使用标准不同。", nil];
     
     _memberRuleArray = [[NSMutableArray alloc] initWithObjects:@"会员规则\n1、会员卡注册不需缴纳任何费用。\n2、针对不同商家使用同一张会员卡，但优惠金额由商家决定。\n3、会员卡注销时需缴纳余额5%的手续费，且注销后不再享受会员优惠。", nil];
     
     _integralRuleArray = [[NSMutableArray alloc] initWithObjects:@"积分规则\n1、免费注册会员，即刻赠送20积分。\n2、成功交易一笔订单可获得积分，不同商品积分标准不同。\n3、消费时可使用积分抵消现金，不同商品使用标准不同。", nil];
-    
     
     for (int i=0; i<2; i++)
     {
@@ -184,24 +199,26 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         for (int j=0; j<1; j++)
         {
             if (i == 0) {
-              [sectionModel.sectionDataMutableArray addObject:[_memberRuleArray objectAtIndex:0]];
+                [sectionModel.sectionDataMutableArray addObject:[_memberRuleArray objectAtIndex:0]];
             }
             else {
                 [sectionModel.sectionDataMutableArray addObject:[_integralRuleArray objectAtIndex:0]];
             }
         }
-
+        
         
         [_dataMutableArray addObject:sectionModel];
-        
     }
-    
+
+}
+
+- (void)initTableView
+{
     //删除底部多余横线
     self.tableView.tableFooterView =[[UIView alloc]init];
     
     self.tableView.backgroundColor = shrbTableViewColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    
 }
 
 #pragma mark - tableView dataSource

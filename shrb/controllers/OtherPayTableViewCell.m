@@ -7,11 +7,23 @@
 //
 
 #import "OtherPayTableViewCell.h"
+#import "Const.h"
+
+
+@interface OtherPayTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIButton *internetbankBtn;
+@property (weak, nonatomic) IBOutlet UIButton *alipayBtn;
+
+
+@end
 
 @implementation OtherPayTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    
+    [self.internetbankBtn setBackgroundColor:shrbPink];
+    [self.alipayBtn setBackgroundColor:shrbPink];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

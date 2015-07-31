@@ -7,6 +7,7 @@
 //
 
 #import "HJCAjustNumButton.h"
+#import "Const.h"
 
 @interface HJCAjustNumButton ()
 {
@@ -57,7 +58,7 @@
     
     self.frame = CGRectMake(0, 0, 30, 30);
   //  self.backgroundColor = [UIColor whiteColor];
-    self.backgroundColor = [UIColor colorWithRed:253.0/255.0 green:99.0/255.0 blue:93.0/255.0 alpha:1];
+    self.backgroundColor = shrbPink;
     self.layer.cornerRadius = 15;
     self.clipsToBounds = YES;
     self.layer.borderWidth = 1;

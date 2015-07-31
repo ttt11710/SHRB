@@ -26,6 +26,9 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
+
 @property (weak, nonatomic) IBOutlet BFPaperButton *makeSurePayBtn;
 
 @property (nonatomic,strong) NSMutableArray * dataArray;
@@ -38,6 +41,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.makeSurePayBtn setBackgroundColor:shrbPink];
     
     self.dataArray = [[NSMutableArray alloc] initWithObjects:
                       @{

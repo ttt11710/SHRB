@@ -13,12 +13,15 @@
 #import "Const.h"
 #import "LeftLabelTableViewCell.h"
 #import "CompletePayOrdersTableViewCell.h"
+#import <BFPaperButton/BFPaperButton.h>
 
 @interface CompletePayViewController () {
     BOOL _isMember;
 }
 @property (weak, nonatomic) IBOutlet UILabel *completePayLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet BFPaperButton *finishBtn;
 
 @property (nonatomic,strong) NSMutableArray * dataArray;
 
@@ -31,11 +34,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initBtn];
     [self initData];
     [self initTableView];
     
     [self.completePayLabel swing:nil];
 }
+
+- (void)initBtn
+{
+    [self.finishBtn setBackgroundColor:shrbPink];
+}
+
 
 - (void)initData
 {

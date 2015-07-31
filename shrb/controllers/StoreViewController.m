@@ -76,6 +76,8 @@ static StoreViewController *g_StoreViewController = nil;
     
     UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
     self.navigationItem.rightBarButtonItem = selectType;
+    
+    [self.gotopayViewBtn setBackgroundColor:shrbPink];
 }
 
 - (void)initData

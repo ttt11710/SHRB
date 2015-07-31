@@ -8,8 +8,13 @@
 
 #import "GiveCouponsViewController.h"
 #import "SVProgressShow.h"
+#import "Const.h"
 
 @interface GiveCouponsViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *duanxinBtn;
+@property (weak, nonatomic) IBOutlet UIButton *weixinBtn;
+@property (weak, nonatomic) IBOutlet UIButton *QQBtn;
+@property (weak, nonatomic) IBOutlet UIButton *weiboBtn;
 
 @end
 
@@ -26,6 +31,12 @@
     self.couponsImageView.image = [UIImage imageNamed:@"官方头像"];
     self.moneyLabel.text = @"金额：200RMB";
     self.descriptionTextView.text = @"使用期限\n2015.01.01——2016.05.20\n\n送好友\n好友接收到电子券，就可以凭券消费。。。\n\n转送方式\n以链接的方式，直接通过短信、微信、QQ、微博等发给指定好友即可。";
+    
+    [self.duanxinBtn setBackgroundColor:shrbPink];
+    [self.weixinBtn setBackgroundColor:shrbPink];
+    [self.QQBtn setBackgroundColor:shrbPink];
+    [self.weiboBtn setBackgroundColor:shrbPink];
+    
 }
 
 #pragma mark - 赠送电子券
