@@ -181,10 +181,11 @@ static int i = 0 ;
 - (void)insertRowAtTop {
     __weak CardTableViewController *weakSelf = self;
     
+    
     int64_t delayInSeconds = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [weakSelf.tableView beginUpdates];
+        
         
         NSDictionary *dic = @{
                               @"memberCardImage" : @"御泥坊Logo",
@@ -199,27 +200,39 @@ static int i = 0 ;
                               @"spinRange":@(0.25),
                               };
 
-        CardModel * model = [[CardModel alloc] init];
+        
+                CardModel * model = [[CardModel alloc] init];
         [model setValuesForKeysWithDictionary:dic];
-        [weakSelf.dataArray insertObject:model atIndex:0];
         
-        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
-        [weakSelf.tableView endUpdates];
         
+        if (self.dataArray.count <= 5 )
+        {
+            [weakSelf.tableView beginUpdates];
+            [weakSelf.dataArray insertObject:model atIndex:0];
+            [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+            [weakSelf.tableView endUpdates];
+            [weakSelf.tableView.pullToRefreshView stopAnimating];
+            [weakSelf.tableView reloadData];
+            [SVProgressShow showSuccessWithStatus:@"刷新成功！"];
+            return ;
+        }
+
         [weakSelf.tableView.pullToRefreshView stopAnimating];
-        [weakSelf.tableView reloadData];
-        [SVProgressShow showSuccessWithStatus:@"刷新成功！"];
+        [SVProgressShow showInfoWithStatus:@"没有更多会员卡！"];
     });
 }
 
 #pragma mark - bottom插入数据
 - (void)insertRowAtBottom {
+    
     __weak CardTableViewController *weakSelf = self;
+    
+    [weakSelf.tableView.infiniteScrollingView setScrollViewContentInsetForInfiniteScrolling];
     
     int64_t delayInSeconds = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [weakSelf.tableView beginUpdates];
+        
         NSDictionary *dic = @{
                               @"memberCardImage" : @"holyLogo",
                               @"money" : @"1000",
@@ -234,13 +247,22 @@ static int i = 0 ;
                               };
         CardModel * model = [[CardModel alloc] init];
         [model setValuesForKeysWithDictionary:dic];
-        [weakSelf.dataArray addObject:model];
         
-        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.dataArray.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-        [weakSelf.tableView endUpdates];
+        if (self.dataArray.count <= 5 )
+        {
+            [weakSelf.tableView beginUpdates];
+            [weakSelf.dataArray addObject:model];
+            [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.dataArray.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+            [weakSelf.tableView endUpdates];
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+            [SVProgressShow showSuccessWithStatus:@"加载成功！"];
+            return ;
+        }
         
         [weakSelf.tableView.infiniteScrollingView stopAnimating];
-        [SVProgressShow showSuccessWithStatus:@"加载成功！"];
+        [weakSelf.tableView.infiniteScrollingView resetScrollViewContentInset];
+        [SVProgressShow showInfoWithStatus:@"没有更多会员卡！"];
+        
     });
 }
 

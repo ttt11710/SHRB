@@ -39,6 +39,9 @@ typedef NSUInteger SVInfiniteScrollingState;
 
 - (void)setCustomView:(UIView *)view forState:(SVInfiniteScrollingState)state;
 
+- (void)resetScrollViewContentInset;
+- (void)setScrollViewContentInsetForInfiniteScrolling;
+
 - (void)startAnimating;
 - (void)stopAnimating;
 

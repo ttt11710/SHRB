@@ -48,6 +48,9 @@
     self.memberCardImageView.layer.cornerRadius = 10;
     self.memberCardImageView.layer.masksToBounds = YES;
     
+    for (id layer in self.backImageView.layer.sublayers) {
+        [layer removeFromSuperlayer];
+    }
     
 }
 
