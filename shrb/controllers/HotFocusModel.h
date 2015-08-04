@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 /*热点商店模型*/
 @interface HotFocusModel : NSObject
+
 @property(nonatomic,copy) NSString * status;        //会员状态
+@property(nonatomic,copy) NSString * storeId; //店铺Id
 @property(nonatomic,copy) NSString * storeLogo; //店铺logo
 @property(nonatomic,copy) NSString * storeName;     //商店名称
 @property(nonatomic,copy) NSString * storeLabel;     //商店标签

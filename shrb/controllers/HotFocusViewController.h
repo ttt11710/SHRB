@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface HotFocusViewController : UIViewController
+@interface HotFocusViewController : PYBaseViewController
 
 @end

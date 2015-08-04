@@ -5,6 +5,8 @@
 	<dict>
 		<key>storePlistName</key>
 		<string>16N</string>
+		<key>storeId</key>
+		<string>1</string>
 		<key>storeLabel</key>
 		<string>16NLabel</string>
 		<key>storeDetail</key>
@@ -24,6 +26,8 @@
 		<string>16N</string>
 	</dict>
 	<dict>
+		<key>storeId</key>
+		<string>2</string>
 		<key>storePlistName</key>
 		<string>yunifang</string>
 		<key>storeLabel</key>
@@ -47,6 +51,8 @@
 	<dict>
 		<key>storePlistName</key>
 		<string>holy</string>
+		<key>storeId</key>
+		<string>3</string>
 		<key>storeLabel</key>
 		<string>holyLabel</string>
 		<key>storeLogo</key>
@@ -69,6 +75,8 @@
 	<dict>
 		<key>storePlistName</key>
 		<string>McDonalds</string>
+		<key>storeId</key>
+		<string>4</string>
 		<key>storeLabel</key>
 		<string>McDonaldsLabel</string>
 		<key>storeDetail</key>

@@ -15,6 +15,9 @@
 #import "SuperQRViewController.h"
 
 @interface NewStoreCollectController ()
+{
+    BOOL showSelectTypeTableView;;
+}
 @property (retain, nonatomic) UICollectionView *collectionView;
 @property (retain, nonatomic) UIButton *QRViewBtn;
 @property (retain, nonatomic) UILabel *QRLabel;
@@ -22,6 +25,11 @@
 @property (retain, nonatomic) UIView *ballBackview;
 @property (retain, nonatomic) UIView *ballview;
 
+
+@property (retain, nonatomic) UIView *selectTypeTableViewBackView;
+@property (retain, nonatomic) UITableView *selectTypeTableView;
+
+@property (nonatomic,strong) NSMutableArray * selectArray;
 @property (nonatomic,strong) NSMutableArray * modelArray;
 @property (nonatomic, strong) NSMutableArray *plistArr;
 
@@ -36,6 +44,7 @@
     [self initView];
     [self initData];
     [self createCollection];
+    [self createSelectTypeTableView];
     [self QRButtonView];
     
    // [self initBallView];
@@ -121,6 +130,12 @@
 - (void)initView
 {
     self.title = [[NSUserDefaults standardUserDefaults] stringForKey:@"storeName"];
+    
+    self.title = [[NSUserDefaults standardUserDefaults] stringForKey:@"storeName"];
+    
+    UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
+    self.navigationItem.rightBarButtonItem = selectType;
+
 }
 
 - (void)QRButtonView
@@ -155,6 +170,7 @@
     self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
     
     self.modelArray = [[NSMutableArray alloc] init];
+    self.selectArray =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
     
 }
 
@@ -177,6 +193,24 @@
     [self.view addSubview:self.collectionView];
 }
 
+- (void)createSelectTypeTableView
+{
+    showSelectTypeTableView = NO;
+
+    self.selectTypeTableViewBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+    self.selectTypeTableViewBackView.hidden = YES;
+    
+    self.selectTypeTableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth, 20+44, screenWidth/2, screenHeight) style:UITableViewStylePlain];
+    
+    self.selectTypeTableView.tableFooterView = [[UIView alloc] init];
+    
+    self.selectTypeTableView.delegate = self;
+    self.selectTypeTableView.dataSource = self;
+    self.selectTypeTableView.backgroundColor = [UIColor clearColor];
+    
+    [self.view addSubview:self.selectTypeTableViewBackView];
+    [self.view addSubview:self.selectTypeTableView];
+}
 
 #pragma mark - 扫一扫动画
 - (void)btnAnimation
@@ -234,18 +268,67 @@
     }
 }
 
+#pragma mark - 分类选择
+- (void)selectType
+{
+    showSelectTypeTableView = !showSelectTypeTableView;
+    if (showSelectTypeTableView) {
+        self.selectTypeTableViewBackView.hidden = NO;
+        
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.selectTypeTableView.layer.transform = CATransform3DMakeTranslation(-screenWidth/2, 0, 0);
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.selectTypeTableViewBackView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+    else {
+        
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.selectTypeTableView.layer.transform = CATransform3DMakeTranslation(-screenWidth/2, 0, 0);
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.selectTypeTableView.layer.transform = CATransform3DIdentity;
+            
+        } completion:^(BOOL finished) {
+            
+            self.selectTypeTableViewBackView.hidden = YES;
+        }];
+    }
+}
 
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[self.plistArr objectAtIndex:section][@"info"] count];
+    return [[self.selectArray objectAtIndex:section][@"info"] count];
 }
 
 
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [self.plistArr count];
+    return [self.selectArray count];
 }
 
 
@@ -254,12 +337,12 @@
 {
     
     NewStoreCollectionViewCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
-    if ([self.plistArr count]==0) {
+    if ([self.selectArray count]==0) {
         return cell;
     }
     
     [self.modelArray removeAllObjects];
-    for (NSDictionary * dict in [self.plistArr objectAtIndex:indexPath.section][@"info"]) {
+    for (NSDictionary * dict in [self.selectArray objectAtIndex:indexPath.section][@"info"]) {
         TradeModel * model = [[TradeModel alloc] init];
         [model setValuesForKeysWithDictionary:dict];
         [self.modelArray addObject:model];
@@ -306,7 +389,7 @@
     UIFont* theFont = [UIFont systemFontOfSize:14.0];
     priceLabel.numberOfLines = 0;
     [priceLabel setFont:theFont];
-    NSString *string = [NSString stringWithFormat:@"会员价：%@元  原价：%@元",[[self.plistArr objectAtIndex:indexPath.section][@"info"] objectAtIndex:indexPath.row][@"memberPrice"],[[self.plistArr objectAtIndex:indexPath.section][@"info"] objectAtIndex:indexPath.row][@"originalPrice"]];
+    NSString *string = [NSString stringWithFormat:@"会员价：%@元  原价：%@元",[[self.selectArray objectAtIndex:indexPath.section][@"info"] objectAtIndex:indexPath.row][@"memberPrice"],[[self.selectArray objectAtIndex:indexPath.section][@"info"] objectAtIndex:indexPath.row][@"originalPrice"]];
     [priceLabel setText:string];
     [priceLabel sizeToFit];// 显示文本需要的长度和宽度
     
@@ -357,6 +440,65 @@
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
+}
+
+#pragma mark - tableView dataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
+
+#pragma mark - tableView delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+     return [self.plistArr count]+1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+        static NSString *SimpleTableIdentifier = @"cellId";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+        }
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    
+    cell.textLabel.text = indexPath.row == 0?@"全部类别" : [self.plistArr objectAtIndex:indexPath.row-1][@"type"];
+        cell.textLabel.textColor = shrbText;
+        return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        showSelectTypeTableView = !showSelectTypeTableView;
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.selectTypeTableView.layer.transform = CATransform3DIdentity;
+            self.selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
+            
+        } completion:^(BOOL finished) {
+            
+            self.selectTypeTableViewBackView.hidden = YES;
+            
+            if(indexPath.row == 0)
+            {
+                [self.selectArray removeAllObjects];
+                NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
+                self.selectArray =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
+            }
+            else {
+                [self.selectArray removeAllObjects];
+                [self.selectArray addObject:[self.plistArr objectAtIndex:indexPath.row-1]];
+            }
+        
+            [self.collectionView reloadData];
+        }];
 }
 
 #pragma mark - 扫码支付

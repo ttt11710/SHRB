@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewStoreCollectController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface NewStoreCollectController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @end

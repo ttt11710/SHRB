@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Const.h"
+#import "Migrations.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    [Migrations migrate];
     
     return YES;
 }

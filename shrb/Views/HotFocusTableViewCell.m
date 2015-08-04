@@ -12,6 +12,7 @@
 #import "Const.h"
 #import <QuartzCore/CoreAnimation.h>
 #import "SVProgressShow.h"
+#import "Store.h"
 
 @interface HotFocusTableViewCell () 
 {
@@ -26,7 +27,7 @@
 @end
 @implementation HotFocusTableViewCell
 
-- (void)setModel:(HotFocusModel *)model
+- (void)setModel:(Store *)model
 {
 //    // load all the frames of our animation
     _arr = [[NSMutableArray alloc] init];

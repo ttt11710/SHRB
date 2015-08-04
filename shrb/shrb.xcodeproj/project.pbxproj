@@ -15,6 +15,18 @@
 		DF0D9C851B0C423000C0AB3F /* CardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0D9C841B0C423000C0AB3F /* CardTableViewCell.m */; };
 		DF1504F71B5645980095D6A3 /* yunifang.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF1504F61B5645980095D6A3 /* yunifang.plist */; };
 		DF1504F91B5655160095D6A3 /* McDonalds.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF1504F81B5655160095D6A3 /* McDonalds.plist */; };
+		DF1EBFB61B6EFC60002DF8BA /* PYBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFB51B6EFC60002DF8BA /* PYBaseViewController.m */; };
+		DF1EBFBF1B6F13E6002DF8BA /* M1CreateChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFB81B6F13E6002DF8BA /* M1CreateChannel.m */; };
+		DF1EBFC01B6F13E6002DF8BA /* M2CreateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFB91B6F13E6002DF8BA /* M2CreateMessage.m */; };
+		DF1EBFC11B6F13E6002DF8BA /* M3CreateUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFBA1B6F13E6002DF8BA /* M3CreateUser.m */; };
+		DF1EBFC21B6F13E6002DF8BA /* Migrations.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFBC1B6F13E6002DF8BA /* Migrations.m */; };
+		DF1EBFC31B6F13E6002DF8BA /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFBE1B6F13E6002DF8BA /* DB.m */; };
+		DF1EBFC61B6F2E3D002DF8BA /* M4CreateHot.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFC51B6F2E3D002DF8BA /* M4CreateHot.m */; };
+		DF1EBFCE1B6F2FF7002DF8BA /* FmdbMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFC91B6F2FF7002DF8BA /* FmdbMigration.m */; };
+		DF1EBFCF1B6F2FF7002DF8BA /* FmdbMigrationColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFCB1B6F2FF7002DF8BA /* FmdbMigrationColumn.m */; };
+		DF1EBFD01B6F2FF7002DF8BA /* FmdbMigrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFCD1B6F2FF7002DF8BA /* FmdbMigrationManager.m */; };
+		DF1EBFD31B6F39E3002DF8BA /* MessageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFD21B6F39E3002DF8BA /* MessageProcessor.m */; };
+		DF1EBFD61B6F3A84002DF8BA /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFD51B6F3A84002DF8BA /* Store.m */; };
 		DF2B0E121B422DDD0051AA1A /* PayQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E111B422DDD0051AA1A /* PayQRViewController.m */; };
 		DF2B0E151B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E141B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m */; };
 		DF2B0E2B1B423DB40051AA1A /* TNCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E181B423DB40051AA1A /* TNCheckBox.m */; };
@@ -179,6 +191,26 @@
 		DF0D9C841B0C423000C0AB3F /* CardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardTableViewCell.m; path = ../Views/CardTableViewCell.m; sourceTree = "<group>"; };
 		DF1504F61B5645980095D6A3 /* yunifang.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = yunifang.plist; sourceTree = "<group>"; };
 		DF1504F81B5655160095D6A3 /* McDonalds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = McDonalds.plist; sourceTree = "<group>"; };
+		DF1EBFB41B6EFC60002DF8BA /* PYBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYBaseViewController.h; sourceTree = "<group>"; };
+		DF1EBFB51B6EFC60002DF8BA /* PYBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYBaseViewController.m; sourceTree = "<group>"; };
+		DF1EBFB81B6F13E6002DF8BA /* M1CreateChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M1CreateChannel.m; sourceTree = "<group>"; };
+		DF1EBFB91B6F13E6002DF8BA /* M2CreateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M2CreateMessage.m; sourceTree = "<group>"; };
+		DF1EBFBA1B6F13E6002DF8BA /* M3CreateUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M3CreateUser.m; sourceTree = "<group>"; };
+		DF1EBFBB1B6F13E6002DF8BA /* Migrations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Migrations.h; sourceTree = "<group>"; };
+		DF1EBFBC1B6F13E6002DF8BA /* Migrations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Migrations.m; sourceTree = "<group>"; };
+		DF1EBFBD1B6F13E6002DF8BA /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
+		DF1EBFBE1B6F13E6002DF8BA /* DB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB.m; sourceTree = "<group>"; };
+		DF1EBFC51B6F2E3D002DF8BA /* M4CreateHot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M4CreateHot.m; sourceTree = "<group>"; };
+		DF1EBFC81B6F2FF7002DF8BA /* FmdbMigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FmdbMigration.h; sourceTree = "<group>"; };
+		DF1EBFC91B6F2FF7002DF8BA /* FmdbMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FmdbMigration.m; sourceTree = "<group>"; };
+		DF1EBFCA1B6F2FF7002DF8BA /* FmdbMigrationColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FmdbMigrationColumn.h; sourceTree = "<group>"; };
+		DF1EBFCB1B6F2FF7002DF8BA /* FmdbMigrationColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FmdbMigrationColumn.m; sourceTree = "<group>"; };
+		DF1EBFCC1B6F2FF7002DF8BA /* FmdbMigrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FmdbMigrationManager.h; sourceTree = "<group>"; };
+		DF1EBFCD1B6F2FF7002DF8BA /* FmdbMigrationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FmdbMigrationManager.m; sourceTree = "<group>"; };
+		DF1EBFD11B6F39E3002DF8BA /* MessageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageProcessor.h; sourceTree = "<group>"; };
+		DF1EBFD21B6F39E3002DF8BA /* MessageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageProcessor.m; sourceTree = "<group>"; };
+		DF1EBFD41B6F3A84002DF8BA /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
+		DF1EBFD51B6F3A84002DF8BA /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
 		DF2B0E101B422DDD0051AA1A /* PayQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayQRViewController.h; sourceTree = "<group>"; };
 		DF2B0E111B422DDD0051AA1A /* PayQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayQRViewController.m; sourceTree = "<group>"; };
 		DF2B0E131B4232EA0051AA1A /* ReceiveCouponsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveCouponsTableViewCell.h; sourceTree = "<group>"; };
@@ -508,6 +540,55 @@
 			name = card;
 			sourceTree = "<group>";
 		};
+		DF1EBFB31B6EFC37002DF8BA /* baseController */ = {
+			isa = PBXGroup;
+			children = (
+				DF1EBFB41B6EFC60002DF8BA /* PYBaseViewController.h */,
+				DF1EBFB51B6EFC60002DF8BA /* PYBaseViewController.m */,
+			);
+			name = baseController;
+			sourceTree = "<group>";
+		};
+		DF1EBFB71B6F13C4002DF8BA /* PayBay */ = {
+			isa = PBXGroup;
+			children = (
+				DF1EBFD11B6F39E3002DF8BA /* MessageProcessor.h */,
+				DF1EBFD21B6F39E3002DF8BA /* MessageProcessor.m */,
+				DF1EBFD41B6F3A84002DF8BA /* Store.h */,
+				DF1EBFD51B6F3A84002DF8BA /* Store.m */,
+				DF1EBFC41B6F13E9002DF8BA /* DB */,
+			);
+			name = PayBay;
+			sourceTree = "<group>";
+		};
+		DF1EBFC41B6F13E9002DF8BA /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				DF1EBFB81B6F13E6002DF8BA /* M1CreateChannel.m */,
+				DF1EBFB91B6F13E6002DF8BA /* M2CreateMessage.m */,
+				DF1EBFBA1B6F13E6002DF8BA /* M3CreateUser.m */,
+				DF1EBFC51B6F2E3D002DF8BA /* M4CreateHot.m */,
+				DF1EBFBB1B6F13E6002DF8BA /* Migrations.h */,
+				DF1EBFBC1B6F13E6002DF8BA /* Migrations.m */,
+				DF1EBFBD1B6F13E6002DF8BA /* DB.h */,
+				DF1EBFBE1B6F13E6002DF8BA /* DB.m */,
+			);
+			name = DB;
+			sourceTree = "<group>";
+		};
+		DF1EBFC71B6F2FF7002DF8BA /* fmdb-migration-manager */ = {
+			isa = PBXGroup;
+			children = (
+				DF1EBFC81B6F2FF7002DF8BA /* FmdbMigration.h */,
+				DF1EBFC91B6F2FF7002DF8BA /* FmdbMigration.m */,
+				DF1EBFCA1B6F2FF7002DF8BA /* FmdbMigrationColumn.h */,
+				DF1EBFCB1B6F2FF7002DF8BA /* FmdbMigrationColumn.m */,
+				DF1EBFCC1B6F2FF7002DF8BA /* FmdbMigrationManager.h */,
+				DF1EBFCD1B6F2FF7002DF8BA /* FmdbMigrationManager.m */,
+			);
+			path = "fmdb-migration-manager";
+			sourceTree = "<group>";
+		};
 		DF2B0E161B423DB40051AA1A /* TNCheckBoxGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +666,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DF1EBFC71B6F2FF7002DF8BA /* fmdb-migration-manager */,
 				DF3CCDCD1B6614690076A33F /* JVFloatLabeledTextField */,
 				DF6311EF1B5F788700ABBB22 /* POP */,
 				DF87575C1B58D66A00964738 /* TQRemoveController */,
@@ -643,6 +725,7 @@
 		DF72C0B81B0B339800CE6DC6 /* shrb */ = {
 			isa = PBXGroup;
 			children = (
+				DF1EBFB71B6F13C4002DF8BA /* PayBay */,
 				DFF330DF1B2EC56100007582 /* common */,
 				DF70F24F1B26ABE100FAE24F /* Lib */,
 				DF72C0BD1B0B339800CE6DC6 /* AppDelegate.h */,
@@ -698,6 +781,7 @@
 				DF70F24D1B267FF400FAE24F /* MainViewController.m */,
 				DF73D9781B53BC8B00C1F317 /* MainTabBarController.h */,
 				DF73D9791B53BC8B00C1F317 /* MainTabBarController.m */,
+				DF1EBFB31B6EFC37002DF8BA /* baseController */,
 				DF66B8461B53AEC1002E9EFC /* login */,
 				DF0D9C7E1B0C2B6C00C0AB3F /* main */,
 				DF0D9C7F1B0C2B8200C0AB3F /* card */,
@@ -1291,8 +1375,10 @@
 				DFB057A81B4141D60091A1E1 /* UserCouponsViewController.m in Sources */,
 				DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */,
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
+				DF1EBFC31B6F13E6002DF8BA /* DB.m in Sources */,
 				DFAE95651B254FB7006A495B /* UserCenterObjevtiveTableViewController.m in Sources */,
 				DFAE95611B25434F006A495B /* CouponsDetailTableViewCell.m in Sources */,
+				DF1EBFC11B6F13E6002DF8BA /* M3CreateUser.m in Sources */,
 				DF2B0E2D1B423DB40051AA1A /* TNCheckBoxGroup.m in Sources */,
 				DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */,
 				DF9D09D01B5DD73E0007A7FB /* AttributedStyle.m in Sources */,
@@ -1304,6 +1390,7 @@
 				DF2B0E331B423DB40051AA1A /* TNRectangularCheckBoxData.m in Sources */,
 				DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */,
 				DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */,
+				DF1EBFCE1B6F2FF7002DF8BA /* FmdbMigration.m in Sources */,
 				DFB7631F1B3D36330086ABB7 /* ProductIsMemberTableViewController.m in Sources */,
 				DF2D7A281B466919003790A5 /* CollectObjectiveTableViewController.m in Sources */,
 				DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */,
@@ -1314,14 +1401,18 @@
 				DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */,
 				DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */,
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,
+				DF1EBFD31B6F39E3002DF8BA /* MessageProcessor.m in Sources */,
 				DFB057911B40E5D30091A1E1 /* HJCAjustNumButton3.m in Sources */,
 				DF7177391B30109500D3C3B9 /* OrderListTableViewCell.m in Sources */,
 				DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */,
+				DF1EBFB61B6EFC60002DF8BA /* PYBaseViewController.m in Sources */,
 				DF7A8A5C1B3CE97700528864 /* ProductTableViewCell.m in Sources */,
 				DF7A8A5F1B3CE9DC00528864 /* ProductModel.m in Sources */,
+				DF1EBFD01B6F2FF7002DF8BA /* FmdbMigrationManager.m in Sources */,
 				DFCF89F01B5779DE00D09A4A /* FoldingView.m in Sources */,
 				DFF766E41B65D2CE005BB71C /* NewStoreCollectController.m in Sources */,
 				DF3CCDD61B6614690076A33F /* NSString+TextDirectionality.m in Sources */,
+				DF1EBFBF1B6F13E6002DF8BA /* M1CreateChannel.m in Sources */,
 				DFAE95581B253588006A495B /* CouponsDetailTableViewController.m in Sources */,
 				DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */,
 				DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */,
@@ -1330,6 +1421,7 @@
 				DF6311EE1B5F35A000ABBB22 /* ProductViewController.m in Sources */,
 				DF66B8401B53689E002E9EFC /* SuperCompletePayViewController.m in Sources */,
 				DF9D09D91B5DE0B50007A7FB /* FontStyle.m in Sources */,
+				DF1EBFD61B6F3A84002DF8BA /* Store.m in Sources */,
 				DF71773C1B30167900D3C3B9 /* SettingTableViewController.m in Sources */,
 				DF2B0E151B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m in Sources */,
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,
@@ -1349,6 +1441,7 @@
 				DF66B8491B53AF33002E9EFC /* ForgetPasswordViewController.m in Sources */,
 				DFCF89F71B577AE600D09A4A /* UIImage+Blur.m in Sources */,
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
+				DF1EBFC01B6F13E6002DF8BA /* M2CreateMessage.m in Sources */,
 				DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */,
 				DF2B0E2E1B423DB40051AA1A /* TNCircularCheckBox.m in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
@@ -1357,6 +1450,7 @@
 				DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */,
 				DF66B8451B539F4E002E9EFC /* LoginViewController.m in Sources */,
 				DF9119A71B392BC500833AAB /* OrderListTableViewCell.swift in Sources */,
+				DF1EBFC21B6F13E6002DF8BA /* Migrations.m in Sources */,
 				DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */,
 				DF9D09EA1B5DF0C80007A7FB /* ConfigAttributedString.m in Sources */,
 				DFB1E82A1B3A3ED800366200 /* UserCenterTableViewController.swift in Sources */,
@@ -1385,7 +1479,9 @@
 				DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */,
 				DF4E4C6A1B0C87D500FE499E /* BecomeMemberViewController.m in Sources */,
 				DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */,
+				DF1EBFC61B6F2E3D002DF8BA /* M4CreateHot.m in Sources */,
 				DF7177341B300F2A00D3C3B9 /* OrderListTableViewController.m in Sources */,
+				DF1EBFCF1B6F2FF7002DF8BA /* FmdbMigrationColumn.m in Sources */,
 				DF6311F91B5F913000ABBB22 /* ShowMeImageViewController.m in Sources */,
 				DF7D1E631B0DC9C600CD05B3 /* ExpenseTableViewCell.m in Sources */,
 				DF9372F81B4B68FE00960F86 /* KYCuteView.m in Sources */,

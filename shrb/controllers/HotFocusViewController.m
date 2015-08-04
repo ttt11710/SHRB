@@ -19,15 +19,20 @@
 #import "StoreViewController.h"
 #import "TQTableViewCellRemoveController.h"
 #import "NewStoreCollectController.h"
+#import "DB.h"
+#import "Migrations.h"
+#import "MessageProcessor.h"
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @interface HotFocusViewController () <TQTableViewCellRemoveControllerDelegate>
+{
+    MessageProcessor *_messageProcessor;;
+}
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray * dataArray;
 @property (nonatomic,strong) NSMutableArray * plistArr;
-
 
 @property (nonatomic,strong) TQTableViewCellRemoveController *cellRemoveController;
 
@@ -38,11 +43,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initController];
-    [self initData];
-    [self initTableView];
+    _messageProcessor = [[MessageProcessor alloc] init];
     
+    [self initData];
+    [self getDataFormDB];
+    
+    [self initController];
+    
+    [self initTableView];
     [self cardAnimation];
+    
+  //  [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -57,6 +68,71 @@
     [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = YES;
 }
+
+
+
+#pragma mark - 网络请求数据
+- (void)loadData
+{
+
+    DB *db = [DB openDb];
+    
+    NSString *url=[baseUrl stringByAppendingString:@""];
+    
+    //http://api.map.baidu.com/telematics/v3/weather?&ak=Q0qFFiynCewS75iBPQ9TkChH&location=上海&output=json
+    [self.requestOperationManager POST:url parameters:@{@"location":@"上海",@"output":@"json"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary *d=(NSDictionary *)responseObject ;
+        NSLog(@"d = %@",d);
+        
+        [self insertDataToDB];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"请求失败");
+    }];
+}
+
+#pragma mark - 数据库插入数据
+- (void)insertDataToDB
+{
+    for (NSDictionary * dict in self.plistArr) {
+        NSLog(@"dict = %@",dict);
+        Store *store = [[Store alloc] init];
+        [store setValuesForKeysWithDictionary:dict];
+        [_messageProcessor process:store];
+    }
+}
+
+#pragma mark - 获取数据库数据
+- (void)getDataFormDB
+{
+    DB *db = [DB openDb];
+    FMResultSet *rs = [db executeQuery:@"select * from store"];
+    
+    [self.dataArray removeAllObjects];
+    while ([rs next]) {
+        Store *store = [[Store alloc] init];
+        store.storeId = [rs stringForColumn:@"storeid"];
+        store.storePlistName = [rs stringForColumn:@"storeplistname"];
+        store.storeLabel = [rs stringForColumn:@"storelabel"];
+        store.storeDetail = [rs stringForColumn:@"storedetail"];
+        store.storeLogo = [rs stringForColumn:@"storelogo"];
+        store.images = [rs stringForColumn:@"images"];
+        store.simpleStoreDetail = [rs stringForColumn:@"simplestoredetail"];
+        store.storeName = [rs stringForColumn:@"storename"];
+        
+        [self.dataArray addObject:store];
+        
+    }
+    if ([self.dataArray count] == 0) {
+        for (NSDictionary * dict in self.plistArr) {
+            Store * store = [[Store alloc] init];
+            [store setValuesForKeysWithDictionary:dict];
+            [self.dataArray addObject:store];
+        }
+    }
+}
+
 
 - (void)initController
 {
@@ -139,13 +215,6 @@
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     if (cell == nil) {
         cell = [[HotFocusTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
-    }
-    
-    [self.dataArray removeAllObjects];
-    for (NSDictionary * dict in self.plistArr) {
-        HotFocusModel * model = [[HotFocusModel alloc] init];
-        [model setValuesForKeysWithDictionary:dict];
-        [self.dataArray addObject:model];
     }
 
     cell.model = self.dataArray[indexPath.row];
@@ -268,7 +337,6 @@
         
         
         NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
-        //self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:newStoreCollectController animated:YES];
         [SVProgressShow dismiss];
     }
