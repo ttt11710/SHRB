@@ -20,8 +20,26 @@
 #import "QRViewController.h"
 #import "SVProgressShow.h"
 
+@interface ShoppingNumLabel : UILabel
+{
+    NSInteger _num;
+}
+
+@property (assign, readwrite, nonatomic)NSInteger num;
+
+@end
+
+@implementation ShoppingNumLabel
+
+- (void)setNum:(NSInteger)num
+{
+    _num = num;
+    self.text = [NSString stringWithFormat:@"%ld",(long)num];
+}
+@end
 
 static StoreViewController *g_StoreViewController = nil;
+static int countTime = 20*60;
 @interface StoreViewController ()
 {
     NSMutableArray *_array;
@@ -29,6 +47,7 @@ static StoreViewController *g_StoreViewController = nil;
     CGRect _rect;
     CGFloat lastContentOffset;
     
+    NSTimer *_timer;
    // UIView *selectTypeTableViewBackView;
    // UITableView *selectTypeTableView;
     BOOL showSelectTypeTableView;
@@ -40,6 +59,12 @@ static StoreViewController *g_StoreViewController = nil;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) HJCAjustNumButton *numbutton;
 @property (weak, nonatomic) IBOutlet UIButton *gotopayViewBtn;
+@property (weak, nonatomic) IBOutlet UIView *shoppingCardView;
+@property (weak, nonatomic) IBOutlet UIImageView *shoppingCardImageView;
+@property (weak, nonatomic) IBOutlet ShoppingNumLabel *shoppingNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *shoppingFixLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
+
 @property (nonatomic,strong) UIBezierPath *path;
 @property (weak, nonatomic) IBOutlet UIButton *topBtn;
 
@@ -52,7 +77,6 @@ static StoreViewController *g_StoreViewController = nil;
     CALayer     *layer;
 }
 
-@synthesize currentRow;
 
 + (StoreViewController *)shareStoreViewController
 {
@@ -67,6 +91,23 @@ static StoreViewController *g_StoreViewController = nil;
     [self initView];
     [self initData];
     [self initTableView];
+    
+    self.shoppingCardView.layer.cornerRadius = 4;
+   // self.shoppingCardView.layer.borderColor = shrbTableViewColor.CGColor;
+   // self.shoppingCardView.layer.borderWidth = 2;
+    self.shoppingCardView.layer.masksToBounds = YES;
+    self.shoppingCardView.hidden = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoPayView)];
+    [self.shoppingCardView addGestureRecognizer:tap];
+    
+    self.shoppingNumLabel.num = 0 ;
+    self.shoppingNumLabel.layer.cornerRadius = 11;
+    self.shoppingNumLabel.layer.masksToBounds = YES;
+    self.shoppingNumLabel.hidden = YES;
+    
+    self.shoppingFixLabel.hidden = YES;
+    self.countDownLabel.hidden = YES;
+    self.countDownLabel.text = @"20:00";
 }
 
 - (void)initView
@@ -260,9 +301,9 @@ static StoreViewController *g_StoreViewController = nil;
             // 内容更改的block回调
             numbutton.callBack = ^(NSString *currentNum){
                 
-                
-                
                 NSLog(@"%ld",(long)indexPath.row);
+                
+                self.shoppingCardView.hidden = NO;
                 
                 _rect = [self.tableView.superview convertRect:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height) fromView:cell];
                 
@@ -276,7 +317,7 @@ static StoreViewController *g_StoreViewController = nil;
                     UIBezierPath *path = [UIBezierPath bezierPath];
                     [path moveToPoint:CGPointMake(46, _rect.origin.y+40)];
                     //商品最终位置和其中一个路径位置
-                    [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
+                    [path addQuadCurveToPoint:CGPointMake(80, screenHeight -100) controlPoint:CGPointMake(screenWidth*0.5, screenHeight * 0.5)];
                     _path = path;
                     [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",  [[self.plistArr objectAtIndex:indexPath.section-1][@"info"] objectAtIndex:indexPath.row][@"tradeImage"]]];
                 }
@@ -310,6 +351,7 @@ static StoreViewController *g_StoreViewController = nil;
                         }
                     }
                 }
+                
             };
             
             // 加到父控件上
@@ -440,6 +482,9 @@ static StoreViewController *g_StoreViewController = nil;
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
+    self.shoppingNumLabel.num ++ ;
+    [self showShoppingCard];
+
     self.selectTypeTableViewBackView.hidden = YES;
     if (anim == [layer animationForKey:@"group"]) {
         self.gotopayViewBtn.enabled = YES;
@@ -447,6 +492,68 @@ static StoreViewController *g_StoreViewController = nil;
         layer = nil;
     }
 }
+
+#pragma mark - 显示购物车
+- (void)showShoppingCard
+{
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        
+        self.shoppingCardImageView.layer.transform = CATransform3DMakeTranslation(-(self.shoppingCardView.frame.size.width/2-20), 0, 0);
+        
+    } completion:^(BOOL finished) {
+        
+        self.shoppingNumLabel.hidden = NO;
+        self.shoppingFixLabel.hidden = NO;
+        self.countDownLabel.hidden = NO;
+        if (self.shoppingNumLabel.num == 1) {
+            [self countDown];
+            self.shoppingFixLabel.alpha = 0 ;
+            self.countDownLabel.alpha = 0 ;
+            [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+                
+                self.shoppingFixLabel.alpha = 1;
+                self.countDownLabel.alpha = 1 ;
+            } completion:^(BOOL finished) {
+                
+            }];
+        }
+    }];
+
+}
+
+#pragma mark - 倒计时功能
+
+- (void)countDown
+{
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
+
+}
+
+- (void)timerFireMethod:(NSTimer *)timer
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *today = [NSDate date];//当前时间
+    NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:--countTime];
+    unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *d = [calendar components:unitFlags fromDate:today toDate:fireDate options:0];//计算时间差
+    self.countDownLabel.text = [NSString stringWithFormat:@"%ld:%ld",(long)[d minute],(long)[d second]];
+    if (d.second <10) {
+        self.countDownLabel.text = [NSString stringWithFormat:@"%ld:0%ld",(long)[d minute],(long)[d second]];
+    }
+    if (d.minute <10) {
+        self.countDownLabel.text = [NSString stringWithFormat:@"0%ld:%ld",(long)[d minute],(long)[d second]];
+    }
+    if (d.minute <10 && d.second < 10) {
+        self.countDownLabel.text = [NSString stringWithFormat:@"0%ld:0%ld",(long)[d minute],(long)[d second]];
+    }
+    
+    if (d.minute == 0 && d.second == 0) {
+        [_timer invalidate];
+        self.shoppingCardView.hidden = YES;
+        [SVProgressShow showInfoWithStatus:@"订单过期！"];
+    }
+}
+
 
 #pragma mark - 扫描二维码
 - (IBAction)scanBtnPressed:(id)sender {
@@ -472,6 +579,15 @@ static StoreViewController *g_StoreViewController = nil;
     
     QRViewController *qrVC = [[QRViewController alloc] init];
     [self.navigationController pushViewController:qrVC animated:YES];
+}
+
+#pragma mark - 进入支付页面
+- (void)gotoPayView
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma  mark - storyboard传值

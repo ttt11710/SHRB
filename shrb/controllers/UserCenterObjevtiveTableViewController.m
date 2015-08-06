@@ -31,16 +31,10 @@
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"IsLogin"];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.tabBarController.tabBar.hidden = NO;
+   // self.tabBarController.tabBar.hidden = NO;
     self.navigationController.navigationBarHidden = NO;
 }
 
@@ -66,7 +60,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = YES;
+   // self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)initController
@@ -139,6 +133,7 @@
             }
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
             UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"orderlistView"];
+            viewController.hidesBottomBarWhenPushed = YES;
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
             [self.navigationController pushViewController:viewController animated:YES];
             
@@ -157,6 +152,7 @@
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
             UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"collectObjectiveView"];
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            viewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:viewController animated:YES];
 
         }
@@ -165,6 +161,7 @@
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
             UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"settingView"];
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            viewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }
@@ -174,6 +171,7 @@
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
             UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"helpCenterView"];
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            viewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:viewController animated:YES];
         }
         //客服
@@ -181,6 +179,7 @@
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
             UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"shrbServiceView"];
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            viewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }

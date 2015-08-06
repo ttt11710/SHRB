@@ -36,13 +36,13 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.tabBarController.tabBar.hidden = NO;
+   // self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = YES;
+   // self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)initBtn
@@ -81,8 +81,6 @@
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
     [self.navigationController pushViewController:viewController animated:YES];
-    
-    
 }
 
 #pragma mark - 进入电子券View

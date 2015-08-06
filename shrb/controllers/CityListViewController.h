@@ -29,5 +29,6 @@
 @protocol CityListViewControllerProtocol
 - (void) citySelectionUpdate:(NSString*)selectedCity;
 - (NSString*) getDefaultCity;
+
 @end
 

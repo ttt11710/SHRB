@@ -22,6 +22,8 @@
 #import "DB.h"
 #import "Migrations.h"
 #import "MessageProcessor.h"
+#import "HotListSelectViewController.h"
+
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
@@ -53,20 +55,26 @@
     [self initTableView];
     [self cardAnimation];
     
+    CGRect rect = [[UIApplication sharedApplication] statusBarFrame];
+    
+    CGRect rectNav = self.navigationController.navigationBar.frame;
+    
+    CGRect rectTab = self.tabBarController.tabBar.frame;
+    
   //  [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = NO;
+   // self.tabBarController.tabBar.hidden = NO;
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.tabBarController.tabBar.hidden = YES;
+  //  self.tabBarController.tabBar.hidden = YES;
 }
 
 
@@ -199,7 +207,7 @@
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 244;
+    return screenWidth/8*5+12+21;
 }
 
 #pragma mark - tableView delegate
@@ -335,15 +343,14 @@
 //        [self.navigationController pushViewController:newStoreViewController animated:YES];
 //        [SVProgressShow dismiss];
         
-        
         NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
+        newStoreCollectController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:newStoreCollectController animated:YES];
         [SVProgressShow dismiss];
     }
     else if ([typesOfShops isEqualToString:@"order"]) {
         //点餐
         StoreViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
-        storeViewController.currentRow = indexPath.row;
         [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
         [self.navigationController pushViewController:storeViewController animated:YES];
         [SVProgressShow dismiss];
@@ -382,6 +389,15 @@
     
     [self.plistArr addObjectsFromArray:deleteArr];
     [self.tableView reloadData];
+}
+
+#pragma mark - 刷选商店
+- (IBAction)selectStore:(id)sender {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    HotListSelectViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotListSelectViewController"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    viewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 

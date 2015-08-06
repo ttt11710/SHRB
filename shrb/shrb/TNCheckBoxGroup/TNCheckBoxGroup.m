@@ -34,6 +34,13 @@ NSString *const GROUP_CHANGED = @"groupChanged";
     return self;
 }
 
+- (void)myInitWithCheckBoxData:(NSArray *)checkBoxData style:(TNCheckBoxLayout)layout
+{
+    self.checkBoxData = checkBoxData;
+    self.layout = layout;
+    self.marginBetweenItems = 0;
+}
+
 - (void)create {
     self.marginBetweenItems = 0;
     

@@ -71,7 +71,7 @@ static NewStoreViewController *g_StoreViewController = nil;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden=YES;
+   // self.tabBarController.tabBar.hidden=YES;
     self.view.hidden = NO;
     
     [self btnAnimation];

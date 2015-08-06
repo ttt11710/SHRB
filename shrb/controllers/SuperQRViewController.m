@@ -11,7 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "QRView.h"
 #import "PayViewController.h"
-#import "OrdersViewController.h"
+#import "SuperOrderViewController.h"
 #import "Const.h"
 #import <CBZSplashView/CBZSplashView.h>
 
@@ -119,19 +119,12 @@
     
     [self.navigationController popViewControllerAnimated:NO];
     
-    BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    OrdersViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
-    viewController.isMember = isMember;
+
+    SuperOrderViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"SuperView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
     [nav pushViewController:viewController animated:NO];
-    
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    PayViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PayView"];
-//    viewController.isMemberPay = NO;
-//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma mark QRViewDelegate

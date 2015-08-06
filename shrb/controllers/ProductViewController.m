@@ -85,6 +85,7 @@ static ProductViewController *g_ProductViewController = nil;
 
 - (void)viewWillAppear:(BOOL)animated {
     
+  //  self.tabBarController.tabBar.hidden = YES;
     [super viewWillAppear:animated];
     
     if (!_timer.isValid) {
@@ -491,7 +492,6 @@ static ProductViewController *g_ProductViewController = nil;
     viewController.currentRow = currentRow;
     viewController.currentSection = currentSection;
     [navController pushViewController:viewController animated:NO];
-    
 }
 
 
