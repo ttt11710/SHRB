@@ -347,14 +347,9 @@ static NewStoreViewController *g_StoreViewController = nil;
         }];
     }
     else {
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
         BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
         if (isMember) {
-//            ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
-//            viewController.currentSection = indexPath.section;
-//            viewController.currentRow = indexPath.row;
-//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//            [self.navigationController pushViewController:viewController animated:YES];
             
             ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
             viewController.currentRow = indexPath.row;
@@ -364,13 +359,6 @@ static NewStoreViewController *g_StoreViewController = nil;
             
         }
         else {
-//            ProductTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductTableView"];
-//            viewController.currentSection = indexPath.section;
-//            viewController.currentRow = indexPath.row;
-//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//            
-//            [self.navigationController pushViewController:viewController animated:YES];
-            
             
             ProductViewController *viewController = [[ProductViewController alloc] init];
             viewController.currentRow = indexPath.row;

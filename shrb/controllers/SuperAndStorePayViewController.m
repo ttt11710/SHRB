@@ -103,7 +103,7 @@ static UIButton *_payTypeButton = nil;
             couponsImageView.layer.masksToBounds = YES;
             [cell addSubview:couponsImageView];
         }
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"共%d件",[_data count]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"共%lu件",(unsigned long)[_data count]];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payChanged:) name:PAY_CHANGED object:nil];
         

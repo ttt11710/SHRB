@@ -9,7 +9,7 @@
 #import "DOPScrollableActionSheet.h"
 #import "Const.h"
 
-static CGFloat horizontalMargin = 20.0;
+#define horizontalMargin  (screenWidth-240)/5.0;
 
 @interface DOPScrollableActionSheet ()
 
@@ -40,7 +40,7 @@ static CGFloat horizontalMargin = 20.0;
         _dimBackground.backgroundColor = [UIColor clearColor];
         UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
         [_dimBackground addGestureRecognizer:gr];
-        self.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
+        self.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1];
     
         NSInteger rowCount = _actions.count;
     
@@ -60,7 +60,7 @@ static CGFloat horizontalMargin = 20.0;
             }
         }
         //cancel button screenwidth*60
-        height += 60;
+       // height += 60;
         /*calculation end*/
         self.frame = CGRectMake(0, _screenRect.size.height, _screenRect.size.width, height);
         
@@ -99,20 +99,22 @@ static CGFloat horizontalMargin = 20.0;
                     [button setImage:[UIImage imageNamed:action.iconName] forState:UIControlStateNormal];
                     [button addTarget:self action:@selector(handlePress:) forControlEvents:UIControlEventTouchUpInside];
                     [rowContainer addSubview:button];
-                    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x, 60, 60, 30)];
+                    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x-10, 60, 80, 30)];
                     label.text = action.actionName;
                     label.font = [UIFont systemFontOfSize:13.0];
                     label.textAlignment = NSTextAlignmentCenter;
                     [rowContainer addSubview:label];
                     x = x + 60 + horizontalMargin;
                     
+                    
                     [_buttons addObject:button];
                     [_handlers addObject:action.handler];
                 }
                 y+=90;
-                UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, y, _screenRect.size.width,0.5)];
-                separator.backgroundColor = [UIColor lightGrayColor];
-                [self addSubview:separator];
+                //下划线
+//                UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, y, _screenRect.size.width,0.5)];
+//                separator.backgroundColor = [UIColor lightGrayColor];
+//                [self addSubview:separator];
             }
         }
         UIButton *cancel = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -121,7 +123,7 @@ static CGFloat horizontalMargin = 20.0;
         [cancel setTitleColor:shrbPink forState:UIControlStateNormal];
         cancel.titleLabel.font = [UIFont systemFontOfSize:25];
         cancel.backgroundColor = [UIColor whiteColor];
-        [self addSubview:cancel];
+       // [self addSubview:cancel];
         [cancel addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
@@ -149,7 +151,9 @@ static CGFloat horizontalMargin = 20.0;
     
     self.window.hidden = NO;
     [UIView animateWithDuration:0.2 animations:^{
-        self.dimBackground.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.2];
+        //背景颜色
+        self.dimBackground.backgroundColor = [UIColor colorWithRed:126.0/255.0 green:126.0/255.0 blue:126.0/255.0 alpha:0.4];
+        //[UIColor colorWithWhite:0.0 alpha:0.2];
         self.frame = CGRectMake(0, self.screenRect.size.height-self.frame.size.height, self.frame.size.width, self.frame.size.height);
     } completion:^(BOOL finished) {
         //

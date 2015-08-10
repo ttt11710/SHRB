@@ -50,8 +50,8 @@ static NSString *userId = @"001";
 //        NSLog(@"chat title is null");
         return NO;
     }
-    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
-    NSNumber *now = [NSNumber numberWithDouble: timeStamp];
+//    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+//    NSNumber *now = [NSNumber numberWithDouble: timeStamp];
     
     __block BOOL result=NO;
 
@@ -60,7 +60,7 @@ static NSString *userId = @"001";
 //    
 //    [object fetchInBackgroundWithBlock:^(MPObject *object, NSError *error) {
 //        
-////        NSLog(@"%@",object);
+//        NSLog(@"%@",object);
 //        if (error!=nil) {
 //            result=NO;
 //            return ;
@@ -119,8 +119,8 @@ static NSString *userId = @"001";
 
 -(BOOL)insertChatWithUpdateMessage:(Message *)message{
 
-    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
-    NSNumber *now = [NSNumber numberWithDouble: timeStamp];
+//    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+//    NSNumber *now = [NSNumber numberWithDouble: timeStamp];
 
 //    if (message.subType==MESSAGE_ST_CE_CHAT_UPDATE) {
 //       return  [self executeUpdate:@"INSERT INTO chats (id, type, title, avatar, new_messages_count, \

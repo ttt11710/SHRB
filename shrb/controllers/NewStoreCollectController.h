@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FRGWaterfallCollectionViewCell.h"
+#import "FRGWaterfallCollectionViewLayout.h"
 
-@interface NewStoreCollectController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface NewStoreCollectController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDataSource,UITableViewDelegate,FRGWaterfallCollectionViewDelegate>
 
 @end

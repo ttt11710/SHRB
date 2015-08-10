@@ -33,7 +33,7 @@ static ProductViewController *g_ProductViewController = nil;
 
 
 @property(nonatomic,retain)UIScrollView *mainScrollView;//整个界面ScrollView
-@property(nonatomic,retain)UIView *cardShadowView;//展示卡片阴影层
+//@property(nonatomic,retain)UIView *cardShadowView;//展示卡片阴影层
 @property(nonatomic,retain)UIView *cardView;//展示卡片View
 @property(nonatomic,retain)UIScrollView *cardScrollView;//卡片ScrollView
 @property (retain, nonatomic)UIPageControl *imagePageControl; //卡片page
@@ -41,7 +41,7 @@ static ProductViewController *g_ProductViewController = nil;
 @property(nonatomic,retain)UIView *blurEffectView;//毛玻璃View
 
 //毛玻璃上控件
-@property (retain, nonatomic) UILabel *saveMoneyLabel;  //节省钱数
+//@property (retain, nonatomic) UILabel *saveMoneyLabel;  //节省钱数
 @property (retain, nonatomic) UIButton *collectBtn;     //收藏
 @property (retain, nonatomic) UIButton *shareBtn;       //分享
 
@@ -114,11 +114,6 @@ static ProductViewController *g_ProductViewController = nil;
     
     self.modelArray = [[NSMutableArray alloc] init];
     
-//    _imageArray = [[NSMutableArray alloc] initWithObjects:
-//                   @"http://static.lover1314.me/image/2015/04/16/1552f5e302fae3_orig.jpg",
-//                   @"http://static.lover1314.me/image/2015/04/16/1552f5e2b1fee1_orig.jpg",
-//                   @"http://static.lover1314.me/image/2015/04/16/1552f5e1903f9b_orig.jpg", nil];
-    
     _imageArray = [[NSMutableArray alloc] initWithObjects:
                    @"毛呢冬带毛领",
                    @"男士休闲羊毛西服",
@@ -126,7 +121,7 @@ static ProductViewController *g_ProductViewController = nil;
                    @"撞色加厚双排扣大衣", nil];
     
     
-    self.title = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeName"];
+    self.title = @"商品详情";
 }
 
 - (void)initMainView
@@ -138,26 +133,18 @@ static ProductViewController *g_ProductViewController = nil;
 
 -(void)initCardView{
     
-    if (screenHeight>480) {
-        _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(16, 16, screenWidth-32, screenHeight/5*3-20)];
-    }
-    else{
-        _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(16, 16, screenWidth-32, screenHeight/2+30)];
-    }
+//    _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenWidth/1.3)];
+//    
+//    _cardShadowView.layer.cornerRadius = 8;
+//    _cardShadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    _cardShadowView.layer.shadowOffset = CGSizeMake(0,2);
+//    _cardShadowView.layer.shadowOpacity = 0.5;
+//    _cardShadowView.layer.shadowRadius = 2.0;
     
-    _cardShadowView.layer.cornerRadius = 8;
-    _cardShadowView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _cardShadowView.layer.shadowOffset = CGSizeMake(0,2);
-    _cardShadowView.layer.shadowOpacity = 0.5;
-    _cardShadowView.layer.shadowRadius = 2.0;
-    
-    _cardView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _cardShadowView.frame.size.width, _cardShadowView.frame.size.height)];
+    _cardView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenWidth/1.3)];
     _cardView.backgroundColor=[UIColor whiteColor];
-    _cardView.layer.cornerRadius=8;
-    _cardView.layer.masksToBounds = YES;
     
-    [_cardShadowView addSubview:_cardView];
-    [_mainScrollView insertSubview:_cardShadowView atIndex:0];
+    [_mainScrollView addSubview:_cardView];
     
     _cardScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, _cardView.frame.size.width, _cardView.frame.size.height)];
     _cardScrollView.contentSize = CGSizeMake(_cardScrollView.frame.size.width*([_imageArray count]+2), 0);
@@ -168,7 +155,7 @@ static ProductViewController *g_ProductViewController = nil;
     _cardScrollView.showsVerticalScrollIndicator = NO;
     [_cardView addSubview:_cardScrollView];
     
-    _imagePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _cardView.frame.size.height-70, _cardView.frame.size.width, 20)];
+    _imagePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _cardView.frame.size.height-30, _cardView.frame.size.width, 20)];
     _imagePageControl.numberOfPages = [_imageArray count];
     _imagePageControl.currentPage = 0;
     [_imagePageControl addTarget:self action:@selector(pageControlValueChanged) forControlEvents:UIControlEventValueChanged];
@@ -225,29 +212,29 @@ static ProductViewController *g_ProductViewController = nil;
     }
     
     if (screenHeight<=480) {
-        _blurEffectView.frame =CGRectMake(0, _cardView.frame.size.height-40, _cardView.frame.size.width, 40);
+        _blurEffectView.frame =CGRectMake(screenWidth-30*2-8*3, _cardView.frame.size.height-40, 30*2+8*3, 40);
     }else{
-        _blurEffectView.frame =CGRectMake(0, _cardView.frame.size.height-40, _cardView.frame.size.width, 40);
+        _blurEffectView.frame =CGRectMake(screenWidth-30*2-8*3, _cardView.frame.size.height-40, 30*2+8*3, 40);
     }
     [_cardView addSubview:_blurEffectView];
     
-    _saveMoneyLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, _blurEffectView.frame.size.width/2-40, _blurEffectView.frame.size.height)];
-    _saveMoneyLabel.font=[UIFont boldSystemFontOfSize:18];
-    _saveMoneyLabel.textColor=[UIColor whiteColor];
-    _saveMoneyLabel.textAlignment=NSTextAlignmentLeft;
-    _saveMoneyLabel.text = @"省40元";
-    [_blurEffectView addSubview:_saveMoneyLabel];
+//    _saveMoneyLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, _blurEffectView.frame.size.width/2-40, _blurEffectView.frame.size.height)];
+//    _saveMoneyLabel.font=[UIFont boldSystemFontOfSize:18];
+//    _saveMoneyLabel.textColor=[UIColor whiteColor];
+//    _saveMoneyLabel.textAlignment=NSTextAlignmentLeft;
+//    _saveMoneyLabel.text = @"省40元";
+//    [_blurEffectView addSubview:_saveMoneyLabel];
     
     _collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_collectBtn setBackgroundImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
-    _collectBtn.frame = CGRectMake(_blurEffectView.frame.size.width-38-38, _blurEffectView.frame.size.height/2-15, 30, 30);
+    _collectBtn.frame = CGRectMake(8, _blurEffectView.frame.size.height/2-15, 30, 30);
     [_collectBtn addTarget:self action:@selector(collectBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_blurEffectView addSubview:_collectBtn];
 
     
     _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_shareBtn setBackgroundImage:[UIImage imageNamed:@"fenxiang"] forState:UIControlStateNormal];
-    _shareBtn.frame = CGRectMake(_blurEffectView.frame.size.width-38, _blurEffectView.frame.size.height/2-15, 30, 30);
+    _shareBtn.frame = CGRectMake(8+30+8, _blurEffectView.frame.size.height/2-15, 30, 30);
     [_shareBtn addTarget:self action:@selector(shareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_blurEffectView addSubview:_shareBtn];
 
@@ -256,7 +243,7 @@ static ProductViewController *g_ProductViewController = nil;
 - (void)initTradeDescriptionView
 {
     
-    _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _cardShadowView.frame.origin.y + _cardShadowView.frame.size.height + 10,screenWidth - 32 , 40)];
+    _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _cardScrollView.frame.origin.y + _cardScrollView.frame.size.height + 10,screenWidth - 32 , 40)];
     _descriptionLabel.numberOfLines = 1000;
     _descriptionLabel.font = [UIFont systemFontOfSize:15.0];
     _descriptionLabel.textColor = shrbText;
@@ -508,31 +495,31 @@ static ProductViewController *g_ProductViewController = nil;
 
 #pragma mark - 分享
 - (void)shareBtnPressed {
-    DOPAction *action1 = [[DOPAction alloc] initWithName:@"Wechat" iconName:@"weixin" handler:^{
+    DOPAction *action1 = [[DOPAction alloc] initWithName:@"微信" iconName:@"weixin" handler:^{
         [SVProgressShow showSuccessWithStatus:@"微信分享成功！"];
     }];
     DOPAction *action2 = [[DOPAction alloc] initWithName:@"QQ" iconName:@"qq" handler:^{
         [SVProgressShow showSuccessWithStatus:@"QQ分享成功！"];
     }];
-    DOPAction *action3 = [[DOPAction alloc] initWithName:@"WxFriends" iconName:@"wxFriends" handler:^{
+    DOPAction *action3 = [[DOPAction alloc] initWithName:@"微信朋友圈" iconName:@"wxFriends" handler:^{
         [SVProgressShow showSuccessWithStatus:@"微信朋友圈分享成功！"];
     }];
-    DOPAction *action4 = [[DOPAction alloc] initWithName:@"Qzone" iconName:@"qzone" handler:^{
+    DOPAction *action4 = [[DOPAction alloc] initWithName:@"QQ空间" iconName:@"qzone" handler:^{
         [SVProgressShow showSuccessWithStatus:@"QQ空间分享成功！"];
     }];
-    DOPAction *action5 = [[DOPAction alloc] initWithName:@"Weibo" iconName:@"weibo" handler:^{
+    DOPAction *action5 = [[DOPAction alloc] initWithName:@"微博" iconName:@"weibo" handler:^{
         [SVProgressShow showSuccessWithStatus:@"新浪微博分享成功！"];
     }];
-    DOPAction *action6 = [[DOPAction alloc] initWithName:@"SMS" iconName:@"sms" handler:^{
+    DOPAction *action6 = [[DOPAction alloc] initWithName:@"短信" iconName:@"sms" handler:^{
         [SVProgressShow showSuccessWithStatus:@"短信发送成功！"];
     }];
-    DOPAction *action7 = [[DOPAction alloc] initWithName:@"Email" iconName:@"email" handler:^{
+    DOPAction *action7 = [[DOPAction alloc] initWithName:@"邮件" iconName:@"email" handler:^{
         [SVProgressShow showSuccessWithStatus:@"邮件发送成功！"];
     }];
     
     
     NSArray *actions;
-    actions = @[@"Share",
+    actions = @[@"",
                 @[action1, action2, action3, action4],
                 @"",
                 @[action5, action6, action7]];

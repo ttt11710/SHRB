@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *tradeImageView;
 @property (weak, nonatomic) IBOutlet UILabel *tradeNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *memberPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *originalPriceLabel;
 
 @end

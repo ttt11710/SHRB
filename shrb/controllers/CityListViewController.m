@@ -436,7 +436,7 @@
 {
     NSInteger count = 0;
     
-    NSLog(@"%@-%d",title,index);
+    NSLog(@"%@-%ld",title,(long)index);
     
     NSMutableArray *array = [[NSMutableArray alloc] initWithArray:keys];
     [array insertObject:@"#" atIndex:0];

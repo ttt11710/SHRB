@@ -41,19 +41,6 @@
     
     self.descriptionLabel.text = model.simpleStoreDetail;
     
-    self.storeLabelImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",model.storeLabel]];
-    self.storeLabelImage.contentMode = UIViewContentModeCenter;
-//    
-//    
-//    self.hotImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",_imageArr[0]]];
-//
-//    self.hotImageView.animationImages = [_arr copy];
-//    
-//    // all frames will execute in 1.75 seconds
-//    self.hotImageView.animationDuration = (arc4random() % 10) + 10;
-//    // repeat the annimation forever
-//    self.hotImageView.animationRepeatCount = 0;
-    
     self.hotImageView.currentInt = 0;
     [self.hotImageView initImageArr];
     self.hotImageView.imageArr = _imageArr;
@@ -76,17 +63,8 @@
     self.shadowView.layer.shadowOffset = CGSizeMake(2,2);
     self.shadowView.layer.shadowOpacity = 0.5;
     self.shadowView.layer.shadowRadius = 2.0;
-    
-    self.hotImageView.layer.cornerRadius = 5;
-    self.hotImageView.layer.masksToBounds = YES;
-    
-//    self.usesSmartColor = NO;
-//    self.tapCircleDiameter = bfPaperTableViewCell_tapCircleDiameterFull;
-//    self.rippleFromTapLocation = YES;
-//    self.backgroundFadeColor = [UIColor colorWithWhite:1 alpha:0.2f];
-//    self.letBackgroundLinger = YES;
-//    
-//    self.tapCircleColor = [UIColor colorWithRed:253.0/255.0 green:99.0/255.0 blue:93.0/255.0 alpha:0.5];
+
+    self.descriptionLabel.textColor = shrbText;
 }
 
 

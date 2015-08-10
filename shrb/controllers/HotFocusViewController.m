@@ -55,12 +55,6 @@
     [self initTableView];
     [self cardAnimation];
     
-    CGRect rect = [[UIApplication sharedApplication] statusBarFrame];
-    
-    CGRect rectNav = self.navigationController.navigationBar.frame;
-    
-    CGRect rectTab = self.tabBarController.tabBar.frame;
-    
   //  [self loadData];
 }
 
@@ -175,10 +169,14 @@
     //删除底部多余横线
     self.tableView.tableFooterView =[[UIView alloc]init];
     //动画
-    [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
+    //[self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
    // self.tableView.backgroundColor = shrbTableViewColor;
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = shrbTableViewColor;
+    
+    //去除顶部空间
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 0.01f)];
+    self.tableView.sectionFooterHeight = 4.0f;
     
     self.cellRemoveController = [[TQTableViewCellRemoveController alloc] initWithTableView:self.tableView];
     self.cellRemoveController.delegate = self;
@@ -207,13 +205,30 @@
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return screenWidth/8*5+12+21;
+    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 32, 0)];
+    UIFont* theFont = [UIFont systemFontOfSize:18.0];
+    label.numberOfLines = 0;
+    [label setFont:theFont];
+    [label setText:self.plistArr[indexPath.section][@"simpleStoreDetail"]];
+    
+    [label sizeToFit];// 显示文本需要的长度和宽度
+    
+    CGFloat labelHeight = label.frame.size.height;
+    
+    return screenWidth/8*5+16+labelHeight;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+
+    return [self.plistArr count];
 }
 
 #pragma mark - tableView delegate
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.plistArr count];
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -224,25 +239,10 @@
     if (cell == nil) {
         cell = [[HotFocusTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
-
-    cell.model = self.dataArray[indexPath.row];
-
-//    if (indexPath.row == 0) {
-//        KYCuteView *badgeLabel = [[KYCuteView alloc]initWithPoint:CGPointMake(60, 4) superView:cell];
-//        badgeLabel.viscosity = 8;
-//        badgeLabel.bubbleWidth = 20;
-//        badgeLabel.bubbleColor = [UIColor redColor];
-//        [badgeLabel setUp];
-//        [badgeLabel addGesture];
-//        badgeLabel.bubbleLabel.text = @"2";
-//        badgeLabel.bubbleLabel.textColor = [UIColor whiteColor];
-//        
-//        NSString *badgeNum = badgeLabel.bubbleLabel.text;
-//        NSInteger num =  [badgeNum integerValue];
-//        badgeLabel.frontView.hidden = num == 0?YES:NO;
-//    }
     
-    cell.tag = indexPath.row;
+    cell.model = self.dataArray[indexPath.section];
+    cell.tag = indexPath.section;
+    
     return cell;
 }
 
@@ -275,16 +275,8 @@
         [[NSUserDefaults standardUserDefaults] setObject:@"order" forKey:@"typesOfShops"];
     }
     
-    
     HotFocusTableViewCell* cell = (HotFocusTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    HotDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotDetailView"];
-//    viewController.storeNum = indexPath.row;
-//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    
-//    [self.navigationController pushViewController:viewController animated:YES];
     
     [SVProgressShow showWithStatus:@"进入店铺..."];
     
@@ -306,22 +298,9 @@
             
             [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:nil];
             [self performSelector:@selector(todoSomething:) withObject:indexPath afterDelay:0.0f];
-            
         }];
         
     }];
-    
-//    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//        
-//        cell.hotImageView.layer.transform = CATransform3DMakeScale(5, 5, 1);
-//        
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:nil];
-//        [self performSelector:@selector(todoSomething:) withObject:indexPath afterDelay:0.0f];
-//        cell.hotImageView.layer.transform = CATransform3DIdentity;
-//    }];
 }
 
 
@@ -337,11 +316,6 @@
     
     if ([typesOfShops isEqualToString:@"supermarket"]) {
         //超市
-//        NewStoreViewController *newStoreViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"newstoreView"];
-//        newStoreViewController.currentRow = indexPath.row;
-//        [newStoreViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//        [self.navigationController pushViewController:newStoreViewController animated:YES];
-//        [SVProgressShow dismiss];
         
         NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
         newStoreCollectController.hidesBottomBarWhenPushed = YES;
@@ -378,14 +352,6 @@
     [self.tableView beginUpdates];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView endUpdates];
-    
-//    NSMutableArray *insertion = [[NSMutableArray alloc]init];
-//    [insertion addObject:[NSIndexPath indexPathForRow:self.plistArr.count inSection:0]];
-//    
-//    [self.plistArr addObjectsFromArray:deleteArr];
-//    [self.tableView beginUpdates];
-//    [self.tableView insertRowsAtIndexPaths:insertion withRowAnimation:UITableViewRowAnimationTop];
-//    [self.tableView endUpdates];
     
     [self.plistArr addObjectsFromArray:deleteArr];
     [self.tableView reloadData];

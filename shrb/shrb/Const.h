@@ -19,7 +19,7 @@
 #define IsIOS7   [[[UIDevice currentDevice] systemVersion] floatValue]>=7.0
 
 //#define shrbPink      [UIColor colorWithRed:253.0/255.0 green:99.0/255.0 blue:93.0/255.0 alpha:1]
-#define shrbPink      [UIColor colorWithRed:110.0/255.0 green:208.0/255.0 blue:248.0/255.0 alpha:1]
+#define shrbPink      [UIColor colorWithRed:235.0/255.0 green:75.0/255.0 blue:75.0/255.0 alpha:1]
 #define shrbPinkAlpha8      [UIColor colorWithRed:110.0/255.0 green:208.0/255.0 blue:248.0/255.0 alpha:0.8]
 #define shrbLightPink      [UIColor colorWithRed:151.0/255.0 green:233.0/255.0 blue:255.0/255.0 alpha:1]
 #define shrbTableViewColor      [UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1]

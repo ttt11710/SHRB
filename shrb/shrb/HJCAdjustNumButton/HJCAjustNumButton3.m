@@ -87,12 +87,7 @@
     [self addSubview:_textField];
     
     [self commonSetup];
-    
-    CGFloat _oneLinex =_oneLine.frame.origin.x;
-    CGFloat _oneLiney =_oneLine.frame.origin.y;
-    CGFloat _twoLinex =_twoLine.frame.origin.x;
-    CGFloat _twoLiney =_twoLine.frame.origin.y;
-    
+        
 }
 
 - (void)commonSetup{
@@ -104,11 +99,6 @@
     _twoLine.frame = CGRectMake(viewW - viewH, 0, 1, viewH);
     _increaseBtn.frame = CGRectMake(viewW - viewH, 0, viewH, viewH);
     _textField.frame = CGRectMake(viewH, 0, viewW - viewH * 2, viewH);
-    
-    CGFloat _oneLinex =_oneLine.frame.origin.x;
-    CGFloat _oneLiney =_oneLine.frame.origin.y;
-    CGFloat _twoLinex =_twoLine.frame.origin.x;
-    CGFloat _twoLiney =_twoLine.frame.origin.y;
     
 }
 

@@ -27,15 +27,13 @@
     self.tradeNameLabel.text = model.tradeName;
     self.tradeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.tradeImage]];
     
-    NSString *string = [NSString stringWithFormat:@"会员价:%@元  原价:%@元",model.memberPrice,model.originalPrice];
+    self.memberPriceLabel.text = [NSString stringWithFormat:@"会员价:￥%@",model.memberPrice];
+    self.originalPriceLabel.text = [NSString stringWithFormat:@"原价:￥%@",model.originalPrice];
     
-    self.priceLabel.attributedText = [string createrAttributedStringWithStyles:
-                                      @[
-                                        [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(4, model.memberPrice.length)],
-                                        [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(12, model.originalPrice.length)],
-                                        [FontStyle withFont:[UIFont systemFontOfSize:17.f] range:NSMakeRange(4, model.memberPrice.length)],
-                                        [FontStyle withFont:[UIFont systemFontOfSize:17.f] range:NSMakeRange(12, model.originalPrice.length)]
-                                        ]];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:self.originalPriceLabel.text];
+     [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, [self.originalPriceLabel.text length])];//删除线
+    [attrString addAttribute:NSStrikethroughColorAttributeName value:shrbText range:NSMakeRange(0, [self.originalPriceLabel.text length])];
+    self.originalPriceLabel.attributedText = attrString;
 }
 
 
@@ -45,6 +43,8 @@
   //  self.tradeImageView.layer.masksToBounds = YES;
   //  self.tradeImageView.layer.borderColor = shrbPink.CGColor;
   //  self.tradeImageView.layer.borderWidth = 1;
+    
+    self.memberPriceLabel.textColor = [UIColor colorWithRed:235.0/255.0 green:76.0/255.0 blue:72.0/255.0 alpha:1];
 }
 
 

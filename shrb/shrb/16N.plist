@@ -61,6 +61,26 @@
 				<key>memberPrice</key>
 				<string>34</string>
 				<key>tradeName</key>
+				<string>正品男士都市休闲立领皮衣</string>
+				<key>tradeImage</key>
+				<string>正品男士都市休闲立领皮衣</string>
+			</dict>
+			<dict>
+				<key>originalPrice</key>
+				<string>45</string>
+				<key>cardNumber</key>
+				<string>20625874563</string>
+				<key>integral</key>
+				<string>10</string>
+				<key>money</key>
+				<string>35</string>
+				<key>tradeDescription</key>
+				<string>        夏天正劲，混搭出趣！全新推出的咖啡三重奏星冰乐，把苏门答腊、意式烘焙和浓缩烘焙三种滋味放进一杯！美味的咖啡吉利，冰爽的咖啡星冰乐和滑顺的浓缩咖啡搅打奶油，为你打造浓郁的咖啡体验。更有夏莓意式奶冻星冰乐与摩卡曲奇星冰乐，丰富你的选择！</string>
+				<key>saveMoney</key>
+				<string>20</string>
+				<key>memberPrice</key>
+				<string>34</string>
+				<key>tradeName</key>
 				<string>男士时尚都市迷彩拼接</string>
 				<key>tradeImage</key>
 				<string>男士时尚都市迷彩拼接</string>
@@ -84,26 +104,6 @@
 				<string>全撞色连帽夹克</string>
 				<key>tradeImage</key>
 				<string>全撞色连帽夹克</string>
-			</dict>
-			<dict>
-				<key>originalPrice</key>
-				<string>45</string>
-				<key>cardNumber</key>
-				<string>20625874563</string>
-				<key>integral</key>
-				<string>10</string>
-				<key>money</key>
-				<string>35</string>
-				<key>tradeDescription</key>
-				<string>        夏天正劲，混搭出趣！全新推出的咖啡三重奏星冰乐，把苏门答腊、意式烘焙和浓缩烘焙三种滋味放进一杯！美味的咖啡吉利，冰爽的咖啡星冰乐和滑顺的浓缩咖啡搅打奶油，为你打造浓郁的咖啡体验。更有夏莓意式奶冻星冰乐与摩卡曲奇星冰乐，丰富你的选择！</string>
-				<key>saveMoney</key>
-				<string>20</string>
-				<key>memberPrice</key>
-				<string>34</string>
-				<key>tradeName</key>
-				<string>正品男士都市休闲立领皮衣</string>
-				<key>tradeImage</key>
-				<string>正品男士都市休闲立领皮衣</string>
 			</dict>
 		</array>
 		<key>type</key>

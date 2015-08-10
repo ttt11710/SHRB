@@ -76,13 +76,6 @@
     self.integralLabel.text = [NSString stringWithFormat:@"积分：%@",model.integral];
     self.cardNumberLabel.text = [NSString stringWithFormat:@"卡号：%@",model.cardNumber];
     
-    CGFloat width =  self.imageShadowView.frame.size.width;
-    CGFloat height =  self.imageShadowView.frame.size.height;
-    CGFloat width1 =  _imageScrollView.frame.size.width;
-    CGFloat height1 = _imageScrollView.frame.size.width;
-    
-     CGFloat width2 = imageWidth;
-    
     for (int i = 0 ; i < [_imageArray count]; i++)
     {
         UIImageView *_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageWidth *i, 0, imageWidth, imageHeight)];

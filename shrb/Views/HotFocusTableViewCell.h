@@ -17,5 +17,5 @@
 @property (weak, nonatomic) IBOutlet UIView *shadowView;  //阴影
 @property (weak, nonatomic) IBOutlet MyImageView *hotImageView;  //图片
 @property (weak, nonatomic) IBOutlet UIImageView *storeLabelImage; //标签
-//@property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
+
 @end

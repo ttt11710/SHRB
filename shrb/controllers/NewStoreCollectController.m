@@ -19,6 +19,7 @@
     BOOL showSelectTypeTableView;;
 }
 @property (retain, nonatomic) UICollectionView *collectionView;
+
 @property (retain, nonatomic) UIButton *QRViewBtn;
 @property (retain, nonatomic) UILabel *QRLabel;
 
@@ -178,15 +179,29 @@
 
 - (void)createCollection{
     
-    UICollectionViewFlowLayout* layOut=[[UICollectionViewFlowLayout alloc]init];
-    [layOut setItemSize:CGSizeMake((screenWidth-20)/2, (screenWidth-20)/2)];
-    [layOut setScrollDirection:UICollectionViewScrollDirectionVertical];
-    layOut.sectionInset=UIEdgeInsetsMake(4, 4, 4 ,4);
+//    UICollectionViewFlowLayout* layOut=[[UICollectionViewFlowLayout alloc]init];
+//    [layOut setItemSize:CGSizeMake((screenWidth-20)/2, (screenWidth-20)/2)];
+//    [layOut setScrollDirection:UICollectionViewScrollDirectionVertical];
+//    layOut.sectionInset=UIEdgeInsetsMake(4, 4, 4 ,4);
+//    
+//    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight) collectionViewLayout:layOut];
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight) collectionViewLayout:layOut];
+//    [self.collectionView registerNib:[UINib nibWithNibName:@"NewStoreCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
+//    
+//    
+//    self.collectionView.backgroundColor = shrbTableViewColor;
+//    self.collectionView.delegate=self;
+   // self.collectionView.dataSource=self;
     
+    
+    FRGWaterfallCollectionViewLayout *cvLayout = [[FRGWaterfallCollectionViewLayout alloc] init];
+    cvLayout.delegate = self;
+    cvLayout.itemWidth = screenWidth/2-10;
+    cvLayout.topInset = 0.0f;
+    cvLayout.bottomInset = 0.0f;
+    cvLayout.stickyHeader = YES;
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight) collectionViewLayout:cvLayout];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NewStoreCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
-    
     
     self.collectionView.backgroundColor = shrbTableViewColor;
     self.collectionView.delegate=self;
@@ -353,11 +368,12 @@
     cell.model = self.modelArray[indexPath.row];
     cell.backgroundColor = [UIColor whiteColor];
     
-  //  cell.tradeImageView.layer.transform = CATransform3DMakeScale(1, 0, 1);
+    cell.tradeImageView.layer.transform = CATransform3DMakeScale(1, 0, 1);
     cell.tradeImageView.layer.transform = CATransform3DMakeTranslation(0, -screenWidth/2, 0);
     
     cell.tradeNameLabel.alpha = 0;
-    cell.priceLabel.alpha = 0;
+    cell.memberPriceLabel.alpha = 0 ;
+    cell.originalPriceLabel.alpha = 0 ;
     
     [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         cell.tradeImageView.layer.transform = CATransform3DIdentity;
@@ -375,51 +391,32 @@
     
     [UIView animateWithDuration:0.8 delay:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
         
-        cell.priceLabel.alpha = 1;
+        cell.memberPriceLabel.alpha = 1 ;
+        cell.originalPriceLabel.alpha = 1 ;
         
     } completion:^(BOOL finished) {
     }];
     return cell;
 }
 
-
 //定义每个UICollectionView 的大小
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(FRGWaterfallCollectionViewLayout *)collectionViewLayout
+ heightForItemAtIndexPath:(NSIndexPath *)indexPath {
+        UILabel *tradeNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth/2 , 0)];
+        UIFont *theFont1 = [UIFont systemFontOfSize:17.0];
+        tradeNameLabel.numberOfLines = 0;
+        [tradeNameLabel setFont:theFont1];
+        NSString *string1 = [[self.selectArray objectAtIndex:indexPath.section][@"info"] objectAtIndex:indexPath.row][@"tradeName"];
+        [tradeNameLabel setText:string1];
+        [tradeNameLabel sizeToFit];// 显示文本需要的长度和宽度
     
-    UILabel *priceLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 100, 0)];
-    UIFont* theFont = [UIFont systemFontOfSize:14.0];
-    priceLabel.numberOfLines = 0;
-    [priceLabel setFont:theFont];
-    NSString *string = [NSString stringWithFormat:@"会员价：%@元  原价：%@元",[[self.selectArray objectAtIndex:indexPath.section][@"info"] objectAtIndex:indexPath.row][@"memberPrice"],[[self.selectArray objectAtIndex:indexPath.section][@"info"] objectAtIndex:indexPath.row][@"originalPrice"]];
-    [priceLabel setText:string];
-    [priceLabel sizeToFit];// 显示文本需要的长度和宽度
-    
-    return CGSizeMake((screenWidth-16)/2, (screenWidth-16)/2+ 25 + priceLabel.frame.size.height + 12);
+        return screenWidth/2-10 + tradeNameLabel.frame.size.height + 25 + 21 + 8 ;
 }
-
-
-//定义每个UICollectionView 的 margin
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsMake(4, 3, 4, 3);
-}
-
 
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-//    NewStoreCollectionViewCell* cell = (NewStoreCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-//
-//    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//        
-//        cell.layer.transform = CATransform3DMakeScale(5, 5, 1);
-//        
-//    } completion:^(BOOL finished) {
-//    
-//    }];
-    
     BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
     if (isMember) {
         
@@ -464,24 +461,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-        static NSString *SimpleTableIdentifier = @"cellId";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
-        }
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    static NSString *SimpleTableIdentifier = @"cellId";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+    }
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
     cell.textLabel.text = indexPath.row == 0?@"全部类别" : [self.plistArr objectAtIndex:indexPath.row-1][@"type"];
-        cell.textLabel.textColor = shrbText;
-        return cell;
+    cell.textLabel.textColor = shrbText;
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        showSelectTypeTableView = !showSelectTypeTableView;
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            
-            self.selectTypeTableView.layer.transform = CATransform3DIdentity;
+    showSelectTypeTableView = !showSelectTypeTableView;
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.selectTypeTableView.layer.transform = CATransform3DIdentity;
             self.selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
             
         } completion:^(BOOL finished) {
