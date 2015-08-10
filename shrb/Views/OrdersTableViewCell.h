@@ -14,14 +14,18 @@ extern NSString *const PAY_CHANGED;
 
 @interface OrdersTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *couponsImageView;
-//@property (weak, nonatomic) IBOutlet UITextView *settlementTextView;
+@property (weak, nonatomic) IBOutlet UILabel *tradeNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UITextField *numTextField;
+
+
+
 @property (weak, nonatomic) IBOutlet UILabel*settlementLable;
 
 @property (weak, nonatomic) IBOutlet UIImageView *checkImageView;
 @property (weak, nonatomic) IBOutlet UILabel *couponLabel;
 @property (weak, nonatomic) IBOutlet UITextView *ruleTextView;
-@property (weak, nonatomic) IBOutlet UILabel *tradeNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *memberTotalLabel;

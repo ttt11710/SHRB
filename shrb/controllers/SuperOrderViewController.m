@@ -66,7 +66,7 @@
 #pragma mark - tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_data count]+2;
+    return [_data count]+3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,6 +104,21 @@
                                             [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(12, 2)]
                                             ]];
         
+        cell.numTextField.text = @"1";
+        
+        return cell;
+    }
+    
+    else if (indexPath.row == [_data count]+2)
+    {
+        static NSString *simpleTableIdentifier = @"blankcellId";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
+        }
+        [cell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width)];
+        cell.backgroundColor = shrbTableViewColor;
         return cell;
     }
     else {
@@ -116,6 +131,7 @@
         
         cell.totalLabel.text = @"总价:450元";
         cell.memberTotalLabel.text = @"会员价:350元";
+        
         TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
         manData.identifier = @"man";
         manData.labelText = @"100RMB电子券";
@@ -125,8 +141,11 @@
         manData.checkedImage = [UIImage imageNamed:@"checked"];
         manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
         
-        [cell.checkCouponsView myInitWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
-        [cell.checkCouponsView create];
+        if ([cell.checkCouponsView.checkedCheckBoxes count] == 0 ) {
+            [cell.checkCouponsView myInitWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
+            [cell.checkCouponsView create];
+        }
+        
         return cell;
 
     }

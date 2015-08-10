@@ -10,6 +10,7 @@
 #import "Const.h"
 #import "TNCheckBoxGroup.h"
 #import "OrdersTableViewCell.h"
+#import "CompleteVoucherViewController.h"
 
 
 #define imageViewWidth 80
@@ -64,6 +65,7 @@ static UIButton *_payTypeButton = nil;
     }
 }
 
+
 #pragma mark - tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -115,6 +117,10 @@ static UIButton *_payTypeButton = nil;
         if (cell == nil) {
             cell = [[OrdersTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
         }
+        
+        for (id view in cell.payViewCheckCouponsView.subviews) {
+            [view removeFromSuperview];
+        }
         TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
         manData.identifier = @"man";
         manData.labelText = @"100RMB电子券";
@@ -136,16 +142,34 @@ static UIButton *_payTypeButton = nil;
     
     UIButton *button = (UIButton *)notification.object;
     
-    NSLog(@"tag = %ld",(long)button.tag);
+    
     switch (button.tag) {
         case 0:
             //会员支付
+        {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+            CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
             break;
         case 1:
             //支付宝支付
+        {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"superCompletePayView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
             break;
         case 2:
             //银联支付
+        {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"superCompletePayView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
             break;
             
         default:

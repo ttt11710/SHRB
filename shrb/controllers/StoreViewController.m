@@ -39,6 +39,7 @@
 @end
 
 static StoreViewController *g_StoreViewController = nil;
+static int constantCountTime = 20*60;
 static int countTime = 20*60;
 @interface StoreViewController ()
 {
@@ -550,6 +551,13 @@ static int countTime = 20*60;
     if (d.minute == 0 && d.second == 0) {
         [_timer invalidate];
         self.shoppingCardView.hidden = YES;
+        self.shoppingCardImageView.layer.transform = CATransform3DIdentity;
+        self.shoppingNumLabel.hidden = YES;
+        self.shoppingFixLabel.hidden = YES;
+        self.countDownLabel.hidden = YES;
+        self.countDownLabel.text = @"20:00";
+        countTime = constantCountTime;
+        self.shoppingNumLabel.num = 0 ;
         [SVProgressShow showInfoWithStatus:@"订单过期！"];
     }
 }

@@ -9,10 +9,12 @@
 #import "SuperCompletePayViewController.h"
 #import "LazyFadeInView.h"
 #import "Const.h"
+#import <BFPaperButton.h>
 
 @interface SuperCompletePayViewController ()
 
 @property (weak, nonatomic) IBOutlet LazyFadeInView *payInfoView;
+@property (weak, nonatomic) IBOutlet BFPaperButton *completeBtn;
 @end
 
 @implementation SuperCompletePayViewController
@@ -26,7 +28,9 @@
 
 - (void)initView {
     self.payInfoView.text = @"消费记录：\n2015年5月20日                               PM15:47\n完成一次100元的消费交易";
-    self.payInfoView.backgroundColor = shrbPink;
+    self.payInfoView.backgroundColor = shrbLightPink;
+    
+    self.completeBtn.backgroundColor = shrbPink;
     
 }
 
