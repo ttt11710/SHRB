@@ -19,8 +19,9 @@
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "QRViewController.h"
 #import "SVProgressShow.h"
+#import "ShoppingCardView.h"
 
-@interface ShoppingNumLabel : UILabel
+@interface ShoppingNumLabel1 : UILabel
 {
     NSInteger _num;
 }
@@ -29,7 +30,7 @@
 
 @end
 
-@implementation ShoppingNumLabel
+@implementation ShoppingNumLabel1
 
 - (void)setNum:(NSInteger)num
 {
@@ -39,8 +40,8 @@
 @end
 
 static StoreViewController *g_StoreViewController = nil;
-static int constantCountTime = 20*60;
-static int countTime = 20*60;
+static NSInteger constantCountTime = 20*60;
+static NSInteger countTime = 20*60;
 @interface StoreViewController ()
 {
     NSMutableArray *_array;
@@ -52,6 +53,9 @@ static int countTime = 20*60;
    // UIView *selectTypeTableViewBackView;
    // UITableView *selectTypeTableView;
     BOOL showSelectTypeTableView;
+    
+    
+    ShoppingCardView *_myShoppingCardView;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *selectTypeTableViewBackView;
@@ -62,7 +66,7 @@ static int countTime = 20*60;
 @property (weak, nonatomic) IBOutlet UIButton *gotopayViewBtn;
 @property (weak, nonatomic) IBOutlet UIView *shoppingCardView;
 @property (weak, nonatomic) IBOutlet UIImageView *shoppingCardImageView;
-@property (weak, nonatomic) IBOutlet ShoppingNumLabel *shoppingNumLabel;
+@property (weak, nonatomic) IBOutlet ShoppingNumLabel1 *shoppingNumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shoppingFixLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 
@@ -110,6 +114,31 @@ static int countTime = 20*60;
     self.countDownLabel.hidden = YES;
     self.countDownLabel.text = @"20:00";
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countTime"];
+    [[NSUserDefaults standardUserDefaults] setInteger:1200 forKey:@"countTime"];
+}
+
+
+- (void)viewDidLayoutSubviews
+{
+    countTime = [[NSUserDefaults standardUserDefaults] integerForKey:@"countTime"];
+    
+    if (self.shoppingCardView.hidden && countTime < 1200 && countTime > 0 && _myShoppingCardView == nil) {
+        _myShoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-44-20-60, 100, 40)];
+        _myShoppingCardView.shoppingNumLabel.num = 10;
+        [self.view insertSubview:_myShoppingCardView aboveSubview:self.view];
+    }
+    
+    else {
+        [_myShoppingCardView showShoppingCard];
+    }
+}
+
 
 - (void)initView
 {
@@ -304,7 +333,9 @@ static int countTime = 20*60;
                 
                 NSLog(@"%ld",(long)indexPath.row);
                 
-                self.shoppingCardView.hidden = NO;
+                if (_myShoppingCardView.hidden) {
+                    self.shoppingCardView.hidden = NO;
+                }
                 
                 _rect = [self.tableView.superview convertRect:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height) fromView:cell];
                 
@@ -497,6 +528,11 @@ static int countTime = 20*60;
 #pragma mark - 显示购物车
 - (void)showShoppingCard
 {
+    if (!_myShoppingCardView.hidden) {
+        _myShoppingCardView.shoppingNumLabel.num ++ ;
+        return ;
+    }
+    
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
         
         self.shoppingCardImageView.layer.transform = CATransform3DMakeTranslation(-(self.shoppingCardView.frame.size.width/2-20), 0, 0);

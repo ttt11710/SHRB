@@ -31,20 +31,23 @@ static ProductViewController *g_ProductViewController = nil;
 @property (nonatomic,strong) NSMutableArray * modelArray;
 @property (nonatomic,strong) NSMutableArray * plistArr;
 
+@property(nonatomic,retain) UIScrollView *mainScrollView;//整个界面ScrollView
 
-@property(nonatomic,retain)UIScrollView *mainScrollView;//整个界面ScrollView
-//@property(nonatomic,retain)UIView *cardShadowView;//展示卡片阴影层
-@property(nonatomic,retain)UIView *cardView;//展示卡片View
-@property(nonatomic,retain)UIScrollView *cardScrollView;//卡片ScrollView
-@property (retain, nonatomic)UIPageControl *imagePageControl; //卡片page
-@property(nonatomic,retain)UIImageView *cardPhotoView;//卡片图片
-@property(nonatomic,retain)UIView *blurEffectView;//毛玻璃View
-
-//毛玻璃上控件
-//@property (retain, nonatomic) UILabel *saveMoneyLabel;  //节省钱数
+@property(nonatomic,retain) UIView *cardView;//展示卡片View
+@property(nonatomic,retain) UIScrollView *cardScrollView;//卡片ScrollView
+@property (retain, nonatomic) UIPageControl *imagePageControl; //卡片page
+@property(nonatomic,retain) UIImageView *cardPhotoView;//卡片图片
+@property(nonatomic,retain) UIView *blurEffectView;//毛玻璃View
 @property (retain, nonatomic) UIButton *collectBtn;     //收藏
 @property (retain, nonatomic) UIButton *shareBtn;       //分享
 
+@property(nonatomic,retain) UIView *tradeNameAndPriceView;//商品名和价格View
+@property (retain, nonatomic) UILabel *tradeNameLabel; //商品名
+@property (retain, nonatomic) UILabel *memberPriceLabel; //会员价
+@property (retain, nonatomic) UILabel *saveMoneyLabel; //节省价格
+@property (retain, nonatomic) UILabel *originalPriceLabel; //原价
+
+@property(nonatomic,retain) UIView *descriptionAndregisterView;//产品描述与注册View
 @property (retain, nonatomic) UILabel *descriptionLabel; //产品描述
 @property (retain, nonatomic) UIButton *registerBtn;     //注册
 @property (retain, nonatomic) SuperBecomeMemberView1 *becomeMemberView; //注册弹出界面
@@ -71,8 +74,8 @@ static ProductViewController *g_ProductViewController = nil;
     [self initData];
     [self initMainView];
     [self initCardView];
-    [self initTradeDescriptionView];
-    [self initRegisterView];
+    [self initTradeNameAndPriceView];
+    [self initDescriptionAndregisterView];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     self.view.userInteractionEnabled = YES;
@@ -127,21 +130,14 @@ static ProductViewController *g_ProductViewController = nil;
 - (void)initMainView
 {
     _mainScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    _mainScrollView.backgroundColor = [UIColor whiteColor] ;
+    _mainScrollView.backgroundColor = shrbTableViewColor;
     [self.view addSubview:_mainScrollView];
 }
 
--(void)initCardView{
+-(void)initCardView
+{
     
-//    _cardShadowView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenWidth/1.3)];
-//    
-//    _cardShadowView.layer.cornerRadius = 8;
-//    _cardShadowView.layer.shadowColor = [UIColor blackColor].CGColor;
-//    _cardShadowView.layer.shadowOffset = CGSizeMake(0,2);
-//    _cardShadowView.layer.shadowOpacity = 0.5;
-//    _cardShadowView.layer.shadowRadius = 2.0;
-    
-    _cardView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenWidth/1.3)];
+    _cardView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenWidth/1.37)];
     _cardView.backgroundColor=[UIColor whiteColor];
     
     [_mainScrollView addSubview:_cardView];
@@ -212,24 +208,22 @@ static ProductViewController *g_ProductViewController = nil;
     }
     
     if (screenHeight<=480) {
-        _blurEffectView.frame =CGRectMake(screenWidth-30*2-8*3, _cardView.frame.size.height-40, 30*2+8*3, 40);
+        _blurEffectView.frame =CGRectMake(screenWidth-30*2-8*3-16, _cardView.frame.size.height-50, 30*2+8*3, 40);
     }else{
-        _blurEffectView.frame =CGRectMake(screenWidth-30*2-8*3, _cardView.frame.size.height-40, 30*2+8*3, 40);
+        _blurEffectView.frame =CGRectMake(screenWidth-30*2-8*3-16, _cardView.frame.size.height-50, 30*2+8*3, 40);
     }
     [_cardView addSubview:_blurEffectView];
-    
-//    _saveMoneyLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, _blurEffectView.frame.size.width/2-40, _blurEffectView.frame.size.height)];
-//    _saveMoneyLabel.font=[UIFont boldSystemFontOfSize:18];
-//    _saveMoneyLabel.textColor=[UIColor whiteColor];
-//    _saveMoneyLabel.textAlignment=NSTextAlignmentLeft;
-//    _saveMoneyLabel.text = @"省40元";
-//    [_blurEffectView addSubview:_saveMoneyLabel];
     
     _collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_collectBtn setBackgroundImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
     _collectBtn.frame = CGRectMake(8, _blurEffectView.frame.size.height/2-15, 30, 30);
     [_collectBtn addTarget:self action:@selector(collectBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_blurEffectView addSubview:_collectBtn];
+    
+    
+    UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(_blurEffectView.frame.size.width/2, 5, 1, 30)];
+    lineImageView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
+    [_blurEffectView addSubview:lineImageView];
 
     
     _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -240,39 +234,93 @@ static ProductViewController *g_ProductViewController = nil;
 
 }
 
-- (void)initTradeDescriptionView
+-(void)initTradeNameAndPriceView
 {
+    _tradeNameAndPriceView = [[UIView alloc] initWithFrame:CGRectMake(0, _cardScrollView.frame.origin.y + _cardScrollView.frame.size.height, screenWidth, 105)];
+    _tradeNameAndPriceView.backgroundColor = [UIColor whiteColor];
+    [_mainScrollView addSubview:_tradeNameAndPriceView];
     
-    _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _cardScrollView.frame.origin.y + _cardScrollView.frame.size.height + 10,screenWidth - 32 , 40)];
-    _descriptionLabel.numberOfLines = 1000;
-    _descriptionLabel.font = [UIFont systemFontOfSize:15.0];
-    _descriptionLabel.textColor = shrbText;
-    _descriptionLabel.text = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeDescription"];
-    [_mainScrollView addSubview:_descriptionLabel];
+    //商品名
+    _tradeNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 12, screenWidth-16*2, 30)];
+    _tradeNameLabel.font = [UIFont systemFontOfSize:17.0];
+    _tradeNameLabel.textColor = shrbText;
+    _tradeNameLabel.text = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeName"];
+    [_tradeNameAndPriceView addSubview:_tradeNameLabel];
     
+    //会员价
+    _memberPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _tradeNameLabel.frame.origin.y + _tradeNameLabel.frame.size.height + 4, 100, 30)];
+    _memberPriceLabel.font = [UIFont systemFontOfSize:18.0];
+    _memberPriceLabel.textColor = shrbPink;
+    _memberPriceLabel.text = [NSString stringWithFormat:@"会员价:￥%@",[[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"memberPrice"]]  ;
+    [_memberPriceLabel sizeToFit];
+    [_tradeNameAndPriceView addSubview:_memberPriceLabel];
     
-    [_descriptionLabel sizeToFit];
-    if (_descriptionLabel.frame.size.height + _cardView.frame.origin.y + _cardView.frame.size.height+220+10 < screenHeight-20-44) {
-        _mainScrollView.scrollEnabled = NO;
-        _mainScrollView.contentSize = CGSizeMake(0, 0);
-        return ;
-    }
+    //节省价格
+    _saveMoneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(_memberPriceLabel.frame.origin.x + _memberPriceLabel.frame.size.width + 8, _memberPriceLabel.frame.origin.y, 60, 16)];
+    _saveMoneyLabel.center = CGPointMake(_memberPriceLabel.frame.origin.x + _memberPriceLabel.frame.size.width + 8 + 30 , _memberPriceLabel.center.y);
+    _saveMoneyLabel.font = [UIFont systemFontOfSize:15.0];
+    _saveMoneyLabel.textColor = [UIColor whiteColor];
+    _saveMoneyLabel.backgroundColor = shrbPink;
+    _saveMoneyLabel.textAlignment = NSTextAlignmentCenter;
+    _saveMoneyLabel.text = [NSString stringWithFormat:@"省￥%@",[[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"saveMoney"]]  ;
+    [_tradeNameAndPriceView addSubview:_saveMoneyLabel];
     
-    _mainScrollView.scrollEnabled = YES;
-    _mainScrollView.contentSize = CGSizeMake(0, _descriptionLabel.frame.size.height + _cardView.frame.origin.y + _cardView.frame.size.height+220+10);
+    //原价
+    _originalPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _memberPriceLabel.frame.origin.y + _memberPriceLabel.frame.size.height + 4, 100, 21)];
+    _originalPriceLabel.font = [UIFont systemFontOfSize:15.0];
+    _originalPriceLabel.textColor = [UIColor lightGrayColor];
+    _originalPriceLabel.text = [NSString stringWithFormat:@"原价:￥%@",[[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"originalPrice"]];
+    [_originalPriceLabel sizeToFit];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:_originalPriceLabel.text];
+    [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, [self.originalPriceLabel.text length])];//删除线
+    [attrString addAttribute:NSStrikethroughColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, [_originalPriceLabel.text length])];
+    _originalPriceLabel.attributedText = attrString;
+    [_tradeNameAndPriceView addSubview:_originalPriceLabel];
+
 }
 
-- (void)initRegisterView
+- (void)initDescriptionAndregisterView
 {
+    
+    _descriptionAndregisterView = [[UIView alloc] initWithFrame:CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, 230)];
+    _descriptionAndregisterView.backgroundColor =[UIColor whiteColor];
+    [_mainScrollView addSubview:_descriptionAndregisterView];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 16, 200, 30)];
+    label.text = @"商品详情";
+    label.textColor = shrbText;
+    label.font = [UIFont systemFontOfSize:20];
+    [_descriptionAndregisterView addSubview:label];
+    
+    //商品描述
+    _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, label.frame.origin.y + label.frame.size.height + 16 ,screenWidth - 32 , 40)];
+    _descriptionLabel.numberOfLines = 1000;
+    _descriptionLabel.font = [UIFont systemFontOfSize:15.0];
+    _descriptionLabel.textColor = shrbLightText;
+    _descriptionLabel.text = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeDescription"];
+    [_descriptionLabel sizeToFit];
+    [_descriptionAndregisterView addSubview:_descriptionLabel];
+    
     _registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_registerBtn setTitle:@"会员注册" forState:UIControlStateNormal];
     _registerBtn.font = [UIFont systemFontOfSize:15.f];
     [_registerBtn setBackgroundColor:shrbPink];
-    _registerBtn.frame = CGRectMake(32, _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + 10, screenWidth - 64, 44);
+    _registerBtn.frame = CGRectMake(16, _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + 16, screenWidth - 32, 44);
     _registerBtn.layer.cornerRadius = 4;
     _registerBtn.layer.masksToBounds = YES;
     [_registerBtn addTarget:self action:@selector(registerBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_mainScrollView addSubview:_registerBtn];
+    [_descriptionAndregisterView addSubview:_registerBtn];
+    
+    _descriptionAndregisterView.frame = CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, label.frame.origin.y + label.frame.size.height + 16 + _descriptionLabel.frame.size.height + 16 + _registerBtn.frame.size.height + 30);
+    
+    if (_cardView.frame.size.height + _tradeNameAndPriceView.frame.size.height+ 8 + _descriptionAndregisterView.frame.size.height + 10  < screenHeight-20-44) {
+        _mainScrollView.scrollEnabled = NO;
+        _mainScrollView.contentSize = CGSizeMake(0, 0);
+        return ;
+    }
+
+    _mainScrollView.scrollEnabled = YES;
+    _mainScrollView.contentSize = CGSizeMake(0, _cardView.frame.size.height + _tradeNameAndPriceView.frame.size.height+ 8 + _descriptionAndregisterView.frame.size.height + 10);
 }
 
 

@@ -497,6 +497,7 @@
             }
         
             [self.collectionView reloadData];
+            [self.collectionView setContentOffset:CGPointMake(0, -20-44) animated:YES];
         }];
 }
 

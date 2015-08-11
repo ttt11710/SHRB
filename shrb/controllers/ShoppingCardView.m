@@ -1,0 +1,124 @@
+//
+//  ShoppingCardView.m
+//  shrb
+//
+//  Created by PayBay on 15/8/11.
+//  Copyright © 2015年 PayBay. All rights reserved.
+//
+
+#import "ShoppingCardView.h"
+#import "Const.h"
+#import "SVProgressShow.h"
+
+@implementation ShoppingNumLabel
+
+- (void)setNum:(NSInteger)num
+{
+    _num = num;
+    self.text = [NSString stringWithFormat:@"%ld",(long)num];
+}
+@end
+
+@interface ShoppingCardView ()
+{
+    NSTimer *_timer;
+}
+@end
+
+@implementation ShoppingCardView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, 150, 42)];
+    if (self) {
+        
+        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.67];
+        [self creatView];
+        self.hidden = YES;
+    
+        [self showShoppingCard];
+    }
+    return self ;
+}
+
+- (void)creatView
+{
+    UIImageView *shoppingCardImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_float_shoppingcar_normal"]];
+    shoppingCardImageView.frame = CGRectMake(10, 4, 34, 34);
+    [self addSubview:shoppingCardImageView];
+    
+    self.shoppingNumLabel = [[ShoppingNumLabel alloc] initWithFrame:CGRectMake(10+34-5, 0, 22, 22)];
+    self.shoppingNumLabel.layer.cornerRadius = 11;
+    self.shoppingNumLabel.layer.masksToBounds = YES;
+    self.shoppingNumLabel.textColor = [UIColor whiteColor];
+    self.shoppingNumLabel.backgroundColor = shrbPink;
+    [self addSubview:self.shoppingNumLabel];
+    
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"订单将保留";
+    label.font = [UIFont systemFontOfSize:15];
+    label.textColor = [UIColor whiteColor];
+    label.frame = CGRectMake(150-8-75, 4, 75, 21);
+    [label sizeToFit];
+    [self addSubview:label];
+    
+    
+    self.countDownLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 75, 21)];
+    self.countDownLabel.center = CGPointMake(label.center.x, label.center.y + 21);
+    self.countDownLabel.font = [UIFont systemFontOfSize:15];
+    self.countDownLabel.textAlignment = NSTextAlignmentCenter;
+    self.countDownLabel.textColor = [UIColor whiteColor];
+    [self addSubview:self.countDownLabel];
+}
+
+- (void)showShoppingCard
+{
+    if (self.hidden) {
+        _countTime = [[NSUserDefaults standardUserDefaults] integerForKey:@"countTime"];
+        if (_countTime < 1200 && _countTime > 0) {
+            self.hidden = NO;
+            [self countDown];
+        }
+
+    }
+}
+
+#pragma mark - 倒计时功能
+
+- (void)countDown
+{
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
+    
+}
+
+- (void)timerFireMethod:(NSTimer *)timer
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *today = [NSDate date];//当前时间
+    NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:--_countTime];
+    unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *d = [calendar components:unitFlags fromDate:today toDate:fireDate options:0];//计算时间差
+    self.countDownLabel.text = [NSString stringWithFormat:@"%ld:%ld",(long)[d minute],(long)[d second]];
+    if (d.second <10) {
+        self.countDownLabel.text = [NSString stringWithFormat:@"%ld:0%ld",(long)[d minute],(long)[d second]];
+    }
+    if (d.minute <10) {
+        self.countDownLabel.text = [NSString stringWithFormat:@"0%ld:%ld",(long)[d minute],(long)[d second]];
+    }
+    if (d.minute <10 && d.second < 10) {
+        self.countDownLabel.text = [NSString stringWithFormat:@"0%ld:0%ld",(long)[d minute],(long)[d second]];
+    }
+    
+    if (d.minute == 0 && d.second == 0) {
+        [_timer invalidate];
+        
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countTime"];
+        [[NSUserDefaults standardUserDefaults] setInteger:_countTime forKey:@"countTime"];
+        self.hidden = YES;
+        self.shoppingNumLabel.num = 0 ;
+        [SVProgressShow showInfoWithStatus:@"订单过期！"];
+    }
+}
+
+@end

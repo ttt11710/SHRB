@@ -23,14 +23,17 @@
 #import "Migrations.h"
 #import "MessageProcessor.h"
 #import "HotListSelectViewController.h"
+#import "ShoppingCardView.h"
 
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @interface HotFocusViewController () <TQTableViewCellRemoveControllerDelegate>
 {
-    MessageProcessor *_messageProcessor;;
+    MessageProcessor *_messageProcessor;
+    ShoppingCardView *_shoppingCardView;
 }
+@property (nonatomic, strong) UIWindow       *window;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray * dataArray;
@@ -55,20 +58,35 @@
     [self initTableView];
     [self cardAnimation];
     
-  //  [self loadData];
+    //  [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
    // self.tabBarController.tabBar.hidden = NO;
+}
+
+- (void)viewDidLayoutSubviews
+{
     
+    if (_shoppingCardView == nil) {
+        _shoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-49-50, 100, 40)];
+        _shoppingCardView.shoppingNumLabel.num = 10;
+        [self.view insertSubview:_shoppingCardView aboveSubview:self.view];
+    }
+
+    else {
+        [_shoppingCardView showShoppingCard];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-  //  self.tabBarController.tabBar.hidden = YES;
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countTime"];
+    [[NSUserDefaults standardUserDefaults] setInteger:_shoppingCardView.countTime forKey:@"countTime"];
 }
 
 
@@ -175,7 +193,13 @@
     self.tableView.backgroundColor = shrbTableViewColor;
     
     //去除顶部空间
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 0.01f)];
+    if (IsiPhone4s)
+    {
+        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 0.01f)];
+    }
+    else {
+        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 64.f)];
+    }
     self.tableView.sectionFooterHeight = 4.0f;
     
     self.cellRemoveController = [[TQTableViewCellRemoveController alloc] initWithTableView:self.tableView];
@@ -215,7 +239,7 @@
     
     CGFloat labelHeight = label.frame.size.height;
     
-    return screenWidth/8*5+16+labelHeight;
+    return screenWidth/8*5+16+labelHeight+16;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -250,11 +274,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-     NSString*storePlistName = self.plistArr[indexPath.row][@"storePlistName"];
+     NSString*storePlistName = self.plistArr[indexPath.section][@"storePlistName"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storePlistName"];
     [[NSUserDefaults standardUserDefaults] setObject:storePlistName forKey:@"storePlistName"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storeName"];
-    [[NSUserDefaults standardUserDefaults] setObject:self.plistArr[indexPath.row][@"storeName"] forKey:@"storeName"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.plistArr[indexPath.section][@"storeName"] forKey:@"storeName"];
     
     
     //是否会员
@@ -346,8 +370,8 @@
 - (void)didRemoveTableViewCellWithIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSMutableArray* deleteArr = [NSMutableArray arrayWithObject:[self.plistArr objectAtIndex:indexPath.row]];
-    [self.plistArr removeObjectAtIndex:indexPath.row];
+    NSMutableArray* deleteArr = [NSMutableArray arrayWithObject:[self.plistArr objectAtIndex:indexPath.section]];
+    [self.plistArr removeObjectAtIndex:indexPath.section];
     
     [self.tableView beginUpdates];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
