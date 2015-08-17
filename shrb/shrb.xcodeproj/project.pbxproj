@@ -49,9 +49,6 @@
 		DF4E4C6A1B0C87D500FE499E /* BecomeMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C691B0C87D500FE499E /* BecomeMemberViewController.m */; };
 		DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E4C6C1B0C8A4400FE499E /* CouponsTableViewController.m */; };
 		DF4E4C6F1B0C8D6400FE499E /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF4E4C6E1B0C8D6400FE499E /* Me.storyboard */; };
-		DF5955E21B7895F700322370 /* FRGWaterfallCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5955DD1B7895F700322370 /* FRGWaterfallCollectionViewLayout.m */; };
-		DF5955E31B7895F700322370 /* FRGWaterfallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5955DF1B7895F700322370 /* FRGWaterfallCollectionViewCell.m */; };
-		DF5955E41B7895F700322370 /* FRGWaterfallDecorationReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5955E11B7895F700322370 /* FRGWaterfallDecorationReusableView.m */; };
 		DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */; };
 		DF6311EE1B5F35A000ABBB22 /* ProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6311ED1B5F35A000ABBB22 /* ProductViewController.m */; };
 		DF6311F31B5F78AC00ABBB22 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6311F21B5F78AC00ABBB22 /* ImageView.m */; };
@@ -162,6 +159,7 @@
 		DFCF89F71B577AE600D09A4A /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCF89F51B577AE600D09A4A /* UIImage+Blur.m */; };
 		DFDC89671B43929C0051D763 /* BecomeMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDC89661B43929C0051D763 /* BecomeMemberView.m */; };
 		DFDC896A1B43EDC80051D763 /* SuperBecomeMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDC89681B43EDC80051D763 /* SuperBecomeMemberView.m */; };
+		DFE001D01B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */; };
 		DFE07F0F1B707F770068D345 /* HotListSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE07F0E1B707F770068D345 /* HotListSelectViewController.m */; };
 		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
 		DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */; };
@@ -260,12 +258,6 @@
 		DF4E4C6B1B0C8A4400FE499E /* CouponsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponsTableViewController.h; path = ../Views/CouponsTableViewController.h; sourceTree = "<group>"; };
 		DF4E4C6C1B0C8A4400FE499E /* CouponsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponsTableViewController.m; path = ../Views/CouponsTableViewController.m; sourceTree = "<group>"; };
 		DF4E4C6E1B0C8D6400FE499E /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
-		DF5955DC1B7895F700322370 /* FRGWaterfallCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRGWaterfallCollectionViewLayout.h; sourceTree = "<group>"; };
-		DF5955DD1B7895F700322370 /* FRGWaterfallCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRGWaterfallCollectionViewLayout.m; sourceTree = "<group>"; };
-		DF5955DE1B7895F700322370 /* FRGWaterfallCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRGWaterfallCollectionViewCell.h; sourceTree = "<group>"; };
-		DF5955DF1B7895F700322370 /* FRGWaterfallCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRGWaterfallCollectionViewCell.m; sourceTree = "<group>"; };
-		DF5955E01B7895F700322370 /* FRGWaterfallDecorationReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRGWaterfallDecorationReusableView.h; sourceTree = "<group>"; };
-		DF5955E11B7895F700322370 /* FRGWaterfallDecorationReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRGWaterfallDecorationReusableView.m; sourceTree = "<group>"; };
 		DF610B6B1B2E6AA7009E047A /* CardAndCouponsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardAndCouponsViewController.h; sourceTree = "<group>"; };
 		DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardAndCouponsViewController.m; sourceTree = "<group>"; };
 		DF6311EC1B5F35A000ABBB22 /* ProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductViewController.h; sourceTree = "<group>"; };
@@ -474,6 +466,7 @@
 		DFDC89661B43929C0051D763 /* BecomeMemberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BecomeMemberView.m; sourceTree = "<group>"; };
 		DFDC89681B43EDC80051D763 /* SuperBecomeMemberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperBecomeMemberView.m; sourceTree = "<group>"; };
 		DFDC89691B43EDC80051D763 /* SuperBecomeMemberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperBecomeMemberView.h; sourceTree = "<group>"; };
+		DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		DFE07F0D1B707F770068D345 /* HotListSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotListSelectViewController.h; sourceTree = "<group>"; };
 		DFE07F0E1B707F770068D345 /* HotListSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotListSelectViewController.m; sourceTree = "<group>"; };
 		DFF330E01B2EC57500007582 /* SVProgressShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressShow.h; sourceTree = "<group>"; };
@@ -681,6 +674,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */,
 				DF1EBFC71B6F2FF7002DF8BA /* fmdb-migration-manager */,
 				DF3CCDCD1B6614690076A33F /* JVFloatLabeledTextField */,
 				DF6311EF1B5F788700ABBB22 /* POP */,
@@ -912,12 +906,6 @@
 				DFF766DD1B65D02E005BB71C /* NewStoreCollectionViewCell.h */,
 				DFF766DE1B65D02E005BB71C /* NewStoreCollectionViewCell.m */,
 				DFF766E01B65D054005BB71C /* NewStoreCollectionViewCell.xib */,
-				DF5955DC1B7895F700322370 /* FRGWaterfallCollectionViewLayout.h */,
-				DF5955DD1B7895F700322370 /* FRGWaterfallCollectionViewLayout.m */,
-				DF5955DE1B7895F700322370 /* FRGWaterfallCollectionViewCell.h */,
-				DF5955DF1B7895F700322370 /* FRGWaterfallCollectionViewCell.m */,
-				DF5955E01B7895F700322370 /* FRGWaterfallDecorationReusableView.h */,
-				DF5955E11B7895F700322370 /* FRGWaterfallDecorationReusableView.m */,
 				DF976B381B62099E0097790E /* MyImageView.h */,
 				DF976B391B62099E0097790E /* MyImageView.m */,
 				DF72C0E41B0B413100CE6DC6 /* HotDetailTableViewCell.h */,
@@ -1400,7 +1388,6 @@
 				DF66B83D1B535B43002E9EFC /* SuperQRViewController.m in Sources */,
 				DFB057A81B4141D60091A1E1 /* UserCouponsViewController.m in Sources */,
 				DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */,
-				DF5955E41B7895F700322370 /* FRGWaterfallDecorationReusableView.m in Sources */,
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
 				DF1EBFC31B6F13E6002DF8BA /* DB.m in Sources */,
 				DFAE95651B254FB7006A495B /* UserCenterObjevtiveTableViewController.m in Sources */,
@@ -1416,9 +1403,8 @@
 				DFE07F0F1B707F770068D345 /* HotListSelectViewController.m in Sources */,
 				DF2B0E2F1B423DB40051AA1A /* TNCircularCheckBoxData.m in Sources */,
 				DFB057991B40F2BA0091A1E1 /* OtherPayTableViewCell.m in Sources */,
-				DF5955E31B7895F700322370 /* FRGWaterfallCollectionViewCell.m in Sources */,
+				DFE001D01B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift in Sources */,
 				DF2B0E331B423DB40051AA1A /* TNRectangularCheckBoxData.m in Sources */,
-				DF5955E21B7895F700322370 /* FRGWaterfallCollectionViewLayout.m in Sources */,
 				DF77A5BE1B0C1C6500934A7C /* OrdersViewController.m in Sources */,
 				DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */,
 				DF1EBFCE1B6F2FF7002DF8BA /* FmdbMigration.m in Sources */,

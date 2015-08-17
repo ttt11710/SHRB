@@ -178,28 +178,13 @@
 }
 
 - (void)createCollection{
+
+    CollectionViewWaterfallLayout *cvLayout = [[CollectionViewWaterfallLayout alloc] init];
+    cvLayout.sectionInset = UIEdgeInsetsMake(0, 4, 0, 4);
+    cvLayout.headerInset = UIEdgeInsetsMake(4, 0, 0, 0);
+    cvLayout.minimumColumnSpacing = 4;
+    cvLayout.minimumInteritemSpacing = 4;
     
-//    UICollectionViewFlowLayout* layOut=[[UICollectionViewFlowLayout alloc]init];
-//    [layOut setItemSize:CGSizeMake((screenWidth-20)/2, (screenWidth-20)/2)];
-//    [layOut setScrollDirection:UICollectionViewScrollDirectionVertical];
-//    layOut.sectionInset=UIEdgeInsetsMake(4, 4, 4 ,4);
-//    
-//    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight) collectionViewLayout:layOut];
-    
-//    [self.collectionView registerNib:[UINib nibWithNibName:@"NewStoreCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
-//    
-//    
-//    self.collectionView.backgroundColor = shrbTableViewColor;
-//    self.collectionView.delegate=self;
-   // self.collectionView.dataSource=self;
-    
-    
-    FRGWaterfallCollectionViewLayout *cvLayout = [[FRGWaterfallCollectionViewLayout alloc] init];
-    cvLayout.delegate = self;
-    cvLayout.itemWidth = screenWidth/2-10;
-    cvLayout.topInset = 0.0f;
-    cvLayout.bottomInset = 0.0f;
-    cvLayout.stickyHeader = YES;
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight) collectionViewLayout:cvLayout];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NewStoreCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCell"];
     
@@ -400,10 +385,9 @@
 }
 
 //定义每个UICollectionView 的大小
-- (CGFloat)collectionView:(UICollectionView *)collectionView
-                   layout:(FRGWaterfallCollectionViewLayout *)collectionViewLayout
- heightForItemAtIndexPath:(NSIndexPath *)indexPath {
-        UILabel *tradeNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth/2 , 0)];
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UILabel *tradeNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, (screenWidth-12)/2 , 0)];
         UIFont *theFont1 = [UIFont systemFontOfSize:17.0];
         tradeNameLabel.numberOfLines = 0;
         [tradeNameLabel setFont:theFont1];
@@ -411,7 +395,9 @@
         [tradeNameLabel setText:string1];
         [tradeNameLabel sizeToFit];// 显示文本需要的长度和宽度
     
-        return screenWidth/2-10 + tradeNameLabel.frame.size.height + 25 + 21 + 8 ;
+        CGFloat height = screenWidth/2-10 + tradeNameLabel.frame.size.height + 25 + 21 + 8;
+        NSLog(@"height = %f",height);
+        return CGSizeMake((screenWidth-20)/2 , screenWidth/2-10 + tradeNameLabel.frame.size.height + 25 + 21 + 8 );
 }
 
 //UICollectionView被选中时调用的方法

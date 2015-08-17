@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FRGWaterfallCollectionViewCell.h"
-#import "FRGWaterfallCollectionViewLayout.h"
+#import "shrb-swift.h"
 
-@interface NewStoreCollectController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDataSource,UITableViewDelegate,FRGWaterfallCollectionViewDelegate>
+@interface NewStoreCollectController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDataSource,UITableViewDelegate,CollectionViewWaterfallLayoutDelegate>
 
 @end
