@@ -17,6 +17,7 @@
 #import "SVProgressShow.h"
 #import "ProductIsMemberViewController.h"
 #import "ShowMeImageViewController.h"
+#import "RegisteringStoreMemberViewController.h"
 
 static ProductViewController *g_ProductViewController = nil;
 
@@ -26,6 +27,8 @@ static ProductViewController *g_ProductViewController = nil;
     CGRect _bounds;
     
     NSTimer *_timer;
+    
+    BOOL _isMember;
 }
 
 @property (nonatomic,strong) NSMutableArray * modelArray;
@@ -75,7 +78,6 @@ static ProductViewController *g_ProductViewController = nil;
     [self initMainView];
     [self initCardView];
     [self initTradeNameAndPriceView];
-    [self initDescriptionAndregisterView];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     self.view.userInteractionEnabled = YES;
@@ -89,7 +91,12 @@ static ProductViewController *g_ProductViewController = nil;
 - (void)viewWillAppear:(BOOL)animated {
     
   //  self.tabBarController.tabBar.hidden = YES;
+    
     [super viewWillAppear:animated];
+    
+    _isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
+    
+    [self initDescriptionAndregisterView];
     
     if (!_timer.isValid) {
         [self startTime];
@@ -107,10 +114,11 @@ static ProductViewController *g_ProductViewController = nil;
     
 }
 
-
-
 - (void)initData
 {
+    
+    _isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
+    
     NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
     
     self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
@@ -136,7 +144,6 @@ static ProductViewController *g_ProductViewController = nil;
 
 -(void)initCardView
 {
-    
     _cardView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenWidth/1.37)];
     _cardView.backgroundColor=[UIColor whiteColor];
     
@@ -155,7 +162,8 @@ static ProductViewController *g_ProductViewController = nil;
     _imagePageControl.numberOfPages = [_imageArray count];
     _imagePageControl.currentPage = 0;
     [_imagePageControl addTarget:self action:@selector(pageControlValueChanged) forControlEvents:UIControlEventValueChanged];
-
+    _imagePageControl.currentPageIndicatorTintColor = shrbPink;
+    _imagePageControl.pageIndicatorTintColor = [UIColor whiteColor];
     [_cardView addSubview:_imagePageControl];
     
     if ([_imageArray count]<= 0 ) {
@@ -282,6 +290,9 @@ static ProductViewController *g_ProductViewController = nil;
 - (void)initDescriptionAndregisterView
 {
     
+    if (_descriptionAndregisterView != nil) {
+        [_descriptionAndregisterView removeFromSuperview];
+    }
     _descriptionAndregisterView = [[UIView alloc] initWithFrame:CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, 230)];
     _descriptionAndregisterView.backgroundColor =[UIColor whiteColor];
     [_mainScrollView addSubview:_descriptionAndregisterView];
@@ -311,8 +322,17 @@ static ProductViewController *g_ProductViewController = nil;
     [_registerBtn addTarget:self action:@selector(registerBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_descriptionAndregisterView addSubview:_registerBtn];
     
-    _descriptionAndregisterView.frame = CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, label.frame.origin.y + label.frame.size.height + 16 + _descriptionLabel.frame.size.height + 16 + _registerBtn.frame.size.height + 30);
-    
+    if (_isMember) {
+        _registerBtn.hidden = YES;
+        
+        _descriptionAndregisterView.frame = CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, label.frame.origin.y + label.frame.size.height + 16 + _descriptionLabel.frame.size.height + 16 );
+    }
+    else {
+        _registerBtn.hidden = NO;
+        
+        _descriptionAndregisterView.frame = CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, label.frame.origin.y + label.frame.size.height + 16 + _descriptionLabel.frame.size.height + 16 + _registerBtn.frame.size.height + 30);
+    }
+
     if (_cardView.frame.size.height + _tradeNameAndPriceView.frame.size.height+ 8 + _descriptionAndregisterView.frame.size.height + 10  < screenHeight-20-44) {
         _mainScrollView.scrollEnabled = NO;
         _mainScrollView.contentSize = CGSizeMake(0, 0);
@@ -394,80 +414,86 @@ static ProductViewController *g_ProductViewController = nil;
 #pragma mark - 注册
 - (void)registerBtnPressed
 {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+
+    UIViewController *registeringStoreMemberViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"RegisteringStoreMemberView"];
+    [registeringStoreMemberViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [self.navigationController presentViewController:registeringStoreMemberViewController animated:YES completion:nil];
+    
     //    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
     //    if (!isLogin) {
     //        [SVProgressShow showInfoWithStatus:@"请先登录！"];
     //        return ;
     //    }
     
-    if (self.becomeMemberView == nil) {
-        self.becomeMemberView = [[SuperBecomeMemberView1 alloc] initWithFrame:CGRectMake(screenWidth, _registerBtn.frame.origin.y, screenWidth/2, 220)];
-        [_mainScrollView addSubview:_becomeMemberView];
-        
-        self.smallbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.smallbutton.frame = CGRectMake(screenWidth/2-45,  _registerBtn.frame.origin.y, 90, 44);
-        self.smallbutton.font = [UIFont systemFontOfSize:15.0f];
-        self.smallbutton.hidden = YES;
-        self.smallbutton.layer.cornerRadius = 4;
-        self.smallbutton.layer.masksToBounds = YES;
-        [self.smallbutton setTitle:@"会员注册" forState:UIControlStateNormal];
-        [self.smallbutton setTintColor:[UIColor clearColor]];
-        [self.smallbutton setBackgroundColor:shrbPink];
-        [self.smallbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self.smallbutton addTarget:self action:@selector(sureBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-        [_mainScrollView addSubview:self.smallbutton];
-    }
-    
-    if (_bounds.size.width == 0) {
-        _bounds = _registerBtn.bounds;
-    }
-    
-    
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        
-        CGRect bounds = _bounds;
-        bounds.size.width = bounds.size.width/4;
-        _registerBtn.bounds = bounds;
-        
-    } completion:^(BOOL finished) {
-        
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            
-            _registerBtn.hidden = YES;
-            self.smallbutton.hidden = NO;
-            self.smallbutton.layer.transform = CATransform3DMakeTranslation(-(screenWidth/2-self.smallbutton.frame.size.width)-30, 0, 0);
-            
-          //  _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
-            
-            
-        } completion:^(BOOL finished) {
-            
-            //pop大小缩放
-            POPSpringAnimation *sizeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-            sizeAnimation.springSpeed = 0.f;
-            sizeAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, self.smallbutton.frame.size.width+5, self.smallbutton.frame.size.height+5)];
-            [self.smallbutton pop_addAnimation:sizeAnimation forKey:nil];
-            
-            
-            //pop左右弹动
-            POPSpringAnimation *positionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionX];
-            positionAnimation.velocity = @2000;
-            positionAnimation.springBounciness = 20;
-            [positionAnimation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
-                self.smallbutton.userInteractionEnabled = YES;
-            }];
-            [self.smallbutton.layer pop_addAnimation:positionAnimation forKey:@"positionAnimation"];
-        }];
-        
-        
-        [UIView animateWithDuration:0.1 delay:0.5 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
-        } completion:^(BOOL finished) {
-            
-            [[SuperBecomeMemberView1 shareSuperBecomeMemberView] showView];
-            
-        }];
-    }];
+//    if (self.becomeMemberView == nil) {
+//        self.becomeMemberView = [[SuperBecomeMemberView1 alloc] initWithFrame:CGRectMake(screenWidth, _registerBtn.frame.origin.y, screenWidth/2, 220)];
+//        [_mainScrollView addSubview:_becomeMemberView];
+//        
+//        self.smallbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        self.smallbutton.frame = CGRectMake(screenWidth/2-45,  _registerBtn.frame.origin.y, 90, 44);
+//        self.smallbutton.font = [UIFont systemFontOfSize:15.0f];
+//        self.smallbutton.hidden = YES;
+//        self.smallbutton.layer.cornerRadius = 4;
+//        self.smallbutton.layer.masksToBounds = YES;
+//        [self.smallbutton setTitle:@"会员注册" forState:UIControlStateNormal];
+//        [self.smallbutton setTintColor:[UIColor clearColor]];
+//        [self.smallbutton setBackgroundColor:shrbPink];
+//        [self.smallbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [self.smallbutton addTarget:self action:@selector(sureBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+//        [_mainScrollView addSubview:self.smallbutton];
+//    }
+//    
+//    if (_bounds.size.width == 0) {
+//        _bounds = _registerBtn.bounds;
+//    }
+//    
+//    
+//    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//        
+//        CGRect bounds = _bounds;
+//        bounds.size.width = bounds.size.width/4;
+//        _registerBtn.bounds = bounds;
+//        
+//    } completion:^(BOOL finished) {
+//        
+//        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//            
+//            _registerBtn.hidden = YES;
+//            self.smallbutton.hidden = NO;
+//            self.smallbutton.layer.transform = CATransform3DMakeTranslation(-(screenWidth/2-self.smallbutton.frame.size.width)-30, 0, 0);
+//            
+//          //  _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
+//            
+//            
+//        } completion:^(BOOL finished) {
+//            
+//            //pop大小缩放
+//            POPSpringAnimation *sizeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+//            sizeAnimation.springSpeed = 0.f;
+//            sizeAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, self.smallbutton.frame.size.width+5, self.smallbutton.frame.size.height+5)];
+//            [self.smallbutton pop_addAnimation:sizeAnimation forKey:nil];
+//            
+//            
+//            //pop左右弹动
+//            POPSpringAnimation *positionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionX];
+//            positionAnimation.velocity = @2000;
+//            positionAnimation.springBounciness = 20;
+//            [positionAnimation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
+//                self.smallbutton.userInteractionEnabled = YES;
+//            }];
+//            [self.smallbutton.layer pop_addAnimation:positionAnimation forKey:@"positionAnimation"];
+//        }];
+//        
+//        
+//        [UIView animateWithDuration:0.1 delay:0.5 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+//            _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
+//        } completion:^(BOOL finished) {
+//            
+//            [[SuperBecomeMemberView1 shareSuperBecomeMemberView] showView];
+//            
+//        }];
+//    }];
     
 }
 

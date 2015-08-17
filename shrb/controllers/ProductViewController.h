@@ -16,4 +16,6 @@
 + (ProductViewController *)shareProductViewController;
 - (void)becomeMember;
 
+- (void)initDescriptionAndregisterView;
+
 @end

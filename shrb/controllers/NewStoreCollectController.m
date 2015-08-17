@@ -403,21 +403,27 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
-    if (isMember) {
-        
-        ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
-        viewController.currentRow = indexPath.row;
-        viewController.currentSection = indexPath.section;
-        [self.navigationController pushViewController:viewController animated:YES];
-    }
-    else {
-        
-        ProductViewController *viewController = [[ProductViewController alloc] init];
-        viewController.currentRow = indexPath.row;
-        viewController.currentSection = indexPath.section;
-        [self.navigationController pushViewController:viewController animated:YES];
-    }
+    ProductViewController *viewController = [[ProductViewController alloc] init];
+    viewController.currentRow = indexPath.row;
+    viewController.currentSection = indexPath.section;
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+    
+//    BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
+//    if (isMember) {
+//        
+//        ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
+//        viewController.currentRow = indexPath.row;
+//        viewController.currentSection = indexPath.section;
+//        [self.navigationController pushViewController:viewController animated:YES];
+//    }
+//    else {
+//        
+//        ProductViewController *viewController = [[ProductViewController alloc] init];
+//        viewController.currentRow = indexPath.row;
+//        viewController.currentSection = indexPath.section;
+//        [self.navigationController pushViewController:viewController animated:YES];
+//    }
 }
 
 

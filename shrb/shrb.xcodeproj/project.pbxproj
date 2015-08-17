@@ -160,6 +160,7 @@
 		DFDC89671B43929C0051D763 /* BecomeMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDC89661B43929C0051D763 /* BecomeMemberView.m */; };
 		DFDC896A1B43EDC80051D763 /* SuperBecomeMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDC89681B43EDC80051D763 /* SuperBecomeMemberView.m */; };
 		DFE001D01B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */; };
+		DFE001D41B81B22500BBD84A /* RegisteringStoreMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */; };
 		DFE07F0F1B707F770068D345 /* HotListSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE07F0E1B707F770068D345 /* HotListSelectViewController.m */; };
 		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
 		DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */; };
@@ -467,6 +468,8 @@
 		DFDC89681B43EDC80051D763 /* SuperBecomeMemberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperBecomeMemberView.m; sourceTree = "<group>"; };
 		DFDC89691B43EDC80051D763 /* SuperBecomeMemberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperBecomeMemberView.h; sourceTree = "<group>"; };
 		DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
+		DFE001D11B81B22500BBD84A /* RegisteringStoreMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteringStoreMemberViewController.h; sourceTree = "<group>"; };
+		DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteringStoreMemberViewController.m; sourceTree = "<group>"; };
 		DFE07F0D1B707F770068D345 /* HotListSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotListSelectViewController.h; sourceTree = "<group>"; };
 		DFE07F0E1B707F770068D345 /* HotListSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotListSelectViewController.m; sourceTree = "<group>"; };
 		DFF330E01B2EC57500007582 /* SVProgressShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressShow.h; sourceTree = "<group>"; };
@@ -1088,8 +1091,8 @@
 				DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */,
 				DF7A8A571B3CE90600528864 /* ProductTableViewController.h */,
 				DF7A8A581B3CE90600528864 /* ProductTableViewController.m */,
-				DF6311F41B5F817200ABBB22 /* ProductIsMemberViewController.h */,
-				DF6311F51B5F817200ABBB22 /* ProductIsMemberViewController.m */,
+				DFB7631D1B3D36330086ABB7 /* ProductIsMemberTableViewController.h */,
+				DFB7631E1B3D36330086ABB7 /* ProductIsMemberTableViewController.m */,
 				DF6311F71B5F913000ABBB22 /* ShowMeImageViewController.h */,
 				DF6311F81B5F913000ABBB22 /* ShowMeImageViewController.m */,
 			);
@@ -1171,8 +1174,10 @@
 				DF66B83F1B53689D002E9EFC /* SuperCompletePayViewController.m */,
 				DF6311EC1B5F35A000ABBB22 /* ProductViewController.h */,
 				DF6311ED1B5F35A000ABBB22 /* ProductViewController.m */,
-				DFB7631D1B3D36330086ABB7 /* ProductIsMemberTableViewController.h */,
-				DFB7631E1B3D36330086ABB7 /* ProductIsMemberTableViewController.m */,
+				DF6311F41B5F817200ABBB22 /* ProductIsMemberViewController.h */,
+				DF6311F51B5F817200ABBB22 /* ProductIsMemberViewController.m */,
+				DFE001D11B81B22500BBD84A /* RegisteringStoreMemberViewController.h */,
+				DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */,
 			);
 			name = new;
 			sourceTree = "<group>";
@@ -1478,6 +1483,7 @@
 				DFF766DF1B65D02E005BB71C /* NewStoreCollectionViewCell.m in Sources */,
 				DFB763281B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m in Sources */,
 				DFAE52B01B32743500B03B2F /* QRView.m in Sources */,
+				DFE001D41B81B22500BBD84A /* RegisteringStoreMemberViewController.m in Sources */,
 				DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */,
 				DFB0579C1B40F5B10091A1E1 /* PayOrderTableViewCell.m in Sources */,
 				DF7D1E591B0D792400CD05B3 /* ProductDescriptionView.m in Sources */,
