@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *tradeImageView;
 @property (weak, nonatomic) IBOutlet UILabel *tradeNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tradeDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *MemberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 @end
@@ -28,15 +30,18 @@
     self.tradeNameLabel.text = model.tradeName;
     self.tradeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.tradeImage]];
     
-    NSString *string = [NSString stringWithFormat:@"会员价：%@元  原价：%@元",model.memberPrice,model.originalPrice];
+    self.tradeDescriptionLabel.text = model.tradeDescription;
     
-    self.priceLabel.attributedText = [string createrAttributedStringWithStyles:
-                                      @[
-                                         [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(4, model.memberPrice.length)],
-                                         [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(12, model.originalPrice.length)],
-                                         [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(4, model.memberPrice.length)],
-                                         [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(12, model.originalPrice.length)]
-                                         ]];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%@ 原价￥%@",model.memberPrice,model.originalPrice]];
+    
+    [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(model.memberPrice.length + 2, model.originalPrice.length+3)];//删除线
+    [attrString addAttribute:NSForegroundColorAttributeName value:shrbPink range:NSMakeRange(0, model.memberPrice.length + 1)];
+    [attrString addAttribute:NSForegroundColorAttributeName value:shrbLightText range:NSMakeRange(model.memberPrice.length + 2, model.originalPrice.length+3)];
+    
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, model.memberPrice.length + 1)];
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(model.memberPrice.length + 2, model.originalPrice.length+3)];
+    
+    self.priceLabel.attributedText = attrString;
 }
 
 - (void)awakeFromNib {
@@ -45,6 +50,9 @@
     self.tradeImageView.layer.masksToBounds = YES;
     self.tradeImageView.layer.borderColor = shrbPink.CGColor;
     self.tradeImageView.layer.borderWidth = 1;
+    
+    self.MemberLabel.layer.cornerRadius = 12;
+    self.MemberLabel.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

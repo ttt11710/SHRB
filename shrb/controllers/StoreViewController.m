@@ -215,8 +215,7 @@ static NSInteger countTime = 20*60;
             return 44;
         }
         
-        else
-            return 60;
+        else return IsiPhone4s?110 : 100;
     }
  }
 
@@ -327,7 +326,7 @@ static NSInteger countTime = 20*60;
             cell.model = self.modelArray[indexPath.row];
             
             HJCAjustNumButton *numbutton = [[HJCAjustNumButton alloc] init];
-            numbutton.frame = CGRectMake(screenWidth-40, 15, 30, 30);
+            numbutton.frame = CGRectMake(screenWidth-40, IsiPhone4s?40:35, 30, 30);
             // 内容更改的block回调
             numbutton.callBack = ^(NSString *currentNum){
                 
@@ -536,6 +535,7 @@ static NSInteger countTime = 20*60;
 - (void)showShoppingCard
 {
     if (!_myShoppingCardView.hidden) {
+        self.shoppingCardView.hidden = YES;
         _myShoppingCardView.shoppingNumLabel.num ++ ;
         return ;
     }

@@ -13,5 +13,6 @@
 @property(nonatomic,copy) NSString * tradeName;             //商品名
 @property(nonatomic,copy) NSString * memberPrice;           //会员价
 @property(nonatomic,copy) NSString * originalPrice;         //原价
+@property(nonatomic,copy) NSString * tradeDescription;      //商品描述
 
 @end
