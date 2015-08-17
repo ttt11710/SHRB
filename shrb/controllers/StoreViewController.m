@@ -333,6 +333,13 @@ static NSInteger countTime = 20*60;
                 
                 NSLog(@"%ld",(long)indexPath.row);
                 
+                if (_myShoppingCardView == nil) {
+                    _myShoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-44-20-60, 100, 40)];
+                    _myShoppingCardView.shoppingNumLabel.num = 10;
+                    [self.view insertSubview:_myShoppingCardView aboveSubview:self.view];
+                }
+
+                
                 if (_myShoppingCardView.hidden) {
                     self.shoppingCardView.hidden = NO;
                 }
@@ -596,6 +603,9 @@ static NSInteger countTime = 20*60;
         self.shoppingNumLabel.num = 0 ;
         [SVProgressShow showInfoWithStatus:@"订单过期！"];
     }
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countTime"];
+    [[NSUserDefaults standardUserDefaults] setInteger:countTime forKey:@"countTime"];
 }
 
 

@@ -12,6 +12,8 @@
 
 
 + (StoreViewController *)shareStoreViewController;
+
+- (void)gotoPayView;
 - (void)UpdateTableView;
 
 @end

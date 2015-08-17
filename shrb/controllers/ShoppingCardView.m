@@ -9,6 +9,7 @@
 #import "ShoppingCardView.h"
 #import "Const.h"
 #import "SVProgressShow.h"
+#import "StoreViewController.h"
 
 @implementation ShoppingNumLabel
 
@@ -70,6 +71,9 @@
     self.countDownLabel.textAlignment = NSTextAlignmentCenter;
     self.countDownLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.countDownLabel];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoPayView)];
+    [self addGestureRecognizer:tap];
 }
 
 - (void)showShoppingCard
@@ -112,13 +116,29 @@
     
     if (d.minute == 0 && d.second == 0) {
         [_timer invalidate];
-        
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countTime"];
-        [[NSUserDefaults standardUserDefaults] setInteger:_countTime forKey:@"countTime"];
         self.hidden = YES;
         self.shoppingNumLabel.num = 0 ;
         [SVProgressShow showInfoWithStatus:@"订单过期！"];
     }
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countTime"];
+    [[NSUserDefaults standardUserDefaults] setInteger:_countTime forKey:@"countTime"];
+}
+
+#pragma mark - 进入支付页面
+- (void)gotoPayView
+{
+    UIViewController *activityViewController = nil;
+    UIView* next = [self superview];
+    UIResponder *nextResponder = [next nextResponder];
+    if ([nextResponder isKindOfClass:[UIViewController class]]) {
+        activityViewController = (UIViewController *)nextResponder;
+    }
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *OrdersViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+    [OrdersViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    OrdersViewController.hidesBottomBarWhenPushed = YES;
+    [activityViewController.navigationController pushViewController:OrdersViewController animated:YES];
 }
 
 @end

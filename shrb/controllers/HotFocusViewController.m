@@ -336,8 +336,6 @@
     //supermarket
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    
-    
     if ([typesOfShops isEqualToString:@"supermarket"]) {
         //超市
         
