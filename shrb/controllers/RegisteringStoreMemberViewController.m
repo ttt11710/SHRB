@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *telephoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *verificationCodeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *giveVerificationCodeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *becomeMemberBtn;
 
 
 @end
@@ -29,6 +31,15 @@
 
 - (void)viewDidLayoutSubviews
 {
+    self.giveVerificationCodeBtn.layer.borderColor = shrbPink.CGColor;
+    self.giveVerificationCodeBtn.layer.borderWidth = 1;
+    self.giveVerificationCodeBtn.layer.cornerRadius = 4;
+    self.giveVerificationCodeBtn.layer.masksToBounds = YES;
+    
+    self.becomeMemberBtn.backgroundColor = shrbPink;
+    self.becomeMemberBtn.layer.cornerRadius = 4;
+    self.becomeMemberBtn.layer.masksToBounds = YES;
+    
     if (IsiPhone4s) {
         self.navigate.frame = CGRectMake(0, 0, screenWidth, 64);
     }
@@ -39,7 +50,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark textfield的deletage事件 键盘即将显示的时候回调
+#pragma mark - 键盘即将显示的时候回调
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     if(IsiPhone4s)
@@ -65,7 +76,7 @@
     }
 }
 
-//键盘即将消失的时候回调
+#pragma mark - 键盘即将消失的时候回调
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if(IsIOS7)
@@ -83,12 +94,11 @@
 #pragma mark - 单击键盘return键回调
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self.telephoneTextField resignFirstResponder];
-    [self.passwordTextField resignFirstResponder];
-    [self.verificationCodeTextField resignFirstResponder];
+    [self textFieldResignFirstResponder];
     return YES;
 }
 
+#pragma mark - 键盘失去响应
 - (void)textFieldResignFirstResponder
 {
     [self.telephoneTextField resignFirstResponder];
@@ -96,6 +106,15 @@
     [self.verificationCodeTextField resignFirstResponder];
 }
 
+#pragma mark - 点击界面键盘失去响应
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    if ([[touches anyObject]view]!=self.telephoneTextField||[[touches anyObject]view]!= self.passwordTextField||[[touches anyObject]view]!= self.verificationCodeTextField) {
+        [self textFieldResignFirstResponder];
+    }
+}
+
+#pragma mark - 获取验证码
 - (IBAction)giveVerificationCodeBtnPressed:(id)sender {
     
     [SVProgressShow showSuccessWithStatus:@"您的验证码是：869563"];
@@ -107,6 +126,7 @@
 
 }
 
+#pragma mark - 注册会员
 - (IBAction)becomeMemberBtnPressed:(id)sender {
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];

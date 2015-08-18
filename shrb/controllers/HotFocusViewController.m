@@ -25,6 +25,8 @@
 #import "HotListSelectViewController.h"
 #import "ShoppingCardView.h"
 
+#import "OrderStoreViewController.h"
+
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
@@ -182,6 +184,7 @@
 
 - (void)initTableView
 {
+    
     //tableView 去分界线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //删除底部多余横线
@@ -346,10 +349,17 @@
     }
     else if ([typesOfShops isEqualToString:@"order"]) {
         //点餐
-        StoreViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
-        [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        [self.navigationController pushViewController:storeViewController animated:YES];
+        
+        OrderStoreViewController *orderStoreViewController = [[OrderStoreViewController alloc] init];
+        orderStoreViewController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:orderStoreViewController animated:YES];
         [SVProgressShow dismiss];
+        
+//        UIViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"KYDrawer"];
+//        [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//        storeViewController.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:storeViewController animated:YES];
+//        [SVProgressShow dismiss];
     }
 }
 

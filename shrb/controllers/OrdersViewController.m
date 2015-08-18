@@ -20,12 +20,15 @@
 #import "NewCardDetailViewController.h"
 #import "NSString+AttributedStyle.h"
 
+#import "StoreTableViewCell.h"
+#import "TradeModel.h"
+#import "shrb-swift.h"
+
 
 static OrdersViewController *g_OrdersViewController = nil;
 
 @interface OrdersViewController ()
 {
-    NSMutableArray *_data;
     TNCheckBoxGroup *_loveGroup;
     UITapGestureRecognizer *_tap;
 }
@@ -33,6 +36,9 @@ static OrdersViewController *g_OrdersViewController = nil;
 @property (weak, nonatomic) IBOutlet UIButton *showOtherPayBtn;
 @property (weak, nonatomic) IBOutlet BFPaperButton *memberPayBtn;
 @property (weak, nonatomic) IBOutlet BFPaperButton *otherPayBtn;
+
+@property (nonatomic,strong) NSMutableArray * modelArray;
+@property (nonatomic, strong) NSMutableArray *plistArr;
 
 @end
 
@@ -70,7 +76,11 @@ static OrdersViewController *g_OrdersViewController = nil;
 
 - (void)initData
 {
-    _data = [[NSMutableArray alloc] initWithObjects:@"冰拿铁",@"卡布奇诺", nil];
+    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
+    
+    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
+    
+    self.modelArray = [[NSMutableArray alloc] init];
 }
 
 - (void)initTableView
@@ -119,183 +129,216 @@ static OrdersViewController *g_OrdersViewController = nil;
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == [_data count]+3) {
-        return 200;
-    }
-    else if (indexPath.row <= [_data count]+1) {
-        return 68;
-    }
-    else {
-        return isMember?160:120;
-    }
+    
+    return 93;
+//    if (indexPath.row == [_data count]+3) {
+//        return 200;
+//    }
+//    else if (indexPath.row <= [_data count]+1) {
+//        return 68;
+//    }
+//    else {
+//        return isMember?160:120;
+//    }
 }
 
 #pragma mark - tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (isMember) {
-        _showOtherPayBtn.hidden = YES;
-        return [_data count]+3;
-    }
-    return [_data count]+4;
+//    if (isMember) {
+//        _showOtherPayBtn.hidden = YES;
+//        return [_data count]+3;
+//    }
+//    return [_data count]+4;
+    
+    return [[self.plistArr objectAtIndex:0][@"info"] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row <= [_data count]+2) {
-        static NSString *SimpleTableIdentifier = @"ShoppingCartTableViewCellIdentifier";
-        OrdersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+//    if (indexPath.row < [_data count])
+//    {
+        static NSString *SimpleTableIdentifier = @"CouponsTableViewCellIdentifier";
+        StoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         if (cell == nil) {
-            cell = [[OrdersTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+            cell = [[StoreTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
         
-        if (indexPath.row <= [_data count]) {
-            
-            if (indexPath.row < [_data count]) {
-                cell.tradeNameLabel.text = [_data objectAtIndex:indexPath.row];
-                cell.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
-                
-                NSString *string = @"会员价：30元  原价：40元";
-                
-                cell.priceLabel.attributedText = [string createrAttributedStringWithStyles:
-                                                  @[
-                                                    [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(4, 2)],
-                                                    [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(12, 2)],
-                                                    [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(4, 2)],
-                                                    [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(12, 2)]
-                                                    ]];
-
-                
-                
-                //
-                HJCAjustNumButton3 *numbutton = [[HJCAjustNumButton3 alloc] init];
-                numbutton.frame = CGRectMake(screenWidth-85, 15, 75, 25);
-                // 内容更改的block回调
-                numbutton.callBack = ^(NSString *currentNum){
-                    NSLog(@"%@", currentNum);
-                    NSLog(@"%ld",(long)indexPath.row);
-                };
-                
-                // 加到父控件上
-                [cell addSubview:numbutton];
-
-            }
-            else  {
-                cell.tradeNameLabel.text = @"添加";
-                cell.couponsImageView.image = [UIImage imageNamed:@"上传相片"];
-                cell.priceLabel.text = @"";
-            }
-            cell.couponsImageView.hidden = NO;
-            cell.tradeNameLabel.hidden = NO;
-            cell.priceLabel.hidden = NO;
-            cell.settlementLable.hidden = YES;
-            cell.checkImageView.hidden = YES;
-            cell.couponLabel.hidden = YES;
-            cell.ruleTextView.hidden = YES;
-            
+        [self.modelArray removeAllObjects];
+        for (NSDictionary * dict in [self.plistArr objectAtIndex:0][@"info"]) {
+            TradeModel * model = [[TradeModel alloc] init];
+            [model setValuesForKeysWithDictionary:dict];
+            [self.modelArray addObject:model];
         }
-        else
-        {
-            
-            cell.couponsImageView.hidden = YES;
-            cell.tradeNameLabel.hidden = YES;
-            cell.priceLabel.hidden = YES;
-            if (indexPath.row == [_data count]+1)
-            {
-                cell.settlementLable.hidden = NO;
-               // cell.checkImageView.hidden = NO;
-               // cell.couponLabel.hidden = NO;
-                cell.checkImageView.hidden = YES;
-                cell.couponLabel.hidden = YES;
-                cell.ruleTextView.hidden = YES;
-                cell.settlementLable.text = @"总价：500RMB\n会员价：350RMB";
-                cell.couponLabel.font = [UIFont systemFontOfSize:14];
-                cell.couponLabel.text = @"100RMB电子券";
-                
-                
-                
-                TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
-                manData.identifier = @"man";
-                manData.labelText = @"2张电子券 100RMB";
-                manData.labelColor = [UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1];
-                manData.labelFont = [UIFont systemFontOfSize:14.0];
-                manData.checked = YES;
-                manData.checkedImage = [UIImage imageNamed:@"checked"];
-                manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
-                
-                if (_loveGroup == nil) {
-                    _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
-                    [_loveGroup create];
-    
-                    CGFloat x = IsiPhone4s? screenWidth-_loveGroup.frame.size.width:screenWidth-24 -_loveGroup.frame.size.width;
-                  
-                    _loveGroup.position = CGPointMake(x, 40);
-                    
-                    [cell addSubview:_loveGroup];
-                }
-                
-                
-                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loveGroupChanged:) name:GROUP_CHANGED object:_loveGroup];
-                
-            }
-            else
-            {
-                if (isMember) {
-                    
-                    static NSString *SimpleTableIdentifier = @"CardTableViewCellIdentifier";
-                    CardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-                    if (cell == nil) {
-                        cell = [[CardTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
-                    }
-                    //cell 选中方式
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                   // cell.model = self.dataArray[indexPath.row];
-                    
-                    return cell;
-                }
-                else {
-                    cell.settlementLable.hidden = YES;
-                    cell.checkImageView.hidden = YES;
-                    cell.couponLabel.hidden = YES;
-                    cell.ruleTextView.hidden = NO;
-                    cell.ruleTextView.textAlignment = NSTextAlignmentLeft;
-                    cell.ruleTextView.text = @"会员好处：成为会员可以享受会员折扣，付款可直接用会员卡，并有更多优惠哦！\n\n会员规则:会员卡充值后不可以取现，可以注销，同时扣除手续费5%。";
-                }
-            }
-        }
+        
+        cell.model = self.modelArray[indexPath.row];
         return cell;
-    }
-    else
-    {
-        static NSString *SimpleTableIdentifier = @"ButtonTableViewCellIdentifier";
-        ButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        if (cell == nil) {
-            cell = [[ButtonTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
-        }
-        
-        [cell.buttonModel setTitle:@"会员注册" forState:UIControlStateNormal];
-        
-        return cell;
-    }
+   // }
 }
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.row <= [_data count]+2) {
+//        static NSString *SimpleTableIdentifier = @"ShoppingCartTableViewCellIdentifier";
+//        OrdersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+//        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+//        if (cell == nil) {
+//            cell = [[OrdersTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+//        }
+//        
+//        if (indexPath.row <= [_data count]) {
+//            
+//            if (indexPath.row < [_data count]) {
+//                cell.tradeNameLabel.text = [_data objectAtIndex:indexPath.row];
+//                cell.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row]]];
+//                
+//                NSString *string = @"会员价：30元  原价：40元";
+//                
+//                cell.priceLabel.attributedText = [string createrAttributedStringWithStyles:
+//                                                  @[
+//                                                    [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(4, 2)],
+//                                                    [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(12, 2)],
+//                                                    [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(4, 2)],
+//                                                    [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(12, 2)]
+//                                                    ]];
+//
+//                
+//                
+//                //
+//                HJCAjustNumButton3 *numbutton = [[HJCAjustNumButton3 alloc] init];
+//                numbutton.frame = CGRectMake(screenWidth-85, 15, 75, 25);
+//                // 内容更改的block回调
+//                numbutton.callBack = ^(NSString *currentNum){
+//                    NSLog(@"%@", currentNum);
+//                    NSLog(@"%ld",(long)indexPath.row);
+//                };
+//                
+//                // 加到父控件上
+//                [cell addSubview:numbutton];
+//
+//            }
+//            else  {
+//                cell.tradeNameLabel.text = @"添加";
+//                cell.couponsImageView.image = [UIImage imageNamed:@"上传相片"];
+//                cell.priceLabel.text = @"";
+//            }
+//            cell.couponsImageView.hidden = NO;
+//            cell.tradeNameLabel.hidden = NO;
+//            cell.priceLabel.hidden = NO;
+//            cell.settlementLable.hidden = YES;
+//            cell.checkImageView.hidden = YES;
+//            cell.couponLabel.hidden = YES;
+//            cell.ruleTextView.hidden = YES;
+//            
+//        }
+//        else
+//        {
+//            
+//            cell.couponsImageView.hidden = YES;
+//            cell.tradeNameLabel.hidden = YES;
+//            cell.priceLabel.hidden = YES;
+//            if (indexPath.row == [_data count]+1)
+//            {
+//                cell.settlementLable.hidden = NO;
+//               // cell.checkImageView.hidden = NO;
+//               // cell.couponLabel.hidden = NO;
+//                cell.checkImageView.hidden = YES;
+//                cell.couponLabel.hidden = YES;
+//                cell.ruleTextView.hidden = YES;
+//                cell.settlementLable.text = @"总价：500RMB\n会员价：350RMB";
+//                cell.couponLabel.font = [UIFont systemFontOfSize:14];
+//                cell.couponLabel.text = @"100RMB电子券";
+//                
+//                
+//                
+//                TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
+//                manData.identifier = @"man";
+//                manData.labelText = @"2张电子券 100RMB";
+//                manData.labelColor = [UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1];
+//                manData.labelFont = [UIFont systemFontOfSize:14.0];
+//                manData.checked = YES;
+//                manData.checkedImage = [UIImage imageNamed:@"checked"];
+//                manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
+//                
+//                if (_loveGroup == nil) {
+//                    _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
+//                    [_loveGroup create];
+//    
+//                    CGFloat x = IsiPhone4s? screenWidth-_loveGroup.frame.size.width:screenWidth-24 -_loveGroup.frame.size.width;
+//                  
+//                    _loveGroup.position = CGPointMake(x, 40);
+//                    
+//                    [cell addSubview:_loveGroup];
+//                }
+//                
+//                
+//                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loveGroupChanged:) name:GROUP_CHANGED object:_loveGroup];
+//                
+//            }
+//            else
+//            {
+//                if (isMember) {
+//                    
+//                    static NSString *SimpleTableIdentifier = @"CardTableViewCellIdentifier";
+//                    CardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+//                    if (cell == nil) {
+//                        cell = [[CardTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+//                    }
+//                    //cell 选中方式
+//                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//                    cell.accessoryType = UITableViewCellAccessoryNone;
+//                   // cell.model = self.dataArray[indexPath.row];
+//                    
+//                    return cell;
+//                }
+//                else {
+//                    cell.settlementLable.hidden = YES;
+//                    cell.checkImageView.hidden = YES;
+//                    cell.couponLabel.hidden = YES;
+//                    cell.ruleTextView.hidden = NO;
+//                    cell.ruleTextView.textAlignment = NSTextAlignmentLeft;
+//                    cell.ruleTextView.text = @"会员好处：成为会员可以享受会员折扣，付款可直接用会员卡，并有更多优惠哦！\n\n会员规则:会员卡充值后不可以取现，可以注销，同时扣除手续费5%。";
+//                }
+//            }
+//        }
+//        return cell;
+//    }
+//    else
+//    {
+//        static NSString *SimpleTableIdentifier = @"ButtonTableViewCellIdentifier";
+//        ButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+//        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+//        if (cell == nil) {
+//            cell = [[ButtonTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
+//        }
+//        
+//        [cell.buttonModel setTitle:@"会员注册" forState:UIControlStateNormal];
+//        
+//        return cell;
+//    }
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == [_data count]) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    if (isMember) {
-        //会员卡详情页面
-        if (indexPath.row == [_data count]+2) {
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-            NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            [self.navigationController pushViewController:viewController animated:YES];
-        }
-    }
+    KYDrawerController *drawerController = (KYDrawerController *)self.navigationController.parentViewController;
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *storeViewMainNavigationsController = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainNavigation"];
+    drawerController.mainViewController = storeViewMainNavigationsController;
+    [drawerController setDrawerState:DrawerStateClosed animated:true];
+    
+//    if (indexPath.row == [_data count]) {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//    if (isMember) {
+//        //会员卡详情页面
+//        if (indexPath.row == [_data count]+2) {
+//            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+//            NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
+//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//            [self.navigationController pushViewController:viewController animated:YES];
+//        }
+//    }
 }
 
 #pragma mark - 键盘消失

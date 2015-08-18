@@ -10,6 +10,7 @@
 #import "Const.h"
 #import "SVProgressShow.h"
 #import "StoreViewController.h"
+#import "shrb-swift.h"
 
 @implementation ShoppingNumLabel
 
@@ -134,11 +135,14 @@
     if ([nextResponder isKindOfClass:[UIViewController class]]) {
         activityViewController = (UIViewController *)nextResponder;
     }
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *OrdersViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
-    [OrdersViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    OrdersViewController.hidesBottomBarWhenPushed = YES;
-    [activityViewController.navigationController pushViewController:OrdersViewController animated:YES];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIViewController *OrdersViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+//    [OrdersViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    OrdersViewController.hidesBottomBarWhenPushed = YES;
+//    [activityViewController.navigationController pushViewController:OrdersViewController animated:YES];
+    
+    KYDrawerController *drawerController = (KYDrawerController *)activityViewController.navigationController.parentViewController;
+    [drawerController setDrawerState:0 animated:true];
 }
 
 @end

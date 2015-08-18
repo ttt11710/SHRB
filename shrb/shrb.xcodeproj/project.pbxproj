@@ -96,6 +96,9 @@
 		DF7D1E601B0DC08700CD05B3 /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E5F1B0DC08700CD05B3 /* CardDetailViewController.m */; };
 		DF7D1E631B0DC9C600CD05B3 /* ExpenseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E621B0DC9C600CD05B3 /* ExpenseTableViewCell.m */; };
 		DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */; };
+		DF7E84B61B83274D00D013BE /* NewStoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E84B41B83274D00D013BE /* NewStoreTableViewCell.m */; };
+		DF7E84B71B83274D00D013BE /* NewStoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF7E84B51B83274D00D013BE /* NewStoreTableViewCell.xib */; };
+		DF7E84BA1B83292600D013BE /* OrderStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E84B91B83292600D013BE /* OrderStoreViewController.m */; };
 		DF87575F1B58D66A00964738 /* TQTableViewCellRemoveController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF87575E1B58D66A00964738 /* TQTableViewCellRemoveController.m */; };
 		DF9119A71B392BC500833AAB /* OrderListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */; };
 		DF9119A81B392BC500833AAB /* OrderListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF9119A61B392BC500833AAB /* OrderListTableViewCell.xib */; };
@@ -167,6 +170,9 @@
 		DFF766DF1B65D02E005BB71C /* NewStoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF766DE1B65D02E005BB71C /* NewStoreCollectionViewCell.m */; };
 		DFF766E11B65D054005BB71C /* NewStoreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF766E01B65D054005BB71C /* NewStoreCollectionViewCell.xib */; };
 		DFF766E41B65D2CE005BB71C /* NewStoreCollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF766E31B65D2CE005BB71C /* NewStoreCollectController.m */; };
+		DFF906D31B82CCEF00E70CD0 /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF906D01B82CCEF00E70CD0 /* KYDrawerController.swift */; };
+		DFF906D41B82CCEF00E70CD0 /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF906D11B82CCEF00E70CD0 /* KYEmbedDrawerControllerSegue.swift */; };
+		DFF906D51B82CCEF00E70CD0 /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF906D21B82CCEF00E70CD0 /* KYEmbedMainControllerSegue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -349,6 +355,11 @@
 		DF7D1E621B0DC9C600CD05B3 /* ExpenseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpenseTableViewCell.m; path = ../Views/ExpenseTableViewCell.m; sourceTree = "<group>"; };
 		DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteVoucherViewController.h; sourceTree = "<group>"; };
 		DF7D1E651B0DD50500CD05B3 /* CompleteVoucherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteVoucherViewController.m; sourceTree = "<group>"; };
+		DF7E84B31B83274D00D013BE /* NewStoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreTableViewCell.h; sourceTree = "<group>"; };
+		DF7E84B41B83274D00D013BE /* NewStoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreTableViewCell.m; sourceTree = "<group>"; };
+		DF7E84B51B83274D00D013BE /* NewStoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewStoreTableViewCell.xib; sourceTree = "<group>"; };
+		DF7E84B81B83292600D013BE /* OrderStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStoreViewController.h; sourceTree = "<group>"; };
+		DF7E84B91B83292600D013BE /* OrderStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStoreViewController.m; sourceTree = "<group>"; };
 		DF87575D1B58D66A00964738 /* TQTableViewCellRemoveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQTableViewCellRemoveController.h; sourceTree = "<group>"; };
 		DF87575E1B58D66A00964738 /* TQTableViewCellRemoveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TQTableViewCellRemoveController.m; sourceTree = "<group>"; };
 		DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListTableViewCell.swift; sourceTree = "<group>"; };
@@ -481,6 +492,9 @@
 		DFF766E01B65D054005BB71C /* NewStoreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewStoreCollectionViewCell.xib; sourceTree = "<group>"; };
 		DFF766E21B65D2CE005BB71C /* NewStoreCollectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreCollectController.h; sourceTree = "<group>"; };
 		DFF766E31B65D2CE005BB71C /* NewStoreCollectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreCollectController.m; sourceTree = "<group>"; };
+		DFF906D01B82CCEF00E70CD0 /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
+		DFF906D11B82CCEF00E70CD0 /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
+		DFF906D21B82CCEF00E70CD0 /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -677,6 +691,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DFF906CF1B82CCD700E70CD0 /* KYDrawerController */,
 				DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */,
 				DF1EBFC71B6F2FF7002DF8BA /* fmdb-migration-manager */,
 				DF3CCDCD1B6614690076A33F /* JVFloatLabeledTextField */,
@@ -915,6 +930,9 @@
 				DF72C0E51B0B413100CE6DC6 /* HotDetailTableViewCell.m */,
 				DF77A5B61B0C151F00934A7C /* StoreTableViewCell.h */,
 				DF77A5B71B0C151F00934A7C /* StoreTableViewCell.m */,
+				DF7E84B31B83274D00D013BE /* NewStoreTableViewCell.h */,
+				DF7E84B41B83274D00D013BE /* NewStoreTableViewCell.m */,
+				DF7E84B51B83274D00D013BE /* NewStoreTableViewCell.xib */,
 				DFB0578C1B40DF630091A1E1 /* DeskNumTableViewCell.h */,
 				DFB0578D1B40DF630091A1E1 /* DeskNumTableViewCell.m */,
 				DF77A5BF1B0C1C9E00934A7C /* OrdersTableViewCell.h */,
@@ -1102,6 +1120,8 @@
 		DFB057931B40E6260091A1E1 /* order */ = {
 			isa = PBXGroup;
 			children = (
+				DF7E84B81B83292600D013BE /* OrderStoreViewController.h */,
+				DF7E84B91B83292600D013BE /* OrderStoreViewController.m */,
 				DF77A5B91B0C155D00934A7C /* StoreViewController.h */,
 				DF77A5BA1B0C155D00934A7C /* StoreViewController.m */,
 				DFAE52B11B32751900B03B2F /* QRViewController.h */,
@@ -1234,6 +1254,16 @@
 			name = common;
 			sourceTree = "<group>";
 		};
+		DFF906CF1B82CCD700E70CD0 /* KYDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				DFF906D01B82CCEF00E70CD0 /* KYDrawerController.swift */,
+				DFF906D11B82CCEF00E70CD0 /* KYEmbedDrawerControllerSegue.swift */,
+				DFF906D21B82CCEF00E70CD0 /* KYEmbedMainControllerSegue.swift */,
+			);
+			name = KYDrawerController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1334,6 +1364,7 @@
 				DF635D011B4FA9DE00439576 /* store.plist in Resources */,
 				DF635CFF1B4F5B6D00439576 /* holy.plist in Resources */,
 				DF72C0CA1B0B339800CE6DC6 /* LaunchScreen.xib in Resources */,
+				DF7E84B71B83274D00D013BE /* NewStoreTableViewCell.xib in Resources */,
 				DF9119A81B392BC500833AAB /* OrderListTableViewCell.xib in Resources */,
 				DF72C0C71B0B339800CE6DC6 /* Images.xcassets in Resources */,
 				DFF766E11B65D054005BB71C /* NewStoreCollectionViewCell.xib in Resources */,
@@ -1391,6 +1422,7 @@
 				DF7A8A591B3CE90600528864 /* ProductTableViewController.m in Sources */,
 				DF9D09E01B5DF0500007A7FB /* BookTextView.m in Sources */,
 				DF66B83D1B535B43002E9EFC /* SuperQRViewController.m in Sources */,
+				DFF906D31B82CCEF00E70CD0 /* KYDrawerController.swift in Sources */,
 				DFB057A81B4141D60091A1E1 /* UserCouponsViewController.m in Sources */,
 				DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */,
 				DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */,
@@ -1406,6 +1438,7 @@
 				DF4E4C641B0C61CA00FE499E /* PayViewController.m in Sources */,
 				DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */,
 				DFE07F0F1B707F770068D345 /* HotListSelectViewController.m in Sources */,
+				DFF906D51B82CCEF00E70CD0 /* KYEmbedMainControllerSegue.swift in Sources */,
 				DF2B0E2F1B423DB40051AA1A /* TNCircularCheckBoxData.m in Sources */,
 				DFB057991B40F2BA0091A1E1 /* OtherPayTableViewCell.m in Sources */,
 				DFE001D01B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift in Sources */,
@@ -1462,8 +1495,10 @@
 				DF66B84C1B53B13E002E9EFC /* ChangePasswordViewController.m in Sources */,
 				DF66B8491B53AF33002E9EFC /* ForgetPasswordViewController.m in Sources */,
 				DFCF89F71B577AE600D09A4A /* UIImage+Blur.m in Sources */,
+				DF7E84BA1B83292600D013BE /* OrderStoreViewController.m in Sources */,
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
 				DF1EBFC01B6F13E6002DF8BA /* M2CreateMessage.m in Sources */,
+				DFF906D41B82CCEF00E70CD0 /* KYEmbedDrawerControllerSegue.swift in Sources */,
 				DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */,
 				DF2B0E2E1B423DB40051AA1A /* TNCircularCheckBox.m in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
@@ -1512,6 +1547,7 @@
 				DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */,
 				DF3CCDD41B6614690076A33F /* JVFloatLabeledTextField.m in Sources */,
 				DF6311F61B5F817200ABBB22 /* ProductIsMemberViewController.m in Sources */,
+				DF7E84B61B83274D00D013BE /* NewStoreTableViewCell.m in Sources */,
 				DF9D09E91B5DF0C80007A7FB /* ParagraphAttributes+Constructor.m in Sources */,
 				DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */,
 				DF6311F31B5F78AC00ABBB22 /* ImageView.m in Sources */,
