@@ -67,7 +67,7 @@
 - (void)updateData:(NSString*)selectedCity
 {
     [self.dataArray removeAllObjects];
-    if ([selectedCity isEqualToString:@"上海"]) {
+    if ([selectedCity isEqualToString:@"上海市"]) {
         self.dataArray = [NSMutableArray arrayWithObjects:
                           @{
                             @"storeName" : @"上海莘庄店",

@@ -32,12 +32,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return 44;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return 60;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -53,16 +53,20 @@
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CGFloat height ;
-    height = 30;
+    height = 44;
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, height)] ;
-    [headerView setBackgroundColor:shrbSectionColor];
+    [headerView setBackgroundColor:[UIColor whiteColor]];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, (height-18)*0.5, tableView.bounds.size.width - 10, 18)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, (height-18)*0.5, tableView.bounds.size.width - 10, 18)];
        label.textColor = shrbText;
     label.text = @"常见问题";
     label.backgroundColor = [UIColor clearColor];
     [headerView addSubview:label];
+    
+    UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, height-1, tableView.bounds.size.width, 1)] ;
+    [footView setBackgroundColor:shrbTableViewColor];
+    [headerView addSubview:footView];
     
     return headerView;
 }

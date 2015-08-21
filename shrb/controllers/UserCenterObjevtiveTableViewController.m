@@ -10,6 +10,7 @@
 #import "UserCenterObjevtiveTableViewController.h"
 #import "SVProgressShow.h"
 #import "Const.h"
+#import "OrderViewController.h"
 
 @interface UserCenterObjevtiveTableViewController ()
 
@@ -125,17 +126,22 @@
         //我的订单
         if (indexPath.row == 0) {
             
-            if (!isLogin) {
+//            if (!isLogin) {
+//            
+//                [SVProgressShow showInfoWithStatus:@"登录账号才能查看我的订单"];
+//                
+//                return ;
+//            }
+        
+            OrderViewController *orderViewController = [[OrderViewController alloc] init];
+            orderViewController.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:orderViewController animated:YES];
             
-                [SVProgressShow showInfoWithStatus:@"登录账号才能查看我的订单"];
-                
-                return ;
-            }
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
-            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"orderlistView"];
-            viewController.hidesBottomBarWhenPushed = YES;
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            [self.navigationController pushViewController:viewController animated:YES];
+//            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+//            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"orderlistView"];
+//            viewController.hidesBottomBarWhenPushed = YES;
+//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//            [self.navigationController pushViewController:viewController animated:YES];
             
             //            OrderListViewController *orderListViewController = [[OrderListViewController alloc] init];
             //            [self.navigationController pushViewController:orderListViewController animated:YES];

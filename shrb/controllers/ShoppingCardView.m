@@ -129,6 +129,10 @@
 #pragma mark - 进入支付页面
 - (void)gotoPayView
 {
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"HotFocusShoppingCard" forKey:@"QRPay"];
+    
     UIViewController *activityViewController = nil;
     UIView* next = [self superview];
     UIResponder *nextResponder = [next nextResponder];
@@ -141,8 +145,13 @@
 //    OrdersViewController.hidesBottomBarWhenPushed = YES;
 //    [activityViewController.navigationController pushViewController:OrdersViewController animated:YES];
     
-    KYDrawerController *drawerController = (KYDrawerController *)activityViewController.navigationController.parentViewController;
-    [drawerController setDrawerState:0 animated:true];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [activityViewController.navigationController pushViewController:viewController animated:YES];
+    
+//    KYDrawerController *drawerController = (KYDrawerController *)activityViewController.navigationController.parentViewController;
+//    [drawerController setDrawerState:0 animated:true];
 }
 
 @end

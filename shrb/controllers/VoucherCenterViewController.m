@@ -12,9 +12,23 @@
 #import "CompleteVoucherViewController.h"
 
 @interface VoucherCenterViewController ()
+
+
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *integralLabel;
+
+
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (weak, nonatomic) IBOutlet UIButton *alipayBtn;
 @property (weak, nonatomic) IBOutlet UIButton *internetbankBtn;
+
+
+
+@property (weak, nonatomic) IBOutlet UIView *internetbankView;
+@property (weak, nonatomic) IBOutlet UIView *alipayView;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *payBtn;
 
 @end
 
@@ -22,7 +36,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self initView];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    self.payBtn.layer.cornerRadius = 4;
+    self.payBtn.layer.masksToBounds = YES;
+}
+
+- (void)initView
+{
+    NSMutableAttributedString *moneyAttrString = [[NSMutableAttributedString alloc] initWithString:@"金额:￥450"];
+    [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
+    [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, 4)];
+    [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 3)];
+    [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, 4)];
+    
+    self.moneyLabel.attributedText = moneyAttrString;
+    
+    NSMutableAttributedString *integralAttrString = [[NSMutableAttributedString alloc] initWithString:@"积分:3200"];
+    [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
+    [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, 4)];
+    [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 3)];
+    [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, 4)];
+    
+    self.integralLabel.attributedText = integralAttrString;
+    
+    
+    [self.internetbankBtn setImage:[UIImage imageNamed:@"payUncheck"] forState:UIControlStateNormal];
+    [self.internetbankBtn setImage:[UIImage imageNamed:@"paycheck"] forState:UIControlStateSelected];
+    [self.alipayBtn setImage:[UIImage imageNamed:@"payUncheck"] forState:UIControlStateNormal];
+    [self.alipayBtn setImage:[UIImage imageNamed:@"paycheck"] forState:UIControlStateSelected];
+    
+    self.internetbankBtn.userInteractionEnabled = NO;
+    self.alipayBtn.userInteractionEnabled = NO;
+    
+    self.internetbankBtn.selected = YES;
+
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(checkPayTypePressed:)];
+    [self.internetbankView addGestureRecognizer:tap1];
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(checkPayTypePressed:)];
+    [self.alipayView addGestureRecognizer:tap2];
+    
 }
 
 #pragma mark textfield的deletage事件
@@ -69,6 +126,50 @@
         [self.moneyTextField resignFirstResponder];
     }
 }
+
+#pragma mark - 选择充值方式
+- (void)checkPayTypePressed:(UITapGestureRecognizer *)tap
+{
+    switch (tap.view.tag) {
+        case 0:  //银联充值方式
+            if (self.internetbankBtn.selected) {
+                return;
+            }
+            self.internetbankBtn.selected = !self.internetbankBtn.selected;
+            self.alipayBtn.selected = !self.internetbankBtn.selected;
+            break;
+        case 1:  //支付宝充值方式
+            if (self.alipayBtn.selected) {
+                return;
+            }
+            self.alipayBtn.selected = !self.alipayBtn.selected;
+            self.internetbankBtn.selected = !self.alipayBtn.selected;
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - 确认支付
+- (IBAction)payBtnPressed:(id)sender {
+    
+    NSLog(@"%@",self.internetbankBtn.selected?@"银联充值方式":@"支付宝充值方式");
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+    CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [SVProgressShow showWithStatus:@"充值处理中..."];
+    
+    double delayInSeconds = 1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [SVProgressShow dismiss];
+        [self.navigationController pushViewController:viewController animated:YES];
+    });
+
+}
+
+
 #pragma mark - 支付宝充值
 - (IBAction)alipayBtnPressde:(id)sender {
     

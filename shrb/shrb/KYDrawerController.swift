@@ -106,7 +106,7 @@ public class KYDrawerController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    @IBInspectable public var drawerWidth: CGFloat = 280
+    @IBInspectable public var drawerWidth: CGFloat = UIScreen.mainScreen().bounds.size.width
     
     public var mainViewController: UIViewController! {
         didSet {
@@ -267,7 +267,8 @@ public class KYDrawerController: UIViewController, UIGestureRecognizerDelegate {
                 switch state {
                 case .Closed:
                     self._drawerConstraint.constant     = 0
-                    self._containerView.backgroundColor = UIColor(white: 0, alpha: 0)
+                    //self._containerView.backgroundColor = UIColor(white: 0, alpha: 0)
+                    self.mainViewController.view.backgroundColor = UIColor(white: 0, alpha: 0)
                     self.mainViewController.view.layer.transform = CATransform3DIdentity;
                 case .Opened:
                     let constant: CGFloat
@@ -278,7 +279,11 @@ public class KYDrawerController: UIViewController, UIGestureRecognizerDelegate {
                         constant = -self.drawerWidth
                     }
                     self._drawerConstraint.constant     = constant
-                    self._containerView.backgroundColor = UIColor(
+//                    self._containerView.backgroundColor = UIColor(
+//                        white: 0
+//                        , alpha: self._kContainerViewMaxAlpha
+//                    )
+                    self.mainViewController.view.backgroundColor = UIColor(
                         white: 0
                         , alpha: self._kContainerViewMaxAlpha
                     )
@@ -326,10 +331,12 @@ public class KYDrawerController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         _drawerConstraint.constant = constant
-        _containerView.backgroundColor = UIColor(
-            white: 0,
-            alpha: backGroundAlpha
-        )
+//        _containerView.backgroundColor = UIColor(
+//            white: 0,
+//            alpha: backGroundAlpha
+//        )
+        
+        self.mainViewController.view.layer.transform = CATransform3DMakeTranslation(constant, 0, 0);
         
         switch sender.state {
         case .Changed:

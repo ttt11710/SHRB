@@ -75,6 +75,10 @@
     if ([QRPay isEqualToString:@"SupermarketOrOrder"]) {
         [self.navigationController popToRootViewControllerAnimated:NO];
     }
+    //首页购物车
+    else if ([QRPay isEqualToString:@"HotFocusShoppingCard"]) {
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
     //超市扫码
     else if ([QRPay isEqualToString:@"SupermarketNewStore"]) {
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:NO];

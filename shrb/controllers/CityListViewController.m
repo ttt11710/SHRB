@@ -7,9 +7,11 @@
 
 #import "CityListViewController.h"
 #import "Const.h"
+#import <CoreLocation/CoreLocation.h>
+#import "SVProgressShow.h"
 
 
-#define btnWidth (screenWidth-4*30)/3
+#define btnWidth (screenWidth-4*21)/3
 #define btnHeight 35
 
 @interface ResultDataItem : NSObject
@@ -30,7 +32,12 @@
 
 
 
-@interface CityListViewController ()
+@interface CityListViewController () <CLLocationManagerDelegate>
+{
+    NSString *_currentCity;
+    NSString *_locationCity;
+}
+
 @property (nonatomic, retain) UIImageView* checkImgView;
 @property NSUInteger curSection;
 @property NSUInteger curRow;
@@ -41,6 +48,9 @@
 @property (nonatomic, strong) NSMutableArray *countryArray;
 @property (nonatomic, strong) NSMutableArray *resultDataMutableArray;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+
+@property (strong, nonatomic) CLLocationManager* locationManager;
 
 @end
 
@@ -67,6 +77,10 @@
 {
     [super viewDidLoad];
     curRow = NSNotFound;
+    
+    _currentCity = @"北京市";
+    
+    [self startLocation];
     
     self.hotCityArray = [[NSMutableArray alloc] initWithObjects:@"上海",@"北京",@"广州",@"深圳",@"武汉",@"天津",@"西安",@"南京",@"杭州",@"成都",@"重庆", nil];
     self.countryArray = [[NSMutableArray alloc] initWithObjects:@"韩国",@"日本", nil];
@@ -147,24 +161,85 @@
     self.tableView = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidLayoutSubviews
 {
-    [super viewWillAppear:animated];
+    if (IsiPhone4s && self.searchBar.showsCancelButton) {
+        self.searchBar.frame = CGRectMake(0, 20, screenWidth, 44);
+        self.tableView.frame = CGRectMake(0, 20+44, screenWidth, screenHeight - 64 - 44);
+    }
+    if (IsiPhone4s && self.searchBar.frame.origin.y == 64 && !self.searchBar.showsCancelButton) {
+        self.searchBar.frame = CGRectMake(0, 64, screenWidth, 44);
+        self.tableView.frame = CGRectMake(0, 64+44, screenWidth, screenHeight - 64 - 44);
+    }
+    [self.view layoutSubviews];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+
+-(void)startLocation{
+    
+    if([CLLocationManager locationServicesEnabled]) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = 10.0f;
+    }else {
+        
+        [SVProgressShow showInfoWithStatus:@"您关闭了的定位功能，将无法收到位置信息，建议您到系统设置打开定位功能!"];
+    }
+    
+        [self.locationManager startUpdatingLocation];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
-    [super viewWillDisappear:animated];
+    CLLocation *cloc = [locations lastObject];
+    
+    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation:cloc completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!error)
+        {
+            NSDictionary *test = [[placemarks objectAtIndex:0] addressDictionary];
+            //  Country(国家)  State(城市)  SubLocality(区)
+            
+            _locationCity = [test objectForKey:@"State"];
+            if ([_currentCity isEqualToString:_locationCity]) {
+                return ;
+            }
+            
+            UIAlertView *alter = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"系统定位到您在%@，需要切换至%@吗？",_locationCity,_locationCity] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            alter.tag=1;
+            [alter show];
+            [self.locationManager stopUpdatingLocation];
+        }
+    }];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error {
+    
+    if (error.code == kCLErrorDenied) {
+        
+        NSLog(@"error.code = %ld",(long)error.code);
+        // 提示用户出错原因，可按住Option键点击 KCLErrorDenied的查看更多出错信息，可打印error.code值查找原因所在
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [super viewDidDisappear:animated];
+    switch (alertView.tag) {
+        case 1:   //询问是否使用定位位置
+            if (buttonIndex == 0)
+                return;
+            else {
+                _currentCity = _locationCity;
+                [self.tableView reloadData];
+            }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -208,10 +283,6 @@
     return YES;
 }
 
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    
-}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -223,8 +294,6 @@
     {
         return 1;
     }
-
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -248,6 +317,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (section == 0) {
+        return 0;
+    }
+    else
     return section <=2 ?30:21;
 }
 
@@ -287,33 +360,45 @@
     cell.accessoryType = UITableViewCellAccessoryNone;
     
     if (indexPath.section == 0) {
-        UIButton *cityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        cityBtn.tag = -1;
-        cityBtn.frame = CGRectMake(30, 10, btnWidth, btnHeight);
-        [cityBtn setTitle:@"上海" forState:UIControlStateNormal];
-        cityBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
-        [cityBtn setTintColor:[UIColor clearColor]];
-        [cityBtn setBackgroundColor:[UIColor whiteColor]];
-        [cityBtn setTitleColor:shrbText forState:UIControlStateNormal];
-        cityBtn.layer.borderColor = shrbText.CGColor;
-        cityBtn.layer.borderWidth = 1;
-        cityBtn.layer.cornerRadius = 5;
-        cityBtn.layer.masksToBounds = YES;
-        [cityBtn addTarget:self action:@selector(selectCityBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:cityBtn];
+        cell.textLabel.font = [UIFont systemFontOfSize:17.0];
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@  GDP定位",_currentCity]];
+        
+        [attrString addAttribute:NSForegroundColorAttributeName value:shrbText range:NSMakeRange(0, _currentCity.length)];
+        [attrString addAttribute:NSForegroundColorAttributeName value:shrbLightText range:NSMakeRange(_currentCity.length+2, 5)];
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, _currentCity.length)];
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(_currentCity.length+2, 5)];
+        cell.textLabel.attributedText = attrString;
+
+        
+//        UIButton *cityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        cityBtn.tag = -1;
+//        cityBtn.frame = CGRectMake(30, 10, btnWidth, btnHeight);
+//        [cityBtn setTitle:@"上海" forState:UIControlStateNormal];
+//        cityBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+//        [cityBtn setTintColor:[UIColor clearColor]];
+//        [cityBtn setBackgroundColor:[UIColor whiteColor]];
+//        [cityBtn setTitleColor:shrbText forState:UIControlStateNormal];
+//        cityBtn.layer.borderColor = shrbText.CGColor;
+//        cityBtn.layer.borderWidth = 1;
+//        cityBtn.layer.cornerRadius = 5;
+//        cityBtn.layer.masksToBounds = YES;
+//        [cityBtn addTarget:self action:@selector(selectCityBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell addSubview:cityBtn];
     }
     else if (indexPath.section == 1) {
+        
+        cell.backgroundColor = shrbLightCell;
         
         for (int i = 0; i < [self.hotCityArray count]; i++) {
             UIButton *cityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             cityBtn.tag = i;
-            cityBtn.frame = CGRectMake(30*(i%3+1)+btnWidth*(i%3), 10*(i/3+1)+btnHeight*(i/3), btnWidth, btnHeight);
+            cityBtn.frame = CGRectMake(21*(i%3+1)+btnWidth*(i%3), 10*(i/3+1)+btnHeight*(i/3), btnWidth, btnHeight);
             [cityBtn setTitle:[self.hotCityArray objectAtIndex:i] forState:UIControlStateNormal];
             cityBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
             [cityBtn setTintColor:[UIColor clearColor]];
             [cityBtn setBackgroundColor:[UIColor whiteColor]];
             [cityBtn setTitleColor:shrbText forState:UIControlStateNormal];
-            cityBtn.layer.borderColor = shrbText.CGColor;
+            cityBtn.layer.borderColor = [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1].CGColor;
             cityBtn.layer.borderWidth = 1;
             cityBtn.layer.cornerRadius = 5;
             cityBtn.layer.masksToBounds = YES;
@@ -322,16 +407,19 @@
         }
     }
     else if (indexPath.section == 2) {
+        
+        cell.backgroundColor = shrbLightCell;
+        
         for (int i = 0; i < [self.countryArray count]; i++) {
             UIButton *cityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             cityBtn.tag = i;
-            cityBtn.frame = CGRectMake(30*(i%3+1)+btnWidth*(i%3), 10*(i/3+1)+btnHeight*(i/3), btnWidth, btnHeight);
+            cityBtn.frame = CGRectMake(21*(i%3+1)+btnWidth*(i%3), 10*(i/3+1)+btnHeight*(i/3), btnWidth, btnHeight);
             [cityBtn setTitle:[self.countryArray objectAtIndex:i] forState:UIControlStateNormal];
             cityBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
             [cityBtn setTintColor:[UIColor clearColor]];
             [cityBtn setBackgroundColor:[UIColor whiteColor]];
             [cityBtn setTitleColor:shrbText forState:UIControlStateNormal];
-            cityBtn.layer.borderColor = shrbText.CGColor;
+            cityBtn.layer.borderColor = [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1].CGColor;
             cityBtn.layer.borderWidth = 1;
             cityBtn.layer.cornerRadius = 5;
             cityBtn.layer.masksToBounds = YES;
@@ -368,10 +456,10 @@
         return @"搜索结果";
     }
     else {
-        if (section == 0) {
-            return @"当前位置";
-        }
-        else if (section == 1) {
+//        if (section == 0) {
+//            return @"当前位置";
+//        }
+       if (section == 1) {
             return @"热门城市";
         }
         else if (section == 2) {
@@ -391,7 +479,7 @@
     height = section <=2 ?30:21;
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, height)] ;
-    [headerView setBackgroundColor:shrbSectionColor];
+    [headerView setBackgroundColor:shrbLightCell];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, (height-18)*0.5, tableView.bounds.size.width - 10, 18)];
     if(self.tableView != tableView) {
@@ -413,7 +501,7 @@
         }
         
     }
-    label.textColor = shrbText;
+    label.textColor = shrbLightText;
     label.backgroundColor = [UIColor clearColor];
     [headerView addSubview:label];
     
@@ -421,38 +509,38 @@
 }
 
 //返回索引数组
--(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:keys];
-    [array insertObject:@"#" atIndex:0];
-    [array insertObject:@"$" atIndex:1];
-    [array insertObject:@"&" atIndex:2];
-
-    return array;
-}
+//-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:keys];
+//    [array insertObject:@"#" atIndex:0];
+//    [array insertObject:@"$" atIndex:1];
+//    [array insertObject:@"&" atIndex:2];
+//
+//    return array;
+//}
 
 //响应点击索引时的委托方法
--(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-{
-    NSInteger count = 0;
-    
-    NSLog(@"%@-%ld",title,(long)index);
-    
-    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:keys];
-    [array insertObject:@"#" atIndex:0];
-    [array insertObject:@"$" atIndex:1];
-    [array insertObject:@"&" atIndex:2];
-    
-    for(NSString *character in array)
-    {
-        if([character isEqualToString:title])
-        {
-            return count;
-        }
-        count ++;
-    }
-    return 0;
-}
+//-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//    NSInteger count = 0;
+//    
+//    NSLog(@"%@-%ld",title,(long)index);
+//    
+//    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:keys];
+//    [array insertObject:@"#" atIndex:0];
+//    [array insertObject:@"$" atIndex:1];
+//    [array insertObject:@"&" atIndex:2];
+//    
+//    for(NSString *character in array)
+//    {
+//        if([character isEqualToString:title])
+//        {
+//            return count;
+//        }
+//        count ++;
+//    }
+//    return 0;
+//}
 
 #pragma mark - Table view delegate
 
@@ -476,7 +564,10 @@
         
     }
     else {
-        if (indexPath.section <= 2) {
+        if (indexPath.section == 0) {
+            [delegate1 citySelectionUpdate:_currentCity];
+        }
+        else if (indexPath.section <= 2) {
             return;
         }
         else {

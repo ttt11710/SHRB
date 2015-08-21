@@ -16,4 +16,6 @@
 - (void)gotoPayView;
 - (void)UpdateTableView;
 
+- (void)pushCardDetailView;
+
 @end

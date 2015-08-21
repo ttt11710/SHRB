@@ -21,6 +21,7 @@
 #import "SVProgressShow.h"
 #import "ShoppingCardView.h"
 #import "shrb-swift.h"
+#import "NewCardDetailViewController.h"
 
 @interface ShoppingNumLabel1 : UILabel
 {
@@ -51,20 +52,19 @@ static NSInteger countTime = 20*60;
     CGFloat lastContentOffset;
     
     NSTimer *_timer;
-   // UIView *selectTypeTableViewBackView;
-   // UITableView *selectTypeTableView;
     BOOL showSelectTypeTableView;
     
     
-    //ShoppingCardView *_myShoppingCardView;
+    ShoppingCardView *_myShoppingCardView;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *selectTypeTableViewBackView;
 @property (weak, nonatomic) IBOutlet UITableView *selectTypeTableView;
 
-//@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) HJCAjustNumButton *numbutton;
 @property (weak, nonatomic) IBOutlet UIButton *gotopayViewBtn;
+
 @property (weak, nonatomic) IBOutlet UIView *shoppingCardView;
 @property (weak, nonatomic) IBOutlet UIImageView *shoppingCardImageView;
 @property (weak, nonatomic) IBOutlet ShoppingNumLabel1 *shoppingNumLabel;
@@ -77,8 +77,6 @@ static NSInteger countTime = 20*60;
 @property (nonatomic,strong) NSMutableArray * modelArray;
 @property (nonatomic, strong) NSMutableArray *plistArr;
 
-
-@property (nonatomic, retain)UITableView *tableView;
 @end
 
 @implementation StoreViewController{
@@ -118,6 +116,13 @@ static NSInteger countTime = 20*60;
     self.countDownLabel.text = @"20:00";
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.tabBarController.tabBar.hidden = YES;
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -129,17 +134,22 @@ static NSInteger countTime = 20*60;
 
 - (void)viewDidLayoutSubviews
 {
-//    countTime = [[NSUserDefaults standardUserDefaults] integerForKey:@"countTime"];
-//    
-//    if ( countTime < 1200 && countTime > 0 && _myShoppingCardView == nil) {
-//        _myShoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-44-20-60, 100, 40)];
-//        _myShoppingCardView.shoppingNumLabel.num = 10;
-//        [self.view insertSubview:_myShoppingCardView aboveSubview:self.view];
-//    }
-//    
-//    else if (self.shoppingCardView.hidden ){
-//        [_myShoppingCardView showShoppingCard];
-//    }
+    countTime = [[NSUserDefaults standardUserDefaults] integerForKey:@"countTime"];
+    
+    if ( countTime < 1200 && countTime > 0 && _myShoppingCardView == nil) {
+        _myShoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-60, 100, 40)];
+        _myShoppingCardView.shoppingNumLabel.num = 10;
+        [self.view insertSubview:_myShoppingCardView aboveSubview:self.view];
+    }
+    
+    else if (self.shoppingCardView.hidden ){
+        [_myShoppingCardView showShoppingCard];
+    }
+    
+    if (IsiPhone4s) {
+        self.tableView.frame = CGRectMake(0, 64, screenWidth, screenHeight-64);
+    }
+    [self.view layoutSubviews];
 }
 
 
@@ -147,10 +157,14 @@ static NSInteger countTime = 20*60;
 {
     
 //    self.title = [[NSUserDefaults standardUserDefaults] stringForKey:@"storeName"];
-//    
-//    UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
-//    self.navigationItem.rightBarButtonItem = selectType;
+    UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
+    self.navigationItem.rightBarButtonItem = selectType;
 
+    //导航颜色
+    self.navigationController.navigationBar.barTintColor = shrbPink;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
     [self.gotopayViewBtn setBackgroundColor:shrbPink];
 }
 
@@ -166,16 +180,13 @@ static NSInteger countTime = 20*60;
     self.modelArray = [[NSMutableArray alloc] init];
     
     self.shoppingNumLabel.num = 0 ;
+    
+    showSelectTypeTableView = NO;
 
 }
 
 - (void)initTableView
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight) style:UITableViewStylePlain];
-    [self.view addSubview:self.tableView];
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
     
     //去除tableview顶部留白
     self.automaticallyAdjustsScrollViewInsets = false;
@@ -345,16 +356,16 @@ static NSInteger countTime = 20*60;
                 
                 NSLog(@"%ld",(long)indexPath.row);
                 
-//                if (_myShoppingCardView == nil) {
-//                    _myShoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-44-20-60, 100, 40)];
-//                    _myShoppingCardView.shoppingNumLabel.num = 10;
-//                    [self.view insertSubview:_myShoppingCardView aboveSubview:self.view];
-//                }
+                if (_myShoppingCardView == nil) {
+                    _myShoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-60, 100, 40)];
+                    _myShoppingCardView.shoppingNumLabel.num = 10;
+                    [self.view insertSubview:_myShoppingCardView aboveSubview:self.view];
+                }
 
                 
-                //if (_myShoppingCardView.hidden) {
+                if (_myShoppingCardView.hidden) {
                     self.shoppingCardView.hidden = NO;
-                //}
+                }
                 
                 _rect = [self.tableView.superview convertRect:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height) fromView:cell];
                 
@@ -547,11 +558,11 @@ static NSInteger countTime = 20*60;
 #pragma mark - 显示购物车
 - (void)showShoppingCard
 {
-//    if (!_myShoppingCardView.hidden) {
-//        self.shoppingCardView.hidden = YES;
-//        _myShoppingCardView.shoppingNumLabel.num ++ ;
-//        return ;
-//    }
+    if (!_myShoppingCardView.hidden) {
+        self.shoppingCardView.hidden = YES;
+        _myShoppingCardView.shoppingNumLabel.num ++ ;
+        return ;
+    }
     
     if (self.shoppingNumLabel.num == 1) {
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -653,13 +664,22 @@ static NSInteger countTime = 20*60;
 - (void)gotoPayView
 {
 
-    KYDrawerController *drawerController = (KYDrawerController *)self.navigationController.parentViewController;
-    [drawerController setDrawerState:0 animated:true];
-        
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
-//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    [self.navigationController pushViewController:viewController animated:YES];
+//    KYDrawerController *drawerController = (KYDrawerController *)self.navigationController.parentViewController;
+//    drawerController.drawerWidth = screenWidth-60;
+//    [drawerController setDrawerState:0 animated:true];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)pushCardDetailView
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+    NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma  mark - storyboard传值

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class OrderListModel;
 
 @interface OrderListTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *storeLogoImageView;
-@property (weak, nonatomic) IBOutlet UILabel *orderListInfoLabel;
+@property (nonatomic,strong) OrderListModel * model;
+
+
+
 @end

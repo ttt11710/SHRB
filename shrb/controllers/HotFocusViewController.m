@@ -71,7 +71,6 @@
 
 - (void)viewDidLayoutSubviews
 {
-    
     if (_shoppingCardView == nil) {
         _shoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-49-50, 100, 40)];
         _shoppingCardView.shoppingNumLabel.num = 10;
@@ -81,6 +80,11 @@
     else {
         [_shoppingCardView showShoppingCard];
     }
+
+    if (IsiPhone4s) {
+        self.tableView.frame = CGRectMake(0, 0, screenWidth, screenHeight);
+    }
+    [self.view layoutSubviews];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -184,7 +188,6 @@
 
 - (void)initTableView
 {
-    
     //tableView 去分界线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //删除底部多余横线
@@ -203,10 +206,12 @@
     else {
         self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 64.f)];
     }
-    self.tableView.sectionFooterHeight = 4.0f;
+   // self.tableView.sectionFooterHeight = 4.0f;
     
     self.cellRemoveController = [[TQTableViewCellRemoveController alloc] initWithTableView:self.tableView];
     self.cellRemoveController.delegate = self;
+    
+    
 }
 
 - (void)cardAnimation
@@ -350,16 +355,22 @@
     else if ([typesOfShops isEqualToString:@"order"]) {
         //点餐
         
-        OrderStoreViewController *orderStoreViewController = [[OrderStoreViewController alloc] init];
-        orderStoreViewController.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:orderStoreViewController animated:YES];
-        [SVProgressShow dismiss];
+        StoreViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
+        [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        storeViewController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:storeViewController animated:YES];
+
+//        OrderStoreViewController *orderStoreViewController = [[OrderStoreViewController alloc] init];
+//        orderStoreViewController.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:orderStoreViewController animated:YES];
+//        [SVProgressShow dismiss];
         
 //        UIViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"KYDrawer"];
 //        [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
 //        storeViewController.hidesBottomBarWhenPushed = YES;
+//        self.navigationController.navigationBarHidden = YES;
 //        [self.navigationController pushViewController:storeViewController animated:YES];
-//        [SVProgressShow dismiss];
+        [SVProgressShow dismiss];
     }
 }
 
@@ -389,7 +400,7 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - 刷选商店
+#pragma mark - 筛选商店
 - (IBAction)selectStore:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     HotListSelectViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotListSelectViewController"];

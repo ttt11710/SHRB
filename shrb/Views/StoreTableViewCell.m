@@ -10,6 +10,8 @@
 #import "TradeModel.h"
 #import "Const.h"
 #import "NSString+AttributedStyle.h"
+#import "OrderModel.h"
+#import "CallBackButton.h"
 
 
 @interface StoreTableViewCell ()
@@ -19,6 +21,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *tradeDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *MemberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UITextField *amountTextField;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+
+
+
+
 
 @end
 
@@ -42,6 +50,30 @@
     [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(model.memberPrice.length + 2, model.originalPrice.length+3)];
     
     self.priceLabel.attributedText = attrString;
+    
+    [self.afterSaleButton setupBlock];
+}
+
+- (void)setOrderModel:(OrderModel *)orderModel
+{
+    self.tradeNameLabel.text = orderModel.tradeName;
+    self.tradeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",orderModel.tradeImage]];
+    
+    self.tradeDescriptionLabel.text = orderModel.tradeDescription;
+    
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%@ 原价￥%@",orderModel.memberPrice,orderModel.originalPrice]];
+    
+    [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(orderModel.memberPrice.length + 2, orderModel.originalPrice.length+3)];//删除线
+    [attrString addAttribute:NSForegroundColorAttributeName value:shrbPink range:NSMakeRange(0, orderModel.memberPrice.length + 1)];
+    [attrString addAttribute:NSForegroundColorAttributeName value:shrbLightText range:NSMakeRange(orderModel.memberPrice.length + 2, orderModel.originalPrice.length+3)];
+    
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, orderModel.memberPrice.length + 1)];
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(orderModel.memberPrice.length + 2, orderModel.originalPrice.length+3)];
+    
+    self.priceLabel.attributedText = attrString;
+    
+    self.amountTextField.text =  orderModel.amount;
+    self.moneyLabel.text = [NSString stringWithFormat:@"￥%@",orderModel.money];
 }
 
 - (void)awakeFromNib {
@@ -53,6 +85,12 @@
     
     self.MemberLabel.layer.cornerRadius = 12;
     self.MemberLabel.layer.masksToBounds = YES;
+    
+    self.afterSaleButton.layer.cornerRadius = 4;
+    self.afterSaleButton.layer.masksToBounds = YES;
+    self.afterSaleButton.layer.borderColor = shrbPink.CGColor;
+    self.afterSaleButton.layer.borderWidth = 1;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

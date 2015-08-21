@@ -40,6 +40,10 @@
 		DF2B0E331B423DB40051AA1A /* TNRectangularCheckBoxData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E2A1B423DB40051AA1A /* TNRectangularCheckBoxData.m */; };
 		DF2D7A281B466919003790A5 /* CollectObjectiveTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */; };
 		DF2D7A2B1B466E6F003790A5 /* CollectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2D7A2A1B466E6F003790A5 /* CollectTableViewCell.m */; };
+		DF3567881B87154E0022C8BB /* OrderListDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3567871B87154E0022C8BB /* OrderListDetialViewController.m */; };
+		DF35678C1B8718E50022C8BB /* CallBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DF35678B1B8718E50022C8BB /* CallBackButton.m */; };
+		DF35678F1B87241D0022C8BB /* ServeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF35678E1B87241D0022C8BB /* ServeSelectViewController.m */; };
+		DF3567921B872CED0022C8BB /* AppleRefundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3567911B872CED0022C8BB /* AppleRefundViewController.m */; };
 		DF3CCDD41B6614690076A33F /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3CCDCF1B6614690076A33F /* JVFloatLabeledTextField.m */; };
 		DF3CCDD51B6614690076A33F /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3CCDD11B6614690076A33F /* JVFloatLabeledTextView.m */; };
 		DF3CCDD61B6614690076A33F /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3CCDD31B6614690076A33F /* NSString+TextDirectionality.m */; };
@@ -71,7 +75,6 @@
 		DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2571B26B91100FAE24F /* UIImage+ImageEffects.m */; };
 		DF7176FF1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7176FE1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m */; };
 		DF7177341B300F2A00D3C3B9 /* OrderListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7177331B300F2A00D3C3B9 /* OrderListTableViewController.m */; };
-		DF7177391B30109500D3C3B9 /* OrderListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7177381B30109500D3C3B9 /* OrderListTableViewCell.m */; };
 		DF71773C1B30167900D3C3B9 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71773B1B30167900D3C3B9 /* SettingTableViewController.m */; };
 		DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71773E1B30180700D3C3B9 /* HelpCenterTableViewController.m */; };
 		DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0BB1B0B339800CE6DC6 /* main.m */; };
@@ -100,12 +103,7 @@
 		DF7E84B71B83274D00D013BE /* NewStoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF7E84B51B83274D00D013BE /* NewStoreTableViewCell.xib */; };
 		DF7E84BA1B83292600D013BE /* OrderStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7E84B91B83292600D013BE /* OrderStoreViewController.m */; };
 		DF87575F1B58D66A00964738 /* TQTableViewCellRemoveController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF87575E1B58D66A00964738 /* TQTableViewCellRemoveController.m */; };
-		DF9119A71B392BC500833AAB /* OrderListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */; };
-		DF9119A81B392BC500833AAB /* OrderListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF9119A61B392BC500833AAB /* OrderListTableViewCell.xib */; };
-		DF9119B01B394A3B00833AAB /* MeImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119AE1B394A3B00833AAB /* MeImageTableViewCell.swift */; };
-		DF9119B11B394A3B00833AAB /* MeImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF9119AF1B394A3B00833AAB /* MeImageTableViewCell.xib */; };
-		DF9119B41B394E2000833AAB /* RightDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9119B21B394E2000833AAB /* RightDetailTableViewCell.swift */; };
-		DF9119B51B394E2000833AAB /* RightDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF9119B31B394E2000833AAB /* RightDetailTableViewCell.xib */; };
+		DF90C1741B85AC3C00D1A495 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF90C1731B85AC3C00D1A495 /* CoreLocation.framework */; };
 		DF92F2611B730A4300786495 /* SuperOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF92F2601B730A4300786495 /* SuperOrderViewController.m */; };
 		DF9372F81B4B68FE00960F86 /* KYCuteView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9372F71B4B68FE00960F86 /* KYCuteView.m */; };
 		DF958F5E1B33B13F005B2155 /* HotFocusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF958F5D1B33B13F005B2155 /* HotFocusModel.m */; };
@@ -122,6 +120,11 @@
 		DF9D09E81B5DF0C80007A7FB /* ParagraphAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09E31B5DF0C80007A7FB /* ParagraphAttributes.m */; };
 		DF9D09E91B5DF0C80007A7FB /* ParagraphAttributes+Constructor.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09E51B5DF0C80007A7FB /* ParagraphAttributes+Constructor.m */; };
 		DF9D09EA1B5DF0C80007A7FB /* ConfigAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9D09E71B5DF0C80007A7FB /* ConfigAttributedString.m */; };
+		DF9E4A9C1B86C0B900C36002 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9E4A9B1B86C0B900C36002 /* OrderViewController.m */; };
+		DF9E4AA01B86C15600C36002 /* NTButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9E4A9F1B86C15600C36002 /* NTButton.m */; };
+		DF9E4AA31B86CA6700C36002 /* OrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9E4AA21B86CA6700C36002 /* OrderListModel.m */; };
+		DF9E4AA61B86F32F00C36002 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9E4AA51B86F32F00C36002 /* OrderTableViewCell.m */; };
+		DF9E4AA91B87094B00C36002 /* RefundOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9E4AA81B87094B00C36002 /* RefundOrderViewController.m */; };
 		DFA537191B79EBBC00D12CFD /* 冬青黑体W3.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFA537181B79EBBC00D12CFD /* 冬青黑体W3.otf */; };
 		DFA544281B4A160400CC9999 /* CompletePayOrdersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */; };
 		DFA5442B1B4A292B00CC9999 /* CityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA5442A1B4A292B00CC9999 /* CityListViewController.m */; };
@@ -145,13 +148,12 @@
 		DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB0579F1B4128C90091A1E1 /* TradingRecordTableViewController.m */; };
 		DFB057A31B4132060091A1E1 /* UserStoreInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */; };
 		DFB057A81B4141D60091A1E1 /* UserCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB057A71B4141D60091A1E1 /* UserCouponsViewController.m */; };
-		DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */; };
-		DFB1E8351B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */; };
 		DFB41DE31B73431A003C9799 /* SuperAndStorePayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB41DE21B73431A003C9799 /* SuperAndStorePayViewController.m */; };
 		DFB7631F1B3D36330086ABB7 /* ProductIsMemberTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB7631E1B3D36330086ABB7 /* ProductIsMemberTableViewController.m */; };
 		DFB763251B3D495F0086ABB7 /* NewCardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB763241B3D495F0086ABB7 /* NewCardDetailViewController.m */; };
 		DFB763281B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB763271B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m */; };
 		DFB763301B3D51B10086ABB7 /* LeftLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB7632E1B3D51B10086ABB7 /* LeftLabelTableViewCell.m */; };
+		DFBD30DA1B8473B10006E32A /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBD30D91B8473B10006E32A /* OrderModel.m */; };
 		DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */; };
 		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
 		DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC45A211B44DA8C0055C4C3 /* SuperBecomeMemberView1.m */; };
@@ -248,6 +250,14 @@
 		DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectObjectiveTableViewController.m; sourceTree = "<group>"; };
 		DF2D7A291B466E6F003790A5 /* CollectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectTableViewCell.h; sourceTree = "<group>"; };
 		DF2D7A2A1B466E6F003790A5 /* CollectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectTableViewCell.m; sourceTree = "<group>"; };
+		DF3567861B87154E0022C8BB /* OrderListDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListDetialViewController.h; sourceTree = "<group>"; };
+		DF3567871B87154E0022C8BB /* OrderListDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListDetialViewController.m; sourceTree = "<group>"; };
+		DF35678A1B8718E50022C8BB /* CallBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallBackButton.h; sourceTree = "<group>"; };
+		DF35678B1B8718E50022C8BB /* CallBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallBackButton.m; sourceTree = "<group>"; };
+		DF35678D1B87241D0022C8BB /* ServeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServeSelectViewController.h; sourceTree = "<group>"; };
+		DF35678E1B87241D0022C8BB /* ServeSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServeSelectViewController.m; sourceTree = "<group>"; };
+		DF3567901B872CED0022C8BB /* AppleRefundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleRefundViewController.h; sourceTree = "<group>"; };
+		DF3567911B872CED0022C8BB /* AppleRefundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleRefundViewController.m; sourceTree = "<group>"; };
 		DF3CCDCE1B6614690076A33F /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextField.h; sourceTree = "<group>"; };
 		DF3CCDCF1B6614690076A33F /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextField.m; sourceTree = "<group>"; };
 		DF3CCDD01B6614690076A33F /* JVFloatLabeledTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextView.h; sourceTree = "<group>"; };
@@ -305,8 +315,6 @@
 		DF7176FE1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoTableViewController.m; sourceTree = "<group>"; };
 		DF7177321B300F2A00D3C3B9 /* OrderListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableViewController.h; sourceTree = "<group>"; };
 		DF7177331B300F2A00D3C3B9 /* OrderListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableViewController.m; sourceTree = "<group>"; };
-		DF7177371B30109500D3C3B9 /* OrderListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListTableViewCell.h; path = ../Views/OrderListTableViewCell.h; sourceTree = "<group>"; };
-		DF7177381B30109500D3C3B9 /* OrderListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListTableViewCell.m; path = ../Views/OrderListTableViewCell.m; sourceTree = "<group>"; };
 		DF71773A1B30167900D3C3B9 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
 		DF71773B1B30167900D3C3B9 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		DF71773D1B30180700D3C3B9 /* HelpCenterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterTableViewController.h; sourceTree = "<group>"; };
@@ -362,13 +370,8 @@
 		DF7E84B91B83292600D013BE /* OrderStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStoreViewController.m; sourceTree = "<group>"; };
 		DF87575D1B58D66A00964738 /* TQTableViewCellRemoveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQTableViewCellRemoveController.h; sourceTree = "<group>"; };
 		DF87575E1B58D66A00964738 /* TQTableViewCellRemoveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TQTableViewCellRemoveController.m; sourceTree = "<group>"; };
-		DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListTableViewCell.swift; sourceTree = "<group>"; };
-		DF9119A61B392BC500833AAB /* OrderListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListTableViewCell.xib; sourceTree = "<group>"; };
+		DF90C1731B85AC3C00D1A495 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DF9119AA1B3935D400833AAB /* shrb-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "shrb-Bridging-Header.h"; sourceTree = "<group>"; };
-		DF9119AE1B394A3B00833AAB /* MeImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeImageTableViewCell.swift; sourceTree = "<group>"; };
-		DF9119AF1B394A3B00833AAB /* MeImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeImageTableViewCell.xib; sourceTree = "<group>"; };
-		DF9119B21B394E2000833AAB /* RightDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailTableViewCell.swift; sourceTree = "<group>"; };
-		DF9119B31B394E2000833AAB /* RightDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightDetailTableViewCell.xib; sourceTree = "<group>"; };
 		DF92F25F1B730A4300786495 /* SuperOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperOrderViewController.h; sourceTree = "<group>"; };
 		DF92F2601B730A4300786495 /* SuperOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperOrderViewController.m; sourceTree = "<group>"; };
 		DF9372F61B4B68FE00960F86 /* KYCuteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYCuteView.h; sourceTree = "<group>"; };
@@ -402,6 +405,16 @@
 		DF9D09E61B5DF0C80007A7FB /* ConfigAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigAttributedString.h; sourceTree = "<group>"; };
 		DF9D09E71B5DF0C80007A7FB /* ConfigAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigAttributedString.m; sourceTree = "<group>"; };
 		DF9D09EB1B5DF3620007A7FB /* 方正清刻本悦宋简体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "方正清刻本悦宋简体.ttf"; sourceTree = "<group>"; };
+		DF9E4A9A1B86C0B900C36002 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		DF9E4A9B1B86C0B900C36002 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
+		DF9E4A9E1B86C15600C36002 /* NTButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTButton.h; sourceTree = "<group>"; };
+		DF9E4A9F1B86C15600C36002 /* NTButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTButton.m; sourceTree = "<group>"; };
+		DF9E4AA11B86CA6700C36002 /* OrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListModel.h; sourceTree = "<group>"; };
+		DF9E4AA21B86CA6700C36002 /* OrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListModel.m; sourceTree = "<group>"; };
+		DF9E4AA41B86F32F00C36002 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
+		DF9E4AA51B86F32F00C36002 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
+		DF9E4AA71B87094B00C36002 /* RefundOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundOrderViewController.h; sourceTree = "<group>"; };
+		DF9E4AA81B87094B00C36002 /* RefundOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundOrderViewController.m; sourceTree = "<group>"; };
 		DFA537181B79EBBC00D12CFD /* 冬青黑体W3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "冬青黑体W3.otf"; sourceTree = "<group>"; };
 		DFA544261B4A160400CC9999 /* CompletePayOrdersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletePayOrdersTableViewCell.h; sourceTree = "<group>"; };
 		DFA544271B4A160400CC9999 /* CompletePayOrdersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletePayOrdersTableViewCell.m; sourceTree = "<group>"; };
@@ -445,8 +458,6 @@
 		DFB057A21B4132060091A1E1 /* UserStoreInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStoreInfoTableViewController.m; sourceTree = "<group>"; };
 		DFB057A61B4141D60091A1E1 /* UserCouponsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCouponsViewController.h; sourceTree = "<group>"; };
 		DFB057A71B4141D60091A1E1 /* UserCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCouponsViewController.m; sourceTree = "<group>"; };
-		DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeImageAndLabelsTableViewCell.swift; sourceTree = "<group>"; };
-		DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeImageAndLabelsTableViewCell.xib; sourceTree = "<group>"; };
 		DFB41DE11B73431A003C9799 /* SuperAndStorePayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAndStorePayViewController.h; sourceTree = "<group>"; };
 		DFB41DE21B73431A003C9799 /* SuperAndStorePayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperAndStorePayViewController.m; sourceTree = "<group>"; };
 		DFB7631D1B3D36330086ABB7 /* ProductIsMemberTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductIsMemberTableViewController.h; sourceTree = "<group>"; };
@@ -457,6 +468,8 @@
 		DFB763271B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardImageAndCardNumTableViewCell.m; sourceTree = "<group>"; };
 		DFB7632D1B3D51B10086ABB7 /* LeftLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftLabelTableViewCell.h; sourceTree = "<group>"; };
 		DFB7632E1B3D51B10086ABB7 /* LeftLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftLabelTableViewCell.m; sourceTree = "<group>"; };
+		DFBD30D81B8473B10006E32A /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		DFBD30D91B8473B10006E32A /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		DFC39BC01B294ECE006B50F4 /* LazyFadeIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeIn.h; sourceTree = "<group>"; };
 		DFC39BC11B294ECE006B50F4 /* LazyFadeInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInView.h; sourceTree = "<group>"; };
 		DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
@@ -502,6 +515,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF90C1741B85AC3C00D1A495 /* CoreLocation.framework in Frameworks */,
 				CB4E17B74343612E6E329DD1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +542,7 @@
 		B636A6DA215A51FBEBFBA07C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DF90C1731B85AC3C00D1A495 /* CoreLocation.framework */,
 				7A2478AE39158B2CE8CF6AC2 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -641,6 +656,15 @@
 			path = TNCheckBoxGroup;
 			sourceTree = "<group>";
 		};
+		DF3567891B87189C0022C8BB /* CallBackButton */ = {
+			isa = PBXGroup;
+			children = (
+				DF35678A1B8718E50022C8BB /* CallBackButton.h */,
+				DF35678B1B8718E50022C8BB /* CallBackButton.m */,
+			);
+			name = CallBackButton;
+			sourceTree = "<group>";
+		};
 		DF3CCDCD1B6614690076A33F /* JVFloatLabeledTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +715,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DF9E4A9D1B86C15600C36002 /* NTButton */,
 				DFF906CF1B82CCD700E70CD0 /* KYDrawerController */,
 				DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */,
 				DF1EBFC71B6F2FF7002DF8BA /* fmdb-migration-manager */,
@@ -835,8 +860,18 @@
 				DFAE95641B254FB7006A495B /* UserCenterObjevtiveTableViewController.m */,
 				DF7176FD1B2FFF9300D3C3B9 /* BasicInfoTableViewController.h */,
 				DF7176FE1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m */,
+				DF9E4A9A1B86C0B900C36002 /* OrderViewController.h */,
+				DF9E4A9B1B86C0B900C36002 /* OrderViewController.m */,
 				DF7177321B300F2A00D3C3B9 /* OrderListTableViewController.h */,
 				DF7177331B300F2A00D3C3B9 /* OrderListTableViewController.m */,
+				DF3567861B87154E0022C8BB /* OrderListDetialViewController.h */,
+				DF3567871B87154E0022C8BB /* OrderListDetialViewController.m */,
+				DF35678D1B87241D0022C8BB /* ServeSelectViewController.h */,
+				DF35678E1B87241D0022C8BB /* ServeSelectViewController.m */,
+				DF3567901B872CED0022C8BB /* AppleRefundViewController.h */,
+				DF3567911B872CED0022C8BB /* AppleRefundViewController.m */,
+				DF9E4AA71B87094B00C36002 /* RefundOrderViewController.h */,
+				DF9E4AA81B87094B00C36002 /* RefundOrderViewController.m */,
 				DF2D7A261B466919003790A5 /* CollectObjectiveTableViewController.h */,
 				DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */,
 				DF71773A1B30167900D3C3B9 /* SettingTableViewController.h */,
@@ -850,29 +885,14 @@
 		DF9119B71B3955D400833AAB /* objective-C */ = {
 			isa = PBXGroup;
 			children = (
-				DF7177371B30109500D3C3B9 /* OrderListTableViewCell.h */,
-				DF7177381B30109500D3C3B9 /* OrderListTableViewCell.m */,
+				DF9E4AA41B86F32F00C36002 /* OrderTableViewCell.h */,
+				DF9E4AA51B86F32F00C36002 /* OrderTableViewCell.m */,
 				DFB7632D1B3D51B10086ABB7 /* LeftLabelTableViewCell.h */,
 				DFB7632E1B3D51B10086ABB7 /* LeftLabelTableViewCell.m */,
 				DF2D7A291B466E6F003790A5 /* CollectTableViewCell.h */,
 				DF2D7A2A1B466E6F003790A5 /* CollectTableViewCell.m */,
 			);
 			name = "objective-C";
-			sourceTree = "<group>";
-		};
-		DF9119B81B3955E300833AAB /* swift */ = {
-			isa = PBXGroup;
-			children = (
-				DFB1E8321B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift */,
-				DFB1E8331B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib */,
-				DF9119A51B392BC500833AAB /* OrderListTableViewCell.swift */,
-				DF9119A61B392BC500833AAB /* OrderListTableViewCell.xib */,
-				DF9119AE1B394A3B00833AAB /* MeImageTableViewCell.swift */,
-				DF9119AF1B394A3B00833AAB /* MeImageTableViewCell.xib */,
-				DF9119B21B394E2000833AAB /* RightDetailTableViewCell.swift */,
-				DF9119B31B394E2000833AAB /* RightDetailTableViewCell.xib */,
-			);
-			name = swift;
 			sourceTree = "<group>";
 		};
 		DF9372F91B4B690400960F86 /* KYCuteView */ = {
@@ -912,6 +932,8 @@
 				DF958F601B33B83C005B2155 /* TradeModel.m */,
 				DF7A8A5D1B3CE9DC00528864 /* ProductModel.h */,
 				DF7A8A5E1B3CE9DC00528864 /* ProductModel.m */,
+				DFBD30D81B8473B10006E32A /* OrderModel.h */,
+				DFBD30D91B8473B10006E32A /* OrderModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1020,6 +1042,8 @@
 		DF958F591B33ACCE005B2155 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				DF9E4AA11B86CA6700C36002 /* OrderListModel.h */,
+				DF9E4AA21B86CA6700C36002 /* OrderListModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1028,7 +1052,6 @@
 			isa = PBXGroup;
 			children = (
 				DF9119B71B3955D400833AAB /* objective-C */,
-				DF9119B81B3955E300833AAB /* swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1064,6 +1087,15 @@
 				DF9D09E71B5DF0C80007A7FB /* ConfigAttributedString.m */,
 			);
 			name = Textkit;
+			sourceTree = "<group>";
+		};
+		DF9E4A9D1B86C15600C36002 /* NTButton */ = {
+			isa = PBXGroup;
+			children = (
+				DF9E4A9E1B86C15600C36002 /* NTButton.h */,
+				DF9E4A9F1B86C15600C36002 /* NTButton.m */,
+			);
+			path = NTButton;
 			sourceTree = "<group>";
 		};
 		DFAD61F41B26DF9E002437BD /* HJCAdjustNumButton */ = {
@@ -1120,14 +1152,14 @@
 		DFB057931B40E6260091A1E1 /* order */ = {
 			isa = PBXGroup;
 			children = (
-				DF7E84B81B83292600D013BE /* OrderStoreViewController.h */,
-				DF7E84B91B83292600D013BE /* OrderStoreViewController.m */,
 				DF77A5B91B0C155D00934A7C /* StoreViewController.h */,
 				DF77A5BA1B0C155D00934A7C /* StoreViewController.m */,
 				DFAE52B11B32751900B03B2F /* QRViewController.h */,
 				DFAE52B21B32751900B03B2F /* QRViewController.m */,
 				DF77A5BC1B0C1C6500934A7C /* OrdersViewController.h */,
 				DF77A5BD1B0C1C6500934A7C /* OrdersViewController.m */,
+				DF7E84B81B83292600D013BE /* OrderStoreViewController.h */,
+				DF7E84B91B83292600D013BE /* OrderStoreViewController.m */,
 				DF4E4C621B0C61CA00FE499E /* PayViewController.h */,
 				DF4E4C631B0C61CA00FE499E /* PayViewController.m */,
 				DF0D9C731B0C252B00C0AB3F /* CompletePayViewController.h */,
@@ -1186,18 +1218,18 @@
 				DFF766E31B65D2CE005BB71C /* NewStoreCollectController.m */,
 				DF66B83B1B535B43002E9EFC /* SuperQRViewController.h */,
 				DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */,
+				DF6311EC1B5F35A000ABBB22 /* ProductViewController.h */,
+				DF6311ED1B5F35A000ABBB22 /* ProductViewController.m */,
+				DFE001D11B81B22500BBD84A /* RegisteringStoreMemberViewController.h */,
+				DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */,
 				DF92F25F1B730A4300786495 /* SuperOrderViewController.h */,
 				DF92F2601B730A4300786495 /* SuperOrderViewController.m */,
 				DFB41DE11B73431A003C9799 /* SuperAndStorePayViewController.h */,
 				DFB41DE21B73431A003C9799 /* SuperAndStorePayViewController.m */,
 				DF66B83E1B53689D002E9EFC /* SuperCompletePayViewController.h */,
 				DF66B83F1B53689D002E9EFC /* SuperCompletePayViewController.m */,
-				DF6311EC1B5F35A000ABBB22 /* ProductViewController.h */,
-				DF6311ED1B5F35A000ABBB22 /* ProductViewController.m */,
 				DF6311F41B5F817200ABBB22 /* ProductIsMemberViewController.h */,
 				DF6311F51B5F817200ABBB22 /* ProductIsMemberViewController.m */,
-				DFE001D11B81B22500BBD84A /* RegisteringStoreMemberViewController.h */,
-				DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */,
 			);
 			name = new;
 			sourceTree = "<group>";
@@ -1246,6 +1278,7 @@
 		DFF330DF1B2EC56100007582 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				DF3567891B87189C0022C8BB /* CallBackButton */,
 				DF9D09DB1B5DF03D0007A7FB /* Textkit */,
 				DF9D09DA1B5DE21E0007A7FB /* AttributedString */,
 				DFF330E01B2EC57500007582 /* SVProgressShow.h */,
@@ -1349,14 +1382,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF0D9C781B0C291500C0AB3F /* Card.storyboard in Resources */,
-				DF9119B11B394A3B00833AAB /* MeImageTableViewCell.xib in Resources */,
 				DFA537191B79EBBC00D12CFD /* 冬青黑体W3.otf in Resources */,
 				DFAD61F81B26DF9E002437BD /* HJCAdjustNumButton.bundle in Resources */,
 				DF72C0C51B0B339800CE6DC6 /* Main.storyboard in Resources */,
-				DFB1E8351B3A4C8700366200 /* MeImageAndLabelsTableViewCell.xib in Resources */,
 				DFA5442D1B4A293E00CC9999 /* citydict.plist in Resources */,
 				DF4E4C6F1B0C8D6400FE499E /* Me.storyboard in Resources */,
-				DF9119B51B394E2000833AAB /* RightDetailTableViewCell.xib in Resources */,
 				DF1504F91B5655160095D6A3 /* McDonalds.plist in Resources */,
 				DF66B8421B538C78002E9EFC /* Login.storyboard in Resources */,
 				DF1504F71B5645980095D6A3 /* yunifang.plist in Resources */,
@@ -1365,7 +1395,6 @@
 				DF635CFF1B4F5B6D00439576 /* holy.plist in Resources */,
 				DF72C0CA1B0B339800CE6DC6 /* LaunchScreen.xib in Resources */,
 				DF7E84B71B83274D00D013BE /* NewStoreTableViewCell.xib in Resources */,
-				DF9119A81B392BC500833AAB /* OrderListTableViewCell.xib in Resources */,
 				DF72C0C71B0B339800CE6DC6 /* Images.xcassets in Resources */,
 				DFF766E11B65D054005BB71C /* NewStoreCollectionViewCell.xib in Resources */,
 			);
@@ -1449,6 +1478,7 @@
 				DFB7631F1B3D36330086ABB7 /* ProductIsMemberTableViewController.m in Sources */,
 				DF2D7A281B466919003790A5 /* CollectObjectiveTableViewController.m in Sources */,
 				DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */,
+				DF9E4A9C1B86C0B900C36002 /* OrderViewController.m in Sources */,
 				DF958F611B33B83C005B2155 /* TradeModel.m in Sources */,
 				DFB763251B3D495F0086ABB7 /* NewCardDetailViewController.m in Sources */,
 				DF7176FF1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m in Sources */,
@@ -1457,7 +1487,6 @@
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,
 				DF1EBFD31B6F39E3002DF8BA /* MessageProcessor.m in Sources */,
 				DFB057911B40E5D30091A1E1 /* HJCAjustNumButton3.m in Sources */,
-				DF7177391B30109500D3C3B9 /* OrderListTableViewCell.m in Sources */,
 				DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */,
 				DF1EBFB61B6EFC60002DF8BA /* PYBaseViewController.m in Sources */,
 				DF7A8A5C1B3CE97700528864 /* ProductTableViewCell.m in Sources */,
@@ -1473,6 +1502,7 @@
 				DF4E4C611B0C59CD00FE499E /* ButtonTableViewCell.m in Sources */,
 				DF958F641B33C11B005B2155 /* CardModel.m in Sources */,
 				DFB0578E1B40DF630091A1E1 /* DeskNumTableViewCell.m in Sources */,
+				DF9E4AA91B87094B00C36002 /* RefundOrderViewController.m in Sources */,
 				DF6311EE1B5F35A000ABBB22 /* ProductViewController.m in Sources */,
 				DF66B8401B53689E002E9EFC /* SuperCompletePayViewController.m in Sources */,
 				DF9D09D91B5DE0B50007A7FB /* FontStyle.m in Sources */,
@@ -1491,28 +1521,30 @@
 				DF72C0E21B0B403600CE6DC6 /* HotDetailViewController.m in Sources */,
 				DFDC89671B43929C0051D763 /* BecomeMemberView.m in Sources */,
 				DFAE52AF1B32743500B03B2F /* QRMenu.m in Sources */,
-				DF9119B01B394A3B00833AAB /* MeImageTableViewCell.swift in Sources */,
+				DF3567881B87154E0022C8BB /* OrderListDetialViewController.m in Sources */,
 				DF66B84C1B53B13E002E9EFC /* ChangePasswordViewController.m in Sources */,
 				DF66B8491B53AF33002E9EFC /* ForgetPasswordViewController.m in Sources */,
 				DFCF89F71B577AE600D09A4A /* UIImage+Blur.m in Sources */,
+				DF35678F1B87241D0022C8BB /* ServeSelectViewController.m in Sources */,
 				DF7E84BA1B83292600D013BE /* OrderStoreViewController.m in Sources */,
 				DF958F671B33DA67005B2155 /* CouponsModel.m in Sources */,
 				DF1EBFC01B6F13E6002DF8BA /* M2CreateMessage.m in Sources */,
 				DFF906D41B82CCEF00E70CD0 /* KYEmbedDrawerControllerSegue.swift in Sources */,
-				DFB1E8341B3A4C8700366200 /* MeImageAndLabelsTableViewCell.swift in Sources */,
+				DFBD30DA1B8473B10006E32A /* OrderModel.m in Sources */,
 				DF2B0E2E1B423DB40051AA1A /* TNCircularCheckBox.m in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
+				DF9E4AA31B86CA6700C36002 /* OrderListModel.m in Sources */,
 				DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */,
 				DF66B8451B539F4E002E9EFC /* LoginViewController.m in Sources */,
-				DF9119A71B392BC500833AAB /* OrderListTableViewCell.swift in Sources */,
 				DF1EBFC21B6F13E6002DF8BA /* Migrations.m in Sources */,
 				DF4E4C581B0C448400FE499E /* CardTableViewController.m in Sources */,
 				DF9D09EA1B5DF0C80007A7FB /* ConfigAttributedString.m in Sources */,
 				DFAE955B1B253848006A495B /* CouponsTableViewCell.m in Sources */,
 				DF976B3A1B62099E0097790E /* MyImageView.m in Sources */,
 				DF2B0E311B423DB40051AA1A /* TNImageCheckBoxData.m in Sources */,
+				DF3567921B872CED0022C8BB /* AppleRefundViewController.m in Sources */,
 				DFCF89F61B577AE600D09A4A /* UIColor+CustomColors.m in Sources */,
 				DFB057961B40F1840091A1E1 /* MemberPayTableViewCell.m in Sources */,
 				DFF766DF1B65D02E005BB71C /* NewStoreCollectionViewCell.m in Sources */,
@@ -1531,9 +1563,11 @@
 				DF2B0E301B423DB40051AA1A /* TNImageCheckbox.m in Sources */,
 				DFB763301B3D51B10086ABB7 /* LeftLabelTableViewCell.m in Sources */,
 				DF2B0E321B423DB40051AA1A /* TNRectangularCheckBox.m in Sources */,
+				DF35678C1B8718E50022C8BB /* CallBackButton.m in Sources */,
 				DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */,
 				DF9D09E81B5DF0C80007A7FB /* ParagraphAttributes.m in Sources */,
 				DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */,
+				DF9E4AA01B86C15600C36002 /* NTButton.m in Sources */,
 				DF4E4C6A1B0C87D500FE499E /* BecomeMemberViewController.m in Sources */,
 				DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */,
 				DF1EBFC61B6F2E3D002DF8BA /* M4CreateHot.m in Sources */,
@@ -1550,6 +1584,7 @@
 				DF7E84B61B83274D00D013BE /* NewStoreTableViewCell.m in Sources */,
 				DF9D09E91B5DF0C80007A7FB /* ParagraphAttributes+Constructor.m in Sources */,
 				DF72C0BF1B0B339800CE6DC6 /* AppDelegate.m in Sources */,
+				DF9E4AA61B86F32F00C36002 /* OrderTableViewCell.m in Sources */,
 				DF6311F31B5F78AC00ABBB22 /* ImageView.m in Sources */,
 				DF2B0E121B422DDD0051AA1A /* PayQRViewController.m in Sources */,
 				DF3CCDD51B6614690076A33F /* JVFloatLabeledTextView.m in Sources */,
@@ -1558,7 +1593,6 @@
 				DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */,
 				DF72C0BC1B0B339800CE6DC6 /* main.m in Sources */,
 				DF66B84F1B53B484002E9EFC /* RegisterViewController.m in Sources */,
-				DF9119B41B394E2000833AAB /* RightDetailTableViewCell.swift in Sources */,
 				DFAE52B31B32751900B03B2F /* QRViewController.m in Sources */,
 				DF2B0E2C1B423DB40051AA1A /* TNCheckBoxData.m in Sources */,
 				DFAD61F91B26DF9E002437BD /* HJCAjustNumButton.m in Sources */,

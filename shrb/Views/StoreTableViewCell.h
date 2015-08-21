@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class TradeModel;
+@class OrderModel;
+@class CallBackButton;
 
 @interface StoreTableViewCell : UITableViewCell
 @property (nonatomic,strong) TradeModel * model;
+
+@property (nonatomic,strong) OrderModel * orderModel;
+
+
+@property (weak, nonatomic) IBOutlet CallBackButton *afterSaleButton;
 
 @end
