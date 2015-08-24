@@ -29,6 +29,9 @@
     
     [self initData];
     
+    //tableView 去分界线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     //删除底部多余横线
     self.tableView.tableFooterView =[[UIView alloc]init];
     
@@ -108,24 +111,24 @@
 
 #pragma mark - tableView dataSource
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 30;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 0;
+//}
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)] ;
-    [headerView setBackgroundColor:shrbSectionColor];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, tableView.bounds.size.width - 10, 18)];
-    label.text = self.dataArray[section][@"storeName"];
-    label.textColor = shrbText;
-    label.backgroundColor = [UIColor clearColor];
-    [headerView addSubview:label];
-    
-    return headerView;
-}
+//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)] ;
+//    [headerView setBackgroundColor:shrbSectionColor];
+//    
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, tableView.bounds.size.width - 10, 18)];
+//    label.text = self.dataArray[section][@"storeName"];
+//    label.textColor = shrbText;
+//    label.backgroundColor = [UIColor clearColor];
+//    [headerView addSubview:label];
+//    
+//    return headerView;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -135,6 +138,9 @@
     label.numberOfLines = 0;
     [label setFont:theFont];
     if (indexPath.row == 0) {
+        [label setText:self.dataArray[indexPath.section][@"storeName"]];
+    }
+    else if (indexPath.row == 1) {
         [label setText:self.dataArray[indexPath.section][@"address"]];
     }
     else {
@@ -142,13 +148,15 @@
     }
     [label sizeToFit];// 显示文本需要的长度和宽度
 
-    return label.frame.size.height+30 > 44? label.frame.size.height+30:44;
+    CGFloat height = label.frame.size.height+30 > 44? label.frame.size.height+30:44;
+    
+    return indexPath.row == 2? height + 6: height;
 }
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return self.dataArray[section][@"storeName"];
-}
+//
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    return self.dataArray[section][@"storeName"];
+//}
 
 #pragma mark - Table view data source
 
@@ -157,29 +165,44 @@
     return [self.dataArray count];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *SimpleTableIdentifier = @"LeftLabelTableViewCellIdentifier";
-    LeftLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-    if (cell == nil) {
-        cell = [[LeftLabelTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+    if (indexPath.row <= 1) {
+        static NSString *SimpleTableIdentifier = @"LeftLabelTableViewCellIdentifier";
+        LeftLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        if (cell == nil) {
+            cell = [[LeftLabelTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+        }
+        //cell 选中方式
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        if (indexPath.row == 0) {
+            cell.leftLabel.text = self.dataArray[indexPath.section][@"storeName"];
+        }
+        else if(indexPath.row == 1) {
+            cell.leftLabel.text = [NSString stringWithFormat:@"地址：%@",self.dataArray[indexPath.section][@"address"]];
+        }
+        
+        return cell;
     }
-    //cell 选中方式
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    if (indexPath.row == 0) {
-       cell.leftLabel.text = [NSString stringWithFormat:@"地址：%@",self.dataArray[indexPath.section][@"address"]];
-    }
-    else {
+    else
+    {
+        static NSString *SimpleTableIdentifier = @"LeftLabel2TableViewCellIdentifier";
+        LeftLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        if (cell == nil) {
+            cell = [[LeftLabelTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+        }
+        //cell 选中方式
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
         cell.leftLabel.text = [NSString stringWithFormat:@"电话：%@",self.dataArray[indexPath.section][@"telephone"]];
+        return cell;
     }
-    
-    
-    return cell;
 }
 
 
