@@ -55,14 +55,18 @@
     
     UIStoryboard *userStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
     OrderListTableViewController *orderListTableViewController = [userStoryboard instantiateViewControllerWithIdentifier:@"orderlistView"];
+    orderListTableViewController.hidesBottomBarWhenPushed = YES;
     [orderListTableViewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
     UINavigationController *navi1 = [[UINavigationController alloc] initWithRootViewController:orderListTableViewController];
+    navi1.tabBarController.hidesBottomBarWhenPushed = YES;
     
     RefundOrderViewController *refundOrderViewController = [userStoryboard instantiateViewControllerWithIdentifier:@"refundorderView"];
     [refundOrderViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    refundOrderViewController.hidesBottomBarWhenPushed = YES;
     
     UINavigationController *navi2 = [[UINavigationController alloc] initWithRootViewController:refundOrderViewController];
+    navi2.tabBarController.hidesBottomBarWhenPushed = YES;
     
     self.viewControllers = [NSArray arrayWithObjects:navi1,navi2, nil];
     
@@ -135,9 +139,9 @@
     }
     _previousBtn = sender;
     
+    self.selectedViewController.hidesBottomBarWhenPushed = YES;
     self.selectedViewController = self.viewControllers[sender.tag];
-    
-    
+        
 }
 
 - (void)didReceiveMemoryWarning {

@@ -79,7 +79,7 @@
 #pragma mark - 键盘即将消失的时候回调
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if(IsIOS7)
+    if(IsiPhone4s)
     {
         [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             

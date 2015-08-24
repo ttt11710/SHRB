@@ -29,6 +29,14 @@
     [self initTableView];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    if (IsiPhone4s) {
+        self.tableView.frame = CGRectMake(0, 42, screenWidth, screenHeight-42);
+    }
+    [self.view layoutSubviews];
+}
+
 - (void)initData
 {
     self.data = [[NSMutableArray alloc] initWithObjects:

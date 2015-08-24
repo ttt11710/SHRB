@@ -154,6 +154,7 @@
 		DFB763281B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB763271B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m */; };
 		DFB763301B3D51B10086ABB7 /* LeftLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB7632E1B3D51B10086ABB7 /* LeftLabelTableViewCell.m */; };
 		DFBD30DA1B8473B10006E32A /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBD30D91B8473B10006E32A /* OrderModel.m */; };
+		DFC001C91B8ABCDE00F5F89A /* AppleRefundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC001C81B8ABCDE00F5F89A /* AppleRefundTableViewCell.m */; };
 		DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */; };
 		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
 		DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC45A211B44DA8C0055C4C3 /* SuperBecomeMemberView1.m */; };
@@ -470,6 +471,8 @@
 		DFB7632E1B3D51B10086ABB7 /* LeftLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftLabelTableViewCell.m; sourceTree = "<group>"; };
 		DFBD30D81B8473B10006E32A /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
 		DFBD30D91B8473B10006E32A /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
+		DFC001C71B8ABCDE00F5F89A /* AppleRefundTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleRefundTableViewCell.h; sourceTree = "<group>"; };
+		DFC001C81B8ABCDE00F5F89A /* AppleRefundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleRefundTableViewCell.m; sourceTree = "<group>"; };
 		DFC39BC01B294ECE006B50F4 /* LazyFadeIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeIn.h; sourceTree = "<group>"; };
 		DFC39BC11B294ECE006B50F4 /* LazyFadeInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInView.h; sourceTree = "<group>"; };
 		DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
@@ -864,14 +867,14 @@
 				DF9E4A9B1B86C0B900C36002 /* OrderViewController.m */,
 				DF7177321B300F2A00D3C3B9 /* OrderListTableViewController.h */,
 				DF7177331B300F2A00D3C3B9 /* OrderListTableViewController.m */,
+				DF9E4AA71B87094B00C36002 /* RefundOrderViewController.h */,
+				DF9E4AA81B87094B00C36002 /* RefundOrderViewController.m */,
 				DF3567861B87154E0022C8BB /* OrderListDetialViewController.h */,
 				DF3567871B87154E0022C8BB /* OrderListDetialViewController.m */,
 				DF35678D1B87241D0022C8BB /* ServeSelectViewController.h */,
 				DF35678E1B87241D0022C8BB /* ServeSelectViewController.m */,
 				DF3567901B872CED0022C8BB /* AppleRefundViewController.h */,
 				DF3567911B872CED0022C8BB /* AppleRefundViewController.m */,
-				DF9E4AA71B87094B00C36002 /* RefundOrderViewController.h */,
-				DF9E4AA81B87094B00C36002 /* RefundOrderViewController.m */,
 				DF2D7A261B466919003790A5 /* CollectObjectiveTableViewController.h */,
 				DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */,
 				DF71773A1B30167900D3C3B9 /* SettingTableViewController.h */,
@@ -887,6 +890,8 @@
 			children = (
 				DF9E4AA41B86F32F00C36002 /* OrderTableViewCell.h */,
 				DF9E4AA51B86F32F00C36002 /* OrderTableViewCell.m */,
+				DFC001C71B8ABCDE00F5F89A /* AppleRefundTableViewCell.h */,
+				DFC001C81B8ABCDE00F5F89A /* AppleRefundTableViewCell.m */,
 				DFB7632D1B3D51B10086ABB7 /* LeftLabelTableViewCell.h */,
 				DFB7632E1B3D51B10086ABB7 /* LeftLabelTableViewCell.m */,
 				DF2D7A291B466E6F003790A5 /* CollectTableViewCell.h */,
@@ -1533,6 +1538,7 @@
 				DFBD30DA1B8473B10006E32A /* OrderModel.m in Sources */,
 				DF2B0E2E1B423DB40051AA1A /* TNCircularCheckBox.m in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
+				DFC001C91B8ABCDE00F5F89A /* AppleRefundTableViewCell.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
 				DF9E4AA31B86CA6700C36002 /* OrderListModel.m in Sources */,

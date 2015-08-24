@@ -7,8 +7,11 @@
 //
 
 #import "AppleRefundViewController.h"
+#import "Const.h"
+#import "AppleRefundTableViewCell.h"
 
 @interface AppleRefundViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -16,22 +19,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self initTableView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)initTableView
+{
+    //去除tableview顶部留白
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - tableView dataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 580;
 }
-*/
+
+#pragma mark - tableView delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *SimpleTableIdentifier = @"cellId";
+    AppleRefundTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    
+    cell.callBack = ^(NSString *money){
+        
+        NSLog(@"提交请求%@",money);
+        
+    };
+    return cell;
+}
+
 
 @end

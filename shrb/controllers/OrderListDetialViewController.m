@@ -33,6 +33,20 @@
     [self initTableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    if (IsiPhone4s) {
+        self.tableView.frame = CGRectMake(0, 64, screenWidth, screenHeight-64);
+    }
+    [self.view layoutSubviews];
+}
+
 - (void)initData
 {
     NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
@@ -48,8 +62,8 @@
     self.tableView.tableFooterView =[[UIView alloc]init];
     self.tableView.backgroundColor = shrbTableViewColor;
     
-    //底部添加多余空间
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 40.f)];
+    //去除tableview顶部留白
+    self.automaticallyAdjustsScrollViewInsets = false;
 }
 
 #pragma mark - tableView dataSource

@@ -32,6 +32,29 @@
     
 }
 
+- (void)viewDidLayoutSubviews
+{
+    if (IsiPhone4s) {
+        if (self.tableView.frame.size.height > 320 && self.tableView.frame.size.height < 400) {
+            self.tableView.frame = CGRectMake(0, 42, screenWidth, screenHeight);
+        }
+        else {
+            self.tableView.frame = CGRectMake(0, 42, screenWidth, screenHeight-42);
+        }
+    }
+    else {
+        self.tableView.frame = CGRectMake(0, 42+44+20, screenWidth, screenHeight-42-44-20);
+    }
+    [self.view layoutSubviews];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationController.tabBarController.tabBar.hidden = YES;
+}
+
 - (void)initData
 {
     self.data = [[NSMutableArray alloc] initWithObjects:

@@ -27,11 +27,22 @@
     [self initTableView];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    if (IsiPhone4s) {
+        self.tableView.frame = CGRectMake(0, 64, screenWidth, screenHeight-64);
+    }
+    [self.view layoutSubviews];
+}
+
 - (void)initTableView
 {
     //删除多余线
     self.tableView.tableFooterView =[[UIView alloc]init];
     self.tableView.backgroundColor = shrbTableViewColor;
+    
+    //去除tableview顶部留白
+    self.automaticallyAdjustsScrollViewInsets = false;
 }
 
 #pragma mark - tableView dataSource
