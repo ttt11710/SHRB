@@ -9,8 +9,12 @@
 #import "AppleRefundViewController.h"
 #import "Const.h"
 #import "AppleRefundTableViewCell.h"
+#import "IQActionSheetPickerView.h"
 
-@interface AppleRefundViewController ()
+@interface AppleRefundViewController () <IQActionSheetPickerViewDelegate>
+{
+    NSMutableArray *_pickMutableArray;;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -20,7 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initData];
     [self initTableView];
+}
+
+- (void)initData
+{
+    _pickMutableArray = [[NSMutableArray alloc] initWithObjects:@"  退货原因",@"  商品破损",@"  商品错发/漏发",@"  商品质量问题",@"  未按约定时间发货", nil];
 }
 
 - (void)initTableView
@@ -49,12 +59,29 @@
     AppleRefundTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
+    cell.returnGoodsReasonLabel.text = @"  退货原因";
     cell.callBack = ^(NSString *money){
         
         NSLog(@"提交请求%@",money);
         
     };
+    
+    cell.returnCallBack = ^(NSString *string){
+        
+        IQActionSheetPickerView *picker = [[IQActionSheetPickerView alloc] initWithTitle:@"Single Picker" delegate:self];
+        [picker setTag:indexPath.row];
+        [picker setTitlesForComponenets:@[_pickMutableArray]];
+        [picker selectRow:0 inComponent:0 animated:YES];
+        [picker show];
+  
+    };
     return cell;
+}
+
+-(void)actionSheetPickerView:(IQActionSheetPickerView *)pickerView didSelectTitles:(NSArray *)titles
+{
+    AppleRefundTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] objectAtIndex:0]];
+    cell.returnGoodsReasonLabel.text = titles[0];
 }
 
 

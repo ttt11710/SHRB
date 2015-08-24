@@ -155,6 +155,8 @@
 		DFB763301B3D51B10086ABB7 /* LeftLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB7632E1B3D51B10086ABB7 /* LeftLabelTableViewCell.m */; };
 		DFBD30DA1B8473B10006E32A /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBD30D91B8473B10006E32A /* OrderModel.m */; };
 		DFC001C91B8ABCDE00F5F89A /* AppleRefundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC001C81B8ABCDE00F5F89A /* AppleRefundTableViewCell.m */; };
+		DFC001CF1B8AE4D300F5F89A /* IQActionSheetPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC001CC1B8AE4D300F5F89A /* IQActionSheetPickerView.m */; };
+		DFC001D01B8AE4D300F5F89A /* IQActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC001CE1B8AE4D300F5F89A /* IQActionSheetViewController.m */; };
 		DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */; };
 		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
 		DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC45A211B44DA8C0055C4C3 /* SuperBecomeMemberView1.m */; };
@@ -473,6 +475,10 @@
 		DFBD30D91B8473B10006E32A /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		DFC001C71B8ABCDE00F5F89A /* AppleRefundTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleRefundTableViewCell.h; sourceTree = "<group>"; };
 		DFC001C81B8ABCDE00F5F89A /* AppleRefundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleRefundTableViewCell.m; sourceTree = "<group>"; };
+		DFC001CB1B8AE4D300F5F89A /* IQActionSheetPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQActionSheetPickerView.h; sourceTree = "<group>"; };
+		DFC001CC1B8AE4D300F5F89A /* IQActionSheetPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQActionSheetPickerView.m; sourceTree = "<group>"; };
+		DFC001CD1B8AE4D300F5F89A /* IQActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQActionSheetViewController.h; sourceTree = "<group>"; };
+		DFC001CE1B8AE4D300F5F89A /* IQActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQActionSheetViewController.m; sourceTree = "<group>"; };
 		DFC39BC01B294ECE006B50F4 /* LazyFadeIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeIn.h; sourceTree = "<group>"; };
 		DFC39BC11B294ECE006B50F4 /* LazyFadeInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInView.h; sourceTree = "<group>"; };
 		DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
@@ -718,6 +724,7 @@
 		DF70F24F1B26ABE100FAE24F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DFC001CA1B8AE4C500F5F89A /* IQActionSheetPickerView */,
 				DF9E4A9D1B86C15600C36002 /* NTButton */,
 				DFF906CF1B82CCD700E70CD0 /* KYDrawerController */,
 				DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */,
@@ -1239,6 +1246,17 @@
 			name = new;
 			sourceTree = "<group>";
 		};
+		DFC001CA1B8AE4C500F5F89A /* IQActionSheetPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				DFC001CB1B8AE4D300F5F89A /* IQActionSheetPickerView.h */,
+				DFC001CC1B8AE4D300F5F89A /* IQActionSheetPickerView.m */,
+				DFC001CD1B8AE4D300F5F89A /* IQActionSheetViewController.h */,
+				DFC001CE1B8AE4D300F5F89A /* IQActionSheetViewController.m */,
+			);
+			name = IQActionSheetPickerView;
+			sourceTree = "<group>";
+		};
 		DFC39BBF1B294EB6006B50F4 /* LazyFadeinView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1484,6 +1502,7 @@
 				DF2D7A281B466919003790A5 /* CollectObjectiveTableViewController.m in Sources */,
 				DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */,
 				DF9E4A9C1B86C0B900C36002 /* OrderViewController.m in Sources */,
+				DFC001D01B8AE4D300F5F89A /* IQActionSheetViewController.m in Sources */,
 				DF958F611B33B83C005B2155 /* TradeModel.m in Sources */,
 				DFB763251B3D495F0086ABB7 /* NewCardDetailViewController.m in Sources */,
 				DF7176FF1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m in Sources */,
@@ -1521,6 +1540,7 @@
 				DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */,
 				DFA544281B4A160400CC9999 /* CompletePayOrdersTableViewCell.m in Sources */,
 				DF71773F1B30180700D3C3B9 /* HelpCenterTableViewController.m in Sources */,
+				DFC001CF1B8AE4D300F5F89A /* IQActionSheetPickerView.m in Sources */,
 				DFA5442B1B4A292B00CC9999 /* CityListViewController.m in Sources */,
 				DFDC896A1B43EDC80051D763 /* SuperBecomeMemberView.m in Sources */,
 				DF72C0E21B0B403600CE6DC6 /* HotDetailViewController.m in Sources */,

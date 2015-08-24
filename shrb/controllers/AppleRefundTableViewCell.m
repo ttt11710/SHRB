@@ -11,6 +11,7 @@
 
 @interface AppleRefundTableViewCell () <UITextFieldDelegate, UITextViewDelegate>
 
+
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (weak, nonatomic) IBOutlet UITextView *explainTextView;
 
@@ -18,6 +19,7 @@
 
 
 @implementation AppleRefundTableViewCell
+
 - (IBAction)appleRefundBtnPressed:(UIButton *)sender {
     self.callBack(self.moneyTextField.text);
 }
@@ -54,6 +56,10 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
+    if ([self.explainTextView.text isEqualToString:@"   请输入原因最多不超过200字"]) {
+        self.explainTextView.text = @"";
+    } ;
+    
     UITableView *tableView = (UITableView *)self.superview.superview;
     
     [tableView setContentOffset:CGPointMake(0, tableView.contentSize.height -tableView.bounds.size.height) animated:YES];
@@ -103,6 +109,15 @@
     
     self.moneyTextField.delegate = self;
     self.explainTextView.delegate = self;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseReturnGoodsReason)];
+    [self.returnGoodsReasonLabel addGestureRecognizer:tap];
+    self.returnGoodsReasonLabel.userInteractionEnabled = YES;
+}
+
+- (void)chooseReturnGoodsReason
+{
+    self.returnCallBack(@"退货理由");
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

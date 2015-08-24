@@ -79,11 +79,17 @@
 {
     if (indexPath.row == 1)  {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
-        AppleRefundViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"AppleRefundView"];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"AppleRefundView"];
         [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
         [self.navigationController pushViewController:viewController animated:YES];
     }
+    
+    //消除cell选择痕迹
+    [self performSelector:@selector(deselect) withObject:nil afterDelay:0.35f];
 }
 
-
+- (void)deselect
+{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
 @end

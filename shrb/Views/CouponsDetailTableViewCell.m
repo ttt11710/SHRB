@@ -9,14 +9,15 @@
 #import "CouponsDetailTableViewCell.h"
 #import "CouponsModel.h"
 #import "NSString+AttributedStyle.h"
+#import "Const.h"
 
 @interface CouponsDetailTableViewCell ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *redPacketImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *couponsImageView;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *expirationDateLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *giveFriendsBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *giveFriendsOnlyBtn;
 
@@ -28,26 +29,24 @@
 {
     self.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.couponsImage]];
     
-    NSString *string = [NSString stringWithFormat:@"金额：%@RMB",model.money];
-    
-    self.moneyLabel.attributedText = [string createrAttributedStringWithStyles:
-                                      @[
-                                        [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(3, model.money.length)],
-                                        [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(3, model.money.length)]
-                                        ]];
+    NSString *string = [NSString stringWithFormat:@"￥%@RMB",model.money];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string];
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:251.0/255.0 green:102.0/255.0 blue:49.0/255.0 alpha:1] range:NSMakeRange(0, string.length)];
+    [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:34] range:NSMakeRange(1, string.length-1)];
+    self.moneyLabel.attributedText = attrString;
 
     
-    self.expirationDateLabel.text = [NSString stringWithFormat:@"截止日期：%@",model.expirationDate];
+    self.expirationDateLabel.text = [NSString stringWithFormat:@"有效期至:%@",model.expirationDate];
     
-    if (model.canUse) {
-        self.giveFriendsOnlyBtn.hidden = YES;
-        self.giveFriendsBtn.hidden = NO;
-        self.userCouponBtn.hidden = NO;
+    if (!model.canUse) {
+        [self.userCouponBtn setTitleColor:shrbLightText forState:UIControlStateNormal];
+        self.userCouponBtn.userInteractionEnabled = NO;
+        self.redPacketImageView.hidden = YES;
     }
     else {
-        self.giveFriendsBtn.hidden = YES;
-        self.userCouponBtn.hidden = YES;
-        self.giveFriendsOnlyBtn.hidden = NO;
+        [self.userCouponBtn setTitleColor:shrbText forState:UIControlStateNormal];
+        self.userCouponBtn.userInteractionEnabled = YES;
+        self.redPacketImageView.hidden = NO;
     }
 }
 
