@@ -18,14 +18,22 @@
     [super viewDidLoad];
     
     self.requestOperationManager=[AFHTTPRequestOperationManager manager];
+
+    self.requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     AFJSONResponseSerializer *serializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-    
     self.requestOperationManager.responseSerializer=serializer;
     
-    AFHTTPRequestSerializer *requestSerializer=[AFHTTPRequestSerializer serializer];
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:10*60];
+//    [requestSerializer setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+//    [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    
+    //self.requestOperationManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json;charset=UTF-8", @"text/json", @"text/javascript", @"text/plain", @"text/html;charset=utf-8", nil];
+    
     self.requestOperationManager.requestSerializer=requestSerializer;
+    
 }
 
 - (void)didReceiveMemoryWarning {

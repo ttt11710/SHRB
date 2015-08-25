@@ -459,7 +459,7 @@ static NSInteger countTime = 20*60;
             [[DeskNumTableViewCell shareDeskNumTableViewCell] deskTextFieldResignFirstResponder];
         }
         
-        ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-44)];
         productDescriptionView.currentSection = indexPath.section-1;
         productDescriptionView.currentRow = indexPath.row;
         [self.view addSubview:productDescriptionView];

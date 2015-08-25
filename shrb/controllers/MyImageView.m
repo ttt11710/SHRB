@@ -7,6 +7,7 @@
 //
 
 #import "MyImageView.h"
+#import "UIImageView+WebCache.h"
 
 @interface MyImageView ()
 {
@@ -60,6 +61,8 @@
     
     
     self.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:_currentInt]]];
+    
+    [self sd_setImageWithURL:[NSURL URLWithString:[_imageArr objectAtIndex:_currentInt]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
     
     [self timeForShowImage];
 }

@@ -38,6 +38,8 @@
 
 @implementation NewStoreCollectController
 
+@synthesize merchId;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -48,6 +50,7 @@
     [self createSelectTypeTableView];
     [self QRButtonView];
     
+    [self loadData];
    // [self initBallView];
     
 }
@@ -175,6 +178,23 @@
     self.modelArray = [[NSMutableArray alloc] init];
     self.selectArray =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
     
+}
+
+#pragma mark - 网络请求数据
+- (void)loadData
+{
+    
+    NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProductList?"];
+    
+    [self.requestOperationManager GET:url parameters:@{@"merchId":self.merchId,@"pageNum":@"1",@"pageCount":@"20",@"orderBy":@"updateTime",@"sort":@"desc",@"whereString":@""} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"operation : %@  JSON: %@", operation, responseObject);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"error:++++%@",error.localizedDescription);
+        
+    }];
 }
 
 - (void)createCollection{
@@ -395,8 +415,6 @@
         [tradeNameLabel setText:string1];
         [tradeNameLabel sizeToFit];// 显示文本需要的长度和宽度
     
-        CGFloat height = screenWidth/2-10 + tradeNameLabel.frame.size.height + 25 + 21 + 8;
-        NSLog(@"height = %f",height);
         return CGSizeMake((screenWidth-20)/2 , screenWidth/2-10 + tradeNameLabel.frame.size.height + 25 + 21 + 8 );
 }
 

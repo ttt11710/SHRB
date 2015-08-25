@@ -20,5 +20,4 @@
 @property(nonatomic,copy) NSArray * images;   //zhaopian
 
 
-
 @end

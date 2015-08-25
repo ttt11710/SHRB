@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 #import "shrb-swift.h"
 
-@interface NewStoreCollectController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDataSource,UITableViewDelegate,CollectionViewWaterfallLayoutDelegate>
+@interface NewStoreCollectController : PYBaseViewController <UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDataSource,UITableViewDelegate,CollectionViewWaterfallLayoutDelegate>
+
+@property(nonatomic,assign)NSString * merchId;
 
 @end

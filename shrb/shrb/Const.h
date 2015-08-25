@@ -31,6 +31,6 @@
 
 #define HexRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-#define baseUrl @"http://api.map.baidu.com/telematics/v3/weather?&ak=Q0qFFiynCewS75iBPQ9TkChH&"
+#define baseUrl @"http://121.40.222.162:8080/tongbao"
 
 #endif

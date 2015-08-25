@@ -8,11 +8,9 @@
 
 #import "HotFocusTableViewCell.h"
 #import "UIColor+BFPaperColors.h"
-#import "HotFocusModel.h"
 #import "Const.h"
 #import <QuartzCore/CoreAnimation.h>
 #import "SVProgressShow.h"
-#import "Store.h"
 
 @interface HotFocusTableViewCell () 
 {
@@ -21,32 +19,39 @@
 }
 
 
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
 
 
 @end
 @implementation HotFocusTableViewCell
 
-- (void)setModel:(Store *)model
-{
-//    // load all the frames of our animation
-    _arr = [[NSMutableArray alloc] init];
-    for (NSString *str in model.images) {
-        [_arr addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%@",str]]];
-    }
-    _imageArr = [[NSMutableArray alloc] init];
-    for (NSString *str in model.images) {
-        [_imageArr addObject:str];
-    }
-    
-    self.descriptionLabel.text = model.simpleStoreDetail;
-    
-    self.hotImageView.currentInt = 0;
-    [self.hotImageView initImageArr];
-    self.hotImageView.imageArr = _imageArr;
-    [self.hotImageView beginAnimation];
-    
-}
+//- (void)setModel:(Store *)model
+//{
+////    _imageArr = [[NSMutableArray alloc] init];
+////    for (NSString *str in model.images) {
+////        [_imageArr addObject:str];
+////    }
+//    
+////    self.descriptionLabel.text = model.simpleStoreDetail;
+////    
+////    self.hotImageView.currentInt = 0;
+////    [self.hotImageView initImageArr];
+////    self.hotImageView.imageArr = _imageArr;
+////    [self.hotImageView beginAnimation];
+//    
+//    _imageArr = [[NSMutableArray alloc] init];
+//    for (NSString *str in model.imgUrls) {
+//        [_imageArr addObject:str];
+//    }
+//    
+//    self.descriptionLabel.text = model.merchDesc;
+//    
+//    self.hotImageView.currentInt = 0;
+//    [self.hotImageView initImageArr];
+//    self.hotImageView.imageArr = _imageArr;
+//    [self.hotImageView beginAnimation];
+//    
+//}
 
 
 - (void)awakeFromNib
@@ -58,12 +63,6 @@
 
 - (void)customSetup
 {
-    self.shadowView.layer.cornerRadius = 5;
-    self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.shadowView.layer.shadowOffset = CGSizeMake(2,2);
-    self.shadowView.layer.shadowOpacity = 0.5;
-    self.shadowView.layer.shadowRadius = 2.0;
-
     self.descriptionLabel.textColor = shrbText;
 }
 

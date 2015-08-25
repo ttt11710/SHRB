@@ -7,6 +7,7 @@
 //
 
 #import "HotFocusViewController.h"
+#import <Foundation/Foundation.h>
 #import "HotFocusTableViewCell.h"
 #import "HotFocusModel.h"
 #import "HotDetailViewController.h"
@@ -27,6 +28,8 @@
 
 #import "OrderStoreViewController.h"
 
+#import "MyImageView.h"
+
 
 //#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
@@ -34,6 +37,8 @@
 {
     MessageProcessor *_messageProcessor;
     ShoppingCardView *_shoppingCardView;
+    
+    NSString *_merchId;
 }
 @property (nonatomic, strong) UIWindow       *window;
 
@@ -52,15 +57,16 @@
     
     _messageProcessor = [[MessageProcessor alloc] init];
     
-    [self initData];
-    [self getDataFormDB];
+    [self loadData];
+    //[self initData];
+    //[self getDataFormDB];
     
     [self initController];
     
     [self initTableView];
     [self cardAnimation];
     
-    //  [self loadData];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -101,21 +107,24 @@
 - (void)loadData
 {
 
+    //18267856139 userId:1440482769193894820  cardNo = 1440484445388 merchId = 201508111544260856
+    
     DB *db = [DB openDb];
     
-    NSString *url=[baseUrl stringByAppendingString:@""];
-    
-    //http://api.map.baidu.com/telematics/v3/weather?&ak=Q0qFFiynCewS75iBPQ9TkChH&location=上海&output=json
-    [self.requestOperationManager POST:url parameters:@{@"location":@"上海",@"output":@"json"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    self.dataArray = [[NSMutableArray alloc] init];
+    NSString *url=[baseUrl stringByAppendingString:@"/merch/v1.0/getMerchList?"];
+    [self.requestOperationManager GET:url parameters:@{@"pageNum":@"1",@"pageCount":@"20",@"orderBy":@"updateTime",@"sort":@"desc",@"whereString":@""} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
         
-        NSDictionary *d=(NSDictionary *)responseObject ;
-        NSLog(@"d = %@",d);
+        self.dataArray = responseObject[@"merchList"];
         
-        [self insertDataToDB];
+        _merchId = [responseObject[@"merchList"] objectAtIndex:0][@"merchId"];
         
+        [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"请求失败");
+        NSLog(@"error:++++%@",error.localizedDescription);
     }];
+    
 }
 
 #pragma mark - 数据库插入数据
@@ -221,16 +230,13 @@
         HotFocusTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         
         cell.hotImageView.layer.transform = CATransform3DMakeScale(1, 0, 1);
-        cell.shadowView.layer.transform = CATransform3DMakeScale(1, 0, 1);
-        cell.storeLabelImage.layer.transform = CATransform3DMakeScale(1, 0, 1);
         
         //点击弹动动画
         
         [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             cell.hotImageView.layer.transform = CATransform3DIdentity;
-            cell.shadowView.layer.transform = CATransform3DIdentity;
-            cell.storeLabelImage.layer.transform = CATransform3DIdentity;
-        } completion:nil];
+            
+            } completion:nil];
     }
 }
 
@@ -241,8 +247,10 @@
     UIFont* theFont = [UIFont systemFontOfSize:18.0];
     label.numberOfLines = 0;
     [label setFont:theFont];
-    [label setText:self.plistArr[indexPath.section][@"simpleStoreDetail"]];
+
+//    [label setText:self.dataArray[indexPath.section][@"merchDesc"]];
     
+    [label setText:self.dataArray[0][@"merchDesc"]];
     [label sizeToFit];// 显示文本需要的长度和宽度
     
     CGFloat labelHeight = label.frame.size.height;
@@ -252,8 +260,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-    return [self.plistArr count];
+    //return [self.dataArray count];
+    return self.dataArray.count == 0 ? 0: 4;
 }
 
 #pragma mark - tableView delegate
@@ -271,9 +279,14 @@
     if (cell == nil) {
         cell = [[HotFocusTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
+
+    NSMutableArray *ab = [[NSMutableArray alloc] initWithObjects:self.dataArray[0][@"imgUrl1"],self.dataArray[0][@"imgUrl2"],self.dataArray[0][@"imgUrl3"],self.dataArray[0][@"imgUrl4"], nil];
     
-    cell.model = self.dataArray[indexPath.section];
-    cell.tag = indexPath.section;
+    cell.descriptionLabel.text = self.dataArray[0][@"merchDesc"];
+    cell.hotImageView.currentInt = 0;
+    [cell.hotImageView initImageArr];
+    cell.hotImageView.imageArr = ab;
+    [cell.hotImageView beginAnimation];
     
     return cell;
 }
@@ -282,11 +295,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-     NSString*storePlistName = self.plistArr[indexPath.section][@"storePlistName"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storePlistName"];
-    [[NSUserDefaults standardUserDefaults] setObject:storePlistName forKey:@"storePlistName"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storeName"];
-    [[NSUserDefaults standardUserDefaults] setObject:self.plistArr[indexPath.section][@"storeName"] forKey:@"storeName"];
+//     NSString*storePlistName = self.plistArr[indexPath.section][@"storePlistName"];
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storePlistName"];
+//    [[NSUserDefaults standardUserDefaults] setObject:storePlistName forKey:@"storePlistName"];
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storeName"];
+//    [[NSUserDefaults standardUserDefaults] setObject:self.plistArr[indexPath.section][@"storeName"] forKey:@"storeName"];
+    
+    NSString*storePlistName;
+    if (indexPath.section == 0) {
+        storePlistName = @"16N";
+        }
+    else if (indexPath.section == 1) {
+        storePlistName = @"yunifang";
+    }
+    else if (indexPath.section == 2) {
+        storePlistName = @"holy";
+    }
+    else  {
+        storePlistName = @"McDonalds";
+    }
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storePlistName"];
+        [[NSUserDefaults standardUserDefaults] setObject:storePlistName forKey:@"storePlistName"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storeName"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.plistArr[indexPath.section][@"storeName"] forKey:@"storeName"];
     
     
     //是否会员
@@ -316,15 +347,12 @@
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         cell.hotImageView.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1);
-        cell.shadowView.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1);
-        cell.storeLabelImage.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1);
         
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
             cell.hotImageView.layer.transform = CATransform3DIdentity;
-            cell.shadowView.layer.transform = CATransform3DIdentity;
-            cell.storeLabelImage.layer.transform = CATransform3DIdentity;
+            
             
         } completion:^(BOOL finished) {
             
@@ -348,6 +376,7 @@
         //超市
         
         NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
+        newStoreCollectController.merchId = _merchId;
         newStoreCollectController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:newStoreCollectController animated:YES];
         [SVProgressShow dismiss];

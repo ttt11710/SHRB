@@ -13,6 +13,7 @@
 @interface RegisteringStoreMemberViewController ()
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigate;
+@property (weak, nonatomic) IBOutlet UIView *registerView;
 @property (weak, nonatomic) IBOutlet UITextField *telephoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *verificationCodeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -43,6 +44,10 @@
     if (IsiPhone4s) {
         self.navigate.frame = CGRectMake(0, 0, screenWidth, 64);
     }
+    if (IsiPhone4s) {
+        self.registerView.frame = CGRectMake(0, 64, screenWidth-32, screenHeight-64);
+    }
+    [self.view layoutSubviews];
 }
 #pragma mark - 返回上一页
 - (IBAction)goBackView:(id)sender {
@@ -58,7 +63,7 @@
         if (textField == self.passwordTextField) {
             [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
                 
-                self.view.layer.transform =CATransform3DMakeTranslation(0, -50, 0);
+                self.registerView.layer.transform =CATransform3DMakeTranslation(0, -50, 0);
                 
             } completion:^(BOOL finished) {
                 
@@ -67,7 +72,7 @@
         else {
             [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
                 
-                self.view.layer.transform = CATransform3DIdentity;
+                self.registerView.layer.transform = CATransform3DIdentity;
                 
             } completion:^(BOOL finished) {
                 
@@ -83,7 +88,7 @@
     {
         [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
-            self.view.layer.transform = CATransform3DIdentity;
+            self.registerView.layer.transform = CATransform3DIdentity;
             
         } completion:^(BOOL finished) {
             
