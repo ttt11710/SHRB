@@ -69,10 +69,10 @@
                 </mask>
             </variation>
             <connections>
-                <outlet property="memberPriceLabel" destination="efg-VQ-aDR" id="RqK-HL-rWz"/>
-                <outlet property="originalPriceLabel" destination="YlP-gY-fdM" id="ocg-KJ-mci"/>
+                <outlet property="priceLabel" destination="YlP-gY-fdM" id="Chf-y4-I7P"/>
+                <outlet property="prodNameLabel" destination="opq-7B-UOG" id="LqF-z0-sYS"/>
                 <outlet property="tradeImageView" destination="viG-yd-smk" id="yPu-2b-OON"/>
-                <outlet property="tradeNameLabel" destination="opq-7B-UOG" id="nCa-qO-IFv"/>
+                <outlet property="vipPriceLabel" destination="efg-VQ-aDR" id="0Cn-eC-Djp"/>
             </connections>
             <point key="canvasLocation" x="345.5" y="438"/>
         </collectionViewCell>

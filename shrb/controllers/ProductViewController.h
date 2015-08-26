@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface ProductViewController : UIViewController <UIScrollViewDelegate>
+@interface ProductViewController : PYBaseViewController <UIScrollViewDelegate>
 
-@property(nonatomic,assign)NSInteger currentSection;
-@property(nonatomic,assign)NSInteger currentRow;
+@property(nonatomic,assign)NSString * prodId;
 
 + (ProductViewController *)shareProductViewController;
 - (void)becomeMember;

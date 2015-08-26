@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface RegisterViewController : UIViewController
+@interface RegisterViewController : PYBaseViewController
 
 @end

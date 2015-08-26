@@ -361,8 +361,7 @@ static NewStoreViewController *g_StoreViewController = nil;
         else {
             
             ProductViewController *viewController = [[ProductViewController alloc] init];
-            viewController.currentRow = indexPath.row;
-            viewController.currentSection = indexPath.section;
+            
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }

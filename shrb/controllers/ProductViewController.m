@@ -18,6 +18,7 @@
 #import "ProductIsMemberViewController.h"
 #import "ShowMeImageViewController.h"
 #import "RegisteringStoreMemberViewController.h"
+#import "TBUser.h"
 
 static ProductViewController *g_ProductViewController = nil;
 
@@ -27,12 +28,7 @@ static ProductViewController *g_ProductViewController = nil;
     CGRect _bounds;
     
     NSTimer *_timer;
-    
-    BOOL _isMember;
 }
-
-@property (nonatomic,strong) NSMutableArray * modelArray;
-@property (nonatomic,strong) NSMutableArray * plistArr;
 
 @property(nonatomic,retain) UIScrollView *mainScrollView;//整个界面ScrollView
 
@@ -45,24 +41,28 @@ static ProductViewController *g_ProductViewController = nil;
 @property (retain, nonatomic) UIButton *shareBtn;       //分享
 
 @property(nonatomic,retain) UIView *tradeNameAndPriceView;//商品名和价格View
-@property (retain, nonatomic) UILabel *tradeNameLabel; //商品名
-@property (retain, nonatomic) UILabel *memberPriceLabel; //会员价
+@property (retain, nonatomic) UILabel *prodNameLabel; //商品名
+@property (retain, nonatomic) UILabel *vipPriceLabel; //会员价
 @property (retain, nonatomic) UILabel *saveMoneyLabel; //节省价格
-@property (retain, nonatomic) UILabel *originalPriceLabel; //原价
+@property (retain, nonatomic) UILabel *priceLabel; //原价
 
 @property(nonatomic,retain) UIView *descriptionAndregisterView;//产品描述与注册View
-@property (retain, nonatomic) UILabel *descriptionLabel; //产品描述
+@property (retain, nonatomic) UILabel *prodDescLabel; //产品描述
 @property (retain, nonatomic) UIButton *registerBtn;     //注册
 @property (retain, nonatomic) SuperBecomeMemberView1 *becomeMemberView; //注册弹出界面
 @property (retain, nonatomic) UIButton *smallbutton; //注册弹出button
+
+
+@property (nonatomic,strong) NSMutableArray * modelArray;
+@property (nonatomic,strong) NSMutableArray * plistArr;
+
+@property (nonatomic,strong) NSMutableDictionary * dataDic;
 
 @end
 
 @implementation ProductViewController
 
-@synthesize currentSection;
-@synthesize currentRow;
-
+@synthesize prodId;
 
 + (ProductViewController *)shareProductViewController
 {
@@ -74,10 +74,11 @@ static ProductViewController *g_ProductViewController = nil;
     
     g_ProductViewController = self;
     
-    [self initData];
-    [self initMainView];
-    [self initCardView];
-    [self initTradeNameAndPriceView];
+    [self loadData];
+    //[self initData];
+//    [self initMainView];
+//    [self initCardView];
+//    [self initTradeNameAndPriceView];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     self.view.userInteractionEnabled = YES;
@@ -93,10 +94,6 @@ static ProductViewController *g_ProductViewController = nil;
   //  self.tabBarController.tabBar.hidden = YES;
     
     [super viewWillAppear:animated];
-    
-    _isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
-    
-    [self initDescriptionAndregisterView];
     
     if (!_timer.isValid) {
         [self startTime];
@@ -114,10 +111,29 @@ static ProductViewController *g_ProductViewController = nil;
     
 }
 
+
+- (void)loadData
+{
+    self.dataDic = [[NSMutableDictionary alloc] init];
+    NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
+    [self.requestOperationManager GET:url parameters:@{@"prodId":self.prodId,@"token":@"697e3d06962e22153c181c5768d52e12"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        self.dataDic = responseObject[@"product"];
+        
+        [self initData];
+        [self initMainView];
+        [self initCardView];
+        [self initTradeNameAndPriceView];
+        [self initDescriptionAndregisterView];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+}
+
 - (void)initData
 {
-    
-    _isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
     
     NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
     
@@ -130,6 +146,11 @@ static ProductViewController *g_ProductViewController = nil;
                    @"男士休闲羊毛西服",
                    @"长款千鸟格大衣",
                    @"撞色加厚双排扣大衣", nil];
+    
+    _imageArray = [[NSMutableArray alloc] init];
+    for (int i = 0 ; i < [self.dataDic[@"imgList"] count]; i++) {
+        [_imageArray addObject:[self.dataDic[@"imgList"] objectAtIndex:i][@"imgUrl"]];
+    }
     
     
     self.title = @"商品详情";
@@ -183,16 +204,16 @@ static ProductViewController *g_ProductViewController = nil;
             
             if (i == 0)
             {
-                [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_imageArray objectAtIndex:[_imageArray count]-1]]]];
+                [_imageView sd_setImageWithURL:[NSURL URLWithString:[_imageArray objectAtIndex:[_imageArray count]-1]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
                 _imageView.tag = [_imageArray count]-1;
             }
             else if (i == [_imageArray count]+1)
             {
-                [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_imageArray objectAtIndex:0]]]];
+                [_imageView sd_setImageWithURL:[NSURL URLWithString:[_imageArray objectAtIndex:0]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
                 _imageView.tag = 0;
             }
             else {
-                [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_imageArray objectAtIndex:i-1]]]];
+                [_imageView sd_setImageWithURL:[NSURL URLWithString:[_imageArray objectAtIndex:i-1]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
                 _imageView.tag = i-1;
             }
 
@@ -249,41 +270,42 @@ static ProductViewController *g_ProductViewController = nil;
     [_mainScrollView addSubview:_tradeNameAndPriceView];
     
     //商品名
-    _tradeNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 12, screenWidth-16*2, 30)];
-    _tradeNameLabel.font = [UIFont systemFontOfSize:17.0];
-    _tradeNameLabel.textColor = shrbText;
-    _tradeNameLabel.text = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeName"];
-    [_tradeNameAndPriceView addSubview:_tradeNameLabel];
+    _prodNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 12, screenWidth-16*2, 30)];
+    _prodNameLabel.font = [UIFont systemFontOfSize:17.0];
+    _prodNameLabel.textColor = shrbText;
+//    _prodNameLabel.text = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeName"];
+    _prodNameLabel.text = self.dataDic[@"prodName"];
+    [_tradeNameAndPriceView addSubview:_prodNameLabel];
     
     //会员价
-    _memberPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _tradeNameLabel.frame.origin.y + _tradeNameLabel.frame.size.height + 4, 100, 30)];
-    _memberPriceLabel.font = [UIFont systemFontOfSize:18.0];
-    _memberPriceLabel.textColor = shrbPink;
-    _memberPriceLabel.text = [NSString stringWithFormat:@"会员价:￥%@",[[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"memberPrice"]]  ;
-    [_memberPriceLabel sizeToFit];
-    [_tradeNameAndPriceView addSubview:_memberPriceLabel];
+    _vipPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _prodNameLabel.frame.origin.y + _prodNameLabel.frame.size.height + 4, 100, 30)];
+    _vipPriceLabel.font = [UIFont systemFontOfSize:18.0];
+    _vipPriceLabel.textColor = shrbPink;
+    _vipPriceLabel.text = [NSString stringWithFormat:@"会员价:￥%@",self.dataDic[@"vipPrice"]];
+    [_vipPriceLabel sizeToFit];
+    [_tradeNameAndPriceView addSubview:_vipPriceLabel];
     
     //节省价格
-    _saveMoneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(_memberPriceLabel.frame.origin.x + _memberPriceLabel.frame.size.width + 8, _memberPriceLabel.frame.origin.y, 60, 16)];
-    _saveMoneyLabel.center = CGPointMake(_memberPriceLabel.frame.origin.x + _memberPriceLabel.frame.size.width + 8 + 30 , _memberPriceLabel.center.y);
+    _saveMoneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(_vipPriceLabel.frame.origin.x + _vipPriceLabel.frame.size.width + 8, _vipPriceLabel.frame.origin.y, 80, 16)];
+    _saveMoneyLabel.center = CGPointMake(_vipPriceLabel.frame.origin.x + _vipPriceLabel.frame.size.width + 8 + 40 , _vipPriceLabel.center.y);
     _saveMoneyLabel.font = [UIFont systemFontOfSize:15.0];
     _saveMoneyLabel.textColor = [UIColor whiteColor];
     _saveMoneyLabel.backgroundColor = shrbPink;
     _saveMoneyLabel.textAlignment = NSTextAlignmentCenter;
-    _saveMoneyLabel.text = [NSString stringWithFormat:@"省￥%@",[[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"saveMoney"]]  ;
+    _saveMoneyLabel.text = [NSString stringWithFormat:@"省￥%.2f",[self.dataDic[@"price"] floatValue] - [self.dataDic[@"vipPrice"] floatValue]]  ;
     [_tradeNameAndPriceView addSubview:_saveMoneyLabel];
     
     //原价
-    _originalPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _memberPriceLabel.frame.origin.y + _memberPriceLabel.frame.size.height + 4, 100, 21)];
-    _originalPriceLabel.font = [UIFont systemFontOfSize:15.0];
-    _originalPriceLabel.textColor = [UIColor lightGrayColor];
-    _originalPriceLabel.text = [NSString stringWithFormat:@"原价:￥%@",[[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"originalPrice"]];
-    [_originalPriceLabel sizeToFit];
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:_originalPriceLabel.text];
-    [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, [self.originalPriceLabel.text length])];//删除线
-    [attrString addAttribute:NSStrikethroughColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, [_originalPriceLabel.text length])];
-    _originalPriceLabel.attributedText = attrString;
-    [_tradeNameAndPriceView addSubview:_originalPriceLabel];
+    _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _vipPriceLabel.frame.origin.y + _vipPriceLabel.frame.size.height + 4, 100, 21)];
+    _priceLabel.font = [UIFont systemFontOfSize:15.0];
+    _priceLabel.textColor = [UIColor lightGrayColor];
+    _priceLabel.text = [NSString stringWithFormat:@"原价:￥%@",self.dataDic[@"price"]];
+    [_priceLabel sizeToFit];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:_priceLabel.text];
+    [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, [_priceLabel.text length])];//删除线
+    [attrString addAttribute:NSStrikethroughColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, [_priceLabel.text length])];
+    _priceLabel.attributedText = attrString;
+    [_tradeNameAndPriceView addSubview:_priceLabel];
 
 }
 
@@ -304,33 +326,34 @@ static ProductViewController *g_ProductViewController = nil;
     [_descriptionAndregisterView addSubview:label];
     
     //商品描述
-    _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, label.frame.origin.y + label.frame.size.height + 16 ,screenWidth - 32 , 40)];
-    _descriptionLabel.numberOfLines = 1000;
-    _descriptionLabel.font = [UIFont systemFontOfSize:15.0];
-    _descriptionLabel.textColor = shrbLightText;
-    _descriptionLabel.text = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeDescription"];
-    [_descriptionLabel sizeToFit];
-    [_descriptionAndregisterView addSubview:_descriptionLabel];
+    _prodDescLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, label.frame.origin.y + label.frame.size.height + 16 ,screenWidth - 32 , 40)];
+    _prodDescLabel.numberOfLines = 1000;
+    _prodDescLabel.font = [UIFont systemFontOfSize:15.0];
+    _prodDescLabel.textColor = shrbLightText;
+//    _prodDescLabel.text = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeDescription"];
+    _prodDescLabel.text = self.dataDic[@"prodDesc"];
+    [_prodDescLabel sizeToFit];
+    [_descriptionAndregisterView addSubview:_prodDescLabel];
     
     _registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_registerBtn setTitle:@"会员注册" forState:UIControlStateNormal];
     _registerBtn.font = [UIFont systemFontOfSize:15.f];
     [_registerBtn setBackgroundColor:shrbPink];
-    _registerBtn.frame = CGRectMake(16, _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + 16, screenWidth - 32, 44);
+    _registerBtn.frame = CGRectMake(16, _prodDescLabel.frame.origin.y + _prodDescLabel.frame.size.height + 16, screenWidth - 32, 44);
     _registerBtn.layer.cornerRadius = 4;
     _registerBtn.layer.masksToBounds = YES;
     [_registerBtn addTarget:self action:@selector(registerBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_descriptionAndregisterView addSubview:_registerBtn];
     
-    if (_isMember) {
+    if (self.dataDic[@"card"] != nil) {
         _registerBtn.hidden = YES;
         
-        _descriptionAndregisterView.frame = CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, label.frame.origin.y + label.frame.size.height + 16 + _descriptionLabel.frame.size.height + 16 );
+        _descriptionAndregisterView.frame = CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, label.frame.origin.y + label.frame.size.height + 16 + _prodDescLabel.frame.size.height + 16 );
     }
     else {
         _registerBtn.hidden = NO;
         
-        _descriptionAndregisterView.frame = CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, label.frame.origin.y + label.frame.size.height + 16 + _descriptionLabel.frame.size.height + 16 + _registerBtn.frame.size.height + 30);
+        _descriptionAndregisterView.frame = CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, label.frame.origin.y + label.frame.size.height + 16 + _prodDescLabel.frame.size.height + 16 + _registerBtn.frame.size.height + 30);
     }
 
     if (_cardView.frame.size.height + _tradeNameAndPriceView.frame.size.height+ 8 + _descriptionAndregisterView.frame.size.height + 10  < screenHeight-20-44) {
@@ -350,7 +373,7 @@ static ProductViewController *g_ProductViewController = nil;
     
     self.registerBtn.layer.transform = CATransform3DMakeTranslation(screenWidth, 0, 0);
     self.cardView.layer.transform = CATransform3DMakeScale(0, 0, 1);
-    self.descriptionLabel.alpha = 0;
+    self.prodDescLabel.alpha = 0;
     
     [UIView animateWithDuration:0.8 delay:0.1 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
@@ -361,7 +384,7 @@ static ProductViewController *g_ProductViewController = nil;
     }];
     
     [UIView animateWithDuration:2.0 delay:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
-        self.descriptionLabel.alpha = 1;
+        self.prodDescLabel.alpha = 1;
     } completion:nil];
     
     [UIView animateWithDuration:0.8 delay:1.5 usingSpringWithDamping:0.3 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^{
@@ -550,8 +573,7 @@ static ProductViewController *g_ProductViewController = nil;
     
     
     ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
-    viewController.currentRow = currentRow;
-    viewController.currentSection = currentSection;
+    
     [navController pushViewController:viewController animated:NO];
 }
 

@@ -14,8 +14,8 @@
 @property (nonatomic,strong) TradeModel * model;
 
 @property (weak, nonatomic) IBOutlet UIImageView *tradeImageView;
-@property (weak, nonatomic) IBOutlet UILabel *tradeNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *memberPriceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *originalPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *prodNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *vipPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 @end

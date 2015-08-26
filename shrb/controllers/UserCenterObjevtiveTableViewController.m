@@ -11,6 +11,8 @@
 #import "SVProgressShow.h"
 #import "Const.h"
 #import "OrderViewController.h"
+#import "TBUser.h"
+#import <UIImageView+WebCache.h>
 
 @interface UserCenterObjevtiveTableViewController ()
 
@@ -27,9 +29,6 @@
     
     [self initController];
     [self initTableView];
-    
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"IsLogin"];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"IsLogin"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -37,12 +36,8 @@
     [super viewDidAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
     self.navigationController.navigationBarHidden = NO;
-}
-
-- (void)viewDidLayoutSubviews
-{
-    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
-    if (!isLogin)
+    
+    if ([TBUser currentUser] == nil)
     {
         self.loginBtn.hidden = NO;
         self.memberImageView.hidden = YES;
@@ -51,11 +46,15 @@
     else {
         self.loginBtn.hidden = YES;
         self.memberImageView.hidden = NO;
-        self.memberImageView.image = [UIImage imageNamed:@"默认女头像.png"];
+        [self.memberImageView sd_setImageWithURL:[NSURL URLWithString:[TBUser currentUser].imgUrl] placeholderImage:[UIImage imageNamed:@"默认女头像.png"]];
         self.memberNumLabel.hidden = NO;
-        self.memberNumLabel.text = @"通宝号：56325698541";
+        self.memberNumLabel.text = [NSString stringWithFormat:@"通包号:%@",[TBUser currentUser].userId];
     }
 
+}
+
+- (void)viewDidLayoutSubviews
+{
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -106,8 +105,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
     
     //基本信息
     if (indexPath.section == 0)
@@ -148,7 +145,7 @@
         }
         //我的收藏
         else if (indexPath.row == 1) {
-            if (!isLogin) {
+            if ([TBUser currentUser] == nil) {
                 
                 [SVProgressShow showInfoWithStatus:@"登录账号才能查看我的收藏"];
                 

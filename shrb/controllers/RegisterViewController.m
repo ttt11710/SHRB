@@ -9,11 +9,13 @@
 #import "RegisterViewController.h"
 #import "TNCheckBoxData.h"
 #import "TNCheckBoxGroup.h"
+#import "Const.h"
 
 @interface RegisterViewController () {
   //  TNCheckBoxGroup *_loveGroup;
 }
 @property (weak, nonatomic) IBOutlet UIView *backView;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *captchaTextField;
 @property (weak, nonatomic) IBOutlet UIButton *sureBtn;
@@ -56,13 +58,40 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+- (IBAction)getCodeBtnPressed:(id)sender {
+    
+    NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/getCode?"];
+    [self.requestOperationManager GET:url parameters:@{@"phone":self.phoneTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject[@"msg"]);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+    
+}
+
+
+
 - (IBAction)sureBtnPressed:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/register?"];
+    [self.requestOperationManager POST:url2 parameters:@{@"phone":self.phoneTextField.text,@"password":self.passwordTextField.text,@"code":self.captchaTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject[@"msg"]);
+        
+        if ([responseObject[@"code"] isEqualToString:@"200"]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"operation %@ error:++++%@",operation, error.localizedDescription);
+    }];
 }
 
 #pragma mark - 单击键盘return键回调
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [self.phoneTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     [self.captchaTextField resignFirstResponder];
     return YES;
@@ -70,7 +99,8 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
-    if ([[touches anyObject]view]!=self.passwordTextField||[[touches anyObject]view]!= self.captchaTextField) {
+    if ([[touches anyObject]view]!=self.phoneTextField||[[touches anyObject]view]!=self.passwordTextField||[[touches anyObject]view]!= self.captchaTextField) {
+        [self.phoneTextField resignFirstResponder];
         [self.passwordTextField resignFirstResponder];
         [self.captchaTextField resignFirstResponder];
     }

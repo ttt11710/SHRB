@@ -13,6 +13,7 @@
 #import "ProductIsMemberViewController.h"
 #import "ProductViewController.h"
 #import "SuperQRViewController.h"
+#import <UIImageView+WebCache.h>
 
 @interface NewStoreCollectController ()
 {
@@ -30,9 +31,12 @@
 @property (retain, nonatomic) UIView *selectTypeTableViewBackView;
 @property (retain, nonatomic) UITableView *selectTypeTableView;
 
-@property (nonatomic,strong) NSMutableArray * selectArray;
-@property (nonatomic,strong) NSMutableArray * modelArray;
+@property (nonatomic) NSMutableArray * selectArray;
+//@property (nonatomic,strong) NSMutableArray * modelArray;
 @property (nonatomic, strong) NSMutableArray *plistArr;
+
+
+@property (nonatomic,strong) NSMutableArray * dataArray;
 
 @end
 
@@ -44,6 +48,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self loadData];
     [self initView];
     [self initData];
     [self createCollection];
@@ -174,9 +179,9 @@
     NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
     
     self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
-    
-    self.modelArray = [[NSMutableArray alloc] init];
-    self.selectArray =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
+//    
+//    self.modelArray = [[NSMutableArray alloc] init];
+//    self.selectArray =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
     
 }
 
@@ -184,11 +189,20 @@
 - (void)loadData
 {
     
+    self.dataArray = [[NSMutableArray alloc] init];
+    
     NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProductList?"];
     
     [self.requestOperationManager GET:url parameters:@{@"merchId":self.merchId,@"pageNum":@"1",@"pageCount":@"20",@"orderBy":@"updateTime",@"sort":@"desc",@"whereString":@""} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"operation : %@  JSON: %@", operation, responseObject);
+        
+        self.dataArray = responseObject[@"productList"];
+        
+        self.selectArray = [[NSMutableArray alloc] initWithArray:self.dataArray];
+        
+        [self.collectionView reloadData];
+        [self.selectTypeTableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -343,13 +357,15 @@
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[self.selectArray objectAtIndex:section][@"info"] count];
+//    return [[self.selectArray objectAtIndex:section][@"info"] count];
+    return [[self.selectArray objectAtIndex:section][@"prodList"] count];
 }
 
 
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
+//    return [self.selectArray count];
     return [self.selectArray count];
 }
 
@@ -359,26 +375,43 @@
 {
     
     NewStoreCollectionViewCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
+//    if ([self.selectArray count]==0) {
+//        return cell;
+//    }
+    
+//    [self.modelArray removeAllObjects];
+//    for (NSDictionary * dict in [self.selectArray objectAtIndex:indexPath.section][@"info"]) {
+//        TradeModel * model = [[TradeModel alloc] init];
+//        [model setValuesForKeysWithDictionary:dict];
+//        [self.modelArray addObject:model];
+//    }
+    
+   // cell.model = self.modelArray[indexPath.row];
+    
     if ([self.selectArray count]==0) {
-        return cell;
+        return nil;
     }
     
-    [self.modelArray removeAllObjects];
-    for (NSDictionary * dict in [self.selectArray objectAtIndex:indexPath.section][@"info"]) {
-        TradeModel * model = [[TradeModel alloc] init];
-        [model setValuesForKeysWithDictionary:dict];
-        [self.modelArray addObject:model];
-    }
-    
-    cell.model = self.modelArray[indexPath.row];
     cell.backgroundColor = [UIColor whiteColor];
+    
+    cell.prodNameLabel.text = self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodName"] == nil? @"商品名称" : self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodName"];
+    [cell.tradeImageView sd_setImageWithURL:[NSURL URLWithString:self.selectArray[indexPath.section][@"imgUrl"][indexPath.row][@"prodName"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+    
+    cell.vipPriceLabel.text = [NSString stringWithFormat:@"会员价:￥%@",self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"vipPrice"]];
+    cell.priceLabel.text = [NSString stringWithFormat:@"原价:￥%@",self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"price"]];
+    
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:cell.priceLabel.text];
+    [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, [cell.priceLabel.text length])];//删除线
+    [attrString addAttribute:NSStrikethroughColorAttributeName value:shrbText range:NSMakeRange(0, [cell.priceLabel.text length])];
+    cell.priceLabel.attributedText = attrString;
+    
     
     cell.tradeImageView.layer.transform = CATransform3DMakeScale(1, 0, 1);
     cell.tradeImageView.layer.transform = CATransform3DMakeTranslation(0, -screenWidth/2, 0);
     
-    cell.tradeNameLabel.alpha = 0;
-    cell.memberPriceLabel.alpha = 0 ;
-    cell.originalPriceLabel.alpha = 0 ;
+    cell.prodNameLabel.alpha = 0;
+    cell.vipPriceLabel.alpha = 0 ;
+    cell.priceLabel.alpha = 0 ;
     
     [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         cell.tradeImageView.layer.transform = CATransform3DIdentity;
@@ -387,7 +420,7 @@
     }];
     
     [UIView animateWithDuration:0.8 delay:0.6 options:UIViewAnimationOptionCurveLinear animations:^{
-        cell.tradeNameLabel.alpha = 1;
+        cell.prodNameLabel.alpha = 1;
         
     } completion:^(BOOL finished) {
     
@@ -396,8 +429,8 @@
     
     [UIView animateWithDuration:0.8 delay:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
         
-        cell.memberPriceLabel.alpha = 1 ;
-        cell.originalPriceLabel.alpha = 1 ;
+        cell.vipPriceLabel.alpha = 1 ;
+        cell.priceLabel.alpha = 1 ;
         
     } completion:^(BOOL finished) {
     }];
@@ -408,22 +441,22 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UILabel *tradeNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, (screenWidth-12)/2 , 0)];
-        UIFont *theFont1 = [UIFont systemFontOfSize:17.0];
-        tradeNameLabel.numberOfLines = 0;
-        [tradeNameLabel setFont:theFont1];
-        NSString *string1 = [[self.selectArray objectAtIndex:indexPath.section][@"info"] objectAtIndex:indexPath.row][@"tradeName"];
-        [tradeNameLabel setText:string1];
-        [tradeNameLabel sizeToFit];// 显示文本需要的长度和宽度
+    UIFont *theFont1 = [UIFont systemFontOfSize:17.0];
+    tradeNameLabel.numberOfLines = 0;
+    [tradeNameLabel setFont:theFont1];
     
-        return CGSizeMake((screenWidth-20)/2 , screenWidth/2-10 + tradeNameLabel.frame.size.height + 25 + 21 + 8 );
+    NSString *string1 = self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodName"];
+    [tradeNameLabel setText:string1];
+    [tradeNameLabel sizeToFit];// 显示文本需要的长度和宽度
+    
+    return CGSizeMake((screenWidth-20)/2 , screenWidth/2-10 + tradeNameLabel.frame.size.height + 25 + 21 + 8 );
 }
 
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ProductViewController *viewController = [[ProductViewController alloc] init];
-    viewController.currentRow = indexPath.row;
-    viewController.currentSection = indexPath.section;
+    viewController.prodId = self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodId"];
     [self.navigationController pushViewController:viewController animated:YES];
     
     
@@ -465,7 +498,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-     return [self.plistArr count]+1;
+     return [self.dataArray count]+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -478,7 +511,7 @@
     }
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
-    cell.textLabel.text = indexPath.row == 0?@"全部类别" : [self.plistArr objectAtIndex:indexPath.row-1][@"type"];
+    cell.textLabel.text = indexPath.row == 0?@"全部类别" : [self.dataArray objectAtIndex:indexPath.row-1][@"typeName"];
     cell.textLabel.textColor = shrbText;
     return cell;
 }
@@ -498,12 +531,13 @@
             if(indexPath.row == 0)
             {
                 [self.selectArray removeAllObjects];
-                NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
-                self.selectArray =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
+                for (int i = 0 ; i < [self.dataArray count] ; i++) {
+                    [self.selectArray addObject:[self.dataArray objectAtIndex:i]];
+                }
             }
             else {
                 [self.selectArray removeAllObjects];
-                [self.selectArray addObject:[self.plistArr objectAtIndex:indexPath.row-1]];
+                [self.selectArray addObject:[self.dataArray objectAtIndex:indexPath.row-1]];
             }
         
             [self.collectionView reloadData];

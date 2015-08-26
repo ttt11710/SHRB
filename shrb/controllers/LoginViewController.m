@@ -9,9 +9,12 @@
 #import "LoginViewController.h"
 #import "MainTabBarController.h"
 #import "SVProgressShow.h"
+#import "Const.h"
+#import "TBUser.h"
 
 @interface LoginViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @end
 
@@ -19,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.passwordTextField.secureTextEntry = YES;
     self.navigationController.navigationBarHidden = YES;
     
 }
@@ -31,15 +36,36 @@
 
 - (IBAction)loginInBtnPressed:(id)sender {
     
-    [SVProgressShow showWithStatus:@"拼命登录中..."];
-    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething) object:nil];
-    [self performSelector:@selector(todoSomething) withObject:nil afterDelay:0.5f];
+    if (self.phoneTextField.text.length <= 0 || self.passwordTextField.text.length <= 0 ) {
+        [SVProgressShow showInfoWithStatus:@"信息输入不完整"];
+        return;
+    }
     
+    NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/login?"];
+    [self.requestOperationManager POST:url parameters:@{@"phone":self.phoneTextField.text,@"password":self.passwordTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressShow showInfoWithStatus:responseObject[@"msg"]];
+        NSLog(@"JSON: %@", responseObject[@"msg"]);
+        if ([responseObject[@"code"] isEqualToString:@"200"]) {
+            
+            
+            [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething) object:nil];
+            [self performSelector:@selector(todoSomething) withObject:nil afterDelay:0.5f];
+            
+            TBUser *user = [[TBUser alloc] init];
+            user.userId = responseObject[@"userId"];
+            user.userName = responseObject[@"userName"];
+            user.token = responseObject[@"token"];
+            
+            [TBUser setCurrentUser:user];
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
 }
 
 - (void)todoSomething
 {
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"IsLogin"];
     [SVProgressShow dismiss];
     self.navigationController.navigationBarHidden = NO;
     [self.navigationController popViewControllerAnimated:YES];
@@ -56,13 +82,18 @@
 #pragma mark - 单击键盘return键回调
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [self.phoneTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     return YES;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    if ([[touches anyObject]view] == self.passwordTextField ) {
+        self.passwordTextField.secureTextEntry = NO;
+    }
     
-    if ([[touches anyObject]view]!=self.passwordTextField) {
+    if ([[touches anyObject]view]!=self.passwordTextField ||[[touches anyObject]view]!=self.phoneTextField) {
+        [self.phoneTextField resignFirstResponder];
         [self.passwordTextField resignFirstResponder];
     }
 }

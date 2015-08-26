@@ -84,7 +84,6 @@
 		DF72C0C71B0B339800CE6DC6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF72C0C61B0B339800CE6DC6 /* Images.xcassets */; };
 		DF72C0CA1B0B339800CE6DC6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF72C0C81B0B339800CE6DC6 /* LaunchScreen.xib */; };
 		DF72C0D61B0B339800CE6DC6 /* shrbTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0D51B0B339800CE6DC6 /* shrbTests.m */; };
-		DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF72C0E51B0B413100CE6DC6 /* HotDetailTableViewCell.m */; };
 		DF73D97A1B53BC8B00C1F317 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF73D9791B53BC8B00C1F317 /* MainTabBarController.m */; };
 		DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF77A5B71B0C151F00934A7C /* StoreTableViewCell.m */; };
 		DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF77A5BA1B0C155D00934A7C /* StoreViewController.m */; };
@@ -157,6 +156,8 @@
 		DFC001D01B8AE4D300F5F89A /* IQActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC001CE1B8AE4D300F5F89A /* IQActionSheetViewController.m */; };
 		DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */; };
 		DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */; };
+		DFC3B5CE1B8D522100D6C5BE /* TBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3B5CD1B8D522100D6C5BE /* TBUser.m */; };
+		DFC3B5D11B8D8D5600D6C5BE /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3B5D01B8D8D5600D6C5BE /* ResetPasswordViewController.m */; };
 		DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC45A211B44DA8C0055C4C3 /* SuperBecomeMemberView1.m */; };
 		DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */; };
 		DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */; };
@@ -333,8 +334,6 @@
 		DF72C0CF1B0B339800CE6DC6 /* shrbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shrbTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF72C0D41B0B339800CE6DC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF72C0D51B0B339800CE6DC6 /* shrbTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shrbTests.m; sourceTree = "<group>"; };
-		DF72C0E41B0B413100CE6DC6 /* HotDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotDetailTableViewCell.h; path = ../Views/HotDetailTableViewCell.h; sourceTree = "<group>"; };
-		DF72C0E51B0B413100CE6DC6 /* HotDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotDetailTableViewCell.m; path = ../Views/HotDetailTableViewCell.m; sourceTree = "<group>"; };
 		DF73D9781B53BC8B00C1F317 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		DF73D9791B53BC8B00C1F317 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		DF77A5B61B0C151F00934A7C /* StoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreTableViewCell.h; path = ../Views/StoreTableViewCell.h; sourceTree = "<group>"; };
@@ -478,6 +477,10 @@
 		DFC39BC21B294ECE006B50F4 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
 		DFC39BC31B294ECE006B50F4 /* LazyFadeInLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInLayer.h; sourceTree = "<group>"; };
 		DFC39BC41B294ECE006B50F4 /* LazyFadeInLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInLayer.m; sourceTree = "<group>"; };
+		DFC3B5CC1B8D522100D6C5BE /* TBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBUser.h; sourceTree = "<group>"; };
+		DFC3B5CD1B8D522100D6C5BE /* TBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBUser.m; sourceTree = "<group>"; };
+		DFC3B5CF1B8D8D5600D6C5BE /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
+		DFC3B5D01B8D8D5600D6C5BE /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		DFC45A201B44DA8C0055C4C3 /* SuperBecomeMemberView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperBecomeMemberView1.h; sourceTree = "<group>"; };
 		DFC45A211B44DA8C0055C4C3 /* SuperBecomeMemberView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperBecomeMemberView1.m; sourceTree = "<group>"; };
 		DFCDF9461B3BD73600F70955 /* DOPScrollableActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPScrollableActionSheet.h; sourceTree = "<group>"; };
@@ -586,6 +589,8 @@
 		DF0E55E61B8C4DC20087539B /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				DFC3B5CC1B8D522100D6C5BE /* TBUser.h */,
+				DFC3B5CD1B8D522100D6C5BE /* TBUser.m */,
 			);
 			name = Api;
 			sourceTree = "<group>";
@@ -890,6 +895,8 @@
 				DF71773B1B30167900D3C3B9 /* SettingTableViewController.m */,
 				DF71773D1B30180700D3C3B9 /* HelpCenterTableViewController.h */,
 				DF71773E1B30180700D3C3B9 /* HelpCenterTableViewController.m */,
+				DFC3B5CF1B8D8D5600D6C5BE /* ResetPasswordViewController.h */,
+				DFC3B5D01B8D8D5600D6C5BE /* ResetPasswordViewController.m */,
 			);
 			name = "objective-C";
 			sourceTree = "<group>";
@@ -958,8 +965,6 @@
 				DFF766E01B65D054005BB71C /* NewStoreCollectionViewCell.xib */,
 				DF976B381B62099E0097790E /* MyImageView.h */,
 				DF976B391B62099E0097790E /* MyImageView.m */,
-				DF72C0E41B0B413100CE6DC6 /* HotDetailTableViewCell.h */,
-				DF72C0E51B0B413100CE6DC6 /* HotDetailTableViewCell.m */,
 				DF77A5B61B0C151F00934A7C /* StoreTableViewCell.h */,
 				DF77A5B71B0C151F00934A7C /* StoreTableViewCell.m */,
 				DF7E84B31B83274D00D013BE /* NewStoreTableViewCell.h */,
@@ -1497,7 +1502,6 @@
 				DF1EBFCE1B6F2FF7002DF8BA /* FmdbMigration.m in Sources */,
 				DFB7631F1B3D36330086ABB7 /* ProductIsMemberTableViewController.m in Sources */,
 				DF2D7A281B466919003790A5 /* CollectObjectiveTableViewController.m in Sources */,
-				DF72C0E61B0B413100CE6DC6 /* HotDetailTableViewCell.m in Sources */,
 				DF9E4A9C1B86C0B900C36002 /* OrderViewController.m in Sources */,
 				DFC001D01B8AE4D300F5F89A /* IQActionSheetViewController.m in Sources */,
 				DF958F611B33B83C005B2155 /* TradeModel.m in Sources */,
@@ -1532,7 +1536,9 @@
 				DF2B0E151B4232EA0051AA1A /* ReceiveCouponsTableViewCell.m in Sources */,
 				DF77A5C11B0C1C9E00934A7C /* OrdersTableViewCell.m in Sources */,
 				DF9D09E11B5DF0500007A7FB /* ExclusionView.m in Sources */,
+				DFC3B5D11B8D8D5600D6C5BE /* ResetPasswordViewController.m in Sources */,
 				DFAE955E1B25407F006A495B /* GiveCouponsViewController.m in Sources */,
+				DFC3B5CE1B8D522100D6C5BE /* TBUser.m in Sources */,
 				DF73D97A1B53BC8B00C1F317 /* MainTabBarController.m in Sources */,
 				DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */,
 				DFA544281B4A160400CC9999 /* CompletePayOrdersTableViewCell.m in Sources */,

@@ -16,6 +16,8 @@
     //  CAGradientLayer *_gradientLayer;
     //  UIView *_containerView;
     CGRect _oldframe;
+    
+    UIImageView *_imageView;
 }
 
 
@@ -32,6 +34,7 @@
 - (void)initImageArr
 {
     _imageArr = [[NSMutableArray alloc] init];
+    _imageView = [[UIImageView alloc] init];
     
 }
 
@@ -82,10 +85,13 @@
     if (_currentInt == [_imageArr count]) {
         _currentInt = 0;
     }
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_imageArr objectAtIndex:_currentInt]]];
+    _imageView = self;
+    
+    [self sd_setImageWithURL:[NSURL URLWithString:[_imageArr objectAtIndex:_currentInt]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+    
     CABasicAnimation *contentsAnimation = [CABasicAnimation animationWithKeyPath:@"contents"];
-    contentsAnimation.fromValue = self;
-    contentsAnimation.toValue = (__bridge id)(image.CGImage);
+    contentsAnimation.fromValue = _imageView;
+    contentsAnimation.toValue = self;
     contentsAnimation.duration = 1.f;
     contentsAnimation.delegate = self;
     contentsAnimation.fillMode=kCAFillModeForwards;
@@ -95,7 +101,10 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
+   // [self sd_setImageWithURL:[NSURL URLWithString:[_imageArr objectAtIndex:_currentInt]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+    
     [self timeForShowImage];
+    
 }
 
 @end

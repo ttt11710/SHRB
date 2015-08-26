@@ -9,9 +9,18 @@
 #import "BasicInfoTableViewController.h"
 #import "SVProgressShow.h"
 #import "Const.h"
+#import "TBUser.h"
 
 @interface BasicInfoTableViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
+
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+
+
+@property (nonatomic,strong)AFHTTPRequestOperationManager *requestOperationManager;
 
 @end
 
@@ -21,6 +30,8 @@
     [super viewDidLoad];
    
     [self initView];
+    [self creatReq];
+    [self loadData];
     [self initTableView];
 }
 
@@ -28,6 +39,36 @@
 {
     self.userImageBtn.layer.cornerRadius = 10;
     self.userImageBtn.layer.masksToBounds = YES;
+}
+
+- (void)creatReq
+{
+    self.requestOperationManager=[AFHTTPRequestOperationManager manager];
+    
+    self.requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    AFJSONResponseSerializer *serializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    self.requestOperationManager.responseSerializer=serializer;
+    
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:10*60];
+    self.requestOperationManager.requestSerializer=requestSerializer;
+}
+
+- (void)loadData
+{
+    NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/info?"];
+    [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        self.phoneLabel.text = responseObject[@"user"][@"phone"];
+        self.passwordLabel.text = responseObject[@"user"][@"password"];
+        self.emailLabel.text = responseObject[@"user"][@"email"];
+        if (self.emailLabel.text.length == 0) {
+            self.emailLabel.text = @"未填写";
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
 }
 
 - (void)initTableView
@@ -51,8 +92,35 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 4;
+    return 5;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2 ) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ResetPasswordView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    if(indexPath.row == 4)
+    {
+        NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/logout?"];
+        [self.requestOperationManager POST:url parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"JSON: %@", responseObject);
+            
+            [TBUser setCurrentUser:nil];
+            
+            [SVProgressShow showSuccessWithStatus:@"注销成功!"];
+            [self.navigationController popViewControllerAnimated:YES];
+            [SVProgressShow dismiss];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error:++++%@",error.localizedDescription);
+        }];
+    }
+}
+
 
 #pragma mark - 改头像
 - (IBAction)userImageBtnPressed:(id)sender {

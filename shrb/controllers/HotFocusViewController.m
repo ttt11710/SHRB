@@ -250,7 +250,7 @@
 
 //    [label setText:self.dataArray[indexPath.section][@"merchDesc"]];
     
-    [label setText:self.dataArray[0][@"merchDesc"]];
+    [label setText:self.dataArray[indexPath.section][@"merchDesc"]];
     [label sizeToFit];// 显示文本需要的长度和宽度
     
     CGFloat labelHeight = label.frame.size.height;
@@ -261,7 +261,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     //return [self.dataArray count];
-    return self.dataArray.count == 0 ? 0: 4;
+    return self.dataArray.count ;
 }
 
 #pragma mark - tableView delegate
@@ -280,9 +280,17 @@
         cell = [[HotFocusTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
 
-    NSMutableArray *ab = [[NSMutableArray alloc] initWithObjects:self.dataArray[0][@"imgUrl1"],self.dataArray[0][@"imgUrl2"],self.dataArray[0][@"imgUrl3"],self.dataArray[0][@"imgUrl4"], nil];
+    NSMutableArray *ab = [[NSMutableArray alloc] init];
     
-    cell.descriptionLabel.text = self.dataArray[0][@"merchDesc"];
+    if ([self.dataArray[indexPath.section][@"merchImglist"] count] == 0) {
+        [ab addObject:@"热点无图片"];
+    }
+    else {
+        for (int i = 0 ; i < [self.dataArray[indexPath.section][@"merchImglist"] count]; i++) {
+            [ab addObject:[self.dataArray[indexPath.section][@"merchImglist"] objectAtIndex:i][@"imgUrl"]];
+        }
+    }
+    cell.descriptionLabel.text = self.dataArray[indexPath.section][@"merchDesc"];
     cell.hotImageView.currentInt = 0;
     [cell.hotImageView initImageArr];
     cell.hotImageView.imageArr = ab;

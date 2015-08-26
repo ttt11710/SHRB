@@ -9,6 +9,7 @@
 #import "SettingTableViewController.h"
 #import "Const.h"
 #import "SVProgressShow.h"
+#import "TBUser.h"
 
 @interface SettingTableViewController ()
 
@@ -48,15 +49,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 4) {
-        BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
-        if (!isLogin) {
-            [SVProgressShow showInfoWithStatus:@"账号未登录！"];
-            return ;
-        }
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"IsLogin"];
-        [SVProgressShow showSuccessWithStatus:@"注销成功！"];
-    }
+    
 }
 
 @end
