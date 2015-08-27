@@ -22,6 +22,9 @@
 #import "ShoppingCardView.h"
 #import "shrb-swift.h"
 #import "NewCardDetailViewController.h"
+#import <UIImageView+WebCache.h>
+#import "TBUser.h"
+#import "CallBackButton.h"
 
 @interface ShoppingNumLabel1 : UILabel
 {
@@ -63,7 +66,6 @@ static NSInteger countTime = 20*60;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) HJCAjustNumButton *numbutton;
-@property (weak, nonatomic) IBOutlet UIButton *gotopayViewBtn;
 
 @property (weak, nonatomic) IBOutlet UIView *shoppingCardView;
 @property (weak, nonatomic) IBOutlet UIImageView *shoppingCardImageView;
@@ -72,10 +74,9 @@ static NSInteger countTime = 20*60;
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 
 @property (nonatomic,strong) UIBezierPath *path;
-@property (weak, nonatomic) IBOutlet UIButton *topBtn;
 
-@property (nonatomic,strong) NSMutableArray * modelArray;
-@property (nonatomic, strong) NSMutableArray *plistArr;
+@property (nonatomic,strong) NSMutableArray * selectArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
@@ -83,6 +84,8 @@ static NSInteger countTime = 20*60;
     CALayer     *layer;
 }
 
+@synthesize merchId;
+@synthesize merchTitle;
 
 + (StoreViewController *)shareStoreViewController
 {
@@ -94,6 +97,7 @@ static NSInteger countTime = 20*60;
     
     g_StoreViewController = self;
 
+    [self loadData];
     [self initView];
     [self initData];
     [self initTableView];
@@ -153,31 +157,49 @@ static NSInteger countTime = 20*60;
 }
 
 
+#pragma mark - 网络请求数据
+- (void)loadData
+{
+    
+    self.dataArray = [[NSMutableArray alloc] init];
+    
+    NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProductList?"];
+    
+    [self.requestOperationManager GET:url parameters:@{@"merchId":self.merchId,@"pageNum":@"1",@"pageCount":@"20",@"orderBy":@"updateTime",@"sort":@"desc",@"whereString":@""} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"operation : %@  JSON: %@", operation, responseObject);
+        
+        self.dataArray = responseObject[@"productList"];
+        
+        self.selectArray = [[NSMutableArray alloc] initWithArray:self.dataArray];
+        
+        [self.tableView reloadData];
+        [self.selectTypeTableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"error:++++%@",error.localizedDescription);
+        
+    }];
+}
+
 - (void)initView
 {
     
-//    self.title = [[NSUserDefaults standardUserDefaults] stringForKey:@"storeName"];
+    self.title = self.merchTitle;
     UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
     self.navigationItem.rightBarButtonItem = selectType;
-
+    
     //导航颜色
     self.navigationController.navigationBar.barTintColor = shrbPink;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
-    [self.gotopayViewBtn setBackgroundColor:shrbPink];
 }
 
 
 
 - (void)initData
 {
-    
-    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
-    
-    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
-    
-    self.modelArray = [[NSMutableArray alloc] init];
     
     self.shoppingNumLabel.num = 0 ;
     
@@ -247,7 +269,7 @@ static NSInteger countTime = 20*60;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView != self.selectTypeTableView) {
-        return [self.plistArr count]+1;
+        return [self.selectArray count]+1;
     }
     return 1;
 }
@@ -258,7 +280,7 @@ static NSInteger countTime = 20*60;
         if (section == 0) {
             return @"";
         }
-        return [self.plistArr objectAtIndex:section-1][@"type"];
+        return [self.selectArray objectAtIndex:section-1][@"typeName"];
     }
     else
         return @"";
@@ -286,7 +308,7 @@ static NSInteger countTime = 20*60;
         
         label.backgroundColor = [UIColor clearColor];
         [headerView addSubview:label];
-        label.text = section == 0?@"":[self.plistArr objectAtIndex:section-1][@"type"];
+        label.text = section == 0?@"":[self.selectArray objectAtIndex:section-1][@"typeName"];
         return  headerView;
     }
     else {
@@ -299,10 +321,10 @@ static NSInteger countTime = 20*60;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == self.selectTypeTableView) {
-        return [self.plistArr count];
+        return [self.dataArray count]+1;
     }
     else {
-        return section == 0?1:[[self.plistArr objectAtIndex:section-1][@"info"] count];
+        return section == 0?1:[[self.selectArray objectAtIndex:section-1][@"prodList"] count];
     }
 }
 
@@ -316,7 +338,7 @@ static NSInteger countTime = 20*60;
         }
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         
-        cell.textLabel.text = [self.plistArr objectAtIndex:indexPath.row][@"type"];
+        cell.textLabel.text = indexPath.row == 0?@"全部类别" : [self.dataArray objectAtIndex:indexPath.row-1][@"typeName"];
         cell.textLabel.textColor = shrbText;
         
         return cell;
@@ -332,7 +354,7 @@ static NSInteger countTime = 20*60;
             
             return cell;
         }
-        else  if (indexPath.section < [self.plistArr count]+1) {
+        else   {
             static NSString *SimpleTableIdentifier = @"CouponsTableViewCellIdentifier";
             StoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
@@ -340,14 +362,29 @@ static NSInteger countTime = 20*60;
                 cell = [[StoreTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
             }
             
-            [self.modelArray removeAllObjects];
-            for (NSDictionary * dict in [self.plistArr objectAtIndex:indexPath.section-1][@"info"]) {
-                TradeModel * model = [[TradeModel alloc] init];
-                [model setValuesForKeysWithDictionary:dict];
-                [self.modelArray addObject:model];
-            }
+            cell.tradeNameLabel.text = self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodName"] == nil? @"商品名称" : self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodName"];
+            [cell.tradeImageView sd_setImageWithURL:[NSURL URLWithString:self.selectArray[indexPath.section-1][@"imgUrl"][indexPath.row][@"prodName"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
             
-            cell.model = self.modelArray[indexPath.row];
+            cell.tradeDescriptionLabel.text = self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodDesc"];
+            
+            NSNumber *vipPriceNumber = self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"vipPrice"];
+            NSNumber *priceNumber = self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"price"];
+            
+            NSString *vipPrice = [vipPriceNumber stringValue];
+            NSString *price = [priceNumber stringValue];
+            
+            NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%@ 原价￥%@",vipPrice,price]];
+            
+            [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange([vipPrice length] + 2, [price length]+3)];//删除线
+            [attrString addAttribute:NSForegroundColorAttributeName value:shrbPink range:NSMakeRange(0, vipPrice.length + 1)];
+            [attrString addAttribute:NSForegroundColorAttributeName value:shrbLightText range:NSMakeRange(vipPrice.length + 2, price.length+3)];
+            
+            [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, vipPrice.length + 1)];
+            [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(vipPrice.length + 2, price.length+3)];
+            
+            cell.priceLabel.attributedText = attrString;
+            
+            [cell.afterSaleButton setupBlock];
             
             HJCAjustNumButton *numbutton = [[HJCAjustNumButton alloc] init];
             numbutton.frame = CGRectMake(screenWidth-40, IsiPhone4s?40:35, 30, 30);
@@ -370,9 +407,6 @@ static NSInteger countTime = 20*60;
                 _rect = [self.tableView.superview convertRect:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height) fromView:cell];
                 
                 
-                NSLog(@"%@",[[self.plistArr objectAtIndex:indexPath.section-1][@"info"] objectAtIndex:indexPath.row][@"tradeImage"]);
-                
-                
                 if ([_currentNumDic count] == 0) {
                     [_currentNumDic setObject:currentNum forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row-1]];
                     //商品起始位置
@@ -381,7 +415,8 @@ static NSInteger countTime = 20*60;
                     //商品最终位置和其中一个路径位置
                     [path addQuadCurveToPoint:CGPointMake(80, screenHeight -100) controlPoint:CGPointMake(screenWidth*0.5, screenHeight * 0.5)];
                     _path = path;
-                    [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",  [[self.plistArr objectAtIndex:indexPath.section-1][@"info"] objectAtIndex:indexPath.row][@"tradeImage"]]];
+//                    [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",  [[self.plistArr objectAtIndex:indexPath.section-1][@"info"] objectAtIndex:indexPath.row][@"tradeImage"]]];
+                    [self startAnimationWithImageNsstring:@"热点无图片"];
                 }
                 else {
                     //没有插入数据
@@ -393,7 +428,8 @@ static NSInteger countTime = 20*60;
                         //商品最终位置和其中一个路径位置
                         [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth/2, screenHeight * 0.6)];
                         _path = path;
-                        [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",  [[self.plistArr objectAtIndex:indexPath.section-1][@"info"] objectAtIndex:indexPath.row][@"tradeImage"]]];
+//                        [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",  [[self.plistArr objectAtIndex:indexPath.section-1][@"info"] objectAtIndex:indexPath.row][@"tradeImage"]]];
+                        [self startAnimationWithImageNsstring:@"热点无图片"];
                     }
                     else {
                         //减少
@@ -409,7 +445,8 @@ static NSInteger countTime = 20*60;
                             //商品最终位置和其中一个路径位置
                             [path addQuadCurveToPoint:CGPointMake(screenWidth/2, screenHeight -20) controlPoint:CGPointMake(screenWidth*0.8, screenHeight * 0.6)];
                             _path = path;
-                            [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",  [[self.plistArr objectAtIndex:indexPath.section-1][@"info"] objectAtIndex:indexPath.row][@"tradeImage"]]];
+//                            [self startAnimationWithImageNsstring:[NSString stringWithFormat:@"%@.jpg",  [[self.plistArr objectAtIndex:indexPath.section-1][@"info"] objectAtIndex:indexPath.row][@"tradeImage"]]];
+                            [self startAnimationWithImageNsstring:@"热点无图片"];
                         }
                     }
                 }
@@ -418,17 +455,6 @@ static NSInteger countTime = 20*60;
             
             // 加到父控件上
             [cell addSubview:numbutton];
-            return cell;
-        }
-        else
-        {
-            static NSString *SimpleTableIdentifier = @"ButtonTableViewCellIdentifier";
-            ButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
-            if (cell == nil) {
-                cell = [[ButtonTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
-            }
-            
             return cell;
         }
     }
@@ -447,7 +473,7 @@ static NSInteger countTime = 20*60;
             
             self.selectTypeTableViewBackView.hidden = YES;
             
-            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row+1] animated:YES scrollPosition:UITableViewScrollPositionTop];
+            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row] animated:YES scrollPosition:UITableViewScrollPositionTop];
         }];
     }
     else {
@@ -473,22 +499,22 @@ static NSInteger countTime = 20*60;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.y < lastContentOffset )
-    {
-        //向上
-        _topBtn.hidden = NO;
-        
-    } else if (scrollView. contentOffset.y >lastContentOffset){
-        //向下
-        CATransition *animation = [CATransition animation];
-        animation.type = kCATransitionMoveIn;
-        animation.duration = 1.0f;
-        [_topBtn.layer addAnimation:animation forKey:nil];
-        _topBtn.hidden = YES;
-    }
-    if (scrollView.contentOffset.y == 0) {
-        _topBtn.hidden = YES;
-    }
+//    if (scrollView.contentOffset.y < lastContentOffset )
+//    {
+//        //向上
+//        _topBtn.hidden = NO;
+//        
+//    } else if (scrollView. contentOffset.y >lastContentOffset){
+//        //向下
+//        CATransition *animation = [CATransition animation];
+//        animation.type = kCATransitionMoveIn;
+//        animation.duration = 1.0f;
+//        [_topBtn.layer addAnimation:animation forKey:nil];
+//        _topBtn.hidden = YES;
+//    }
+//    if (scrollView.contentOffset.y == 0) {
+//        _topBtn.hidden = YES;
+//    }
 }
 
 - (IBAction)tabViewSetContentToTop:(id)sender {
@@ -502,7 +528,7 @@ static NSInteger countTime = 20*60;
 {
     self.selectTypeTableViewBackView.hidden = NO;
     if (!layer) {
-        self.gotopayViewBtn.enabled = NO;
+       // self.gotopayViewBtn.enabled = NO;
         layer = [CALayer layer];
         layer.contents = (__bridge id)[UIImage imageNamed:imageNsstring].CGImage;
         layer.contentsGravity = kCAGravityResizeAspectFill;
@@ -549,7 +575,7 @@ static NSInteger countTime = 20*60;
 
     self.selectTypeTableViewBackView.hidden = YES;
     if (anim == [layer animationForKey:@"group"]) {
-        self.gotopayViewBtn.enabled = YES;
+       // self.gotopayViewBtn.enabled = YES;
         [layer removeFromSuperlayer];
         layer = nil;
     }

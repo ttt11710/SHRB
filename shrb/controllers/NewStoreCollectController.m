@@ -14,6 +14,7 @@
 #import "ProductViewController.h"
 #import "SuperQRViewController.h"
 #import <UIImageView+WebCache.h>
+#import "TBUser.h"
 
 @interface NewStoreCollectController ()
 {
@@ -32,9 +33,6 @@
 @property (retain, nonatomic) UITableView *selectTypeTableView;
 
 @property (nonatomic) NSMutableArray * selectArray;
-//@property (nonatomic,strong) NSMutableArray * modelArray;
-@property (nonatomic, strong) NSMutableArray *plistArr;
-
 
 @property (nonatomic,strong) NSMutableArray * dataArray;
 
@@ -43,6 +41,7 @@
 @implementation NewStoreCollectController
 
 @synthesize merchId;
+@synthesize merchTitle;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,12 +49,10 @@
     
     [self loadData];
     [self initView];
-    [self initData];
     [self createCollection];
     [self createSelectTypeTableView];
     [self QRButtonView];
     
-    [self loadData];
    // [self initBallView];
     
 }
@@ -140,9 +137,7 @@
 
 - (void)initView
 {
-    self.title = [[NSUserDefaults standardUserDefaults] stringForKey:@"storeName"];
-    
-    self.title = [[NSUserDefaults standardUserDefaults] stringForKey:@"storeName"];
+    self.title = self.merchTitle;
     
     UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
     self.navigationItem.rightBarButtonItem = selectType;
@@ -174,16 +169,6 @@
     self.QRViewBtn.layer.transform = CATransform3DMakeScale(1, 0, 1);
 
 }
-- (void)initData
-{
-    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
-    
-    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
-//    
-//    self.modelArray = [[NSMutableArray alloc] init];
-//    self.selectArray =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
-    
-}
 
 #pragma mark - 网络请求数据
 - (void)loadData
@@ -200,6 +185,8 @@
         self.dataArray = responseObject[@"productList"];
         
         self.selectArray = [[NSMutableArray alloc] initWithArray:self.dataArray];
+        
+        
         
         [self.collectionView reloadData];
         [self.selectTypeTableView reloadData];
@@ -388,9 +375,6 @@
     
    // cell.model = self.modelArray[indexPath.row];
     
-    if ([self.selectArray count]==0) {
-        return nil;
-    }
     
     cell.backgroundColor = [UIColor whiteColor];
     
@@ -406,6 +390,8 @@
     cell.priceLabel.attributedText = attrString;
     
     
+    if ([self.selectArray count]!=0) {
+        
     cell.tradeImageView.layer.transform = CATransform3DMakeScale(1, 0, 1);
     cell.tradeImageView.layer.transform = CATransform3DMakeTranslation(0, -screenWidth/2, 0);
     
@@ -434,6 +420,7 @@
         
     } completion:^(BOOL finished) {
     }];
+    }
     return cell;
 }
 
@@ -455,26 +442,27 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProductViewController *viewController = [[ProductViewController alloc] init];
-    viewController.prodId = self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodId"];
-    [self.navigationController pushViewController:viewController animated:YES];
     
-    
-//    BOOL isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
-//    if (isMember) {
-//        
-//        ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
-//        viewController.currentRow = indexPath.row;
-//        viewController.currentSection = indexPath.section;
-//        [self.navigationController pushViewController:viewController animated:YES];
-//    }
-//    else {
-//        
-//        ProductViewController *viewController = [[ProductViewController alloc] init];
-//        viewController.currentRow = indexPath.row;
-//        viewController.currentSection = indexPath.section;
-//        [self.navigationController pushViewController:viewController animated:YES];
-//    }
+    //f755a51c0c7a4b4f8d140c4a2ebe9cb5 [TBUser currentUser].token
+    NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
+    [self.requestOperationManager GET:url parameters:@{@"prodId":self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        if ([(NSString *)responseObject[@"card"] isEqual:@""]) {
+            ProductViewController *viewController = [[ProductViewController alloc] init];
+            viewController.productDataDic = responseObject[@"product"];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+        else {
+            ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
+            viewController.productDataDic = responseObject[@"product"];
+            viewController.cardDataDic = responseObject[@"card"];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
 }
 
 

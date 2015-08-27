@@ -13,5 +13,7 @@
 @interface NewStoreCollectController : PYBaseViewController <UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDataSource,UITableViewDelegate,CollectionViewWaterfallLayoutDelegate>
 
 @property(nonatomic,assign)NSString * merchId;
+@property(nonatomic,assign)NSString * merchTitle;
+
 
 @end

@@ -53,16 +53,12 @@ static ProductViewController *g_ProductViewController = nil;
 @property (retain, nonatomic) UIButton *smallbutton; //注册弹出button
 
 
-@property (nonatomic,strong) NSMutableArray * modelArray;
-@property (nonatomic,strong) NSMutableArray * plistArr;
-
-@property (nonatomic,strong) NSMutableDictionary * dataDic;
-
 @end
 
 @implementation ProductViewController
 
-@synthesize prodId;
+@synthesize productDataDic;
+
 
 + (ProductViewController *)shareProductViewController
 {
@@ -74,17 +70,14 @@ static ProductViewController *g_ProductViewController = nil;
     
     g_ProductViewController = self;
     
-    [self loadData];
-    //[self initData];
-//    [self initMainView];
-//    [self initCardView];
-//    [self initTradeNameAndPriceView];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
-    self.view.userInteractionEnabled = YES;
-    [self.view addGestureRecognizer:tap];
+    [self initData];
+    [self initMainView];
+    [self initCardView];
+    [self initTradeNameAndPriceView];
+    [self initDescriptionAndregisterView];
     
     [self cardAnimation];
+    
 }
 
 
@@ -108,57 +101,22 @@ static ProductViewController *g_ProductViewController = nil;
     if (_timer.isValid) {
        [_timer invalidate];
     }
-    
 }
 
-
-- (void)loadData
-{
-    self.dataDic = [[NSMutableDictionary alloc] init];
-    NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
-    [self.requestOperationManager GET:url parameters:@{@"prodId":self.prodId,@"token":@"697e3d06962e22153c181c5768d52e12"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        
-        self.dataDic = responseObject[@"product"];
-        
-        [self initData];
-        [self initMainView];
-        [self initCardView];
-        [self initTradeNameAndPriceView];
-        [self initDescriptionAndregisterView];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error:++++%@",error.localizedDescription);
-    }];
-}
 
 - (void)initData
 {
-    
-    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
-    
-    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]];
-    
-    self.modelArray = [[NSMutableArray alloc] init];
-    
-    _imageArray = [[NSMutableArray alloc] initWithObjects:
-                   @"毛呢冬带毛领",
-                   @"男士休闲羊毛西服",
-                   @"长款千鸟格大衣",
-                   @"撞色加厚双排扣大衣", nil];
-    
     _imageArray = [[NSMutableArray alloc] init];
-    for (int i = 0 ; i < [self.dataDic[@"imgList"] count]; i++) {
-        [_imageArray addObject:[self.dataDic[@"imgList"] objectAtIndex:i][@"imgUrl"]];
+    for (int i = 0 ; i < [self.productDataDic[@"imgList"] count]; i++) {
+        [_imageArray addObject:[self.productDataDic[@"imgList"] objectAtIndex:i][@"imgUrl"]];
     }
-    
     
     self.title = @"商品详情";
 }
 
 - (void)initMainView
 {
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
     _mainScrollView.backgroundColor = shrbTableViewColor;
     [self.view addSubview:_mainScrollView];
 }
@@ -273,15 +231,14 @@ static ProductViewController *g_ProductViewController = nil;
     _prodNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 12, screenWidth-16*2, 30)];
     _prodNameLabel.font = [UIFont systemFontOfSize:17.0];
     _prodNameLabel.textColor = shrbText;
-//    _prodNameLabel.text = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeName"];
-    _prodNameLabel.text = self.dataDic[@"prodName"];
+    _prodNameLabel.text = self.productDataDic[@"prodName"];
     [_tradeNameAndPriceView addSubview:_prodNameLabel];
     
     //会员价
     _vipPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _prodNameLabel.frame.origin.y + _prodNameLabel.frame.size.height + 4, 100, 30)];
     _vipPriceLabel.font = [UIFont systemFontOfSize:18.0];
     _vipPriceLabel.textColor = shrbPink;
-    _vipPriceLabel.text = [NSString stringWithFormat:@"会员价:￥%@",self.dataDic[@"vipPrice"]];
+    _vipPriceLabel.text = [NSString stringWithFormat:@"会员价:￥%@",self.productDataDic[@"vipPrice"]];
     [_vipPriceLabel sizeToFit];
     [_tradeNameAndPriceView addSubview:_vipPriceLabel];
     
@@ -292,14 +249,14 @@ static ProductViewController *g_ProductViewController = nil;
     _saveMoneyLabel.textColor = [UIColor whiteColor];
     _saveMoneyLabel.backgroundColor = shrbPink;
     _saveMoneyLabel.textAlignment = NSTextAlignmentCenter;
-    _saveMoneyLabel.text = [NSString stringWithFormat:@"省￥%.2f",[self.dataDic[@"price"] floatValue] - [self.dataDic[@"vipPrice"] floatValue]]  ;
+    _saveMoneyLabel.text = [NSString stringWithFormat:@"省￥%.2f",[self.productDataDic[@"price"] floatValue] - [self.productDataDic[@"vipPrice"] floatValue]]  ;
     [_tradeNameAndPriceView addSubview:_saveMoneyLabel];
     
     //原价
     _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, _vipPriceLabel.frame.origin.y + _vipPriceLabel.frame.size.height + 4, 100, 21)];
     _priceLabel.font = [UIFont systemFontOfSize:15.0];
     _priceLabel.textColor = [UIColor lightGrayColor];
-    _priceLabel.text = [NSString stringWithFormat:@"原价:￥%@",self.dataDic[@"price"]];
+    _priceLabel.text = [NSString stringWithFormat:@"原价:￥%@",self.productDataDic[@"price"]];
     [_priceLabel sizeToFit];
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:_priceLabel.text];
     [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, [_priceLabel.text length])];//删除线
@@ -330,8 +287,7 @@ static ProductViewController *g_ProductViewController = nil;
     _prodDescLabel.numberOfLines = 1000;
     _prodDescLabel.font = [UIFont systemFontOfSize:15.0];
     _prodDescLabel.textColor = shrbLightText;
-//    _prodDescLabel.text = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow][@"tradeDescription"];
-    _prodDescLabel.text = self.dataDic[@"prodDesc"];
+    _prodDescLabel.text = self.productDataDic[@"prodDesc"];
     [_prodDescLabel sizeToFit];
     [_descriptionAndregisterView addSubview:_prodDescLabel];
     
@@ -345,16 +301,10 @@ static ProductViewController *g_ProductViewController = nil;
     [_registerBtn addTarget:self action:@selector(registerBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_descriptionAndregisterView addSubview:_registerBtn];
     
-    if (self.dataDic[@"card"] != nil) {
-        _registerBtn.hidden = YES;
-        
-        _descriptionAndregisterView.frame = CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, label.frame.origin.y + label.frame.size.height + 16 + _prodDescLabel.frame.size.height + 16 );
-    }
-    else {
         _registerBtn.hidden = NO;
         
         _descriptionAndregisterView.frame = CGRectMake(0, _tradeNameAndPriceView.frame.origin.y + _tradeNameAndPriceView.frame.size.height + 8, screenWidth, label.frame.origin.y + label.frame.size.height + 16 + _prodDescLabel.frame.size.height + 16 + _registerBtn.frame.size.height + 30);
-    }
+  //  }
 
     if (_cardView.frame.size.height + _tradeNameAndPriceView.frame.size.height+ 8 + _descriptionAndregisterView.frame.size.height + 10  < screenHeight-20-44) {
         _mainScrollView.scrollEnabled = NO;
@@ -437,11 +387,44 @@ static ProductViewController *g_ProductViewController = nil;
 #pragma mark - 注册
 - (void)registerBtnPressed
 {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-
-    UIViewController *registeringStoreMemberViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"RegisteringStoreMemberView"];
-    [registeringStoreMemberViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [self.navigationController presentViewController:registeringStoreMemberViewController animated:YES completion:nil];
+    if ([TBUser currentUser].token.length == 0) {
+        
+        [SVProgressShow showInfoWithStatus:@"请先登录!"];
+        return ;
+    }
+    
+    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/applyCard?"];
+    [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.productDataDic[@"merchId"]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        if ([responseObject[@"code"]integerValue] == 200) {
+            [SVProgressShow showSuccessWithStatus:@"会员卡申请成功"];
+            
+            
+            NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
+            [self.requestOperationManager GET:url parameters:@{@"prodId":self.productDataDic[@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"JSON: %@", responseObject);
+                
+                UINavigationController *navController = self.navigationController;
+                [self.navigationController popViewControllerAnimated:NO];
+                ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
+                viewController.productDataDic = responseObject[@"product"];
+                viewController.cardDataDic = responseObject[@"card"];
+                [navController pushViewController:viewController animated:YES];
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"error:++++%@",error.localizedDescription);
+            }];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//
+//    UIViewController *registeringStoreMemberViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"RegisteringStoreMemberView"];
+//    [registeringStoreMemberViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    [self.navigationController presentViewController:registeringStoreMemberViewController animated:YES completion:nil];
     
     //    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
     //    if (!isLogin) {
@@ -518,63 +501,6 @@ static ProductViewController *g_ProductViewController = nil;
 //        }];
 //    }];
     
-}
-
-#pragma mark - 确定注册
-- (void)sureBtnPressed
-{
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        
-        self.smallbutton.layer.transform = CATransform3DIdentity;
-        
-        _becomeMemberView.layer.transform = CATransform3DIdentity;
-        
-        
-    } completion:^(BOOL finished) {
-        
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            
-            self.smallbutton.hidden = YES;
-            _registerBtn.hidden = NO;
-            
-            _registerBtn.bounds = _bounds;
-            
-        } completion:^(BOOL finished) {
-            
-            [[SuperBecomeMemberView1 shareSuperBecomeMemberView] textFieldResignFirstResponder];
-            POPSpringAnimation *sizeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-            sizeAnimation.springSpeed = 0.f;
-            sizeAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, self.smallbutton.frame.size.width-5, self.smallbutton.frame.size.height-5)];
-            [self.smallbutton pop_addAnimation:sizeAnimation forKey:nil];
-            
-            self.becomeMemberView = nil;
-            [self.becomeMemberView removeFromSuperview];
-        }];
-        
-    }];
-    
-}
-
-
-#pragma mark - 成为会员时页面重push
-- (void)becomeMember
-{
-    UINavigationController *navController = self.navigationController;
-    [self.navigationController popViewControllerAnimated:NO];
-    
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
-//    viewController.currentSection = currentSection;
-//    viewController.currentRow = currentRow;
-//    
-//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    
-//    [navController pushViewController:viewController animated:NO];
-    
-    
-    ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
-    
-    [navController pushViewController:viewController animated:NO];
 }
 
 
@@ -664,12 +590,6 @@ static ProductViewController *g_ProductViewController = nil;
     {
         _imagePageControl.currentPage = page - 1;
     }
-}
-
-#pragma mark - 单击屏幕键盘消失
--(void)tap {
-    
-    [[SuperBecomeMemberView1 shareSuperBecomeMemberView] textFieldResignFirstResponder];
 }
 
 

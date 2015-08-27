@@ -39,6 +39,7 @@
     ShoppingCardView *_shoppingCardView;
     
     NSString *_merchId;
+    NSString *_merchTitle;
 }
 @property (nonatomic, strong) UIWindow       *window;
 
@@ -119,6 +120,7 @@
         self.dataArray = responseObject[@"merchList"];
         
         _merchId = [responseObject[@"merchList"] objectAtIndex:0][@"merchId"];
+        _merchTitle = [responseObject[@"merchList"] objectAtIndex:0][@"merchTitle"];
         
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -385,6 +387,7 @@
         
         NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
         newStoreCollectController.merchId = _merchId;
+        newStoreCollectController.merchTitle = _merchTitle;
         newStoreCollectController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:newStoreCollectController animated:YES];
         [SVProgressShow dismiss];
@@ -393,6 +396,8 @@
         //点餐
         
         StoreViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
+        storeViewController.merchId = _merchId;
+        storeViewController.merchTitle = _merchTitle;
         [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
         storeViewController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:storeViewController animated:YES];

@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface ProductIsMemberViewController : UIViewController<UIScrollViewDelegate>
+@interface ProductIsMemberViewController : PYBaseViewController<UIScrollViewDelegate>
 
-@property(nonatomic,assign)NSInteger currentSection;
-@property(nonatomic,assign)NSInteger currentRow;
+@property (nonatomic,strong) NSMutableDictionary * productDataDic;
+@property (nonatomic,strong) NSMutableDictionary * cardDataDic;
 
 + (ProductIsMemberViewController *)shareProductIsMemberViewController;
 

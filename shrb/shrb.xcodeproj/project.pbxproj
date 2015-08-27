@@ -1235,6 +1235,8 @@
 				DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */,
 				DF6311EC1B5F35A000ABBB22 /* ProductViewController.h */,
 				DF6311ED1B5F35A000ABBB22 /* ProductViewController.m */,
+				DF6311F41B5F817200ABBB22 /* ProductIsMemberViewController.h */,
+				DF6311F51B5F817200ABBB22 /* ProductIsMemberViewController.m */,
 				DFE001D11B81B22500BBD84A /* RegisteringStoreMemberViewController.h */,
 				DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */,
 				DF92F25F1B730A4300786495 /* SuperOrderViewController.h */,
@@ -1243,8 +1245,6 @@
 				DFB41DE21B73431A003C9799 /* SuperAndStorePayViewController.m */,
 				DF66B83E1B53689D002E9EFC /* SuperCompletePayViewController.h */,
 				DF66B83F1B53689D002E9EFC /* SuperCompletePayViewController.m */,
-				DF6311F41B5F817200ABBB22 /* ProductIsMemberViewController.h */,
-				DF6311F51B5F817200ABBB22 /* ProductIsMemberViewController.m */,
 			);
 			name = new;
 			sourceTree = "<group>";

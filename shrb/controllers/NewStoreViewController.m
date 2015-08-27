@@ -352,8 +352,6 @@ static NewStoreViewController *g_StoreViewController = nil;
         if (isMember) {
             
             ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
-            viewController.currentRow = indexPath.row;
-            viewController.currentSection = indexPath.section;
             [self.navigationController pushViewController:viewController animated:YES];
             
             

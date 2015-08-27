@@ -37,7 +37,7 @@
     self.tabBarController.tabBar.hidden = NO;
     self.navigationController.navigationBarHidden = NO;
     
-    if ([TBUser currentUser] == nil)
+    if ([TBUser currentUser].token.length == 0)
     {
         self.loginBtn.hidden = NO;
         self.memberImageView.hidden = YES;
@@ -145,7 +145,7 @@
         }
         //我的收藏
         else if (indexPath.row == 1) {
-            if ([TBUser currentUser] == nil) {
+            if ([TBUser currentUser].token.length == 0) {
                 
                 [SVProgressShow showInfoWithStatus:@"登录账号才能查看我的收藏"];
                 

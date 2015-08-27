@@ -18,6 +18,14 @@ static TBUser *_currentUser;
     
     NSString *userId = [[NSUserDefaults standardUserDefaults] stringForKey:@"userId"];
     if (userId.length == 0) {
+        TBUser *user = [[TBUser alloc] init];
+        user.userId = @"";
+        user.userName = @"";
+        user.imgUrl = @"";
+        user.token = @"";
+        
+        _currentUser = user;
+        
         return  _currentUser;
     }
     else {
@@ -35,6 +43,13 @@ static TBUser *_currentUser;
 }
 
 +(void)setCurrentUser:(TBUser *)user {
+    
+    if (user == nil) {
+        user.userId = @"";
+        user.userName = @"";
+        user.imgUrl = @"";
+        user.token = @"";
+    }
     _currentUser = user;
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userId"];

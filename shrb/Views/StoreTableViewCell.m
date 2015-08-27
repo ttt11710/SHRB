@@ -16,18 +16,6 @@
 
 @interface StoreTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *tradeImageView;
-@property (weak, nonatomic) IBOutlet UILabel *tradeNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tradeDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *MemberLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UITextField *amountTextField;
-@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
-
-
-
-
-
 @end
 
 

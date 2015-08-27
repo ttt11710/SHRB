@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface StoreViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface StoreViewController : PYBaseViewController <UITableViewDelegate,UITableViewDataSource>
 
+
+
+@property(nonatomic,assign)NSString * merchId;
+@property(nonatomic,assign)NSString * merchTitle;
 
 + (StoreViewController *)shareStoreViewController;
 

@@ -11,7 +11,8 @@
 
 @interface ProductViewController : PYBaseViewController <UIScrollViewDelegate>
 
-@property(nonatomic,assign)NSString * prodId;
+@property (nonatomic,strong) NSMutableDictionary * productDataDic;
+
 
 + (ProductViewController *)shareProductViewController;
 - (void)becomeMember;
