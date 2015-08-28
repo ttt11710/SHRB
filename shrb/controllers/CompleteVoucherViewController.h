@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface CompleteVoucherViewController : UIViewController
+@interface CompleteVoucherViewController : PYBaseViewController
+
+@property(nonatomic,assign)NSString * cardNo;
+@property(nonatomic,assign)NSString * merchId;
 
 @end

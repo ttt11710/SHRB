@@ -9,6 +9,7 @@
 #import "CardTableViewCell.h"
 #import "CardModel.h"
 #import "Const.h"
+#import <UIImageView+WebCache.h>
 
 @interface CardTableViewCell ()
 
@@ -23,11 +24,18 @@
 
 - (void)setModel:(CardModel *)model
 {
-    self.memberCardImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.memberCardImage]];
-    self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@元",model.money];
-    self.cardNumberLabel.text = [NSString stringWithFormat:@"卡号：%@",model.cardNumber];
-    self.integralLabel.text =[NSString stringWithFormat:@"积分：%@分",model.integral];
-    self.backImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",model.backCardImage]];
+//    self.memberCardImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.memberCardImage]];
+//    self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@元",model.money];
+//    self.cardNumberLabel.text = [NSString stringWithFormat:@"卡号：%@",model.cardNumber];
+//    self.integralLabel.text =[NSString stringWithFormat:@"积分：%@分",model.integral];
+//    self.backImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",model.backCardImage]];
+    
+    [self.memberCardImageView sd_setImageWithURL:[NSURL URLWithString:model.vipImgUrl] placeholderImage:[UIImage imageNamed:@"官方头像"]];
+    self.moneyLabel.text = [NSString stringWithFormat:@"金额：%@元",model.amount];
+    self.cardNumberLabel.text = [NSString stringWithFormat:@"卡号：%@",model.cardNo];
+    self.integralLabel.text =[NSString stringWithFormat:@"积分：%@分",model.score];
+    [self.backImageView sd_setImageWithURL:[NSURL URLWithString:model.vipImgUrl] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+    
     
     [self snowAniWithImageName:model.emitterCellImage andEmitterPositionX:model.emitterPositionX andXAcceleration:model.xAcceleration andYAcceleration:model.yAcceleration andSpinRange:model.spinRange];
 }

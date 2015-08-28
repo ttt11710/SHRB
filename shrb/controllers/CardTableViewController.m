@@ -13,12 +13,17 @@
 #import "Const.h"
 #import "SVProgressShow.h"
 #import "CardModel.h"
+#import "TBUser.h"
+#import "NewCardDetailViewController.h"
 
 static int i = 0 ;
 
 @interface CardTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *modelArray;
+
+@property (nonatomic,strong)AFHTTPRequestOperationManager *requestOperationManager;
 
 @end
 
@@ -27,7 +32,9 @@ static int i = 0 ;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initData];
+   // [self initData];
+    [self creatReq];
+    [self loadData];
     [self initTableView];
     
     [self cardAnimation];
@@ -37,6 +44,50 @@ static int i = 0 ;
 {
     [super viewWillAppear:animated];
 
+}
+
+- (void)creatReq
+{
+    self.requestOperationManager=[AFHTTPRequestOperationManager manager];
+    
+    self.requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    AFJSONResponseSerializer *serializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    self.requestOperationManager.responseSerializer=serializer;
+    
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:10*60];
+    self.requestOperationManager.requestSerializer=requestSerializer;
+}
+
+- (void)loadData
+{
+    
+    //cd5935ea60d93f02bedd9e637cc72e92  1440482769193894820
+    if ([TBUser currentUser].token.length == 0) {
+       
+        [SVProgressShow showInfoWithStatus:@"请先登录!"];
+        return;
+    }
+    self.dataArray = [[NSMutableArray alloc] init];
+    self.modelArray = [[NSMutableArray alloc] init];
+    
+    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardList?"];
+    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        self.dataArray = responseObject[@"data"];
+        for (NSDictionary * dic in responseObject[@"data"]) {
+            CardModel * model = [[CardModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            [self.modelArray addObject:model];
+
+        }
+        
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
 }
 
 - (void)initData
@@ -275,7 +326,7 @@ static int i = 0 ;
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.dataArray count];
+    return [self.modelArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -288,11 +339,25 @@ static int i = 0 ;
     //cell 选中方式
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
   //  cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.model = self.dataArray[indexPath.row];
+    cell.model = self.modelArray[indexPath.row];
     
     
     return cell;
 }
+//CardDetailView
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"Card" forKey:@"QRPay"];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+    NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    viewController.cardNo = self.dataArray[indexPath.row][@"cardNo"];
+    viewController.merchId = self.dataArray[indexPath.row][@"merchId"];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 
 #pragma mark - 故事版传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

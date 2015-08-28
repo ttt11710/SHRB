@@ -10,4 +10,8 @@
 
 @interface CardImageAndCardNumTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *cardImgUrlImageView;
+@property (weak, nonatomic) IBOutlet UILabel *cardNoLabel;
+
+
 @end

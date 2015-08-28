@@ -13,22 +13,57 @@
 #import "UITableView+Wave.h"
 #import "SVProgressShow.h"
 #import "Const.h"
+#import "TBUser.h"
 
 @interface TradingRecordTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *expenseArray;
+
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic,strong)AFHTTPRequestOperationManager *requestOperationManager;
 
 
 @end
 
 @implementation TradingRecordTableViewController
 
+@synthesize cardNo;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self creatReq];
+    [self loadData];
     [self initData];
     [self initTableView];
     
+}
+
+- (void)loadData
+{
+    
+    self.dataArray = [[NSMutableArray alloc] init];
+    
+    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardTradeRecords?"];
+    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"cardNo":self.cardNo} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+}
+
+- (void)creatReq
+{
+    self.requestOperationManager=[AFHTTPRequestOperationManager manager];
+    
+    self.requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    AFJSONResponseSerializer *serializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    self.requestOperationManager.responseSerializer=serializer;
+    
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:10*60];
+    self.requestOperationManager.requestSerializer=requestSerializer;
 }
 
 - (void)initData

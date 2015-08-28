@@ -402,16 +402,6 @@
         storeViewController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:storeViewController animated:YES];
 
-//        OrderStoreViewController *orderStoreViewController = [[OrderStoreViewController alloc] init];
-//        orderStoreViewController.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:orderStoreViewController animated:YES];
-//        [SVProgressShow dismiss];
-        
-//        UIViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"KYDrawer"];
-//        [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//        storeViewController.hidesBottomBarWhenPushed = YES;
-//        self.navigationController.navigationBarHidden = YES;
-//        [self.navigationController pushViewController:storeViewController animated:YES];
         [SVProgressShow dismiss];
     }
 }

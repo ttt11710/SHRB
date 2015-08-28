@@ -10,12 +10,14 @@
 #import "SVProgressShow.h"
 #import "Const.h"
 #import "CompleteVoucherViewController.h"
+#import "TBUser.h"
 
 @interface VoucherCenterViewController ()
 
 
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *integralLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cardNoLabel;
 
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
@@ -34,6 +36,11 @@
 
 @implementation VoucherCenterViewController
 
+@synthesize cardNo;
+@synthesize amount;
+@synthesize score;
+@synthesize merchId;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,22 +55,27 @@
 
 - (void)initView
 {
-    NSMutableAttributedString *moneyAttrString = [[NSMutableAttributedString alloc] initWithString:@"金额:￥450"];
+    NSString *amountString = [self.amount stringValue];
+    NSString *scoreString = [self.score stringValue];
+    
+    NSMutableAttributedString *moneyAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"金额:￥%@",amountString]];
     [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
-    [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, 4)];
+    [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, amountString.length+1)];
     [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 3)];
-    [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, 4)];
+    [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, amountString.length+1)];
     
     self.moneyLabel.attributedText = moneyAttrString;
     
-    NSMutableAttributedString *integralAttrString = [[NSMutableAttributedString alloc] initWithString:@"积分:3200"];
+    NSMutableAttributedString *integralAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"积分:%@",scoreString]];
     [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
-    [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, 4)];
+    [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, scoreString.length)];
     [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 3)];
-    [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, 4)];
+    [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, scoreString.length)];
     
     self.integralLabel.attributedText = integralAttrString;
     
+    
+    self.cardNoLabel.text = [NSString stringWithFormat:@"卡号:%@",self.cardNo];
     
     [self.internetbankBtn setImage:[UIImage imageNamed:@"payUncheck"] forState:UIControlStateNormal];
     [self.internetbankBtn setImage:[UIImage imageNamed:@"paycheck"] forState:UIControlStateSelected];
@@ -155,18 +167,30 @@
     
     NSLog(@"%@",self.internetbankBtn.selected?@"银联充值方式":@"支付宝充值方式");
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-    CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
-    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [SVProgressShow showWithStatus:@"充值处理中..."];
     
-    double delayInSeconds = 1;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [SVProgressShow dismiss];
-        [self.navigationController pushViewController:viewController animated:YES];
-    });
+    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/cardMemberRecharge?"];
+    [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"amount":@1000,@"cardNo":self.cardNo,@"chanrgeTypeId":@"1"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+        CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        viewController.merchId = self.merchId;
+        viewController.cardNo = self.cardNo;
+        [SVProgressShow showWithStatus:@"充值处理中..."];
+        
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow dismiss];
+            [self.navigationController pushViewController:viewController animated:YES];
+        });
+        
 
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+    
 }
 
 

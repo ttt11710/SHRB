@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface VoucherCenterViewController : UIViewController
+@interface VoucherCenterViewController : PYBaseViewController
+
+@property(nonatomic,assign)NSString * cardNo;
+@property(nonatomic,assign)NSNumber * amount;
+@property(nonatomic,assign)NSNumber * score;
+@property(nonatomic,assign)NSString * merchId;
+
 
 @end

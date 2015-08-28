@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface NewCardDetailViewController : UIViewController
+@interface NewCardDetailViewController : PYBaseViewController
+
+
+@property(nonatomic,assign)NSString * merchId;
+@property(nonatomic,assign)NSString * cardNo;
 
 + (NewCardDetailViewController *)shareNewCardDetailViewController;
 - (void)completePay;

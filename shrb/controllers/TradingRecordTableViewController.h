@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AFNetworking.h>
 
 @interface TradingRecordTableViewController : UITableViewController
+
+@property(nonatomic,assign)NSString * cardNo;
 
 @end

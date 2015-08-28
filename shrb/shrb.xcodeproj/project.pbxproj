@@ -169,6 +169,7 @@
 		DFE001D01B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */; };
 		DFE001D41B81B22500BBD84A /* RegisteringStoreMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */; };
 		DFE07F0F1B707F770068D345 /* HotListSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE07F0E1B707F770068D345 /* HotListSelectViewController.m */; };
+		DFE18DA31B900A4E009B123E /* UpdatePayPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE18DA21B900A4E009B123E /* UpdatePayPassViewController.m */; };
 		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
 		DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */; };
 		DFF766DF1B65D02E005BB71C /* NewStoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF766DE1B65D02E005BB71C /* NewStoreCollectionViewCell.m */; };
@@ -502,6 +503,8 @@
 		DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteringStoreMemberViewController.m; sourceTree = "<group>"; };
 		DFE07F0D1B707F770068D345 /* HotListSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotListSelectViewController.h; sourceTree = "<group>"; };
 		DFE07F0E1B707F770068D345 /* HotListSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotListSelectViewController.m; sourceTree = "<group>"; };
+		DFE18DA11B900A4E009B123E /* UpdatePayPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePayPassViewController.h; sourceTree = "<group>"; };
+		DFE18DA21B900A4E009B123E /* UpdatePayPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePayPassViewController.m; sourceTree = "<group>"; };
 		DFF330E01B2EC57500007582 /* SVProgressShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressShow.h; sourceTree = "<group>"; };
 		DFF330E11B2EC57500007582 /* SVProgressShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressShow.m; sourceTree = "<group>"; };
 		DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoucherCenterViewController.h; sourceTree = "<group>"; };
@@ -897,6 +900,8 @@
 				DF71773E1B30180700D3C3B9 /* HelpCenterTableViewController.m */,
 				DFC3B5CF1B8D8D5600D6C5BE /* ResetPasswordViewController.h */,
 				DFC3B5D01B8D8D5600D6C5BE /* ResetPasswordViewController.m */,
+				DFE18DA11B900A4E009B123E /* UpdatePayPassViewController.h */,
+				DFE18DA21B900A4E009B123E /* UpdatePayPassViewController.m */,
 			);
 			name = "objective-C";
 			sourceTree = "<group>";
@@ -1508,6 +1513,7 @@
 				DF54C4391B8C66C4002183EC /* Store.m in Sources */,
 				DFB763251B3D495F0086ABB7 /* NewCardDetailViewController.m in Sources */,
 				DF7176FF1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m in Sources */,
+				DFE18DA31B900A4E009B123E /* UpdatePayPassViewController.m in Sources */,
 				DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */,
 				DF77A5BB1B0C155D00934A7C /* StoreViewController.m in Sources */,
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,

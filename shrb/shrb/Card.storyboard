@@ -260,7 +260,6 @@
                                     <outlet property="memberCardImageView" destination="UVT-8S-9uB" id="MiN-0K-ul3"/>
                                     <outlet property="moneyLabel" destination="u5m-rh-d4g" id="oSr-56-ARN"/>
                                     <outlet property="shadowView" destination="u2m-qx-2cF" id="vEq-SD-U84"/>
-                                    <segue destination="iH7-Sz-9et" kind="push" id="UHm-ye-cla"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -276,12 +275,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0xb-0i-dI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1402.5" y="338"/>
+            <point key="canvasLocation" x="1384.5" y="1023"/>
         </scene>
         <!--会员卡充值-->
         <scene sceneID="kSp-IZ-bW4">
             <objects>
-                <viewController id="wgb-ay-aPr" customClass="VoucherCenterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VoucherCenter" id="wgb-ay-aPr" customClass="VoucherCenterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0nP-Z8-CYD"/>
                         <viewControllerLayoutGuide type="bottom" id="c4f-dW-DLJ"/>
@@ -878,6 +877,7 @@
                     <connections>
                         <outlet property="alipayBtn" destination="aS0-Um-I8Y" id="Emw-H7-odc"/>
                         <outlet property="alipayView" destination="NOh-qt-ZuA" id="Kue-FA-70o"/>
+                        <outlet property="cardNoLabel" destination="mxG-O6-xOB" id="OU9-Oa-qg1"/>
                         <outlet property="integralLabel" destination="Ja8-Lq-2Fe" id="eQt-UP-wZg"/>
                         <outlet property="internetbankBtn" destination="ZZm-cr-6ft" id="hSG-E1-PnK"/>
                         <outlet property="internetbankView" destination="wRw-bg-18k" id="fYL-qM-txH"/>
@@ -1542,6 +1542,10 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cardImgUrlImageView" destination="E19-mq-x3r" id="TZ3-Uj-UFo"/>
+                                            <outlet property="cardNoLabel" destination="R0g-Co-XtD" id="xEN-IZ-T6M"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeftLabelTableViewCellIdentifier" rowHeight="44" id="upm-WI-mES" customClass="LeftLabelTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1752,7 +1756,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wgb-ay-aPr" kind="push" identifier="gotoVoucherCenter" id="VnL-12-lVv"/>
+                                    <action selector="goVoucherCenterBtnPressed:" destination="iH7-Sz-9et" eventType="touchUpInside" id="LnL-3O-y4F"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3556,7 +3560,4 @@
         <image name="redPacketLogo" width="50" height="20"/>
         <image name="官方头像" width="50" height="50"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="VnL-12-lVv"/>
-    </inferredMetricsTieBreakers>
 </document>

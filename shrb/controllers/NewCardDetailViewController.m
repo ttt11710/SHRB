@@ -13,6 +13,10 @@
 #import "Const.h"
 #import "PayQRViewController.h"
 #import "VoucherCenterViewController.h"
+#import "TBUser.h"
+#import <UIImageView+WebCache.h>
+#import "TradingRecordTableViewController.h"
+#import "VoucherCenterViewController.h"
 
 
 static NewCardDetailViewController *g_NewCardDetailViewController = nil;
@@ -25,6 +29,8 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 
 @property(assign, readwrite, nonatomic)BOOL flag;
 @property(readonly, nonatomic)NSMutableArray *sectionDataMutableArray;
+
+
 
 @end
 
@@ -153,11 +159,15 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 @property (weak, nonatomic) IBOutlet UIButton *payBtn;
 @property (weak, nonatomic) IBOutlet UIButton *voucherBtn;
 
+@property (nonatomic, strong) NSMutableDictionary *dataDic;
 
 @end
 
 
 @implementation NewCardDetailViewController
+
+@synthesize cardNo;
+@synthesize merchId;
 
 + (NewCardDetailViewController *)shareNewCardDetailViewController
 {
@@ -169,9 +179,25 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     
     g_NewCardDetailViewController = self;
     
+    [self loadData];
     [self initBtn];
     [self initData];
     [self initTableView];
+}
+
+- (void)loadData
+{
+    
+    self.dataDic = [[NSMutableDictionary alloc] init];
+    
+    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardDetail?"];
+    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":self.cardNo} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        self.dataDic = responseObject[@"data"];
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
 }
 
 - (void)initBtn
@@ -263,7 +289,12 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         
         sectionHeaderView.tag = section-1;
         
-        sectionHeaderView.title = section == 1?@"会员金额：3000元":@"会员积分：0分";
+        if (section == 1) {
+            sectionHeaderView.title = [NSString stringWithFormat:@"会员金额:%@元",self.dataDic[@"amount"]];
+        }
+        else {
+            sectionHeaderView.title = [NSString stringWithFormat:@"会员积分:%@分",self.dataDic[@"score"]];
+        }
         
         SectionModel *sectionModel = [_dataMutableArray objectAtIndex:section-1];
         sectionHeaderView.flag=sectionModel.flag;
@@ -352,7 +383,9 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         }
         //cell 选中方式
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-       
+        [cell.cardImgUrlImageView sd_setImageWithURL:[NSURL URLWithString:self.dataDic[@"cardImgUrl"]] placeholderImage:[UIImage imageNamed:@"官方头像"]];
+        cell.cardNoLabel.text = [NSString stringWithFormat:@"卡号:%@",self.dataDic[@"cardNo"]];
+        
         return cell;
     }
     else if (indexPath.section == 3)
@@ -363,6 +396,8 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         if (cell == nil) {
             cell = [[LeftLabelTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (indexPath.row == 0) {
             cell.leftLabel.text = @"交易记录";
         }
@@ -394,8 +429,9 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 {
     if (indexPath.section == 3 && indexPath.row == 0) {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"TradingRecordTableView"];
+        TradingRecordTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"TradingRecordTableView"];
         [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        viewController.cardNo = self.cardNo;
         [self.navigationController pushViewController:viewController animated:YES];
     }
     else if (indexPath.section == 3 && indexPath.row == 1) {
@@ -438,6 +474,27 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 {
     [SVProgressShow showSuccessWithStatus:@"支付成功！"];
 }
+
+#pragma mark - 进入充值界面
+- (IBAction)goVoucherCenterBtnPressed:(id)sender {
+    
+     NSString *QRPay = [[NSUserDefaults standardUserDefaults] stringForKey:@"QRPay"];
+    if ( [QRPay isEqualToString:@"SupermarketOrOrder"]) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketOrOrderVoucher" forKey:@"QRPay"];
+    }
+
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+    VoucherCenterViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"VoucherCenter"];
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    viewController.cardNo = self.cardNo;
+    viewController.amount = self.dataDic[@"amount"];
+    viewController.score = self.dataDic[@"score"];
+    viewController.merchId = self.merchId;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+
 
 #pragma mark - 故事版传值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

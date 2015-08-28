@@ -12,6 +12,8 @@
 #import <CRToast.h>
 #import <BFPaperButton/BFPaperButton.h>
 #import "Const.h"
+#import "TBUser.h"
+#import <UIImageView+WebCache.h>
 
 @interface CompleteVoucherViewController ()
 
@@ -22,23 +24,43 @@
 @property (weak, nonatomic) IBOutlet UITextView *recordTextView;
 
 @property (weak, nonatomic) IBOutlet BFPaperButton *completeVoucherBtn;
+
+@property (nonatomic, strong) NSMutableDictionary *dataDic;
+
 @end
 
 @implementation CompleteVoucherViewController
 
+@synthesize cardNo;
+@synthesize merchId;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self initView];
-    
+    [self loadData];
 }
 
+
+- (void)loadData
+{
+    self.dataDic = [[NSMutableDictionary alloc] init];
+    
+    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardDetail?"];
+    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":self.cardNo} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        self.dataDic = responseObject[@"data"];
+        [self initView];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+}
 - (void)initView
 {
-    self.cardImageView.image = [UIImage imageNamed:@"官方头像"];
-    self.moneyLabel.text = @"金额：1000元";
-    self.integralLabel.text = @"积分：10000分";
-    self.cardNumberLabel.text = @"卡号：6789674329589432";
+    [self.cardImageView sd_setImageWithURL:[NSURL URLWithString:self.dataDic[@"cardImgUrl"]] placeholderImage:[UIImage imageNamed:@"官方头像"]];
+    self.moneyLabel.text = [NSString stringWithFormat:@"金额:￥%@",self.dataDic[@"amount"]];
+    self.integralLabel.text = [NSString stringWithFormat:@"积分:%@分",self.dataDic[@"score"]];
+    self.cardNumberLabel.text = [NSString stringWithFormat:@"卡号:%@",self.cardNo];
     self.recordTextView.text = @"2015年5月20日     PM15:47\n完成一次100元的充值交易";
     
     [self.completeVoucherBtn setBackgroundColor:shrbPink];

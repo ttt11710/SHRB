@@ -28,4 +28,17 @@
 @property(nonatomic) CGFloat spinRange;
 
 
+
+@property(nonatomic,copy) NSString * vipImgUrl;             //会员卡图片
+@property(nonatomic,copy) NSString * amount;                //金额
+@property(nonatomic,copy) NSString * cardNo;                //卡号
+@property(nonatomic,copy) NSString * score;                 //积分
+@property(nonatomic,copy) NSString * imgUrl1;
+@property(nonatomic,copy) NSString * imgUrl2;
+@property(nonatomic,copy) NSString * imgUrl3;
+@property(nonatomic,copy) NSString * imgUrl4;
+@property(nonatomic,copy) NSString * merchName;
+@property(nonatomic,copy) NSString * merchId;                //商户ID
+
+
 @end

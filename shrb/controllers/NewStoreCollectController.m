@@ -379,7 +379,7 @@
     cell.backgroundColor = [UIColor whiteColor];
     
     cell.prodNameLabel.text = self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodName"] == nil? @"商品名称" : self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodName"];
-    [cell.tradeImageView sd_setImageWithURL:[NSURL URLWithString:self.selectArray[indexPath.section][@"imgUrl"][indexPath.row][@"prodName"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+    [cell.tradeImageView sd_setImageWithURL:[NSURL URLWithString:self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"imgUrl"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
     
     cell.vipPriceLabel.text = [NSString stringWithFormat:@"会员价:￥%@",self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"vipPrice"]];
     cell.priceLabel.text = [NSString stringWithFormat:@"原价:￥%@",self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"price"]];
