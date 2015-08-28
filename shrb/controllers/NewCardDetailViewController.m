@@ -17,6 +17,7 @@
 #import <UIImageView+WebCache.h>
 #import "TradingRecordTableViewController.h"
 #import "VoucherCenterViewController.h"
+#import "NewVoucherCenterViewController.h"
 
 
 static NewCardDetailViewController *g_NewCardDetailViewController = nil;
@@ -484,14 +485,24 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketOrOrderVoucher" forKey:@"QRPay"];
     }
 
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+//    VoucherCenterViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"VoucherCenter"];
+//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    viewController.cardNo = self.cardNo;
+//    viewController.amount = self.dataDic[@"amount"];
+//    viewController.score = self.dataDic[@"score"];
+//    viewController.merchId = self.merchId;
+//    [self.navigationController pushViewController:viewController animated:YES];
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-    VoucherCenterViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"VoucherCenter"];
+    NewVoucherCenterViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewVoucherCenterView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     viewController.cardNo = self.cardNo;
     viewController.amount = self.dataDic[@"amount"];
     viewController.score = self.dataDic[@"score"];
     viewController.merchId = self.merchId;
     [self.navigationController pushViewController:viewController animated:YES];
+    
 }
 
 

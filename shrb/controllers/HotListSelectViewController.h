@@ -22,6 +22,9 @@
 @property (nonatomic, retain) NSMutableArray *storeNamesArr;
 @property (nonatomic, retain) NSMutableArray *storePlistNameArr;
 
+
+@property(nonatomic,assign)NSMutableArray * dataArray;
+
 @end
 
 

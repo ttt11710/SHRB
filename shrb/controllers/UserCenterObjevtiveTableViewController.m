@@ -192,8 +192,14 @@
 #pragma mark - 登录按钮
 - (IBAction)loginBtnPressed:(id)sender {
     
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+//    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginView"];
+//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    [viewController setHidesBottomBarWhenPushed:YES];
+//    [self.navigationController pushViewController:viewController animated:YES];
+
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginView"];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewLoginView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     [viewController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:viewController animated:YES];

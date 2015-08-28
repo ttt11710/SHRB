@@ -39,6 +39,10 @@
 		DF2B0E331B423DB40051AA1A /* TNRectangularCheckBoxData.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B0E2A1B423DB40051AA1A /* TNRectangularCheckBoxData.m */; };
 		DF2D7A281B466919003790A5 /* CollectObjectiveTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */; };
 		DF2D7A2B1B466E6F003790A5 /* CollectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2D7A2A1B466E6F003790A5 /* CollectTableViewCell.m */; };
+		DF32B8921B90446400BA3318 /* NewVoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF32B8911B90446400BA3318 /* NewVoucherCenterViewController.m */; };
+		DF32B8951B9045A900BA3318 /* CardDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF32B8941B9045A900BA3318 /* CardDetailTableViewCell.m */; };
+		DF32B8981B9046D600BA3318 /* ChanrgeTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF32B8971B9046D600BA3318 /* ChanrgeTypeTableViewCell.m */; };
+		DF32B89B1B904A8000BA3318 /* VoucherAmoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF32B89A1B904A8000BA3318 /* VoucherAmoutTableViewCell.m */; };
 		DF3567881B87154E0022C8BB /* OrderListDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3567871B87154E0022C8BB /* OrderListDetialViewController.m */; };
 		DF35678C1B8718E50022C8BB /* CallBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DF35678B1B8718E50022C8BB /* CallBackButton.m */; };
 		DF35678F1B87241D0022C8BB /* ServeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF35678E1B87241D0022C8BB /* ServeSelectViewController.m */; };
@@ -159,6 +163,7 @@
 		DFC3B5CE1B8D522100D6C5BE /* TBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3B5CD1B8D522100D6C5BE /* TBUser.m */; };
 		DFC3B5D11B8D8D5600D6C5BE /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3B5D01B8D8D5600D6C5BE /* ResetPasswordViewController.m */; };
 		DFC45A221B44DA8C0055C4C3 /* SuperBecomeMemberView1.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC45A211B44DA8C0055C4C3 /* SuperBecomeMemberView1.m */; };
+		DFC8B5E11B903A3700038B87 /* NewForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC8B5E01B903A3700038B87 /* NewForgetPasswordViewController.m */; };
 		DFCDF9481B3BD73600F70955 /* DOPScrollableActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */; };
 		DFCDF94B1B3BDE9000F70955 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCDF94A1B3BDE9000F70955 /* NewStoreViewController.m */; };
 		DFCF89F01B5779DE00D09A4A /* FoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCF89EF1B5779DE00D09A4A /* FoldingView.m */; };
@@ -170,6 +175,9 @@
 		DFE001D41B81B22500BBD84A /* RegisteringStoreMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */; };
 		DFE07F0F1B707F770068D345 /* HotListSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE07F0E1B707F770068D345 /* HotListSelectViewController.m */; };
 		DFE18DA31B900A4E009B123E /* UpdatePayPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE18DA21B900A4E009B123E /* UpdatePayPassViewController.m */; };
+		DFE18DA61B902349009B123E /* UpdatePassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE18DA51B902349009B123E /* UpdatePassViewController.m */; };
+		DFE18DAA1B902971009B123E /* NewLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE18DA91B902971009B123E /* NewLoginViewController.m */; };
+		DFE18DAD1B902E55009B123E /* NewRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE18DAC1B902E55009B123E /* NewRegisterViewController.m */; };
 		DFF330E21B2EC57500007582 /* SVProgressShow.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E11B2EC57500007582 /* SVProgressShow.m */; };
 		DFF330E51B2ECC1300007582 /* VoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */; };
 		DFF766DF1B65D02E005BB71C /* NewStoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF766DE1B65D02E005BB71C /* NewStoreCollectionViewCell.m */; };
@@ -251,6 +259,14 @@
 		DF2D7A271B466919003790A5 /* CollectObjectiveTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectObjectiveTableViewController.m; sourceTree = "<group>"; };
 		DF2D7A291B466E6F003790A5 /* CollectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectTableViewCell.h; sourceTree = "<group>"; };
 		DF2D7A2A1B466E6F003790A5 /* CollectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectTableViewCell.m; sourceTree = "<group>"; };
+		DF32B8901B90446400BA3318 /* NewVoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewVoucherCenterViewController.h; sourceTree = "<group>"; };
+		DF32B8911B90446400BA3318 /* NewVoucherCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewVoucherCenterViewController.m; sourceTree = "<group>"; };
+		DF32B8931B9045A900BA3318 /* CardDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailTableViewCell.h; sourceTree = "<group>"; };
+		DF32B8941B9045A900BA3318 /* CardDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailTableViewCell.m; sourceTree = "<group>"; };
+		DF32B8961B9046D600BA3318 /* ChanrgeTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanrgeTypeTableViewCell.h; sourceTree = "<group>"; };
+		DF32B8971B9046D600BA3318 /* ChanrgeTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanrgeTypeTableViewCell.m; sourceTree = "<group>"; };
+		DF32B8991B904A8000BA3318 /* VoucherAmoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoucherAmoutTableViewCell.h; sourceTree = "<group>"; };
+		DF32B89A1B904A8000BA3318 /* VoucherAmoutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoucherAmoutTableViewCell.m; sourceTree = "<group>"; };
 		DF3567861B87154E0022C8BB /* OrderListDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListDetialViewController.h; sourceTree = "<group>"; };
 		DF3567871B87154E0022C8BB /* OrderListDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListDetialViewController.m; sourceTree = "<group>"; };
 		DF35678A1B8718E50022C8BB /* CallBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallBackButton.h; sourceTree = "<group>"; };
@@ -484,6 +500,8 @@
 		DFC3B5D01B8D8D5600D6C5BE /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		DFC45A201B44DA8C0055C4C3 /* SuperBecomeMemberView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperBecomeMemberView1.h; sourceTree = "<group>"; };
 		DFC45A211B44DA8C0055C4C3 /* SuperBecomeMemberView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperBecomeMemberView1.m; sourceTree = "<group>"; };
+		DFC8B5DF1B903A3700038B87 /* NewForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewForgetPasswordViewController.h; sourceTree = "<group>"; };
+		DFC8B5E01B903A3700038B87 /* NewForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewForgetPasswordViewController.m; sourceTree = "<group>"; };
 		DFCDF9461B3BD73600F70955 /* DOPScrollableActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPScrollableActionSheet.h; sourceTree = "<group>"; };
 		DFCDF9471B3BD73600F70955 /* DOPScrollableActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPScrollableActionSheet.m; sourceTree = "<group>"; };
 		DFCDF9491B3BDE9000F70955 /* NewStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreViewController.h; sourceTree = "<group>"; };
@@ -505,6 +523,12 @@
 		DFE07F0E1B707F770068D345 /* HotListSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotListSelectViewController.m; sourceTree = "<group>"; };
 		DFE18DA11B900A4E009B123E /* UpdatePayPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePayPassViewController.h; sourceTree = "<group>"; };
 		DFE18DA21B900A4E009B123E /* UpdatePayPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePayPassViewController.m; sourceTree = "<group>"; };
+		DFE18DA41B902349009B123E /* UpdatePassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePassViewController.h; sourceTree = "<group>"; };
+		DFE18DA51B902349009B123E /* UpdatePassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePassViewController.m; sourceTree = "<group>"; };
+		DFE18DA81B902971009B123E /* NewLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLoginViewController.h; sourceTree = "<group>"; };
+		DFE18DA91B902971009B123E /* NewLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLoginViewController.m; sourceTree = "<group>"; };
+		DFE18DAB1B902E55009B123E /* NewRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRegisterViewController.h; sourceTree = "<group>"; };
+		DFE18DAC1B902E55009B123E /* NewRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRegisterViewController.m; sourceTree = "<group>"; };
 		DFF330E01B2EC57500007582 /* SVProgressShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressShow.h; sourceTree = "<group>"; };
 		DFF330E11B2EC57500007582 /* SVProgressShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressShow.m; sourceTree = "<group>"; };
 		DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoucherCenterViewController.h; sourceTree = "<group>"; };
@@ -719,6 +743,7 @@
 		DF66B8461B53AEC1002E9EFC /* login */ = {
 			isa = PBXGroup;
 			children = (
+				DFE18DA71B902958009B123E /* new */,
 				DF66B8431B539F4E002E9EFC /* LoginViewController.h */,
 				DF66B8441B539F4E002E9EFC /* LoginViewController.m */,
 				DF66B8471B53AF33002E9EFC /* ForgetPasswordViewController.h */,
@@ -902,6 +927,8 @@
 				DFC3B5D01B8D8D5600D6C5BE /* ResetPasswordViewController.m */,
 				DFE18DA11B900A4E009B123E /* UpdatePayPassViewController.h */,
 				DFE18DA21B900A4E009B123E /* UpdatePayPassViewController.m */,
+				DFE18DA41B902349009B123E /* UpdatePassViewController.h */,
+				DFE18DA51B902349009B123E /* UpdatePassViewController.m */,
 			);
 			name = "objective-C";
 			sourceTree = "<group>";
@@ -1010,6 +1037,8 @@
 			children = (
 				DF610B6B1B2E6AA7009E047A /* CardAndCouponsViewController.h */,
 				DF610B6C1B2E6AA7009E047A /* CardAndCouponsViewController.m */,
+				DF32B8901B90446400BA3318 /* NewVoucherCenterViewController.h */,
+				DF32B8911B90446400BA3318 /* NewVoucherCenterViewController.m */,
 				DFF330E31B2ECC1300007582 /* VoucherCenterViewController.h */,
 				DFF330E41B2ECC1300007582 /* VoucherCenterViewController.m */,
 				DF7D1E641B0DD50500CD05B3 /* CompleteVoucherViewController.h */,
@@ -1047,6 +1076,12 @@
 				DFAE95601B25434F006A495B /* CouponsDetailTableViewCell.m */,
 				DFB763261B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.h */,
 				DFB763271B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m */,
+				DF32B8931B9045A900BA3318 /* CardDetailTableViewCell.h */,
+				DF32B8941B9045A900BA3318 /* CardDetailTableViewCell.m */,
+				DF32B8961B9046D600BA3318 /* ChanrgeTypeTableViewCell.h */,
+				DF32B8971B9046D600BA3318 /* ChanrgeTypeTableViewCell.m */,
+				DF32B8991B904A8000BA3318 /* VoucherAmoutTableViewCell.h */,
+				DF32B89A1B904A8000BA3318 /* VoucherAmoutTableViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1306,6 +1341,19 @@
 			name = POPCategories;
 			sourceTree = "<group>";
 		};
+		DFE18DA71B902958009B123E /* new */ = {
+			isa = PBXGroup;
+			children = (
+				DFE18DA81B902971009B123E /* NewLoginViewController.h */,
+				DFE18DA91B902971009B123E /* NewLoginViewController.m */,
+				DFE18DAB1B902E55009B123E /* NewRegisterViewController.h */,
+				DFE18DAC1B902E55009B123E /* NewRegisterViewController.m */,
+				DFC8B5DF1B903A3700038B87 /* NewForgetPasswordViewController.h */,
+				DFC8B5E01B903A3700038B87 /* NewForgetPasswordViewController.m */,
+			);
+			name = new;
+			sourceTree = "<group>";
+		};
 		DFF330DF1B2EC56100007582 /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1481,6 +1529,7 @@
 				DF610B6D1B2E6AA7009E047A /* CardAndCouponsViewController.m in Sources */,
 				DF7A8A591B3CE90600528864 /* ProductTableViewController.m in Sources */,
 				DF9D09E01B5DF0500007A7FB /* BookTextView.m in Sources */,
+				DF32B8921B90446400BA3318 /* NewVoucherCenterViewController.m in Sources */,
 				DF66B83D1B535B43002E9EFC /* SuperQRViewController.m in Sources */,
 				DFF906D31B82CCEF00E70CD0 /* KYDrawerController.swift in Sources */,
 				DFB057A81B4141D60091A1E1 /* UserCouponsViewController.m in Sources */,
@@ -1519,10 +1568,12 @@
 				DF72C0C21B0B339800CE6DC6 /* ViewController.m in Sources */,
 				DF1EBFD31B6F39E3002DF8BA /* MessageProcessor.m in Sources */,
 				DFB057911B40E5D30091A1E1 /* HJCAjustNumButton3.m in Sources */,
+				DF32B8951B9045A900BA3318 /* CardDetailTableViewCell.m in Sources */,
 				DFAE52AE1B32743500B03B2F /* QRItem.m in Sources */,
 				DF1EBFB61B6EFC60002DF8BA /* PYBaseViewController.m in Sources */,
 				DF7A8A5C1B3CE97700528864 /* ProductTableViewCell.m in Sources */,
 				DF7A8A5F1B3CE9DC00528864 /* ProductModel.m in Sources */,
+				DFE18DAD1B902E55009B123E /* NewRegisterViewController.m in Sources */,
 				DF1EBFD01B6F2FF7002DF8BA /* FmdbMigrationManager.m in Sources */,
 				DFCF89F01B5779DE00D09A4A /* FoldingView.m in Sources */,
 				DFF766E41B65D2CE005BB71C /* NewStoreCollectController.m in Sources */,
@@ -1566,6 +1617,7 @@
 				DFBD30DA1B8473B10006E32A /* OrderModel.m in Sources */,
 				DF2B0E2E1B423DB40051AA1A /* TNCircularCheckBox.m in Sources */,
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
+				DF32B89B1B904A8000BA3318 /* VoucherAmoutTableViewCell.m in Sources */,
 				DFC001C91B8ABCDE00F5F89A /* AppleRefundTableViewCell.m in Sources */,
 				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
@@ -1597,12 +1649,16 @@
 				DF2B0E301B423DB40051AA1A /* TNImageCheckbox.m in Sources */,
 				DFB763301B3D51B10086ABB7 /* LeftLabelTableViewCell.m in Sources */,
 				DF2B0E321B423DB40051AA1A /* TNRectangularCheckBox.m in Sources */,
+				DF32B8981B9046D600BA3318 /* ChanrgeTypeTableViewCell.m in Sources */,
 				DF35678C1B8718E50022C8BB /* CallBackButton.m in Sources */,
+				DFC8B5E11B903A3700038B87 /* NewForgetPasswordViewController.m in Sources */,
 				DF7D1E661B0DD50500CD05B3 /* CompleteVoucherViewController.m in Sources */,
 				DF9D09E81B5DF0C80007A7FB /* ParagraphAttributes.m in Sources */,
 				DFC39BC51B294ECE006B50F4 /* LazyFadeInView.m in Sources */,
+				DFE18DAA1B902971009B123E /* NewLoginViewController.m in Sources */,
 				DF9E4AA01B86C15600C36002 /* NTButton.m in Sources */,
 				DF4E4C6A1B0C87D500FE499E /* BecomeMemberViewController.m in Sources */,
+				DFE18DA61B902349009B123E /* UpdatePassViewController.m in Sources */,
 				DFB057A01B4128C90091A1E1 /* TradingRecordTableViewController.m in Sources */,
 				DF1EBFC61B6F2E3D002DF8BA /* M4CreateHot.m in Sources */,
 				DF7177341B300F2A00D3C3B9 /* OrderListTableViewController.m in Sources */,

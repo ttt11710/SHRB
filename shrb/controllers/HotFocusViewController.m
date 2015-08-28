@@ -305,49 +305,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-//     NSString*storePlistName = self.plistArr[indexPath.section][@"storePlistName"];
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storePlistName"];
-//    [[NSUserDefaults standardUserDefaults] setObject:storePlistName forKey:@"storePlistName"];
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storeName"];
-//    [[NSUserDefaults standardUserDefaults] setObject:self.plistArr[indexPath.section][@"storeName"] forKey:@"storeName"];
-    
-    NSString*storePlistName;
-    if (indexPath.section == 0) {
-        storePlistName = @"16N";
-        }
-    else if (indexPath.section == 1) {
-        storePlistName = @"yunifang";
-    }
-    else if (indexPath.section == 2) {
-        storePlistName = @"holy";
-    }
-    else  {
-        storePlistName = @"McDonalds";
-    }
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storePlistName"];
-        [[NSUserDefaults standardUserDefaults] setObject:storePlistName forKey:@"storePlistName"];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"storeName"];
-        [[NSUserDefaults standardUserDefaults] setObject:self.plistArr[indexPath.section][@"storeName"] forKey:@"storeName"];
-    
-    
-    //是否会员
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isMember"];
-    if ([storePlistName isEqualToString:@"16N"] || [storePlistName isEqualToString:@"holy"] ) {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMember"];
-    }
-    else {
-       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMember"];
-    }
-    
-    //店铺类型
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"typesOfShops"];
-    if ([storePlistName isEqualToString:@"16N"] || [storePlistName isEqualToString:@"yunifang"] ) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"supermarket" forKey:@"typesOfShops"];
-    }
-    else {
-        [[NSUserDefaults standardUserDefaults] setObject:@"order" forKey:@"typesOfShops"];
-    }
-    
     HotFocusTableViewCell* cell = (HotFocusTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -377,12 +334,10 @@
 #pragma mark - 延时显示状态然后跳转
 - (void)todoSomething:(NSIndexPath *)indexPath
 {
-    NSString * typesOfShops = [[NSUserDefaults standardUserDefaults] stringForKey:@"typesOfShops"];
-    
-    //supermarket
+   
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    if ([typesOfShops isEqualToString:@"supermarket"]) {
+    if (indexPath.section <= 1) {
         //超市
         
         NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
@@ -392,7 +347,7 @@
         [self.navigationController pushViewController:newStoreCollectController animated:YES];
         [SVProgressShow dismiss];
     }
-    else if ([typesOfShops isEqualToString:@"order"]) {
+    else  {
         //点餐
         
         StoreViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
@@ -401,7 +356,7 @@
         [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
         storeViewController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:storeViewController animated:YES];
-
+        
         [SVProgressShow dismiss];
     }
 }
@@ -438,6 +393,7 @@
     HotListSelectViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotListSelectViewController"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     viewController.hidesBottomBarWhenPushed = YES;
+    viewController.dataArray = self.dataArray;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

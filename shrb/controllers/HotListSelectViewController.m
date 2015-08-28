@@ -37,6 +37,8 @@
 @implementation HotListSelectViewController
 @synthesize tableView;
 
+@synthesize dataArray;
+
 #define CHECK_TAG 1110
 
 @synthesize  storeNamesArr,storePlistNameArr;
@@ -74,12 +76,13 @@
     _mysearchDisplayController.delegate = self;
     
     
+    
     NSMutableArray *arr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"store" ofType:@"plist"]];
     self.storeNamesArr = [[NSMutableArray alloc] init];
     self.storePlistNameArr = [[NSMutableArray alloc] init];
-    for (NSDictionary * dict in arr) {
+    for (NSDictionary * dict in self.dataArray) {
         
-        [self.storeNamesArr addObject:dict[@"storeName"]];
+        [self.storeNamesArr addObject:dict[@"merchName"]];
         [self.storePlistNameArr addObject:dict[@"storePlistName"]];
     }
     
@@ -302,17 +305,28 @@
     //supermarket
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    if ([typesOfShops isEqualToString:@"supermarket"]) {
-        
-        NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
-        [self.navigationController pushViewController:newStoreCollectController animated:YES];
-    }
-    else if ([typesOfShops isEqualToString:@"order"]) {
-        //点餐
-        StoreViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
-        [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        [self.navigationController pushViewController:storeViewController animated:YES];
-    }
+//    if ([typesOfShops isEqualToString:@"supermarket"]) {
+//        //超市
+//        
+//        NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
+//        newStoreCollectController.merchId = _merchId;
+//        newStoreCollectController.merchTitle = _merchTitle;
+//        newStoreCollectController.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:newStoreCollectController animated:YES];
+//        [SVProgressShow dismiss];
+//    }
+//    else if ([typesOfShops isEqualToString:@"order"]) {
+//        //点餐
+//        
+//        StoreViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
+//        storeViewController.merchId = _merchId;
+//        storeViewController.merchTitle = _merchTitle;
+//        [storeViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//        storeViewController.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:storeViewController animated:YES];
+//        
+//        [SVProgressShow dismiss];
+//    }
 }
 
 @end

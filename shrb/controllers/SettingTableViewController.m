@@ -39,12 +39,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return indexPath.row == 2?8: 44;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 5;
+    return 7;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -55,6 +55,13 @@
         [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
         [self.navigationController pushViewController:viewController animated:YES];
     }
+    if (indexPath.row == 1) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"updatePass"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    
 }
 
 @end

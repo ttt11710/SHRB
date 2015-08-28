@@ -34,7 +34,6 @@ static int i = 0 ;
     
    // [self initData];
     [self creatReq];
-    [self loadData];
     [self initTableView];
     
     [self cardAnimation];
@@ -43,6 +42,8 @@ static int i = 0 ;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self loadData];
 
 }
 
@@ -81,7 +82,6 @@ static int i = 0 ;
             CardModel * model = [[CardModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             [self.modelArray addObject:model];
-
         }
         
         [self.tableView reloadData];

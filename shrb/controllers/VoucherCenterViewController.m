@@ -49,8 +49,12 @@
 
 - (void)viewDidLayoutSubviews
 {
+    
+    [super viewDidLayoutSubviews];
+    
     self.payBtn.layer.cornerRadius = 4;
     self.payBtn.layer.masksToBounds = YES;
+    
 }
 
 - (void)initView

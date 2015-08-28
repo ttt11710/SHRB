@@ -538,6 +538,12 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 #pragma mark - push会员卡详情页面
 - (void)gotoCardDetailTap
 {
+//    NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
+//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    viewController.cardNo = self.dataArray[indexPath.row][@"cardNo"];
+//    viewController.merchId = self.dataArray[indexPath.row][@"merchId"];
+//    [self.navigationController pushViewController:viewController animated:YES];
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
