@@ -73,11 +73,11 @@
    // [self addSubview:_twoLine];
     
     _decreaseBtn = [[UIButton alloc] init];
-    [self setupButton:_decreaseBtn normalImage:@"decrease@2x" HighlightImage:@"decrease2@2x"];
+    [self setupButton:_decreaseBtn normalImage:@"decrease" HighlightImage:@"decrease"];
    // [self addSubview:_decreaseBtn];
     
     _increaseBtn = [[UIButton alloc] init];
-    [self setupButton:_increaseBtn normalImage:@"increase@2x" HighlightImage:@"increase2@2x"];
+    [self setupButton:_increaseBtn normalImage:@"increase" HighlightImage:@"increase"];
     [self addSubview:_increaseBtn];
     
     _textField = [[UITextField alloc] init];
@@ -103,8 +103,9 @@
 }
 
 - (void)setupButton:(UIButton *)btn normalImage:(NSString *)norImage HighlightImage:(NSString *)highImage{
-    [btn setImage:[self readImageFromBundle:norImage] forState:UIControlStateNormal];
-    [btn setImage:[self readImageFromBundle:highImage] forState:UIControlStateHighlighted];
+    
+    [btn setBackgroundImage:[UIImage imageNamed:norImage] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
    // [btn addTarget:self action:@selector(btnTouchDown:) forControlEvents:UIControlEventTouchDown];
     [btn addTarget:self action:@selector(btnTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
    // [btn addTarget:self action:@selector(btnTouchUp:) forControlEvents:UIControlEventTouchUpOutside|UIControlEventTouchUpInside|UIControlEventTouchCancel];

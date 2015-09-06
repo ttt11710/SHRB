@@ -66,7 +66,7 @@
     }
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.textColor = shrbText;
-    cell.detailTextLabel.textColor = shrbLightText;
+    cell.detailTextLabel.textColor = shrbSectionColor;
     cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
     cell.textLabel.text = indexPath.row == 0? @"退货退款" : @"仅退款";
     cell.detailTextLabel.text = indexPath.row == 0? @"已收到货，需要退还已收到的货物" : @"未收到货，或与商家协商同意前提下申请";

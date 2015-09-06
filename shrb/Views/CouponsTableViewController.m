@@ -13,6 +13,7 @@
 #import "UITableView+Wave.h"
 #import "Const.h"
 #import "SVProgressShow.h"
+#import "CouponsDetailTableViewCell.h"
 
 @interface CouponsTableViewController ()
 {
@@ -37,27 +38,55 @@
 
 - (void)initData {
     
-    _array = [[NSMutableArray alloc] initWithObjects:
-              @{
-                @"couponsImage" : @"雀巢",
-                @"money" : @"1000",
-                @"count":@"4",
-                },
-              @{
-                @"couponsImage" : @"官方头像",
-                @"money" : @"2000",
-                @"count":@"1",
-                },
-              @{
-                @"couponsImage" : @"辛巴克",
-                @"money" : @"3000",
-                @"count":@"2",
-                },
-              nil];
+    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
+                             @{
+                               @"couponsImage" : @"辛巴克",
+                               @"money" : @"10000",
+                               @"count":@"4",
+                               @"expirationDate":@"2016-3-2",
+                               @"canUse":@YES
+                               },
+                             @{
+                               @"couponsImage" : @"官方头像",
+                               @"money" : @"2000",
+                               @"count":@"1",
+                               @"expirationDate":@"2016-4-2",
+                               @"canUse":@YES
+                               },
+                             @{
+                               @"couponsImage" : @"吉野家",
+                               @"money" : @"3000",
+                               @"count":@"3",
+                               @"expirationDate":@"2016-2-2",
+                               @"canUse":@NO,
+                               },
+                             @{
+                               @"couponsImage" : @"冰雪皇后",
+                               @"money" : @"4000",
+                               @"count":@"10",
+                               @"expirationDate":@"2016-1-2",
+                               @"canUse":@NO
+                               },
+                             @{
+                               @"couponsImage" : @"雀巢",
+                               @"money" : @"200",
+                               @"count":@"2",
+                               @"expirationDate":@"2015-12-2",
+                               @"canUse":@NO
+                               },
+                             @{
+                               @"couponsImage" : @"官方头像",
+                               @"money" : @"2000",
+                               @"count":@"1",
+                               @"expirationDate":@"2016-4-2",
+                               @"canUse":@YES
+                               },
+                             nil];
+    
     
     self.dataArray = [[NSMutableArray alloc] init];
     
-    for (NSDictionary * dict in _array) {
+    for (NSDictionary * dict in array) {
         CouponsModel * model = [[CouponsModel alloc] init];
         [model setValuesForKeysWithDictionary:dict];
         [self.dataArray addObject:model];
@@ -65,14 +94,18 @@
     
     _receiveArray = [[NSMutableArray alloc] initWithObjects:
                      @{
-                       @"couponsImage" : @"吉野家",
-                       @"money" : @"1000",
+                       @"couponsImage" : @"辛巴克",
+                       @"money" : @"10000",
                        @"count":@"4",
+                       @"expirationDate":@"2016-3-2",
+                       @"canUse":@YES
                        },
                      @{
-                       @"couponsImage" : @"冰雪皇后",
+                       @"couponsImage" : @"官方头像",
                        @"money" : @"2000",
                        @"count":@"1",
+                       @"expirationDate":@"2016-4-2",
+                       @"canUse":@YES
                        },
                      nil];
     
@@ -88,6 +121,9 @@
 
 - (void)initTableView
 {
+    //tableView 去分界线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     self.tableView.tableFooterView =[[UIView alloc]init];
     self.tableView.backgroundColor = shrbTableViewColor;
     
@@ -101,56 +137,60 @@
     return 2;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return section == 0?0:4;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return section == 0?0:4;
+//}
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    CGFloat height ;
-    height = section == 0?0:4;
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, height)] ;
-    [headerView setBackgroundColor:shrbSectionColor];
-    
-    return headerView;
-}
+//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    CGFloat height ;
+//    height = section == 0?0:4;
+//    
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, height)] ;
+//    [headerView setBackgroundColor:shrbSectionColor];
+//    
+//    return headerView;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return section == 0?[self.receiveDataArray count]:[self.dataArray count];
-    
+   // return [self.dataArray count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 68;
+//    return 68;
+    return 135;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
-        static NSString *SimpleTableIdentifier = @"ReceiveCouponsTableViewCellIdentifier";
-        ReceiveCouponsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        static NSString *SimpleTableIdentifier = @"ReceiveCouponsDetailTableViewCellIdentifier";
+        CouponsDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = shrbLightCell;
         if (cell == nil) {
-            cell = [[ReceiveCouponsTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:SimpleTableIdentifier];
+            cell = [[CouponsDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:SimpleTableIdentifier];
         }
         
         cell.model = self.receiveDataArray[indexPath.row];
+        
         return cell;
     }
-    
     else {
-        static NSString *SimpleTableIdentifier = @"couponsTableViewCellIdentifier";
-        CouponsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        static NSString *SimpleTableIdentifier = @"CouponsDetailTableViewCellIdentifier";
+        CouponsDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = shrbLightCell;
         if (cell == nil) {
-            cell = [[CouponsTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:SimpleTableIdentifier];
+            cell = [[CouponsDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:SimpleTableIdentifier];
         }
         
         cell.model = self.dataArray[indexPath.row];
+        
         return cell;
     }
 }

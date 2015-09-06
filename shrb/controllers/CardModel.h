@@ -41,4 +41,10 @@
 @property(nonatomic,copy) NSString * merchId;                //商户ID
 
 
+
+/*交易记录*/
+@property(nonatomic,copy) NSString * acceptTime;        //交易时间
+@property(nonatomic) NSString * orderID;           //订单号
+@property(nonatomic) CGFloat payAmount;         //交易金额
+
 @end

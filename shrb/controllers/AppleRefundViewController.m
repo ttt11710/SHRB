@@ -10,6 +10,7 @@
 #import "Const.h"
 #import "AppleRefundTableViewCell.h"
 #import "IQActionSheetPickerView.h"
+#import "SuccessAppleRefundViewController.h"
 
 @interface AppleRefundViewController () <IQActionSheetPickerViewDelegate>
 {
@@ -23,6 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    self.title = @"申请退款";
     
     [self initData];
     [self initTableView];
@@ -84,5 +88,10 @@
     cell.returnGoodsReasonLabel.text = titles[0];
 }
 
+- (IBAction)appleRufundBtnPressed:(id)sender {
+    
+    SuccessAppleRefundViewController *successAppleRefundViewController = [[SuccessAppleRefundViewController alloc] init];
+    [self.navigationController pushViewController:successAppleRefundViewController animated:YES];
+}
 
 @end

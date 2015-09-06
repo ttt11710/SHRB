@@ -43,7 +43,7 @@
     
     NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/getCode?"];
     [self.requestOperationManager GET:url parameters:@{@"phone":self.phoneTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject[@"msg"]);
+        NSLog(@"getCode operation = %@ JSON: %@", operation,responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"error:++++%@",error.localizedDescription);

@@ -49,7 +49,9 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 @property (retain, nonatomic) UILabel *prodDescLabel; //产品描述
 
 
+@property(nonatomic,retain)UIView *memberCardbackView;//会员卡背景白色
 @property(nonatomic,retain)UIView *memberCardView;//会员卡
+@property(nonatomic,copy) UILabel *merchNameLabel;//商户名称
 @property(nonatomic,copy) UILabel *moneyLabel;//会员金额
 @property(nonatomic,copy) UILabel *integralLabel;//会员积分
 @property(nonatomic,copy) UILabel *cardNumberLabel;//会员卡号
@@ -203,29 +205,32 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
     }
     
     if (screenHeight<=480) {
-        _blurEffectView.frame =CGRectMake(screenWidth-30*2-8*3-16, _cardView.frame.size.height-50, 30*2+8*3, 40);
+        _blurEffectView.frame =CGRectMake(screenWidth-45-46-16, _cardView.frame.size.height-42, 45+46, 32);
     }else{
-        _blurEffectView.frame =CGRectMake(screenWidth-30*2-8*3-16, _cardView.frame.size.height-50, 30*2+8*3, 40);
+        _blurEffectView.frame =CGRectMake(screenWidth-54-55-16, _cardView.frame.size.height-47, 54+55, 37);
     }
     [_cardView addSubview:_blurEffectView];
     
     _collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_collectBtn setBackgroundImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
-    _collectBtn.frame = CGRectMake(8, _blurEffectView.frame.size.height/2-15, 30, 30);
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateHighlighted];
+    _collectBtn.frame = CGRectMake(0, 0, (_blurEffectView.frame.size.width-1)/2, _blurEffectView.frame.size.height);
     [_collectBtn addTarget:self action:@selector(collectBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_blurEffectView addSubview:_collectBtn];
     
     
     UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(_blurEffectView.frame.size.width/2, 5, 1, 30)];
     lineImageView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
-    [_blurEffectView addSubview:lineImageView];
+    // [_blurEffectView addSubview:lineImageView];
     
     
     _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_shareBtn setBackgroundImage:[UIImage imageNamed:@"fenxiang"] forState:UIControlStateNormal];
-    _shareBtn.frame = CGRectMake(8+30+8, _blurEffectView.frame.size.height/2-15, 30, 30);
+    [_shareBtn setBackgroundImage:[UIImage imageNamed:@"fenxiang"] forState:UIControlStateHighlighted];
+    _shareBtn.frame = CGRectMake((_blurEffectView.frame.size.width-1)/2, 0, (_blurEffectView.frame.size.width+1)/2, _blurEffectView.frame.size.height);
     [_shareBtn addTarget:self action:@selector(shareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_blurEffectView addSubview:_shareBtn];
+
     
 }
 
@@ -305,48 +310,60 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 
 - (void)initMemberCardView
 {
-    _memberCardView = [[UIView alloc] initWithFrame:CGRectMake(0, _descriptionAndregisterView.frame.origin.y + _descriptionAndregisterView.frame.size.height + 8, screenWidth, 120)];
-    _memberCardView.backgroundColor=shrbLightPink;
-    _memberCardView.layer.cornerRadius=8;
-    _memberCardView.layer.masksToBounds = YES;
-    [_mainScrollView addSubview:_memberCardView];
     
-    UITapGestureRecognizer *gotoCardDetailTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoCardDetailTap)];
-    [_memberCardView addGestureRecognizer:gotoCardDetailTap];
+    _memberCardbackView = [[UIView alloc] initWithFrame:CGRectMake(0, _descriptionAndregisterView.frame.origin.y + _descriptionAndregisterView.frame.size.height + 8, screenWidth, 16 + 30 + 16 + 150 + 16)];
+    _memberCardbackView.backgroundColor = [UIColor whiteColor];
+    [_mainScrollView addSubview:_memberCardbackView];
     
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(13, 8, _memberCardView.frame.size.width, 30)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 16, 200, 30)];
     label.text = @"您的会员卡详情";
     label.textColor = shrbText;
-    [_memberCardView addSubview:label];
+    [_memberCardbackView addSubview:label];
     
-  //  NSMutableDictionary *dic = [[self.plistArr objectAtIndex:currentSection][@"info"] objectAtIndex:currentRow];
+    UIImageView *backimageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cardBack"]];
+    backimageView.frame = CGRectMake(30, label.frame.origin.y + label.frame.size.height + 16, screenWidth-60, 100);
+    backimageView.layer.cornerRadius = 4;
+    backimageView.layer.masksToBounds = YES;
+    [_memberCardbackView addSubview:backimageView];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(backimageView.frame.origin.x, backimageView.frame.origin.y, backimageView.frame.size.width, 150)];
+    view.backgroundColor = [UIColor clearColor];
+    
+    [_memberCardbackView addSubview:view];
+    
+    _merchNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, 200, 22)];
+    _merchNameLabel.text = @"商店名称";
+    _merchNameLabel.textColor = [UIColor whiteColor];
+    [view addSubview:_merchNameLabel];
     
     
-    _moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(label.frame.origin.x, label.frame.origin.y + label.frame.size.height + 10, _memberCardView.frame.size.width/2, 30)];
+    _moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 47, 150, 30)];
     _moneyLabel.text = [NSString stringWithFormat:@"金额：%@元",self.cardDataDic[@"amount"]];
-    _moneyLabel.textColor = shrbText;
-    [_memberCardView addSubview:_moneyLabel];
+    _moneyLabel.textColor = [UIColor whiteColor];
+    [view addSubview:_moneyLabel];
     
-    _integralLabel = [[UILabel alloc] initWithFrame:CGRectMake(_memberCardView.frame.size.width/2, _moneyLabel.frame.origin.y, _memberCardView.frame.size.width/2, 30)];
+    _integralLabel = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.size.width/2+8, _moneyLabel.frame.origin.y, view.frame.size.width/2-8, 30)];
     _integralLabel.text = [NSString stringWithFormat:@"积分：%@分",self.cardDataDic[@"score"]];
-    _integralLabel.textColor = shrbText;
-    [_memberCardView addSubview:_integralLabel];
-    
-    _cardNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(_moneyLabel.frame.origin.x, _moneyLabel.frame.origin.y + _moneyLabel.frame.size.height , _memberCardView.frame.size.width, 30)];
+    _integralLabel.textColor = [UIColor whiteColor];
+    [view addSubview:_integralLabel];
+
+    _cardNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, view.frame.size.height - 30- 15, 250, 30)];
     _cardNumberLabel.text = [NSString stringWithFormat:@"卡号：%@",self.cardDataDic[@"cardNo"]];
     _cardNumberLabel.textColor = shrbText;
-    [_memberCardView addSubview:_cardNumberLabel];
+    [view addSubview:_cardNumberLabel];
     
     
-    if (_cardView.frame.size.height + _tradeNameAndPriceView.frame.size.height+ 8 + _descriptionAndregisterView.frame.size.height + 8 + _memberCardView.frame.size.height + 10  < screenHeight-20-44) {
+    UITapGestureRecognizer *gotoCardDetailTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoCardDetailTap)];
+    [view addGestureRecognizer:gotoCardDetailTap];
+    
+    if (_cardView.frame.size.height + _tradeNameAndPriceView.frame.size.height+ 8 + _descriptionAndregisterView.frame.size.height + 8 + _memberCardbackView.frame.size.height   < screenHeight-20-44) {
         _mainScrollView.scrollEnabled = NO;
         _mainScrollView.contentSize = CGSizeMake(0, 0);
         return ;
     }
     
     _mainScrollView.scrollEnabled = YES;
-    _mainScrollView.contentSize = CGSizeMake(0, _cardView.frame.size.height + _tradeNameAndPriceView.frame.size.height+ 8 + _descriptionAndregisterView.frame.size.height + 10 + _memberCardView.frame.size.height + 10);
+    _mainScrollView.contentSize = CGSizeMake(0, _cardView.frame.size.height + _tradeNameAndPriceView.frame.size.height+ 8 + _descriptionAndregisterView.frame.size.height + 10 + _memberCardbackView.frame.size.height );
 }
 
 
@@ -394,6 +411,9 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 
 - (void)timerFun
 {
+    if ([_imageArray count] == 0) {
+        return;
+    }
     
     _imagePageControl.currentPage =  (_imagePageControl.currentPage+1)%[_imageArray count];
     
@@ -538,18 +558,23 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 #pragma mark - push会员卡详情页面
 - (void)gotoCardDetailTap
 {
+
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
 //    NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
 //    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    viewController.cardNo = self.dataArray[indexPath.row][@"cardNo"];
-//    viewController.merchId = self.dataArray[indexPath.row][@"merchId"];
+//    
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
+//    [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketOrOrder" forKey:@"QRPay"];
 //    [self.navigationController pushViewController:viewController animated:YES];
     
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"Card" forKey:@"QRPay"];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
-    [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketOrOrder" forKey:@"QRPay"];
+    viewController.cardNo = self.cardDataDic[@"cardNo"];
+    viewController.merchId = self.cardDataDic[@"merchId"];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

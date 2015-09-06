@@ -44,7 +44,7 @@
     NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/login?"];
     [self.requestOperationManager POST:url parameters:@{@"phone":self.phoneTextField.text,@"password":self.passwordTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressShow showInfoWithStatus:responseObject[@"msg"]];
-        NSLog(@"JSON: %@", responseObject[@"msg"]);
+        NSLog(@"login operation = %@ JSON: %@", operation,responseObject);
         if ([responseObject[@"code"] isEqualToString:@"200"]) {
             
             

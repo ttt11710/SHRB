@@ -61,7 +61,7 @@
     
     NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/getCode?"];
     [self.requestOperationManager GET:url parameters:@{@"phone":self.phoneTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject[@"msg"]);
+        NSLog(@"getCode operation = %@ JSON: %@", operation,responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"error:++++%@",error.localizedDescription);
@@ -75,8 +75,7 @@
     
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/register?"];
     [self.requestOperationManager POST:url2 parameters:@{@"phone":self.phoneTextField.text,@"password":self.passwordTextField.text,@"code":self.captchaTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject[@"msg"]);
-        
+        NSLog(@"register operation = %@ JSON: %@", operation,responseObject);        
         if ([responseObject[@"code"] isEqualToString:@"200"]) {
             [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
             double delayInSeconds = 1;

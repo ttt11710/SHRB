@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface SuperAndStorePayViewController : UIViewController
+@interface SuperAndStorePayViewController : PYBaseViewController
 
 @end

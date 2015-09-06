@@ -13,12 +13,15 @@
 #import "OrderViewController.h"
 #import "TBUser.h"
 #import <UIImageView+WebCache.h>
+#import "AboutTBViewController.h"
 
 @interface UserCenterObjevtiveTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UILabel *memberNumLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *memberImageView;
+
+@property (nonatomic,strong)AFHTTPRequestOperationManager *requestOperationManager;
 
 @end
 
@@ -27,8 +30,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self creatReq];
     [self initController];
     [self initTableView];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -37,22 +42,55 @@
     self.tabBarController.tabBar.hidden = NO;
     self.navigationController.navigationBarHidden = NO;
     
-    if ([TBUser currentUser].token.length == 0)
-    {
-        self.loginBtn.hidden = NO;
-        self.memberImageView.hidden = YES;
-        self.memberNumLabel.hidden = YES;
-    }
-    else {
-        self.loginBtn.hidden = YES;
-        self.memberImageView.hidden = NO;
-        [self.memberImageView sd_setImageWithURL:[NSURL URLWithString:[TBUser currentUser].imgUrl] placeholderImage:[UIImage imageNamed:@"默认女头像.png"]];
-        self.memberNumLabel.hidden = NO;
-        self.memberNumLabel.text = [NSString stringWithFormat:@"通包号:%@",[TBUser currentUser].userId];
-    }
+    [self loginState];
+    
+//    if ([TBUser currentUser].token.length == 0)
+//    {
+//        self.loginBtn.hidden = NO;
+//        self.memberImageView.userInteractionEnabled = NO;
+//        self.memberNumLabel.hidden = YES;
+//    }
+//    else {
+//        self.memberImageView.userInteractionEnabled = YES;
+//        self.loginBtn.hidden = YES;
+//        [self.memberImageView sd_setImageWithURL:[NSURL URLWithString:[TBUser currentUser].imgUrl] placeholderImage:[UIImage imageNamed:@"默认女头像"]];
+//        self.memberNumLabel.hidden = NO;
+//        self.memberNumLabel.text = [NSString stringWithFormat:@"通包号:%@",[TBUser currentUser].userId];
+//    }
 
 }
 
+
+- (void)loginState
+{
+    NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/info?"];
+    [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"user info operation = %@ JSON: %@", operation,responseObject);
+        
+        switch ([responseObject[@"code"] integerValue]) {
+            case 404:
+                [TBUser setCurrentUser:nil];
+                self.loginBtn.hidden = NO;
+                self.memberImageView.userInteractionEnabled = NO;
+                self.memberNumLabel.hidden = YES;
+                break;
+            case 200: {
+                self.memberImageView.userInteractionEnabled = YES;
+                self.loginBtn.hidden = YES;
+                [self.memberImageView sd_setImageWithURL:[NSURL URLWithString:[TBUser currentUser].imgUrl] placeholderImage:[UIImage imageNamed:@"默认女头像"]];
+                self.memberNumLabel.hidden = NO;
+                self.memberNumLabel.text = [NSString stringWithFormat:@"通包号:%@",[TBUser currentUser].userId];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+
+}
 - (void)viewDidLayoutSubviews
 {
 }
@@ -61,6 +99,20 @@
 {
     [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)creatReq
+{
+    self.requestOperationManager=[AFHTTPRequestOperationManager manager];
+    
+    self.requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    AFJSONResponseSerializer *serializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    self.requestOperationManager.responseSerializer=serializer;
+    
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:10*60];
+    self.requestOperationManager.requestSerializer=requestSerializer;
 }
 
 - (void)initController
@@ -85,7 +137,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.section == 0? 200:44;
+    return indexPath.section == 0? 130:44;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -109,11 +161,36 @@
     //基本信息
     if (indexPath.section == 0)
     {
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
-        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"infoView"];
-        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        [self.navigationController pushViewController:viewController animated:YES];
-        
+        [SVProgressShow showWithStatus:@"查询状态中..."];
+        NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/info?"];
+        [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"user info operation = %@ JSON: %@", operation,responseObject);
+            
+            switch ([responseObject[@"code"] integerValue]) {
+                case 404:
+                    [TBUser setCurrentUser:nil];
+                    self.loginBtn.hidden = NO;
+                    self.memberImageView.userInteractionEnabled = NO;
+                    self.memberNumLabel.hidden = YES;
+                    [SVProgressShow showInfoWithStatus:@"请重新登录!"];
+                    break;
+                case 200: {
+                    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+                    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"infoView"];
+                    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+                    [self.navigationController pushViewController:viewController animated:YES];
+                    [SVProgressShow dismiss];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error:++++%@",error.localizedDescription);
+            [SVProgressShow showErrorWithStatus:@"查询失败!"];
+        }];
+
 //        BasicInfoTableViewController *basicInfoTableViewController = [[BasicInfoTableViewController alloc] init];
 //        [self.navigationController pushViewController:basicInfoTableViewController animated:YES];
         
@@ -184,6 +261,12 @@
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
             viewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:viewController animated:YES];
+        }
+        //关于通宝
+        else {
+            AboutTBViewController *aboutTBViewController = [[AboutTBViewController alloc] init];
+            aboutTBViewController.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:aboutTBViewController animated:YES];
         }
     }
 }

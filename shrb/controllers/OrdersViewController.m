@@ -24,6 +24,9 @@
 #import "StoreTableViewCell.h"
 #import "TradeModel.h"
 #import "shrb-swift.h"
+#import "ShoppingCardDataItem.h"
+#import <UIImageView+WebCache.h>
+#import "SVProgressShow.h"
 
 
 static OrdersViewController *g_OrdersViewController = nil;
@@ -32,20 +35,21 @@ static OrdersViewController *g_OrdersViewController = nil;
 {
     TNCheckBoxGroup *_loveGroup;
     UITapGestureRecognizer *_tap;
+    
+    CGFloat _vipPrice;
+    CGFloat _price;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *showOtherPayBtn;
 @property (weak, nonatomic) IBOutlet BFPaperButton *memberPayBtn;
 @property (weak, nonatomic) IBOutlet BFPaperButton *otherPayBtn;
 
-@property (nonatomic,strong) NSMutableArray * modelArray;
-@property (nonatomic, strong) NSMutableArray *plistArr;
-
 @end
 
 @implementation OrdersViewController
 
 @synthesize isMember;
+@synthesize shoppingArray;
 
 + (OrdersViewController *)shareOrdersViewController
 {
@@ -57,9 +61,11 @@ static OrdersViewController *g_OrdersViewController = nil;
     
     g_OrdersViewController = self;
     
+    _vipPrice = 0.00 ;
+    _price = 0.00 ;
+    
     [self initView];
     [self initBtn];
-    [self initData];
     [self initTableView];
 }
 
@@ -89,15 +95,6 @@ static OrdersViewController *g_OrdersViewController = nil;
     [self.showOtherPayBtn setBackgroundColor:shrbPink];
     [self.memberPayBtn setBackgroundColor:shrbPink];
     [self.otherPayBtn setBackgroundColor:shrbPink];
-}
-
-- (void)initData
-{
-    NSString *storeFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"storePlistName"];
-    
-    self.plistArr =[[[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:storeFile ofType:@"plist"]] objectAtIndex:0] objectForKey:@"info"];
-    
-    self.modelArray = [[NSMutableArray alloc] init];
 }
 
 - (void)initTableView
@@ -149,13 +146,13 @@ static OrdersViewController *g_OrdersViewController = nil;
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < [self.plistArr count]) {
+    if (indexPath.row < [self.shoppingArray count]) {
         return 93;
     }
-    else if (indexPath.row == [self.plistArr count]) {
-        return 100;
+    else if (indexPath.row == [self.shoppingArray count]) {
+        return 88;
     }
-    else if (indexPath.row == [self.plistArr count]+1) {
+    else if (indexPath.row == [self.shoppingArray count]+1) {
         return 80;
     }
     else {
@@ -168,9 +165,9 @@ static OrdersViewController *g_OrdersViewController = nil;
 {
     if (isMember) {
        // _showOtherPayBtn.hidden = YES;
-        return [self.plistArr count]+1;
+        return [self.shoppingArray count]+1;
     }
-    return [self.plistArr count]+3;
+    return [self.shoppingArray count]+3;
 }
 
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -195,7 +192,7 @@ static OrdersViewController *g_OrdersViewController = nil;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < [self.plistArr count]) {
+    if (indexPath.row < [self.shoppingArray count]) {
         static NSString *SimpleTableIdentifier = @"CouponsTableViewCellIdentifier";
         StoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
@@ -203,28 +200,62 @@ static OrdersViewController *g_OrdersViewController = nil;
             cell = [[StoreTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
         
-        [self.modelArray removeAllObjects];
-        for (NSDictionary * dict in self.plistArr) {
-            TradeModel * model = [[TradeModel alloc] init];
-            [model setValuesForKeysWithDictionary:dict];
-            [self.modelArray addObject:model];
-        }
+        ShoppingCardDataItem *shoppingCardDataItem = [[ShoppingCardDataItem alloc] init];
+        shoppingCardDataItem = self.shoppingArray[indexPath.row];
         
-        cell.model = self.modelArray[indexPath.row];
+        cell.tradeNameLabel.text = shoppingCardDataItem.prodList[@"prodName"] == nil? @"商品名称" : shoppingCardDataItem.prodList[@"prodName"];
+        [cell.tradeImageView sd_setImageWithURL:[NSURL URLWithString:shoppingCardDataItem.prodList[@"imgUrl"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+        
+        cell.tradeDescriptionLabel.text = shoppingCardDataItem.prodList[@"prodDesc"];
+        
+        NSNumber *vipPriceNumber = shoppingCardDataItem.prodList[@"vipPrice"];
+        NSNumber *priceNumber = shoppingCardDataItem.prodList[@"price"];
+        
+        NSString *vipPrice = [vipPriceNumber stringValue];
+        NSString *price = [priceNumber stringValue];
+        
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%@ 原价￥%@",vipPrice,price]];
+        
+        [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange([vipPrice length] + 2, [price length]+3)];//删除线
+        [attrString addAttribute:NSForegroundColorAttributeName value:shrbPink range:NSMakeRange(0, vipPrice.length + 1)];
+        [attrString addAttribute:NSForegroundColorAttributeName value:shrbLightText range:NSMakeRange(vipPrice.length + 2, price.length+3)];
+        
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, vipPrice.length + 1)];
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(vipPrice.length + 2, price.length+3)];
+        
+        cell.priceLabel.attributedText = attrString;
         
         HJCAjustNumButton3 *numbutton = [[HJCAjustNumButton3 alloc] init];
+        numbutton.currentNum = [NSString stringWithFormat:@"%ld",(long)shoppingCardDataItem.count] ;
+        
+        
         numbutton.frame = CGRectMake(screenWidth-85, 34, 75, 25);
         // 内容更改的block回调
         numbutton.callBack = ^(NSString *currentNum){
+            
+            
+            shoppingCardDataItem.count = [currentNum integerValue];
+
+            NSLog(@"indexPath.row = %ld shoppingCardDataItem.count = %ld,shoppingCardDataItem.prodList = %@",(long)indexPath.row,shoppingCardDataItem.count,shoppingCardDataItem.prodList);
+            
+            _vipPrice = 0.00;
+            _price = 0.00;
+            
+            [self.tableView reloadData];
+            
         };
-        
         // 加到父控件上
         [cell addSubview:numbutton];
+        
+        
+        _vipPrice += shoppingCardDataItem.count * [vipPriceNumber floatValue];
+        _price += shoppingCardDataItem.count * [priceNumber floatValue];
+        
         return cell;
         
         // @"会员好处：成为会员可以享受会员折扣，付款可直接用会员卡，并有更多优惠哦！\n\n会员规则:会员卡充值后不可以取现，可以注销，同时扣除手续费5%。";
     }
-    else if (indexPath.row == [self.plistArr count])
+    else if (indexPath.row == [self.shoppingArray count])
     {
         static NSString *simpleTableIdentifier = @"OrdersTableViewCellId";
         OrdersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -233,8 +264,8 @@ static OrdersViewController *g_OrdersViewController = nil;
             cell = [[OrdersTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
         }
         
-        cell.totalLabel.text = @"总价:450元";
-        cell.memberTotalLabel.text = @"会员价:350元";
+        cell.totalLabel.text = [NSString stringWithFormat:@"总价:￥%.2f",_price];
+        cell.memberTotalLabel.text = [NSString stringWithFormat:@"会员价:￥%.2f",_vipPrice];
         
         TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
         manData.identifier = @"man";
@@ -251,7 +282,7 @@ static OrdersViewController *g_OrdersViewController = nil;
         }
         return cell;
     }
-    else if (indexPath.row == [self.plistArr count]+1)
+    else if (indexPath.row == [self.shoppingArray count]+1)
     {
         
         static NSString *SimpleTableIdentifier = @"cellId";
@@ -291,12 +322,12 @@ static OrdersViewController *g_OrdersViewController = nil;
 //    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
 //    [self.navigationController pushViewController:viewController animated:YES];
     
-    if (indexPath.row == [self.plistArr count]) {
+    if (indexPath.row == [self.shoppingArray count]) {
         [self.navigationController popViewControllerAnimated:YES];
     }
     if (isMember) {
         //会员卡详情页面
-        if (indexPath.row == [self.plistArr count]+2) {
+        if (indexPath.row == [self.shoppingArray count]+2) {
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
             NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
@@ -318,19 +349,20 @@ static OrdersViewController *g_OrdersViewController = nil;
     [self removeTap];
 }
 
-#pragma  mark - storyboard传值
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (IBAction)gotoPayView:(id)sender {
+    if (_price == 0) {
+        [SVProgressShow showInfoWithStatus:@"您未选购任何商品!"];
+        return;
+    }
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    PayViewController *payViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PayView"];
+    [payViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    payViewController.totalPrice = _price;
+    payViewController.shoppingArray = self.shoppingArray;
+    [self.navigationController pushViewController:payViewController animated:YES];
     
-    PayViewController *payViewController = segue.destinationViewController;
-    if ([segue.identifier isEqualToString:@"memberPayidentifier"]) {
-        payViewController.isMemberPay = YES;
-    }
-    else if([segue.identifier isEqualToString:@"othersPayidentifier"])
-    {
-        payViewController.isMemberPay = NO;
-    }
+    
 }
-
 #pragma mark - 电子券打钩
 - (void)loveGroupChanged:(NSNotification *)notification {
     

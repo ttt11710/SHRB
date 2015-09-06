@@ -62,7 +62,7 @@
     //原密码111111
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/updatePass?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"oldPass":self.oldPassTextField.text,@"newPass":self.myNewPassTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"updatePass operation = %@ JSON: %@", operation,responseObject);
         if ([responseObject[@"code"] isEqualToString:@"200"]) {
             [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
             double delayInSeconds = 1;

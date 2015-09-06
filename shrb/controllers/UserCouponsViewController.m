@@ -9,6 +9,7 @@
 #import "UserCouponsViewController.h"
 #import "CompleteVoucherViewController.h"
 #import "Const.h"
+#import "SVProgressShow.h"
 
 @interface UserCouponsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *couponsImageView;
@@ -24,6 +25,11 @@
     [super viewDidLoad];
     
     [self initView];
+}
+
+- (void)viewDidLayoutSubviews {
+    self.userBtn.layer.cornerRadius = 4;
+    self.userBtn.layer.masksToBounds = YES;
 }
 
 - (void)initView
@@ -42,5 +48,12 @@
     
     [self.userBtn setBackgroundColor:shrbPink];
 }
+
+- (IBAction)userBtnPressed:(id)sender {
+    
+    [SVProgressShow showSuccessWithStatus:@"转存成功!"];
+    
+}
+
 
 @end

@@ -37,7 +37,7 @@
 {
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/setPayPass?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"payPass":@"111111"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"setPayPass operation = %@ JSON: %@", operation,responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];
@@ -76,7 +76,7 @@
     //原密码111111
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/updatePayPass?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"oldPass":self.oldPassTextField.text,@"newPass":self.myNewPassTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"updatePayPass operation = %@ JSON: %@", operation,responseObject);
         if ([responseObject[@"code"] isEqualToString:@"200"]) {
             [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
             

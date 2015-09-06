@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (void)viewDidLayoutSubviews
@@ -115,7 +115,7 @@
     
     NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/getCode?"];
     [self.requestOperationManager GET:url parameters:@{@"phone":self.phoneTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject[@"msg"]);
+        NSLog(@"getCode operation = %@ JSON: %@", operation,responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"error:++++%@",error.localizedDescription);
@@ -130,8 +130,7 @@
     
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/updatePass?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token ,@"oldPass":self.oldPassTextField.text,@"newPass":self.myNewPassTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject[@"msg"]);
-        if ([responseObject[@"code"] isEqualToString:@"200"]) {
+        NSLog(@"updatePass operation = %@ JSON: %@", operation,responseObject);        if ([responseObject[@"code"] isEqualToString:@"200"]) {
             [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
             [self.navigationController popViewControllerAnimated:YES];
             [SVProgressShow dismiss];

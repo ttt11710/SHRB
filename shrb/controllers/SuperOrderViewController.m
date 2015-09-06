@@ -12,6 +12,8 @@
 #import "OrdersTableViewCell.h"
 #import "NSString+AttributedStyle.h"
 #import <BFPaperButton.h>
+#import "StoreTableViewCell.h"
+#import <UIImageView+WebCache.h>
 
 @interface SuperOrderViewController ()
 {
@@ -56,7 +58,7 @@
         return 44;
     }
     else if (indexPath.row <= [_data count]) {
-        return 68;
+        return 93;
     }
     else {
         return 100;
@@ -85,26 +87,43 @@
         return cell;
     }
     else if (indexPath.row <= [_data count]) {
-        static NSString *simpleTableIdentifier = @"ShoppingCartTableViewCellIdentifier";
-        OrdersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        static NSString *simpleTableIdentifier = @"CouponsTableViewCellIdentifier";
+        StoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         if (cell == nil) {
-            cell = [[OrdersTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
+            cell = [[StoreTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         }
         
-        cell.couponsImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[_data objectAtIndex:indexPath.row-1]]];
         cell.tradeNameLabel.text = [_data objectAtIndex:indexPath.row-1];
-        NSString *string = @"会员价：30元  原价：40元";
+        [cell.tradeImageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+        cell.tradeDescriptionLabel.text = [_data objectAtIndex:indexPath.row-1];
         
-        cell.priceLabel.attributedText = [string createrAttributedStringWithStyles:
-                                          @[
-                                            [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(4, 2)],
-                                            [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(12, 2)],
-                                            [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(4, 2)],
-                                            [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(12, 2)]
-                                            ]];
+        //        NSNumber *vipPriceNumber = shoppingCardDataItem.prodList[@"vipPrice"];
+        //        NSNumber *priceNumber = shoppingCardDataItem.prodList[@"price"];
         
-        cell.numTextField.text = @"1";
+        //        NSString *vipPrice = [vipPriceNumber stringValue];
+        //        NSString *price = [priceNumber stringValue];
+        
+        NSString *vipPrice = @"300";
+        NSString *price = @"280";
+        
+        
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%@ 原价￥%@",vipPrice,price]];
+        
+        [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange([vipPrice length] + 2, [price length]+3)];//删除线
+        [attrString addAttribute:NSForegroundColorAttributeName value:shrbPink range:NSMakeRange(0, vipPrice.length + 1)];
+        [attrString addAttribute:NSForegroundColorAttributeName value:shrbLightText range:NSMakeRange(vipPrice.length + 2, price.length+3)];
+        
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, vipPrice.length + 1)];
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(vipPrice.length + 2, price.length+3)];
+        
+        cell.priceLabel.attributedText = attrString;
+        
+//        cell.amountTextField.text = [NSString stringWithFormat:@"%ld",(long)shoppingCardDataItem.count];
+//        cell.moneyLabel.text = [NSString stringWithFormat:@"￥%.2f",shoppingCardDataItem.count * [price floatValue]];
+        
+        cell.amountTextField.text = @"3";
+        cell.moneyLabel.text = @"￥900";
         
         return cell;
     }

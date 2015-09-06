@@ -87,7 +87,7 @@ static NewStoreViewController *g_StoreViewController = nil;
 {
     self.title = [[NSUserDefaults standardUserDefaults] stringForKey:@"storeName"];
     
-    UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
+    UIBarButtonItem *selectType = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"screen"] style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
     self.navigationItem.rightBarButtonItem = selectType;
 }
 

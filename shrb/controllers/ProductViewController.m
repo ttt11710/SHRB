@@ -195,27 +195,29 @@ static ProductViewController *g_ProductViewController = nil;
     }
     
     if (screenHeight<=480) {
-        _blurEffectView.frame =CGRectMake(screenWidth-30*2-8*3-16, _cardView.frame.size.height-50, 30*2+8*3, 40);
+        _blurEffectView.frame =CGRectMake(screenWidth-45-46-16, _cardView.frame.size.height-42, 45+46, 32);
     }else{
-        _blurEffectView.frame =CGRectMake(screenWidth-30*2-8*3-16, _cardView.frame.size.height-50, 30*2+8*3, 40);
+        _blurEffectView.frame =CGRectMake(screenWidth-54-55-16, _cardView.frame.size.height-47, 54+55, 37);
     }
     [_cardView addSubview:_blurEffectView];
     
     _collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_collectBtn setBackgroundImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
-    _collectBtn.frame = CGRectMake(8, _blurEffectView.frame.size.height/2-15, 30, 30);
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateHighlighted];
+    _collectBtn.frame = CGRectMake(0, 0, (_blurEffectView.frame.size.width-1)/2, _blurEffectView.frame.size.height);
     [_collectBtn addTarget:self action:@selector(collectBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_blurEffectView addSubview:_collectBtn];
     
     
     UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(_blurEffectView.frame.size.width/2, 5, 1, 30)];
     lineImageView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
-    [_blurEffectView addSubview:lineImageView];
+   // [_blurEffectView addSubview:lineImageView];
 
     
     _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_shareBtn setBackgroundImage:[UIImage imageNamed:@"fenxiang"] forState:UIControlStateNormal];
-    _shareBtn.frame = CGRectMake(8+30+8, _blurEffectView.frame.size.height/2-15, 30, 30);
+    [_shareBtn setBackgroundImage:[UIImage imageNamed:@"fenxiang"] forState:UIControlStateHighlighted];
+    _shareBtn.frame = CGRectMake((_blurEffectView.frame.size.width-1)/2, 0, (_blurEffectView.frame.size.width+1)/2, _blurEffectView.frame.size.height);
     [_shareBtn addTarget:self action:@selector(shareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_blurEffectView addSubview:_shareBtn];
 
@@ -243,7 +245,7 @@ static ProductViewController *g_ProductViewController = nil;
     [_tradeNameAndPriceView addSubview:_vipPriceLabel];
     
     //节省价格
-    _saveMoneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(_vipPriceLabel.frame.origin.x + _vipPriceLabel.frame.size.width + 8, _vipPriceLabel.frame.origin.y, 80, 16)];
+    _saveMoneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(_vipPriceLabel.frame.origin.x + _vipPriceLabel.frame.size.width + 8, _vipPriceLabel.frame.origin.y, 80, 24)];
     _saveMoneyLabel.center = CGPointMake(_vipPriceLabel.frame.origin.x + _vipPriceLabel.frame.size.width + 8 + 40 , _vipPriceLabel.center.y);
     _saveMoneyLabel.font = [UIFont systemFontOfSize:15.0];
     _saveMoneyLabel.textColor = [UIColor whiteColor];
@@ -363,7 +365,9 @@ static ProductViewController *g_ProductViewController = nil;
 
 - (void)timerFun
 {
-    
+    if ([_imageArray count] == 0 ) {
+        return;
+    }
     _imagePageControl.currentPage =  (_imagePageControl.currentPage+1)%[_imageArray count];
     
     if (_imagePageControl.currentPage == 0)
@@ -395,7 +399,7 @@ static ProductViewController *g_ProductViewController = nil;
     
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/applyCard?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.productDataDic[@"merchId"]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"applyCard operation = %@ JSON: %@", operation,responseObject);
         
         if ([responseObject[@"code"]integerValue] == 200) {
             [SVProgressShow showSuccessWithStatus:@"会员卡申请成功"];
@@ -403,7 +407,7 @@ static ProductViewController *g_ProductViewController = nil;
             
             NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
             [self.requestOperationManager GET:url parameters:@{@"prodId":self.productDataDic[@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSLog(@"JSON: %@", responseObject);
+                NSLog(@"getProduct operation = %@ JSON: %@", operation,responseObject);
                 
                 UINavigationController *navController = self.navigationController;
                 [self.navigationController popViewControllerAnimated:NO];

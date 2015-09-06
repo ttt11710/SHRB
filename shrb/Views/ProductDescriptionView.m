@@ -147,7 +147,7 @@
     [_descriptionView addSubview:_descriptionImageView];
     [self addBlurViewView:_descriptionImageView];
     
-    UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, _descriptionImageView.frame.size.height-26, 100, 21)];
+    UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, _descriptionImageView.frame.size.height-21-12, 100, 21)];
     moneyLabel.text = @"省 40元";
     moneyLabel.textColor = [UIColor orangeColor];
     [_descriptionImageView addSubview:moneyLabel];
@@ -166,7 +166,7 @@
 
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    shareBtn.frame = CGRectMake(_descriptionImageView.frame.origin.x+_descriptionImageView.frame.size.width-40, _descriptionImageView.frame.origin.y + _descriptionImageView.frame.size.height-30, 25, 25);
+    shareBtn.frame = CGRectMake(_descriptionImageView.frame.origin.x+_descriptionImageView.frame.size.width-41-15, _descriptionImageView.frame.origin.y + _descriptionImageView.frame.size.height-40, 41, 35);
     [shareBtn setBackgroundImage:[UIImage imageNamed:@"fenxiang"] forState:UIControlStateNormal];
     [shareBtn addTarget:self action:@selector(shareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
@@ -174,7 +174,7 @@
     [_descriptionView addSubview:shareBtn];
 
     UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    collectBtn.frame = CGRectMake(shareBtn.frame.origin.x-8-25, shareBtn.frame.origin.y, 25, 25);
+    collectBtn.frame = CGRectMake(shareBtn.frame.origin.x-40, shareBtn.frame.origin.y, 40, 35);
     [collectBtn setBackgroundImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
     [collectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [collectBtn addTarget:self action:@selector(collectBtnPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -357,13 +357,13 @@ static NSInteger oldRow;
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
         UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-        blurEffectView.frame =  CGRectMake(0, view.frame.size.height-30, view.frame.size.width, 30);
+        blurEffectView.frame =  CGRectMake(0, view.frame.size.height-45, view.frame.size.width, 45);
         [view insertSubview:blurEffectView atIndex:0];
     }
     else{
         UIView *blurEffectView = [[UIView alloc] init];
         blurEffectView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-        blurEffectView.frame = CGRectMake(0, view.frame.size.height-30, view.frame.size.width, 30);
+        blurEffectView.frame = CGRectMake(0, view.frame.size.height-45, view.frame.size.width, 45);
         [view insertSubview:blurEffectView atIndex:0];
     }
 }

@@ -15,6 +15,7 @@
 #import "ButtonTableViewCell.h"
 #import "CompleteVoucherViewController.h"
 #import "SVProgressShow.h"
+#import "NewCompleteVoucherViewController.h"
 
 
 static NSInteger tag = -1;
@@ -35,6 +36,15 @@ static NSInteger amount = 0;
     self.view.backgroundColor = shrbLightCell;
     
     [self loadData];
+    [self initTableView];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    if (IsiPhone4s) {
+        self.tableView.frame = CGRectMake(0, 20+44, screenWidth, screenHeight-20-44);
+    }
+    [self.view layoutSubviews];
 }
 
 - (void)loadData
@@ -44,7 +54,7 @@ static NSInteger amount = 0;
     
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardRechargeTypeList?"];
     [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"findCardRechargeTypeList operation = %@ JSON: %@", operation,responseObject);
         
         self.dataArray = responseObject[@"data"];
         
@@ -54,11 +64,32 @@ static NSInteger amount = 0;
     }];
 }
 
+- (void)initTableView
+{
+    
+    //去除tableview顶部留白
+    self.automaticallyAdjustsScrollViewInsets = false;
+
+    //删除底部多余横线
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    
+//    //去除顶部空间
+//    if (IsiPhone4s)
+//    {
+//        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 0.01f)];
+//    }
+//    else {
+//        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 64.f)];
+//    }
+    
+}
+
+
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0 || indexPath.row == [self.dataArray count]+2) {
-        return 235;
+        return 210;
     }
     else {
         return 56;
@@ -173,7 +204,7 @@ static NSInteger amount = 0;
         tag = cell.tag;
     }
 }
-- (IBAction)fsda:(id)sender {
+- (IBAction)cardRecharge:(id)sender {
     
     
     for (NSIndexPath* indexPath in [self.tableView indexPathsForVisibleRows])
@@ -192,13 +223,20 @@ static NSInteger amount = 0;
     
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/cardMemberRecharge?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"amount":@(amount),@"cardNo":self.cardNo,@"chanrgeTypeId":@"1"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"cardMemberRecharge operation = %@ JSON: %@", operation,responseObject);
         
+//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+//        CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
+//        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//        viewController.merchId = self.merchId;
+//        viewController.cardNo = self.cardNo;
+//        [SVProgressShow showWithStatus:@"充值处理中..."];
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-        CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
+        NewCompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewCompleteVoucherView"];
         [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
         viewController.merchId = self.merchId;
         viewController.cardNo = self.cardNo;
+        viewController.title =@"充值成功";
         [SVProgressShow showWithStatus:@"充值处理中..."];
         
         double delayInSeconds = 1;

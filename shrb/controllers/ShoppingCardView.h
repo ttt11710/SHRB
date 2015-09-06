@@ -26,6 +26,8 @@
 
 @property (nonatomic) NSInteger countTime;
 
+@property (nonatomic, strong)NSMutableArray *shoppingArray;
+
 - (void)showShoppingCard;
 
 @end

@@ -21,6 +21,10 @@
 #import "CompleteVoucherViewController.h"
 #import "StoreTableViewCell.h"
 #import "OrderModel.h"
+#import "ShoppingCardDataItem.h"
+#import <UIImageView+WebCache.h>
+#import "TBUser.h"
+#import "NewCompleteVoucherViewController.h"
 
 @interface PayViewController ()
 {
@@ -33,51 +37,18 @@
 
 @property (weak, nonatomic) IBOutlet BFPaperButton *makeSurePayBtn;
 
-@property (nonatomic,strong) NSMutableArray * dataArray;
-@property (nonatomic,strong) NSMutableArray * modelArray;
-
 @end
 
 @implementation PayViewController
 
 @synthesize isMemberPay;
+@synthesize totalPrice;
+@synthesize shoppingArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.makeSurePayBtn setBackgroundColor:shrbPink];
-    
-    self.dataArray = [[NSMutableArray alloc] initWithObjects:
-                      @{
-                        @"tradeImage" : @"提拉米苏",
-                        @"tradeName" : @"提拉米苏",
-                        @"tradeDescription":@"是的范德萨发发",
-                        @"memberPrice":@"30",
-                        @"originalPrice":@"55",
-                        @"amount":@"10",
-                        @"money":@"450",
-                        },
-                      @{
-                        @"tradeImage" : @"蜂蜜提子可颂",
-                        @"tradeName" : @"蜂蜜提子可颂",
-                        @"tradeDescription":@"放发放烦人烦人发热方式法萨芬热热发生地方",
-                        @"memberPrice":@"40",
-                        @"originalPrice":@"45",
-                        @"amount":@"2",
-                        @"money":@"70",
-                        },
-                      @{
-                        @"tradeImage" : @"芝士可颂",
-                        @"tradeName" : @"芝士可颂",
-                        @"tradeDescription":@"人发热方式法萨芬银行悍匪号放假一天很听话规定符合他后天热后有何用好人",
-                        @"memberPrice":@"25",
-                        @"originalPrice":@"30",
-                        @"amount":@"5",
-                        @"money":@"450",
-                        },
-                      nil];
-    
-    self.modelArray = [[NSMutableArray alloc] init];
     
     [self initTableView];
     
@@ -106,10 +77,10 @@
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0  || indexPath.row == [self.dataArray count]+1|| indexPath.row == [self.dataArray count]+2) {
+    if (indexPath.row == 0  || indexPath.row == [self.shoppingArray count]+1|| indexPath.row == [self.shoppingArray count]+2) {
         return 44;
     }
-    else if (indexPath.row == [self.dataArray count]+3|| indexPath.row == [self.dataArray count]+4|| indexPath.row == [self.dataArray count]+5) {
+    else if (indexPath.row == [self.shoppingArray count]+3|| indexPath.row == [self.shoppingArray count]+4|| indexPath.row == [self.shoppingArray count]+5) {
         return 55;
     }
     else {
@@ -120,7 +91,7 @@
 #pragma mark - tableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataArray count]+6;
+    return [self.shoppingArray count]+6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -132,14 +103,14 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
-        cell.textLabel.text = [NSString stringWithFormat:@"共%lu件商品",(unsigned long)[self.dataArray count]];
+        cell.textLabel.text = [NSString stringWithFormat:@"共%lu件商品",(unsigned long)[self.shoppingArray count]];
         cell.textLabel.font = [UIFont systemFontOfSize:15.0];
         cell.textLabel.textColor = shrbText;
         
         return cell;
     }
     
-    else if (indexPath.row == [self.dataArray count]+1) {
+    else if (indexPath.row == [self.shoppingArray count]+1) {
             
             static NSString *SimpleTableIdentifier = @"cellId";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
@@ -166,7 +137,7 @@
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loveGroupChanged:) name:GROUP_CHANGED object:_loveGroup];
             return cell;
         }
-    else if (indexPath.row == [self.dataArray count]+2) {
+    else if (indexPath.row == [self.shoppingArray count]+2) {
         
         static NSString *SimpleTableIdentifier = @"cellId";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
@@ -174,16 +145,16 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
-        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:@"实付款:￥420"];
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"实付款:￥%.2f",self.totalPrice]];
         
-        [attrString addAttribute:NSForegroundColorAttributeName value:shrbPink range:NSMakeRange(4, 4)];
+        [attrString addAttribute:NSForegroundColorAttributeName value:shrbPink range:NSMakeRange(4, attrString.length-4)];
         [attrString addAttribute:NSForegroundColorAttributeName value:shrbText range:NSMakeRange(0,3)];
         [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, attrString.length)];
         
         cell.detailTextLabel.attributedText = attrString;
         return cell;
     }
-    else if (indexPath.row == [self.dataArray count]+3) {
+    else if (indexPath.row == [self.shoppingArray count]+3) {
         
         static NSString *SimpleTableIdentifier = @"huiyuankaCellId";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
@@ -193,7 +164,7 @@
         }
         return cell;
     }
-    else if (indexPath.row == [self.dataArray count]+4) {
+    else if (indexPath.row == [self.shoppingArray count]+4) {
         
         static NSString *SimpleTableIdentifier = @"weixinCellId";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
@@ -203,7 +174,7 @@
         }
         return cell;
     }
-    else if (indexPath.row == [self.dataArray count]+5) {
+    else if (indexPath.row == [self.shoppingArray count]+5) {
         
         static NSString *SimpleTableIdentifier = @"yinhangCellId";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
@@ -222,28 +193,35 @@
             cell = [[StoreTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
         }
         
-        [self.modelArray removeAllObjects];
-        for (NSDictionary * dict in self.dataArray) {
-            OrderModel * model = [[OrderModel alloc] init];
-            [model setValuesForKeysWithDictionary:dict];
-            [self.modelArray addObject:model];
-        }
+        ShoppingCardDataItem *shoppingCardDataItem = [[ShoppingCardDataItem alloc] init];
+        shoppingCardDataItem = self.shoppingArray[indexPath.row-1];
         
-        cell.orderModel = self.modelArray[indexPath.row-1];
+        cell.tradeNameLabel.text = shoppingCardDataItem.prodList[@"prodName"] == nil? @"商品名称" : shoppingCardDataItem.prodList[@"prodName"];
+        [cell.tradeImageView sd_setImageWithURL:[NSURL URLWithString:shoppingCardDataItem.prodList[@"imgUrl"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
         
-//        cell.orderImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[self.dataArray objectAtIndex:indexPath.row-1][@"tradeImage"]]];
-//        cell.orderNameLabel.text = [self.dataArray objectAtIndex:indexPath.row-1][@"tradeName"];
-//        cell.amountTextField.text = [self.dataArray objectAtIndex:indexPath.row-1][@"amount"];
-//        NSString *string = [NSString stringWithFormat:@"共%@元",[self.dataArray objectAtIndex:indexPath.row-1][@"money"]];
-//        
-//        cell.moneyLabel.attributedText = [string createrAttributedStringWithStyles:
-//                                          @[
-//                                            [ForeGroundColorStyle withColor:[UIColor redColor] range:NSMakeRange(1, string.length-2)],
-//                                            [FontStyle withFont:[UIFont systemFontOfSize:18.f] range:NSMakeRange(1, string.length-2)]
-//                                            ]];
-
+        cell.tradeDescriptionLabel.text = shoppingCardDataItem.prodList[@"prodDesc"];
         
-
+        NSNumber *vipPriceNumber = shoppingCardDataItem.prodList[@"vipPrice"];
+        NSNumber *priceNumber = shoppingCardDataItem.prodList[@"price"];
+        
+        NSString *vipPrice = [vipPriceNumber stringValue];
+        NSString *price = [priceNumber stringValue];
+        
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%@ 原价￥%@",vipPrice,price]];
+        
+        [attrString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange([vipPrice length] + 2, [price length]+3)];//删除线
+        [attrString addAttribute:NSForegroundColorAttributeName value:shrbPink range:NSMakeRange(0, vipPrice.length + 1)];
+        [attrString addAttribute:NSForegroundColorAttributeName value:shrbLightText range:NSMakeRange(vipPrice.length + 2, price.length+3)];
+        
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, vipPrice.length + 1)];
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(vipPrice.length + 2, price.length+3)];
+        
+        cell.priceLabel.attributedText = attrString;
+        
+        cell.amountTextField.text = [NSString stringWithFormat:@"%ld",(long)shoppingCardDataItem.count];
+        cell.moneyLabel.text = [NSString stringWithFormat:@"￥%.2f",shoppingCardDataItem.count * [price floatValue]];
+        cell.moneyLabel.textColor = shrbPink;
+        
         return cell;
     }
 }
@@ -263,7 +241,7 @@
             }
         }
     }
-    if (indexPath.row >= [self.dataArray count] +3 && indexPath.row <=  [self.dataArray count]+5) {
+    if (indexPath.row >= [self.shoppingArray count] +3 && indexPath.row <=  [self.shoppingArray count]+5) {
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         for (id view in cell.contentView.subviews)
         {
@@ -279,18 +257,6 @@
             }
         }
     }
-}
-
-#pragma mark - 支付宝支付Btn
-- (IBAction)alipayBtnPressed:(id)sender {
-
-    [self notMmeberpushView:@"支付宝"];
-}
-
-#pragma mark - 银联支付Btn
-- (IBAction)InternetbankBtnPressed:(id)sender {
-    
-    [self notMmeberpushView:@"银联"];
 }
 
 - (void)notMmeberpushView:(NSString *)string
@@ -338,15 +304,15 @@
             if ([view isKindOfClass:[UIButton class]])
             {
                 if ([[(UIButton *)view currentImage] isEqual:[UIImage imageNamed:@"paycheck"]]) {
-                    switch (indexPath.row - [self.dataArray count]) {
+                    switch (indexPath.row - [self.shoppingArray count]) {
                         case 3:
-                            NSLog(@"支付方式：会员卡");
+                            [self cardPay];
                             break;
                         case 4:
-                            NSLog(@"支付方式：微信");
+                            [SVProgressShow showInfoWithStatus:@"支付方式：微信"];
                             break;
                         case 5:
-                            NSLog(@"支付方式：银行卡");
+                            [SVProgressShow showInfoWithStatus:@"支付方式：银行卡"];
                             break;
                             
                         default:
@@ -358,18 +324,42 @@
         }
     }
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-    CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
-    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    
-    [SVProgressShow showWithStatus:@"充值处理中..."];
-    
-    double delayInSeconds = 1;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [SVProgressShow dismiss];
-        [self.navigationController pushViewController:viewController animated:YES];
-    });
+}
+
+
+- (void)cardPay
+{
+    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/pay?"];
+    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":@"201508111544260856",@"cardNo":@"1440744596845",@"payAmount":@(self.totalPrice)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"pay operation = %@ JSON: %@", operation,responseObject);        
+        if ([responseObject[@"code"]integerValue] == 200) {
+//            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+//            CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
+//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//            viewController.merchId = @"201508111544260856";
+//            viewController.cardNo = @"1440744596845";
+//            viewController.title = @"支付完成";
+//            [SVProgressShow showWithStatus:@"正在支付..."];
+            
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+            NewCompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewCompleteVoucherView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            viewController.merchId = @"201508111544260856";
+            viewController.cardNo = @"1440744596845";
+            viewController.title = @"支付完成";
+            [SVProgressShow showWithStatus:@"正在支付..."];
+            
+            double delayInSeconds = 1;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [SVProgressShow dismiss];
+                [self.navigationController pushViewController:viewController animated:YES];
+            });
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
 }
 
 #pragma mark - 单选框点击调用

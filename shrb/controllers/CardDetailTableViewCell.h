@@ -10,6 +10,8 @@
 
 @interface CardDetailTableViewCell : UITableViewCell
 
+
+@property (weak, nonatomic) IBOutlet UILabel *merchNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cardNoLabel;

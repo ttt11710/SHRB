@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
 
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 
 
@@ -59,9 +59,10 @@
 {
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/info?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"user info operation = %@ JSON: %@", operation,responseObject);
         self.phoneLabel.text = responseObject[@"user"][@"phone"];
-        self.passwordLabel.text = responseObject[@"user"][@"password"];
+        self.passwordTextField.text = responseObject[@"user"][@"password"];
+        self.passwordTextField.secureTextEntry = YES;
         self.emailLabel.text = responseObject[@"user"][@"email"];
         if (self.emailLabel.text.length == 0) {
             self.emailLabel.text = @"未填写";
@@ -87,37 +88,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.row == 0? 60:44;
+    return indexPath.row == 0? 130:44;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 5;
+    return 4;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 2 ) {
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
-        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ResetPasswordView"];
-        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        [self.navigationController pushViewController:viewController animated:YES];
-    }
-    if(indexPath.row == 4)
-    {
-        NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/logout?"];
-        [self.requestOperationManager POST:url parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"JSON: %@", responseObject);
-            
-            [TBUser setCurrentUser:nil];
-            
-            [SVProgressShow showSuccessWithStatus:@"注销成功!"];
-            [self.navigationController popViewControllerAnimated:YES];
-            [SVProgressShow dismiss];
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"error:++++%@",error.localizedDescription);
-        }];
+//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+//        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ResetPasswordView"];
+//        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//        [self.navigationController pushViewController:viewController animated:YES];
     }
 }
 

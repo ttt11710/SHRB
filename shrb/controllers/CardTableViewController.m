@@ -15,6 +15,7 @@
 #import "CardModel.h"
 #import "TBUser.h"
 #import "NewCardDetailViewController.h"
+#import "CardDetailTableViewCell.h"
 
 static int i = 0 ;
 
@@ -75,7 +76,7 @@ static int i = 0 ;
     
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardList?"];
     [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"card findCardList operation = %@ JSON: %@", operation , responseObject);
         
         self.dataArray = responseObject[@"data"];
         for (NSDictionary * dic in responseObject[@"data"]) {
@@ -162,16 +163,16 @@ static int i = 0 ;
     //动画
    // [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
-    __weak CardTableViewController *weakSelf = self;
-    //下拉刷新
-    [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakSelf insertRowAtTop];
-    }];
-    
-    //上拉加载
-    [self.tableView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf insertRowAtBottom];
-    }];
+//    __weak CardTableViewController *weakSelf = self;
+//    //下拉刷新
+//    [self.tableView addPullToRefreshWithActionHandler:^{
+//        [weakSelf insertRowAtTop];
+//    }];
+//    
+//    //上拉加载
+//    [self.tableView addInfiniteScrollingWithActionHandler:^{
+//        [weakSelf insertRowAtBottom];
+//    }];
  
 }
 
@@ -320,28 +321,58 @@ static int i = 0 ;
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    return 162;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.modelArray count];
+    return [self.dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *SimpleTableIdentifier = @"CardTableViewCellIdentifier";
-    CardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+//    static NSString *SimpleTableIdentifier = @"CardTableViewCellIdentifier";
+//    CardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+//    if (cell == nil) {
+//        cell = [[CardTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+//    }
+//    //cell 选中方式
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//  //  cell.accessoryType = UITableViewCellAccessoryNone;
+//    cell.model = self.modelArray[indexPath.row];
+    
+    static NSString *SimpleTableIdentifier = @"CardDetailTableViewCellIdentifier";
+    CardDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     if (cell == nil) {
-        cell = [[CardTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+        cell = [[CardDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
     //cell 选中方式
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  //  cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.model = self.modelArray[indexPath.row];
     
     
+    cell.merchNameLabel.text = self.dataArray[indexPath.row][@"merchName"];
+    
+    NSString *amountString = [self.dataArray[indexPath.row][@"amount"] stringValue];
+    NSString *scoreString = [self.dataArray[indexPath.row][@"score"] stringValue];
+    
+    NSMutableAttributedString *moneyAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"金额:￥%@",amountString]];
+    [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
+    [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, amountString.length+1)];
+    [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 3)];
+    [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, amountString.length+1)];
+    
+    cell.amountLabel.attributedText = moneyAttrString;
+    
+    NSMutableAttributedString *integralAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"积分:%@",scoreString]];
+    [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
+    [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, scoreString.length)];
+    [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 3)];
+    [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, scoreString.length)];
+    
+    cell.scoreLabel.attributedText = integralAttrString;
+    
+    cell.cardNoLabel.text = [NSString stringWithFormat:@"卡号:%@",self.dataArray[indexPath.row][@"cardNo"]];
     return cell;
 }
 //CardDetailView

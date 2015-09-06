@@ -11,6 +11,7 @@
 #import "SVProgressShow.h"
 #import "StoreViewController.h"
 #import "shrb-swift.h"
+#import "OrdersViewController.h"
 
 @implementation ShoppingNumLabel
 
@@ -29,12 +30,17 @@
 
 @implementation ShoppingCardView
 
+
+@synthesize shoppingArray;
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, 150, 42)];
     if (self) {
         
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.67];
+        
+        self.shoppingArray = [[NSMutableArray alloc] init];
         [self creatView];
         self.hidden = YES;
     
@@ -54,6 +60,7 @@
     self.shoppingNumLabel.layer.masksToBounds = YES;
     self.shoppingNumLabel.textColor = [UIColor whiteColor];
     self.shoppingNumLabel.backgroundColor = shrbPink;
+    self.shoppingNumLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.shoppingNumLabel];
     
     
@@ -119,6 +126,7 @@
         [_timer invalidate];
         self.hidden = YES;
         self.shoppingNumLabel.num = 0 ;
+        _countTime = 1200;
         [SVProgressShow showInfoWithStatus:@"订单过期！"];
     }
     
@@ -133,21 +141,25 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
     [[NSUserDefaults standardUserDefaults] setObject:@"HotFocusShoppingCard" forKey:@"QRPay"];
     
+//    [[StoreViewController shareStoreViewController] gotoPayView];
+    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    OrdersViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    viewController.shoppingArray = self.shoppingArray;
+//    [self.navigationController pushViewController:viewController animated:YES];
+    
     UIViewController *activityViewController = nil;
     UIView* next = [self superview];
     UIResponder *nextResponder = [next nextResponder];
     if ([nextResponder isKindOfClass:[UIViewController class]]) {
         activityViewController = (UIViewController *)nextResponder;
     }
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UIViewController *OrdersViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
-//    [OrdersViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    OrdersViewController.hidesBottomBarWhenPushed = YES;
-//    [activityViewController.navigationController pushViewController:OrdersViewController animated:YES];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+    OrdersViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    viewController.shoppingArray = self.shoppingArray;
     [activityViewController.navigationController pushViewController:viewController animated:YES];
     
 //    KYDrawerController *drawerController = (KYDrawerController *)activityViewController.navigationController.parentViewController;

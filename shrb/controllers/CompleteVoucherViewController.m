@@ -48,7 +48,7 @@
     
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardDetail?"];
     [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":self.cardNo} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"findCardDetail operation = %@ JSON: %@", operation,responseObject);
         self.dataDic = responseObject[@"data"];
         [self initView];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

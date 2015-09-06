@@ -139,7 +139,7 @@
 {
     self.title = self.merchTitle;
     
-    UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
+    UIBarButtonItem *selectType = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"screen"] style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
     self.navigationItem.rightBarButtonItem = selectType;
 
 }
@@ -180,7 +180,7 @@
     
     [self.requestOperationManager GET:url parameters:@{@"merchId":self.merchId,@"pageNum":@"1",@"pageCount":@"20",@"orderBy":@"updateTime",@"sort":@"desc",@"whereString":@""} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSLog(@"operation : %@  JSON: %@", operation, responseObject);
+        NSLog(@"getProductList operation : %@  JSON: %@", operation, responseObject);
         
         self.dataArray = responseObject[@"productList"];
         
@@ -446,8 +446,7 @@
     //f755a51c0c7a4b4f8d140c4a2ebe9cb5 [TBUser currentUser].token
     NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
     [self.requestOperationManager GET:url parameters:@{@"prodId":self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        
+        NSLog(@"getProduct operation = %@ JSON: %@", operation,responseObject);        
         if ([(NSString *)responseObject[@"card"] isEqual:@""]) {
             ProductViewController *viewController = [[ProductViewController alloc] init];
             viewController.productDataDic = responseObject[@"product"];
@@ -612,6 +611,10 @@
     } completion:^(BOOL finished) {
         
         SuperQRViewController *qrVC = [[SuperQRViewController alloc] init];
+        qrVC.merchId = self.merchId;
+        qrVC.qrUrlBlock = ^(NSMutableArray *string){
+            NSLog(@"扫码商户信息 = %@",string);
+        };
         [self.navigationController pushViewController:qrVC animated:NO];
         self.QRViewBtn.layer.transform = CATransform3DIdentity;
         self.QRLabel.hidden = NO;

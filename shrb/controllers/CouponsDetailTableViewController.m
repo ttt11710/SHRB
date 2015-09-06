@@ -35,7 +35,7 @@
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
                                @"couponsImage" : @"辛巴克",
-                               @"money" : @"1000",
+                               @"money" : @"10000",
                                @"count":@"4",
                                @"expirationDate":@"2016-3-2",
                                @"canUse":@YES

@@ -34,7 +34,7 @@
     
     [self creatReq];
     [self loadData];
-    [self initData];
+   // [self initData];
     [self initTableView];
     
 }
@@ -46,7 +46,17 @@
     
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardTradeRecords?"];
     [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"cardNo":self.cardNo} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"findCardTradeRecords operation = %@ JSON: %@", operation,responseObject);
+        
+        self.expenseArray = [[NSMutableArray alloc] init];
+        
+        for (NSDictionary * dict in responseObject[@"data"]) {
+            CardModel * model = [[CardModel alloc] init];
+            [model setValuesForKeysWithDictionary:dict];
+            [self.expenseArray addObject:model];
+        }
+        [self.tableView reloadData];
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];
@@ -116,16 +126,16 @@
     [self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     self.automaticallyAdjustsScrollViewInsets = false;
     
-    __weak TradingRecordTableViewController *weakSelf = self;
-    //下拉加载
-    [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakSelf insertRowAtTop];
-    }];
-    
-    //上拉刷新
-    [self.tableView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf insertRowAtBottom];
-    }];
+//    __weak TradingRecordTableViewController *weakSelf = self;
+//    //下拉加载
+//    [self.tableView addPullToRefreshWithActionHandler:^{
+//        [weakSelf insertRowAtTop];
+//    }];
+//    
+//    //上拉刷新
+//    [self.tableView addInfiniteScrollingWithActionHandler:^{
+//        [weakSelf insertRowAtBottom];
+//    }];
 }
 
 #pragma mark - top插入数据
@@ -182,7 +192,7 @@
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  120;
+    return  150;
 }
 
 #pragma mark - Table view data source

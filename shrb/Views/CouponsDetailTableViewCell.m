@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *couponsImageView;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *expirationDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *giveFriendsOnlyBtn;
@@ -33,8 +34,10 @@
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string];
     [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:251.0/255.0 green:102.0/255.0 blue:49.0/255.0 alpha:1] range:NSMakeRange(0, string.length)];
     [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:34] range:NSMakeRange(1, string.length-1)];
+    if (IsiPhone4s) {
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(1, string.length-1)];
+    }
     self.moneyLabel.attributedText = attrString;
-
     
     self.expirationDateLabel.text = [NSString stringWithFormat:@"有效期至:%@",model.expirationDate];
     
@@ -48,6 +51,8 @@
         self.userCouponBtn.userInteractionEnabled = YES;
         self.redPacketImageView.hidden = NO;
     }
+    
+    self.countLabel.text = [NSString stringWithFormat:@"%@张",model.count];
 }
 
 - (void)awakeFromNib {

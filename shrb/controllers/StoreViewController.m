@@ -25,6 +25,7 @@
 #import <UIImageView+WebCache.h>
 #import "TBUser.h"
 #import "CallBackButton.h"
+#import "ShoppingCardDataItem.h"
 
 @interface ShoppingNumLabel1 : UILabel
 {
@@ -32,6 +33,7 @@
 }
 
 @property (assign, readwrite, nonatomic)NSInteger num;
+@property (assign, readwrite, nonatomic)CGFloat price;
 
 @end
 
@@ -45,8 +47,8 @@
 @end
 
 static StoreViewController *g_StoreViewController = nil;
-static NSInteger constantCountTime = 20*60;
-static NSInteger countTime = 20*60;
+static NSInteger constantCountTime = 1200;
+static NSInteger countTime = 1200;
 @interface StoreViewController ()
 {
     NSMutableArray *_array;
@@ -56,9 +58,6 @@ static NSInteger countTime = 20*60;
     
     NSTimer *_timer;
     BOOL showSelectTypeTableView;
-    
-    
-    ShoppingCardView *_myShoppingCardView;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *selectTypeTableViewBackView;
@@ -70,6 +69,7 @@ static NSInteger countTime = 20*60;
 @property (weak, nonatomic) IBOutlet UIView *shoppingCardView;
 @property (weak, nonatomic) IBOutlet UIImageView *shoppingCardImageView;
 @property (weak, nonatomic) IBOutlet ShoppingNumLabel1 *shoppingNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shoppingFixLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 
@@ -77,6 +77,9 @@ static NSInteger countTime = 20*60;
 
 @property (nonatomic,strong) NSMutableArray * selectArray;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+
+
+@property (nonatomic, strong)NSMutableArray *shoppingArray;
 
 @end
 
@@ -101,54 +104,35 @@ static NSInteger countTime = 20*60;
     [self initView];
     [self initData];
     [self initTableView];
-    
-    self.shoppingCardView.layer.cornerRadius = 4;
-   // self.shoppingCardView.layer.borderColor = shrbTableViewColor.CGColor;
-   // self.shoppingCardView.layer.borderWidth = 2;
-    self.shoppingCardView.layer.masksToBounds = YES;
-    self.shoppingCardView.hidden = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoPayView)];
-    [self.shoppingCardView addGestureRecognizer:tap];
-    
-    self.shoppingNumLabel.num = 0 ;
-    self.shoppingNumLabel.layer.cornerRadius = 11;
-    self.shoppingNumLabel.layer.masksToBounds = YES;
-    self.shoppingNumLabel.hidden = YES;
-    
-    self.shoppingFixLabel.hidden = YES;
-    self.countDownLabel.hidden = YES;
-    self.countDownLabel.text = @"20:00";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     self.tabBarController.tabBar.hidden = YES;
+    
+    [self countDown];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [_timer invalidate];
+    _timer = nil;
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countTime"];
-    [[NSUserDefaults standardUserDefaults] setInteger:1200 forKey:@"countTime"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"num"];
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"num"];
 }
 
 
 - (void)viewDidLayoutSubviews
 {
-    countTime = [[NSUserDefaults standardUserDefaults] integerForKey:@"countTime"];
     
-    if ( countTime < 1200 && countTime > 0 && _myShoppingCardView == nil) {
-        _myShoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-60, 100, 40)];
-        _myShoppingCardView.shoppingNumLabel.num = 10;
-        [self.view insertSubview:_myShoppingCardView aboveSubview:self.view];
-    }
-    
-    else if (self.shoppingCardView.hidden ){
-        [_myShoppingCardView showShoppingCard];
-    }
+    self.shoppingNumLabel.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.shoppingNumLabel.layer.borderWidth = 1;
+    self.shoppingNumLabel.layer.cornerRadius = self.shoppingNumLabel.frame.size.width/2;
+    self.shoppingNumLabel.layer.masksToBounds = YES;
+
     
     if (IsiPhone4s) {
         self.tableView.frame = CGRectMake(0, 64, screenWidth, screenHeight-64);
@@ -167,7 +151,7 @@ static NSInteger countTime = 20*60;
     
     [self.requestOperationManager GET:url parameters:@{@"merchId":self.merchId,@"pageNum":@"1",@"pageCount":@"20",@"orderBy":@"updateTime",@"sort":@"desc",@"whereString":@""} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSLog(@"operation : %@  JSON: %@", operation, responseObject);
+        NSLog(@"getProductList operation : %@  JSON: %@", operation, responseObject);
         
         self.dataArray = responseObject[@"productList"];
         
@@ -187,7 +171,7 @@ static NSInteger countTime = 20*60;
 {
     
     self.title = self.merchTitle;
-    UIBarButtonItem *selectType = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
+   UIBarButtonItem *selectType = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"screen"] style:UIBarButtonItemStylePlain target:self action:@selector(selectType)];
     self.navigationItem.rightBarButtonItem = selectType;
     
     //导航颜色
@@ -200,11 +184,20 @@ static NSInteger countTime = 20*60;
 
 - (void)initData
 {
+    self.shoppingArray = [[NSMutableArray alloc] init];
     
     self.shoppingNumLabel.num = 0 ;
+    self.priceLabel.text = @"￥0.00";
+    self.shoppingNumLabel.price = 0.00;
+    self.countDownLabel.text = @"20:00";
     
-    showSelectTypeTableView = NO;
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countTime"];
+//    [[NSUserDefaults standardUserDefaults] setInteger:11 forKey:@"countTime"];
+    
+    countTime = [[NSUserDefaults standardUserDefaults] integerForKey:@"countTime"];
 
+    NSLog(@"initData countTime = %ld",(long)countTime);
+    
 }
 
 - (void)initTableView
@@ -217,6 +210,9 @@ static NSInteger countTime = 20*60;
     _tableView.tableFooterView =[[UIView alloc]init];
     
     self.selectTypeTableView.tableFooterView = [[UIView alloc] init];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 49.f)];
+    
     //动画
     //[self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
 }
@@ -363,7 +359,7 @@ static NSInteger countTime = 20*60;
             }
             
             cell.tradeNameLabel.text = self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodName"] == nil? @"商品名称" : self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodName"];
-            [cell.tradeImageView sd_setImageWithURL:[NSURL URLWithString:self.selectArray[indexPath.section-1][@"imgUrl"][indexPath.row][@"prodName"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+            [cell.tradeImageView sd_setImageWithURL:[NSURL URLWithString:self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"imgUrl"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
             
             cell.tradeDescriptionLabel.text = self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodDesc"];
             
@@ -391,18 +387,56 @@ static NSInteger countTime = 20*60;
             // 内容更改的block回调
             numbutton.callBack = ^(NSString *currentNum){
                 
-                NSLog(@"%ld",(long)indexPath.row);
-                
-                if (_myShoppingCardView == nil) {
-                    _myShoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-60, 100, 40)];
-                    _myShoppingCardView.shoppingNumLabel.num = 10;
-                    [self.view insertSubview:_myShoppingCardView aboveSubview:self.view];
-                }
+                NSLog(@"indexPath.section = %ld, indexPath.row = %ld",(long)indexPath.section, (long)indexPath.row);
 
                 
-                if (_myShoppingCardView.hidden) {
-                    self.shoppingCardView.hidden = NO;
+                if ([self.shoppingArray count] == 0) {
+                    ShoppingCardDataItem *shoppingCardDataItem = [[ShoppingCardDataItem alloc] init];
+                    shoppingCardDataItem.count = [currentNum integerValue];
+                    shoppingCardDataItem.prodList = self.selectArray[indexPath.section-1][@"prodList"][indexPath.row];
+                    [self.shoppingArray addObject:shoppingCardDataItem];
+                    
+                    self.shoppingNumLabel.price = [self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"price"] floatValue];
                 }
+                
+                else {
+                    
+                    self.shoppingNumLabel.price += [self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"price"] floatValue];
+                    
+                    ShoppingCardDataItem *result = [[ShoppingCardDataItem alloc] init];
+                    
+                    int num = 0 ;
+                    
+                    for (int i = 0; i < self.shoppingArray.count; i++) {
+                        result = [self.shoppingArray objectAtIndex:i];
+                        NSLog(@"1111111111111111111result.count = %ld  result.prodList = %@",(long)result.count,result.prodList);
+                        
+                        NSMutableArray *arr = [[NSMutableArray alloc] init];
+                        
+                        arr =  self.selectArray[indexPath.section-1][@"prodList"][indexPath.row];
+                        
+                        if ([result.prodList isEqual:arr]) {
+                            result.count = [currentNum integerValue];
+                            NSLog(@"一样");
+                        }
+                        else {
+                            
+                            num ++ ;
+                            if (num == self.shoppingArray.count) {
+                                NSLog(@"不一样");
+                                ShoppingCardDataItem *shoppingCardDataItem = [[ShoppingCardDataItem alloc] init];
+                                shoppingCardDataItem.count = [currentNum integerValue];
+                                shoppingCardDataItem.prodList = self.selectArray[indexPath.section-1][@"prodList"][indexPath.row];
+                                [self.shoppingArray addObject:shoppingCardDataItem];
+                            }
+                        }
+                        
+                        NSLog(@"22222222222222222result.count = %ld  result.prodList = %@",(long)result.count,result.prodList);
+                    }
+                }
+                
+                NSLog(@"%@",self.shoppingArray);
+                
                 
                 _rect = [self.tableView.superview convertRect:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height) fromView:cell];
                 
@@ -487,7 +521,7 @@ static NSInteger countTime = 20*60;
         
         NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
         [self.requestOperationManager GET:url parameters:@{@"prodId":self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"JSON: %@", responseObject);
+            NSLog(@"getProduct JSON: %@", responseObject);
             
             ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-44)];
             productDescriptionView.currentSection = indexPath.section-1;
@@ -583,8 +617,13 @@ static NSInteger countTime = 20*60;
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     self.shoppingNumLabel.num ++ ;
-    [self showShoppingCard];
-
+    self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",self.shoppingNumLabel.price];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"num"];
+    [[NSUserDefaults standardUserDefaults] setInteger:self.shoppingNumLabel.num forKey:@"num"];
+    
+    [self countDown];
+    
     self.selectTypeTableViewBackView.hidden = YES;
     if (anim == [layer animationForKey:@"group"]) {
        // self.gotopayViewBtn.enabled = YES;
@@ -593,47 +632,19 @@ static NSInteger countTime = 20*60;
     }
 }
 
-#pragma mark - 显示购物车
-- (void)showShoppingCard
-{
-    if (!_myShoppingCardView.hidden) {
-        self.shoppingCardView.hidden = YES;
-        _myShoppingCardView.shoppingNumLabel.num ++ ;
-        return ;
-    }
-    
-    if (self.shoppingNumLabel.num == 1) {
-        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
-            
-            self.shoppingCardImageView.layer.transform = CATransform3DMakeTranslation(-(self.shoppingCardView.frame.size.width/2-20), 0, 0);
-            
-        } completion:^(BOOL finished) {
-            
-            self.shoppingNumLabel.hidden = NO;
-            self.shoppingFixLabel.hidden = NO;
-            self.countDownLabel.hidden = NO;
-            //if (self.shoppingNumLabel.num == 1) {
-            [self countDown];
-            self.shoppingFixLabel.alpha = 0 ;
-            self.countDownLabel.alpha = 0 ;
-            [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-                
-                self.shoppingFixLabel.alpha = 1;
-                self.countDownLabel.alpha = 1 ;
-            } completion:^(BOOL finished) {
-                
-            }];
-            //  }
-        }];
-    }
-}
-
 #pragma mark - 倒计时功能
 
 - (void)countDown
 {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
-
+    if (self.shoppingNumLabel.num == 0) {
+        return;
+    }
+    if (_timer == nil) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
+    }
+    else {
+        [_timer setFireDate:[NSDate distantPast]];
+    }
 }
 
 - (void)timerFireMethod:(NSTimer *)timer
@@ -642,6 +653,8 @@ static NSInteger countTime = 20*60;
     NSDate *today = [NSDate date];//当前时间
     NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:--countTime];
     unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    
+   // NSLog(@"timerFireMethod countTime = %ld",(long)countTime);
     NSDateComponents *d = [calendar components:unitFlags fromDate:today toDate:fireDate options:0];//计算时间差
     self.countDownLabel.text = [NSString stringWithFormat:@"%ld:%ld",(long)[d minute],(long)[d second]];
     if (d.second <10) {
@@ -655,15 +668,12 @@ static NSInteger countTime = 20*60;
     }
     
     if (d.minute == 0 && d.second == 0) {
-        [_timer invalidate];
-        self.shoppingCardView.hidden = YES;
-        self.shoppingCardImageView.layer.transform = CATransform3DIdentity;
-        self.shoppingNumLabel.hidden = YES;
-        self.shoppingFixLabel.hidden = YES;
-        self.countDownLabel.hidden = YES;
+        [_timer setFireDate:[NSDate distantFuture]];
         self.countDownLabel.text = @"20:00";
         countTime = constantCountTime;
         self.shoppingNumLabel.num = 0 ;
+        self.shoppingNumLabel.price = 0 ;
+        self.priceLabel.text = @"￥0.00";
         [SVProgressShow showInfoWithStatus:@"订单过期！"];
     }
     
@@ -698,17 +708,17 @@ static NSInteger countTime = 20*60;
     [self.navigationController pushViewController:qrVC animated:YES];
 }
 
-#pragma mark - 进入支付页面
-- (void)gotoPayView
-{
-
-//    KYDrawerController *drawerController = (KYDrawerController *)self.navigationController.parentViewController;
-//    drawerController.drawerWidth = screenWidth-60;
-//    [drawerController setDrawerState:0 animated:true];
+#pragma mark - 进入订单页面
+- (IBAction)gotoPayView:(id)sender {
     
+    if (self.shoppingArray.count == 0) {
+        [SVProgressShow showInfoWithStatus:@"您未选购任何商品!"];
+        return;
+    }
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+    OrdersViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    viewController.shoppingArray = self.shoppingArray;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

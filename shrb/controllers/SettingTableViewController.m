@@ -13,6 +13,8 @@
 
 @interface SettingTableViewController ()
 
+@property (nonatomic,strong)AFHTTPRequestOperationManager *requestOperationManager;
+
 @end
 
 @implementation SettingTableViewController
@@ -20,7 +22,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self creatReq];
     [self initTableView];
+}
+
+- (void)creatReq
+{
+    self.requestOperationManager=[AFHTTPRequestOperationManager manager];
+    
+    self.requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    AFJSONResponseSerializer *serializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    self.requestOperationManager.responseSerializer=serializer;
+    
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:10*60];
+    self.requestOperationManager.requestSerializer=requestSerializer;
 }
 
 - (void)initTableView
@@ -36,15 +53,14 @@
 {
     return 0;
 }
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.row == 2?8: 44;
+    return (indexPath.row == 2 || indexPath.row == 7)?8: 44;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 7;
+    return 9;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -60,6 +76,23 @@
         UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"updatePass"];
         [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
         [self.navigationController pushViewController:viewController animated:YES];
+    }
+    
+    if(indexPath.row == 8)
+    {
+        NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/logout?"];
+        [self.requestOperationManager POST:url parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"logout operation = %@ JSON: %@", operation,responseObject);
+            
+            [TBUser setCurrentUser:nil];
+            
+            [SVProgressShow showSuccessWithStatus:@"注销成功!"];
+            [self.navigationController popViewControllerAnimated:YES];
+            [SVProgressShow dismiss];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error:++++%@",error.localizedDescription);
+        }];
     }
     
 }

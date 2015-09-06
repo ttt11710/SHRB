@@ -18,6 +18,7 @@
 #import "TradingRecordTableViewController.h"
 #import "VoucherCenterViewController.h"
 #import "NewVoucherCenterViewController.h"
+#import "CardDetailTableViewCell.h"
 
 
 static NewCardDetailViewController *g_NewCardDetailViewController = nil;
@@ -193,7 +194,7 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardDetail?"];
     [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":self.cardNo} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"findCardDetail operation = %@ JSON: %@", operation,responseObject);
         self.dataDic = responseObject[@"data"];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -258,7 +259,8 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return 130;
+       // return 130;
+        return 180;
     }
     else if (indexPath.section == 3) {
         return 44;
@@ -291,10 +293,10 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         sectionHeaderView.tag = section-1;
         
         if (section == 1) {
-            sectionHeaderView.title = [NSString stringWithFormat:@"会员金额:%@元",self.dataDic[@"amount"]];
+            sectionHeaderView.title = [NSString stringWithFormat:@"金额:%@元",self.dataDic[@"amount"]];
         }
         else {
-            sectionHeaderView.title = [NSString stringWithFormat:@"会员积分:%@分",self.dataDic[@"score"]];
+            sectionHeaderView.title = [NSString stringWithFormat:@"积分:%@分",self.dataDic[@"score"]];
         }
         
         SectionModel *sectionModel = [_dataMutableArray objectAtIndex:section-1];
@@ -376,17 +378,47 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 {
     
     if (indexPath.section == 0) {
-        static NSString *SimpleTableIdentifier = @"CardImageAndCardNumTableViewCellIdentifier";
-        CardImageAndCardNumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+//        static NSString *SimpleTableIdentifier = @"CardImageAndCardNumTableViewCellIdentifier";
+//        CardImageAndCardNumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+//        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+//        if (cell == nil) {
+//            cell = [[CardImageAndCardNumTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+//        }
+//        //cell 选中方式
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        [cell.cardImgUrlImageView sd_setImageWithURL:[NSURL URLWithString:self.dataDic[@"cardImgUrl"]] placeholderImage:[UIImage imageNamed:@"官方头像"]];
+//        cell.cardNoLabel.text = [NSString stringWithFormat:@"卡号:%@",self.dataDic[@"cardNo"]];
+        
+        static NSString *SimpleTableIdentifier = @"CardDetailTableViewCellIdentifier";
+        CardDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
         if (cell == nil) {
-            cell = [[CardImageAndCardNumTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+            cell = [[CardDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
         //cell 选中方式
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell.cardImgUrlImageView sd_setImageWithURL:[NSURL URLWithString:self.dataDic[@"cardImgUrl"]] placeholderImage:[UIImage imageNamed:@"官方头像"]];
-        cell.cardNoLabel.text = [NSString stringWithFormat:@"卡号:%@",self.dataDic[@"cardNo"]];
         
+        cell.merchNameLabel.text = self.dataDic[@"merchName"];
+        
+        NSString *amountString = [self.dataDic[@"amount"] stringValue];
+        NSString *scoreString = [self.dataDic[@"score"] stringValue];
+        
+        NSMutableAttributedString *moneyAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"金额:￥%@",amountString]];
+        [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
+        [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, amountString.length+1)];
+        [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 3)];
+        [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, amountString.length+1)];
+        
+        cell.amountLabel.attributedText = moneyAttrString;
+        
+        NSMutableAttributedString *integralAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"积分:%@",scoreString]];
+        [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
+        [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, scoreString.length)];
+        [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 3)];
+        [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, scoreString.length)];
+        
+        cell.scoreLabel.attributedText = integralAttrString;
+        
+        cell.cardNoLabel.text = [NSString stringWithFormat:@"卡号:%@",self.cardNo];
         return cell;
     }
     else if (indexPath.section == 3)

@@ -14,6 +14,7 @@
 #import "SuperOrderViewController.h"
 #import "Const.h"
 #import <CBZSplashView/CBZSplashView.h>
+#import "TBUser.h"
 
 @interface SuperQRViewController ()<AVCaptureMetadataOutputObjectsDelegate,QRViewDelegate>
 
@@ -26,6 +27,8 @@
 @end
 
 @implementation SuperQRViewController
+
+@synthesize merchId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -153,15 +156,21 @@
         stringValue = metadataObject.stringValue;
     }
     
+    
+    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findMerch?"];
+    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"findMerch operation = %@ JSON: %@", operation,responseObject);
+        
+        if (self.qrUrlBlock) {
+            self.qrUrlBlock(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+    
     NSLog(@" %@",stringValue);
     
-    if (self.qrUrlBlock) {
-        self.qrUrlBlock(stringValue);
-    }
-    
     [self pop:nil];
-    
-    
     
 }
 

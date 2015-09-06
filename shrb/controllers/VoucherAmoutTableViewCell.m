@@ -22,7 +22,13 @@
 //键盘即将显示的时候回调
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    
     if (IsiPhone4s) {
+        UITableView *tableView = (UITableView *)self.superview.superview;
+        
+        [tableView setContentOffset:CGPointMake(0, tableView.contentSize.height -tableView.bounds.size.height-100) animated:YES];
+        
+        
         [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
             self.superview.superview.layer.transform =CATransform3DMakeTranslation(0, -100, 0);

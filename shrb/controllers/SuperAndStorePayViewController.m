@@ -11,6 +11,8 @@
 #import "TNCheckBoxGroup.h"
 #import "OrdersTableViewCell.h"
 #import "CompleteVoucherViewController.h"
+#import "SVProgressShow.h"
+#import "TBUser.h"
 
 
 #define imageViewWidth 80
@@ -81,7 +83,7 @@ static UIButton *_payTypeButton = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
         }
-        cell.textLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"storeName"];
+        cell.textLabel.text = @"商店名字";
         cell.textLabel.textColor = shrbText;
         cell.textLabel.font = [UIFont systemFontOfSize:15.0];
         
@@ -147,10 +149,30 @@ static UIButton *_payTypeButton = nil;
         case 0:
             //会员支付
         {
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-            CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            [self.navigationController pushViewController:viewController animated:YES];
+            NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/pay?"];
+            [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":@"201508111544260856",@"cardNo":@"1440744596845",@"payAmount":@(1)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"pay operation = %@ JSON: %@", operation,responseObject);
+                
+                if ([responseObject[@"code"]integerValue] == 200) {
+                    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+                    CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
+                    viewController.title = @"支付完成";
+                    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+                    viewController.merchId = @"201508111544260856";
+                    viewController.cardNo = @"1440744596845";
+                    [SVProgressShow showWithStatus:@"正在支付..."];
+                    
+                    double delayInSeconds = 1;
+                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                        [SVProgressShow dismiss];
+                        [self.navigationController pushViewController:viewController animated:YES];
+                    });
+                }
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"error:++++%@",error.localizedDescription);
+            }];
         }
             break;
         case 1:

@@ -11,8 +11,6 @@
 
 @interface StoreViewController : PYBaseViewController <UITableViewDelegate,UITableViewDataSource>
 
-
-
 @property(nonatomic,assign)NSString * merchId;
 @property(nonatomic,assign)NSString * merchTitle;
 

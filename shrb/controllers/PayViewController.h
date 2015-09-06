@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface PayViewController : UIViewController
+@interface PayViewController : PYBaseViewController
 
 @property (nonatomic,assign) BOOL isMemberPay;
+@property (nonatomic,assign) CGFloat totalPrice;
+@property (copy, readwrite, nonatomic) NSMutableArray *shoppingArray;
 
 @end

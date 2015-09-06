@@ -67,6 +67,9 @@
     [self initTableView];
     [self cardAnimation];
     
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"num"];
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"num"];
+    
     
 }
 
@@ -74,13 +77,15 @@
 {
     [super viewWillAppear:animated];
    // self.tabBarController.tabBar.hidden = NO;
+    
+    _shoppingCardView.shoppingNumLabel.num = [[NSUserDefaults standardUserDefaults] integerForKey:@"num"];
 }
 
 - (void)viewDidLayoutSubviews
 {
     if (_shoppingCardView == nil) {
         _shoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-49-50, 100, 40)];
-        _shoppingCardView.shoppingNumLabel.num = 10;
+        _shoppingCardView.shoppingNumLabel.num = [[NSUserDefaults standardUserDefaults] integerForKey:@"num"];
         [self.view insertSubview:_shoppingCardView aboveSubview:self.view];
     }
 
@@ -115,12 +120,8 @@
     self.dataArray = [[NSMutableArray alloc] init];
     NSString *url=[baseUrl stringByAppendingString:@"/merch/v1.0/getMerchList?"];
     [self.requestOperationManager GET:url parameters:@{@"pageNum":@"1",@"pageCount":@"20",@"orderBy":@"updateTime",@"sort":@"desc",@"whereString":@""} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        
+        NSLog(@"getMerchList operation = %@ JSON: %@", operation,responseObject);        
         self.dataArray = responseObject[@"merchList"];
-        
-        _merchId = [responseObject[@"merchList"] objectAtIndex:0][@"merchId"];
-        _merchTitle = [responseObject[@"merchList"] objectAtIndex:0][@"merchTitle"];
         
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -336,6 +337,9 @@
 {
    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    _merchId = [self.dataArray objectAtIndex:indexPath.section][@"merchId"];
+    _merchTitle = [self.dataArray objectAtIndex:indexPath.section][@"merchTitle"];
     
     if (indexPath.section <= 1) {
         //超市

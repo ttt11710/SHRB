@@ -11,6 +11,7 @@
 @interface OrdersViewController : UIViewController
 
 @property (nonatomic,assign) BOOL isMember;
+@property (copy, readwrite, nonatomic) NSMutableArray *shoppingArray;
 
 + (OrdersViewController *)shareOrdersViewController;
 - (void)addTap;
