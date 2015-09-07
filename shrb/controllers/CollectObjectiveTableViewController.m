@@ -9,10 +9,16 @@
 #import "CollectObjectiveTableViewController.h"
 #import "CollectTableViewCell.h"
 #import "Const.h"
+#import "SVProgressShow.h"
+#import "HotFocusTableViewCell.h"
 
 @interface CollectObjectiveTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *data;
+
+@property (nonatomic,strong) NSMutableArray * dataArray;
+
+@property (nonatomic,strong)AFHTTPRequestOperationManager *requestOperationManager;
 
 @end
 
@@ -21,8 +27,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initData];
+    [self creatReq];
+    [SVProgressShow showWithStatus:@"加载中..."];
+    [self loadData];
+
+   // [self initData];
     [self initTableView];
+    
+}
+
+- (void)creatReq
+{
+    self.requestOperationManager=[AFHTTPRequestOperationManager manager];
+    
+    self.requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    AFJSONResponseSerializer *serializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    self.requestOperationManager.responseSerializer=serializer;
+    
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:10*60];
+    self.requestOperationManager.requestSerializer=requestSerializer;
+}
+
+#pragma mark - 网络请求数据
+- (void)loadData
+{
+    
+    self.dataArray = [[NSMutableArray alloc] init];
+    NSString *url=[baseUrl stringByAppendingString:@"/merch/v1.0/getMerchList?"];
+    [self.requestOperationManager GET:url parameters:@{@"pageNum":@"1",@"pageCount":@"20",@"orderBy":@"updateTime",@"sort":@"desc",@"whereString":@""} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"getMerchList operation = %@ JSON: %@", operation,responseObject);
+        self.dataArray = [responseObject[@"merchList"] mutableCopy];
+        [SVProgressShow dismiss];
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+        [SVProgressShow showErrorWithStatus:@"加载失败!"];
+    }];
     
 }
 
@@ -50,51 +92,75 @@
 
 - (void)initTableView
 {
+    //tableView 去分界线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //删除底部多余横线
+    self.tableView.tableFooterView =[[UIView alloc]init];
+    
+    //去除tableview顶部留白
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     self.tableView.backgroundColor = shrbTableViewColor;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 100, 0)];
-    UIFont* theFont = [UIFont systemFontOfSize:15.0];
+    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 32, 0)];
+    UIFont* theFont = [UIFont systemFontOfSize:18.0];
     label.numberOfLines = 0;
     [label setFont:theFont];
-    [label setText:self.data[indexPath.row][@"storeDetail"]];
     
+    //    [label setText:self.dataArray[indexPath.section][@"merchDesc"]];
+    
+    [label setText:self.dataArray[indexPath.section][@"merchDesc"]];
     [label sizeToFit];// 显示文本需要的长度和宽度
     
-    return label.frame.size.height+40;
+    CGFloat labelHeight = label.frame.size.height;
+    
+    return screenWidth/8*5+16+labelHeight+16;
 }
 
-#pragma mark - Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    //return [self.dataArray count];
+    return self.dataArray.count ;
+}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.data count];
+#pragma mark - tableView delegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *SimpleTableIdentifier = @"CollectTableViewCellIdentifier";
-    CollectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    static NSString *SimpleTableIdentifier = @"HotMembersTableViewCellIdentifier";
+    HotFocusTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     if (cell == nil) {
-        cell = [[CollectTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+        cell = [[HotFocusTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
     }
-    //cell 选中方式
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.collectImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",self.data[indexPath.row][@"storeName"]]];
-    cell.collectDetailLabel.text =  self.data[indexPath.row][@"storeDetail"];
+    NSMutableArray *ab = [[NSMutableArray alloc] init];
+    
+    if ([self.dataArray[indexPath.section][@"merchImglist"] count] == 0) {
+        [ab addObject:@"热点无图片"];
+    }
+    else {
+        for (int i = 0 ; i < [self.dataArray[indexPath.section][@"merchImglist"] count]; i++) {
+            [ab addObject:[self.dataArray[indexPath.section][@"merchImglist"] objectAtIndex:i][@"imgUrl"]];
+        }
+    }
+    cell.descriptionLabel.text = self.dataArray[indexPath.section][@"merchDesc"];
+    cell.hotImageView.currentInt = 0;
+    [cell.hotImageView initImageArr];
+    cell.hotImageView.imageArr = ab;
+    [cell.hotImageView beginAnimation];
+    
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"HotDetailView"];
-        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        [self.navigationController pushViewController:viewController animated:YES];
 }
 @end

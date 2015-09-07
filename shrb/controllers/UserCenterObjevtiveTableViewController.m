@@ -14,6 +14,7 @@
 #import "TBUser.h"
 #import <UIImageView+WebCache.h>
 #import "AboutTBViewController.h"
+#import "CollectObjectiveTableViewController.h"
 
 @interface UserCenterObjevtiveTableViewController ()
 
@@ -127,17 +128,31 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
- 
-    return section == 0?1:section==1?3:3;
+    
+    switch (section) {
+        case 0:
+        case 3:
+            return 1;
+            break;
+        case 1:
+            return 2;
+            break;
+        case 2:
+            return 3;
+            break;
+        default:
+            return 0;
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return (section == 0 || section == 1)? 0:8;
+    return section == 0? 0:8;
 }
 
 
@@ -176,10 +191,6 @@
             NSLog(@"error:++++%@",error.localizedDescription);
             [SVProgressShow showErrorWithStatus:@"查询失败!"];
         }];
-
-//        BasicInfoTableViewController *basicInfoTableViewController = [[BasicInfoTableViewController alloc] init];
-//        [self.navigationController pushViewController:basicInfoTableViewController animated:YES];
-        
     }
     else if (indexPath.section == 1)
     {
@@ -196,15 +207,6 @@
             OrderViewController *orderViewController = [[OrderViewController alloc] init];
             orderViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:orderViewController animated:YES];
-            
-//            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
-//            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"orderlistView"];
-//            viewController.hidesBottomBarWhenPushed = YES;
-//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//            [self.navigationController pushViewController:viewController animated:YES];
-            
-            //            OrderListViewController *orderListViewController = [[OrderListViewController alloc] init];
-            //            [self.navigationController pushViewController:orderListViewController animated:YES];
         }
         //我的收藏
         else if (indexPath.row == 1) {
@@ -220,18 +222,10 @@
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
             viewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:viewController animated:YES];
-
-        }
-        //设置
-        else if (indexPath.row == 2) {
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
-            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"settingView"];
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            viewController.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:viewController animated:YES];
+    
         }
     }
-    else {
+    else  if (indexPath.section == 2) {
         //帮助中心
         if (indexPath.row == 0) {
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
@@ -255,18 +249,20 @@
             [self.navigationController pushViewController:aboutTBViewController animated:YES];
         }
     }
+    else {
+        //设置
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+        UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"settingView"];
+        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+        viewController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 
 #pragma mark - 登录按钮
 - (IBAction)loginBtnPressed:(id)sender {
     
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-//    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginView"];
-//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    [viewController setHidesBottomBarWhenPushed:YES];
-//    [self.navigationController pushViewController:viewController animated:YES];
-
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewLoginView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];

@@ -65,6 +65,7 @@
     self.tableView.tableFooterView =[[UIView alloc]init];
     self.tableView.backgroundColor = shrbTableViewColor;
     
+    //增加底部空间
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 60.f)];
 }
 
@@ -133,7 +134,7 @@
         _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
         [_loveGroup create];
         
-        CGFloat x = IsiPhone4s? screenWidth-_loveGroup.frame.size.width:screenWidth-24 -_loveGroup.frame.size.width;
+        CGFloat x = IsiPhone4s? screenWidth-_loveGroup.frame.size.width-8:screenWidth-24 -_loveGroup.frame.size.width;
         
         _loveGroup.position = CGPointMake(x, 11.5);
         

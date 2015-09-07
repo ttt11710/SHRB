@@ -185,6 +185,14 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     [self initTableView];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    if (IsiPhone4s) {
+        self.tableView.frame = CGRectMake(0, 0, screenWidth, screenHeight-44);
+    }
+    [self.view layoutSubviews];
+}
+
 - (void)loadData
 {
     
@@ -245,6 +253,9 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     
     self.tableView.backgroundColor = shrbTableViewColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    //增加底部空间
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 80.f)];
 }
 
 #pragma mark - tableView dataSource
@@ -258,7 +269,7 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 {
     if (indexPath.section == 0) {
        // return 130;
-        return 180;
+        return screenWidth/170*90 + 32;
     }
     else if (indexPath.section == 3) {
         return 44;

@@ -336,18 +336,18 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
     [view addSubview:_merchNameLabel];
     
     
-    _moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 47, 150, 30)];
-    _moneyLabel.text = [NSString stringWithFormat:@"金额：%@元",self.cardDataDic[@"amount"]];
+    _moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 47, 150, 30)];
+    _moneyLabel.text = [NSString stringWithFormat:@"金额:%@元",self.cardDataDic[@"amount"]];
     _moneyLabel.textColor = [UIColor whiteColor];
     [view addSubview:_moneyLabel];
     
-    _integralLabel = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.size.width/2+8, _moneyLabel.frame.origin.y, view.frame.size.width/2-8, 30)];
-    _integralLabel.text = [NSString stringWithFormat:@"积分：%@分",self.cardDataDic[@"score"]];
+    _integralLabel = [[UILabel alloc] initWithFrame:CGRectMake(_moneyLabel.frame.origin.x + _moneyLabel.frame.size.width, _moneyLabel.frame.origin.y, view.frame.size.width/2-8, 30)];
+    _integralLabel.text = [NSString stringWithFormat:@"积分:%@分",self.cardDataDic[@"score"]];
     _integralLabel.textColor = [UIColor whiteColor];
     [view addSubview:_integralLabel];
 
     _cardNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, view.frame.size.height - 30- 15, 250, 30)];
-    _cardNumberLabel.text = [NSString stringWithFormat:@"卡号：%@",self.cardDataDic[@"cardNo"]];
+    _cardNumberLabel.text = [NSString stringWithFormat:@"卡号:%@",self.cardDataDic[@"cardNo"]];
     _cardNumberLabel.textColor = shrbText;
     [view addSubview:_cardNumberLabel];
     
@@ -527,30 +527,30 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 - (void)showMeImageViewPressed:(UITapGestureRecognizer *)tap
 {
     
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        
-        self.cardView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 1);
-        
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            
-            self.cardView.layer.transform = CATransform3DIdentity;
-            
-        } completion:^(BOOL finished) {
-            
-            if (_timer.isValid) {
-                [_timer invalidate];
-            }
-            
-            ShowMeImageViewController *viewController = [[ShowMeImageViewController alloc] init];
-            viewController.imagesArray=_imageArray;
-            viewController.currentImageIndex=tap.view.tag;
-            [self presentViewController:viewController animated:YES completion:^{
-                
-            }];
-            
-        }];
-    }];
+//    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//        
+//        self.cardView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 1);
+//        
+//    } completion:^(BOOL finished) {
+//        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//            
+//            self.cardView.layer.transform = CATransform3DIdentity;
+//            
+//        } completion:^(BOOL finished) {
+//            
+//            if (_timer.isValid) {
+//                [_timer invalidate];
+//            }
+//            
+//            ShowMeImageViewController *viewController = [[ShowMeImageViewController alloc] init];
+//            viewController.imagesArray=_imageArray;
+//            viewController.currentImageIndex=tap.view.tag;
+//            [self presentViewController:viewController animated:YES completion:^{
+//                
+//            }];
+//            
+//        }];
+//    }];
     
 }
 

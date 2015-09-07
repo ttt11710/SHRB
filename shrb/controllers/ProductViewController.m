@@ -635,30 +635,30 @@ static ProductViewController *g_ProductViewController = nil;
 - (void)showMeImageViewPressed:(UITapGestureRecognizer *)tap
 {
     
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        
-        self.cardView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 1);
-        
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            
-            self.cardView.layer.transform = CATransform3DIdentity;
-            
-        } completion:^(BOOL finished) {
-            
-            if (_timer.isValid) {
-                [_timer invalidate];
-            }
-            
-            ShowMeImageViewController *viewController = [[ShowMeImageViewController alloc] init];
-            viewController.imagesArray=_imageArray;
-            viewController.currentImageIndex=tap.view.tag;
-            [self presentViewController:viewController animated:YES completion:^{
-                
-            }];
-            
-        }];
-    }];
+//    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//        
+//        self.cardView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 1);
+//        
+//    } completion:^(BOOL finished) {
+//        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//            
+//            self.cardView.layer.transform = CATransform3DIdentity;
+//            
+//        } completion:^(BOOL finished) {
+//            
+//            if (_timer.isValid) {
+//                [_timer invalidate];
+//            }
+//            
+//            ShowMeImageViewController *viewController = [[ShowMeImageViewController alloc] init];
+//            viewController.imagesArray=_imageArray;
+//            viewController.currentImageIndex=tap.view.tag;
+//            [self presentViewController:viewController animated:YES completion:^{
+//                
+//            }];
+//            
+//        }];
+//    }];
     
 }
 @end

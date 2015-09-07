@@ -88,7 +88,7 @@
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
         
-        UIImage *storeImage = [UIImage imageNamed:@ "McDonaldsLogo" ];
+        UIImage *storeImage = [UIImage imageNamed:@"官方头像" ];
         CGSize itemSize = CGSizeMake(16, 16);
         UIGraphicsBeginImageContextWithOptions(itemSize, NO ,0.0);
         CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);

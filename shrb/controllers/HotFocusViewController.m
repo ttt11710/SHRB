@@ -94,7 +94,7 @@
     }
 
     if (IsiPhone4s) {
-        self.tableView.frame = CGRectMake(0, 0, screenWidth, screenHeight);
+        self.tableView.frame = CGRectMake(0, 64, screenWidth, screenHeight-64-49);
     }
     [self.view layoutSubviews];
 }
@@ -197,24 +197,31 @@
 
 - (void)initTableView
 {
+    
     //tableView 去分界线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //删除底部多余横线
     self.tableView.tableFooterView =[[UIView alloc]init];
+    
+    //去除tableview顶部留白
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
+    self.tableView.backgroundColor = shrbTableViewColor;
+   // self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     //动画
     //[self.tableView reloadDataAnimateWithWave:RightToLeftWaveAnimation];
     
    // self.tableView.backgroundColor = shrbTableViewColor;
-    self.tableView.backgroundColor = shrbTableViewColor;
     
     //去除顶部空间
-    if (IsiPhone4s)
-    {
-        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 0.01f)];
-    }
-    else {
-        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 64.f)];
-    }
+//    if (IsiPhone4s)
+//    {
+//        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 0.01f)];
+//    }
+//    else {
+//        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 64.f)];
+//    }
    // self.tableView.sectionFooterHeight = 4.0f;
     
     self.cellRemoveController = [[TQTableViewCellRemoveController alloc] initWithTableView:self.tableView];
@@ -255,7 +262,7 @@
     
     CGFloat labelHeight = label.frame.size.height;
     
-    return screenWidth/8*5+16+labelHeight+16;
+    return screenWidth/8*5+16+labelHeight+16+8;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

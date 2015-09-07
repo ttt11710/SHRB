@@ -89,7 +89,7 @@ static NSInteger amount = 0;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0 || indexPath.row == [self.dataArray count]+2) {
-        return 210;
+        return screenWidth/170*90 + 50;
     }
     else {
         return 56;

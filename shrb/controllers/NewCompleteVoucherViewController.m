@@ -30,6 +30,14 @@
     [self initTableView];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    if (IsiPhone4s) {
+        self.tableView.frame = CGRectMake(0, 64, screenWidth, screenHeight-44);
+    }
+    [self.view layoutSubviews];
+}
+
 - (void)loadData
 {
     self.dataDic = [[NSMutableDictionary alloc] init];
@@ -50,6 +58,9 @@
 {
     //删除底部多余横线
     self.tableView.tableFooterView =[[UIView alloc]init];
+    
+    //去除tableview顶部留白
+    self.automaticallyAdjustsScrollViewInsets = false;
 }
 
 
@@ -83,7 +94,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 || indexPath.section == 2) {
-        return 210;
+        return screenWidth/170*90 + 60;
     }
     else {
         return 44;

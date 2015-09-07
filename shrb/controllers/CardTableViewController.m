@@ -322,7 +322,7 @@ static int i = 0 ;
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 162;
+    return screenWidth/170*90;
 }
 
 #pragma mark - Table view data source

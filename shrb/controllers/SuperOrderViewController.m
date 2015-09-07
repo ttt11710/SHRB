@@ -39,6 +39,15 @@
     self.submitOrderBtn.backgroundColor = shrbPink;
 }
 
+- (void)viewDidLayoutSubviews
+{
+    if (IsiPhone4s) {
+        self.tableView.frame = CGRectMake(0, 64, screenWidth, screenHeight-64-44);
+    }
+    [self.view layoutSubviews];
+}
+
+
 - (void)initData
 {
     _data = [[NSMutableArray alloc] initWithObjects:@"纯色拼接修身外套",@"简约拉链夹克",@"纯棉9分直筒裤",@"男士休闲羊毛西服", nil];
