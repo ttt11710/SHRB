@@ -11,6 +11,9 @@
 typedef void(^QRUrlBlock)(NSString *url);
 @interface PayQRViewController : UIViewController
 
+
+@property(nonatomic,assign)NSString * merchId;
+
 @property (nonatomic, copy) QRUrlBlock qrUrlBlock;
 
 @end

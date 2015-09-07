@@ -13,9 +13,9 @@
 #import "VoucherAmoutTableViewCell.h"
 #import "ChanrgeTypeTableViewCell.h"
 #import "ButtonTableViewCell.h"
-#import "CompleteVoucherViewController.h"
 #import "SVProgressShow.h"
 #import "NewCompleteVoucherViewController.h"
+#import <UIImageView+WebCache.h>
 
 
 static NSInteger tag = -1;
@@ -113,6 +113,7 @@ static NSInteger amount = 0;
         //cell 选中方式
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        [cell.cardBackImageView sd_setImageWithURL:[NSURL URLWithString:self.cardImgUrl] placeholderImage:[UIImage imageNamed:@"cardBack"]];
         
         NSString *amountString = [self.amount stringValue];
         NSString *scoreString = [self.score stringValue];
@@ -225,12 +226,6 @@ static NSInteger amount = 0;
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"amount":@(amount),@"cardNo":self.cardNo,@"chanrgeTypeId":@"1"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"cardMemberRecharge operation = %@ JSON: %@", operation,responseObject);
         
-//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-//        CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
-//        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//        viewController.merchId = self.merchId;
-//        viewController.cardNo = self.cardNo;
-//        [SVProgressShow showWithStatus:@"充值处理中..."];
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
         NewCompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewCompleteVoucherView"];
         [viewController setModalPresentationStyle:UIModalPresentationFullScreen];

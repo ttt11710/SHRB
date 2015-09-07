@@ -43,20 +43,6 @@
     self.navigationController.navigationBarHidden = NO;
     
     [self loginState];
-    
-//    if ([TBUser currentUser].token.length == 0)
-//    {
-//        self.loginBtn.hidden = NO;
-//        self.memberImageView.userInteractionEnabled = NO;
-//        self.memberNumLabel.hidden = YES;
-//    }
-//    else {
-//        self.memberImageView.userInteractionEnabled = YES;
-//        self.loginBtn.hidden = YES;
-//        [self.memberImageView sd_setImageWithURL:[NSURL URLWithString:[TBUser currentUser].imgUrl] placeholderImage:[UIImage imageNamed:@"默认女头像"]];
-//        self.memberNumLabel.hidden = NO;
-//        self.memberNumLabel.text = [NSString stringWithFormat:@"通包号:%@",[TBUser currentUser].userId];
-//    }
 
 }
 

@@ -8,6 +8,7 @@
 
 #import "QRItem.h"
 #import <objc/runtime.h>
+#import "Const.h"
 
 @implementation QRItem
 
@@ -27,6 +28,7 @@
     if (self) {
         
         [self setTitle:titile forState:UIControlStateNormal];
+        [self setTitleColor:shrbPink forState:UIControlStateNormal];
         self.frame = frame;
     }
     return self;

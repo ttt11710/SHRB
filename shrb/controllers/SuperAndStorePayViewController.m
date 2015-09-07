@@ -10,9 +10,9 @@
 #import "Const.h"
 #import "TNCheckBoxGroup.h"
 #import "OrdersTableViewCell.h"
-#import "CompleteVoucherViewController.h"
 #import "SVProgressShow.h"
 #import "TBUser.h"
+#import "NewCompleteVoucherViewController.h"
 
 
 #define imageViewWidth 80
@@ -23,12 +23,15 @@ static UIButton *_payTypeButton = nil;
 @interface SuperAndStorePayViewController ()
 {
     NSMutableArray *_data;
+    NSString *_cardNo;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation SuperAndStorePayViewController
+
+@synthesize merchId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -106,6 +109,7 @@ static UIButton *_payTypeButton = nil;
             [cell addSubview:couponsImageView];
         }
         cell.detailTextLabel.text = [NSString stringWithFormat:@"共%lu件",(unsigned long)[_data count]];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payChanged:) name:PAY_CHANGED object:nil];
         
@@ -149,30 +153,59 @@ static UIButton *_payTypeButton = nil;
         case 0:
             //会员支付
         {
-            NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/pay?"];
-            [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":@"201508111544260856",@"cardNo":@"1440744596845",@"payAmount":@(1)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSLog(@"pay operation = %@ JSON: %@", operation,responseObject);
+            if ([TBUser currentUser].token.length == 0) {
                 
-                if ([responseObject[@"code"]integerValue] == 200) {
-                    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-                    CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
-                    viewController.title = @"支付完成";
-                    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-                    viewController.merchId = @"201508111544260856";
-                    viewController.cardNo = @"1440744596845";
-                    [SVProgressShow showWithStatus:@"正在支付..."];
+                [SVProgressShow showInfoWithStatus:@"请先登录账号!"];
+                return ;
+            }
+            
+            NSString *url=[baseUrl stringByAppendingString:@"/card/v1.0/findCardByMerch?"];
+            [self.requestOperationManager GET:url parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"findCardByMerch operation = %@ JSON: %@", operation,responseObject);
+                
+                if ([responseObject[@"code"]integerValue] == 404) {
                     
-                    double delayInSeconds = 1;
-                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                        [SVProgressShow dismiss];
-                        [self.navigationController pushViewController:viewController animated:YES];
-                    });
+                    [SVProgressShow showInfoWithStatus:@"未注册会员卡,不能使用此方法支付!"];
+                    return ;
                 }
-                
+                if ([responseObject[@"code"]integerValue] == 200) {
+                    
+                    _cardNo = responseObject[@"data"][@"cardNo"];
+                    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/pay?"];
+                    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":_cardNo,@"payAmount":@(10)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        NSLog(@"pay operation = %@ JSON: %@", operation,responseObject);
+                        
+                        if ([responseObject[@"code"]integerValue] == 202) {
+                            
+                            [SVProgressShow showInfoWithStatus:@"卡内余额不足,请先去会员卡界面充值"];
+                        }
+                        else if ([responseObject[@"code"]integerValue] == 200) {
+                            
+                            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+                            NewCompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewCompleteVoucherView"];
+                            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+                            viewController.merchId = self.merchId;
+                            viewController.cardNo = _cardNo;
+                            viewController.title = @"支付完成";
+                            [SVProgressShow showWithStatus:@"正在支付..."];
+                            
+                            double delayInSeconds = 1;
+                            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                                [SVProgressShow dismiss];
+                                [self.navigationController pushViewController:viewController animated:YES];
+                            });
+                        }
+                        
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"error:++++%@",error.localizedDescription);
+                    }];
+                    
+                }
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"error:++++%@",error.localizedDescription);
             }];
+
         }
             break;
         case 1:

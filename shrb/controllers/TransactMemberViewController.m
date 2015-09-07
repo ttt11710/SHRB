@@ -9,7 +9,6 @@
 #import "TransactMemberViewController.h"
 #import "SVProgressShow.h"
 #import "Const.h"
-#import "ProductIsMemberTableViewController.h"
 
 @interface TransactMemberViewController ()
 {
@@ -105,9 +104,6 @@
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-3] animated:NO];
             
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
-            viewController.currentSection = currentSection;
-            viewController.currentRow = currentRow;
             
             [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
             
@@ -132,14 +128,6 @@
             UINavigationController *navController = self.navigationController;
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-3] animated:NO];
             
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            ProductIsMemberTableViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProductIsMemberTableView"];
-            viewController.currentSection = currentSection;
-            viewController.currentRow = currentRow;
-            
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            
-            [navController pushViewController:viewController animated:YES];
             
         });
         

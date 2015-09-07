@@ -10,4 +10,6 @@
 
 @interface SuperOrderViewController : UIViewController
 
+@property(nonatomic,assign)NSString * merchId;
+
 @end

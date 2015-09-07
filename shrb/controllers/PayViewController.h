@@ -12,6 +12,8 @@
 @interface PayViewController : PYBaseViewController
 
 @property (nonatomic,assign) BOOL isMemberPay;
+
+@property(nonatomic,assign)NSString * merchId;
 @property (nonatomic,assign) CGFloat totalPrice;
 @property (copy, readwrite, nonatomic) NSMutableArray *shoppingArray;
 

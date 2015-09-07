@@ -12,11 +12,9 @@
 #import "SVProgressShow.h"
 #import "Const.h"
 #import "PayQRViewController.h"
-#import "VoucherCenterViewController.h"
 #import "TBUser.h"
 #import <UIImageView+WebCache.h>
 #import "TradingRecordTableViewController.h"
-#import "VoucherCenterViewController.h"
 #import "NewVoucherCenterViewController.h"
 #import "CardDetailTableViewCell.h"
 
@@ -397,6 +395,8 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         //cell 选中方式
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        [cell.cardBackImageView sd_setImageWithURL:[NSURL URLWithString:self.dataDic[@"cardImgUrl"]] placeholderImage:[UIImage imageNamed:@"cardBack"]];
+        
         cell.merchNameLabel.text = self.dataDic[@"merchName"];
         
         NSString *amountString = [self.dataDic[@"amount"] stringValue];
@@ -499,6 +499,7 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
 - (void)showQRViewController {
     
     PayQRViewController *qrVC = [[PayQRViewController alloc] init];
+    qrVC.merchId = self.merchId;
     [self.navigationController pushViewController:qrVC animated:YES];
 }
 
@@ -516,15 +517,6 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
         [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketOrOrderVoucher" forKey:@"QRPay"];
     }
-
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-//    VoucherCenterViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"VoucherCenter"];
-//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    viewController.cardNo = self.cardNo;
-//    viewController.amount = self.dataDic[@"amount"];
-//    viewController.score = self.dataDic[@"score"];
-//    viewController.merchId = self.merchId;
-//    [self.navigationController pushViewController:viewController animated:YES];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     NewVoucherCenterViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewVoucherCenterView"];
@@ -533,6 +525,7 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     viewController.amount = self.dataDic[@"amount"];
     viewController.score = self.dataDic[@"score"];
     viewController.merchId = self.merchId;
+    viewController.cardImgUrl = self.dataDic[@"cardImgUrl"];
     [self.navigationController pushViewController:viewController animated:YES];
     
 }

@@ -10,6 +10,7 @@
 #import "SVProgressShow.h"
 #import "Const.h"
 #import "DOPScrollableActionSheet.h"
+#import <UIImageView+WebCache.h>
 
 @interface ProductDescriptionView ()
 {
@@ -26,26 +27,25 @@
 @property(nonatomic,retain)UILabel *nameLabel;
 @property(nonatomic,retain)UIView *shadowView;
 @property(nonatomic,retain)UIImageView *descriptionImageView;
-@property(nonatomic,retain)UITextView *descriptionTextView;
+@property(nonatomic,retain)UILabel *descriptionLabel;
 
-@property (nonatomic, strong) NSMutableArray *plistArr;
 
 @end
 
 @implementation ProductDescriptionView
 
-- (void)setCurrentSection:(NSInteger)currentSection
-{
+
+@synthesize plistArr;
+
+- (void)setCurrentSection:(NSInteger)currentSection {
     _currentSection = currentSection;
-    
 }
+
 - (void)setCurrentRow:(NSInteger)currentRow
 {
     _currentRow = currentRow;
     [self initSubView];
 }
-
-
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -53,8 +53,7 @@
     if (self) {
         self.userInteractionEnabled=YES;
         self.backgroundColor=[UIColor colorWithWhite:0 alpha:0.5];
-    
-        [self initData];
+        
         [self initMainView];
     }
     return self;
@@ -75,6 +74,7 @@
 
 - (void)initSubView
 {
+    NSLog(@"_currentSection = %ld,_currentRow = %ld",_currentSection,_currentRow);
     _descriptionView=[[UIView alloc]initWithFrame:CGRectMake(0,0, 4*screenWidth/5, 3*screenHeight/4)];
     _descriptionView.backgroundColor = [UIColor whiteColor];
     _descriptionView.userInteractionEnabled=YES;
@@ -86,12 +86,12 @@
     [_mainView insertSubview:_descriptionView atIndex:0];
     
     _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 12, 200, 21)];
-    _nameLabel.text = [[self.plistArr objectAtIndex:_currentSection][@"info"] objectAtIndex:_currentRow][@"tradeName"];
+    _nameLabel.text = [[self.plistArr objectAtIndex:_currentSection][@"prodList"] objectAtIndex:_currentRow][@"prodName"];
     _nameLabel.textColor = [UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1];
     [_descriptionView addSubview:_nameLabel];
     
     _descriptionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(12, _nameLabel.frame.origin.y+_nameLabel.frame.size.height+4, 4*screenWidth/5-12*2, 4*screenWidth/5-50)];
-    _descriptionImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[[self.plistArr objectAtIndex:_currentSection][@"info"] objectAtIndex:_currentRow][@"tradeImage"]]];
+    [_descriptionImageView sd_setImageWithURL:[NSURL URLWithString:[[self.plistArr objectAtIndex:_currentSection][@"prodList"] objectAtIndex:_currentRow][@"imgUrl"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
     _descriptionImageView.layer.cornerRadius = 8;
     _descriptionImageView.layer.masksToBounds = YES;
     
@@ -152,18 +152,20 @@
     moneyLabel.textColor = [UIColor orangeColor];
     [_descriptionImageView addSubview:moneyLabel];
     
-    _descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(12, _descriptionImageView.frame.origin.y+_descriptionImageView.frame.size.height+4, 4*screenWidth/5-12*2, 3*screenHeight/4-4*screenWidth/5-2)];
-    _descriptionTextView.text = [[self.plistArr objectAtIndex:_currentSection][@"info"] objectAtIndex:_currentRow][@"tradeDescription"];    _descriptionTextView.backgroundColor = [UIColor whiteColor];
-    _descriptionTextView.textColor = [UIColor grayColor];
-    _descriptionTextView.editable = NO;
-    [_descriptionView addSubview:_descriptionTextView];
+    _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, _descriptionImageView.frame.origin.y+_descriptionImageView.frame.size.height+4, 4*screenWidth/5-12*2, 10)];
+    _descriptionLabel.text = [[self.plistArr objectAtIndex:_currentSection][@"prodList"] objectAtIndex:_currentRow][@"prodDesc"];
+    _descriptionLabel.backgroundColor = [UIColor whiteColor];
+    _descriptionLabel.textColor = [UIColor grayColor];
+    _descriptionLabel.numberOfLines = 2;
+    _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    [_descriptionView addSubview:_descriptionLabel];
     if (IsiPhone4s) {
-        _descriptionTextView.font = [UIFont systemFontOfSize:15];
+        _descriptionLabel.font = [UIFont systemFontOfSize:15];
     }
     else {
-        _descriptionTextView.font = [UIFont systemFontOfSize:16];
+        _descriptionLabel.font = [UIFont systemFontOfSize:16];
     }
-
+    [_descriptionLabel sizeToFit];
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     shareBtn.frame = CGRectMake(_descriptionImageView.frame.origin.x+_descriptionImageView.frame.size.width-41-15, _descriptionImageView.frame.origin.y + _descriptionImageView.frame.size.height-40, 41, 35);
@@ -197,13 +199,24 @@
    // [addButton setBackgroundImage:[UIImage imageNamed:@"increase2"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(addButtonEven) forControlEvents:UIControlEventTouchUpInside];
     [_descriptionView addSubview:addButton];
+    
+    
+    _descriptionView.frame = CGRectMake(0,0, 4*screenWidth/5, _descriptionImageView.frame.origin.y + _descriptionImageView.frame.size.height + 4 + _descriptionLabel.frame.size.height + 12);
+    _mainView.frame = CGRectMake(screenWidth/10, 0, 4*screenWidth/5, _descriptionImageView.frame.origin.y + _descriptionImageView.frame.size.height + 4 + _descriptionLabel.frame.size.height + 12);
+    _mainView.center = CGPointMake(screenWidth/2, (screenHeight - 20 - 44)/2);
+    NSLog(@"screenHeight = %f",screenHeight);
+    
 }
 
 - (void)refreshDescriptionView {
     
-    _nameLabel.text = [[self.plistArr objectAtIndex:_currentSection][@"info"] objectAtIndex:_currentRow][@"tradeName"];
-    _descriptionImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",[[self.plistArr objectAtIndex:_currentSection][@"info"] objectAtIndex:_currentRow][@"tradeImage"]]];
-    _descriptionTextView.text = [[self.plistArr objectAtIndex:_currentSection][@"info"] objectAtIndex:_currentRow][@"tradeDescription"];
+    _nameLabel.text = [[self.plistArr objectAtIndex:_currentSection][@"prodList"] objectAtIndex:_currentRow][@"prodName"];
+    [_descriptionImageView sd_setImageWithURL:[NSURL URLWithString:[[self.plistArr objectAtIndex:_currentSection][@"prodList"] objectAtIndex:_currentRow][@"imgUrl"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+    _descriptionLabel.text = [[self.plistArr objectAtIndex:_currentSection][@"prodList"] objectAtIndex:_currentRow][@"prodDesc"];
+    if (_currentRow == 1) {
+        _descriptionLabel.text = @"jkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfjjkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfjjkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfjjkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfjjkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfjjkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfjjkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfjjkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfjjkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfjjkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfjjkjvklsngjroijgnjkandkljiorutiohvdfjsnjkwjrljfj";
+        
+    }
 }
 
 #pragma mark -  主播卡片滑动手势 方法
@@ -221,7 +234,7 @@ static NSInteger oldRow;
         oldSection = _currentSection;
         oldRow = _currentRow;
         
-        if (oldRow<[[self.plistArr objectAtIndex:oldSection][@"info"] count]-1 && oldRow >= 0)
+        if (oldRow<[[self.plistArr objectAtIndex:oldSection][@"prodList"] count]-1 && oldRow >= 0)
         {
             oldRow++;
         }
@@ -237,7 +250,7 @@ static NSInteger oldRow;
         
         [self initSubView];
         _descriptionView.transform=CGAffineTransformMakeScale(0.5, 0.5);
-        [self refreshDescriptionView];
+        //[self refreshDescriptionView];
         //[self setCurrentInfo:_currentIndex];
         _descriptionView.userInteractionEnabled=NO;
         _paning=YES;
@@ -311,31 +324,65 @@ static NSInteger oldRow;
 - (void)shareBtnPressed
 {
     
-    DOPAction *action1 = [[DOPAction alloc] initWithName:@"Wechat" iconName:@"weixin" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"微信分享成功！"];
+    DOPAction *action1 = [[DOPAction alloc] initWithName:@"微信" iconName:@"weixin" handler:^{
+        [SVProgressShow showWithStatus:@"分享中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"微信分享成功！"];
+        });
     }];
     DOPAction *action2 = [[DOPAction alloc] initWithName:@"QQ" iconName:@"qq" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"QQ分享成功！"];
+        [SVProgressShow showWithStatus:@"分享中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"QQ分享成功！"];
+        });
     }];
-    DOPAction *action3 = [[DOPAction alloc] initWithName:@"WxFriends" iconName:@"wxFriends" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"微信朋友圈分享成功！"];
+    DOPAction *action3 = [[DOPAction alloc] initWithName:@"微信朋友圈" iconName:@"wxFriends" handler:^{
+        [SVProgressShow showWithStatus:@"分享中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"微信朋友圈分享成功！"];
+        });
     }];
-    DOPAction *action4 = [[DOPAction alloc] initWithName:@"Qzone" iconName:@"qzone" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"QQ空间分享成功！"];
+    DOPAction *action4 = [[DOPAction alloc] initWithName:@"QQ空间" iconName:@"qzone" handler:^{
+        [SVProgressShow showWithStatus:@"分享中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"QQ空间分享成功！"];
+        });
     }];
-    DOPAction *action5 = [[DOPAction alloc] initWithName:@"Weibo" iconName:@"weibo" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"新浪微博分享成功！"];
+    DOPAction *action5 = [[DOPAction alloc] initWithName:@"微博" iconName:@"weibo" handler:^{
+        [SVProgressShow showWithStatus:@"分享中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"新浪微博分享成功！"];
+        });
     }];
-    DOPAction *action6 = [[DOPAction alloc] initWithName:@"SMS" iconName:@"sms" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"短信发送成功！"];
+    DOPAction *action6 = [[DOPAction alloc] initWithName:@"短信" iconName:@"sms" handler:^{
+        [SVProgressShow showWithStatus:@"短信发送中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"短信发送成功！"];
+        });
     }];
-    DOPAction *action7 = [[DOPAction alloc] initWithName:@"Email" iconName:@"email" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"邮件发送成功！"];
+    DOPAction *action7 = [[DOPAction alloc] initWithName:@"邮件" iconName:@"email" handler:^{
+        [SVProgressShow showWithStatus:@"邮件发送中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"邮件发送成功！"];
+        });
     }];
-    
     
     NSArray *actions;
-    actions = @[@"Share",
+    actions = @[@"",
                 @[action1, action2, action3, action4],
                 @"",
                 @[action5, action6, action7]];

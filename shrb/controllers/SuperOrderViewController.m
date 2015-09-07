@@ -14,6 +14,7 @@
 #import <BFPaperButton.h>
 #import "StoreTableViewCell.h"
 #import <UIImageView+WebCache.h>
+#import "SuperAndStorePayViewController.h"
 
 @interface SuperOrderViewController ()
 {
@@ -27,6 +28,7 @@
 
 @implementation SuperOrderViewController
 
+@synthesize merchId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -168,6 +170,13 @@
         return cell;
 
     }
+}
+
+#pragma  mark - storyboard传值
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    SuperAndStorePayViewController *superAndStorePayViewController = segue.destinationViewController;
+    superAndStorePayViewController.merchId = self.merchId;
 }
 
 

@@ -57,13 +57,13 @@
     }
     
     // 条码类型 AVMetadataObjectTypeQRCode
-    _output.metadataObjectTypes =@[AVMetadataObjectTypeQRCode];
+    //_output.metadataObjectTypes =@[AVMetadataObjectTypeQRCode];
     
     //增加条形码扫描
-    //    _output.metadataObjectTypes = @[AVMetadataObjectTypeEAN13Code,
-    //                                    AVMetadataObjectTypeEAN8Code,
-    //                                    AVMetadataObjectTypeCode128Code,
-    //                                    AVMetadataObjectTypeQRCode];
+        _output.metadataObjectTypes = @[AVMetadataObjectTypeEAN13Code,
+                                        AVMetadataObjectTypeEAN8Code,
+                                        AVMetadataObjectTypeCode128Code,
+                                        AVMetadataObjectTypeQRCode];
     
     // Preview
     _preview =[AVCaptureVideoPreviewLayer layerWithSession:_session];
@@ -103,7 +103,7 @@
     
     
     //动画 全屏
-    UIImage *icon = [UIImage imageNamed:@"Oval"];
+    UIImage *icon = [UIImage imageNamed:@"官方头像"];
     UIColor *color = shrbPink;
     CBZSplashView *splashView = [CBZSplashView splashViewWithIcon:icon backgroundColor:color];
     [self.view addSubview:splashView];
@@ -125,6 +125,7 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     SuperOrderViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"SuperView"];
+    viewController.merchId = self.merchId;
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
     
     [nav pushViewController:viewController animated:NO];

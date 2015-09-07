@@ -85,7 +85,7 @@
     
     self.tabBarController.tabBar.hidden = YES;
 }
-#pragma mark 创建一个按钮
+#pragma mark - 创建按钮
 - (void)creatButtonWithNormalName:(NSString *)normal andSelectName:(NSString *)selected  andIndex:(int)index{
     
     NTButton * customButton = [NTButton buttonWithType:UIButtonTypeCustom];

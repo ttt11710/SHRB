@@ -45,7 +45,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray * dataArray;
-@property (nonatomic,strong) NSMutableArray * plistArr;
+
 
 @property (nonatomic,strong) TQTableViewCellRemoveController *cellRemoveController;
 
@@ -58,6 +58,7 @@
     
     _messageProcessor = [[MessageProcessor alloc] init];
     
+    [SVProgressShow showWithStatus:@"加载中..."];
     [self loadData];
     //[self initData];
     //[self getDataFormDB];
@@ -76,7 +77,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-   // self.tabBarController.tabBar.hidden = NO;
     
     _shoppingCardView.shoppingNumLabel.num = [[NSUserDefaults standardUserDefaults] integerForKey:@"num"];
 }
@@ -86,7 +86,7 @@
     if (_shoppingCardView == nil) {
         _shoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-49-50, 100, 40)];
         _shoppingCardView.shoppingNumLabel.num = [[NSUserDefaults standardUserDefaults] integerForKey:@"num"];
-        [self.view insertSubview:_shoppingCardView aboveSubview:self.view];
+      //  [self.view insertSubview:_shoppingCardView aboveSubview:self.view];
     }
 
     else {
@@ -112,20 +112,18 @@
 #pragma mark - 网络请求数据
 - (void)loadData
 {
-
-    //18267856139 userId:1440482769193894820  cardNo = 1440484445388 merchId = 201508111544260856
-    
     DB *db = [DB openDb];
     
     self.dataArray = [[NSMutableArray alloc] init];
     NSString *url=[baseUrl stringByAppendingString:@"/merch/v1.0/getMerchList?"];
     [self.requestOperationManager GET:url parameters:@{@"pageNum":@"1",@"pageCount":@"20",@"orderBy":@"updateTime",@"sort":@"desc",@"whereString":@""} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"getMerchList operation = %@ JSON: %@", operation,responseObject);        
-        self.dataArray = responseObject[@"merchList"];
-        
+        self.dataArray = [responseObject[@"merchList"] mutableCopy];
+        [SVProgressShow dismiss];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
+        [SVProgressShow showErrorWithStatus:@"加载失败!"];
     }];
     
 }
@@ -133,7 +131,7 @@
 #pragma mark - 数据库插入数据
 - (void)insertDataToDB
 {
-    for (NSDictionary * dict in self.plistArr) {
+    for (NSDictionary * dict in self.dataArray) {
         NSLog(@"dict = %@",dict);
         Store *store = [[Store alloc] init];
         [store setValuesForKeysWithDictionary:dict];
@@ -163,7 +161,7 @@
         
     }
     if ([self.dataArray count] == 0) {
-        for (NSDictionary * dict in self.plistArr) {
+        for (NSDictionary * dict in self.dataArray) {
             Store * store = [[Store alloc] init];
             [store setValuesForKeysWithDictionary:dict];
             [self.dataArray addObject:store];
@@ -195,7 +193,6 @@
 - (void)initData
 {
     self.dataArray = [[NSMutableArray alloc] init];
-    self.plistArr =[[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"store" ofType:@"plist"]];
 }
 
 - (void)initTableView
@@ -341,9 +338,9 @@
     _merchId = [self.dataArray objectAtIndex:indexPath.section][@"merchId"];
     _merchTitle = [self.dataArray objectAtIndex:indexPath.section][@"merchTitle"];
     
-    if (indexPath.section <= 1) {
+    //showType 0:超市  1:点餐
+    if ([[self.dataArray objectAtIndex:indexPath.section][@"showType"] isEqualToString:@"0"]) {
         //超市
-        
         NewStoreCollectController *newStoreCollectController = [[NewStoreCollectController alloc] init];
         newStoreCollectController.merchId = _merchId;
         newStoreCollectController.merchTitle = _merchTitle;
@@ -351,7 +348,7 @@
         [self.navigationController pushViewController:newStoreCollectController animated:YES];
         [SVProgressShow dismiss];
     }
-    else  {
+    else  if ([[self.dataArray objectAtIndex:indexPath.section][@"showType"] isEqualToString:@"1"]){
         //点餐
         
         StoreViewController *storeViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"storeView"];
@@ -380,14 +377,15 @@
 - (void)didRemoveTableViewCellWithIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSMutableArray* deleteArr = [NSMutableArray arrayWithObject:[self.plistArr objectAtIndex:indexPath.section]];
-    [self.plistArr removeObjectAtIndex:indexPath.section];
+    NSMutableArray* deleteArr = [NSMutableArray arrayWithObject:[self.dataArray objectAtIndex:indexPath.section]];
+    [self.dataArray removeObjectAtIndex:indexPath.section];
     
     [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+  //  [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView endUpdates];
     
-    [self.plistArr addObjectsFromArray:deleteArr];
+    [self.dataArray addObjectsFromArray:deleteArr];
     [self.tableView reloadData];
 }
 

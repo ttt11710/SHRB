@@ -11,7 +11,6 @@
 #import <BFPaperButton.h>
 #import "Const.h"
 #import "SuperBecomeMemberView1.h"
-#import "ProductIsMemberTableViewController.h"
 #import "SVProgressShow.h"
 #import "DOPScrollableActionSheet.h"
 #import <POP/POP.h>
@@ -234,14 +233,6 @@
         blurEffectView.frame = view.bounds;
         [view insertSubview:blurEffectView atIndex:0];
     }
-}
-
-
-#pragma mark - 会员卡详情页面
-- (void)gotoCardDetailTap
-{
-    
-    [[ProductIsMemberTableViewController shareProductIsMemberTableViewController] gotoCardDetailView];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

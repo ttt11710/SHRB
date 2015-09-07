@@ -9,7 +9,6 @@
 #import "SuperBecomeMemberView1.h"
 #import "Const.h"
 #import "SVProgressShow.h"
-#import "ProductTableViewController.h"
 #import "ProductViewController.h"
 #import "JVFloatLabeledTextField.h"
 

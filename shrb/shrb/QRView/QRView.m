@@ -37,6 +37,8 @@ static NSTimeInterval kQrLineanimateDuration = 0.02;
         
         [self initQRLine];
         
+        [self initMyTitle];
+        
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:kQrLineanimateDuration target:self selector:@selector(show) userInfo:nil repeats:YES];
         [timer fire];
     }
@@ -56,13 +58,26 @@ static NSTimeInterval kQrLineanimateDuration = 0.02;
     qrLineY = qrLine.frame.origin.y;
 }
 
+- (void)initMyTitle
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, self.bounds.size.height / 2 + self.transparentArea.height/2,self.bounds.size.width-50*2 , 20)];
+    label.text = @"将二维码/条码放入框内,即可自动扫码";
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:18];
+    [label sizeToFit];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2 + self.transparentArea.height/2 + 50);
+    [self addSubview:label];
+}
+
 - (void)initQrMenu {
     
     CGFloat height = 100;
     CGFloat width = self.bounds.size.width;
     qrMenu = [[QRMenu alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - height, width, height)];
     qrMenu.backgroundColor = [UIColor grayColor];
-    [self addSubview:qrMenu];
+   // [self addSubview:qrMenu];
     
     __weak typeof(self)weakSelf = self;
 

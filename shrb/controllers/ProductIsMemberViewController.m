@@ -11,7 +11,6 @@
 #import "UIImageView+WebCache.h"
 #import <POP/POP.h>
 #import "BecomeMemberView.h"
-#import "ProductIsMemberTableViewController.h"
 #import "DOPScrollableActionSheet.h"
 #import "SVProgressShow.h"
 #import "NewCardDetailViewController.h"

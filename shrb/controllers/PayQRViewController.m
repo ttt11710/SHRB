@@ -11,6 +11,7 @@
 #import "NewCardDetailViewController.h"
 #import "QRView.h"
 #import "PayViewController.h"
+#import "SuperOrderViewController.h"
 
 @interface PayQRViewController ()<AVCaptureMetadataOutputObjectsDelegate,QRViewDelegate>
 
@@ -24,6 +25,9 @@
 
 
 @implementation PayQRViewController
+
+
+@synthesize merchId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,13 +56,13 @@
     }
     
     // 条码类型 AVMetadataObjectTypeQRCode
-    _output.metadataObjectTypes =@[AVMetadataObjectTypeQRCode];
+    //_output.metadataObjectTypes =@[AVMetadataObjectTypeQRCode];
     
     //增加条形码扫描
-    //    _output.metadataObjectTypes = @[AVMetadataObjectTypeEAN13Code,
-    //                                    AVMetadataObjectTypeEAN8Code,
-    //                                    AVMetadataObjectTypeCode128Code,
-    //                                    AVMetadataObjectTypeQRCode];
+        _output.metadataObjectTypes = @[AVMetadataObjectTypeEAN13Code,
+                                        AVMetadataObjectTypeEAN8Code,
+                                        AVMetadataObjectTypeCode128Code,
+                                        AVMetadataObjectTypeQRCode];
     
     // Preview
     _preview =[AVCaptureVideoPreviewLayer layerWithSession:_session];
@@ -106,15 +110,30 @@
 //    [[NewCardDetailViewController shareNewCardDetailViewController] completePay];
     
     //跳转到指定页面
-    UINavigationController *navController = self.navigationController;
+//    UINavigationController *navController = self.navigationController;
+//    [self.navigationController popViewControllerAnimated:NO];
+//    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    PayViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PayView"];
+//    viewController.isMemberPay = YES;
+//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    [navController pushViewController:viewController animated:YES];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"Card" forKey:@"QRPay"];
+    
+    
+    UINavigationController *nav = self.navigationController;
+    
     [self.navigationController popViewControllerAnimated:NO];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PayViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PayView"];
-    viewController.isMemberPay = YES;
-    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [navController pushViewController:viewController animated:YES];
     
+    SuperOrderViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"SuperView"];
+    viewController.merchId = self.merchId;
+    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    
+    [nav pushViewController:viewController animated:NO];
 }
 
 #pragma mark QRViewDelegate

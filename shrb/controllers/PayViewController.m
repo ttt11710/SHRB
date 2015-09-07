@@ -18,7 +18,6 @@
 #import "TNCheckBoxData.h"
 #import "TNCheckBoxGroup.h"
 #import "NSString+AttributedStyle.h"
-#import "CompleteVoucherViewController.h"
 #import "StoreTableViewCell.h"
 #import "OrderModel.h"
 #import "ShoppingCardDataItem.h"
@@ -29,6 +28,7 @@
 @interface PayViewController ()
 {
     TNCheckBoxGroup *_loveGroup;
+    NSString *_cardNo;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -42,6 +42,8 @@
 @implementation PayViewController
 
 @synthesize isMemberPay;
+
+@synthesize merchId;
 @synthesize totalPrice;
 @synthesize shoppingArray;
 
@@ -111,32 +113,35 @@
     }
     
     else if (indexPath.row == [self.shoppingArray count]+1) {
-            
-            static NSString *SimpleTableIdentifier = @"cellId";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
-            }
-            TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
-            manData.identifier = @"man";
-            manData.labelText = @"2张电子券 100RMB";
-            manData.checked = YES;
-            manData.checkedImage = [UIImage imageNamed:@"checked"];
-            manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
-            
-            _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
-            [_loveGroup create];
-            
-            CGFloat x = IsiPhone4s? screenWidth-_loveGroup.frame.size.width:screenWidth-24 -_loveGroup.frame.size.width;
-            
-            _loveGroup.position = CGPointMake(x, 11.5);
-            
-            [cell addSubview:_loveGroup];
-            
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loveGroupChanged:) name:GROUP_CHANGED object:_loveGroup];
-            return cell;
+        
+        static NSString *SimpleTableIdentifier = @"cellId";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
         }
+        for (id view in _loveGroup.subviews) {
+            [view removeFromSuperview];
+        }
+        TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
+        manData.identifier = @"man";
+        manData.labelText = @"2张电子券 100RMB";
+        manData.checked = YES;
+        manData.checkedImage = [UIImage imageNamed:@"checked"];
+        manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
+        
+        _loveGroup = [[TNCheckBoxGroup alloc] initWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
+        [_loveGroup create];
+        
+        CGFloat x = IsiPhone4s? screenWidth-_loveGroup.frame.size.width:screenWidth-24 -_loveGroup.frame.size.width;
+        
+        _loveGroup.position = CGPointMake(x, 11.5);
+        
+        [cell addSubview:_loveGroup];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loveGroupChanged:) name:GROUP_CHANGED object:_loveGroup];
+        return cell;
+    }
     else if (indexPath.row == [self.shoppingArray count]+2) {
         
         static NSString *SimpleTableIdentifier = @"cellId";
@@ -329,34 +334,55 @@
 
 - (void)cardPay
 {
-    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/pay?"];
-    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":@"201508111544260856",@"cardNo":@"1440744596845",@"payAmount":@(self.totalPrice)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"pay operation = %@ JSON: %@", operation,responseObject);        
-        if ([responseObject[@"code"]integerValue] == 200) {
-//            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-//            CompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CompleteVoucherView"];
-//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//            viewController.merchId = @"201508111544260856";
-//            viewController.cardNo = @"1440744596845";
-//            viewController.title = @"支付完成";
-//            [SVProgressShow showWithStatus:@"正在支付..."];
-            
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-            NewCompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewCompleteVoucherView"];
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            viewController.merchId = @"201508111544260856";
-            viewController.cardNo = @"1440744596845";
-            viewController.title = @"支付完成";
-            [SVProgressShow showWithStatus:@"正在支付..."];
-            
-            double delayInSeconds = 1;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                [SVProgressShow dismiss];
-                [self.navigationController pushViewController:viewController animated:YES];
-            });
-        }
+    if ([TBUser currentUser].token.length == 0) {
         
+        [SVProgressShow showInfoWithStatus:@"请先登录账号!"];
+        return ;
+    }
+    
+    NSString *url=[baseUrl stringByAppendingString:@"/card/v1.0/findCardByMerch?"];
+    [self.requestOperationManager GET:url parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"findCardByMerch operation = %@ JSON: %@", operation,responseObject);
+        
+        if ([responseObject[@"code"]integerValue] == 404) {
+            
+            [SVProgressShow showInfoWithStatus:@"未注册会员卡,不能使用此方法支付!"];
+            return ;
+        }
+        if ([responseObject[@"code"]integerValue] == 200) {
+            
+            _cardNo = responseObject[@"data"][@"cardNo"];
+            NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/pay?"];
+            [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":_cardNo,@"payAmount":@(self.totalPrice)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"pay operation = %@ JSON: %@", operation,responseObject);
+                
+                if ([responseObject[@"code"]integerValue] == 202) {
+                   
+                    [SVProgressShow showInfoWithStatus:@"卡内余额不足,请先去会员卡界面充值"];
+                }
+                else if ([responseObject[@"code"]integerValue] == 200) {
+                    
+                    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+                    NewCompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewCompleteVoucherView"];
+                    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+                    viewController.merchId = self.merchId;
+                    viewController.cardNo = _cardNo;
+                    viewController.title = @"支付完成";
+                    [SVProgressShow showWithStatus:@"正在支付..."];
+                    
+                    double delayInSeconds = 1;
+                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                        [SVProgressShow dismiss];
+                        [self.navigationController pushViewController:viewController animated:YES];
+                    });
+                }
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"error:++++%@",error.localizedDescription);
+            }];
+
+            }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];

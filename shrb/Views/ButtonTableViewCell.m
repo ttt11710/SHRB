@@ -10,6 +10,10 @@
 #import "Const.h"
 #import "BecomeMemberView.h"
 #import <POP/POP.h>
+#import "TBUser.h"
+#import "SVProgressShow.h"
+#import "OrdersViewController.h"
+
 
 @interface ButtonTableViewCell () {
     
@@ -18,9 +22,13 @@
     CGRect _bounds;
 }
 
+@property (nonatomic,strong)AFHTTPRequestOperationManager *requestOperationManager;
+
 @end
 @implementation ButtonTableViewCell
 
+@synthesize prodId;
+@synthesize merchId;
 
 - (void)awakeFromNib {
         
@@ -36,20 +44,67 @@
 
     // Configure the view for the selected state
 }
+
+- (void)creatReq
+{
+    self.requestOperationManager=[AFHTTPRequestOperationManager manager];
+    
+    self.requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    AFJSONResponseSerializer *serializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    self.requestOperationManager.responseSerializer=serializer;
+    
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:10*60];
+    self.requestOperationManager.requestSerializer=requestSerializer;
+}
+
+
 - (void)buttonWasPressed:(id)sender
 {
-    UIViewController *activityViewController = nil;
-    UIView* next = [[[self superview] superview] superview];
-    UIResponder *nextResponder = [next nextResponder];
-    if ([nextResponder isKindOfClass:[UIViewController class]]) {
-        activityViewController = (UIViewController *)nextResponder;
-    }
-
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    [self creatReq];
     
-    UIViewController *registeringStoreMemberViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"RegisteringStoreMemberView"];
-    [registeringStoreMemberViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    [activityViewController.navigationController presentViewController:registeringStoreMemberViewController animated:YES completion:nil];
+    if ([TBUser currentUser].token.length == 0) {
+        
+        [SVProgressShow showInfoWithStatus:@"请先登录账号!"];
+        return ;
+    }
+    
+    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/applyCard?"];
+    [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"applyCard operation = %@ JSON: %@", operation,responseObject);
+        
+        if ([responseObject[@"code"]integerValue] == 200) {
+            [SVProgressShow showSuccessWithStatus:@"会员卡申请成功"];
+            
+            
+            NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
+            [self.requestOperationManager GET:url parameters:@{@"prodId":self.prodId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"getProduct operation = %@ JSON: %@", operation,responseObject);
+                
+                [[OrdersViewController shareOrdersViewController] UpdateTableView];
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"error:++++%@",error.localizedDescription);
+            }];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+
+    
+//    UIViewController *activityViewController = nil;
+//    UIView* next = [[[self superview] superview] superview];
+//    UIResponder *nextResponder = [next nextResponder];
+//    if ([nextResponder isKindOfClass:[UIViewController class]]) {
+//        activityViewController = (UIViewController *)nextResponder;
+//    }
+//
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    
+//    UIViewController *registeringStoreMemberViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"RegisteringStoreMemberView"];
+//    [registeringStoreMemberViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    [activityViewController.navigationController presentViewController:registeringStoreMemberViewController animated:YES completion:nil];
     
 //    NSLog(@"%@ was pressed!", ((UIButton *)sender).titleLabel.text);
 //    

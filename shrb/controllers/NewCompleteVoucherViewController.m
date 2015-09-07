@@ -10,6 +10,7 @@
 #import "TBUser.h"
 #import "Const.h"
 #import "CardDetailTableViewCell.h"
+#import <UIImageView+WebCache.h>
 
 @interface NewCompleteVoucherViewController ()
 
@@ -34,7 +35,7 @@
     self.dataDic = [[NSMutableDictionary alloc] init];
     
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardDetail?"];
-    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"findCardDetail cardNo":self.cardNo} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":self.cardNo} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"findCardDetail operation = %@ JSON: %@", operation,responseObject);
         self.dataDic = responseObject[@"data"];
         
@@ -107,6 +108,7 @@
         //cell 选中方式
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        [cell.cardBackImageView sd_setImageWithURL:[NSURL URLWithString:self.dataDic[@"cardImgUrl"]] placeholderImage:[UIImage imageNamed:@"cardBack"]];
         
         NSString *amountString = [self.dataDic[@"amount"] stringValue];
         NSString *scoreString = [self.dataDic[@"score"] stringValue];
@@ -157,7 +159,7 @@
     
     NSString *QRPay =  [[NSUserDefaults standardUserDefaults] stringForKey:@"QRPay"];
     
-    //超市或者点餐扫码
+    //超市或者点餐扫码 点餐支付
     if ([QRPay isEqualToString:@"SupermarketOrOrder"]) {
         [self.navigationController popToRootViewControllerAnimated:NO];
     }

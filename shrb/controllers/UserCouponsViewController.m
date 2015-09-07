@@ -7,7 +7,6 @@
 //
 
 #import "UserCouponsViewController.h"
-#import "CompleteVoucherViewController.h"
 #import "Const.h"
 #import "SVProgressShow.h"
 

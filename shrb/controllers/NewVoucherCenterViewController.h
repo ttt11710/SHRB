@@ -15,5 +15,6 @@
 @property(nonatomic,assign)NSNumber * amount;
 @property(nonatomic,assign)NSNumber * score;
 @property(nonatomic,assign)NSString * merchId;
+@property(nonatomic,assign)NSString * cardImgUrl;
 
 @end

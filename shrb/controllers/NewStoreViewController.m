@@ -16,7 +16,6 @@
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "SVProgressShow.h"
 #import "ProductTableViewController.h"
-#import "ProductIsMemberTableViewController.h"
 #import "SuperQRViewController.h"
 
 

@@ -13,5 +13,7 @@
 @property(nonatomic,assign)NSInteger currentSection;
 @property(nonatomic,assign)NSInteger currentRow;
 
+@property (nonatomic, strong) NSMutableArray *plistArr;
+
 
 @end

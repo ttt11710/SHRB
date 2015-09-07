@@ -12,7 +12,6 @@
 #import "UIImageView+WebCache.h"
 #import <POP/POP.h>
 #import "BecomeMemberView.h"
-#import "ProductIsMemberTableViewController.h"
 #import "DOPScrollableActionSheet.h"
 #import "SVProgressShow.h"
 #import "ProductIsMemberViewController.h"
@@ -393,7 +392,7 @@ static ProductViewController *g_ProductViewController = nil;
 {
     if ([TBUser currentUser].token.length == 0) {
         
-        [SVProgressShow showInfoWithStatus:@"请先登录!"];
+        [SVProgressShow showInfoWithStatus:@"请先登录账号!"];
         return ;
     }
     
@@ -521,28 +520,63 @@ static ProductViewController *g_ProductViewController = nil;
 
 #pragma mark - 分享
 - (void)shareBtnPressed {
+
     DOPAction *action1 = [[DOPAction alloc] initWithName:@"微信" iconName:@"weixin" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"微信分享成功！"];
+        [SVProgressShow showWithStatus:@"分享中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"微信分享成功！"];
+        });
     }];
     DOPAction *action2 = [[DOPAction alloc] initWithName:@"QQ" iconName:@"qq" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"QQ分享成功！"];
+        [SVProgressShow showWithStatus:@"分享中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"QQ分享成功！"];
+        });
     }];
     DOPAction *action3 = [[DOPAction alloc] initWithName:@"微信朋友圈" iconName:@"wxFriends" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"微信朋友圈分享成功！"];
+        [SVProgressShow showWithStatus:@"分享中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"微信朋友圈分享成功！"];
+        });
     }];
     DOPAction *action4 = [[DOPAction alloc] initWithName:@"QQ空间" iconName:@"qzone" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"QQ空间分享成功！"];
+        [SVProgressShow showWithStatus:@"分享中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"QQ空间分享成功！"];
+        });
     }];
     DOPAction *action5 = [[DOPAction alloc] initWithName:@"微博" iconName:@"weibo" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"新浪微博分享成功！"];
+        [SVProgressShow showWithStatus:@"分享中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"新浪微博分享成功！"];
+        });
     }];
     DOPAction *action6 = [[DOPAction alloc] initWithName:@"短信" iconName:@"sms" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"短信发送成功！"];
+        [SVProgressShow showWithStatus:@"短信发送中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"短信发送成功！"];
+        });
     }];
     DOPAction *action7 = [[DOPAction alloc] initWithName:@"邮件" iconName:@"email" handler:^{
-        [SVProgressShow showSuccessWithStatus:@"邮件发送成功！"];
+        [SVProgressShow showWithStatus:@"邮件发送中..."];
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [SVProgressShow showSuccessWithStatus:@"邮件发送成功！"];
+        });
     }];
-    
     
     NSArray *actions;
     actions = @[@"",

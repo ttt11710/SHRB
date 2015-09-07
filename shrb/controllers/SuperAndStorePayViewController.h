@@ -11,4 +11,6 @@
 
 @interface SuperAndStorePayViewController : PYBaseViewController
 
+@property(nonatomic,assign)NSString * merchId;
+
 @end

@@ -27,6 +27,7 @@
 #import "ShoppingCardDataItem.h"
 #import <UIImageView+WebCache.h>
 #import "SVProgressShow.h"
+#import "TBUser.h"
 
 
 static OrdersViewController *g_OrdersViewController = nil;
@@ -49,6 +50,9 @@ static OrdersViewController *g_OrdersViewController = nil;
 @implementation OrdersViewController
 
 @synthesize isMember;
+
+@synthesize prodId;
+@synthesize merchId;
 @synthesize shoppingArray;
 
 + (OrdersViewController *)shareOrdersViewController
@@ -71,8 +75,22 @@ static OrdersViewController *g_OrdersViewController = nil;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
-    [self.tableView reloadData];
+    NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
+    [self.requestOperationManager GET:url parameters:@{@"prodId":self.prodId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"getProduct operation = %@ JSON: %@", operation,responseObject);
+        if ([(NSString *)responseObject[@"card"] isEqual:@""] || ![responseObject[@"code"] isEqualToString:@"200"]) {
+            isMember = NO;
+        }
+        else {
+            isMember = YES;
+        }
+        
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+
+    
 }
 
 - (void)viewDidLayoutSubviews
@@ -129,17 +147,18 @@ static OrdersViewController *g_OrdersViewController = nil;
 #pragma mark - 更新tableView
 - (void)UpdateTableView
 {
-    isMember = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMember"];
+    isMember = YES;
+    [self.tableView reloadData];
     
-    UINavigationController *navController = self.navigationController;
-    [self.navigationController popViewControllerAnimated:NO];
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    OrdersViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
-    viewController.isMember = isMember;
-    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    
-    [navController pushViewController:viewController animated:NO];
+//    UINavigationController *navController = self.navigationController;
+//    [self.navigationController popViewControllerAnimated:NO];
+//    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    OrdersViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
+//    viewController.isMember = isMember;
+//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//    
+//    [navController pushViewController:viewController animated:NO];
 
 }
 
@@ -303,6 +322,8 @@ static OrdersViewController *g_OrdersViewController = nil;
             cell = [[ButtonTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
         }
         
+        cell.prodId =self.prodId;
+        cell.merchId = self.merchId;
         [cell.buttonModel setTitle:@"会员注册" forState:UIControlStateNormal];
         
         return cell;
@@ -322,18 +343,21 @@ static OrdersViewController *g_OrdersViewController = nil;
 //    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
 //    [self.navigationController pushViewController:viewController animated:YES];
     
-    if (indexPath.row == [self.shoppingArray count]) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    if (isMember) {
-        //会员卡详情页面
-        if (indexPath.row == [self.shoppingArray count]+2) {
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-            NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            [self.navigationController pushViewController:viewController animated:YES];
-        }
-    }
+//    if (indexPath.row == [self.shoppingArray count]) {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//    if (isMember) {
+//        //会员卡详情页面
+//        if (indexPath.row == [self.shoppingArray count]+2) {
+//            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+//            NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
+//            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+//            [self.navigationController pushViewController:viewController animated:YES];
+//        }
+//    }
+    
+    if (indexPath.row == [self.shoppingArray count]+2) {
+            }
 }
 
 - (void)todoSomething
@@ -357,10 +381,13 @@ static OrdersViewController *g_OrdersViewController = nil;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PayViewController *payViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PayView"];
     [payViewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    payViewController.merchId = self.merchId;
     payViewController.totalPrice = _price;
     payViewController.shoppingArray = self.shoppingArray;
     [self.navigationController pushViewController:payViewController animated:YES];
     
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketOrOrder" forKey:@"QRPay"];
     
 }
 #pragma mark - 电子券打钩

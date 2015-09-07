@@ -79,6 +79,7 @@ static NSInteger countTime = 1200;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
 
+@property(nonatomic,assign)NSString * prodId;
 @property (nonatomic, strong)NSMutableArray *shoppingArray;
 
 @end
@@ -104,6 +105,7 @@ static NSInteger countTime = 1200;
     [self initView];
     [self initData];
     [self initTableView];
+    [SVProgressShow showWithStatus:@"加载中..."];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -129,8 +131,8 @@ static NSInteger countTime = 1200;
 {
     
     self.shoppingNumLabel.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.shoppingNumLabel.layer.borderWidth = 1;
-    self.shoppingNumLabel.layer.cornerRadius = self.shoppingNumLabel.frame.size.width/2;
+  //  self.shoppingNumLabel.layer.borderWidth = 1;
+   // self.shoppingNumLabel.layer.cornerRadius = self.shoppingNumLabel.frame.size.width/2;
     self.shoppingNumLabel.layer.masksToBounds = YES;
 
     
@@ -159,7 +161,7 @@ static NSInteger countTime = 1200;
         
         [self.tableView reloadData];
         [self.selectTypeTableView reloadData];
-        
+        [SVProgressShow dismiss];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"error:++++%@",error.localizedDescription);
@@ -396,6 +398,7 @@ static NSInteger countTime = 1200;
                     shoppingCardDataItem.prodList = self.selectArray[indexPath.section-1][@"prodList"][indexPath.row];
                     [self.shoppingArray addObject:shoppingCardDataItem];
                     
+                    self.prodId = self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodId"];
                     self.shoppingNumLabel.price = [self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"price"] floatValue];
                 }
                 
@@ -519,25 +522,31 @@ static NSInteger countTime = 1200;
             [[DeskNumTableViewCell shareDeskNumTableViewCell] deskTextFieldResignFirstResponder];
         }
         
-        NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
-        [self.requestOperationManager GET:url parameters:@{@"prodId":self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"getProduct JSON: %@", responseObject);
-            
-            ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-44)];
-            productDescriptionView.currentSection = indexPath.section-1;
-            productDescriptionView.currentRow = indexPath.row;
-           // productDescriptionView.productDataDic = responseObject[@"product"];
-            [self.view addSubview:productDescriptionView];
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"error:++++%@",error.localizedDescription);
-        }];
-
-        
-        
+        [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:indexPath];
+        [self performSelector:@selector(todoSomething:) withObject:indexPath afterDelay:0.2f];
     }
 }
 
+- (void)todoSomething:(NSIndexPath *)indexPath
+{
+    NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
+    [self.requestOperationManager GET:url parameters:@{@"prodId":self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"getProduct JSON: %@", responseObject);
+        
+        ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-44)];
+        productDescriptionView.plistArr = self.dataArray;
+        productDescriptionView.currentSection = indexPath.section-1;
+        productDescriptionView.currentRow = indexPath.row;
+        
+        NSLog(@"indexPath.section = %ld,indexPath.row = %ld",(long)indexPath.section,indexPath.row);
+        // productDescriptionView.productDataDic = responseObject[@"product"];
+        [self.view addSubview:productDescriptionView];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
+
+}
 #pragma mark - tableView滚动调用
 -(void)scrollViewWillBeginDragging:(UIScrollView*)scrollView {
     
@@ -718,6 +727,8 @@ static NSInteger countTime = 1200;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     OrdersViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    viewController.merchId = self.merchId;
+    viewController.prodId = self.prodId;
     viewController.shoppingArray = self.shoppingArray;
     [self.navigationController pushViewController:viewController animated:YES];
 }

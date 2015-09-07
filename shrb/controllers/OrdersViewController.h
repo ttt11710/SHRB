@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PYBaseViewController.h"
 
-@interface OrdersViewController : UIViewController
+@interface OrdersViewController : PYBaseViewController
 
 @property (nonatomic,assign) BOOL isMember;
+
+@property(nonatomic,assign)NSString * merchId;
+@property(nonatomic,assign)NSString * prodId;
 @property (copy, readwrite, nonatomic) NSMutableArray *shoppingArray;
 
 + (OrdersViewController *)shareOrdersViewController;

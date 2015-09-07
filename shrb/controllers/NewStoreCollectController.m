@@ -15,6 +15,7 @@
 #import "SuperQRViewController.h"
 #import <UIImageView+WebCache.h>
 #import "TBUser.h"
+#import "SVProgressShow.h"
 
 @interface NewStoreCollectController ()
 {
@@ -53,6 +54,7 @@
     [self createSelectTypeTableView];
     [self QRButtonView];
     
+    [SVProgressShow showWithStatus:@"加载中..."];
    // [self initBallView];
     
 }
@@ -65,7 +67,6 @@
     self.view.hidden = NO;
     
     [self btnAnimation];
-    
   //  [self ballBackViewAnimation];
     
 }
@@ -186,10 +187,10 @@
         
         self.selectArray = [[NSMutableArray alloc] initWithArray:self.dataArray];
         
-        
-        
         [self.collectionView reloadData];
         [self.selectTypeTableView reloadData];
+        
+        [SVProgressShow dismiss];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         

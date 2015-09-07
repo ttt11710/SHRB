@@ -16,6 +16,7 @@
 #import "TBUser.h"
 #import "NewCardDetailViewController.h"
 #import "CardDetailTableViewCell.h"
+#import <UIImageView+WebCache.h>
 
 static int i = 0 ;
 
@@ -350,6 +351,8 @@ static int i = 0 ;
     //cell 选中方式
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    
+    [cell.cardBackImageView sd_setImageWithURL:[NSURL URLWithString:self.dataArray[indexPath.row][@"cardImgUrl"]] placeholderImage:[UIImage imageNamed:@"cardBack"]];
     
     cell.merchNameLabel.text = self.dataArray[indexPath.row][@"merchName"];
     

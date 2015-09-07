@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "BFPaperButton.h"
 #import "UIColor+BFPaperColors.h"
+#import <AFNetworking.h>
 
 @interface ButtonTableViewCell : UITableViewCell
+
+
+@property(nonatomic,assign)NSString * merchId;
+@property(nonatomic,assign)NSString * prodId;
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonModel;
 
