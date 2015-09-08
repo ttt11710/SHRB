@@ -19,7 +19,7 @@
 
 
 static NSInteger tag = -1;
-static NSInteger amount = 0;
+static CGFloat amount = 0.00;
 @interface NewVoucherCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -234,8 +234,7 @@ static NSInteger amount = 0;
                 [SVProgressShow showInfoWithStatus:@"请输入充值金额!"];
                 return;
             }
-            amount = [cell.amountTextField.text integerValue];
-            
+            amount = [cell.amountTextField.text floatValue];
         }
     }
     

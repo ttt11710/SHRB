@@ -24,7 +24,9 @@
 - (void)setModel:(TradeModel *)model
 {
     self.tradeNameLabel.text = model.tradeName;
-    self.tradeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.tradeImage]];
+//    self.tradeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",model.tradeImage]];
+    
+    self.tradeImageView.image = [UIImage imageNamed:@"官方头像"];
     
     self.tradeDescriptionLabel.text = model.tradeDescription;
     

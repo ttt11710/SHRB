@@ -90,7 +90,10 @@ static OrdersViewController *g_OrdersViewController = nil;
                     isMember = YES;
                 }
                 
+                _vipPrice = 0.00;
+                _price = 0.00;
                 [self.tableView reloadData];
+                
                 [SVProgressShow dismiss];
 
             }
@@ -273,7 +276,7 @@ static OrdersViewController *g_OrdersViewController = nil;
             
             shoppingCardDataItem.count = [currentNum integerValue];
 
-            NSLog(@"indexPath.row = %ld shoppingCardDataItem.count = %ld,shoppingCardDataItem.prodList = %@",(long)indexPath.row,shoppingCardDataItem.count,shoppingCardDataItem.prodList);
+            NSLog(@"indexPath.row = %ld shoppingCardDataItem.count = %ld,shoppingCardDataItem.prodList = %@",(long)indexPath.row,(long)shoppingCardDataItem.count,shoppingCardDataItem.prodList);
             
             _vipPrice = 0.00;
             _price = 0.00;

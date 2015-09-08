@@ -386,8 +386,10 @@
             }
                 break;
             case 404:
+                [SVProgressShow showInfoWithStatus:@"未注册该店会员"];
+                break;
             case 503:
-                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                [SVProgressShow showErrorWithStatus:responseObject[@"mes"]];
                 break;
                 
             default:

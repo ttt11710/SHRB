@@ -33,7 +33,7 @@
 
 - (void)initView
 {
-    self.couponsImageView.image = [UIImage imageNamed:@"McDonaldsLogo"];
+    self.couponsImageView.image = [UIImage imageNamed:@"官方头像"];
     NSString *string = @"￥100RMB";
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string];
     [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:251.0/255.0 green:102.0/255.0 blue:49.0/255.0 alpha:1] range:NSMakeRange(0, string.length)];

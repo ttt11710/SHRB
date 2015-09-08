@@ -15,8 +15,8 @@
 #import "NewCompleteVoucherViewController.h"
 
 
-#define imageViewWidth 80
-#define imageViewSpace 8
+#define imageViewWidth screenWidth/4
+#define imageViewSpace 4
 
 static UIButton *_payTypeButton = nil;
 
@@ -124,9 +124,6 @@ static UIButton *_payTypeButton = nil;
             cell = [[OrdersTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
         }
         
-        for (id view in cell.payViewCheckCouponsView.subviews) {
-            [view removeFromSuperview];
-        }
         TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
         manData.identifier = @"man";
         manData.labelText = @"100RMB电子券";
@@ -136,18 +133,19 @@ static UIButton *_payTypeButton = nil;
         manData.checkedImage = [UIImage imageNamed:@"checked"];
         manData.uncheckedImage = [UIImage imageNamed:@"unchecked"];
         
-        [cell.payViewCheckCouponsView myInitWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
-        [cell.payViewCheckCouponsView create];
-        
+        if ([cell.payViewCheckCouponsView.checkedCheckBoxes count] == 0 ) {
+            [cell.payViewCheckCouponsView myInitWithCheckBoxData:@[manData] style:TNCheckBoxLayoutVertical];
+            [cell.payViewCheckCouponsView create];
+        }
         
         return cell;
+        
     }
 }
 
 - (void)payChanged:(NSNotification *)notification {
     
     UIButton *button = (UIButton *)notification.object;
-    
     
     switch (button.tag) {
         case 0:
@@ -167,7 +165,7 @@ static UIButton *_payTypeButton = nil;
                     case 200: {
                         _cardNo = responseObject[@"data"][@"cardNo"];
                         NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/pay?"];
-                        [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":_cardNo,@"payAmount":@(10)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":_cardNo,@"payAmount":@(350)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             NSLog(@"pay operation = %@ JSON: %@", operation,responseObject);
                             
                             switch ([responseObject[@"code"] integerValue]) {
@@ -204,7 +202,7 @@ static UIButton *_payTypeButton = nil;
                     case 404:
                     case 500:
                     case 503:
-                        [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                        [SVProgressShow showErrorWithStatus:responseObject[@"mes"]];
                         break;
                         
                     default:
@@ -220,19 +218,13 @@ static UIButton *_payTypeButton = nil;
         case 1:
             //支付宝支付
         {
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"superCompletePayView"];
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            [self.navigationController pushViewController:viewController animated:YES];
+            [SVProgressShow showInfoWithStatus:@"支付宝支付方式"];
         }
             break;
         case 2:
             //银联支付
         {
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"superCompletePayView"];
-            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-            [self.navigationController pushViewController:viewController animated:YES];
+            [SVProgressShow showInfoWithStatus:@"银联支付方式"];
         }
             break;
             

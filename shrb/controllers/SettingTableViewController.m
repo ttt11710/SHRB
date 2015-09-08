@@ -45,6 +45,9 @@
     self.tableView.backgroundColor = shrbTableViewColor;
     //删除多余线
     self.tableView.tableFooterView =[[UIView alloc]init];
+    
+    //增加底部空间
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 60.f)];
 }
 
 #pragma mark - Table view data source
@@ -55,7 +58,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return (indexPath.row == 2 || indexPath.row == 7)?8: 64;
+    return (indexPath.row == 2 || indexPath.row == 7)?8: 44;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

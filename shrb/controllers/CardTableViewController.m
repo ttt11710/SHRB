@@ -125,7 +125,7 @@ static int i = 0 ;
                                @"spinRange":@(0.1),
                                },
                              @{
-                               @"memberCardImage" : @"McDonaldsLogo",
+                               @"memberCardImage" : @"16NLogo",
                                @"money" : @"200",
                                @"cardNumber":@"7845123165468",
                                @"integral":@"55",

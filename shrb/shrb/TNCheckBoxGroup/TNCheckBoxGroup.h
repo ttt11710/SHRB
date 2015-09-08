@@ -39,5 +39,6 @@ typedef enum : NSUInteger {
 - (void)create;
 
 - (void)myInitWithCheckBoxData:(NSArray *)checkBoxData style:(TNCheckBoxLayout)layout;
+- (void)myCreate;
 
 @end

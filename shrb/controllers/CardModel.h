@@ -46,5 +46,6 @@
 @property(nonatomic,copy) NSString * acceptTime;        //交易时间
 @property(nonatomic) NSString * orderID;           //订单号
 @property(nonatomic) CGFloat payAmount;         //交易金额
+@property(nonatomic) NSString * consumeID;      //消费记录
 
 @end

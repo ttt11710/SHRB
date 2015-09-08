@@ -49,6 +49,12 @@ NSString *const GROUP_CHANGED = @"groupChanged";
     self.frame = CGRectMake(0, 0, self.widthOfComponent, self.heightOfComponent);
 }
 
+- (void)myCreate {
+    self.marginBetweenItems = 0;
+    
+    [self createCheckBoxes];
+}
+
 - (void)createCheckBoxes {
     
     int xPos = 0;

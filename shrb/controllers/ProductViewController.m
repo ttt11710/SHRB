@@ -127,8 +127,15 @@ static ProductViewController *g_ProductViewController = nil;
     [_mainScrollView addSubview:_cardView];
     
     _cardScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, _cardView.frame.size.width, _cardView.frame.size.height)];
-    _cardScrollView.contentSize = CGSizeMake(_cardScrollView.frame.size.width*([_imageArray count]+2), 0);
-    _cardScrollView.contentOffset = CGPointMake(_cardScrollView.frame.size.width, 0);
+    if ([_imageArray count] == 0) {
+        _cardScrollView.contentSize = CGSizeMake(_cardScrollView.frame.size.width, 0);
+        _cardScrollView.contentOffset = CGPointMake(0, 0);
+    }
+    else {
+       _cardScrollView.contentSize = CGSizeMake(_cardScrollView.frame.size.width*([_imageArray count]+2), 0);
+        _cardScrollView.contentOffset = CGPointMake(_cardScrollView.frame.size.width, 0);
+    }
+    
     _cardScrollView.delegate = self;
     _cardScrollView.pagingEnabled = YES;
     _cardScrollView.showsHorizontalScrollIndicator = NO;
@@ -144,10 +151,10 @@ static ProductViewController *g_ProductViewController = nil;
     [_cardView addSubview:_imagePageControl];
     
     if ([_imageArray count]<= 0 ) {
-        UIImageView *_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_cardScrollView.frame.size.width, 0, _cardScrollView.frame.size.width, _cardScrollView.frame.size.height)];
+        UIImageView *_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _cardScrollView.frame.size.width, _cardScrollView.frame.size.height)];
         _imageView.clipsToBounds = YES;
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"官方头像"]];
+        [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"热点无图片"]];
         [_cardScrollView addSubview:_imageView];
 
     }

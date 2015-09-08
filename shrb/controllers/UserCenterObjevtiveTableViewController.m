@@ -118,6 +118,9 @@
     self.tableView.tableFooterView =[[UIView alloc]init];
     
     self.tableView.backgroundColor = shrbTableViewColor;
+    
+    //增加底部空间
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenWidth, 60.f)];
 }
 
 #pragma mark - Table view data source
@@ -197,12 +200,11 @@
         //我的订单
         if (indexPath.row == 0) {
             
-//            if (!isLogin) {
-//            
-//                [SVProgressShow showInfoWithStatus:@"登录账号才能查看我的订单"];
-//                
-//                return ;
-//            }
+            if ([TBUser currentUser].token.length == 0) {
+                
+                [SVProgressShow showInfoWithStatus:@"登录账号才能查看我的订单!"];
+                return;
+            }
         
             OrderViewController *orderViewController = [[OrderViewController alloc] init];
             orderViewController.hidesBottomBarWhenPushed = YES;

@@ -149,6 +149,7 @@
     
     UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, _descriptionImageView.frame.size.height-21-12, 100, 21)];
     moneyLabel.text = @"省 40元";
+    moneyLabel.text = [NSString stringWithFormat:@"省￥%.2f",[[[self.plistArr objectAtIndex:_currentSection][@"prodList"] objectAtIndex:_currentRow][@"price"] floatValue] - [[[self.plistArr objectAtIndex:_currentSection][@"prodList"] objectAtIndex:_currentRow][@"vipPrice"] floatValue]]  ;
     moneyLabel.textColor = [UIColor orangeColor];
     [_descriptionImageView addSubview:moneyLabel];
     

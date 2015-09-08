@@ -29,7 +29,7 @@
     NSString *dateString = [dateFormatter stringFromDate:date2];
     
     self.dateLabel.text = dateString;
-    self.expenseTextView.text = [NSString stringWithFormat:@"金额:%.2f元\n订单:%@  暂时无法获取\n商铺名称:%@\n地址:%@",model.payAmount ,model.orderID,model.merchName, model.address];
+    self.expenseTextView.text = [NSString stringWithFormat:@"金额:%.2f元\n订单:%@\n商铺名称:%@\n地址:%@",model.payAmount ,model.consumeID,model.merchName, model.address];
 }
 
 - (void)awakeFromNib {

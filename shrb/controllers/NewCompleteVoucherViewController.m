@@ -174,6 +174,7 @@
         
         cell.detailTextLabel.text= @"2015-5-20 PM15:47";
         cell.detailTextLabel.textColor = shrbSectionColor;
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
         
         return cell;
     }

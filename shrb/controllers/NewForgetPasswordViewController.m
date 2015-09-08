@@ -21,6 +21,9 @@
 @implementation NewForgetPasswordViewController
 
 - (void)viewDidLoad {
+    
+    self.title = @"忘记密码";
+    [SVProgressShow showInfoWithStatus:@"忘记密码暂时无接口!"];
     [super viewDidLoad];
     
 }
@@ -28,14 +31,18 @@
 #pragma mark - 单击键盘return键回调
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [self.phoneTextField resignFirstResponder];
     [self.captchaTextField resignFirstResponder];
+    [self.myNewPassTextField resignFirstResponder];
     return YES;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
-    if ([[touches anyObject]view]!=self.captchaTextField) {
+    if ([[touches anyObject]view]!=self.phoneTextField || [[touches anyObject]view]!=self.captchaTextField || [[touches anyObject]view]!=self.myNewPassTextField) {
+        [self.phoneTextField resignFirstResponder];
         [self.captchaTextField resignFirstResponder];
+        [self.myNewPassTextField resignFirstResponder];
     }
 }
 
@@ -48,7 +55,8 @@
         NSLog(@"getCode operation = %@ JSON: %@", operation,responseObject);
         switch ([responseObject[@"code"] integerValue]) {
             case 200:
-                [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];                break;
+                [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
+                break;
             case 500:
             case 503:
                 [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
@@ -65,8 +73,7 @@
 }
 
 - (IBAction)setPassBtnPressed:(id)sender {
-    
-    
+  [SVProgressShow showInfoWithStatus:@"忘记密码暂时无接口!"];
 }
 
 

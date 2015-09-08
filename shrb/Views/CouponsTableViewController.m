@@ -14,6 +14,7 @@
 #import "Const.h"
 #import "SVProgressShow.h"
 #import "CouponsDetailTableViewCell.h"
+#import "TBUser.h"
 
 @interface CouponsTableViewController ()
 {
@@ -38,6 +39,12 @@
 
 - (void)initData {
     
+    if ([TBUser currentUser].token.length == 0) {
+        
+        [SVProgressShow showInfoWithStatus:@"请先登录!"];
+        return;
+    }
+
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:
                              @{
                                @"couponsImage" : @"辛巴克",

@@ -212,6 +212,12 @@ static NSInteger countTime = 1200;
     
     countTime = [[NSUserDefaults standardUserDefaults] integerForKey:@"countTime"];
 
+    if (countTime == 0) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countTime"];
+        [[NSUserDefaults standardUserDefaults] setInteger:1200 forKey:@"countTime"];
+        countTime = 1200;
+    }
+
     NSLog(@"initData countTime = %ld",(long)countTime);
     
 }
@@ -240,9 +246,16 @@ static NSInteger countTime = 1200;
     showSelectTypeTableView = !showSelectTypeTableView;
     if (showSelectTypeTableView) {
         self.selectTypeTableViewBackView.hidden = NO;
+        
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.selectTypeTableView.layer.transform = CATransform3DMakeTranslation(-screenWidth/2, 0, 0);
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
-            self.selectTypeTableView.layer.transform = CATransform3DMakeTranslation(-screenWidth/2, 0, 0);
             self.selectTypeTableViewBackView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
             
         } completion:^(BOOL finished) {
@@ -250,10 +263,25 @@ static NSInteger countTime = 1200;
         }];
     }
     else {
+        
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.selectTypeTableView.layer.transform = CATransform3DMakeTranslation(-screenWidth/2, 0, 0);
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
             self.selectTypeTableView.layer.transform = CATransform3DIdentity;
-            self.selectTypeTableViewBackView.backgroundColor = [UIColor clearColor];
             
         } completion:^(BOOL finished) {
             
@@ -538,40 +566,43 @@ static NSInteger countTime = 1200;
         
         [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:indexPath];
         [self performSelector:@selector(todoSomething:) withObject:indexPath afterDelay:0.2f];
+        
+//        NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
+//        [self.requestOperationManager GET:url parameters:@{@"prodId":self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//            NSLog(@"getProduct JSON: %@", responseObject);
+//            
+//            switch ([responseObject[@"code"] integerValue]) {
+//                case 200: {
+//                    
+//                    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething:) object:indexPath];
+//                    [self performSelector:@selector(todoSomething:) withObject:indexPath afterDelay:0.5f];
+//                    
+//                    NSLog(@"indexPath.section = %ld,indexPath.row = %ld",(long)indexPath.section,indexPath.row);
+//                    
+//                }
+//                    break;
+//                case 404:
+//                case 503:
+//                    [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+//                    break;
+//                    
+//                default:
+//                    break;
+//            }
+//            
+//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            NSLog(@"error:++++%@",error.localizedDescription);
+//        }];
     }
 }
 
 - (void)todoSomething:(NSIndexPath *)indexPath
 {
-    NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
-    [self.requestOperationManager GET:url parameters:@{@"prodId":self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"getProduct JSON: %@", responseObject);
-        
-        switch ([responseObject[@"code"] integerValue]) {
-            case 200: {
-                ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-44)];
-                productDescriptionView.plistArr = self.dataArray;
-                productDescriptionView.currentSection = indexPath.section-1;
-                productDescriptionView.currentRow = indexPath.row;
-                
-                NSLog(@"indexPath.section = %ld,indexPath.row = %ld",(long)indexPath.section,indexPath.row);
-                // productDescriptionView.productDataDic = responseObject[@"product"];
-                [self.view addSubview:productDescriptionView];
-
-            }
-                break;
-            case 404:
-            case 503:
-                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
-                break;
-                
-            default:
-                break;
-        }
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error:++++%@",error.localizedDescription);
-    }];
+    ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-44)];
+    productDescriptionView.plistArr = self.dataArray;
+    productDescriptionView.currentSection = indexPath.section-1;
+    productDescriptionView.currentRow = indexPath.row;
+    [self.view addSubview:productDescriptionView];
 
 }
 #pragma mark - tableView滚动调用
