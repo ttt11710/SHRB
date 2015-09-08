@@ -16,7 +16,6 @@
 #import "SVProgressShow.h"
 #import "ProductIsMemberViewController.h"
 #import "ShowMeImageViewController.h"
-#import "RegisteringStoreMemberViewController.h"
 #import "TBUser.h"
 
 static ProductViewController *g_ProductViewController = nil;
@@ -396,114 +395,59 @@ static ProductViewController *g_ProductViewController = nil;
         return ;
     }
     
+    [SVProgressShow showWithStatus:@"申请中..."];
+    
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/applyCard?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.productDataDic[@"merchId"]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"applyCard operation = %@ JSON: %@", operation,responseObject);
         
-        if ([responseObject[@"code"]integerValue] == 200) {
-            [SVProgressShow showSuccessWithStatus:@"会员卡申请成功"];
-            
-            
-            NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
-            [self.requestOperationManager GET:url parameters:@{@"prodId":self.productDataDic[@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSLog(@"getProduct operation = %@ JSON: %@", operation,responseObject);
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200: {
+                [SVProgressShow showSuccessWithStatus:@"会员卡申请成功"];
+                [SVProgressShow showWithStatus:@"重新加载页面..."];
                 
-                UINavigationController *navController = self.navigationController;
-                [self.navigationController popViewControllerAnimated:NO];
-                ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
-                viewController.productDataDic = responseObject[@"product"];
-                viewController.cardDataDic = responseObject[@"card"];
-                [navController pushViewController:viewController animated:YES];
+                NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
+                [self.requestOperationManager GET:url parameters:@{@"prodId":self.productDataDic[@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSLog(@"getProduct operation = %@ JSON: %@", operation,responseObject);
+                    switch ([responseObject[@"code"] integerValue]) {
+                        case 200: {
+                            [SVProgressShow dismiss];
+                            UINavigationController *navController = self.navigationController;
+                            [self.navigationController popViewControllerAnimated:NO];
+                            ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
+                            viewController.productDataDic = responseObject[@"product"];
+                            viewController.cardDataDic = responseObject[@"card"];
+                            [navController pushViewController:viewController animated:YES];
+                        }
+                            break;
+                        case 404:
+                        case 503:
+                            [SVProgressShow showErrorWithStatus:@"加载失败!"];
+                            break;
+                            
+                        default:
+                            break;
+                    }
+
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    NSLog(@"error:++++%@",error.localizedDescription);
+                }];
+
+            }
+                break;
+            case 201:
+            case 500:
+                [SVProgressShow showErrorWithStatus:responseObject[@"mes"]];
+                break;
                 
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"error:++++%@",error.localizedDescription);
-            }];
+            default:
+                break;
         }
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];
-    
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//
-//    UIViewController *registeringStoreMemberViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"RegisteringStoreMemberView"];
-//    [registeringStoreMemberViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    [self.navigationController presentViewController:registeringStoreMemberViewController animated:YES completion:nil];
-    
-    //    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"IsLogin"];
-    //    if (!isLogin) {
-    //        [SVProgressShow showInfoWithStatus:@"请先登录！"];
-    //        return ;
-    //    }
-    
-//    if (self.becomeMemberView == nil) {
-//        self.becomeMemberView = [[SuperBecomeMemberView1 alloc] initWithFrame:CGRectMake(screenWidth, _registerBtn.frame.origin.y, screenWidth/2, 220)];
-//        [_mainScrollView addSubview:_becomeMemberView];
-//        
-//        self.smallbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        self.smallbutton.frame = CGRectMake(screenWidth/2-45,  _registerBtn.frame.origin.y, 90, 44);
-//        self.smallbutton.font = [UIFont systemFontOfSize:15.0f];
-//        self.smallbutton.hidden = YES;
-//        self.smallbutton.layer.cornerRadius = 4;
-//        self.smallbutton.layer.masksToBounds = YES;
-//        [self.smallbutton setTitle:@"会员注册" forState:UIControlStateNormal];
-//        [self.smallbutton setTintColor:[UIColor clearColor]];
-//        [self.smallbutton setBackgroundColor:shrbPink];
-//        [self.smallbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        [self.smallbutton addTarget:self action:@selector(sureBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-//        [_mainScrollView addSubview:self.smallbutton];
-//    }
-//    
-//    if (_bounds.size.width == 0) {
-//        _bounds = _registerBtn.bounds;
-//    }
-//    
-//    
-//    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//        
-//        CGRect bounds = _bounds;
-//        bounds.size.width = bounds.size.width/4;
-//        _registerBtn.bounds = bounds;
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//            
-//            _registerBtn.hidden = YES;
-//            self.smallbutton.hidden = NO;
-//            self.smallbutton.layer.transform = CATransform3DMakeTranslation(-(screenWidth/2-self.smallbutton.frame.size.width)-30, 0, 0);
-//            
-//          //  _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
-//            
-//            
-//        } completion:^(BOOL finished) {
-//            
-//            //pop大小缩放
-//            POPSpringAnimation *sizeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-//            sizeAnimation.springSpeed = 0.f;
-//            sizeAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, self.smallbutton.frame.size.width+5, self.smallbutton.frame.size.height+5)];
-//            [self.smallbutton pop_addAnimation:sizeAnimation forKey:nil];
-//            
-//            
-//            //pop左右弹动
-//            POPSpringAnimation *positionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionX];
-//            positionAnimation.velocity = @2000;
-//            positionAnimation.springBounciness = 20;
-//            [positionAnimation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
-//                self.smallbutton.userInteractionEnabled = YES;
-//            }];
-//            [self.smallbutton.layer pop_addAnimation:positionAnimation forKey:@"positionAnimation"];
-//        }];
-//        
-//        
-//        [UIView animateWithDuration:0.1 delay:0.5 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-//            _becomeMemberView.layer.transform = CATransform3DTranslate(_becomeMemberView.layer.transform, -210, 0, 0);
-//        } completion:^(BOOL finished) {
-//            
-//            [[SuperBecomeMemberView1 shareSuperBecomeMemberView] showView];
-//            
-//        }];
-//    }];
-    
+        
 }
 
 

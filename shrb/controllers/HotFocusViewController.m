@@ -117,10 +117,23 @@
     self.dataArray = [[NSMutableArray alloc] init];
     NSString *url=[baseUrl stringByAppendingString:@"/merch/v1.0/getMerchList?"];
     [self.requestOperationManager GET:url parameters:@{@"pageNum":@"1",@"pageCount":@"20",@"orderBy":@"updateTime",@"sort":@"desc",@"whereString":@""} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"getMerchList operation = %@ JSON: %@", operation,responseObject);        
-        self.dataArray = [responseObject[@"merchList"] mutableCopy];
-        [SVProgressShow dismiss];
-        [self.tableView reloadData];
+        NSLog(@"getMerchList operation = %@ JSON: %@", operation,responseObject);
+        
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+                self.dataArray = [responseObject[@"merchList"] mutableCopy];
+                [SVProgressShow dismiss];
+                [self.tableView reloadData];
+                break;
+            case 404:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
+        }
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
         [SVProgressShow showErrorWithStatus:@"加载失败!"];

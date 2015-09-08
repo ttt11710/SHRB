@@ -75,17 +75,35 @@ static OrdersViewController *g_OrdersViewController = nil;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [SVProgressShow showWithStatus:@"加载中..."];
+    
     NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
     [self.requestOperationManager GET:url parameters:@{@"prodId":self.prodId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"getProduct operation = %@ JSON: %@", operation,responseObject);
-        if ([(NSString *)responseObject[@"card"] isEqual:@""] || ![responseObject[@"code"] isEqualToString:@"200"]) {
-            isMember = NO;
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+            {
+                if ([(NSString *)responseObject[@"card"] isEqual:@""] || ![responseObject[@"code"] isEqualToString:@"200"]) {
+                    isMember = NO;
+                }
+                else {
+                    isMember = YES;
+                }
+                
+                [self.tableView reloadData];
+                [SVProgressShow dismiss];
+
+            }
+                break;
+            case 404:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
         }
-        else {
-            isMember = YES;
-        }
-        
-        [self.tableView reloadData];
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];

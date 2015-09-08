@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    [SVProgressShow showWithStatus:@"加载中..."];
+    
     [self initView];
     [self creatReq];
     [self loadData];
@@ -60,13 +62,28 @@
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/info?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"user info operation = %@ JSON: %@", operation,responseObject);
-        self.phoneLabel.text = responseObject[@"user"][@"phone"];
-        self.passwordTextField.text = responseObject[@"user"][@"password"];
-        self.passwordTextField.secureTextEntry = YES;
-        self.emailLabel.text = responseObject[@"user"][@"email"];
-        if (self.emailLabel.text.length == 0) {
-            self.emailLabel.text = @"未填写";
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+                self.phoneLabel.text = responseObject[@"user"][@"phone"];
+                self.passwordTextField.text = responseObject[@"user"][@"password"];
+                self.passwordTextField.secureTextEntry = YES;
+                self.emailLabel.text = responseObject[@"user"][@"email"];
+                if (self.emailLabel.text.length == 0) {
+                    self.emailLabel.text = @"未填写";
+                }
+                [SVProgressShow dismiss];
+                break;
+            case 404:
+            case 500:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
         }
+
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];

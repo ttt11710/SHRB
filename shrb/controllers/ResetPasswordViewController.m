@@ -113,8 +113,24 @@
 #pragma mark - 获取验证码
 - (IBAction)getCodeBtnPressed:(id)sender {
     
+    [SVProgressShow showWithStatus:@"验证码发送中..."];
+    
     NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/getCode?"];
     [self.requestOperationManager GET:url parameters:@{@"phone":self.phoneTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+                [SVProgressShow showSuccessWithStatus:@"验证码发送成功!"];
+                break;
+            case 500:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
+        }
+        
         NSLog(@"getCode operation = %@ JSON: %@", operation,responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -130,15 +146,25 @@
     
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/updatePass?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token ,@"oldPass":self.oldPassTextField.text,@"newPass":self.myNewPassTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"updatePass operation = %@ JSON: %@", operation,responseObject);        if ([responseObject[@"code"] isEqualToString:@"200"]) {
-            [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
-            [self.navigationController popViewControllerAnimated:YES];
-            [SVProgressShow dismiss];
+        NSLog(@"updatePass operation = %@ JSON: %@", operation,responseObject);
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+            {
+                [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+                break;
+            case 404:
+            case 500:
+            case 501:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
         }
-        else {
-           [SVProgressShow showInfoWithStatus:responseObject[@"msg"]];
-        }
-        
+    
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
         

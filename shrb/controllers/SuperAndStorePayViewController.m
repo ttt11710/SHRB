@@ -163,46 +163,55 @@ static UIButton *_payTypeButton = nil;
             [self.requestOperationManager GET:url parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"findCardByMerch operation = %@ JSON: %@", operation,responseObject);
                 
-                if ([responseObject[@"code"]integerValue] == 404) {
-                    
-                    [SVProgressShow showInfoWithStatus:@"未注册会员卡,不能使用此方法支付!"];
-                    return ;
-                }
-                if ([responseObject[@"code"]integerValue] == 200) {
-                    
-                    _cardNo = responseObject[@"data"][@"cardNo"];
-                    NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/pay?"];
-                    [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":_cardNo,@"payAmount":@(10)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        NSLog(@"pay operation = %@ JSON: %@", operation,responseObject);
+                switch ([responseObject[@"code"] integerValue]) {
+                    case 200: {
+                        _cardNo = responseObject[@"data"][@"cardNo"];
+                        NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/pay?"];
+                        [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":_cardNo,@"payAmount":@(10)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            NSLog(@"pay operation = %@ JSON: %@", operation,responseObject);
+                            
+                            switch ([responseObject[@"code"] integerValue]) {
+                                case 200: {
+                                    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+                                    NewCompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewCompleteVoucherView"];
+                                    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+                                    viewController.merchId = self.merchId;
+                                    viewController.cardNo = _cardNo;
+                                    viewController.title = @"支付完成";
+                                    [SVProgressShow dismiss];
+                                    [self.navigationController pushViewController:viewController animated:YES];
+                                }
+                                    break;
+                                case 202:
+                                    [SVProgressShow showInfoWithStatus:@"卡内余额不足,请先去会员卡界面充值"];
+                                    break;
+                                case 201:
+                                case 500:
+                                    [SVProgressShow showErrorWithStatus:responseObject[@"mes"]];
+                                    break;
+                                    
+                                default:
+                                    break;
+                            }
+
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            NSLog(@"error:++++%@",error.localizedDescription);
+                        }];
+ 
+                    }
+                        break;
+                    case 404:
+                    case 500:
+                    case 503:
+                        [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                        break;
                         
-                        if ([responseObject[@"code"]integerValue] == 202) {
-                            
-                            [SVProgressShow showInfoWithStatus:@"卡内余额不足,请先去会员卡界面充值"];
-                        }
-                        else if ([responseObject[@"code"]integerValue] == 200) {
-                            
-                            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-                            NewCompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewCompleteVoucherView"];
-                            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-                            viewController.merchId = self.merchId;
-                            viewController.cardNo = _cardNo;
-                            viewController.title = @"支付完成";
-                            [SVProgressShow showWithStatus:@"正在支付..."];
-                            
-                            double delayInSeconds = 1;
-                            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-                            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                                [SVProgressShow dismiss];
-                                [self.navigationController pushViewController:viewController animated:YES];
-                            });
-                        }
-                        
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        NSLog(@"error:++++%@",error.localizedDescription);
-                    }];
-                    
+                    default:
+                        break;
                 }
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"error:++++%@",error.localizedDescription);
             }];
 

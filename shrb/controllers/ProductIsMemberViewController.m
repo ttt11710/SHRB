@@ -319,7 +319,8 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
     label.textColor = shrbText;
     [_memberCardbackView addSubview:label];
     
-    UIImageView *backimageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cardBack"]];
+    UIImageView *backimageView = [[UIImageView alloc] init];
+    [backimageView sd_setImageWithURL:[NSURL URLWithString:self.cardDataDic[@"cardImgUrl"]] placeholderImage:[UIImage imageNamed:@"cardBack"]];
     backimageView.frame = CGRectMake(30, label.frame.origin.y + label.frame.size.height + 16, screenWidth-60, 100);
     backimageView.layer.cornerRadius = 4;
     backimageView.layer.masksToBounds = YES;
@@ -346,10 +347,15 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
     _integralLabel.textColor = [UIColor whiteColor];
     [view addSubview:_integralLabel];
 
-    _cardNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, view.frame.size.height - 30- 15, 250, 30)];
+    UIView *cardNumberView = [[UIView alloc] initWithFrame:CGRectMake(backimageView.frame.origin.x, backimageView.frame.origin.y + backimageView.frame.size.height, backimageView.frame.size.width, 50)];
+    cardNumberView.backgroundColor = shrbLightCell;
+    
+    [_memberCardbackView addSubview:cardNumberView];
+    
+    _cardNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 5, 250, 30)];
     _cardNumberLabel.text = [NSString stringWithFormat:@"卡号:%@",self.cardDataDic[@"cardNo"]];
     _cardNumberLabel.textColor = shrbText;
-    [view addSubview:_cardNumberLabel];
+    [cardNumberView addSubview:_cardNumberLabel];
     
     
     UITapGestureRecognizer *gotoCardDetailTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoCardDetailTap)];

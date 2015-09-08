@@ -48,13 +48,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [SVProgressShow showWithStatus:@"加载中..."];
+    
     [self loadData];
     [self initView];
     [self createCollection];
     [self createSelectTypeTableView];
     [self QRButtonView];
     
-    [SVProgressShow showWithStatus:@"加载中..."];
+    
    // [self initBallView];
     
 }
@@ -183,15 +185,26 @@
         
         NSLog(@"getProductList operation : %@  JSON: %@", operation, responseObject);
         
-        self.dataArray = responseObject[@"productList"];
-        
-        self.selectArray = [[NSMutableArray alloc] initWithArray:self.dataArray];
-        
-        [self.collectionView reloadData];
-        [self.selectTypeTableView reloadData];
-        
-        [SVProgressShow dismiss];
-        
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+                self.dataArray = responseObject[@"productList"];
+                
+                self.selectArray = [[NSMutableArray alloc] initWithArray:self.dataArray];
+                
+                [self.collectionView reloadData];
+                [self.selectTypeTableView reloadData];
+                
+                [SVProgressShow dismiss];
+                break;
+            case 404:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
+        }
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"error:++++%@",error.localizedDescription);
@@ -445,21 +458,40 @@
 {
     
     //f755a51c0c7a4b4f8d140c4a2ebe9cb5 [TBUser currentUser].token
+    
+    [SVProgressShow showWithStatus:@"加载中..."];
+    
     NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
     [self.requestOperationManager GET:url parameters:@{@"prodId":self.selectArray[indexPath.section][@"prodList"][indexPath.row][@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"getProduct operation = %@ JSON: %@", operation,responseObject);        
-        if ([(NSString *)responseObject[@"card"] isEqual:@""]) {
-            ProductViewController *viewController = [[ProductViewController alloc] init];
-            viewController.productDataDic = responseObject[@"product"];
-            [self.navigationController pushViewController:viewController animated:YES];
-        }
-        else {
-            ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
-            viewController.productDataDic = responseObject[@"product"];
-            viewController.cardDataDic = responseObject[@"card"];
-            [self.navigationController pushViewController:viewController animated:YES];
-        }
+        NSLog(@"getProduct operation = %@ JSON: %@", operation,responseObject);
         
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+            {
+                if ([(NSString *)responseObject[@"card"] isEqual:@""]) {
+                    ProductViewController *viewController = [[ProductViewController alloc] init];
+                    viewController.productDataDic = responseObject[@"product"];
+                    [SVProgressShow dismiss];
+                    [self.navigationController pushViewController:viewController animated:YES];
+                }
+                else {
+                    ProductIsMemberViewController *viewController = [[ProductIsMemberViewController alloc] init];
+                    viewController.productDataDic = responseObject[@"product"];
+                    viewController.cardDataDic = responseObject[@"card"];
+                    [SVProgressShow dismiss];
+                    [self.navigationController pushViewController:viewController animated:YES];
+                }
+            }
+                break;
+            case 404:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
+        }
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];

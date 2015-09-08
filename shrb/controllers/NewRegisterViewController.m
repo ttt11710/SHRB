@@ -59,9 +59,23 @@
 
 - (IBAction)getCodeBtnPressed:(id)sender {
     
+    [SVProgressShow showWithStatus:@"发送中..."];
+    
     NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/getCode?"];
     [self.requestOperationManager GET:url parameters:@{@"phone":self.phoneTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"getCode operation = %@ JSON: %@", operation,responseObject);
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+                [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];                break;
+            case 500:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
+        }
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"error:++++%@",error.localizedDescription);
@@ -75,17 +89,26 @@
     
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/register?"];
     [self.requestOperationManager POST:url2 parameters:@{@"phone":self.phoneTextField.text,@"password":self.passwordTextField.text,@"code":self.captchaTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"register operation = %@ JSON: %@", operation,responseObject);        
-        if ([responseObject[@"code"] isEqualToString:@"200"]) {
-            [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
-            double delayInSeconds = 1;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSLog(@"register operation = %@ JSON: %@", operation,responseObject);
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200: {
+                [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
                 [self.navigationController popViewControllerAnimated:YES];
-                [SVProgressShow dismiss];
-            });
+            }
+                break;
+            case 500:
+                [SVProgressShow showInfoWithStatus:responseObject[@"msg"]];
+                break;
+            case 501:
+            case 502:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
         }
-        
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"operation %@ error:++++%@",operation, error.localizedDescription);
     }];

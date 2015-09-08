@@ -101,11 +101,13 @@ static NSInteger countTime = 1200;
     
     g_StoreViewController = self;
 
+    [SVProgressShow showWithStatus:@"加载中..."];
+    
     [self loadData];
     [self initView];
     [self initData];
     [self initTableView];
-    [SVProgressShow showWithStatus:@"加载中..."];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -155,13 +157,25 @@ static NSInteger countTime = 1200;
         
         NSLog(@"getProductList operation : %@  JSON: %@", operation, responseObject);
         
-        self.dataArray = responseObject[@"productList"];
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+                self.dataArray = responseObject[@"productList"];
+                
+                self.selectArray = [[NSMutableArray alloc] initWithArray:self.dataArray];
+                
+                [self.tableView reloadData];
+                [self.selectTypeTableView reloadData];
+                [SVProgressShow dismiss];
+                break;
+            case 404:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
+        }
         
-        self.selectArray = [[NSMutableArray alloc] initWithArray:self.dataArray];
-        
-        [self.tableView reloadData];
-        [self.selectTypeTableView reloadData];
-        [SVProgressShow dismiss];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"error:++++%@",error.localizedDescription);
@@ -533,15 +547,28 @@ static NSInteger countTime = 1200;
     [self.requestOperationManager GET:url parameters:@{@"prodId":self.selectArray[indexPath.section-1][@"prodList"][indexPath.row][@"prodId"],@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"getProduct JSON: %@", responseObject);
         
-        ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-44)];
-        productDescriptionView.plistArr = self.dataArray;
-        productDescriptionView.currentSection = indexPath.section-1;
-        productDescriptionView.currentRow = indexPath.row;
-        
-        NSLog(@"indexPath.section = %ld,indexPath.row = %ld",(long)indexPath.section,indexPath.row);
-        // productDescriptionView.productDataDic = responseObject[@"product"];
-        [self.view addSubview:productDescriptionView];
-        
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200: {
+                ProductDescriptionView *productDescriptionView=[[ProductDescriptionView alloc]initWithFrame:CGRectMake(0, 20+44, screenWidth, screenHeight-20-44)];
+                productDescriptionView.plistArr = self.dataArray;
+                productDescriptionView.currentSection = indexPath.section-1;
+                productDescriptionView.currentRow = indexPath.row;
+                
+                NSLog(@"indexPath.section = %ld,indexPath.row = %ld",(long)indexPath.section,indexPath.row);
+                // productDescriptionView.productDataDic = responseObject[@"product"];
+                [self.view addSubview:productDescriptionView];
+
+            }
+                break;
+            case 404:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
+        }
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];

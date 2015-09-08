@@ -47,23 +47,36 @@
     [self.phoneTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     
+    [SVProgressShow showWithStatus:@"正在登录..."];
+    
     NSString *url=[baseUrl stringByAppendingString:@"/user/v1.0/login?"];
     [self.requestOperationManager POST:url parameters:@{@"phone":self.phoneTextField.text,@"password":self.passwordTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressShow showInfoWithStatus:responseObject[@"msg"]];
-        NSLog(@"login operation = %@ JSON: %@", operation,responseObject);        if ([responseObject[@"code"] isEqualToString:@"200"]) {
-            
-            
-            [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething) object:nil];
-            [self performSelector:@selector(todoSomething) withObject:nil afterDelay:0.5f];
-            
-            TBUser *user = [[TBUser alloc] init];
-            user.userId = responseObject[@"userId"];
-            user.userName = responseObject[@"userName"];
-            user.token = responseObject[@"token"];
-            
-            [TBUser setCurrentUser:user];
-            
+        NSLog(@"login operation = %@ JSON: %@", operation,responseObject);
+        
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200: {
+                [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(todoSomething) object:nil];
+                [self performSelector:@selector(todoSomething) withObject:nil afterDelay:0.5f];
+                
+                TBUser *user = [[TBUser alloc] init];
+                user.userId = responseObject[@"userId"];
+                user.userName = responseObject[@"userName"];
+                user.token = responseObject[@"token"];
+                
+                [TBUser setCurrentUser:user];
+                
+            }
+                break;
+            case 404:
+            case 500:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
         }
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];

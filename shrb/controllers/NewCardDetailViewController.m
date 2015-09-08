@@ -179,6 +179,8 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     
     g_NewCardDetailViewController = self;
     
+    [SVProgressShow showWithStatus:@"加载中..."];
+    
     [self loadData];
     [self initBtn];
     [self initData];
@@ -201,8 +203,21 @@ static NewCardDetailViewController *g_NewCardDetailViewController = nil;
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/findCardDetail?"];
     [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"merchId":self.merchId,@"cardNo":self.cardNo} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"findCardDetail operation = %@ JSON: %@", operation,responseObject);
-        self.dataDic = responseObject[@"data"];
-        [self.tableView reloadData];
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+                self.dataDic = responseObject[@"data"];
+                [self.tableView reloadData];
+                [SVProgressShow dismiss];
+                break;
+            case 201:
+            case 500:
+                [SVProgressShow showErrorWithStatus:responseObject[@"mes"]];
+                break;
+                
+            default:
+                break;
+        }
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];

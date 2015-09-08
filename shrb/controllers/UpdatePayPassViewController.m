@@ -38,6 +38,18 @@
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/setPayPass?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"payPass":@"111111"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"setPayPass operation = %@ JSON: %@", operation,responseObject);
+//        switch ([responseObject[@"code"] integerValue]) {
+//            case 200:
+//                [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];                break;
+//            case 404:
+//            case 500:
+//            case 503:
+//                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+//                break;
+//                
+//            default:
+//                break;
+//        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];
@@ -77,18 +89,20 @@
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/updatePayPass?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"oldPass":self.oldPassTextField.text,@"newPass":self.myNewPassTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"updatePayPass operation = %@ JSON: %@", operation,responseObject);
-        if ([responseObject[@"code"] isEqualToString:@"200"]) {
-            [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
-            
-            double delayInSeconds = 1;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+                [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
                 [self.navigationController popViewControllerAnimated:YES];
-                [SVProgressShow dismiss];
-            });
-        }
-        else {
-            [SVProgressShow showInfoWithStatus:responseObject[@"msg"]];
+                break;
+            case 404:
+            case 500:
+            case 501:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);

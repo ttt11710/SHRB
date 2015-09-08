@@ -32,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [SVProgressShow showWithStatus:@"加载中..."];
+    
     [self creatReq];
     [self loadData];
    // [self initData];
@@ -48,15 +50,30 @@
     [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"cardNo":self.cardNo} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"findCardTradeRecords operation = %@ JSON: %@", operation,responseObject);
         
-        self.expenseArray = [[NSMutableArray alloc] init];
-        
-        for (NSDictionary * dict in responseObject[@"data"]) {
-            CardModel * model = [[CardModel alloc] init];
-            [model setValuesForKeysWithDictionary:dict];
-            [self.expenseArray addObject:model];
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+            {
+                self.expenseArray = [[NSMutableArray alloc] init];
+                
+                for (NSDictionary * dict in responseObject[@"data"]) {
+                    CardModel * model = [[CardModel alloc] init];
+                    [model setValuesForKeysWithDictionary:dict];
+                    [self.expenseArray addObject:model];
+                }
+                [self.tableView reloadData];
+                
+                [SVProgressShow dismiss];
+            }
+                break;
+            case 201:
+            case 500:
+                [SVProgressShow showErrorWithStatus:responseObject[@"mes"]];
+                break;
+                
+            default:
+                break;
         }
-        [self.tableView reloadData];
-
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];

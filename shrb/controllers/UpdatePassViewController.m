@@ -63,17 +63,20 @@
     NSString *url2=[baseUrl stringByAppendingString:@"/user/v1.0/updatePass?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"oldPass":self.oldPassTextField.text,@"newPass":self.myNewPassTextField.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"updatePass operation = %@ JSON: %@", operation,responseObject);
-        if ([responseObject[@"code"] isEqualToString:@"200"]) {
-            [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
-            double delayInSeconds = 1;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+                [SVProgressShow showSuccessWithStatus:responseObject[@"msg"]];
                 [self.navigationController popViewControllerAnimated:YES];
-                [SVProgressShow dismiss];
-            });
-        }
-        else {
-            [SVProgressShow showInfoWithStatus:responseObject[@"msg"]];
+                break;
+            case 201:
+            case 404:
+            case 501:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);

@@ -84,11 +84,25 @@
         [self.requestOperationManager POST:url parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"logout operation = %@ JSON: %@", operation,responseObject);
             
-            [TBUser setCurrentUser:nil];
-            
-            [SVProgressShow showSuccessWithStatus:@"注销成功!"];
-            [self.navigationController popViewControllerAnimated:YES];
-            [SVProgressShow dismiss];
+            switch ([responseObject[@"code"] integerValue]) {
+                case 200:
+                {
+                    [TBUser setCurrentUser:nil];
+                    
+                    [SVProgressShow showSuccessWithStatus:@"注销成功!"];
+                    [self.navigationController popViewControllerAnimated:YES];
+                    [SVProgressShow dismiss];
+                }
+                    break;
+                case 404:
+                case 500:
+                case 503:
+                    [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                    break;
+                    
+                default:
+                    break;
+            }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error:++++%@",error.localizedDescription);

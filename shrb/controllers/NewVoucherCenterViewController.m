@@ -35,6 +35,8 @@ static NSInteger amount = 0;
     
     self.view.backgroundColor = shrbLightCell;
     
+    [SVProgressShow showWithStatus:@"加载中..."];
+    
     [self loadData];
     [self initTableView];
 }
@@ -56,9 +58,24 @@ static NSInteger amount = 0;
     [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"findCardRechargeTypeList operation = %@ JSON: %@", operation,responseObject);
         
-        self.dataArray = responseObject[@"data"];
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+            {
+                self.dataArray = responseObject[@"data"];
+                
+                [self.tableView reloadData];
+                [SVProgressShow dismiss];
+            }
+                break;
+            case 201:
+            case 500:
+                [SVProgressShow showErrorWithStatus:responseObject[@"mes"]];
+                break;
+                
+            default:
+                break;
+        }
         
-        [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];
@@ -222,26 +239,33 @@ static NSInteger amount = 0;
         }
     }
     
+    [SVProgressShow showWithStatus:@"充值处理中..."];
+    
     NSString *url2=[baseUrl stringByAppendingString:@"/card/v1.0/cardMemberRecharge?"];
     [self.requestOperationManager POST:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token,@"amount":@(amount),@"cardNo":self.cardNo,@"chanrgeTypeId":@"1"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"cardMemberRecharge operation = %@ JSON: %@", operation,responseObject);
         
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
-        NewCompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewCompleteVoucherView"];
-        [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-        viewController.merchId = self.merchId;
-        viewController.cardNo = self.cardNo;
-        viewController.title =@"充值成功";
-        [SVProgressShow showWithStatus:@"充值处理中..."];
-        
-        double delayInSeconds = 1;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [SVProgressShow dismiss];
-            [self.navigationController pushViewController:viewController animated:YES];
-        });
-        
-        
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+            {
+                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+                NewCompleteVoucherViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"NewCompleteVoucherView"];
+                [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+                viewController.merchId = self.merchId;
+                viewController.cardNo = self.cardNo;
+                viewController.title =@"充值成功";
+                [self.navigationController pushViewController:viewController animated:YES];
+                [SVProgressShow dismiss];
+            }
+                break;
+            case 201:
+            case 500:
+                [SVProgressShow showErrorWithStatus:responseObject[@"mes"]];
+                break;
+                
+            default:
+                break;
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];

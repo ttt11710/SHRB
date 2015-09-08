@@ -45,6 +45,8 @@ static int i = 0 ;
 {
     [super viewWillAppear:animated];
     
+    [SVProgressShow showWithStatus:@"加载中..."];
+    
     [self loadData];
 
 }
@@ -79,14 +81,27 @@ static int i = 0 ;
     [self.requestOperationManager GET:url2 parameters:@{@"userId":[TBUser currentUser].userId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"card findCardList operation = %@ JSON: %@", operation , responseObject);
         
-        self.dataArray = responseObject[@"data"];
-        for (NSDictionary * dic in responseObject[@"data"]) {
-            CardModel * model = [[CardModel alloc] init];
-            [model setValuesForKeysWithDictionary:dic];
-            [self.modelArray addObject:model];
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200: {
+                self.dataArray = responseObject[@"data"];
+                for (NSDictionary * dic in responseObject[@"data"]) {
+                    CardModel * model = [[CardModel alloc] init];
+                    [model setValuesForKeysWithDictionary:dic];
+                    [self.modelArray addObject:model];
+                }
+                
+                [self.tableView reloadData];
+                [SVProgressShow dismiss];
+            }
+                break;
+            case 201:
+            case 500:
+                [SVProgressShow showErrorWithStatus:responseObject[@"mes"]];
+                break;
+                
+            default:
+                break;
         }
-        
-        [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:++++%@",error.localizedDescription);
     }];

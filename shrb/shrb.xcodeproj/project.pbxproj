@@ -165,7 +165,6 @@
 		DFDC89671B43929C0051D763 /* BecomeMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDC89661B43929C0051D763 /* BecomeMemberView.m */; };
 		DFDC896A1B43EDC80051D763 /* SuperBecomeMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDC89681B43EDC80051D763 /* SuperBecomeMemberView.m */; };
 		DFE001D01B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */; };
-		DFE001D41B81B22500BBD84A /* RegisteringStoreMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */; };
 		DFE07F0F1B707F770068D345 /* HotListSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE07F0E1B707F770068D345 /* HotListSelectViewController.m */; };
 		DFE18DA31B900A4E009B123E /* UpdatePayPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE18DA21B900A4E009B123E /* UpdatePayPassViewController.m */; };
 		DFE18DA61B902349009B123E /* UpdatePassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE18DA51B902349009B123E /* UpdatePassViewController.m */; };
@@ -495,8 +494,6 @@
 		DFDC89681B43EDC80051D763 /* SuperBecomeMemberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperBecomeMemberView.m; sourceTree = "<group>"; };
 		DFDC89691B43EDC80051D763 /* SuperBecomeMemberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperBecomeMemberView.h; sourceTree = "<group>"; };
 		DFE001CF1B81A57F00BBD84A /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
-		DFE001D11B81B22500BBD84A /* RegisteringStoreMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteringStoreMemberViewController.h; sourceTree = "<group>"; };
-		DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteringStoreMemberViewController.m; sourceTree = "<group>"; };
 		DFE07F0D1B707F770068D345 /* HotListSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotListSelectViewController.h; sourceTree = "<group>"; };
 		DFE07F0E1B707F770068D345 /* HotListSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotListSelectViewController.m; sourceTree = "<group>"; };
 		DFE18DA11B900A4E009B123E /* UpdatePayPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePayPassViewController.h; sourceTree = "<group>"; };
@@ -1165,8 +1162,6 @@
 				DF6311ED1B5F35A000ABBB22 /* ProductViewController.m */,
 				DF6311F41B5F817200ABBB22 /* ProductIsMemberViewController.h */,
 				DF6311F51B5F817200ABBB22 /* ProductIsMemberViewController.m */,
-				DFE001D11B81B22500BBD84A /* RegisteringStoreMemberViewController.h */,
-				DFE001D21B81B22500BBD84A /* RegisteringStoreMemberViewController.m */,
 				DF92F25F1B730A4300786495 /* SuperOrderViewController.h */,
 				DF92F2601B730A4300786495 /* SuperOrderViewController.m */,
 				DFB41DE11B73431A003C9799 /* SuperAndStorePayViewController.h */,
@@ -1559,7 +1554,6 @@
 				DFF766DF1B65D02E005BB71C /* NewStoreCollectionViewCell.m in Sources */,
 				DFB763281B3D4B260086ABB7 /* CardImageAndCardNumTableViewCell.m in Sources */,
 				DFAE52B01B32743500B03B2F /* QRView.m in Sources */,
-				DFE001D41B81B22500BBD84A /* RegisteringStoreMemberViewController.m in Sources */,
 				DF4E4C6D1B0C8A4400FE499E /* CouponsTableViewController.m in Sources */,
 				DFB0579C1B40F5B10091A1E1 /* PayOrderTableViewCell.m in Sources */,
 				DF7D1E591B0D792400CD05B3 /* ProductDescriptionView.m in Sources */,
