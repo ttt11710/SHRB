@@ -28,6 +28,7 @@
 #import <UIImageView+WebCache.h>
 #import "SVProgressShow.h"
 #import "TBUser.h"
+#import "CardDetailTableViewCell.h"
 
 
 static OrdersViewController *g_OrdersViewController = nil;
@@ -42,8 +43,8 @@ static OrdersViewController *g_OrdersViewController = nil;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *showOtherPayBtn;
-@property (weak, nonatomic) IBOutlet BFPaperButton *memberPayBtn;
-@property (weak, nonatomic) IBOutlet BFPaperButton *otherPayBtn;
+
+@property (copy, readwrite, nonatomic) NSMutableDictionary *cardDic;
 
 @end
 
@@ -67,6 +68,8 @@ static OrdersViewController *g_OrdersViewController = nil;
     
     _vipPrice = 0.00 ;
     _price = 0.00 ;
+    
+    self.cardDic = [[NSMutableDictionary alloc] init];
     
     [self initView];
     [self initBtn];
@@ -92,6 +95,8 @@ static OrdersViewController *g_OrdersViewController = nil;
                 
                 _vipPrice = 0.00;
                 _price = 0.00;
+                
+                self.cardDic = [responseObject[@"card"] mutableCopy];
                 [self.tableView reloadData];
                 
                 [SVProgressShow dismiss];
@@ -132,8 +137,6 @@ static OrdersViewController *g_OrdersViewController = nil;
 - (void)initBtn
 {
     [self.showOtherPayBtn setBackgroundColor:shrbPink];
-    [self.memberPayBtn setBackgroundColor:shrbPink];
-    [self.otherPayBtn setBackgroundColor:shrbPink];
 }
 
 - (void)initTableView
@@ -168,35 +171,72 @@ static OrdersViewController *g_OrdersViewController = nil;
 #pragma mark - 更新tableView
 - (void)UpdateTableView
 {
-    isMember = YES;
-    [self.tableView reloadData];
-    
-//    UINavigationController *navController = self.navigationController;
-//    [self.navigationController popViewControllerAnimated:NO];
-//    
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    OrdersViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"OrdersView"];
-//    viewController.isMember = isMember;
-//    [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
-//    
-//    [navController pushViewController:viewController animated:NO];
+    NSString *url=[baseUrl stringByAppendingString:@"/product/v1.0/getProduct?"];
+    [self.requestOperationManager GET:url parameters:@{@"prodId":self.prodId,@"token":[TBUser currentUser].token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"getProduct operation = %@ JSON: %@", operation,responseObject);
+        switch ([responseObject[@"code"] integerValue]) {
+            case 200:
+            {
+                if ([(NSString *)responseObject[@"card"] isEqual:@""] || ![responseObject[@"code"] isEqualToString:@"200"]) {
+                    isMember = NO;
+                }
+                else {
+                    isMember = YES;
+                }
+                
+                _vipPrice = 0.00;
+                _price = 0.00;
+                
+                self.cardDic = [responseObject[@"card"] mutableCopy];
+                [self.tableView reloadData];
+                
+                [SVProgressShow dismiss];
+                
+            }
+                break;
+            case 404:
+            case 503:
+                [SVProgressShow showErrorWithStatus:responseObject[@"msg"]];
+                break;
+                
+            default:
+                break;
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:++++%@",error.localizedDescription);
+    }];
 
 }
 
 #pragma mark - tableView dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < [self.shoppingArray count]) {
-        return 93;
-    }
-    else if (indexPath.row == [self.shoppingArray count]) {
-        return 88;
-    }
-    else if (indexPath.row == [self.shoppingArray count]+1) {
-        return 80;
+    if(isMember) {
+        if (indexPath.row < [self.shoppingArray count]) {
+            return 93;
+        }
+        else if (indexPath.row == [self.shoppingArray count]) {
+            return 88;
+        }
+        else {
+            return screenWidth/170*90;
+        }
     }
     else {
-        return 68;
+        if (indexPath.row < [self.shoppingArray count]) {
+            return 93;
+        }
+        else if (indexPath.row == [self.shoppingArray count]) {
+            return 88;
+        }
+        else if (indexPath.row == [self.shoppingArray count]+1) {
+            return 80;
+        }
+        else {
+            return 68;
+        }
+
     }
 }
 
@@ -205,7 +245,7 @@ static OrdersViewController *g_OrdersViewController = nil;
 {
     if (isMember) {
        // _showOtherPayBtn.hidden = YES;
-        return [self.shoppingArray count]+1;
+        return [self.shoppingArray count]+2;
     }
     return [self.shoppingArray count]+3;
 }
@@ -324,15 +364,49 @@ static OrdersViewController *g_OrdersViewController = nil;
     }
     else if (indexPath.row == [self.shoppingArray count]+1)
     {
-        
-        static NSString *SimpleTableIdentifier = @"cellId";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+        if (isMember) {
+            static NSString *SimpleTableIdentifier = @"CardDetailTableViewCellIdentifier";
+            CardDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+            if (cell == nil) {
+                cell = [[CardDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+            }
+            //cell 选中方式
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            
+            [cell.cardBackImageView sd_setImageWithURL:[NSURL URLWithString:self.cardDic[@"cardImgUrl"]] placeholderImage:[UIImage imageNamed:@"cardBack"]];
+            
+            NSString *amountString = [self.cardDic[@"amount"] stringValue];
+            NSString *scoreString = [self.cardDic[@"score"] stringValue];
+            
+            NSMutableAttributedString *moneyAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"金额:￥%@",amountString]];
+            [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
+            [moneyAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, amountString.length+1)];
+            [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 3)];
+            [moneyAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, amountString.length+1)];
+            
+            cell.amountLabel.attributedText = moneyAttrString;
+            
+            NSMutableAttributedString *integralAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"积分:%@",scoreString]];
+            [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
+            [integralAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:212.0/212.0 blue:0 alpha:1] range:NSMakeRange(3, scoreString.length)];
+            [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 3)];
+            [integralAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(3, scoreString.length)];
+            
+            cell.scoreLabel.attributedText = integralAttrString;
+            
+            cell.cardNoLabel.text = [NSString stringWithFormat:@"卡号:%@",self.cardDic[@"cardNo"]];
+            return cell;
         }
-        
-        return cell;
+        else {
+            static NSString *SimpleTableIdentifier = @"cellId";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SimpleTableIdentifier];
+            }
+            return cell;
+        }
     }
     else
     {
@@ -377,8 +451,18 @@ static OrdersViewController *g_OrdersViewController = nil;
 //        }
 //    }
     
-    if (indexPath.row == [self.shoppingArray count]+2) {
-            }
+    if (indexPath.row == [self.shoppingArray count]+1) {
+        if (isMember) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketOrOrderVoucher" forKey:@"QRPay"];
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
+            NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
+            [viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+            viewController.cardNo = self.cardDic[@"cardNo"];
+            viewController.merchId = self.merchId;
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+    }
 }
 
 - (void)todoSomething

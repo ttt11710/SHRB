@@ -34,6 +34,8 @@
 
 - (void)viewDidLayoutSubviews
 {
+    
+    CGFloat wi = screenWidth;
     if (IsiPhone4s) {
         if (self.tableView.frame.size.height > 320 && self.tableView.frame.size.height < 400) {
             self.tableView.frame = CGRectMake(0, 42, screenWidth, screenHeight);
@@ -42,7 +44,12 @@
             self.tableView.frame = CGRectMake(0, 42, screenWidth, screenHeight-42);
         }
     }
+    else if (IsiPhone6) {
+        self.tableView.frame = CGRectMake(0, 42, screenWidth, screenHeight-42);
+    }
     else {
+        //6
+        //self.tableView.frame = CGRectMake(0, 42, screenWidth, screenHeight-42);
         self.tableView.frame = CGRectMake(0, 42+44+20, screenWidth, screenHeight-42-44-20);
     }
     [self.view layoutSubviews];

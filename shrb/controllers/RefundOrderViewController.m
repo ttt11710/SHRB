@@ -34,6 +34,9 @@
     if (IsiPhone4s) {
         self.tableView.frame = CGRectMake(0, 42, screenWidth, screenHeight-42);
     }
+    else if (IsiPhone6) {
+        self.tableView.frame = CGRectMake(0, 42, screenWidth, screenHeight-42);
+    }
     [self.view layoutSubviews];
 }
 

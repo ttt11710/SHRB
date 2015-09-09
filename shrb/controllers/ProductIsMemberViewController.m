@@ -580,7 +580,7 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
     
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"QRPay"];
-    [[NSUserDefaults standardUserDefaults] setObject:@"Card" forKey:@"QRPay"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"SupermarketOrOrderVoucher" forKey:@"QRPay"];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Card" bundle:nil];
     NewCardDetailViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CardDetailView"];
     [viewController setModalPresentationStyle:UIModalPresentationFullScreen];

@@ -13,6 +13,7 @@
 #define screenHeight [UIScreen mainScreen].bounds.size.height
 
 #define IsiPhone4s   [UIScreen mainScreen].bounds.size.width<=320
+#define IsiPhone6   [UIScreen mainScreen].bounds.size.width==375
 
 #define IsIOS8   [[[UIDevice currentDevice] systemVersion] floatValue]>=8.0
 

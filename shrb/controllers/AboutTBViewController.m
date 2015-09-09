@@ -18,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.title = @"关于通宝";
+    
     [self creatTableView];
     
 }
