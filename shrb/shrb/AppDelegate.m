@@ -10,6 +10,8 @@
 #import "Const.h"
 #import "Migrations.h"
 
+
+
 @interface AppDelegate ()
 
 @end
@@ -22,6 +24,12 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     [Migrations migrate];
+    
+//    self.viewController = [[MyCordovaViewController alloc] init];
+//    self.viewController.wwwFolderName = @"www";
+//    self.viewController.startPage = @"text.html";
+//    
+//    self.window.rootViewController = self.viewController;
     
     return YES;
 }
