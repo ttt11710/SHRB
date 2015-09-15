@@ -1,0 +1,622 @@
+/**
+ *
+ * -------------------------------------------
+ * Mobile CSS file
+ * -------------------------------------------
+ * 
+ **/
+ 
+/*
+ *
+ * 13. Mobile code
+ *
+ *
+------------------------------------ */
+ 
+/* 13.1. Base elements
+==================================== */ 
+#gk-top-menu {
+	display: none;
+}
+.page-title {
+	font-size: 32px;
+}
+
+#gk-header-left,
+#gk-header-right {
+	display: none;
+}
+
+#gk-mainbody-columns > section {
+	margin-top: 0px;
+}
+
+a.cssLogo {
+	max-width: 240px;
+	margin-top: 5px!important;
+	margin-right: 0;
+}
+
+/* archive / page 404 */
+.page404 .widget,
+.archivepage .widget {
+	margin: 0!important;
+	width: 100%!important;
+}
+
+/* images fix */
+#gk-mainbody img {
+	height: auto!important;
+	max-width: 100%!important;
+}
+
+/* column rules */
+#gk-sidebar,
+#gk-sidebar_wc {
+	padding: 20px 0!important;
+}
+
+#gk-sidebar .box,
+#gk-sidebar_wc .box,
+#gk-bottom .box,
+.gk-bottom .box,
+#gk-header-mod + .gk-bottom .box,
+.gk-page > .gk-bottom {
+	float: none!important;
+	margin: 0 auto!important;
+	max-width: 300px;
+	width: 100%!important;
+}
+
+#gk-sidebar .box {
+	float: none;
+	margin-top: 0!important;
+	margin-bottom: 12px!important;
+	width: 100%;
+}
+
+#gk-sidebar .box:nth-child(2n+1) {
+	clear: both!important;
+}
+
+#gk-sidebar .box:nth-child(odd) {
+	padding-right: 0px;	
+}
+
+#gk-sidebar .box:nth-child(even) {
+	padding-left: 0px;
+}
+
+.frontpage #gk-mainbody-columns {
+	margin-top: 20px;
+}
+
+#gk-top1 .box,
+#gk-top2 .box,
+#gk-sidebar .box,
+#gk-mainbody .box,
+#gk-bottom1 .box,
+#gk-bottom2 .box,
+#gk-bottom3 .box,
+#gk-bottom4 .box,
+#gk-bottom5 .box {
+	clear: both!important;
+	float: none!important;
+	margin: 0 auto!important;
+	max-width: 300px;
+	width: 100%;
+}
+.box.parallax {
+	max-width: 100%!important;
+}
+.box.parallax .textwidget,
+.box.parallax .box-title,
+.box.parallax .gk-nsp {
+	margin: 0 auto!important;
+	max-width: 300px!important;
+}
+
+#gk-bottom1 .box,
+#gk-bottom2 .box,
+#gk-bottom3 .box,
+#gk-bottom4 .box,
+#gk-bottom5 .box {
+	margin-bottom: 20px;	
+}
+
+#gk-bottom1 .box.double, 
+#gk-bottom1 .box.double ~ .box, 
+#gk-bottom2 .box.double, 
+#gk-bottom2 .box.double ~ .box, 
+#gk-bottom3 .box.double, 
+#gk-bottom3 .box.double ~ .box,
+#gk-bottom4 .box.double, 
+#gk-bottom4 .box.double ~ .box,
+#gk-bottom5 .box.double, 
+#gk-bottom5 .box.double ~ .box {
+	width: 100%!important;
+}
+.bottom1-bar #gk-bottom1 .box, 
+.bottom2-bar #gk-bottom2 .box, 
+.bottom3-bar #gk-bottom3 .box, 
+.bottom4-bar #gk-bottom4 .box {
+	clear: both;
+	display: block!important;
+	width: 100%;	
+}
+#gk-bottom1.gk-single-widget, 
+#gk-bottom2.gk-single-widget,
+#gk-bottom3.gk-single-widget, 
+#gk-bottom4.gk-single-widget, 
+#gk-bottom5.gk-single-widget {
+	padding: 20px 0;
+}
+.bottom1-bar #gk-bottom1 > div, 
+.bottom2-bar #gk-bottom2 > div, 
+.bottom3-bar #gk-bottom3 > div, 
+.bottom4-bar #gk-bottom4 > div {
+	display: block;
+}
+
+.widget-area .col1,
+.widget-area .col2,
+.widget-area .col3,
+.widget-area .col4,
+.widget-area .col5,
+.widget-area .col6,
+.widget-area .box.last1,
+.widget-area .box.last2,
+.widget-area .box.last3,
+.widget-area .box.last4,
+.widget-area .box.last5 { 
+	float: none!important;
+	margin: 0 auto 20px auto!important; 
+	max-width: 300px; 
+	width: 100%!important; 
+}
+
+.widget-area .nth1,
+.widget-area .nth2,
+.widget-area .nth3,
+.widget-area .nth4,
+.widget-area .nth5,
+.widget-area .nth6 {
+	clear: both;
+}
+
+body #gk-page .box {
+	margin-bottom: 20px!important;
+}
+
+#footer-menu li {
+	float: none;
+}
+
+#gk-bottom .gk-columns {
+	margin: 0!important;
+}
+
+#gk-bottom .box {
+	padding: 0;
+}
+
+.gk-columns > div {
+	padding-bottom: 20px!important;
+	width: 100%!important;
+}
+
+#gk-bottom {
+	margin-top: 20px;
+}
+
+.gk-page > .gk-bottom,
+.box-title.bigtitle {
+	padding-top: 0;
+}
+
+#gk-bottom5 .box {
+	margin-bottom: 40px!important;
+}
+
+/* 13.2. Header and demo elements
+==================================== */
+.gk-is-wrapper-gk-university figcaption {
+	top: 65%;
+}
+.gk-is-wrapper-gk-university figcaption > div {
+	width: 100%;
+}
+.gk-is-wrapper-gk-university figcaption h2 {
+	font-size: 17px;
+	line-height: 20px;
+}
+.gk-is-wrapper-gk-university figcaption p {
+	font-size: 12px;
+	line-height: 1.2;
+	margin: 10px 0;
+}
+.gk-bottom-title {
+	top: 10px;
+}
+div.gk-tweet {
+	width: 100%!important;
+}
+.gk-content-image,
+.gk-content {
+	margin: 10px 0!important;
+	padding: 0!important;
+	width: 100%!important;
+}
+.gk-content-list li {
+	margin: 1% 0!important;
+	width: 100%!important;
+}
+.gk-information > div > strong {
+	width: 100%;
+}
+.gk-information > div input {
+	width: 99%!important;
+}
+
+.darkbar .gk-image-link > img {
+	min-width: inherit!important;
+}
+
+div.gk-tweet {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.author-info {
+	padding: 15px;
+}
+
+
+.gk-nsp-art {
+	width: 99%!important;
+}
+/* 13.3. Posts
+==================================== */
+
+#gk-mainbody article > header {
+	margin-bottom: 10px;
+	padding: 0 0 0 80px;
+}
+
+#gk-mainbody article > header h1, 
+#gk-mainbody article > header h2 {
+	font-size: 16px;
+	line-height: 1;
+}
+
+h1 {
+	font-size: 28px;
+}
+
+h2, 
+.pagetitle {
+	font-size: 28px;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+h4 {
+	font-size: 20px;
+}
+
+h5 {
+	font-size: 16px;
+}
+
+h6 {
+	font-size: 14px;
+}
+
+#comments li article > aside {
+	float: left;
+	margin-bottom: 10px;
+	margin-left: 0;
+	margin-right: 10px;
+	position: static!important;
+}
+
+#comments article .author {
+	float: none;
+	margin-top: 5px;
+}
+
+.author-info > aside {
+	margin: 0 0 30px 0;
+	position: static;
+}
+
+.author-info > div {
+	clear: both;
+	padding: 0;
+}
+
+aside.meta {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 20px 0!important;
+	position: static!important;
+	width: 100%!important;
+}
+
+#comments article header > * {
+	clear: both;
+	display: block;
+	float: left;
+	margin: 5px 0!important;
+	width: 100%;
+}
+
+#comments li article > .content {
+	margin-left: 0!important;
+	padding-left: 0!important;
+}
+
+#comments li article {
+	padding: 12px;
+}
+
+#comments article time {
+	font-size: 12px;
+}
+
+#comments article header span {
+	margin: 0!important;
+}
+
+/* 13.4. Other elements
+==================================== */
+/* Popups */
+.gk-popup {
+	margin-left: -150px;
+	width: 300px;
+}
+
+.gk-popup-wrap {
+	padding: 15px;
+}
+
+.gk-popup h3 {
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 24px;
+	margin: 0 0 10px;
+}
+
+.gk-nsp-arts,
+.gk-nsp-links-wrap {
+	clear: both;
+	float: left!important;
+	width: 100%!important;
+}
+
+body .gk-columns.big-spaces > div {
+	padding: 0 110px!important;
+}
+
+body .gk-columns[data-column-count="2"] > div,
+body .gk-columns[data-column-count="3"] > div,
+body .gk-columns[data-column-count="4"] > div {
+	padding-bottom: 20px!important;
+	width: 100%!important;
+}
+
+.gk-tabs-wrap ol {
+	margin: 20px 0 -1px;
+	overflow: hidden;
+}
+
+.gk-tabs-wrap ol li {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: center;
+	width: 100%;
+}
+
+#gk-bottom4 .widget_gk_buddypress {
+	display: none;
+}
+
+.category-events .event-description {
+	width: 100%;
+}
+
+.category-events article .featured-image {
+	margin-bottom: 12px;
+	width: 20%;
+}
+
+.category-events-list-2 .event-description {
+	width: 86.5%;
+}
+
+#gk-mainbody.category-staff article {
+	width: 50%;
+}
+
+#gk-contact dl,
+#gk-contact input[type="text"] {
+	width: 100%;
+}
+
+#gk-sidebar .box.icons-menu {
+	padding-bottom: 40px!important;
+}
+
+/* 13.5. BuddyPress
+==================================== */
+.box.guest > div {
+	padding: 40px 10px 0 10px;
+}
+
+.box.guest .btn-join {
+	font-size: 16px;
+}
+
+#buddypress div.activity-comments > ul {
+	padding: 0 0 0 37px!important;
+}
+
+#buddypress div.item-list-tabs ul li:before {
+	display: none!important;
+}
+
+#buddypress div.item-list-tabs ul li,
+#buddypress div.item-list-tabs ul li > a {
+	padding-left: 2px!important;
+}
+
+#buddypress div.rtmedia-activity-container ul.rtmedia-list li.media-type-video .rtmedia-item-thumbnail .wp-video-shortcode,
+#buddypress div.rtmedia-activity-container ul.rtmedia-list li.media-type-video .rtmedia-item-thumbnail .wp-audio-shortcode {
+	max-width: 100%;
+}
+
+#buddypress div.rtmedia-activity-container ul.rtmedia-list li.media-type-video {
+	padding-left: 0!important;
+}
+
+#buddypress div.item-list-tabs ul li,
+#buddypress .button-nav li {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-bottom: 1px solid #ddd;
+	width: 100%;
+}
+
+#buddypress div#item-header div#item-header-content,
+#buddypress ul.item-list li div.item-title,
+#buddypress ul.item-list li h4  {
+	width: 100%!important;
+}
+
+#buddypress ul.item-list li .item {
+	margin-left: 0!important;
+}
+
+.rtmedia-container .rtmedia-create-new-album-container,
+.rtmedia-activity-container .rtmedia-create-new-album-container,
+#buddypress div.rtmedia-activity-container .rtmedia-create-new-album-container {
+	overflow: visible!important;
+}
+
+.rtmedia-create-new-album-container #rtmedia_album_name {
+	margin: 5px 0!important;
+}
+
+#buddypress form#whats-new-form #whats-new-content {
+	margin: 0!important;
+	padding: 0!important;
+	width: 100%;
+}
+
+#buddypress #whats-new-options {
+	height: auto!important;
+}
+
+#buddypress .standard-form #basic-details-section, 
+#buddypress .standard-form #blog-details-section, 
+#buddypress .standard-form #profile-details-section,
+#buddypress div#item-header div#item-actions {
+	width: 100%!important;
+}
+
+#buddypress #item-header-avatar {
+	clear: both!important;
+}
+#buddypress form#whats-new-form p.activity-greeting {
+	line-height: 1em!important;
+}
+
+#buddypress form.standard-form .main-column {
+	margin-left: 0!important;
+}
+
+#buddypress div#invite-list {
+	width: 90%!important;
+}
+
+#buddypress form.standard-form .left-menu {
+	float: none!important;
+}
+
+.widget_bp_core_members_widget #members-list-options {
+	margin: -30px 0 9px!important;
+}
+
+#buddypress div.activity-comments {
+	margin-left: 45px!important;
+}
+
+#buddypress div.activity-comments ul ul {
+    margin-left: 0!important
+}
+
+#buddypress div.activity-comments ul.has-comments li {
+	padding-left: 0!important;
+}
+
+#buddypress div.item-list-tabs#subnav {
+	background: transparent!important;
+}
+
+button.mfp-close {
+	right: -10px;
+}
+
+#gk-social-api > div {
+	margin-bottom: 12px;
+}
+
+@media (max-width: 550px) {
+	.category-events-list-2 .event-description {
+		margin-top: 80px;
+		width: 100%;
+	}
+	
+	nav.gklogin-small {
+		margin-top: -40px;
+	}
+
+}
+
+@media (max-width: 420px) {
+	.contactpage .contact-image {
+		display: none;
+	}
+	
+	.contact-details {
+		width: 100%;
+	}
+}
+
+#gallery figure.active figcaption {
+	display: none;
+}
+/* 13.6. Device classes
+==================================== */
+
+.onlyDesktop,
+.bottom3-bar #gk-bottom3 .onlyDesktop.box {
+	display: none!important;
+}
+
+.onlyTablets {
+	display: none!important;
+}
+
+.onlySmartphones {
+	display: block!important;
+}
+
+.onlyTabltetsAndSmartphones {
+	display: block!important;
+}

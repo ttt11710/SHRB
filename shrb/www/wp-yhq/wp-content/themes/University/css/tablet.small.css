@@ -1,0 +1,119 @@
+/**
+ *
+ * -------------------------------------------
+ * Small Tablet CSS file
+ * -------------------------------------------
+ * 
+ **/
+ 
+/*
+ *
+ * 12. Small Tablet code
+ *
+ *
+------------------------------------ */
+ 
+/* 12.1. Base elements
+==================================== */ 
+
+#gk-mainbody article > header h1, 
+#gk-mainbody article > header h2 {
+	font-size: 32px;
+	line-height: 32px;
+}
+
+#gk-content-wrap,
+#gk-inset {
+	padding-left: 0!important;
+	padding-right: 0!important;
+	width: 100%;
+}
+
+#gk-bottom1 .box.double,
+#gk-bottom1 .box.double ~ .box,
+#gk-bottom2 .box.double,
+#gk-bottom2 .box.double ~ .box,
+#gk-bottom3 .box.double,
+#gk-bottom3 .box.double ~ .box,
+#gk-bottom4 .box.double,
+#gk-bottom4 .box.double ~ .box,
+#gk-bottom5 .box.double,
+#gk-bottom5 .box.double ~ .box {
+	width: 50%!important;
+}
+#gk-bottom1.gk-single-widget .box,
+#gk-bottom2.gk-single-widget .box,
+#gk-bottom3.gk-single-widget .box,
+#gk-bottom4.gk-single-widget .box,
+#gk-bottom5.gk-single-widget .box {
+	width: 100%!important;
+}
+
+.category-events-list-2 .event-description {
+	width: 87.6%;
+}
+
+/* Frontpage elements */
+div.gk-tweet {
+	width: 50%!important;
+}
+.gk_tweets_widget .gk-tweet:nth-child(odd) {
+	padding-left: 0;
+}
+.gk_tweets_widget .gk-tweet:nth-child(even) {
+	padding-right: 0;
+}
+.darkbar .gk-nsp-list > li:first-child:after {
+	display: none;
+}
+.gk-nsp-arts,
+.gk-nsp-links {
+	clear: both;
+	width: 100%!important;
+}
+.widget_wysija_cont .wysija-submit,
+.wysija-paragraph {
+	display: block;
+	width: 100%!important;
+}
+.newsletter .widget_wysija,
+.wysija-paragraph input[type="text"] {
+	width: 100%;
+}
+.widget_gk_buddypress > div[data-cols="1"] figure,
+.widget_gk_buddypress > div[data-cols="2"] figure {
+	width: 340px!important;
+}
+.widget_gk_buddypress > div[data-cols="3"] figure {
+	width: 220px!important;
+}
+.widget_gk_buddypress > div[data-cols="4"] figure {
+	width: 180px!important;
+}
+.gk-nsp-events time {
+	display: none;
+}
+.gk-nsp-events > div > time + div {
+	padding-left: 0;
+}
+.gk-information > div > strong {
+	padding: 30px 0 30px 50px;
+	width: 33.333333%;
+}
+.gk-information > div > strong:before {
+	top: 20px;
+}
+.gk-information > div input {
+	margin-bottom: 1%;
+	margin-left: 1%;
+	width: 32.333333%!important;
+}
+.gk-content-image + .gk-content {
+	padding: 0 0 0 30px;
+}
+
+/* buddypress */
+.box.widget_gk_login #gk-wp-submit {
+	margin-top: 10px;
+}
+

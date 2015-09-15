@@ -1,0 +1,53 @@
+﻿.pop {
+    display: block;
+    background-color: #aa499b;
+    padding: 0px;
+    opacity: 1;
+    position: absolute;
+    z-index: 10000;
+    margin-left: auto;
+    margin-right: auto;
+    width:280px;
+    height:auto;
+    -webkit-border-radius: 8px;
+    -ms-border-radius: 8px;
+    border-radius: 8px;
+    color:whitesmoke;
+}
+.bor_r{ border-right:1px solid whitesmoke;}
+/* pop */
+.pop_title{ width:100%; text-align:center; line-height:50px; font-weight:bold;font-size: 140%;}
+.pop_content,.pop_content2{font-size:120%; height:auto;text-align:center; line-height:30px; border-bottom:1px solid whitesmoke;}
+.pop_content{padding:0 52px 40px 52px;width:136px;}
+.pop_content2{padding:0 20px 20px 20px ;width:240px; }
+.pop_content2 a{ display:block;}
+.pop_bt{ font-size: 140%;width:100%; display: -webkit-box; display: box; }
+.pop_bt p{ -webkit-box-flex: 1; box-flex: 1; -ms-box-flex: 1; margin:0;text-decoration:none; line-height:49px; display:block; text-align:center;}
+.pop2{ height:auto;-webkit-border-radius: 8px;-ms-border-radius: 8px; border-radius: 8px; color:#FF9900; font-weight:bold; text-align:center; letter-spacing:1px; line-height:25px;}
+
+.popupInput{ height:32px; margin:0 auto; border:1px solid #D8D8D8; -webkit-border-radius: 5px; border-radius:5px; font-size: 15px;color: #A4A4A4;font-family: "微软雅黑";}
+.popupInput input{border:1px solid #D8D8D8; -webkit-border-radius: 5px; border-radius:5px; height:32px; width:100%;font-size: 15px;color: #A4A4A4;font-family: "微软雅黑";}
+.pop_bt .col{ color: #FF9900;}
+.col2{color:#3366FF;}
+.pop_bt .twoL:hover{-webkit-box-shadow: 0px 0px 6px 0px #ffffff; box-shadow: 0px 0px 6px 0px #ffffff;border-bottom-left-radius: 5px;-webkit-border-bottom-left-radius: 5px;}
+.pop_bt .twoR:hover{-webkit-box-shadow: 0px 0px 6px 0px #ffffff; box-shadow: 0px 0px 6px 0px #ffffff;border-bottom-right-radius: 5px;-webkit-border-bottom-right-radius: 5px;}
+.pop_bt .one:hover{-webkit-box-shadow: 0px 0px 6px 0px #ffffff; box-shadow: 0px 0px 6px 0px #ffffff;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;-webkit-border-bottom-left-radius: 5px;-webkit-border-bottom-right-radius: 5px;}
+
+.mask {
+    display: block;
+    background-color: #666666;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    z-index: 9999;
+    cursor: pointer;
+    text-align:center;
+}
+.mask div{
+    display: block;
+    position:relative;
+    top:42%;
+}

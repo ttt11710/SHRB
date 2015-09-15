@@ -1,0 +1,40 @@
+/*
+Theme Name: University
+Theme URI: http://gavick.com
+Description: Enjoy the exclusive design and superb functionality provided by our new education theme. Full BuddyPress support along with our specially-prepared pages and widgets helps to bridge the gap between students and teachers, making interaction an important part of school and college campus life. Our own custom modifications to posts combine with our News Show Pro widget to provide additional events tracking on the frontpage, with themed pages especially for detailing the particulars of the event, with date, time and venue information. The frontpage grows even more dynamic, with latest news displayed in elegant showcases on a parallax-effect background, a large header slider and latest social information from your chosen Twitter feed and BuddyPress streams to keep visitors up-to-date with what's going on at the school. Custom elements round out the layout, with embedded video, contact forms, newsletters and important links all accounted for. We've also added new category listings, with teacher profiles and event lists, as well as an About Us area with ready-prepared sections for history, FAQs and fact sheets.
+License: GNU GPL v.2.0
+License URI: LICENSE.txt
+Version: 1.6 (based on GavernWP 1.14)
+Author: GavickPro
+Author URI: http://gavick.com
+Tags: buddypress, gray, two-columns, fluid-layout, responsive-layout
+*/
+
+/**
+ *
+ * Basic code convention:
+ *
+ * sel {
+ * // rules in the alphabetic order
+ * }
+ *
+ * Content of the CSS files
+ * 
+ * 0. Normalize CSS styles (normalize.css)
+ * 1. Global elements (template.css)
+ * 2. Template containers (template.css)
+ * 3. Template structure (template.css) 
+ * 4. Widget styles (template.css)
+ * 5. Wordpress elements styling (wp.css)
+ * 6. Shortcodes (shortcodes.*.css)
+ * 7. Template additional features styles (stuff.css)
+ * 8. Additional WP extensions styles (wp.extensions.css)
+ * 9. (optional) Additional 3rd party extensions styles (extensions.css)
+ * 10. Small desktop code (desktop.small.css)
+ * 11. Tablet code (tablet.css)
+ * 12. Small Tablet code (tablet.small.css)
+ * 13. Mobile code (mobile.css)
+ * 14. IE code fixes (ie*.css)
+ * 15. Template colours and styles (style*.css)
+ * 16. (optional) Override for all CSS files (override.css)
+ **/

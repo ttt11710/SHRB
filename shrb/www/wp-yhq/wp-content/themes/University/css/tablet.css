@@ -1,0 +1,442 @@
+/**
+ *
+ * -------------------------------------------
+ * Tablet CSS file
+ * -------------------------------------------
+ * 
+ **/
+ 
+/*
+ *
+ * 11. Tablet code
+ *
+ *
+------------------------------------ */
+ 
+/* 11.1. Base elements
+==================================== */ 
+
+body,
+.box {
+	font-size: 14px;
+}
+
+.gk-page {
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+
+.frontpage .gk-page,
+#gk-head .gk-page,
+#gk-page-title.gk-page,
+#gk-bottom5 .gk-page {
+	padding-left: 10px!important;
+	padding-right: 10px!important
+}
+
+h1 {
+	font-size: 36px;
+}
+h2 {
+	font-size: 28px;	
+}
+h3 {
+	font-size: 24px;
+}
+
+small {
+	font-size: 90%;
+}
+
+#gk-top-menu,
+#gk-user-area {
+	margin-top: 0;
+}
+
+#gk-mainbody {
+	margin-bottom: 30px;
+}
+
+/* sidebar */
+#gk-mainbody-columns {
+	display: block;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#gk-mainbody-columns > section,
+#gk-mainbody-columns > aside {
+	display: block;
+	overflow: hidden;
+	width: 100%!important;
+}
+
+#gk-mainbody-columns > section {
+	margin-top: 20px;
+	overflow: visible;
+}
+
+#gk-inset {
+	margin-top: -5px;
+	padding: 25px 15px;
+}
+
+/* Archive page */
+.archivepage .widget.first {
+	margin-right: 2%;
+	margin-left: 0!important;
+}
+
+.archivepage .widget.first,
+.archivepage .widget.first + .widget {
+	margin-right: 0;
+	margin-left: 2%;
+	width: 48%;
+}
+
+.archivepage .widget.last {
+	margin: 0;
+	width: 100%;
+}
+
+.archivepage .widget ul {
+	margin-bottom: 30px;
+}
+
+/* images fix */
+#gk-mainbody img {
+	height: auto!important;
+	max-width: 100%!important;
+	margin: 0;
+}
+
+/* column rules */
+#gk-sidebar .box,
+#gk-sidebar_wc .box {
+	border: 0!important;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	float: left;
+	margin-top: 0!important;
+	margin-bottom: 30px!important;
+	padding: 10px!important;
+	width: 50%;
+}
+#gk-sidebar,
+#gk-sidebar_wc {
+	padding: 0!important;
+}
+#gk-sidebar .box:first-child,
+#gk-sidebar_wc .box:first-child {
+	padding-top: 10px!important;
+}
+#gk-sidebar .box:nth-child(2n+1),
+#gk-sidebar_wc .box:nth-child(2n+1) {
+	clear: both!important;
+}
+.widget-area .col1 { width: 100%; }
+.widget-area .col2 { width: 50%; }
+.widget-area .col3 { width: 33.3%; }
+.widget-area .col4 { width: 50%; }
+.widget-area .col5 { width: 33.3%; }
+.widget-area .col6 { width: 33.3%; }
+
+.widget-area .box.last1 { width: 100%; }
+.widget-area .box.last2 { width: 50%; }
+.widget-area .box.last3 { width: 33.3%; }
+.widget-area .box.last4 { width: 50%; }
+.widget-area .box.last5 { width: 33.3%; }
+
+.widget-area .nth1 {
+	clear: both;
+}
+
+.widget-area .col6.last5.nth4,
+.widget-area .col6.last5.nth5 {
+	width: 50%;
+}
+
+.gk-columns[data-column-count="4"] > div,
+.gk-columns[data-column-count="5"] > div {
+	margin-bottom: 30px;
+	width: 50%!important; 
+}
+
+.gk-columns[data-column-count="4"] > div:nth-child(2n+1),
+.gk-columns[data-column-count="5"] > div:nth-child(2n+1) {
+	clear: both;
+}
+
+#gk-mainbody article > header h1,
+#gk-mainbody article > header h2 {
+	font-size: 32px;
+}
+
+.gk-bottom .box {
+	margin: 0!important;
+}
+
+/* contact page */
+#gk-contact input[type="text"] {
+	width: 95%;
+}
+
+/* 11.2. Header elements
+==================================== */
+
+#gk-top-menu,
+#gk-user-area,
+#gk-top-right {
+	margin-top: 0;
+}
+
+.gk-is-wrapper-gk-storefront {
+	height: 500px;
+	margin: 0 0 60px 0;
+}
+
+#gk-header-mod + .gk-bottom  {
+	padding-top: 20px;
+}
+
+
+/* 11.3. Demo and other elements
+==================================== */
+
+/* Frontpage elements */
+.box.parallax {
+	background-attachment: scroll;
+	padding: 50px 0!important;
+}
+.box.transparent {
+	padding: 20px!important;
+}
+.box.transparent li {
+	padding: 10px 0;
+}
+#gk-header-left .box-title {
+	display: none!important;
+}
+.csstransforms #gk-header-left .box-title + .textwidget,
+.csstransforms #gk-header-left .box-title + .gk-nsp {
+	padding-left: 0px;
+}
+.gk-nsp-events > div {
+	margin: 0;
+}
+.gk-nsp-events time {
+	left: 5px;
+}
+.gk-nsp-events h3 {
+	font-size: 13px;
+}
+.gk-nsp-events > div > time + div {
+	padding-left: 64px;
+}
+.gk-nsp-events .gk-events-list-progress {
+	display: none;
+}
+.gk-is-wrapper-gk-university figcaption h2 {
+	font-size: 32px;
+	line-height: 40px;
+}
+.gk-is-wrapper-gk-university figcaption p {
+	margin: 10px 0;
+}
+.gk-information {
+	padding: 12px 0;
+}
+.gk-information > div > strong {
+	font-size: 11px;
+	padding: 5px 10px 5px 50px;
+}
+.gk-information > div > input {
+	margin-left: 0.5%;
+}
+.gk-information > div > input {
+	width: 18%;
+}
+.gk-information > div > input[type="submit"] {
+	width: 22.5%;
+}
+.frontpage #gk-mainbody-columns {
+	padding: 30px 0;
+}
+
+.frontpage #gk-mainbody .box {
+	padding-bottom: 0;
+}
+
+.darkbar .gk-nsp-header {
+	padding: 30px;
+}
+.darkbar .gk-nsp-list > li > .gk-nsp-link-content-wrap {
+	padding: 10px;
+}
+div.gk-tweet {
+	padding: 15px 25px;
+}
+#gk-bottom1.gk-single-widget,
+#gk-bottom2.gk-single-widget,
+#gk-bottom3.gk-single-widget,
+#gk-bottom4.gk-single-widget,
+#gk-bottom5.gk-single-widget,
+#gk-bottom5 {
+	overflow: hidden;
+	padding: 50px 0;
+}
+
+.widget_gk_buddypress > div[data-cols="1"] figure,
+.widget_gk_buddypress > div[data-cols="2"] figure {
+	width: 420px!important;
+}
+.widget_gk_buddypress > div[data-cols="3"] figure {
+	width: 280px!important;
+}
+.widget_gk_buddypress > div[data-cols="4"] figure {
+	width: 205px!important;
+}
+.widget_gk_buddypress figcaption {
+	padding: 22px;
+}
+#gk-mainbody-bottom {
+	margin-bottom: 30px;
+}
+
+.gk-columns {
+	margin: 0 -20px;
+}
+
+#gk-bottom5 .box {
+	margin-bottom: 30px;
+	width: 50%;
+}
+
+#gk-bottom5 .box:nth-child(2n+1)  {
+	clear: both;
+}
+
+.category-events-list-2 .event-description {
+	width: 87.3%;
+}
+
+.category-events .event-description {
+	width: 77.9%;
+}
+
+.category-events article .featured-image {
+	width: 17%;
+}
+
+/* 11.4. Main menu elements
+==================================== */ 
+
+#aside-menu-toggler,
+#main-menu-mobile,
+#static-aside-menu-toggler {
+	display: block!important;
+}
+
+#gk-main-menu {
+	display: none;
+}
+
+#aside-menu-toggler,
+#main-menu-mobile,
+#static-aside-menu-toggler {
+	margin-right: -7px!important;
+}
+
+/* 11.5. Footer
+==================================== */ 
+
+
+/* 11.6. Device classes
+==================================== */
+
+.onlyDesktop {
+	display: none!important;
+}
+
+.onlyTablets {
+	display: block!important;
+}
+
+.onlySmartphones {
+	display: none!important;
+}
+
+.onlyTabltetsAndSmartphones {
+	display: block!important;
+}
+
+/* 11.7. Responsive tables
+==================================== */
+
+@media (max-width: 600px) {
+	article section table:not(.woocommerce) {
+		border: 1px solid #eee;
+		border-bottom: none;
+		max-width: 100%!important;
+		width: 100%!important;
+	}
+
+	article section table thead {
+		display: none;
+	}
+
+	article section table:not(.woocommerce) td {
+		border-top: 1px solid #eee;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		clear: both;
+		display: block;
+		float: right;
+		padding: 5px 5px 5px 43%!important;
+		position: relative;
+		width: 100%;
+	}
+
+	article section table td:first-child {
+		border-top: none;
+	}
+
+	article section table:not(.woocommerce) tbody tr {
+		border-bottom: 2px solid #eee;
+	}
+
+	article section table td span.gk-table-label {
+		display: block;
+		font-size: 95%;
+		font-weight: bold;
+		left: 5px;
+		position: absolute;
+	}
+}
+
+/* 11.8. Buddypress
+==================================== */
+.widget.buddypress ul.item-list img.avatar,
+.widget.buddypress div.item-avatar img,
+.widget.buddypress ul.item-list .item-avatar > a,
+.widget.buddypress div.item-avatar > a {
+	height: 60px!important;
+	width: 60px!important;
+}
+.widget.buddypress div.item .item-title {
+	font-size: 14px!important;
+}
+.widget #members-list li .item-avatar {
+	margin-right: 10px;
+}
+
+.button.bp-title-button {
+	margin: 3px 30px 20px 0!important;
+}
+
+nav.gklogin-small {
+	margin-top: -50px;
+}
+

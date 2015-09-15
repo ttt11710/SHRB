@@ -1,0 +1,167 @@
+@font-face {
+  font-family: 'Rosario';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Rosario Regular'), local('Rosario-Regular'), url(http://themes.googleusercontent.com/static/fonts/rosario/v8/1czDsfUw1sIxXBq0PGI58ALUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+}
+
+html {
+	height: 100%;
+	-webkit-font-smoothing: subpixel-antialiased; 
+}
+body,
+html {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+}
+body {
+	background: #3f4e67;
+	color: #fff;
+	font-size: 14px;
+	font-family: Rosario, sans-serif;
+	font-weight: 300;
+	line-height: 1.6;
+	margin: 0;
+	min-height: 100%;
+	padding: 0;
+	word-wrap: break-word;
+}	
+a {
+	color: #FA7252;
+	-webkit-transition: color 0.2s linear;
+	-moz-transition: color 0.2s linear;
+	-o-transition: color 0.2s linear;
+	transition: color 0.2s linear;
+	text-decoration: none;
+}
+a:active,
+a:focus,
+a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+#gk-page-wrap {
+	background: transparent;
+	clear: both;
+	padding: 50px 0;
+	text-align: center;
+}
+
+#frame {
+	clear: both;
+	margin: 80px auto 30px;
+	max-width: 100%;
+	overflow: hidden;
+	padding: 0;
+	text-align: center;
+	width: 860px;
+}
+
+h1 {
+	color: #FA7252;
+	font-size: 100px;
+	font-weight: 200;
+	line-height: 1.2;
+	margin: 22px 0 0;
+}
+
+a.cssLogo {
+	height: 100px;
+	margin: 0 auto;
+	padding: 0;
+	text-indent: -999em;
+	text-shadow: none;
+	width: 159px;
+	display: inline-block;
+}
+
+a.cssLogo {
+	background: transparent url('../images/logo.png') no-repeat 0 0;
+	/* You can specify there logo size and background */
+	height: 75px;
+	width: 274px;
+}
+
+.svg a.cssLogo {
+	background-image:  url('../images/logo.svg');
+}
+
+a.textLogo {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #fff;
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	height: 63px;
+	line-height: 63px;
+	margin: 0 auto;
+	text-align: center;
+	text-indent: 0;
+	text-transform: uppercase;
+	width: auto;
+}
+
+a.textLogo small {
+	color: #ddd;
+	display: block;
+	font-size: 10px;
+	font-weight: normal;
+	line-height: 1;
+	margin-top: -20px;
+	text-align: left;
+	text-transform: none;
+}
+
+.imageLogo {
+	display: inline-block;
+	margin: 10px 0 5px;
+}
+#frame p {
+	display: inline-block;
+	font-size: 36px;
+	font-weight: bold;
+	line-height: 1.4;
+	padding: 25px 50px;
+	position: relative;
+	text-transform: uppercase;
+	width: auto;
+}
+
+#frame:after {
+	border-bottom: 1px solid #60708c;
+	content: "";
+	display: block;
+	margin: 20px auto 12px;
+	width: 280px;
+}
+p.errorinfo {
+	font-size: 14px;
+	line-height: 1.6;
+	margin: 0 auto;
+	padding: 9px 0;
+	text-align: center;
+}
+
+@media (max-width: 920px) {
+	#frame p {
+		font-size: 24px;
+	}
+	
+	#gk-page-wrap {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+@media (max-width: 600px) {
+	h1 {
+		font-size: 42px;
+	}
+	
+	#frame p {
+		font-size: 20px;
+	}
+}

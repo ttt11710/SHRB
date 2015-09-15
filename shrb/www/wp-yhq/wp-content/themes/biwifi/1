@@ -1,0 +1,198 @@
+#loimg{
+   margin-left :100px;
+		
+}
+
+.xx{
+	width:80%;
+	height:35px;
+	border-radius:5px;
+	
+	margin-left:35px;
+}
+
+#btnlog{
+	width:80%;
+	height:40px;		
+	margin-left:35px;
+	margin-top:50px;
+	border-radius:5px;
+	background:#205AA7;
+	border:0px;
+	color:white;
+}
+.lstpwd {
+	margin-left:35px;
+}
+
+
+.hr{
+	border: 1px dashed;
+	margin-left:35px;
+	width:80%;
+}
+
+#btnreg{
+	height:35px;
+	width:35%;
+	margin-left:35px;
+	background:#8C63A4;
+	border-radius:5px;
+	border:0px;
+	color:white;
+}
+
+#btnrepwd{
+	height:35px;
+	width:35%;
+	margin-left:20px;
+	background:#83C75D;
+	border-radius:5px;
+	border:0px;
+	color:white;
+}
+
+.btn{
+	margin-left:35px;
+	width:80%;
+	height:35px;
+	border-radius:5px;
+	border:0px;
+	background:#205AA7;
+	color:white;
+}
+
+#backtolog{
+	margin-left:35px;
+    width:80%;
+    height:35px;
+    border-radius:5px;
+    border:0px;
+    background:#205AA7;
+    color:white;
+}
+/**
+.quantity{
+	display:none !important;
+}
+*/
+#moreimg{
+	margin-left:250px;	
+	margin-top:-45px;
+
+}
+
+.product_meta{
+	display:none;
+}
+
+.tabs{
+	display:none;
+}
+.variations_button{
+	margin-bottom:20px;
+}
+.single_add_to_cart_button{
+	 width:95%;
+    	height:35px;
+   	 border-radius:5px;
+   	 border:0px;
+	margin-left:2.5% !important;
+	background:#27aae1;
+	color:white;
+}
+
+#addedid{
+	display:none !important;
+}
+
+#showui{
+	list-style-type:none;
+
+}
+div[itemprop=description]{
+	margin-left:35px;		
+	bottom:50px;
+}
+
+.single_add_to_cart_button{
+	position:fixed;
+	bottom:10px;
+	margin-left:30px;
+}
+
+.quantity{
+	display:none;	
+
+}
+
+td.label{
+	margin-left:10px;
+}
+label[for]{
+	width:10px;	
+
+}
+
+.minus , .plus{
+	display:none;
+}
+
+.woocommerce-tabs{
+    display:none;
+}
+
+div[itemprop=description]{
+    display:none;
+}
+
+#special-offer{
+    display:none;
+}
+.myaccount_user{
+	margin-top:5px;
+	text-align:center;
+	height:50px;
+	background:#94AAD6;
+}
+#padord , #payord,#sendord{
+	margin-left:5%;
+	font-size:18px;
+}
+
+#paiedorder , #payingorder{
+	/*height:30px;*/
+}
+
+
+#padordnum,#sendordnum{
+	margin-left:60%;
+	font-size:18px;
+}
+
+#payordnum {
+	margin-left:50%;
+	font-size:18px;
+}
+
+#lnkpadord ,#lnkpay,#lnksend{
+	color:#000000;
+	text-decoration: none;
+}
+.single_variation{
+	margin-bottom:70px;
+}
+#isshowpwd{
+  margin-left:35px;	
+}
+#order_comments{
+ 	width:85%;
+	margin-left:7%;
+	height:60px;
+	
+}
+.newimg{
+	height:100px;
+	width:100px;
+
+}

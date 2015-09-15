@@ -25,11 +25,11 @@
     
     [Migrations migrate];
     
-//    self.viewController = [[MyCordovaViewController alloc] init];
-//    self.viewController.wwwFolderName = @"www";
-//    self.viewController.startPage = @"text.html";
-//    
-//    self.window.rootViewController = self.viewController;
+    self.viewController = [[MyCordovaViewController alloc] init];
+    self.viewController.wwwFolderName = @"www/wp-yhq";
+    self.viewController.startPage = @"readme.html";
+    
+    self.window.rootViewController = self.viewController;
     
     return YES;
 }

@@ -1,0 +1,9 @@
+<wpml-config>
+    <admin-texts>
+        <key name="university_seo_description" />
+        <key name="university_seo_blogname" />
+        <key name="university_seo_homepage_desc_value" />
+        <key name="university_seo_homepage_keywords_value" />
+        <key name="university_template_footer_content" />
+    </admin-texts>   
+</wpml-config>

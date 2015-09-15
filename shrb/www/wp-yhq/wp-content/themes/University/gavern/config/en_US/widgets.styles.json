@@ -1,0 +1,78 @@
+[
+	{
+		"name": "Light",
+		"css_class": "light",
+		"exclude": "widget_gk_comments"
+	},
+	{
+		"name": "Dark",
+		"css_class": "dark",
+		"exclude": "widget_gk_comments,widget_gk_nsp"
+	},
+	{
+		"name": "Menu",
+		"css_class": "menu"
+	},
+	{
+		"name": "Icons Menu",
+		"css_class": "icons-menu"
+	},
+	{
+		"name": "Color I",
+		"css_class": "color1"
+	},
+	{
+		"name": "Color II",
+		"css_class": "color2"
+	},
+	{
+		"name": "Video",
+		"css_class": "gk-video"
+	},
+	{
+		"name": "Transparent",
+		"css_class": "transparent"
+	},
+	{
+		"name": "Parallax",
+		"css_class": "parallax"
+	},
+	{
+		"name": "Advertisement",
+		"css_class": "advertisement"
+	},
+	{
+		"name": "Medium Title",
+		"css_class": "medium-title"
+	},
+	{
+		"name": "Big Title",
+		"css_class": "bigtitle"
+	},
+	{
+		"name": "Bottom Title",
+		"css_class": "bottom-title"
+	},
+	{
+		"name": "BuddyPress Guest",
+		"css_class": "guest"
+	},
+	{
+		"name": "Centered",
+		"css_class": "centered",
+		"for_only": "text"
+	},
+	{
+		"name": "No margin",
+		"css_class": "nomargin"
+	},
+	{
+		"name": "Half",
+		"css_class": "half"
+	},
+	{
+		"name": "Unified style",
+		"css_class": "tags",
+		"for_only": "tag_cloud"
+	}
+]

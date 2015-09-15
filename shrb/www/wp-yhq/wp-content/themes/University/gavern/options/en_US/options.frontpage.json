@@ -1,0 +1,85 @@
+[
+	{
+		"groupname": "Frontpage settings",
+		"groupdesc": "Settings connected with the frontpage of the theme can be configured here.",
+		"fields": [
+			{
+				"name": "readmore_on_frontpage",
+				"type": "Switcher",
+				"label": "Show read more on the frontpage",
+				"tooltip": "Enable display of the frontpage button when you don't want to use the more quicktag.",
+				"default": "Y",
+				"class": "",
+				"visibility": ""
+			},
+			{
+				"name": "template_homepage_mainbody",
+				"type": "Switcher",
+				"label": "Widgets Display on Homepage",
+				"tooltip": "Enable the display of widgets in mainbody widget positions instead of standard blog posts on the homepage.",
+				"default": "N",
+				"class": "",
+				"visibility": ""
+			},
+			{
+				"name": "slider_options",
+				"type": "TextBlock",
+				"label": "Settings for the Slider."
+			},
+			{
+				"name": "slider_autoanimation",
+				"type": "Switcher",
+				"label": "Autoanimation for slides",
+				"tooltip": "Enable autoanimation of slides on homepage.",
+				"default": "Y",
+				"visibility": ""
+			},
+			{
+				"name": "slider_interval",
+				"type": "Text",
+				"label": "Animation interval",
+				"tooltip": "Specify the animation interval in ms.",
+				"default": "5000",
+				"class": "",
+				"visibility": "slider_autoanimation=Y"
+			},
+			{
+				"name": "slider_speed",
+				"type": "Text",
+				"label": "Animation speed",
+				"tooltip": "Specify the speed of animation in ms.",
+				"default": "200",
+				"visibility": ""
+			},
+			{
+				"name": "slider_navigation",
+				"type": "Switcher",
+				"label": "Slider navigation",
+				"tooltip": "Enable navigation for slides.",
+				"default": "Y"
+			},
+			{
+				"name": "tabs_options",
+				"type": "TextBlock",
+				"label": "Settings for Tabs."
+			},
+			{
+				"name": "tab_autoanimation",
+				"type": "Switcher",
+				"label": "Autoanimation for tabs",
+				"tooltip": "Enable autoanimation of tabs on homepage.",
+				"default": "N",
+				"visibility": ""
+			},
+			{
+				"name": "tab_interval",
+				"type": "Text",
+				"label": "Animation interval",
+				"tooltip": "Specify the animation interval in ms.",
+				"default": "5000",
+				"class": "",
+				"visibility": "tab_autoanimation=Y"
+			}
+		]
+	}
+]

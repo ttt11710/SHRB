@@ -1,0 +1,363 @@
+/**
+ *
+ * -------------------------------------------
+ * Style3
+ * -------------------------------------------
+ *
+ **/
+
+/*
+ *
+ * 15. Style III
+ *
+ *
+------------------------------------ */
+
+/* 15.1. Basic colors
+==================================== */
+
+/* template.css */
+a,
+#gk-mainbody a:active,
+#gk-mainbody a:focus,
+#gk-mainbody a:hover,
+#gk-mainbody footer a,
+#gk-mainbody #comments a,
+#gk-mainbody.contactpage a,
+#gk-mainbody header h1 a:active,
+#gk-mainbody header h1 a:focus,
+#gk-mainbody header h1 a:hover,
+#gk-mainbody header h2 a:active,
+#gk-mainbody header h2 a:focus,
+#gk-mainbody header h2 a:hover,
+#gk-mainbody .content a,
+#gk-mainbody .content .faq li a:hover,
+#gk-bottom5 .box a:active,
+#gk-bottom5 .box a:focus,
+#gk-bottom5 .box a:hover,
+#gk-footer a:active,
+#gk-footer a:focus,
+#gk-footer a:hover {
+	color: #65c1cf;
+}
+
+.btn,
+button,
+.button,
+.readon,
+.nav-btn a,
+.more-link,
+a.gk-button,
+input[type="button"],
+input[type="submit"] {
+	background-color: #65c1cf;
+	border-color: #65c1cf;
+}
+
+/* extensions.css */
+.gk-nsp-arts-nav li:hover,
+.gk-nsp-arts-nav li.active,
+.gk-nsp-links-nav li:hover,
+.gk-nsp-links-nav li.active,
+.gk-nsp-events .gk-events-list-progress > div,
+.gk-is-wrapper-gk-university .gk-is-progress {
+	background-color: #65c1cf;
+}
+
+.gk-nsp-next:hover:after,
+.gk-nsp-prev:hover:after,
+.gk-nsp-link-header a:hover,
+.gk-nsp-events a:active,
+.gk-nsp-events a:focus,
+.gk-nsp-events a:hover,
+div.gk-tweet > div a:hover,
+div.gk-tweet > div > span.gk-tweet-info a:active,
+div.gk-tweet > div > span.gk-tweet-info a:focus,
+div.gk-tweet > div > span.gk-tweet-info a:hover,
+div.gk-tweet a.gk-tweet-date:before,
+.gk-tweet-info .gk-reply:before,
+.gk-tweet-info .gk-retweet:before,
+.gk-tweet-info .gk-favorite:before,
+.gk-nsp-link-readmore { 
+	color: #65c1cf;
+}
+
+.gk-nsp-header a:active,
+.gk-nsp-header a:focus,
+.gk-nsp-header a:hover,
+.gk-nsp-art .readon {
+	color: #65c1cf!important;
+}
+
+.gk-is-wrapper-gk-university .gk-is-timeline {
+	border-color: #65c1cf;
+}
+
+.gk-tabs-wrap > ol > li:hover,
+.gk-tabs-wrap > ol > li.active,
+.gk-tabs-wrap > ol > li.active:hover {
+	border-top-color: #65c1cf;
+}
+
+/* stuff */
+#gk-header-nav li.gk-login {
+	border: 1px solid rgba(101, 193, 207, 0.5);
+}
+.gk-breadcrumbs a:hover,
+#gk-mainbody .author-desc p a,
+.gk-event .gk-event-period:before,
+.gk-event .gk-event-hours:before,
+.faq-title,
+.gk-popup h3 a,
+.gk-popup .small li a:hover,
+#gk-mainbody .gk-content a { 
+	color: #65c1cf; 
+}
+
+.gk-event .gk-event-register {
+	background-color: #f0b356;
+}
+
+.gk-event .gk-event-register:hover,
+.gk-event-counter > div,
+.gk-information > div > input[type="submit"]:active,
+.gk-information > div > input[type="submit"]:focus,
+.gk-information > div > input[type="submit"]:hover,
+.gk-popup .btn.register:hover { 
+	background-color: #65c1cf;
+}
+
+.darkbar .gk-nsp-header a:active,
+.darkbar .gk-nsp-header a:focus,
+.darkbar .gk-nsp-header a:hover,
+.darkbar li h4 a:active,
+.darkbar li h4 a:focus,
+.darkbar li h4 a:hover {
+	color: #65c1cf!important;
+}
+
+.event-description > a {
+	color: #f0b356!important;
+}
+
+#gk-header-nav li.gk-login:hover {
+	border-color: #65c1cf;
+}
+
+.gk-information > div > input[type="submit"] {
+	background-color: #f0b356;
+}
+
+/* wp.css */
+#gk-main-menu #main-menu > li:hover,
+#gk-main-menu #main-menu > li a:hover,
+#gk-main-menu #main-menu > li.active > a,
+#close-menu,
+#aside-menu li > a.active,
+#aside-menu li > a:active,
+#aside-menu li > a:focus,
+#aside-menu li > a:hover,
+#aside-menu .current-menu-item > a,
+#comments em.awaiting-moderation {
+	color: #65c1cf;
+}
+
+#gk-main-menu .sub-menu li:hover > a,
+#gk-main-menu .sub-menu li > a:active,
+#gk-main-menu .sub-menu li > a:focus,
+#gk-main-menu .sub-menu li > a:hover,
+#gk-main-menu .menu-cols-2 > .sub-menu > ul > li > a:hover,
+#gk-main-menu .menu-cols-3 > .sub-menu > ul > li > a:hover,
+#gk-main-menu .menu-cols-4 > .sub-menu > ul > li > a:hover,
+.tags a:active,
+.tags a:focus,
+.tags a:hover {
+	color: #65c1cf!important;
+}
+
+article .featured-image sup,
+article.sticky .featured-image sup {
+	background-color: #65c1cf;
+}
+
+/* wp.extensions.css */
+.box #wp-calendar td#today,
+.box #wp-calendar tbody td a:hover,
+.box.color2,
+.box.guest .btn-join {
+	background-color: #65c1cf;
+}
+
+.box.color1 {
+	background-color: #f0b356;
+}
+
+.box.transparent a:active,
+.box.transparent a:focus,
+.box.transparent a:hover,
+.box.transparent ul + a,
+.box.icons-menu .last-item a,
+.box.icons-menu li a:active i,
+.box.icons-menu li a:focus i,
+.box.icons-menu li a:hover i {
+	color: #65c1cf;
+}
+
+.box.dark a:active,
+.box.dark a:focus,
+.box.dark a:hover,
+.box.menu li > a:hover,
+.box.widget_categories li > a:hover,
+.box.icons-menu li a:hover {
+	color: #65c1cf!important;
+}
+
+/* shortcodes.typography.css */
+.gk-warning,
+.gk-error,
+.gk-contact-error {
+	background-color: #65c1cf;
+}
+
+pre,
+pre.gk-code {
+	border-left-color: #65c1cf;
+}
+
+.gk-numblock[data-style="style3"] span {
+	color: #65c1cf;
+	border-color: #65c1cf;
+}
+
+blockquote:before,
+blockquote p:after,
+article ul[data-style="style2"] li:before,
+#tab-description ul[data-style="style2"] li:before,
+article ul[data-style="style3"] li:before,
+#tab-description ul[data-style="style3"] li:before,
+article ul[data-style="style4"] li:before,
+#tab-description ul[data-style="style4"] li:before {
+	color: #65c1cf;
+}
+
+/* shortcodes.elements.css */
+.gk-note:before,
+.gk-members > strong:first-child {
+	background-color: #65c1cf;
+}
+
+.gk-toggle.opened > h3:after,
+.gk-toggle.closed > h3:after {
+	color: #65c1cf;
+}
+
+/* templates/gallery.css */
+.gallery-btn-next:before,
+.gallery-btn-prev:before {
+	color: #65c1cf;
+}
+
+/* gk.buddypress.css */
+#buddypress .acomment-options a,
+#buddypress a.bp-primary-action span, 
+#buddypress #reply-title small a span,
+#buddypress a.bp-primary-action:hover span,
+#buddypress #reply-title small a:hover span,
+#buddypress div.generic-button a:active,
+#buddypress div.generic-button a:focus,
+#buddypress div.generic-button a:hover,
+#buddypress .action a.button.remove:hover,
+#buddypress .action a.button.remove:active,
+#buddypress .action a.button.remove:focus,
+#buddypress .thread-options a.button.confirm:hover,
+.rtmedia-container .rtmedia-list .rtmedia-list-item a h4,
+.rtmedia-container .rtmedia-item-title a,
+.rtmedia-container.rtmedia-single-container .row .rtmedia-single-meta .rtmedia-item-actions .rtmedia-action-buttons span,
+.rtmedia-comment-author,
+.rtmedia-container .rtmedia-item-title, .rtmedia-activity-container .rtmedia-item-title:hover, 
+#buddypress div.rtmedia-activity-container .rtmedia-item-title a:hover,
+.rtmedia-container .rtmedia-item-title, .rtmedia-activity-container .rtmedia-item-title:active, 
+#buddypress div.rtmedia-activity-container .rtmedia-item-title a:active,
+.rtmedia-container .rtmedia-item-title, .rtmedia-activity-container .rtmedia-item-title:focus, 
+#buddypress div.rtmedia-activity-container .rtmedia-item-title a:focus,
+#buddypress .activity-header div.activity-meta a,
+#buddypress a.button.bp-secondary-action {
+	color: #65c1cf!important;
+}
+
+#buddypress div.item-list-tabs ul li a span,
+#buddypress div.item-list-tabs ul li a:hover span,
+#buddypress div.item-list-tabs ul li.current a span,
+#buddypress div.item-list-tabs ul li.selected a span,
+#buddypress div.item-list-tabs ul li.current a span {
+	color: #65c1cf;
+}
+
+#buddypress .activity-header div.activity-meta a,
+#buddypress a.button.bp-secondary-action {
+	color: #65c1cf!important;
+}
+
+.rtmedia-container.rtmedia-single-container .row .rtmedia-single-meta .rtmedia-item-actions .rtmedia-action-buttons span,
+.rtmedia-single-container.rtmedia-activity-container .row .rtmedia-single-meta .rtmedia-item-actions .rtmedia-action-buttons span,
+#buddypress div.rtmedia-single-container.rtmedia-activity-container .row .rtmedia-single-meta .rtmedia-item-actions .rtmedia-action-buttons span,
+#buddypress div#message p,
+#sitewide-notice p,
+#buddypress div#message.error p,
+.rtmedia-error,
+#buddypress .standard-form#signup_form div div.error,
+#buddypress input[type=submit],
+#buddypress .rtmedia-container .button,
+#buddypress input[type=button],
+#buddypress .ac-reply-cancel,
+#buddypress button,
+#buddypress a.button.edit,
+#buddypress a.button,
+#buddypress .comment-reply-link, 
+a.bp-title-button,
+#buddypress .activity-list li.load-more a,
+#buddypress #delete-group-avatar-button a,
+#buddypress #rtmedia-upload-container input[type=button],
+a.bp-title-button {
+	background-color: #65c1cf;
+}
+#buddypress input[type=submit],
+#buddypress button,
+#buddypress .activity-list li.load-more a {
+	background-color: #65c1cf!important;
+}
+#buddypress input[type=submit]:hover,
+#buddypress button:hover,
+#buddypress .activity-list li.load-more a:hover {
+	background-color: #000!important;
+}
+
+#buddypress div.activity-meta a,
+#buddypress .rtmedia-comment-link,
+#rtm-media-options .primary,
+#rtm-media-options .primary i,
+.rtmedia-container ul#rtmedia_comment_ul li .rtmedia-comment-author a,
+.rtmedia-activity-container ul#rtmedia_comment_ul li .rtmedia-comment-author a,
+.rtmedia-container ul#rtmedia_comment_ul li .rtmedia-delete-comment,
+.rtmedia-activity-container ul#rtmedia_comment_ul li .rtmedia-delete-comment,
+#buddypress .rtmedia-actions-before-comments > span a,
+#buddypress a.button.bp-secondary-action {
+	color: #65c1cf!important;
+}
+
+#buddypress .rtmedia-item-actions button:hover,
+#buddypress div.activity-meta a:hover {
+	color: #000!important;
+}
+
+#buddypress .rtmedia-item-actions button {
+	color: #65c1cf!important;
+	background: none!important;
+}
+.rtmedia-container.rtmedia-single-container .row .rtmedia-single-meta button,
+.rtmedia-single-container.rtmedia-activity-container .row .rtmedia-single-meta button,
+#buddypress div.rtmedia-single-container.rtmedia-activity-container .row .rtmedia-single-meta button,
+#buddypress div.activity-meta a,
+#buddypress .rtmedia-actions-before-comments > span  {
+	color: #65c1cf!important;
+}

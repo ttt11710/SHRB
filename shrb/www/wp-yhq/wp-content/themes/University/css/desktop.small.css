@@ -1,0 +1,63 @@
+/**
+ *
+ * -------------------------------------------
+ * Small Desktop CSS file
+ * -------------------------------------------
+ * 
+ **/
+ 
+/*
+ *
+ * 10. Small Desktop code
+ *
+ *
+------------------------------------ */
+ 
+/* 10.1. Base elements
+==================================== */ 
+
+.gk-page,
+.gk-single-widget > div,
+.box.parallax > * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-left: 10px!important;
+	padding-right: 10px!important;
+}
+
+#gk-header-right {
+	right: 10px!important;
+}
+#gk-header-left {
+	left: -4px!important;
+}
+.gk-information > div > strong {
+	width: 20%;
+}
+.gk-information > div > input {
+	width: 18%;
+}
+.gk-nsp-events > div {
+	padding: 10px 15px;
+}
+.csstransforms #gk-header-left .box-title + .textwidget,
+.csstransforms #gk-header-left .box-title + .gk-nsp {
+	padding-left: 40px;
+}
+#gk-header-bottom {
+	padding: 15px 0;
+}
+.gk-is-wrapper-gk-university figcaption h2 { 
+	font-size: 48px;
+	letter-spacing: 0;
+}
+.gk-is-wrapper-gk-university figcaption p {
+	font-size: 14px;
+}
+
+.type-bp_member #buddypress div.item-list-tabs#subnav {
+	float: left!important;
+	margin-top: 0!important;
+	width: 100%;
+}
