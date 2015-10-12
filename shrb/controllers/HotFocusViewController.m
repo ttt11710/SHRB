@@ -86,7 +86,7 @@
     if (_shoppingCardView == nil) {
         _shoppingCardView = [[ShoppingCardView alloc] initWithFrame:CGRectMake(16, screenHeight-49-50, 100, 40)];
         _shoppingCardView.shoppingNumLabel.num = [[NSUserDefaults standardUserDefaults] integerForKey:@"num"];
-      //  [self.view insertSubview:_shoppingCardView aboveSubview:self.view];
+       // [self.view insertSubview:_shoppingCardView aboveSubview:self.view];
     }
 
     else {

@@ -56,8 +56,6 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
 @property(nonatomic,copy) UILabel *cardNumberLabel;//会员卡号
 
 
-@property (retain, nonatomic) UILabel *descriptionLabel; //产品描述
-
 
 @end
 
@@ -163,8 +161,8 @@ static ProductIsMemberViewController *g_ProductIsMemberViewController = nil;
     if ([_imageArray count]<= 0 ) {
         UIImageView *_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _cardScrollView.frame.size.width, _cardScrollView.frame.size.height)];
         _imageView.clipsToBounds = YES;
-        _imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+        _imageView.contentMode = UIViewContentModeScaleToFill;
+        [_imageView sd_setImageWithURL:[NSURL URLWithString:self.productDataDic[@"imgUrl"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
         [_cardScrollView addSubview:_imageView];
         
     }

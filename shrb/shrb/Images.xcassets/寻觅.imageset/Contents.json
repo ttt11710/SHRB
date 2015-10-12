@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "寻觅.png"
+      "filename" : "寻觅.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "寻觅@2x.png"
+      "filename" : "寻觅@2x.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "寻觅@3x.png"
+      "filename" : "寻觅@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

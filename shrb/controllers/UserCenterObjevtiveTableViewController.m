@@ -66,7 +66,7 @@
                 self.loginBtn.hidden = YES;
                 [self.memberImageView sd_setImageWithURL:[NSURL URLWithString:[TBUser currentUser].imgUrl] placeholderImage:[UIImage imageNamed:@"默认女头像"]];
                 self.memberNumLabel.hidden = NO;
-                self.memberNumLabel.text = [NSString stringWithFormat:@"通包号:%@",[TBUser currentUser].userId];
+                self.memberNumLabel.text = [NSString stringWithFormat:@"通宝号:%@",[TBUser currentUser].userId];
             }
                 break;
                 

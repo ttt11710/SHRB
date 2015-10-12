@@ -31,6 +31,8 @@
     
     self.title = @"注册";
     
+    self.passwordTextField.secureTextEntry = YES;
+    
     TNImageCheckBoxData *manData = [[TNImageCheckBoxData alloc] init];
     manData.identifier = @"man";
     manData.labelText = @"完成注册代表你同意《通宝用户协议》";

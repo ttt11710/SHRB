@@ -42,7 +42,7 @@ static UIButton *_payTypeButton = nil;
 
 - (void)initData
 {
-    _data = [[NSMutableArray alloc] initWithObjects:@"纯色拼接修身外套",@"简约拉链夹克",@"纯棉9分直筒裤",@"男士休闲羊毛西装", nil];
+    _data = [[NSMutableArray alloc] initWithObjects:@"热点无图片",@"热点无图片",@"热点无图片",@"热点无图片", nil];
 }
 
 - (void)initTableView
@@ -63,7 +63,7 @@ static UIButton *_payTypeButton = nil;
         return 44;
     }
     else if (indexPath.row == 1) {
-        return 100;
+        return imageViewWidth + 20;
     }
     else {
         return 250;

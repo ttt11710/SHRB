@@ -13,12 +13,8 @@
 		DF0D9C7D1B0C2A7400C0AB3F /* HotFocusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0D9C7C1B0C2A7400C0AB3F /* HotFocusTableViewCell.m */; };
 		DF0D9C821B0C2BAD00C0AB3F /* HotFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0D9C811B0C2BAD00C0AB3F /* HotFocusViewController.m */; };
 		DF0D9C851B0C423000C0AB3F /* CardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0D9C841B0C423000C0AB3F /* CardTableViewCell.m */; };
-		DF0E31FE1BA7E34300884855 /* www in Resources */ = {isa = PBXBuildFile; fileRef = DF0E31FD1BA7E34300884855 /* www */; };
-		DF0E32001BA7E35A00884855 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = DF0E31FF1BA7E35A00884855 /* config.xml */; };
-		DF0E32041BA7E47600884855 /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0E31FC1BA7E31000884855 /* libCordova.a */; };
 		DF0E32061BA7E47F00884855 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0E32051BA7E47F00884855 /* MobileCoreServices.framework */; };
 		DF0E32081BA7E48500884855 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0E32071BA7E48500884855 /* AssetsLibrary.framework */; };
-		DF0E320B1BA7E72400884855 /* MyCordovaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0E320A1BA7E72400884855 /* MyCordovaViewController.m */; };
 		DF1504F71B5645980095D6A3 /* yunifang.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF1504F61B5645980095D6A3 /* yunifang.plist */; };
 		DF1504F91B5655160095D6A3 /* McDonalds.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF1504F81B5655160095D6A3 /* McDonalds.plist */; };
 		DF1EBFB61B6EFC60002DF8BA /* PYBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1EBFB51B6EFC60002DF8BA /* PYBaseViewController.m */; };
@@ -76,7 +72,6 @@
 		DF66B83D1B535B43002E9EFC /* SuperQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66B83C1B535B43002E9EFC /* SuperQRViewController.m */; };
 		DF66B8421B538C78002E9EFC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF66B8411B538C78002E9EFC /* Login.storyboard */; };
 		DF6A71B21B96E1290009A34C /* SuccessAppleRefundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6A71B11B96E1290009A34C /* SuccessAppleRefundViewController.m */; };
-		DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F24D1B267FF400FAE24F /* MainViewController.m */; };
 		DF70F2521B26AC5100FAE24F /* UITableView+Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2511B26AC5100FAE24F /* UITableView+Wave.m */; };
 		DF70F2581B26B91100FAE24F /* MODropAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2551B26B91100FAE24F /* MODropAlertView.m */; };
 		DF70F2591B26B91100FAE24F /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DF70F2571B26B91100FAE24F /* UIImage+ImageEffects.m */; };
@@ -186,20 +181,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DF0E31FB1BA7E31000884855 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF0E31F71BA7E30F00884855 /* CordovaLib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 68A32D7114102E1C006B237C;
-			remoteInfo = CordovaLib;
-		};
-		DF0E32021BA7E45E00884855 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF0E31F71BA7E30F00884855 /* CordovaLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = CordovaLib;
-		};
 		DF72C0D01B0B339800CE6DC6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DF72C0AE1B0B339800CE6DC6 /* Project object */;
@@ -222,13 +203,8 @@
 		DF0D9C811B0C2BAD00C0AB3F /* HotFocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotFocusViewController.m; sourceTree = "<group>"; };
 		DF0D9C831B0C423000C0AB3F /* CardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTableViewCell.h; path = ../Views/CardTableViewCell.h; sourceTree = "<group>"; };
 		DF0D9C841B0C423000C0AB3F /* CardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardTableViewCell.m; path = ../Views/CardTableViewCell.m; sourceTree = "<group>"; };
-		DF0E31F71BA7E30F00884855 /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
-		DF0E31FD1BA7E34300884855 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
-		DF0E31FF1BA7E35A00884855 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		DF0E32051BA7E47F00884855 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DF0E32071BA7E48500884855 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		DF0E32091BA7E72400884855 /* MyCordovaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCordovaViewController.h; sourceTree = "<group>"; };
-		DF0E320A1BA7E72400884855 /* MyCordovaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCordovaViewController.m; sourceTree = "<group>"; };
 		DF1504F61B5645980095D6A3 /* yunifang.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = yunifang.plist; sourceTree = "<group>"; };
 		DF1504F81B5655160095D6A3 /* McDonalds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = McDonalds.plist; sourceTree = "<group>"; };
 		DF1EBFB41B6EFC60002DF8BA /* PYBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYBaseViewController.h; sourceTree = "<group>"; };
@@ -334,8 +310,6 @@
 		DF66B8411B538C78002E9EFC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DF6A71B01B96E1290009A34C /* SuccessAppleRefundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessAppleRefundViewController.h; sourceTree = "<group>"; };
 		DF6A71B11B96E1290009A34C /* SuccessAppleRefundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessAppleRefundViewController.m; sourceTree = "<group>"; };
-		DF70F24C1B267FF400FAE24F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		DF70F24D1B267FF400FAE24F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		DF70F2501B26AC5100FAE24F /* UITableView+Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Wave.h"; sourceTree = "<group>"; };
 		DF70F2511B26AC5100FAE24F /* UITableView+Wave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Wave.m"; sourceTree = "<group>"; };
 		DF70F2541B26B91100FAE24F /* MODropAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MODropAlertView.h; sourceTree = "<group>"; };
@@ -550,7 +524,6 @@
 			files = (
 				DF0E32081BA7E48500884855 /* AssetsLibrary.framework in Frameworks */,
 				DF0E32061BA7E47F00884855 /* MobileCoreServices.framework in Frameworks */,
-				DF0E32041BA7E47600884855 /* libCordova.a in Frameworks */,
 				DF90C1741B85AC3C00D1A495 /* CoreLocation.framework in Frameworks */,
 				CB4E17B74343612E6E329DD1 /* libPods.a in Frameworks */,
 			);
@@ -616,14 +589,6 @@
 				DF958F571B33ACC0005B2155 /* view */,
 			);
 			name = card;
-			sourceTree = "<group>";
-		};
-		DF0E31F81BA7E30F00884855 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DF0E31FC1BA7E31000884855 /* libCordova.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		DF0E55E61B8C4DC20087539B /* Api */ = {
@@ -814,9 +779,6 @@
 		DF72C0AD1B0B339800CE6DC6 = {
 			isa = PBXGroup;
 			children = (
-				DF0E31FF1BA7E35A00884855 /* config.xml */,
-				DF0E31FD1BA7E34300884855 /* www */,
-				DF0E31F71BA7E30F00884855 /* CordovaLib.xcodeproj */,
 				DF72C0B81B0B339800CE6DC6 /* shrb */,
 				DF72C0D21B0B339800CE6DC6 /* shrbTests */,
 				DF72C0B71B0B339800CE6DC6 /* Products */,
@@ -890,12 +852,8 @@
 		DF72C0DF1B0B3FEC00CE6DC6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DF70F24C1B267FF400FAE24F /* MainViewController.h */,
-				DF70F24D1B267FF400FAE24F /* MainViewController.m */,
 				DF73D9781B53BC8B00C1F317 /* MainTabBarController.h */,
 				DF73D9791B53BC8B00C1F317 /* MainTabBarController.m */,
-				DF0E32091BA7E72400884855 /* MyCordovaViewController.h */,
-				DF0E320A1BA7E72400884855 /* MyCordovaViewController.m */,
 				DF1EBFB31B6EFC37002DF8BA /* baseController */,
 				DF66B8461B53AEC1002E9EFC /* login */,
 				DF0D9C7E1B0C2B6C00C0AB3F /* main */,
@@ -1356,12 +1314,10 @@
 				DF72C0B31B0B339800CE6DC6 /* Frameworks */,
 				DF72C0B41B0B339800CE6DC6 /* Resources */,
 				BCDAD0F56346836B57BFE09F /* Copy Pods Resources */,
-				DF0E32011BA7E3FF00884855 /* copy www directory */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DF0E32031BA7E45E00884855 /* PBXTargetDependency */,
 			);
 			name = shrb;
 			productName = shrb;
@@ -1399,6 +1355,7 @@
 				TargetAttributes = {
 					DF72C0B51B0B339800CE6DC6 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = YDS5529ZWK;
 					};
 					DF72C0CE1B0B339800CE6DC6 = {
 						CreatedOnToolsVersion = 6.1;
@@ -1417,12 +1374,6 @@
 			mainGroup = DF72C0AD1B0B339800CE6DC6;
 			productRefGroup = DF72C0B71B0B339800CE6DC6 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = DF0E31F81BA7E30F00884855 /* Products */;
-					ProjectRef = DF0E31F71BA7E30F00884855 /* CordovaLib.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				DF72C0B51B0B339800CE6DC6 /* shrb */,
@@ -1430,16 +1381,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		DF0E31FC1BA7E31000884855 /* libCordova.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libCordova.a;
-			remoteRef = DF0E31FB1BA7E31000884855 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DF72C0B41B0B339800CE6DC6 /* Resources */ = {
@@ -1458,10 +1399,8 @@
 				DF635D031B4FC07800439576 /* 16N.plist in Resources */,
 				DF635D011B4FA9DE00439576 /* store.plist in Resources */,
 				DF635CFF1B4F5B6D00439576 /* holy.plist in Resources */,
-				DF0E31FE1BA7E34300884855 /* www in Resources */,
 				DF72C0CA1B0B339800CE6DC6 /* LaunchScreen.xib in Resources */,
 				DF7E84B71B83274D00D013BE /* NewStoreTableViewCell.xib in Resources */,
-				DF0E32001BA7E35A00884855 /* config.xml in Resources */,
 				DF72C0C71B0B339800CE6DC6 /* Images.xcassets in Resources */,
 				DFF766E11B65D054005BB71C /* NewStoreCollectionViewCell.xib in Resources */,
 			);
@@ -1507,20 +1446,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DF0E32011BA7E3FF00884855 /* copy www directory */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "copy www directory";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cordova/lib/copy-www-build-step.js";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1559,7 +1484,6 @@
 				DF9E4A9C1B86C0B900C36002 /* OrderViewController.m in Sources */,
 				DFC001D01B8AE4D300F5F89A /* IQActionSheetViewController.m in Sources */,
 				DF958F611B33B83C005B2155 /* TradeModel.m in Sources */,
-				DF0E320B1BA7E72400884855 /* MyCordovaViewController.m in Sources */,
 				DF54C4391B8C66C4002183EC /* Store.m in Sources */,
 				DFB763251B3D495F0086ABB7 /* NewCardDetailViewController.m in Sources */,
 				DF7176FF1B2FFF9300D3C3B9 /* BasicInfoTableViewController.m in Sources */,
@@ -1618,7 +1542,6 @@
 				DF0D9C751B0C252B00C0AB3F /* CompletePayViewController.m in Sources */,
 				DF32B89B1B904A8000BA3318 /* VoucherAmoutTableViewCell.m in Sources */,
 				DFC001C91B8ABCDE00F5F89A /* AppleRefundTableViewCell.m in Sources */,
-				DF70F24E1B267FF400FAE24F /* MainViewController.m in Sources */,
 				DF77A5B81B0C151F00934A7C /* StoreTableViewCell.m in Sources */,
 				DF9E4AA31B86CA6700C36002 /* OrderListModel.m in Sources */,
 				DFC39BC61B294ECE006B50F4 /* LazyFadeInLayer.m in Sources */,
@@ -1694,11 +1617,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DF0E32031BA7E45E00884855 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CordovaLib;
-			targetProxy = DF0E32021BA7E45E00884855 /* PBXContainerItemProxy */;
-		};
 		DF72C0D11B0B339800CE6DC6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DF72C0B51B0B339800CE6DC6 /* shrb */;
@@ -1761,7 +1679,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "a4824251-f698-4656-b9a7-fdbcfead227d";
@@ -1797,7 +1715,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "a4824251-f698-4656-b9a7-fdbcfead227d";
 				SDKROOT = iphoneos;
@@ -1812,14 +1730,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = shrb/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-Objc",
 					"-l\"Pods-AFNetworking\"",
 					"-l\"Pods-AsyncDisplayKit\"",
 					"-l\"Pods-BFPaperButton\"",
@@ -1857,11 +1775,10 @@
 					"\"SystemConfiguration\"",
 					"-weak_framework",
 					"\"Photos\"",
-					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.paybay.;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paybay.shrb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2c4abc4f-f262-469b-8ed0-254eae852be1";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/PayBay/Desktop/paybay/shrb/shrb/shrb/shrb-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1875,14 +1792,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhao xuan (DCWDDFVB8H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = shrb/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-Objc",
 					"-l\"Pods-AFNetworking\"",
 					"-l\"Pods-AsyncDisplayKit\"",
 					"-l\"Pods-BFPaperButton\"",
@@ -1920,11 +1837,10 @@
 					"\"SystemConfiguration\"",
 					"-weak_framework",
 					"\"Photos\"",
-					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.paybay.;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paybay.shrb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2c4abc4f-f262-469b-8ed0-254eae852be1";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/PayBay/Desktop/paybay/shrb/shrb/shrb/shrb-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

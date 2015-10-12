@@ -48,7 +48,6 @@ static ProductViewController *g_ProductViewController = nil;
 @property (retain, nonatomic) UILabel *prodDescLabel; //产品描述
 @property (retain, nonatomic) UIButton *registerBtn;     //注册
 @property (retain, nonatomic) SuperBecomeMemberView1 *becomeMemberView; //注册弹出界面
-@property (retain, nonatomic) UIButton *smallbutton; //注册弹出button
 
 
 @end
@@ -153,8 +152,8 @@ static ProductViewController *g_ProductViewController = nil;
     if ([_imageArray count]<= 0 ) {
         UIImageView *_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _cardScrollView.frame.size.width, _cardScrollView.frame.size.height)];
         _imageView.clipsToBounds = YES;
-        _imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [_imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"热点无图片"]];
+        _imageView.contentMode = UIViewContentModeScaleToFill;
+        [_imageView sd_setImageWithURL:[NSURL URLWithString:self.productDataDic[@"imgUrl"]] placeholderImage:[UIImage imageNamed:@"热点无图片"]];
         [_cardScrollView addSubview:_imageView];
 
     }
